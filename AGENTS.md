@@ -1,6 +1,6 @@
-# AGENTS.md — Van Gogh Website Project Instructions
+# AGENTS.md — Van Gogh Website Project (Atrijā)
 
-> **Read this file first** before making any changes to this project.
+> **Read this first** before making any changes to this project.
 
 ## Critical Rules
 
@@ -19,50 +19,130 @@ cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 ```
 
 ### 3. Git Commit Convention
-Use semantic commit messages:
-- `feat:` new feature
-- `fix:` bug fix
-- `refactor:` code restructuring
-- `perf:` performance improvement
-- `chore:` maintenance (deps, config)
-- `style:` CSS/styling changes
-- `docs:` documentation
+Use semantic commit messages: `feat:`, `fix:`, `refactor:`, `perf:`, `chore:`, `style:`, `docs:`
 
 ### 4. Never Stop Critical Services
-- hermes-gateway (PID 5334)
-- cloudflared (PID 5474)
-- nginx (PID 5414)
-- sshd (PID 5416)
+- hermes-gateway (PID 5334), cloudflared (PID 5474), nginx (PID 5414), sshd (PID 5416)
 
 ### 5. Never Reboot the System
 
-## Project Structure
+---
+
+## Project Overview
+- **Name**: Atrijā (अत्रिज) — Van Gogh impressionist philosophy website
 - **Framework**: Astro 4 (Static Site Generation)
-- **3D Engine**: Three.js loaded from CDN (esm.sh)
-- **Styling**: Inline `<style is:inline>` (global, no scoping)
+- **3D Engine**: Three.js loaded from CDN (esm.sh) in `public/js/scene-init.js`
+- **Design**: Dark theme (#08080f), impressionist aesthetic, GLSL post-processing
 - **Deploy**: Nginx on port 8080, root `/data/data/com.termux/files/usr/share/nginx/html`
-- **Data**: `src/content/siteData.json` (themes, colors, changelog)
-- **Kanban**: `.hermes/kanban.json` (idea board)
+
+---
+
+## Content Architecture (IMPORTANT)
+
+### Two Content Files
+
+1. **`src/content/siteData.json`** — Themes, color schemes, facts, quotes
+   - 5 themes: Moon, Ego, Bhagavad Gita, Shiv Purana, Art & Beauty
+   - 5 color schemes: starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver
+   - Each theme has `.facts[]` and `.quotes[]`
+   - Daily rotation via `dayOfYear % length`
+
+2. **`src/content/content.json`** — **Text content updated by cron jobs**
+   - `sections.hero.tagline` — Hero tagline HTML
+   - `sections.today.heading` — Today section heading
+   - `sections.{moon,philosophy,gita,shiva,art}` — Each section's:
+     - `label` — Roman numeral label (e.g., "I. The Moon")
+     - `heading` — Section heading with `<em>` emphasis
+     - `intro` — Intro paragraph text
+     - `imageCard` — `{themeIndex, factIndex}` for the image card
+     - `facts` — `{themeIndex, slice: [start, end]}` for fact cards
+     - `quote` — `{themeIndex, quoteIndex}` for the quote
+   - `changelog` — Version + entries (updated by daily cron)
+
+### How index.astro Uses Content
+```astro
+import siteData from '../content/siteData.json';
+import content from '../content/content.json';
+const sec = content.sections;
+// Section headings: <h2 set:html={sec.moon.heading}>
+// Section intros: <p set:html={sec.moon.intro}>
+// Image cards: fact from siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex]
+// Fact cards: slice from siteData.themes[sec.moon.facts.themeIndex].facts
+// Quotes: siteData.themes[sec.moon.quote.themeIndex].quotes[sec.moon.quote.quoteIndex]
+```
+
+---
+
+## File Structure
+```
+src/
+  content/
+    siteData.json    — Themes, colors, facts, quotes (structured data)
+    content.json     — Section text content (updated by cron)
+  layouts/
+    BaseLayout.astro — Global layout, CSS, HTML shell, flute button, moon container
+  pages/
+    index.astro      — Main page, all sections, uses both content files
+public/
+  js/
+    scene-init.js    — Three.js scene (stars, moon, sunflowers, tulips, flute, waves, notes)
+  images/
+    moon.svg, sunflowers.svg, tulips.svg, flute.svg, stars.svg, waves.svg
+  css/
+    loader.css       — Loading screen styles
+  assets/            — Generated assets
+.hermes/
+  kanban.json        — Idea board for TDD workflow
+scripts/
+  daily-mutate.js    — Daily color/content mutation
+  daily-deploy.sh    — Full mutation → build → deploy pipeline
+  kanban-generate.sh — Idea generation + TDD pipeline
+```
+
+---
 
 ## Cron Jobs Active
 | Job | Schedule | Purpose |
 |-----|----------|---------|
-| van-gogh-kanban-generate | 2 AM daily | Generate new ideas, advance TDD pipeline |
-| van-gogh-daily-deploy | 6 AM daily | Content mutation → build → deploy |
-| van-gogh-background-implement | 10AM/2PM/6PM | Implement kanban tasks via TDD |
-| van-gogh-git-pull-build | Every 3h | Git pull + conditional build |
+| `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build |
+| `van-gogh-kanban-generate` | 2 AM daily | Generate ideas, advance TDD pipeline |
+| `van-gogh-daily-deploy` | 6 AM daily | Content mutation → build → deploy |
+| `van-gogh-background-implement` | 10AM/2PM/6PM | Implement kanban tasks via TDD |
 
-## Design Tokens
-All CSS uses custom properties defined in `:root`:
-- Colors: `--bg`, `--text-primary`, `--accent-gold`, etc.
-- Typography: `--text-xs` through `--text-hero`
-- Spacing: `--space-xs` through `--space-3xl`
-- Fonts: `--font-serif`, `--font-sans`, `--font-devanagari`
+---
 
-## Three.js Scene
-- Scene init: `public/js/scene-init.js`
-- Loaded via `<script type="module">` from CDN
-- Post-processing shader skipped on mobile/low-end
-- Stars: 2500 desktop / 1500 mobile with twinkling shader
-- Moon: orbiting + self-rotating with glow
-- Flowers: billboard technique (face camera)
+## Design Tokens (in BaseLayout.astro `:root`)
+- **Colors**: `--bg`, `--text-primary`, `--text-secondary`, `--text-tertiary`, `--accent-gold`, `--accent-blue`, `--accent-coral`, `--accent-violet`, `--sage`
+- **Typography**: `--text-xs` through `--text-hero` (1.25 ratio)
+- **Spacing**: `--space-xs` through `--space-3xl`
+- **Fonts**: `--font-serif` (Cormorant Garamond), `--font-sans` (Inter), `--font-devanagari` (Noto Sans Devanagari)
+
+---
+
+## Three.js Scene (scene-init.js)
+- Stars: 2500 desktop / 1500 mobile, custom twinkling shader with size + brightness oscillation
+- Moon: Slow orbit + self-rotation, glow effect, ASCII art overlay with shadow phase animation
+- Sunflowers & Tulips: Billboard technique (flower heads face camera via `lookAt()`)
+- Flute: 3D model with hover animation, click spawns music notes globally
+- Music notes: 30 desktop / 40 mobile, floating sprites
+- Waves: GLSL shader, 64×64 segments desktop / 32×32 mobile
+- Post-processing: Van Gogh-style shader (skipped on mobile/low-end)
+
+---
+
+## Updating Text Content
+To update the website text content, edit **`src/content/content.json`**:
+- Change `sections.*.heading` for section headings
+- Change `sections.*.intro` for intro paragraphs
+- Change `sections.*.imageCard` to point to different facts
+- Change `sections.*.facts.slice` to show different fact ranges
+- The daily cron job (`daily-mutate.js`) also updates this file
+
+---
+
+## Nginx Config
+- Config: `$PREFIX/etc/nginx/nginx.conf` (Termux)
+- Root: `/data/data/com.termux/files/usr/share/nginx/html/`
+- Port: 8080
+- Reload: `kill -HUP <master_pid>`
+- Verify: `curl http://127.0.0.1:8080/` (NOT localhost)
