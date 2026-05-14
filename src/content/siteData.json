@@ -26,8 +26,8 @@
           "element": "moon"
         },
         {
-          "text": "Van Gogh painted 'Starry Night' while in an asylum, the swirling sky a mirror of his inner turbulence. The Moon in that painting is not serene — it burns. Art is not the absence of suffering; it is suffering transformed.",
-          "source": "Art History",
+          "text": "The night sky has always been a canvas for human projection. We see faces, animals, and gods in the stars — not because they are there, but because the mind seeks meaning in chaos.",
+          "source": "Philosophical Reflection",
           "element": "moon"
         }
       ],
@@ -63,14 +63,14 @@
           "element": "waves"
         },
         {
-          "text": "Van Gogh sold only one painting in his lifetime. His ego was not inflated by the world's approval. He painted because the act of creation was its own reward — a rare freedom from the tyranny of external validation.",
-          "source": "Art History",
+          "text": "True art requires the death of the ego. The painter who paints for fame paints nothing true. The musician who plays for applause hears nothing real. Creation begins where the self ends.",
+          "source": "Philosophical Reflection",
           "element": "sunflowers"
         }
       ],
       "quotes": [
         "The ego is not master in its own house. — Sigmund Freud",
-        "In the fields of observation, chance favors only the prepared mind. — Louis Pasteur (humility before nature)",
+        "In the fields of observation, chance favors only the prepared mind. — Louis Pasteur",
         "The more I learn, the more I realize how much I don't know. — Albert Einstein"
       ]
     },
@@ -149,40 +149,40 @@
       ]
     },
     {
-      "id": "van-gogh-philosophy",
-      "title": "Van Gogh's Philosophy",
+      "id": "art-beauty",
+      "title": "Art & Beauty",
       "category": "art",
       "facts": [
         {
-          "text": "Van Gogh wrote: 'I dream of painting and then I paint my dream.' For him, art was not representation but revelation — the act of making visible what the eye cannot see.",
-          "source": "Vincent van Gogh, Letters to Theo",
+          "text": "Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream.",
+          "source": "Philosophical Reflection",
           "element": "sunflowers"
         },
         {
-          "text": "The sunflowers Van Gogh painted were not decorative. They were a meditation on life and death — some blooms fresh and golden, others wilting and brown. He painted the full cycle in a single canvas.",
-          "source": "Art Analysis",
+          "text": "The sunflower turns its face to the light. In this simple act is a metaphor for the spiritual life — the constant orientation of the soul toward what illuminates, even when the source is hidden.",
+          "source": "Symbolism",
           "element": "sunflowers"
         },
         {
-          "text": "Van Gogh's 'Starry Night' was painted from memory during the day, at the Saint-Paul-de-Muse asylum. The night he painted was not the night he saw — it was the night he felt.",
-          "source": "Art History",
+          "text": "A star field is a reminder of scale. Every point of light is a sun, perhaps with planets, perhaps with life. The universe is not indifferent — it is generous beyond comprehension.",
+          "source": "Cosmology",
           "element": "stars"
         },
         {
-          "text": "In his letters, Van Gogh frequently referenced the Bible and spiritual longing. He had been a lay pastor before becoming an artist. His paintings are sermons in color — each brushstroke a prayer.",
-          "source": "Van Gogh Letters",
-          "element": "tulips"
+          "text": "The flute is the oldest instrument — a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
+          "source": "Music Philosophy",
+          "element": "flute"
         },
         {
-          "text": "Van Gogh painted over 30 self-portraits, not out of vanity but out of necessity — he could not afford models. In each one, the gaze is searching, as if he were trying to paint not his face but his soul.",
-          "source": "Art History",
-          "element": "moon"
+          "text": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
+          "source": "Philosophical Reflection",
+          "element": "waves"
         }
       ],
       "quotes": [
-        "I am seeking, I am striving, I am in it with all my heart. — Vincent van Gogh",
-        "Great things are done by a series of small things brought together. — Vincent van Gogh",
-        "I often think that the night is more alive and more richly colored than the day. — Vincent van Gogh"
+        "Every artist dips his brush in his own soul, and paints his own nature into his pictures. — Henry Ward Beecher",
+        "The purpose of art is washing the dust of daily life off our souls. — Pablo Picasso",
+        "I dream my painting and I paint my dream. — Attributed to many artists"
       ]
     }
   ],
@@ -195,11 +195,7 @@
       "background": "#0a0a1a",
       "text": "#e8e8f0",
       "mood": "contemplative",
-      "shaderParams": {
-        "strokeDensity": 8,
-        "swirlFrequency": 12,
-        "colorIntensity": 1.4
-      }
+      "shaderParams": { "strokeDensity": 8.0, "swirlFrequency": 12.0, "colorIntensity": 1.4 }
     },
     {
       "name": "sunflower",
@@ -209,11 +205,7 @@
       "background": "#1a1200",
       "text": "#fff8e1",
       "mood": "warm",
-      "shaderParams": {
-        "strokeDensity": 10,
-        "swirlFrequency": 8,
-        "colorIntensity": 1.6
-      }
+      "shaderParams": { "strokeDensity": 10.0, "swirlFrequency": 8.0, "colorIntensity": 1.6 }
     },
     {
       "name": "midnight-wave",
@@ -223,11 +215,7 @@
       "background": "#000a12",
       "text": "#b3e5fc",
       "mood": "mysterious",
-      "shaderParams": {
-        "strokeDensity": 6,
-        "swirlFrequency": 15,
-        "colorIntensity": 1.2
-      }
+      "shaderParams": { "strokeDensity": 6.0, "swirlFrequency": 15.0, "colorIntensity": 1.2 }
     },
     {
       "name": "tulip-garden",
@@ -237,11 +225,7 @@
       "background": "#1a0a0a",
       "text": "#fce4ec",
       "mood": "passionate",
-      "shaderParams": {
-        "strokeDensity": 9,
-        "swirlFrequency": 10,
-        "colorIntensity": 1.5
-      }
+      "shaderParams": { "strokeDensity": 9.0, "swirlFrequency": 10.0, "colorIntensity": 1.5 }
     },
     {
       "name": "moonlit-silver",
@@ -251,11 +235,7 @@
       "background": "#0d1117",
       "text": "#eceff1",
       "mood": "serene",
-      "shaderParams": {
-        "strokeDensity": 5,
-        "swirlFrequency": 12.9,
-        "colorIntensity": 1.15
-      }
+      "shaderParams": { "strokeDensity": 5.0, "swirlFrequency": 14.0, "colorIntensity": 1.1 }
     }
   ],
   "changelog": {
@@ -264,25 +244,13 @@
       {
         "date": "2026-05-14",
         "type": "initial",
-        "description": "Initial site creation — Van Gogh impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
+        "description": "Initial site creation — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
         "changes": [
-          "Created Three.js scene with Van Gogh post-processing shader",
+          "Created Three.js scene with post-processing shader",
           "Built 3D elements: Moon, Sunflowers, Tulips, Stars, Constellations, Flute, MusicNotes, Waves",
-          "Created GLSL shaders: vanGogh (post-processing), stars, waves",
+          "Created GLSL shaders: post-processing, stars, waves",
           "Set up Astro 4 static site with Vitest and Playwright",
           "Configured deploy script for Nginx on port 8080"
-        ]
-      },
-      {
-        "date": "2026-05-14",
-        "type": "daily-mutation",
-        "description": "Daily mutation: Theme \"Van Gogh's Philosophy\" with \"moonlit-silver\" color scheme.",
-        "changes": [
-          "Rotated to color scheme: moonlit-silver (serene)",
-          "Featured theme: Van Gogh's Philosophy",
-          "Shader params — strokeDensity: 5, swirlFrequency: 12.9, colorIntensity: 1.15",
-          "Featured fact: \"Van Gogh painted over 30 self-portraits, not out of vanity but out of necessity ...\"",
-          "Featured quote: \"I often think that the night is more alive and more richly colored than the day....\""
         ]
       }
     ]

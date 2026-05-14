@@ -77,6 +77,13 @@ describe('Site Content Data', () => {
     expect(themeIds).toContain('ego-arrogance');
     expect(themeIds).toContain('bhagavad-gita');
     expect(themeIds).toContain('shiv-purana');
-    expect(themeIds).toContain('van-gogh-philosophy');
+    expect(themeIds).toContain('art-beauty');
+  });
+
+  it('no theme references Van Gogh by name in id or title', () => {
+    siteData.themes.forEach(theme => {
+      expect(theme.id.toLowerCase()).not.toContain('van');
+      expect(theme.id.toLowerCase()).not.toContain('gogh');
+    });
   });
 });

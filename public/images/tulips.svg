@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#1a0a0a"/>
+  <!-- Tulips -->
+  <g transform="translate(0,100)">
+    <!-- Stems -->
+    <line x1="150" y1="100" x2="150" y2="300" stroke="#2d6a1e" stroke-width="3"/>
+    <line x1="300" y1="80" x2="300" y2="300" stroke="#2d6a1e" stroke-width="3"/>
+    <line x1="450" y1="110" x2="450" y2="300" stroke="#2d6a1e" stroke-width="3"/>
+    <line x1="600" y1="90" x2="600" y2="300" stroke="#2d6a1e" stroke-width="3"/>
+    <!-- Tulip cups -->
+    <ellipse cx="150" cy="80" rx="25" ry="45" fill="#cc2242"/>
+    <ellipse cx="300" cy="60" rx="25" ry="45" fill="#ff6699"/>
+    <ellipse cx="450" cy="90" rx="25" ry="45" fill="#ffcc00"/>
+    <ellipse cx="600" cy="70" rx="25" ry="45" fill="#9933cc"/>
+    <!-- Leaves -->
+    <ellipse cx="130" cy="200" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-15,130,200)"/>
+    <ellipse cx="170" cy="220" rx="15" ry="55" fill="#3a7a2e" transform="rotate(10,170,220)"/>
+    <ellipse cx="280" cy="180" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-10,280,180)"/>
+    <ellipse cx="320" cy="200" rx="15" ry="55" fill="#3a7a2e" transform="rotate(15,320,200)"/>
+    <ellipse cx="430" cy="210" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-12,430,210)"/>
+    <ellipse cx="470" cy="230" rx="15" ry="55" fill="#3a7a2e" transform="rotate(8,470,230)"/>
+    <ellipse cx="580" cy="190" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-8,580,190)"/>
+    <ellipse cx="620" cy="210" rx="15" ry="55" fill="#3a7a2e" transform="rotate(12,620,210)"/>
+  </g>
+</svg>

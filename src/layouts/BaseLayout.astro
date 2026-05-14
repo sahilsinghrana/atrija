@@ -1,6 +1,6 @@
 ---
 // Base layout for all pages — loads Three.js scene and global styles
-const { title = "Selene — A Van Gogh Experience", description = "An artistic 3D experience inspired by Van Gogh's impressionist vision. Moon, stars, sunflowers, and philosophy intertwined." } = Astro.props;
+const { title = "Selene — An Impressionist Experience", description = "An artistic 3D experience with impressionist aesthetics. Moon, stars, sunflowers, and philosophy intertwined." } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -70,6 +70,14 @@ const { title = "Selene — A Van Gogh Experience", description = "An artistic 3
       line-height: 1.8;
       margin-bottom: 1.5rem;
       opacity: 0.9;
+    }
+    .section-image {
+      width: 100%;
+      max-width: 600px;
+      margin: 1.5rem auto;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .fact-card {
       background: rgba(255,255,255,0.04);

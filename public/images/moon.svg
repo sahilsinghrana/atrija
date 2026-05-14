@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e0" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#ffd54f" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1a237e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <rect width="800" height="400" fill="#0a0a1a"/>
+  <circle cx="400" cy="200" r="120" fill="url(#moonGlow)" filter="url(#blur)"/>
+  <circle cx="400" cy="200" r="60" fill="#fff8e7" opacity="0.9"/>
+  <circle cx="385" cy="185" r="8" fill="#e8dcc8" opacity="0.5"/>
+  <circle cx="415" cy="210" r="12" fill="#e8dcc8" opacity="0.4"/>
+  <circle cx="395" cy="220" r="6" fill="#e8dcc8" opacity="0.3"/>
+  <!-- Stars -->
+  <g fill="#ffd54f" opacity="0.8">
+    <circle cx="100" cy="80" r="2"/><circle cx="200" cy="50" r="1.5"/><circle cx="300" cy="120" r="2"/>
+    <circle cx="500" cy="60" r="1.5"/><circle cx="600" cy="100" r="2"/><circle cx="700" cy="70" r="1.5"/>
+    <circle cx="150" cy="150" r="1"/><circle cx="650" cy="180" r="1.5"/><circle cx="50" cy="200" r="1"/>
+    <circle cx="750" cy="250" r="2"/><circle cx="180" cy="300" r="1"/><circle cx="620" cy="320" r="1.5"/>
+  </g>
+  <!-- Swirl strokes -->
+  <path d="M300,100 Q350,80 400,100 T500,120" stroke="#4fc3f7" stroke-width="2" fill="none" opacity="0.3"/>
+  <path d="M350,300 Q400,320 450,300 T550,280" stroke="#ffd54f" stroke-width="2" fill="none" opacity="0.2"/>
+</svg>
