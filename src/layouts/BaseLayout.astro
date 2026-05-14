@@ -74,7 +74,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
        RESET & BASE
     ═══════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; overflow-x: hidden; overflow-y: auto; }
     body {
       font-family: var(--font-sans);
       font-size: var(--text-base);
@@ -84,6 +84,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* ═══════════════════════════════════════
@@ -151,8 +152,10 @@ const { title = "अत्रिज", description = "An impressionist journey th
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: var(--space-2xl) var(--space-lg);
+      padding: 8rem var(--space-lg) var(--space-2xl);
       position: relative;
+      /* Ensure nothing clips the oversized title */
+      overflow: visible;
     }
     .hero::after {
       content: '';
@@ -172,13 +175,16 @@ const { title = "अत्रिज", description = "An impressionist journey th
       display: inline-block;
       text-align: center;
       margin-bottom: var(--space-xs);
+      /* Extra padding so drop-shadow glow isn't clipped */
+      padding: 0.8em 0.3em 0.1em;
+      overflow: visible;
     }
     /* Dark radial backdrop so title reads over busy 3D background */
     .hero-title-wrap::before {
       content: '';
       position: absolute;
-      inset: -0.3em -0.5em;
-      background: radial-gradient(ellipse at center, rgba(6,6,14,0.72) 30%, transparent 75%);
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(6,6,14,0.68) 25%, transparent 72%);
       border-radius: 50%;
       z-index: 0;
       pointer-events: none;
@@ -187,9 +193,9 @@ const { title = "अत्रिज", description = "An impressionist journey th
       position: relative;
       z-index: 1;
       font-family: var(--font-devanagari);
-      font-size: var(--text-hero);
+      font-size: clamp(4.8rem, 18vw, 9rem);
       font-weight: 700;
-      line-height: 1.05;
+      line-height: 1.7;
       letter-spacing: 0.02em;
       background: linear-gradient(160deg, #ffe57a 0%, #ffd54f 25%, #fff8e1 50%, #ffd54f 75%, #ffca28 100%);
       -webkit-background-clip: text;
@@ -197,7 +203,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
       background-clip: text;
       background-size: 300% 300%;
       animation: titleShimmer 5s ease-in-out infinite;
-      filter: drop-shadow(0 2px 12px rgba(255,200,40,0.6)) drop-shadow(0 0 30px rgba(255,180,0,0.3));
+      filter: drop-shadow(0 2px 14px rgba(255,200,40,0.65)) drop-shadow(0 0 32px rgba(255,180,0,0.35));
     }
     @keyframes titleShimmer {
       0%   { background-position: 0% 50%; }
@@ -652,7 +658,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
        RESPONSIVE — Tablet+
     ═══════════════════════════════════════ */
     @media (min-width: 768px) {
-      .hero { padding: var(--space-3xl) var(--space-xl); }
+      .hero { padding: 8rem var(--space-xl) var(--space-3xl); }
       .section { padding: var(--space-3xl) var(--space-xl); }
       .section:last-of-type { padding-bottom: var(--space-2xl); }
       .fact-card { padding: var(--space-xl); }
@@ -672,14 +678,14 @@ const { title = "अत्रिज", description = "An impressionist journey th
       /* Hero: compact, no excess gap */
       .hero {
         padding: 0 var(--space-md) var(--space-xl);
-        padding-top: max(2.5rem, env(safe-area-inset-top, 2.5rem));
+        padding-top: max(3rem, env(safe-area-inset-top, 3rem));
         justify-content: center;
         gap: 0;
-        min-height: calc(100vh - 2.5rem);
+        min-height: calc(100vh - 2rem);
+        overflow: visible;
       }
       .logo-sanskrit {
-        font-size: clamp(3rem, 18vw, 5rem);
-        margin-bottom: 0;
+        font-size: clamp(4.5rem, 22vw, 5.5rem);
       }
       .logo-subtitle {
         font-size: 0.65rem;
