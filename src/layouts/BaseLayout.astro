@@ -167,37 +167,62 @@ const { title = "अत्रिज", description = "An impressionist journey th
     /* ═══════════════════════════════════════
        LOGO / TITLE
     ═══════════════════════════════════════ */
+    .hero-title-wrap {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin-bottom: var(--space-xs);
+    }
+    /* Dark radial backdrop so title reads over busy 3D background */
+    .hero-title-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -0.3em -0.5em;
+      background: radial-gradient(ellipse at center, rgba(6,6,14,0.72) 30%, transparent 75%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+    }
     .logo-sanskrit {
+      position: relative;
+      z-index: 1;
       font-family: var(--font-devanagari);
       font-size: var(--text-hero);
       font-weight: 700;
       line-height: 1.05;
-      margin-bottom: var(--space-xs);
       letter-spacing: 0.02em;
-      background: linear-gradient(135deg, var(--accent-gold) 0%, #fff8e1 40%, var(--accent-gold) 70%, #ffe082 100%);
+      background: linear-gradient(160deg, #ffe57a 0%, #ffd54f 25%, #fff8e1 50%, #ffd54f 75%, #ffca28 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      background-size: 200% 200%;
+      background-size: 300% 300%;
+      animation: titleShimmer 5s ease-in-out infinite;
+      filter: drop-shadow(0 2px 12px rgba(255,200,40,0.6)) drop-shadow(0 0 30px rgba(255,180,0,0.3));
+    }
+    @keyframes titleShimmer {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .logo-subtitle {
       font-family: var(--font-serif);
       font-size: var(--text-sm);
       font-style: italic;
       font-weight: 400;
-      color: #9a9690;
-      letter-spacing: 0.1em;
+      color: rgba(255,213,79,0.5);
+      letter-spacing: 0.18em;
       margin-bottom: var(--space-sm);
       text-transform: uppercase;
     }
     .logo-tagline {
       font-family: var(--font-serif);
       font-size: var(--text-md);
-      color: #ccc8c0;
+      color: #d8d4cc;
       font-style: italic;
       font-weight: 400;
-      max-width: 500px;
+      max-width: 480px;
       line-height: 1.6;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.9);
     }
     .logo-tagline em {
       color: var(--accent-gold);
@@ -644,16 +669,27 @@ const { title = "अत्रिज", description = "An impressionist journey th
        RESPONSIVE — Mobile
     ═══════════════════════════════════════ */
     @media (max-width: 767px) {
-      /* Hero: stack vertically, moon above text, no overlap */
+      /* Hero: compact, no excess gap */
       .hero {
-        padding: var(--space-xl) var(--space-md);
-        justify-content: flex-start;
-        padding-top: max(4rem, env(safe-area-inset-top, 4rem));
+        padding: 0 var(--space-md) var(--space-xl);
+        padding-top: max(2.5rem, env(safe-area-inset-top, 2.5rem));
+        justify-content: center;
         gap: 0;
+        min-height: calc(100vh - 2.5rem);
+      }
+      .logo-sanskrit {
+        font-size: clamp(3rem, 18vw, 5rem);
+        margin-bottom: 0;
+      }
+      .logo-subtitle {
+        font-size: 0.65rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.14em;
       }
       .logo-tagline {
-        font-size: var(--text-base);
-        max-width: 90vw;
+        font-size: clamp(0.85rem, 3.5vw, 1rem);
+        max-width: 88vw;
+        margin-top: 0.4rem;
       }
       /* Sections */
       .section {
@@ -664,62 +700,54 @@ const { title = "अत्रिज", description = "An impressionist journey th
       }
       /* Cards */
       .image-card {
-        min-height: 200px;
+        min-height: 180px;
         margin: var(--space-md) 0;
       }
-      .image-card .card-bg {
-        opacity: 0.35;
-      }
+      .image-card .card-bg { opacity: 0.35; }
       .image-card .card-content {
         padding: var(--space-xl) var(--space-md) var(--space-md);
       }
-      .image-card .card-content p {
-        font-size: var(--text-base);
-      }
-      .fact-card {
-        padding: var(--space-md);
-      }
-      .fact-card p {
-        font-size: var(--text-sm);
-      }
-      .today-fact {
-        padding: var(--space-lg) var(--space-md);
-      }
-      .today-fact p {
-        font-size: var(--text-base);
-      }
-      .quote-block {
-        padding: var(--space-xl) var(--space-md);
-      }
-      .quote-block p {
-        font-size: var(--text-base);
-      }
+      .image-card .card-content p { font-size: var(--text-base); }
+      .fact-card { padding: var(--space-md); }
+      .fact-card p { font-size: var(--text-sm); }
+      .today-fact { padding: var(--space-lg) var(--space-md); }
+      .today-fact p { font-size: var(--text-base); }
+      .quote-block { padding: var(--space-xl) var(--space-md); }
+      .quote-block p { font-size: var(--text-base); }
       /* Changelog */
-      .changelog-timeline {
-        padding-left: 1.25rem;
-      }
-      .changelog-entry::before {
-        left: -1.25rem;
-      }
-      .changelog-entry-header {
-        flex-wrap: wrap;
-        gap: var(--space-xs);
-      }
-      .changelog-version {
-        margin-left: 0;
-        width: 100%;
-      }
-      .changelog-desc {
-        font-size: var(--text-sm);
-      }
-      .changelog-changes li {
-        font-size: var(--text-xs);
-      }
-      /* Section body text */
-      .section > .section-inner > p {
-        font-size: var(--text-sm);
-      }
+      .changelog-timeline { padding-left: 1.25rem; }
+      .changelog-entry::before { left: -1.25rem; }
+      .changelog-entry-header { flex-wrap: wrap; gap: var(--space-xs); }
+      .changelog-version { margin-left: 0; width: 100%; }
+      .changelog-desc { font-size: var(--text-sm); }
+      .changelog-changes li { font-size: var(--text-xs); }
+      .section > .section-inner > p { font-size: var(--text-sm); }
     }
+
+    /* ═══════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
     /* ═══════════════════════════════════════
        ANIMATIONS
@@ -789,7 +817,20 @@ const { title = "अत्रिज", description = "An impressionist journey th
       });
     })();
 
-    /* Scroll flowers */
+    /* Scroll reveal */
+    (function() {
+      var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+      if (!els.length) return;
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { io.observe(el); });
+    })();
     (function() {
       var positions = [
         {x:'3%',y:'35%',color:'#f5c800'},

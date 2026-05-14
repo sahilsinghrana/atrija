@@ -55,9 +55,11 @@ const colorData = JSON.stringify({
       <div id="moonShadow"></div>
       <pre id="asciiMoon"></pre>
     </div>
-    <div class="logo-sanskrit">अत्रिज</div>
-    <div class="logo-subtitle">Atrij</div>
-    <p class="logo-tagline" set:html={sec.hero.tagline}></p>
+    <div class="hero-title-wrap">
+      <div class="logo-sanskrit">अत्रिज</div>
+    </div>
+    <div class="logo-subtitle reveal">Atrij</div>
+    <p class="logo-tagline reveal" set:html={sec.hero.tagline}></p>
     <span class="scroll-hint">Scroll to explore</span>
   </section>
 
@@ -66,14 +68,14 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="today" class="section">
     <div class="section-inner">
-      <div class="section-label">Today's Reflection</div>
-      <h2 set:html={sec.today.heading}></h2>
-      <div class="today-fact">
+      <div class="section-label reveal-left">Today's Reflection</div>
+      <h2 class="reveal" set:html={sec.today.heading}></h2>
+      <div class="today-fact reveal-scale">
         <div class="theme-tag">{todayTheme.title} · {todayColor.mood}</div>
         <p>{todayFact.text}</p>
         <div class="source">{todayFact.source}</div>
       </div>
-      <div class="quote-block">
+      <div class="quote-block reveal">
         <p>{todayQuote}</p>
       </div>
     </div>
@@ -84,29 +86,17 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="moon" class="section">
     <div class="section-inner">
-      <div class="section-label">{sec.moon.label}</div>
-      <h2 set:html={sec.moon.heading}></h2>
-      <p>{sec.moon.intro}</p>
-
-      <div class="image-card" style="--card-bg-image: url('/images/moon.svg')">
+      <div class="section-label reveal-left">{sec.moon.label}</div>
+      <h2 class="reveal" set:html={sec.moon.heading}></h2>
+      <p class="reveal">{sec.moon.intro}</p>
+      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/moon.svg')">
         <div class="card-bg"></div>
         <div class="card-content">
-          <p>{siteData.themes[0].facts[0].text}</p>
-          <div class="source">{siteData.themes[0].facts[0].source}</div>
+          <p>{siteData.themes[0].facts[1].text}</p>
+          <div class="source">{siteData.themes[0].facts[1].source}</div>
         </div>
       </div>
-
-      <div class="facts-group">
-        {siteData.themes[0].facts.slice(1, 3).map((fact, i) => (
-          <div class="fact-card">
-            <div class="fact-number">Fact {i + 1}</div>
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
-      </div>
-
-      <div class="quote-block">
+      <div class="quote-block reveal">
         <p>{siteData.themes[0].quotes[0]}</p>
       </div>
     </div>
@@ -117,29 +107,17 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="philosophy" class="section">
     <div class="section-inner">
-      <div class="section-label">{sec.philosophy.label}</div>
-      <h2 set:html={sec.philosophy.heading}></h2>
-      <p>{sec.philosophy.intro}</p>
-
-      <div class="image-card" style="--card-bg-image: url('/images/waves.svg')">
+      <div class="section-label reveal-left">{sec.philosophy.label}</div>
+      <h2 class="reveal" set:html={sec.philosophy.heading}></h2>
+      <p class="reveal">{sec.philosophy.intro}</p>
+      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/waves.svg')">
         <div class="card-bg"></div>
         <div class="card-content">
-          <p>{siteData.themes[1].facts[0].text}</p>
-          <div class="source">{siteData.themes[1].facts[0].source}</div>
+          <p>{siteData.themes[1].facts[2].text}</p>
+          <div class="source">{siteData.themes[1].facts[2].source}</div>
         </div>
       </div>
-
-      <div class="facts-group">
-        {siteData.themes[1].facts.slice(1, 3).map((fact, i) => (
-          <div class="fact-card">
-            <div class="fact-number">Fact {i + 1}</div>
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
-      </div>
-
-      <div class="quote-block">
+      <div class="quote-block reveal">
         <p>{siteData.themes[1].quotes[0]}</p>
       </div>
     </div>
@@ -150,29 +128,17 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="gita" class="section">
     <div class="section-inner">
-      <div class="section-label">{sec.gita.label}</div>
-      <h2 set:html={sec.gita.heading}></h2>
-      <p>{sec.gita.intro}</p>
-
-      <div class="image-card" style="--card-bg-image: url('/images/stars.svg')">
+      <div class="section-label reveal-left">{sec.gita.label}</div>
+      <h2 class="reveal" set:html={sec.gita.heading}></h2>
+      <p class="reveal">{sec.gita.intro}</p>
+      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/stars.svg')">
         <div class="card-bg"></div>
         <div class="card-content">
-          <p>{siteData.themes[2].facts[0].text}</p>
-          <div class="source">{siteData.themes[2].facts[0].source}</div>
+          <p>{siteData.themes[2].facts[1].text}</p>
+          <div class="source">{siteData.themes[2].facts[1].source}</div>
         </div>
       </div>
-
-      <div class="facts-group">
-        {siteData.themes[2].facts.slice(1, 4).map((fact, i) => (
-          <div class="fact-card">
-            <div class="fact-number">Fact {i + 1}</div>
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
-      </div>
-
-      <div class="quote-block">
+      <div class="quote-block reveal">
         <p>{siteData.themes[2].quotes[1]}</p>
       </div>
     </div>
@@ -183,29 +149,17 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="shiva" class="section">
     <div class="section-inner">
-      <div class="section-label">{sec.shiva.label}</div>
-      <h2 set:html={sec.shiva.heading}></h2>
-      <p>{sec.shiva.intro}</p>
-
-      <div class="image-card" style="--card-bg-image: url('/images/flute.svg')">
+      <div class="section-label reveal-left">{sec.shiva.label}</div>
+      <h2 class="reveal" set:html={sec.shiva.heading}></h2>
+      <p class="reveal">{sec.shiva.intro}</p>
+      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/flute.svg')">
         <div class="card-bg"></div>
         <div class="card-content">
-          <p>{siteData.themes[3].facts[0].text}</p>
-          <div class="source">{siteData.themes[3].facts[0].source}</div>
+          <p>{siteData.themes[3].facts[3].text}</p>
+          <div class="source">{siteData.themes[3].facts[3].source}</div>
         </div>
       </div>
-
-      <div class="facts-group">
-        {siteData.themes[3].facts.slice(1, 4).map((fact, i) => (
-          <div class="fact-card">
-            <div class="fact-number">Fact {i + 1}</div>
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
-      </div>
-
-      <div class="quote-block">
+      <div class="quote-block reveal">
         <p>{siteData.themes[3].quotes[0]}</p>
       </div>
     </div>
@@ -216,29 +170,17 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="art" class="section">
     <div class="section-inner">
-      <div class="section-label">{sec.art.label}</div>
-      <h2 set:html={sec.art.heading}></h2>
-      <p>{sec.art.intro}</p>
-
-      <div class="image-card" style="--card-bg-image: url('/images/sunflowers.svg')">
+      <div class="section-label reveal-left">{sec.art.label}</div>
+      <h2 class="reveal" set:html={sec.art.heading}></h2>
+      <p class="reveal">{sec.art.intro}</p>
+      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/sunflowers.svg')">
         <div class="card-bg"></div>
         <div class="card-content">
-          <p>{siteData.themes[4].facts[0].text}</p>
-          <div class="source">{siteData.themes[4].facts[0].source}</div>
+          <p>{siteData.themes[4].facts[1].text}</p>
+          <div class="source">{siteData.themes[4].facts[1].source}</div>
         </div>
       </div>
-
-      <div class="facts-group">
-        {siteData.themes[4].facts.slice(1, 3).map((fact, i) => (
-          <div class="fact-card">
-            <div class="fact-number">Fact {i + 1}</div>
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
-      </div>
-
-      <div class="quote-block">
+      <div class="quote-block reveal">
         <p>{siteData.themes[4].quotes[0]}</p>
       </div>
     </div>
@@ -346,11 +288,12 @@ const colorData = JSON.stringify({
     }
     @media (max-width: 600px) {
       #moonContainer {
-        width: clamp(130px, 42vw, 200px);
-        height: clamp(130px, 42vw, 200px);
+        width: clamp(110px, 36vw, 160px);
+        height: clamp(110px, 36vw, 160px);
+        margin-bottom: 0.6rem;
       }
       #asciiMoon {
-        font-size: clamp(1.6px, 0.5vw, 2.8px);
+        font-size: clamp(1.4px, 0.45vw, 2.4px);
         line-height: 1.4;
       }
     }

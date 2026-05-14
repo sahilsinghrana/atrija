@@ -240,117 +240,145 @@ function makeSunflowerCanvas(size) {
 }
 
 function createSunflowers(scene, count) {
-  var tex = new THREE.CanvasTexture(makeSunflowerCanvas(128));
+  var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
   for (var i = 0; i < count; i++) {
-    var s = 0.7 + Math.random() * 0.8;
+    var s = isMobile ? (0.45 + Math.random() * 0.35) : (0.7 + Math.random() * 0.8);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(1.4 * s, 1.8 * s, 1);
-    sprite.position.set((Math.random() - 0.5) * 16, -0.5 + s * 0.4, (Math.random() - 0.5) * 8 + 3);
+    // Spread more on desktop, tighter on mobile
+    var spreadX = isMobile ? 10 : 16;
+    sprite.position.set((Math.random() - 0.5) * spreadX, -0.8 + s * 0.5, (Math.random() - 0.5) * 8 + 3);
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
     (function(p, by) {
       sprite.userData.animate = function(o, t) {
         o.position.x += Math.sin(t * 0.5 + p) * 0.002;
         o.position.y = by + Math.sin(t * 0.4 + p) * 0.06;
-        o.material.rotation = Math.sin(t * 0.3 + p) * 0.06;
+        o.material.rotation = Math.sin(t * 0.3 + p) * 0.07;
       };
     })(ph, baseY);
     scene.add(sprite);
   }
 }
 
-// ── Tulip — drawn on canvas texture, billboard sprite ──
+// ── Tulip — improved canvas drawing ──
 function makeTulipCanvas(size, color) {
-  size = size || 128;
+  size = size || 160;
   var c = document.createElement('canvas');
   c.width = size; c.height = size;
   var ctx = c.getContext('2d');
   var cx = size / 2;
+  var stemTop = size * 0.48;
+  var stemBot = size * 0.98;
 
-  // Stem — slightly curved
+  // Stem — curved, thick
   ctx.strokeStyle = '#2d6a1e';
-  ctx.lineWidth = size * 0.055;
+  ctx.lineWidth = size * 0.06;
   ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
   ctx.beginPath();
-  ctx.moveTo(cx, size * 0.55);
-  ctx.bezierCurveTo(cx + size * 0.05, size * 0.72, cx - size * 0.04, size * 0.88, cx, size);
+  ctx.moveTo(cx, stemTop);
+  ctx.bezierCurveTo(cx + size * 0.06, size * 0.65, cx - size * 0.05, size * 0.82, cx + size * 0.02, stemBot);
   ctx.stroke();
 
-  // Leaves — long narrow blades
-  ctx.fillStyle = '#3a7a2e';
+  // Leaves — two long curved blades
   for (var side = -1; side <= 1; side += 2) {
     ctx.save();
-    ctx.translate(cx + side * size * 0.03, size * 0.68);
-    ctx.rotate(side * 0.45);
+    ctx.fillStyle = '#3a7a2e';
+    var lx = cx + side * size * 0.04;
+    var ly = size * 0.72;
     ctx.beginPath();
-    ctx.ellipse(side * size * 0.1, -size * 0.06, size * 0.05, size * 0.18, 0, 0, Math.PI * 2);
+    ctx.moveTo(lx, ly);
+    ctx.bezierCurveTo(
+      lx + side * size * 0.22, ly - size * 0.08,
+      lx + side * size * 0.28, ly - size * 0.22,
+      lx + side * size * 0.18, ly - size * 0.32
+    );
+    ctx.bezierCurveTo(
+      lx + side * size * 0.12, ly - size * 0.28,
+      lx + side * size * 0.06, ly - size * 0.14,
+      lx, ly
+    );
     ctx.fill();
     ctx.restore();
   }
 
-  // Tulip cup — egg/teardrop shape, 3 outer petals
-  var petalColors = [color, shadeColor(color, -20), shadeColor(color, 15)];
-  var cupCy = size * 0.32;
-  var cupR = size * 0.22;
+  // Tulip head — classic egg shape with 5 petals
+  var headCy = size * 0.28;
+  var headR  = size * 0.26;
 
-  // Outer petals (3)
-  for (var p = 0; p < 3; p++) {
-    var a = (p / 3) * Math.PI * 2 - Math.PI / 2;
+  // Parse color to get RGB
+  var hexColor = color.replace('#', '');
+  var rr = parseInt(hexColor.substring(0,2), 16);
+  var gg = parseInt(hexColor.substring(2,4), 16);
+  var bb = parseInt(hexColor.substring(4,6), 16);
+
+  // Draw 5 petals arranged in tulip cup shape
+  for (var p = 0; p < 5; p++) {
+    var angle = (p / 5) * Math.PI * 2 - Math.PI / 2;
+    // Outer petals spread more, inner ones tighter
+    var spread = (p % 2 === 0) ? 0.55 : 0.35;
+    var petalH = headR * (p % 2 === 0 ? 1.0 : 0.85);
+    var petalW = headR * 0.42;
+    var lightness = p % 2 === 0 ? 0 : 30;
     ctx.save();
-    ctx.translate(cx + Math.cos(a) * cupR * 0.18, cupCy + Math.sin(a) * cupR * 0.12);
-    ctx.rotate(a + Math.PI / 2);
-    ctx.fillStyle = petalColors[p % petalColors.length];
+    ctx.translate(cx + Math.cos(angle) * headR * spread * 0.4, headCy + Math.sin(angle) * headR * spread * 0.25);
+    ctx.rotate(angle + Math.PI / 2);
+    // Gradient per petal for depth
+    var pg = ctx.createLinearGradient(0, -petalH, 0, petalH * 0.3);
+    pg.addColorStop(0, 'rgba(' + Math.min(255,rr+lightness+40) + ',' + Math.min(255,gg+lightness+20) + ',' + Math.min(255,bb+lightness) + ',0.95)');
+    pg.addColorStop(0.5, 'rgba(' + Math.min(255,rr+lightness) + ',' + Math.min(255,gg+lightness) + ',' + Math.min(255,bb+lightness) + ',0.9)');
+    pg.addColorStop(1, 'rgba(' + Math.max(0,rr-30) + ',' + Math.max(0,gg-30) + ',' + Math.max(0,bb-30) + ',0.7)');
+    ctx.fillStyle = pg;
     ctx.beginPath();
-    ctx.moveTo(0, cupR * 0.55);
-    ctx.bezierCurveTo(cupR * 0.38, cupR * 0.3, cupR * 0.42, -cupR * 0.1, 0, -cupR * 0.55);
-    ctx.bezierCurveTo(-cupR * 0.42, -cupR * 0.1, -cupR * 0.38, cupR * 0.3, 0, cupR * 0.55);
+    ctx.moveTo(0, petalH * 0.3);
+    ctx.bezierCurveTo( petalW, petalH * 0.1,  petalW * 0.9, -petalH * 0.6, 0, -petalH);
+    ctx.bezierCurveTo(-petalW * 0.9, -petalH * 0.6, -petalW, petalH * 0.1, 0, petalH * 0.3);
     ctx.fill();
+    // Petal vein
+    ctx.strokeStyle = 'rgba(' + Math.max(0,rr-50) + ',' + Math.max(0,gg-50) + ',' + Math.max(0,bb-50) + ',0.3)';
+    ctx.lineWidth = size * 0.012;
+    ctx.beginPath();
+    ctx.moveTo(0, petalH * 0.2);
+    ctx.lineTo(0, -petalH * 0.7);
+    ctx.stroke();
     ctx.restore();
   }
 
-  // Inner petals (3, offset, slightly lighter)
-  for (var p = 0; p < 3; p++) {
-    var a = (p / 3) * Math.PI * 2 - Math.PI / 2 + Math.PI / 3;
-    ctx.save();
-    ctx.translate(cx + Math.cos(a) * cupR * 0.1, cupCy + Math.sin(a) * cupR * 0.07);
-    ctx.rotate(a + Math.PI / 2);
-    ctx.fillStyle = shadeColor(color, 25);
-    ctx.globalAlpha = 0.85;
-    ctx.beginPath();
-    ctx.moveTo(0, cupR * 0.45);
-    ctx.bezierCurveTo(cupR * 0.28, cupR * 0.2, cupR * 0.3, -cupR * 0.08, 0, -cupR * 0.45);
-    ctx.bezierCurveTo(-cupR * 0.3, -cupR * 0.08, -cupR * 0.28, cupR * 0.2, 0, cupR * 0.45);
-    ctx.fill();
-    ctx.globalAlpha = 1;
-    ctx.restore();
-  }
+  // Stamen — small yellow center
+  var stGrad = ctx.createRadialGradient(cx, headCy, 0, cx, headCy, headR * 0.15);
+  stGrad.addColorStop(0, 'rgba(255,240,100,0.9)');
+  stGrad.addColorStop(1, 'rgba(200,160,20,0.4)');
+  ctx.fillStyle = stGrad;
+  ctx.beginPath();
+  ctx.arc(cx, headCy, headR * 0.12, 0, Math.PI * 2);
+  ctx.fill();
 
   return c;
 }
 
-function shadeColor(hex, pct) {
-  var n = parseInt(hex.replace('#',''), 16);
-  var r = Math.min(255, Math.max(0, (n >> 16) + pct));
-  var g = Math.min(255, Math.max(0, ((n >> 8) & 0xff) + pct));
-  var b = Math.min(255, Math.max(0, (n & 0xff) + pct));
-  return 'rgb(' + r + ',' + g + ',' + b + ')';
-}
-
 function createTulips(scene, count) {
-  var colors = ['#cc2244','#ff6699','#ffcc00','#9933cc','#ff4400','#ff3366'];
+  var colors = ['#cc2244','#ff6699','#ffcc00','#9933cc','#ff4400','#ff3366','#ff88aa'];
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
-    var tex = new THREE.CanvasTexture(makeTulipCanvas(128, color));
-    var s = 0.55 + Math.random() * 0.65;
+    var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color));
+    var s = isMobile ? (0.4 + Math.random() * 0.35) : (0.55 + Math.random() * 0.65);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    sprite.scale.set(0.9 * s, 1.5 * s, 1);
-    sprite.position.set((Math.random() - 0.5) * 12, -0.3 + s * 0.3, (Math.random() - 0.5) * 6 + 3);
+    sprite.scale.set(0.85 * s, 1.4 * s, 1);
+    // Interleave with sunflowers — slightly different z range so they're visible
+    var spreadX = isMobile ? 8 : 12;
+    sprite.position.set(
+      (Math.random() - 0.5) * spreadX,
+      -0.6 + s * 0.4,
+      (Math.random() - 0.5) * 5 + 2.5
+    );
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
     (function(p, by) {
       sprite.userData.animate = function(o, t) {
-        o.position.y = by + Math.sin(t * 0.45 + p) * 0.05;
-        o.material.rotation = Math.sin(t * 0.35 + p) * 0.05;
+        o.position.y = by + Math.sin(t * 0.45 + p) * 0.06;
+        // Wavy petal effect via rotation oscillation
+        o.material.rotation = Math.sin(t * 0.4 + p) * 0.08 + Math.sin(t * 1.1 + p * 2) * 0.03;
       };
     })(ph, baseY);
     scene.add(sprite);
@@ -415,10 +443,10 @@ function createFlute(scene) {
   scene.add(g);
 }
 
-// ── Music Notes — 3D floating sprites ──
+// ── Music Notes — each with fully independent random trajectory ──
 function createMusicNotes(scene, count) {
   var shapes = ['♪','♫','♩','♬'];
-  var noteColors = ['rgba(255,220,100,0.95)','rgba(255,180,80,0.9)','rgba(200,220,255,0.9)','rgba(255,200,255,0.85)'];
+  var noteColors = ['rgba(255,220,100,0.95)','rgba(255,180,80,0.9)','rgba(200,220,255,0.9)','rgba(255,200,255,0.85)','rgba(180,255,200,0.85)'];
   for (var i = 0; i < count; i++) {
     var canvas = document.createElement('canvas'); canvas.width = 64; canvas.height = 64;
     var ctx = canvas.getContext('2d');
@@ -427,19 +455,47 @@ function createMusicNotes(scene, count) {
     ctx.fillText(shapes[i % shapes.length], 32, 32);
     var tex = new THREE.CanvasTexture(canvas);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.75 }));
-    sprite.position.set((Math.random() - 0.5) * 16, Math.random() * 9 - 1, (Math.random() - 0.5) * 14);
-    var noteScale = isMobile ? 0.65 : 0.55;
+
+    // Each note starts at a completely random position
+    var startX = (Math.random() - 0.5) * 18;
+    var startY = (Math.random() - 0.5) * 12;
+    var startZ = (Math.random() - 0.5) * 16;
+    sprite.position.set(startX, startY, startZ);
+
+    var noteScale = isMobile ? 0.7 : 0.55;
     sprite.scale.set(noteScale, noteScale, 1);
-    var spd = 0.3 + Math.random() * 0.7, ph = Math.random() * Math.PI * 2;
-    var driftX = (Math.random() - 0.5) * 0.009;
-    (function(s, p, dx) {
+
+    // Each note has its own unique random motion parameters
+    var riseSpeed  = 0.008 + Math.random() * 0.018;          // vertical drift speed
+    var driftFreqX = 0.3 + Math.random() * 1.2;              // horizontal oscillation frequency
+    var driftFreqZ = 0.2 + Math.random() * 0.8;              // depth oscillation frequency
+    var driftAmpX  = 0.003 + Math.random() * 0.012;          // horizontal amplitude
+    var driftAmpZ  = 0.002 + Math.random() * 0.008;          // depth amplitude
+    var phaseX     = Math.random() * Math.PI * 2;
+    var phaseZ     = Math.random() * Math.PI * 2;
+    var rotFreq    = 0.2 + Math.random() * 0.8;
+    var rotAmp     = 0.04 + Math.random() * 0.18;
+    var rotPhase   = Math.random() * Math.PI * 2;
+    var opacFreq   = 0.5 + Math.random() * 2.0;
+    var opacPhase  = Math.random() * Math.PI * 2;
+    var resetY     = 8 + Math.random() * 4;                  // each note resets at different height
+    var resetX     = (Math.random() - 0.5) * 18;
+
+    (function(rs, dfx, dfz, dax, daz, px, pz, rf, ra, rp, of, op, ry, rx) {
       sprite.userData.animate = function(o, t) {
-        o.position.y += s * 0.013;
-        o.position.x += Math.sin(t * 0.9 + p) * 0.007 + dx;
-        o.material.opacity = 0.45 + Math.sin(t * 1.5 + p) * 0.35;
-        if (o.position.y > 10) { o.position.y = -2; o.position.x = (Math.random() - 0.5) * 16; }
+        o.position.y += rs;
+        o.position.x += Math.sin(t * dfx + px) * dax;
+        o.position.z += Math.sin(t * dfz + pz) * daz;
+        o.material.rotation = Math.sin(t * rf + rp) * ra;
+        o.material.opacity = 0.35 + Math.sin(t * of + op) * 0.4;
+        if (o.position.y > ry) {
+          o.position.y = -3 - Math.random() * 4;
+          o.position.x = rx + (Math.random() - 0.5) * 4;
+          o.position.z = (Math.random() - 0.5) * 16;
+        }
       };
-    })(spd, ph, driftX);
+    })(riseSpeed, driftFreqX, driftFreqZ, driftAmpX, driftAmpZ, phaseX, phaseZ, rotFreq, rotAmp, rotPhase, opacFreq, opacPhase, resetY, resetX);
+
     scene.add(sprite);
   }
 }
@@ -494,11 +550,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // More notes on mobile
-  var noteCount = isMobile ? 40 : 30;
-  var sunflowerCount = isMobile ? 8 : 14;
-  var tulipCount = isMobile ? 6 : 10;
-  var starCount = isLowEnd ? 1500 : 2500;
+  // Balanced counts — tulips more visible on mobile
+  var noteCount     = isMobile ? 40 : 30;
+  var sunflowerCount = isMobile ? 5 : 12;
+  var tulipCount    = isMobile ? 8 : 10;
+  var starCount     = isLowEnd ? 1500 : 2500;
 
   createStars(scene.scene, starCount);
   createConstellations(scene.scene);
