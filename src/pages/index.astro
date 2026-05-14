@@ -228,7 +228,7 @@ const colorData = JSON.stringify({
     <div class="section-inner changelog-section">
       <div class="section-label">Changelog</div>
       <h2>Daily <em>mutations</em></h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2.5rem;">
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem;">
         Version {siteData.changelog.version} — color, content &amp; form evolve daily.
       </p>
 
@@ -237,7 +237,7 @@ const colorData = JSON.stringify({
           <div class="changelog-entry">
             <div class="changelog-entry-header">
               <span class="changelog-date">{entry.date}</span>
-              <span class="changelog-type {entry.type}">
+              <span class={'changelog-type type-' + entry.type}>
                 {entry.type === 'initial' && '✦'}
                 {entry.type === 'feature' && '◆'}
                 {entry.type === 'fix' && '◈'}
@@ -345,32 +345,20 @@ const colorData = JSON.stringify({
       if (!moonEl || !labelEl) return;
 
       var currentPhase = 0;
-      var phaseDuration = 3000; // 3 seconds per phase
+      var phaseDuration = 3000;
 
       function setPhase(idx) {
         var p = phases[idx];
         moonEl.textContent = p.art.join('\n');
         labelEl.textContent = p.label;
-        labelEl.style.opacity = '0';
-        // Trigger reflow for animation restart
-        void labelEl.offsetWidth;
-        labelEl.style.opacity = '';
       }
 
-      // Initial
       setPhase(0);
 
-      // Cycle through phases
       setInterval(function() {
         currentPhase = (currentPhase + 1) % phases.length;
         setPhase(currentPhase);
       }, phaseDuration);
-
-      // Slow rotation via CSS
-      moonEl.style.animation = 'moonRotate 20s linear infinite';
-      var style = document.createElement('style');
-      style.textContent = '@keyframes moonRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }';
-      document.head.appendChild(style);
     })();
   </script>
 
