@@ -152,9 +152,11 @@
         "changes": [
           "Rotated to color scheme: starry-night (contemplative)",
           "Featured theme: Selene & The Moon",
-          "Shader params — strokeDensity: 7.6, swirlFrequency: 11.9, colorIntensity: 1.52",
+          "Shader params — strokeDensity: 8.9, swirlFrequency: 12, colorIntensity: 1.47",
           "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
-          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\""
+          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\"",
+          "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
+          "Image card now points to fact 0 of theme \"Selene & The Moon\""
         ]
       }
     ]

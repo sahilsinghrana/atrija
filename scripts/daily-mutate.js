@@ -33,36 +33,46 @@ function mutateColors(siteData, dayOfYear) {
 }
 
 // ── 2. Add changelog entry to content.json ──
-function addChangelogEntry(content, siteData, dayOfYear) {
+function addChangelogEntry(content, siteData, dayOfYear, contentUpdate) {
   const today = new Date().toISOString().split('T')[0];
   const themeIndex = dayOfYear % siteData.themes.length;
   const theme = siteData.themes[themeIndex];
   const scheme = siteData.colorSchemes[dayOfYear % siteData.colorSchemes.length];
 
+  const changes = [
+    `Rotated to color scheme: ${scheme.name} (${scheme.mood})`,
+    `Featured theme: ${theme.title}`,
+    `Shader params — strokeDensity: ${scheme.shaderParams.strokeDensity}, swirlFrequency: ${scheme.shaderParams.swirlFrequency}, colorIntensity: ${scheme.shaderParams.colorIntensity}`,
+    `Featured fact: "${theme.facts[dayOfYear % theme.facts.length].text.slice(0, 80)}..."`,
+    `Featured quote: "${theme.quotes[dayOfYear % theme.quotes.length].slice(0, 80)}..."`
+  ];
+
+  // Document content text changes
+  if (contentUpdate) {
+    changes.push(`Updated section "${contentUpdate.sectionKey}" intro text from theme "${contentUpdate.theme}"`);
+    changes.push(`Image card now points to fact ${contentUpdate.factIndex} of theme "${contentUpdate.theme}"`);
+  }
+
   const entry = {
     date: today,
     type: 'daily-mutation',
     description: `Daily mutation: Theme "${theme.title}" with "${scheme.name}" color scheme.`,
-    changes: [
-      `Rotated to color scheme: ${scheme.name} (${scheme.mood})`,
-      `Featured theme: ${theme.title}`,
-      `Shader params — strokeDensity: ${scheme.shaderParams.strokeDensity}, swirlFrequency: ${scheme.shaderParams.swirlFrequency}, colorIntensity: ${scheme.shaderParams.colorIntensity}`,
-      `Featured fact: "${theme.facts[dayOfYear % theme.facts.length].text.slice(0, 80)}..."`,
-      `Featured quote: "${theme.quotes[dayOfYear % theme.quotes.length].slice(0, 80)}..."`
-    ]
+    changes
   };
 
-  // Avoid duplicate entries for the same day
-  const exists = content.changelog.entries.some(e => e.date === today && e.type === 'daily-mutation');
-  if (!exists) {
+  // Update existing entry or add new one
+  const existingIndex = content.changelog.entries.findIndex(e => e.date === today && e.type === 'daily-mutation');
+  if (existingIndex >= 0) {
+    content.changelog.entries[existingIndex] = entry;
+  } else {
     content.changelog.entries.push(entry);
-    // Keep only last 10 entries
-    if (content.changelog.entries.length > 10) {
-      content.changelog.entries = content.changelog.entries.slice(-10);
+    // Keep only last 15 entries
+    if (content.changelog.entries.length > 15) {
+      content.changelog.entries = content.changelog.entries.slice(-15);
     }
   }
 
-  return entry;
+  return { entry, changes };
 }
 
 // ── 3. Update section text content in content.json ──
@@ -106,14 +116,15 @@ const content = loadJSON(CONTENT_PATH);
 const day = getDayOfYear();
 
 const scheme = mutateColors(siteData, day);
-const entry = addChangelogEntry(content, siteData, day);
 const contentUpdate = updateSectionContent(content, siteData, day);
+const { entry, changes } = addChangelogEntry(content, siteData, day, contentUpdate);
 
 saveJSON(SITE_DATA_PATH, siteData);
 saveJSON(CONTENT_PATH, content);
 
 console.log(`[daily-mutate] Day ${day}: Applied "${scheme.name}" scheme, theme "${siteData.themes[day % siteData.themes.length].title}"`);
 console.log(`[daily-mutate] Changelog entry: ${entry.date} — ${entry.description}`);
+console.log(`[daily-mutate] Changes recorded: ${changes.length} items`);
 if (contentUpdate) {
   console.log(`[daily-mutate] Updated content.json: section "${contentUpdate.sectionKey}" with fact ${contentUpdate.factIndex} from theme "${contentUpdate.theme}"`);
 }

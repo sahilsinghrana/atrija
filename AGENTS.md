@@ -101,7 +101,32 @@ scripts/
 
 ---
 
-## Cron Jobs Active
+## Changelog Management
+
+All cron jobs that make changes MUST document them in `src/content/content.json` → `changelog.entries[]`.
+
+### Changelog Entry Format
+```json
+{
+  "date": "YYYY-MM-DD",
+  "type": "daily-mutation" | "feature" | "refactor" | "perf" | "chore" | "initial",
+  "description": "Short description of what changed",
+  "changes": ["Specific change 1", "Specific change 2", ...]
+}
+```
+
+### Which Cron Jobs Update Changelog
+| Job | When | Entry Type |
+|-----|------|------------|
+| `van-gogh-daily-mutate` | Every run | `daily-mutation` — colors, shaders, content text |
+| `van-gogh-background-implement` | On implementation | `feature` / `refactor` / `perf` |
+| `van-gogh-git-pull-build` | Only if changes pulled | `chore` — lists commit messages |
+
+### Rules
+- Keep max 15 entries (oldest auto-trimmed)
+- If same day + same type exists, UPDATE the entry (don't duplicate)
+- Content text changes (intro, imageCard, facts) must be listed in the `changes` array
+- The changelog is displayed on the website UI — keep descriptions user-friendly
 | Job | Schedule | Purpose |
 |-----|----------|---------|
 | `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build |
