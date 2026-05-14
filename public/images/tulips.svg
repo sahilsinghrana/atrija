@@ -1,25 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-  <rect width="800" height="400" fill="#1a0a0a"/>
-  <!-- Tulips -->
-  <g transform="translate(0,100)">
-    <!-- Stems -->
-    <line x1="150" y1="100" x2="150" y2="300" stroke="#2d6a1e" stroke-width="3"/>
-    <line x1="300" y1="80" x2="300" y2="300" stroke="#2d6a1e" stroke-width="3"/>
-    <line x1="450" y1="110" x2="450" y2="300" stroke="#2d6a1e" stroke-width="3"/>
-    <line x1="600" y1="90" x2="600" y2="300" stroke="#2d6a1e" stroke-width="3"/>
-    <!-- Tulip cups -->
-    <ellipse cx="150" cy="80" rx="25" ry="45" fill="#cc2242"/>
-    <ellipse cx="300" cy="60" rx="25" ry="45" fill="#ff6699"/>
-    <ellipse cx="450" cy="90" rx="25" ry="45" fill="#ffcc00"/>
-    <ellipse cx="600" cy="70" rx="25" ry="45" fill="#9933cc"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="tulipBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a1a"/>
+      <stop offset="50%" stop-color="#1a0a1a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#tulipBg)"/>
+  <rect x="0" y="320" width="800" height="80" fill="#0a1a0a"/>
+
+  <!-- Tulip 1 — Red (main, center-left) -->
+  <g transform="translate(160,320)">
+    <!-- Stem (slightly curved) -->
+    <path d="M0,0 Q-5,-60 0,-130" stroke="#2d6a1e" stroke-width="3.5" fill="none"/>
     <!-- Leaves -->
-    <ellipse cx="130" cy="200" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-15,130,200)"/>
-    <ellipse cx="170" cy="220" rx="15" ry="55" fill="#3a7a2e" transform="rotate(10,170,220)"/>
-    <ellipse cx="280" cy="180" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-10,280,180)"/>
-    <ellipse cx="320" cy="200" rx="15" ry="55" fill="#3a7a2e" transform="rotate(15,320,200)"/>
-    <ellipse cx="430" cy="210" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-12,430,210)"/>
-    <ellipse cx="470" cy="230" rx="15" ry="55" fill="#3a7a2e" transform="rotate(8,470,230)"/>
-    <ellipse cx="580" cy="190" rx="15" ry="60" fill="#3a7a2e" transform="rotate(-8,580,190)"/>
-    <ellipse cx="620" cy="210" rx="15" ry="55" fill="#3a7a2e" transform="rotate(12,620,210)"/>
+    <path d="M0,-40 Q-25,-60 -35,-90 Q-20,-70 0,-50" fill="#3a7a2e"/>
+    <path d="M0,-70 Q20,-90 30,-115 Q15,-95 0,-75" fill="#2d6a1e"/>
+    <!-- Tulip cup — 3 petals forming cup shape -->
+    <g transform="translate(0,-130)">
+      <!-- Back petal -->
+      <ellipse cx="0" cy="-22" rx="14" ry="28" fill="#aa1a33" transform="rotate(-5)"/>
+      <!-- Left petal -->
+      <ellipse cx="-10" cy="-18" rx="12" ry="26" fill="#cc2242" transform="rotate(-15,-10,-18)"/>
+      <!-- Right petal -->
+      <ellipse cx="10" cy="-18" rx="12" ry="26" fill="#cc2242" transform="rotate(15,10,-18)"/>
+      <!-- Front petal (lighter) -->
+      <ellipse cx="0" cy="-16" rx="10" ry="22" fill="#dd3355" transform="rotate(0)"/>
+      <!-- Inner highlight -->
+      <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#ee4466" opacity="0.4"/>
+    </g>
+  </g>
+
+  <!-- Tulip 2 — Pink -->
+  <g transform="translate(310,320)">
+    <path d="M0,0 Q3,-55 2,-120" stroke="#2d6a1e" stroke-width="3" fill="none"/>
+    <path d="M0,-35 Q-20,-55 -30,-80 Q-15,-60 0,-40" fill="#3a7a2e"/>
+    <path d="M2,-65 Q18,-85 28,-105 Q13,-85 2,-68" fill="#2d6a1e"/>
+    <g transform="translate(2,-120)">
+      <ellipse cx="0" cy="-20" rx="13" ry="26" fill="#dd4477" transform="rotate(-3)"/>
+      <ellipse cx="-9" cy="-16" rx="11" ry="24" fill="#ff6699" transform="rotate(-12,-9,-16)"/>
+      <ellipse cx="9" cy="-16" rx="11" ry="24" fill="#ff6699" transform="rotate(12,9,-16)"/>
+      <ellipse cx="0" cy="-14" rx="9" ry="20" fill="#ff77aa" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#ff88bb" opacity="0.35"/>
+    </g>
+  </g>
+
+  <!-- Tulip 3 — Yellow -->
+  <g transform="translate(460,320)">
+    <path d="M0,0 Q-3,-65 0,-140" stroke="#2d6a1e" stroke-width="3.5" fill="none"/>
+    <path d="M0,-45 Q-22,-65 -32,-95 Q-17,-70 0,-50" fill="#3a7a2e"/>
+    <path d="M0,-75 Q22,-95 32,-120 Q17,-100 0,-80" fill="#2d6a1e"/>
+    <g transform="translate(0,-140)">
+      <ellipse cx="0" cy="-22" rx="14" ry="28" fill="#cc9900" transform="rotate(-4)"/>
+      <ellipse cx="-10" cy="-18" rx="12" ry="26" fill="#ffcc00" transform="rotate(-14,-10,-18)"/>
+      <ellipse cx="10" cy="-18" rx="12" ry="26" fill="#ffcc00" transform="rotate(14,10,-18)"/>
+      <ellipse cx="0" cy="-16" rx="10" ry="22" fill="#ffdd33" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#ffee66" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Tulip 4 — Purple -->
+  <g transform="translate(610,320)">
+    <path d="M0,0 Q4,-58 2,-125" stroke="#2d6a1e" stroke-width="3" fill="none"/>
+    <path d="M2,-38 Q-18,-58 -28,-85 Q-13,-65 2,-42" fill="#3a7a2e"/>
+    <path d="M2,-68 Q20,-88 30,-110 Q15,-90 2,-72" fill="#2d6a1e"/>
+    <g transform="translate(2,-125)">
+      <ellipse cx="0" cy="-20" rx="13" ry="26" fill="#7722aa" transform="rotate(-3)"/>
+      <ellipse cx="-9" cy="-16" rx="11" ry="24" fill="#9933cc" transform="rotate(-12,-9,-16)"/>
+      <ellipse cx="9" cy="-16" rx="11" ry="24" fill="#9933cc" transform="rotate(12,9,-16)"/>
+      <ellipse cx="0" cy="-14" rx="9" ry="20" fill="#aa44dd" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#bb55ee" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Tulip 5 — small back right -->
+  <g transform="translate(720,320)" opacity="0.5">
+    <path d="M0,0 Q0,-45 0,-90" stroke="#1a3a10" stroke-width="2.5" fill="none"/>
+    <g transform="translate(0,-90)">
+      <ellipse cx="0" cy="-14" rx="9" ry="18" fill="#cc2242" transform="rotate(-3)"/>
+      <ellipse cx="-6" cy="-11" rx="8" ry="16" fill="#dd3355" transform="rotate(-10,-6,-11)"/>
+      <ellipse cx="6" cy="-11" rx="8" ry="16" fill="#dd3355" transform="rotate(10,6,-11)"/>
+      <ellipse cx="0" cy="-9" rx="6" ry="13" fill="#ee4466" opacity="0.5"/>
+    </g>
   </g>
 </svg>
