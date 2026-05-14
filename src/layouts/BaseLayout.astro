@@ -11,8 +11,8 @@ const { title = "Selene", description = "An impressionist journey through light,
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/loader.css" />
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg: #08080f;
@@ -388,6 +388,11 @@ const { title = "Selene", description = "An impressionist journey through light,
   </style>
 </head>
 <body>
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">Painting the sky<span class="loader-dots"></span></div>
+  </div>
+
   <div id="canvas-container"></div>
 
   <nav>

@@ -453,4 +453,12 @@ document.addEventListener('DOMContentLoaded', () => {
       colorIntensity: window.__VG_SHADER.colorIntensity
     });
   }
+
+  // Hide loader after first render frame
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const loader = document.getElementById('loader');
+      if (loader) loader.classList.add('hidden');
+    });
+  });
 });
