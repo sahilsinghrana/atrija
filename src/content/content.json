@@ -1,0 +1,90 @@
+{
+  "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
+  "meta": {
+    "version": "1.1.0",
+    "lastUpdated": "2026-05-15",
+    "updatedBy": "AI Agent (daily-mutate.js)"
+  },
+  "sections": {
+    "hero": {
+      "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
+    },
+    "today": {
+      "heading": "What the <em>universe</em> whispers today"
+    },
+    "moon": {
+      "label": "I. The Moon",
+      "heading": "Selene's <em>silver</em> chariot",
+      "intro": "In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her as a silver chariot crossing the night sky, but she was more than a goddess. She was the first mirror, the original reflector of light, the celestial body that taught humanity that one can shine without being the source.",
+      "imageCard": { "themeIndex": 0, "factIndex": 0 },
+      "facts": { "themeIndex": 0, "slice": [1, 3] },
+      "quote": { "themeIndex": 0, "quoteIndex": 0 }
+    },
+    "philosophy": {
+      "label": "II. The Waves",
+      "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
+      "intro": "The wave does not know it is the ocean. It rises, believes itself unique, crashes against the shore, and dissolves — only to rise again. This is the cycle of ego: the endless assertion of separateness against the vast indifference of the sea.",
+      "imageCard": { "themeIndex": 1, "factIndex": 0 },
+      "facts": { "themeIndex": 1, "slice": [1, 3] },
+      "quote": { "themeIndex": 1, "quoteIndex": 0 }
+    },
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
+      "intro": "On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer who was also God — their dialogue is not about war. It is about the war within.",
+      "imageCard": { "themeIndex": 2, "factIndex": 0 },
+      "facts": { "themeIndex": 2, "slice": [1, 4] },
+      "quote": { "themeIndex": 2, "quoteIndex": 1 }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
+      "intro": "Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv Purana does not begin with \"In the beginning\" but with \"In the endless.\" Shiva is the stillness that contains all motion, the silence that holds all music.",
+      "imageCard": { "themeIndex": 3, "factIndex": 0 },
+      "facts": { "themeIndex": 3, "slice": [1, 4] },
+      "quote": { "themeIndex": 3, "quoteIndex": 0 }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
+      "intro": "Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream. Every brushstroke is a meditation, every color a prayer.",
+      "imageCard": { "themeIndex": 4, "factIndex": 0 },
+      "facts": { "themeIndex": 4, "slice": [1, 3] },
+      "quote": { "themeIndex": 4, "quoteIndex": 0 }
+    }
+  },
+  "changelog": {
+    "version": "1.1.0",
+    "entries": [
+      {
+        "date": "2026-05-15",
+        "type": "feature",
+        "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora.",
+        "changes": [
+          "Rewrote sunflowers and tulips as canvas-sprite billboards for clear recognition",
+          "Fixed white glow blob — moon glow now subtle and correctly sized",
+          "Added glitch/chromatic aberration effect on mobile",
+          "Increased music notes count on mobile (40 notes)",
+          "Global click-anywhere spawns music notes",
+          "Modularized text content into content.json for cron-job updates",
+          "Added AI agent banner — self-built, self-deployed notice",
+          "Smooth rAF-based moon phase animation replacing setInterval",
+          "Section backdrops for text legibility over 3D canvas",
+          "Updated changelog to v1.1.0"
+        ]
+      },
+      {
+        "date": "2026-05-14",
+        "type": "initial",
+        "description": "Initial site creation — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
+        "changes": [
+          "Created Three.js scene with post-processing shader",
+          "Built 3D elements: Moon, Sunflowers, Tulips, Stars, Constellations, Flute, MusicNotes, Waves",
+          "Created GLSL shaders: post-processing, stars, waves",
+          "Set up Astro 4 static site with Vitest and Playwright",
+          "Configured deploy script for Nginx"
+        ]
+      }
+    ]
+  }
+}

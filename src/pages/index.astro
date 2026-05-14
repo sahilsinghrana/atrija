@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import siteData from '../content/siteData.json';
+import content from '../content/content.json';
 
 const now = new Date();
 const start = new Date(now.getFullYear(), 0, 0);
@@ -13,7 +14,14 @@ const todayTheme = siteData.themes[themeIndex];
 const todayColor = siteData.colorSchemes[colorIndex];
 const todayFact = todayTheme.facts[dayOfYear % todayTheme.facts.length];
 const todayQuote = todayTheme.quotes[dayOfYear % todayTheme.quotes.length];
-const changelogEntries = siteData.changelog.entries.slice(-5).reverse();
+
+// Use content.json changelog (cron-updated), fall back to siteData
+const changelogSource = content.changelog || siteData.changelog;
+const changelogEntries = changelogSource.entries.slice(-5).reverse();
+const changelogVersion = changelogSource.version;
+
+// Section text from content.json — edit this file to update all text content
+const sec = content.sections;
 
 const colorData = JSON.stringify({
   primary: todayColor.primary,
@@ -28,6 +36,18 @@ const colorData = JSON.stringify({
 <BaseLayout>
 
   <!-- ═══════════════════════════════════════
+       AI AGENT BANNER
+  ═══════════════════════════════════════ -->
+  <div class="ai-banner" role="note" aria-label="Site information">
+    <span class="ai-banner-icon">⚡</span>
+    <span class="ai-banner-text">
+      Content updates <strong>daily</strong> — this site is self-improved, built &amp; deployed by an
+      <strong>AI agent</strong>, served from an <strong>Android mobile phone</strong> server.
+    </span>
+    <span class="ai-banner-pulse"></span>
+  </div>
+
+  <!-- ═══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
   <section id="hero" class="hero">
@@ -37,7 +57,7 @@ const colorData = JSON.stringify({
     </div>
     <div class="logo-sanskrit">अत्रिज</div>
     <div class="logo-subtitle">Atrij</div>
-    <p class="logo-tagline">An <em>impressionist</em> journey through light, philosophy &amp; the cosmos</p>
+    <p class="logo-tagline" set:html={sec.hero.tagline}></p>
     <span class="scroll-hint">Scroll to explore</span>
   </section>
 
@@ -47,7 +67,7 @@ const colorData = JSON.stringify({
   <section id="today" class="section">
     <div class="section-inner">
       <div class="section-label">Today's Reflection</div>
-      <h2>What the <em>universe</em> whispers today</h2>
+      <h2 set:html={sec.today.heading}></h2>
       <div class="today-fact">
         <div class="theme-tag">{todayTheme.title} · {todayColor.mood}</div>
         <p>{todayFact.text}</p>
@@ -64,9 +84,9 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="moon" class="section">
     <div class="section-inner">
-      <div class="section-label">I. The Moon</div>
-      <h2>Selene's <em>silver</em> chariot</h2>
-      <p>In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her as a silver chariot crossing the night sky, but she was more than a goddess. She was the first mirror, the original reflector of light, the celestial body that taught humanity that one can shine without being the source.</p>
+      <div class="section-label">{sec.moon.label}</div>
+      <h2 set:html={sec.moon.heading}></h2>
+      <p>{sec.moon.intro}</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/moon.svg')">
         <div class="card-bg"></div>
@@ -97,9 +117,9 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="philosophy" class="section">
     <div class="section-inner">
-      <div class="section-label">II. The Waves</div>
-      <h2>Ego, arrogance &amp; the <em>ocean</em> of self</h2>
-      <p>The wave does not know it is the ocean. It rises, believes itself unique, crashes against the shore, and dissolves — only to rise again. This is the cycle of ego: the endless assertion of separateness against the vast indifference of the sea.</p>
+      <div class="section-label">{sec.philosophy.label}</div>
+      <h2 set:html={sec.philosophy.heading}></h2>
+      <p>{sec.philosophy.intro}</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/waves.svg')">
         <div class="card-bg"></div>
@@ -130,9 +150,9 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="gita" class="section">
     <div class="section-inner">
-      <div class="section-label">III. The Battlefield</div>
-      <h2>Wisdom from the <em>Bhagavad</em> Gita</h2>
-      <p>On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer who was also God — their dialogue is not about war. It is about the war within.</p>
+      <div class="section-label">{sec.gita.label}</div>
+      <h2 set:html={sec.gita.heading}></h2>
+      <p>{sec.gita.intro}</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/stars.svg')">
         <div class="card-bg"></div>
@@ -163,9 +183,9 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="shiva" class="section">
     <div class="section-inner">
-      <div class="section-label">IV. The Dance</div>
-      <h2>Shiva &amp; the <em>cosmic</em> rhythm</h2>
-      <p>Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv Purana does not begin with "In the beginning" but with "In the endless." Shiva is the stillness that contains all motion, the silence that holds all music.</p>
+      <div class="section-label">{sec.shiva.label}</div>
+      <h2 set:html={sec.shiva.heading}></h2>
+      <p>{sec.shiva.intro}</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/flute.svg')">
         <div class="card-bg"></div>
@@ -196,9 +216,9 @@ const colorData = JSON.stringify({
   ═══════════════════════════════════════ -->
   <section id="art" class="section">
     <div class="section-inner">
-      <div class="section-label">V. The Canvas</div>
-      <h2>Art, beauty &amp; the <em>act</em> of seeing</h2>
-      <p>Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream. Every brushstroke is a meditation, every color a prayer.</p>
+      <div class="section-label">{sec.art.label}</div>
+      <h2 set:html={sec.art.heading}></h2>
+      <p>{sec.art.intro}</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/sunflowers.svg')">
         <div class="card-bg"></div>
@@ -231,8 +251,8 @@ const colorData = JSON.stringify({
     <div class="section-inner changelog-section">
       <div class="section-label">Changelog</div>
       <h2>Daily <em>mutations</em></h2>
-      <p style="color: var(--text-tertiary); font-size: var(--text-sm); margin-bottom: var(--space-xl); font-family: var(--font-sans);">
-        Version {siteData.changelog.version} — color, content &amp; form evolve daily.
+      <p style="color: #9a9690; font-size: var(--text-sm); margin-bottom: var(--space-xl); font-family: var(--font-sans);">
+        Version {changelogVersion} — color, content &amp; form evolve daily.
       </p>
       <div class="changelog-timeline">
         {changelogEntries.map(entry => (
@@ -247,7 +267,7 @@ const colorData = JSON.stringify({
                 {entry.type === 'design' && '◐'}
                 {' '}{entry.type}
               </span>
-              <span class="changelog-version">v{siteData.changelog.version}</span>
+              <span class="changelog-version">v{changelogVersion}</span>
             </div>
             <div class="changelog-desc">{entry.description}</div>
             <ul class="changelog-changes">
@@ -286,8 +306,8 @@ const colorData = JSON.stringify({
       position: relative;
       border-radius: 50%;
       overflow: hidden;
-      width: clamp(180px, 35vw, 340px);
-      height: clamp(180px, 35vw, 340px);
+      width: clamp(160px, 30vw, 300px);
+      height: clamp(160px, 30vw, 300px);
       margin-bottom: var(--space-lg);
       box-shadow: 0 0 60px 10px rgba(255,213,79,0.08), 0 0 120px 30px rgba(255,213,79,0.04);
       flex-shrink: 0;
@@ -296,13 +316,12 @@ const colorData = JSON.stringify({
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-color: rgba(8,8,15,0.85);
-      box-shadow: 0 0 2rem rgba(8,8,15,0.9);
+      background-color: rgba(8,8,15,0.88);
       border-radius: 50%;
       transform: translateX(0%);
-      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
       z-index: 2;
+      /* No CSS transition — JS animates this smoothly via rAF */
     }
     #asciiMoon {
       position: relative;
@@ -327,11 +346,11 @@ const colorData = JSON.stringify({
     }
     @media (max-width: 600px) {
       #moonContainer {
-        width: clamp(140px, 45vw, 220px);
-        height: clamp(140px, 45vw, 220px);
+        width: clamp(130px, 42vw, 200px);
+        height: clamp(130px, 42vw, 200px);
       }
       #asciiMoon {
-        font-size: clamp(1.8px, 0.55vw, 3px);
+        font-size: clamp(1.6px, 0.5vw, 2.8px);
         line-height: 1.4;
       }
     }
@@ -388,17 +407,48 @@ const colorData = JSON.stringify({
         return moonData;
       }
 
-      // Initial display from real date
-      updateShadow(new Date());
+      // ── Smooth rAF-based phase animation ──
+      // Start from real current phase, then slowly cycle forward
+      var lunarCycle = 29.53058867;
+      var knownNewMoon = new Date(2000, 0, 6, 18, 14, 0);
+      var daysSinceNew = (Date.now() - knownNewMoon.getTime()) / (1000 * 60 * 60 * 24);
+      var currentPhaseDays = ((daysSinceNew % lunarCycle) + lunarCycle) % lunarCycle;
 
-      // Demo: cycle through phases smoothly
-      var demoPhase = 0;
-      setInterval(function() {
-        demoPhase = (demoPhase + 0.125) % 1.0;
-        var syntheticDate = new Date();
-        syntheticDate.setTime(syntheticDate.getTime() + demoPhase * 29.53058867 * 24 * 60 * 60 * 1000);
-        updateShadow(syntheticDate);
-      }, 5000);
+      // Target translate value (current real phase)
+      var targetTranslate = 0;
+      var currentTranslate = 0;
+
+      function phaseToTranslate(phaseDays) {
+        var pf = phaseDays / lunarCycle;
+        var illum = (1 - Math.cos(pf * 2 * Math.PI)) / 2 * 100;
+        return pf < 0.5 ? -(100 - illum) : (100 - illum);
+      }
+
+      // Set initial translate instantly
+      currentTranslate = phaseToTranslate(currentPhaseDays);
+      targetTranslate = currentTranslate;
+      shadow.style.transform = 'translateX(' + currentTranslate.toFixed(3) + '%)';
+
+      // Slowly advance phase: one full cycle every 60 seconds (demo speed)
+      var demoSpeedDaysPerSec = lunarCycle / 60;
+      var lastTime = null;
+
+      function animateMoon(ts) {
+        if (lastTime === null) lastTime = ts;
+        var dt = (ts - lastTime) / 1000; // seconds
+        lastTime = ts;
+
+        currentPhaseDays = (currentPhaseDays + demoSpeedDaysPerSec * dt) % lunarCycle;
+        targetTranslate = phaseToTranslate(currentPhaseDays);
+
+        // Lerp for extra smoothness
+        currentTranslate += (targetTranslate - currentTranslate) * 0.04;
+        shadow.style.transform = 'translateX(' + currentTranslate.toFixed(3) + '%)';
+
+        requestAnimationFrame(animateMoon);
+      }
+
+      requestAnimationFrame(animateMoon);
     })();
   </script>
 
