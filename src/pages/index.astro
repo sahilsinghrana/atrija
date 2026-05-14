@@ -5,17 +5,14 @@ import siteData from '../content/siteData.json';
 const now = new Date();
 const start = new Date(now.getFullYear(), 0, 0);
 const diff = now.getTime() - start.getTime();
-const oneDay = 1000 * 60 * 60 * 24;
-const dayOfYear = Math.floor(diff / oneDay);
+const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
 
 const themeIndex = dayOfYear % siteData.themes.length;
 const colorIndex = dayOfYear % siteData.colorSchemes.length;
-
 const todayTheme = siteData.themes[themeIndex];
 const todayColor = siteData.colorSchemes[colorIndex];
 const todayFact = todayTheme.facts[dayOfYear % todayTheme.facts.length];
 const todayQuote = todayTheme.quotes[dayOfYear % todayTheme.quotes.length];
-
 const changelogEntries = siteData.changelog.entries.slice(-5).reverse();
 
 const colorData = JSON.stringify({
@@ -28,181 +25,234 @@ const colorData = JSON.stringify({
 });
 ---
 
-<BaseLayout title="Selene — An Impressionist Experience">
+<BaseLayout>
 
-  <!-- Hero Section with 3D Scene -->
-  <section id="hero" class="section" style="position:relative; max-width:100%; padding:0;">
-    <div class="hero-overlay">
-      <h1>Selene</h1>
-      <p>An Impressionist Experience in Light &amp; Philosophy</p>
-    </div>
-    <div class="scroll-indicator">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
-    </div>
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section id="hero" class="hero">
+    <h1>Se<em>lene</em></h1>
+    <p>An impressionist journey through light, philosophy &amp; the cosmos</p>
+    <span class="scroll-hint">Scroll to explore</span>
   </section>
 
-  <!-- Today's Philosophical Fact -->
+  <!-- ═══════════════════════════════════════
+       TODAY'S REFLECTION
+  ═══════════════════════════════════════ -->
   <section id="today" class="section">
-    <h2>Today's Reflection</h2>
-    <p style="font-size:0.85rem; color:var(--color-accent); margin-bottom:1rem;">
-      Theme: {todayTheme.title} · Mood: {todayColor.mood}
-    </p>
-    <div class="fact-card">
-      <p>{todayFact.text}</p>
-      <p class="source">— {todayFact.source}</p>
-    </div>
-    <div class="quote-block">
-      &ldquo;{todayQuote}&rdquo;
+    <div class="section-inner">
+      <div class="section-label">Today's Reflection</div>
+      <h2>What the <em>universe</em> whispers today</h2>
+
+      <div class="today-fact">
+        <div class="theme-tag">{todayTheme.title} · {todayColor.mood}</div>
+        <p>{todayFact.text}</p>
+        <div class="source">{todayFact.source}</div>
+      </div>
+
+      <div class="quote-block">
+        <p>{todayQuote}</p>
+      </div>
     </div>
   </section>
 
-  <!-- Moon & Selene Section -->
+  <!-- ═══════════════════════════════════════
+       MOON & SELENE
+  ═══════════════════════════════════════ -->
   <section id="moon" class="section">
-    <h2>The Moon &amp; Selene</h2>
-    <img src="/images/moon.svg" alt="Moon" class="section-image" width="800" height="400" />
-    <p>
-      In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her
-      as a silver chariot crossing the night, but she was more than a goddess. She was the
-      first mirror, the original reflector of light, the celestial body that taught humanity
-      that one can shine without being the source.
-    </p>
-    {siteData.themes[0].facts.slice(0, 3).map(fact => (
-      <div class="fact-card">
-        <p>{fact.text}</p>
-        <p class="source">— {fact.source}</p>
-      </div>
-    ))}
-    <div class="quote-block">
-      &ldquo;{siteData.themes[0].quotes[0]}&rdquo;
-    </div>
-  </section>
+    <div class="section-inner">
+      <div class="section-label">I. The Moon</div>
+      <h2>Selene's <em>silver</em> chariot</h2>
+      <p>
+        In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her
+        as a silver chariot crossing the night, but she was more than a goddess. She was the
+        first mirror, the original reflector of light, the celestial body that taught humanity
+        that one can shine without being the source.
+      </p>
 
-  <!-- Philosophy: Ego & Arrogance -->
-  <section id="philosophy" class="section">
-    <h2>Ego, Arrogance &amp; The Waves</h2>
-    <img src="/images/waves.svg" alt="Waves" class="section-image" width="800" height="400" />
-    <p>
-      The wave does not know it is the ocean. It rises, believes itself unique, crashes against
-      the shore, and dissolves — only to rise again. This is the cycle of ego: the endless
-      assertion of separateness, the desperate claim of individuality against the vast indifference
-      of the sea.
-    </p>
-    {siteData.themes[1].facts.slice(0, 3).map(fact => (
-      <div class="fact-card">
-        <p>{fact.text}</p>
-        <p class="source">— {fact.source}</p>
+      <div class="image-card">
+        <img src="/images/moon.svg" alt="Moon over a starlit landscape" width="800" height="400" loading="lazy" />
+        <div class="image-overlay"></div>
       </div>
-    ))}
-    <div class="quote-block">
-      &ldquo;{siteData.themes[1].quotes[0]}&rdquo;
-    </div>
-  </section>
 
-  <!-- Bhagavad Gita Section -->
-  <section id="gita" class="section">
-    <h2>The Bhagavad Gita</h2>
-    <img src="/images/stars.svg" alt="Stars" class="section-image" width="800" height="400" />
-    <p>
-      On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place
-      that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer
-      who was also God — their dialogue is not about war. It is about the war within.
-    </p>
-    {siteData.themes[2].facts.slice(0, 4).map(fact => (
-      <div class="fact-card">
-        <p>{fact.text}</p>
-        <p class="source">— {fact.source}</p>
-      </div>
-    ))}
-    <div class="quote-block">
-      &ldquo;{siteData.themes[2].quotes[1]}&rdquo;
-    </div>
-  </section>
-
-  <!-- Shiv Purana Section -->
-  <section id="shiva" class="section">
-    <h2>The Shiv Purana</h2>
-    <img src="/images/flute.svg" alt="Flute" class="section-image" width="800" height="400" />
-    <p>
-      Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv
-      Purana does not begin with &lsquo;In the beginning&rsquo; but with &lsquo;In the endless.&rsquo; Shiva is the
-      stillness that contains all motion, the silence that holds all music, the void that is
-      not empty but infinitely full.
-    </p>
-    {siteData.themes[3].facts.slice(0, 4).map(fact => (
-      <div class="fact-card">
-        <p>{fact.text}</p>
-        <p class="source">— {fact.source}</p>
-      </div>
-    ))}
-    <div class="quote-block">
-      &ldquo;{siteData.themes[3].quotes[0]}&rdquo;
-    </div>
-  </section>
-
-  <!-- Art & Beauty Section -->
-  <section id="art" class="section">
-    <h2>Art &amp; Beauty</h2>
-    <img src="/images/sunflowers.svg" alt="Sunflowers" class="section-image" width="800" height="400" />
-    <p>
-      Art is not what you see, but what you make others see. The painter does not copy the world
-      — they translate it, filtering reality through the lens of emotion, memory, and dream.
-      Every brushstroke is a meditation, every color a prayer.
-    </p>
-    {siteData.themes[4].facts.slice(0, 3).map(fact => (
-      <div class="fact-card">
-        <p>{fact.text}</p>
-        <p class="source">— {fact.source}</p>
-      </div>
-    ))}
-    <div class="quote-block">
-      &ldquo;{siteData.themes[4].quotes[0]}&rdquo;
-    </div>
-  </section>
-
-  <!-- Changelog Section -->
-  <section id="changelog" class="section">
-    <h2>Changelog</h2>
-    <p style="opacity:0.7; margin-bottom:2rem;">
-      Version {siteData.changelog.version} &middot; Daily mutations of color, content, and form.
-    </p>
-    {changelogEntries.map(entry => (
-      <div class="fact-card">
-        <p><span style="color:var(--color-accent); font-weight:600;">{entry.date}</span> — {entry.description}</p>
-        <ul style="margin-top:0.75rem; padding-left:1.2rem;">
-          {entry.changes.map(change => (
-            <li style="opacity:0.7; padding:0.2rem 0; list-style:disc;">{change}</li>
-          ))}
-        </ul>
-      </div>
-    ))}
-  </section>
-
-  <!-- Inline Changelog Panel (fixed position) -->
-  <div class="changelog-panel">
-    <h4>Recent Changes</h4>
-    <ul>
-      {changelogEntries.slice(0, 3).map(entry => (
-        <li>
-          <span class="date">{entry.date}</span> — {entry.description.slice(0, 60)}...
-        </li>
+      {siteData.themes[0].facts.slice(0, 3).map(fact => (
+        <div class="fact-card">
+          <p>{fact.text}</p>
+          <div class="source">{fact.source}</div>
+        </div>
       ))}
-    </ul>
-  </div>
 
-  <!-- Three.js Scene Initialization -->
-  <div id="vg-data" data-colors={colorData} style="display:none;"></div>
+      <div class="quote-block">
+        <p>{siteData.themes[0].quotes[0]}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       EGO & ARROGANCE
+  ═══════════════════════════════════════ -->
+  <section id="philosophy" class="section">
+    <div class="section-inner">
+      <div class="section-label">II. The Waves</div>
+      <h2>Ego, arrogance &amp; the <em>ocean</em> of self</h2>
+      <p>
+        The wave does not know it is the ocean. It rises, believes itself unique, crashes against
+        the shore, and dissolves — only to rise again. This is the cycle of ego: the endless
+        assertion of separateness against the vast indifference of the sea.
+      </p>
+
+      <div class="image-card">
+        <img src="/images/waves.svg" alt="Ocean waves at twilight" width="800" height="400" loading="lazy" />
+        <div class="image-overlay"></div>
+      </div>
+
+      {siteData.themes[1].facts.slice(0, 3).map(fact => (
+        <div class="fact-card">
+          <p>{fact.text}</p>
+          <div class="source">{fact.source}</div>
+        </div>
+      ))}
+
+      <div class="quote-block">
+        <p>{siteData.themes[1].quotes[0]}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       BHAGAVAD GITA
+  ═══════════════════════════════════════ -->
+  <section id="gita" class="section">
+    <div class="section-inner">
+      <div class="section-label">III. The Battlefield</div>
+      <h2>Wisdom from the <em>Bhagavad</em> Gita</h2>
+      <p>
+        On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place
+        that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer
+        who was also God — their dialogue is not about war. It is about the war within.
+      </p>
+
+      <div class="image-card">
+        <img src="/images/stars.svg" alt="Starry night sky with constellations" width="800" height="400" loading="lazy" />
+        <div class="image-overlay"></div>
+      </div>
+
+      {siteData.themes[2].facts.slice(0, 4).map(fact => (
+        <div class="fact-card">
+          <p>{fact.text}</p>
+          <div class="source">{fact.source}</div>
+        </div>
+      ))}
+
+      <div class="quote-block">
+        <p>{siteData.themes[2].quotes[1]}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SHIV PURANA
+  ═══════════════════════════════════════ -->
+  <section id="shiva" class="section">
+    <div class="section-inner">
+      <div class="section-label">IV. The Dance</div>
+      <h2>Shiva &amp; the <em>cosmic</em> rhythm</h2>
+      <p>
+        Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv
+        Purana does not begin with "In the beginning" but with "In the endless." Shiva is the
+        stillness that contains all motion, the silence that holds all music.
+      </p>
+
+      <div class="image-card">
+        <img src="/images/flute.svg" alt="A flute resting on a windowsill" width="800" height="400" loading="lazy" />
+        <div class="image-overlay"></div>
+      </div>
+
+      {siteData.themes[3].facts.slice(0, 4).map(fact => (
+        <div class="fact-card">
+          <p>{fact.text}</p>
+          <div class="source">{fact.source}</div>
+        </div>
+      ))}
+
+      <div class="quote-block">
+        <p>{siteData.themes[3].quotes[0]}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ART & BEAUTY
+  ═══════════════════════════════════════ -->
+  <section id="art" class="section">
+    <div class="section-inner">
+      <div class="section-label">V. The Canvas</div>
+      <h2>Art, beauty &amp; the <em>act</em> of seeing</h2>
+      <p>
+        Art is not what you see, but what you make others see. The painter does not copy the world
+        — they translate it, filtering reality through the lens of emotion, memory, and dream.
+        Every brushstroke is a meditation, every color a prayer.
+      </p>
+
+      <div class="image-card">
+        <img src="/images/sunflowers.svg" alt="Sunflower field at sunset" width="800" height="400" loading="lazy" />
+        <div class="image-overlay"></div>
+      </div>
+
+      {siteData.themes[4].facts.slice(0, 3).map(fact => (
+        <div class="fact-card">
+          <p>{fact.text}</p>
+          <div class="source">{fact.source}</div>
+        </div>
+      ))}
+
+      <div class="quote-block">
+        <p>{siteData.themes[4].quotes[0]}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CHANGELOG
+  ═══════════════════════════════════════ -->
+  <section id="changelog" class="section changelog-section">
+    <div class="section-inner">
+      <div class="section-label">Changelog</div>
+      <h2>Daily <em>mutations</em></h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
+        Version {siteData.changelog.version} — color, content &amp; form evolve daily.
+      </p>
+
+      {changelogEntries.map(entry => (
+        <div class="changelog-entry">
+          <div class="date">{entry.date}</div>
+          <div class="desc">{entry.description}</div>
+          <ul>
+            {entry.changes.map(change => (
+              <li>{change}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       THREE.JS SCENE INIT
+  ═══════════════════════════════════════ -->
+  <div id="vg-data" data-colors={colorData} hidden></div>
   <script>
-    const vgDataEl = document.getElementById('vg-data');
-    const vgColors = JSON.parse(vgDataEl.dataset.colors);
-    const root = document.documentElement;
-    root.style.setProperty('--color-primary', vgColors.primary);
-    root.style.setProperty('--color-secondary', vgColors.secondary);
-    root.style.setProperty('--color-accent', vgColors.accent);
-    root.style.setProperty('--color-bg', vgColors.background);
-    root.style.setProperty('--color-text', vgColors.text);
-    window.__VG_SHADER = vgColors.shader;
+    (function() {
+      var el = document.getElementById('vg-data');
+      var c = JSON.parse(el.dataset.colors);
+      var r = document.documentElement.style;
+      r.setProperty('--color-primary', c.primary);
+      r.setProperty('--color-secondary', c.secondary);
+      r.setProperty('--color-accent', c.accent);
+      r.setProperty('--color-bg', c.background);
+      r.setProperty('--color-text', c.text);
+      window.__VG_SHADER = c.shader;
+    })();
   </script>
   <script type="module" src="/js/scene-init.js"></script>
 

@@ -1,61 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a237e"/>
+    <linearGradient id="sunsetGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="30%" stop-color="#4a1942"/>
       <stop offset="60%" stop-color="#ff6f00"/>
       <stop offset="100%" stop-color="#f5c800"/>
     </linearGradient>
+    <filter id="petalBlur"><feGaussianBlur stdDeviation="0.5"/></filter>
   </defs>
-  <rect width="800" height="400" fill="url(#sky)"/>
-  <!-- Sun -->
-  <circle cx="400" cy="200" r="40" fill="#ffd54f" opacity="0.8"/>
+  <rect width="800" height="400" fill="url(#sunsetGrad)"/>
+  <!-- Sun glow -->
+  <circle cx="400" cy="220" r="60" fill="#ffd54f" opacity="0.3"/>
+  <circle cx="400" cy="220" r="30" fill="#ffd54f" opacity="0.5"/>
   <!-- Sunflower field -->
-  <g transform="translate(0,250)">
-    <!-- Stems -->
-    <line x1="100" y1="0" x2="100" y2="150" stroke="#2d5a1e" stroke-width="3"/>
-    <line x1="200" y1="0" x2="200" y2="150" stroke="#2d5a1e" stroke-width="3"/>
-    <line x1="300" y1="0" x2="300" y2="150" stroke="#2d5a1e" stroke-width="3"/>
-    <line x1="400" y1="0" x2="400" y2="150" stroke="#2d5a1e" stroke-width="3"/>
-    <line x1="500" y1="0" x2="500" y2="150" stroke="#2d5a1e" stroke-width="3"/>
-    <line x1="600" y1="0" x2="600" y2="150" stroke="#2d5a1e" stroke-width="3"/>
-    <line x1="700" y1="0" x2="700" y2="150" stroke="#2d5a1e" stroke-width="3"/>
-    <!-- Petals -->
-    <g fill="#f5c800">
-      <ellipse cx="100" cy="-10" rx="20" ry="35" transform="rotate(0,100,-10)"/>
-      <ellipse cx="100" cy="-10" rx="20" ry="35" transform="rotate(45,100,-10)"/>
-      <ellipse cx="100" cy="-10" rx="20" ry="35" transform="rotate(90,100,-10)"/>
-      <ellipse cx="100" cy="-10" rx="20" ry="35" transform="rotate(135,100,-10)"/>
-      <ellipse cx="200" cy="-10" rx="20" ry="35" transform="rotate(20,200,-10)"/>
-      <ellipse cx="200" cy="-10" rx="20" ry="35" transform="rotate(65,200,-10)"/>
-      <ellipse cx="200" cy="-10" rx="20" ry="35" transform="rotate(110,200,-10)"/>
-      <ellipse cx="200" cy="-10" rx="20" ry="35" transform="rotate(155,200,-10)"/>
-      <ellipse cx="300" cy="-10" rx="20" ry="35" transform="rotate(10,300,-10)"/>
-      <ellipse cx="300" cy="-10" rx="20" ry="35" transform="rotate(55,300,-10)"/>
-      <ellipse cx="300" cy="-10" rx="20" ry="35" transform="rotate(100,300,-10)"/>
-      <ellipse cx="300" cy="-10" rx="20" ry="35" transform="rotate(145,300,-10)"/>
-      <ellipse cx="400" cy="-10" rx="20" ry="35" transform="rotate(30,400,-10)"/>
-      <ellipse cx="400" cy="-10" rx="20" ry="35" transform="rotate(75,400,-10)"/>
-      <ellipse cx="400" cy="-10" rx="20" ry="35" transform="rotate(120,400,-10)"/>
-      <ellipse cx="400" cy="-10" rx="20" ry="35" transform="rotate(165,400,-10)"/>
-      <ellipse cx="500" cy="-10" rx="20" ry="35" transform="rotate(15,500,-10)"/>
-      <ellipse cx="500" cy="-10" rx="20" ry="35" transform="rotate(60,500,-10)"/>
-      <ellipse cx="500" cy="-10" rx="20" ry="35" transform="rotate(105,500,-10)"/>
-      <ellipse cx="500" cy="-10" rx="20" ry="35" transform="rotate(150,500,-10)"/>
-      <ellipse cx="600" cy="-10" rx="20" ry="35" transform="rotate(5,600,-10)"/>
-      <ellipse cx="600" cy="-10" rx="20" ry="35" transform="rotate(50,600,-10)"/>
-      <ellipse cx="600" cy="-10" rx="20" ry="35" transform="rotate(95,600,-10)"/>
-      <ellipse cx="600" cy="-10" rx="20" ry="35" transform="rotate(140,600,-10)"/>
-      <ellipse cx="700" cy="-10" rx="20" ry="35" transform="rotate(25,700,-10)"/>
-      <ellipse cx="700" cy="-10" rx="20" ry="35" transform="rotate(70,700,-10)"/>
-      <ellipse cx="700" cy="-10" rx="20" ry="35" transform="rotate(115,700,-10)"/>
-      <ellipse cx="700" cy="-10" rx="20" ry="35" transform="rotate(160,700,-10)"/>
+  <g transform="translate(0,200)">
+    <!-- Row 1 — back (smaller, darker) -->
+    <g opacity="0.5" fill="#b8860b">
+      <ellipse cx="80" cy="0" rx="12" ry="25" transform="rotate(-10,80,0)"/>
+      <ellipse cx="200" cy="10" rx="12" ry="25" transform="rotate(5,200,10)"/>
+      <ellipse cx="350" cy="-5" rx="12" ry="25" transform="rotate(-5,350,-5)"/>
+      <ellipse cx="500" cy="5" rx="12" ry="25" transform="rotate(8,500,5)"/>
+      <ellipse cx="650" cy="-10" rx="12" ry="25" transform="rotate(-3,650,-10)"/>
+      <ellipse cx="750" cy="8" rx="12" ry="25" transform="rotate(12,750,8)"/>
+    </g>
+    <!-- Stems row 1 -->
+    <g stroke="#2d5a1e" stroke-width="2" opacity="0.5">
+      <line x1="80" y1="0" x2="80" y2="200"/>
+      <line x1="200" y1="10" x2="200" y2="200"/>
+      <line x1="350" y1="-5" x2="350" y2="200"/>
+      <line x1="500" y1="5" x2="500" y2="200"/>
+      <line x1="650" y1="-10" x2="650" y2="200"/>
+      <line x1="750" y1="8" x2="750" y2="200"/>
+    </g>
+    <!-- Row 2 — front (larger, brighter) -->
+    <g fill="#f5c800" filter="url(#petalBlur)">
+      <ellipse cx="140" cy="-15" rx="18" ry="35" transform="rotate(-8,140,-15)"/>
+      <ellipse cx="140" cy="-15" rx="18" ry="35" transform="rotate(37,140,-15)"/>
+      <ellipse cx="140" cy="-15" rx="18" ry="35" transform="rotate(82,140,-15)"/>
+      <ellipse cx="140" cy="-15" rx="18" ry="35" transform="rotate(127,140,-15)"/>
+      <ellipse cx="280" cy="-20" rx="18" ry="35" transform="rotate(15,280,-20)"/>
+      <ellipse cx="280" cy="-20" rx="18" ry="35" transform="rotate(60,280,-20)"/>
+      <ellipse cx="280" cy="-20" rx="18" ry="35" transform="rotate(105,280,-20)"/>
+      <ellipse cx="280" cy="-20" rx="18" ry="35" transform="rotate(150,280,-20)"/>
+      <ellipse cx="430" cy="-10" rx="18" ry="35" transform="rotate(-5,430,-10)"/>
+      <ellipse cx="430" cy="-10" rx="18" ry="35" transform="rotate(40,430,-10)"/>
+      <ellipse cx="430" cy="-10" rx="18" ry="35" transform="rotate(85,430,-10)"/>
+      <ellipse cx="430" cy="-10" rx="18" ry="35" transform="rotate(130,430,-10)"/>
+      <ellipse cx="570" cy="-18" rx="18" ry="35" transform="rotate(10,570,-18)"/>
+      <ellipse cx="570" cy="-18" rx="18" ry="35" transform="rotate(55,570,-18)"/>
+      <ellipse cx="570" cy="-18" rx="18" ry="35" transform="rotate(100,570,-18)"/>
+      <ellipse cx="570" cy="-18" rx="18" ry="35" transform="rotate(145,570,-18)"/>
+      <ellipse cx="700" cy="-8" rx="18" ry="35" transform="rotate(-12,700,-8)"/>
+      <ellipse cx="700" cy="-8" rx="18" ry="35" transform="rotate(33,700,-8)"/>
+      <ellipse cx="700" cy="-8" rx="18" ry="35" transform="rotate(78,700,-8)"/>
+      <ellipse cx="700" cy="-8" rx="18" ry="35" transform="rotate(123,700,-8)"/>
     </g>
     <!-- Centers -->
     <g fill="#4a2800">
-      <circle cx="100" cy="-10" r="10"/><circle cx="200" cy="-10" r="10"/>
-      <circle cx="300" cy="-10" r="10"/><circle cx="400" cy="-10" r="10"/>
-      <circle cx="500" cy="-10" r="10"/><circle cx="600" cy="-10" r="10"/>
-      <circle cx="700" cy="-10" r="10"/>
+      <circle cx="140" cy="-15" r="8"/><circle cx="280" cy="-20" r="8"/>
+      <circle cx="430" cy="-10" r="8"/><circle cx="570" cy="-18" r="8"/>
+      <circle cx="700" cy="-8" r="8"/>
+    </g>
+    <!-- Stems row 2 -->
+    <g stroke="#2d5a1e" stroke-width="3">
+      <line x1="140" y1="-15" x2="140" y2="200"/>
+      <line x1="280" y1="-20" x2="280" y2="200"/>
+      <line x1="430" y1="-10" x2="430" y2="200"/>
+      <line x1="570" y1="-18" x2="570" y2="200"/>
+      <line x1="700" y1="-8" x2="700" y2="200"/>
     </g>
   </g>
 </svg>

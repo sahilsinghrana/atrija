@@ -1,41 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="nightSky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a1a"/>
-      <stop offset="100%" stop-color="#1a237e"/>
-    </linearGradient>
+    <radialGradient id="nightGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#08080f"/>
+    </radialGradient>
+    <filter id="starGlow"><feGaussianBlur stdDeviation="1"/></filter>
   </defs>
-  <rect width="800" height="400" fill="url(#nightSky)"/>
-  <!-- Stars -->
-  <g fill="#fff" opacity="0.9">
-    <circle cx="50" cy="30" r="1.5"/><circle cx="120" cy="80" r="2"/><circle cx="200" cy="40" r="1"/>
-    <circle cx="280" cy="100" r="1.5"/><circle cx="350" cy="50" r="2"/><circle cx="420" cy="120" r="1"/>
-    <circle cx="500" cy="60" r="1.5"/><circle cx="580" cy="90" r="2"/><circle cx="650" cy="40" r="1"/>
-    <circle cx="720" cy="110" r="1.5"/><circle cx="80" cy="150" r="1"/><circle cx="160" cy="180" r="1.5"/>
-    <circle cx="240" cy="160" r="2"/><circle cx="320" cy="200" r="1"/><circle cx="400" cy="170" r="1.5"/>
-    <circle cx="480" cy="190" r="2"/><circle cx="560" cy="150" r="1"/><circle cx="640" cy="180" r="1.5"/>
-    <circle cx="720" cy="160" r="2"/><circle cx="100" cy="220" r="1"/><circle cx="180" cy="250" r="1.5"/>
-    <circle cx="260" cy="230" r="2"/><circle cx="340" cy="270" r="1"/><circle cx="420" cy="240" r="1.5"/>
-    <circle cx="500" cy="260" r="2"/><circle cx="580" cy="220" r="1"/><circle cx="660" cy="250" r="1.5"/>
-    <circle cx="740" cy="230" r="2"/>
+  <rect width="800" height="400" fill="url(#nightGrad)"/>
+  <!-- Nebula clouds -->
+  <ellipse cx="300" cy="150" rx="200" ry="80" fill="#4fc3f7" opacity="0.03"/>
+  <ellipse cx="550" cy="250" rx="180" ry="60" fill="#7c4dff" opacity="0.03"/>
+  <!-- Dim stars -->
+  <g fill="#b0bec5" opacity="0.4">
+    <circle cx="50" cy="40" r="1"/><circle cx="130" cy="80" r="1"/><circle cx="200" cy="30" r="0.8"/>
+    <circle cx="280" cy="100" r="1"/><circle cx="360" cy="50" r="0.8"/><circle cx="440" cy="120" r="1"/>
+    <circle cx="520" cy="60" r="0.8"/><circle cx="600" cy="90" r="1"/><circle cx="680" cy="40" r="0.8"/>
+    <circle cx="750" cy="110" r="1"/><circle cx="90" cy="160" r="0.8"/><circle cx="170" cy="200" r="1"/>
+    <circle cx="250" cy="170" r="0.8"/><circle cx="330" cy="210" r="1"/><circle cx="410" cy="180" r="0.8"/>
+    <circle cx="490" cy="220" r="1"/><circle cx="570" cy="160" r="0.8"/><circle cx="650" cy="190" r="1"/>
+    <circle cx="730" cy="170" r="0.8"/><circle cx="60" cy="250" r="1"/><circle cx="140" cy="290" r="0.8"/>
+    <circle cx="220" cy="260" r="1"/><circle cx="300" cy="300" r="0.8"/><circle cx="380" cy="270" r="1"/>
+    <circle cx="460" cy="310" r="0.8"/><circle cx="540" cy="250" r="1"/><circle cx="620" cy="280" r="0.8"/>
+    <circle cx="700" cy="260" r="1"/><circle cx="100" cy="350" r="0.8"/><circle cx="350" cy="370" r="1"/>
+    <circle cx="600" cy="360" r="0.8"/>
   </g>
-  <!-- Constellation lines -->
-  <g stroke="#6688cc" stroke-width="1" fill="none" opacity="0.4">
-    <line x1="100" y1="80" x2="200" y2="100"/>
-    <line x1="200" y1="100" x2="300" y2="80"/>
-    <line x1="300" y1="80" x2="400" y2="120"/>
-    <line x1="400" y1="120" x2="500" y2="90"/>
-    <line x1="500" y1="90" x2="600" y2="110"/>
-    <line x1="600" y1="110" x2="700" y2="80"/>
+  <!-- Bright stars -->
+  <g fill="#fff" opacity="0.85">
+    <circle cx="150" cy="100" r="2"/><circle cx="300" cy="70" r="2.5"/><circle cx="450" cy="130" r="2"/>
+    <circle cx="600" cy="80" r="2"/><circle cx="720" cy="140" r="2.5"/><circle cx="200" cy="240" r="2"/>
+    <circle cx="500" cy="260" r="2"/><circle cx="650" cy="230" r="2.5"/>
   </g>
-  <!-- Brighter constellation stars -->
-  <g fill="#ffd54f">
-    <circle cx="100" cy="80" r="3"/><circle cx="200" cy="100" r="3"/>
-    <circle cx="300" cy="80" r="3"/><circle cx="400" cy="120" r="3"/>
-    <circle cx="500" cy="90" r="3"/><circle cx="600" cy="110" r="3"/>
-    <circle cx="700" cy="80" r="3"/>
+  <!-- Star glows -->
+  <g fill="#ffd54f" opacity="0.15" filter="url(#starGlow)">
+    <circle cx="300" cy="70" r="8"/><circle cx="600" cy="80" r="8"/><circle cx="720" cy="140" r="10"/>
   </g>
-  <!-- Nebula glow -->
-  <ellipse cx="400" cy="200" rx="150" ry="60" fill="#4fc3f7" opacity="0.05"/>
-  <ellipse cx="400" cy="200" rx="100" ry="40" fill="#7c4dff" opacity="0.05"/>
+  <!-- Constellation: Orion-like -->
+  <g stroke="#6688cc" stroke-width="1" fill="none" opacity="0.35">
+    <line x1="150" y1="100" x2="220" y2="130"/>
+    <line x1="220" y1="130" x2="300" y2="110"/>
+    <line x1="300" y1="110" x2="380" y2="140"/>
+    <line x1="380" y1="140" x2="450" y2="120"/>
+    <line x1="220" y1="130" x2="200" y2="200"/>
+    <line x1="300" y1="110" x2="320" y2="190"/>
+  </g>
+  <!-- Constellation stars (bright) -->
+  <g fill="#ffd54f" opacity="0.9">
+    <circle cx="150" cy="100" r="2.5"/><circle cx="220" cy="130" r="2.5"/><circle cx="300" cy="110" r="2.5"/>
+    <circle cx="380" cy="140" r="2.5"/><circle cx="450" cy="120" r="2.5"/>
+    <circle cx="200" cy="200" r="2"/><circle cx="320" cy="190" r="2"/>
+  </g>
 </svg>
