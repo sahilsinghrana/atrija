@@ -1,5 +1,5 @@
 ---
-const { title = "Selene", description = "An impressionist journey through light, philosophy, and the cosmos." } = Astro.props;
+const { title = "अत्रिज", description = "An impressionist journey through light, philosophy, and the cosmos." } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +10,9 @@ const { title = "Selene", description = "An impressionist journey through light,
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/loader.css" />
   <style>
-
     :root {
       --bg: #08080f;
       --bg-card: rgba(255,255,255,0.03);
@@ -35,11 +34,14 @@ const { title = "Selene", description = "An impressionist journey through light,
       --sage-dim: rgba(128,203,196,0.10);
       --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --devanagari: 'Noto Sans Devanagari', sans-serif;
       --max-w: 720px;
-      --nav-h: 60px;
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: auto; }
     body {
       font-family: var(--sans);
       background: var(--bg);
@@ -47,105 +49,27 @@ const { title = "Selene", description = "An impressionist journey through light,
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* ── Canvas Background ── */
+    /* ── Canvas Background (GPU layer) ── */
     #canvas-container {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
+      contain: layout style paint;
     }
-
-    /* ── Twinkling Stars Overlay (CSS layer) ── */
-    #stars-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .twinkle-star {
-      position: absolute;
-      border-radius: 50%;
-      background: #fff;
-      animation: twinkle var(--dur, 3s) ease-in-out infinite;
-      animation-delay: var(--delay, 0s);
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: var(--min-op, 0.15); transform: scale(1); }
-      50% { opacity: var(--max-op, 0.8); transform: scale(1.3); }
-    }
-
-    /* ── Revolving Moon (CSS) ── */
-    #moon-revolver {
-      position: fixed;
-      top: 8%;
-      right: 10%;
-      z-index: 0;
-      pointer-events: none;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff8e7, #ffe082 60%, rgba(255,213,79,0.3));
-      box-shadow: 0 0 40px 15px rgba(255,213,79,0.12), 0 0 80px 30px rgba(255,213,79,0.06);
-      animation: moonRevolve 120s linear infinite;
-    }
-    @keyframes moonRevolve {
-      0%   { transform: rotate(0deg) translateX(20px) rotate(0deg); opacity: 0.7; }
-      50%  { transform: rotate(180deg) translateX(20px) rotate(-180deg); opacity: 0.9; }
-      100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); opacity: 0.7; }
-    }
-
-    /* ── Navigation ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      height: var(--nav-h);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      background: rgba(8,8,15,0.85);
-      backdrop-filter: blur(16px) saturate(1.4);
-      -webkit-backdrop-filter: blur(16px) saturate(1.4);
-      border-bottom: 1px solid var(--border);
-    }
-    nav .logo {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    nav .logo span { font-weight: 400; opacity: 0.6; }
-    .nav-links { display: flex; gap: 0; list-style: none; }
-    .nav-links a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border-radius: 6px;
-      transition: color 0.2s, background 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); background: var(--gold-dim); }
 
     /* ── Main Content ── */
     main {
       position: relative;
       z-index: 1;
-      padding-top: var(--nav-h);
     }
 
     /* ── Hero ── */
     .hero {
-      min-height: calc(100vh - var(--nav-h));
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -163,28 +87,69 @@ const { title = "Selene", description = "An impressionist journey through light,
       background: linear-gradient(to bottom, var(--gold), transparent);
       opacity: 0.4;
     }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(3.5rem, 10vw, 7rem);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
+
+    /* ── ASCII Moon ── */
+    .ascii-moon-container {
+      position: relative;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .hero h1 em {
-      font-style: italic;
-      font-weight: 400;
+    .ascii-moon {
+      font-family: 'Courier New', 'Lucida Console', monospace;
+      font-size: 0.7rem;
+      line-height: 1.15;
       color: var(--gold);
-      text-shadow: 0 0 40px rgba(255,213,79,0.2);
+      text-shadow: 0 0 20px rgba(255,213,79,0.3), 0 0 60px rgba(255,213,79,0.1);
+      white-space: pre;
+      user-select: none;
+      will-change: transform;
     }
-    .hero p {
+    .ascii-moon-phase-label {
+      margin-top: 0.75rem;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* ── Sanskrit Logo ── */
+    .logo-sanskrit {
+      font-family: var(--devanagari);
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, var(--gold) 0%, #fff8e1 40%, var(--gold) 70%, #ffe082 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+    }
+    .logo-subtitle {
       font-family: var(--serif);
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      font-style: italic;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+    .logo-tagline {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: var(--text-dim);
       font-style: italic;
       max-width: 500px;
     }
+    .logo-tagline em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
     .hero .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -207,6 +172,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       display: flex;
       flex-direction: column;
       align-items: center;
+      contain: layout style;
     }
     .section-inner {
       width: 100%;
@@ -239,25 +205,18 @@ const { title = "Selene", description = "An impressionist journey through light,
       line-height: 1.15;
       margin-bottom: 2rem;
     }
-    /* Section-specific heading color theming via color theory */
     #today h2 { color: var(--gold); }
     #today h2 em { color: var(--coral); font-style: italic; font-weight: 400; }
-
     #moon h2 { color: var(--blue); }
-    #moon h2 em { color: var(--gold); font-style: italic; font-weight: 400; text-shadow: 0 0 30px rgba(255,213,79,0.15); }
-
+    #moon h2 em { color: var(--gold); font-style: italic; font-weight: 400; }
     #philosophy h2 { color: var(--coral); }
     #philosophy h2 em { color: var(--sage); font-style: italic; font-weight: 400; }
-
     #gita h2 { color: var(--violet); }
     #gita h2 em { color: var(--gold); font-style: italic; font-weight: 400; }
-
     #shiva h2 { color: var(--sage); }
     #shiva h2 em { color: var(--blue); font-style: italic; font-weight: 400; }
-
     #art h2 { color: var(--gold); }
     #art h2 em { color: var(--coral); font-style: italic; font-weight: 400; }
-
     #changelog h2 { color: var(--text-dim); }
     #changelog h2 em { color: var(--gold); font-style: italic; font-weight: 400; }
 
@@ -276,6 +235,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--border);
+      contain: layout style paint;
     }
     .image-card img, .image-card svg {
       width: 100%;
@@ -289,16 +249,17 @@ const { title = "Selene", description = "An impressionist journey through light,
       pointer-events: none;
     }
 
-    /* ── Fact Cards with Image Backgrounds ── */
+    /* ── Fact Cards ── */
     .fact-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.5rem 1.75rem;
       margin: 1.25rem 0;
-      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      transition: background 0.3s, border-color 0.3s;
       position: relative;
       overflow: hidden;
+      contain: layout style;
     }
     .fact-card::before {
       content: '';
@@ -306,7 +267,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       inset: 0;
       background: var(--card-bg-image) center/cover no-repeat;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.4s ease;
       z-index: 0;
     }
     .fact-card::after {
@@ -315,20 +276,16 @@ const { title = "Selene", description = "An impressionist journey through light,
       inset: 0;
       background: linear-gradient(135deg, rgba(8,8,15,0.88), rgba(8,8,15,0.75));
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.4s ease;
       z-index: 0;
     }
     .fact-card:hover {
       background: var(--bg-card-hover);
       border-color: rgba(255,255,255,0.12);
-      transform: translateY(-2px);
     }
     .fact-card:hover::before { opacity: 1; }
     .fact-card:hover::after { opacity: 1; }
-    .fact-card p, .fact-card .source {
-      position: relative;
-      z-index: 1;
-    }
+    .fact-card p, .fact-card .source { position: relative; z-index: 1; }
     .fact-card p {
       font-size: 0.95rem;
       color: var(--text-dim);
@@ -345,11 +302,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       align-items: center;
       gap: 0.5rem;
     }
-    .fact-card .source::before {
-      content: '—';
-      color: var(--gold);
-      opacity: 0.5;
-    }
+    .fact-card .source::before { content: '—'; color: var(--gold); opacity: 0.5; }
 
     /* ── Quote Block ── */
     .quote-block {
@@ -407,11 +360,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       padding: 0.2rem 0.6rem;
       margin-bottom: 1rem;
     }
-    .today-fact p {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.7;
-    }
+    .today-fact p { font-size: 1rem; color: var(--text); line-height: 1.7; }
     .today-fact .source {
       margin-top: 0.75rem;
       font-size: 0.8rem;
@@ -421,40 +370,100 @@ const { title = "Selene", description = "An impressionist journey through light,
 
     /* ── Changelog ── */
     .changelog-section { padding-bottom: 4rem; }
-    .changelog-entry {
-      border-left: 2px solid var(--border);
-      padding-left: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-    .changelog-entry .date {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--gold);
-      margin-bottom: 0.25rem;
-    }
-    .changelog-entry .desc {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      margin-bottom: 0.5rem;
-    }
-    .changelog-entry ul {
-      list-style: none;
-      padding: 0;
-    }
-    .changelog-entry li {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      padding: 0.15rem 0;
-      padding-left: 1rem;
+    .changelog-timeline {
       position: relative;
+      padding-left: 2rem;
     }
-    .changelog-entry li::before {
-      content: '·';
+    .changelog-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--border), transparent);
+    }
+    .changelog-entry {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .changelog-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .changelog-entry::before {
+      content: '';
+      position: absolute;
+      left: -2rem; top: 0.4rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 8px rgba(255,213,79,0.3);
+      transform: translateX(-4px);
+    }
+    .changelog-entry-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .changelog-date {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .changelog-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      line-height: 1.4;
+    }
+    .changelog-type.initial { background: rgba(255,213,79,0.12); color: var(--gold); border: 1px solid rgba(255,213,79,0.2); }
+    .changelog-type.feature { background: rgba(79,195,247,0.12); color: var(--blue); border: 1px solid rgba(79,195,247,0.2); }
+    .changelog-type.fix { background: rgba(255,138,101,0.12); color: var(--coral); border: 1px solid rgba(255,138,101,0.2); }
+    .changelog-type.content { background: rgba(179,136,255,0.12); color: var(--violet); border: 1px solid rgba(179,136,255,0.2); }
+    .changelog-type.design { background: rgba(128,203,196,0.12); color: var(--sage); border: 1px solid rgba(128,203,196,0.2); }
+    .changelog-version {
+      font-family: 'Courier New', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      margin-left: auto;
+    }
+    .changelog-desc {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    .changelog-changes { list-style: none; padding: 0; margin: 0; }
+    .changelog-changes li {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      padding: 0.3rem 0 0.3rem 1.25rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .changelog-changes li::before {
+      content: '→';
       position: absolute;
       left: 0;
       color: var(--gold);
       opacity: 0.5;
+      font-size: 0.75rem;
     }
+    .changelog-changes li + li { border-top: 1px solid rgba(255,255,255,0.03); }
 
     /* ── Interactive Flute ── */
     #flute-container {
@@ -472,20 +481,19 @@ const { title = "Selene", description = "An impressionist journey through light,
       background: rgba(255,213,79,0.06);
       border: 1px solid rgba(255,213,79,0.15);
       transition: background 0.3s, border-color 0.3s, transform 0.2s;
+      will-change: transform;
+      -webkit-tap-highlight-color: transparent;
     }
     #flute-container:hover {
       background: rgba(255,213,79,0.12);
       border-color: rgba(255,213,79,0.35);
       transform: scale(1.08);
     }
-    #flute-container svg {
-      width: 48px;
-      height: 48px;
-    }
+    #flute-container:active { transform: scale(0.95); }
+    #flute-container svg { width: 48px; height: 48px; }
     #flute-container .flute-tooltip {
       position: absolute;
-      bottom: 100%;
-      right: 0;
+      bottom: 100%; right: 0;
       margin-bottom: 8px;
       font-size: 0.7rem;
       color: var(--text-muted);
@@ -496,7 +504,7 @@ const { title = "Selene", description = "An impressionist journey through light,
     }
     #flute-container:hover .flute-tooltip { opacity: 1; }
 
-    /* ── Music Notes (spawned by flute click) ── */
+    /* ── Music Notes ── */
     .spawned-note {
       position: fixed;
       z-index: 60;
@@ -505,7 +513,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       font-size: 1.5rem;
       color: var(--gold);
       animation: noteFloat 2.5s ease-out forwards;
-      text-shadow: 0 0 10px rgba(255,213,79,0.4);
+      will-change: transform, opacity;
     }
     @keyframes noteFloat {
       0%   { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
@@ -513,14 +521,16 @@ const { title = "Selene", description = "An impressionist journey through light,
       100% { opacity: 0; transform: translateY(-120px) scale(0.7) rotate(15deg); }
     }
 
-    /* ── Scroll-triggered Flowers ── */
+    /* ── Scroll-triggered Flowers (GPU composited) ── */
     .scroll-flower {
       position: fixed;
       z-index: 40;
       pointer-events: none;
       opacity: 0;
       transform: scale(0) rotate(-30deg);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform, opacity;
+      contain: layout style paint;
     }
     .scroll-flower.visible {
       opacity: 1;
@@ -529,7 +539,6 @@ const { title = "Selene", description = "An impressionist journey through light,
     .scroll-flower svg {
       width: 40px;
       height: 40px;
-      filter: drop-shadow(0 0 6px rgba(255,213,79,0.3));
     }
 
     /* ── Footer ── */
@@ -540,28 +549,33 @@ const { title = "Selene", description = "An impressionist journey through light,
       color: var(--text-muted);
       font-size: 0.8rem;
     }
+    footer .footer-sanskrit {
+      font-family: var(--devanagari);
+      font-size: 1.2rem;
+      color: var(--gold);
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
+    }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
-      .nav-links { gap: 0; }
-      .nav-links a { padding: 0.4rem 0.7rem; font-size: 0.75rem; }
       .section { padding: 4rem 1.25rem; }
       .hero { padding: 2rem 1.25rem; }
-      .hero h1 { font-size: clamp(2.5rem, 12vw, 4.5rem); }
+      .logo-sanskrit { font-size: clamp(2.5rem, 12vw, 4.5rem); }
+      .ascii-moon { font-size: 0.5rem; }
       .fact-card { padding: 1.25rem; }
       .today-fact { padding: 1.5rem; }
       .image-card { margin: 1.5rem 0; border-radius: 8px; }
       #flute-container { bottom: 1rem; right: 1rem; width: 60px; height: 60px; }
       #flute-container svg { width: 36px; height: 36px; }
-      #moon-revolver { width: 40px; height: 40px; top: 12%; }
+      .changelog-timeline { padding-left: 1.5rem; }
+      .changelog-entry::before { left: -1.5rem; }
     }
     @media (max-width: 480px) {
-      nav { padding: 0 1rem; }
-      .nav-links { display: none; }
       .section { padding: 3rem 1rem; }
       .quote-block { padding: 1.5rem 1rem; }
       .quote-block::before { font-size: 3rem; }
-      #moon-revolver { display: none; }
+      .ascii-moon { font-size: 0.38rem; }
     }
   </style>
 </head>
@@ -572,12 +586,6 @@ const { title = "Selene", description = "An impressionist journey through light,
   </div>
 
   <div id="canvas-container"></div>
-
-  <!-- CSS Twinkling Stars Overlay -->
-  <div id="stars-overlay"></div>
-
-  <!-- CSS Revolving Moon -->
-  <div id="moon-revolver"></div>
 
   <!-- Interactive Flute Button -->
   <div id="flute-container" title="Click to play">
@@ -594,48 +602,17 @@ const { title = "Selene", description = "An impressionist journey through light,
     </svg>
   </div>
 
-  <nav>
-    <a href="#hero" class="logo">Selene<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="#today">Today</a></li>
-      <li><a href="#moon">Moon</a></li>
-      <li><a href="#philosophy">Philosophy</a></li>
-      <li><a href="#gita">Gita</a></li>
-      <li><a href="#shiva">Shiva</a></li>
-      <li><a href="#art">Art</a></li>
-    </ul>
-  </nav>
-
   <main>
     <slot />
   </main>
 
   <footer>
-    Selene — An impressionist experience in light &amp; philosophy
+    <div class="footer-sanskrit">अत्रिज</div>
+    An impressionist experience in light &amp; philosophy
   </footer>
 
   <!-- Interactive Scripts -->
   <script>
-    // ── Twinkling Stars Generator ──
-    (function() {
-      var overlay = document.getElementById('stars-overlay');
-      if (!overlay) return;
-      var count = 80;
-      for (var i = 0; i < count; i++) {
-        var star = document.createElement('div');
-        star.className = 'twinkle-star';
-        var size = 1 + Math.random() * 2.5;
-        star.style.cssText = 'width:' + size + 'px;height:' + size + 'px;' +
-          'left:' + (Math.random() * 100) + '%;' +
-          'top:' + (Math.random() * 100) + '%;' +
-          '--dur:' + (2 + Math.random() * 4) + 's;' +
-          '--delay:' + (Math.random() * 5) + 's;' +
-          '--min-op:' + (0.1 + Math.random() * 0.2) + ';' +
-          '--max-op:' + (0.5 + Math.random() * 0.5) + ';';
-        overlay.appendChild(star);
-      }
-    })();
-
     // ── Flute Click → Music Notes ──
     (function() {
       var flute = document.getElementById('flute-container');
@@ -661,15 +638,13 @@ const { title = "Selene", description = "An impressionist journey through light,
       });
     })();
 
-    // ── Scroll-triggered Flowers ──
+    // ── Scroll-triggered Flowers (throttled, reduced count) ──
     (function() {
       var flowerPositions = [
-        { x: '5%', y: '25%', color: '#f5c800' },
-        { x: '88%', y: '35%', color: '#ff6699' },
-        { x: '12%', y: '55%', color: '#cc2242' },
-        { x: '82%', y: '65%', color: '#ffcc00' },
-        { x: '8%', y: '80%', color: '#9933cc' },
-        { x: '90%', y: '85%', color: '#ff4400' }
+        { x: '5%', y: '30%', color: '#f5c800' },
+        { x: '88%', y: '40%', color: '#ff6699' },
+        { x: '10%', y: '65%', color: '#cc2242' },
+        { x: '85%', y: '75%', color: '#ffcc00' }
       ];
       var flowers = [];
       flowerPositions.forEach(function(pos, i) {
@@ -688,19 +663,26 @@ const { title = "Selene", description = "An impressionist journey through light,
         }
         el.innerHTML += '</g></svg>';
         document.body.appendChild(el);
-        flowers.push({ el: el, triggerY: (i + 1) * 300 + 200 });
+        flowers.push({ el: el, triggerY: (i + 1) * 400 + 300 });
       });
 
       var revealed = new Set();
+      var ticking = false;
       window.addEventListener('scroll', function() {
-        var scrollY = window.scrollY;
-        flowers.forEach(function(f, idx) {
-          if (!revealed.has(idx) && scrollY > f.triggerY) {
-            f.el.classList.add('visible');
-            revealed.add(idx);
-          }
-        });
-      });
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            var scrollY = window.scrollY;
+            flowers.forEach(function(f, idx) {
+              if (!revealed.has(idx) && scrollY > f.triggerY) {
+                f.el.classList.add('visible');
+                revealed.add(idx);
+              }
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
     })();
   </script>
 </body>

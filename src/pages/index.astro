@@ -28,11 +28,20 @@ const colorData = JSON.stringify({
 <BaseLayout>
 
   <!-- ═══════════════════════════════════════
-       HERO
+       HERO — ASCII Moon + अत्रिज Logo
   ═══════════════════════════════════════ -->
   <section id="hero" class="hero">
-    <h1>Se<em>lene</em></h1>
-    <p>An impressionist journey through light, philosophy &amp; the cosmos</p>
+    <div class="ascii-moon-container">
+      <pre class="ascii-moon" id="ascii-moon">
+        .-.
+       (   )
+        `-&#39;
+      </pre>
+      <div class="ascii-moon-phase-label" id="moon-phase-label">New Moon</div>
+    </div>
+    <div class="logo-sanskrit">अत्रिज</div>
+    <div class="logo-subtitle">Atrij</div>
+    <p class="logo-tagline">An <em>impressionist</em> journey through light, philosophy &amp; the cosmos</p>
     <span class="scroll-hint">Scroll to explore</span>
   </section>
 
@@ -213,27 +222,40 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       CHANGELOG
+       CHANGELOG — Timeline Format
   ═══════════════════════════════════════ -->
   <section id="changelog" class="section">
     <div class="section-inner changelog-section">
       <div class="section-label">Changelog</div>
       <h2>Daily <em>mutations</em></h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2.5rem;">
         Version {siteData.changelog.version} — color, content &amp; form evolve daily.
       </p>
 
-      {changelogEntries.map(entry => (
-        <div class="changelog-entry">
-          <div class="date">{entry.date}</div>
-          <div class="desc">{entry.description}</div>
-          <ul>
-            {entry.changes.map(change => (
-              <li>{change}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <div class="changelog-timeline">
+        {changelogEntries.map(entry => (
+          <div class="changelog-entry">
+            <div class="changelog-entry-header">
+              <span class="changelog-date">{entry.date}</span>
+              <span class="changelog-type {entry.type}">
+                {entry.type === 'initial' && '✦'}
+                {entry.type === 'feature' && '◆'}
+                {entry.type === 'fix' && '◈'}
+                {entry.type === 'content' && '✎'}
+                {entry.type === 'design' && '◐'}
+                {' '}{entry.type}
+              </span>
+              <span class="changelog-version">v{siteData.changelog.version}</span>
+            </div>
+            <div class="changelog-desc">{entry.description}</div>
+            <ul class="changelog-changes">
+              {entry.changes.map(change => (
+                <li>{change}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -255,5 +277,101 @@ const colorData = JSON.stringify({
     })();
   </script>
   <script type="module" src="/js/scene-init.js"></script>
+
+  <!-- ── ASCII Moon Phase Animation ── -->
+  <script>
+    (function() {
+      var phases = [
+        { label: 'New Moon', art: [
+          '       .---.       ',
+          '      /     \\      ',
+          '     |       |     ',
+          '      \\     /      ',
+          '       \'---\'       '
+        ]},
+        { label: 'Waxing Crescent', art: [
+          '       .---.       ',
+          '      /  .  \\      ',
+          '     |  .    |     ',
+          '      \\  .  /      ',
+          '       \'---\'       '
+        ]},
+        { label: 'First Quarter', art: [
+          '       .---.       ',
+          '      / .:. \\      ',
+          '     | .:.   |     ',
+          '      \\ .:. /      ',
+          '       \'---\'       '
+        ]},
+        { label: 'Waxing Gibbous', art: [
+          '       .---.       ',
+          '      /.:.:. \\     ',
+          '     |.:.:.:. |    ',
+          '      \\.:.:./      ',
+          '       \'---\'       '
+        ]},
+        { label: 'Full Moon', art: [
+          '       .---.       ',
+          '      /:.:.:.\\     ',
+          '     |:.:.:.:.|    ',
+          '      \\:.:.:./     ',
+          '       \'---\'       '
+        ]},
+        { label: 'Waning Gibbous', art: [
+          '       .---.       ',
+          '      / .:.:.\\     ',
+          '     |  .:.:.:|    ',
+          '      \\ .:.:./     ',
+          '       \'---\'       '
+        ]},
+        { label: 'Last Quarter', art: [
+          '       .---.       ',
+          '      / .:. \\      ',
+          '     |   .:. |     ',
+          '      \\ .:. /      ',
+          '       \'---\'       '
+        ]},
+        { label: 'Waning Crescent', art: [
+          '       .---.       ',
+          '      /  .  \\      ',
+          '     |    .  |     ',
+          '      \\  .  /      ',
+          '       \'---\'       '
+        ]}
+      ];
+
+      var moonEl = document.getElementById('ascii-moon');
+      var labelEl = document.getElementById('moon-phase-label');
+      if (!moonEl || !labelEl) return;
+
+      var currentPhase = 0;
+      var phaseDuration = 3000; // 3 seconds per phase
+
+      function setPhase(idx) {
+        var p = phases[idx];
+        moonEl.textContent = p.art.join('\n');
+        labelEl.textContent = p.label;
+        labelEl.style.opacity = '0';
+        // Trigger reflow for animation restart
+        void labelEl.offsetWidth;
+        labelEl.style.opacity = '';
+      }
+
+      // Initial
+      setPhase(0);
+
+      // Cycle through phases
+      setInterval(function() {
+        currentPhase = (currentPhase + 1) % phases.length;
+        setPhase(currentPhase);
+      }, phaseDuration);
+
+      // Slow rotation via CSS
+      moonEl.style.animation = 'moonRotate 20s linear infinite';
+      var style = document.createElement('style');
+      style.textContent = '@keyframes moonRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }';
+      document.head.appendChild(style);
+    })();
+  </script>
 
 </BaseLayout>
