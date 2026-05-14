@@ -1,0 +1,76 @@
+{
+  "columns": [
+    { "id": "backlog", "name": "💡 Idea Backlog", "tasks": [] },
+    { "id": "red", "name": "🔴 Red (Failing Test)", "tasks": [] },
+    { "id": "green", "name": "🟢 Green (Implement)", "tasks": [] },
+    { "id": "refactor", "name": "🔵 Refactor (Optimize)", "tasks": [] },
+    { "id": "done", "name": "✅ Done", "tasks": [] }
+  ],
+  "ideas": [
+    {
+      "id": "idea-001",
+      "title": "Add shooting star particles",
+      "description": "Random shooting stars that streak across the sky with trailing particles. Triggered every 8-15 seconds.",
+      "category": "3D Elements",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-002",
+      "title": "Interactive constellation drawing",
+      "description": "Users can click stars to draw constellation lines. Lines glow and fade. Store in localStorage.",
+      "category": "Interactivity",
+      "priority": "low",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-003",
+      "title": "Moon phase API integration",
+      "description": "Replace calculated moon phase with real-time API data. Show accurate phase for user's location.",
+      "category": "Data",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-004",
+      "title": "Ambient music generator",
+      "description": "Procedural ambient music using Web Audio API. Flute-like tones that respond to scroll position and time of day.",
+      "category": "Audio",
+      "priority": "high",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-005",
+      "title": "Sunflower field parallax",
+      "description": "Multi-layer parallax for sunflower field. Foreground flowers sway more, background less. Depth-based blur.",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-006",
+      "title": "Philosophy quote carousel",
+      "description": "Auto-rotating quote cards with fade transitions. Each quote tied to current section's visual element.",
+      "category": "UI",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-007",
+      "title": "GLSL watercolor post-processing",
+      "description": "Add watercolor-style post-processing shader. Edge detection + color bleeding for painterly look.",
+      "category": "Shaders",
+      "priority": "high",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-008",
+      "title": "Daily generated philosophy facts",
+      "description": "Use LLM API to generate new philosophy facts daily. Store in siteData.json via cron job.",
+      "category": "Content",
+      "priority": "medium",
+      "status": "backlog"
+    }
+  ],
+  "generatedAt": "2026-05-14T21:00:00Z"
+}
