@@ -1,0 +1,25 @@
+{
+  "name": "van-gogh-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "deploy": "npm run build && cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "astro": "^4",
+    "three": "^0.160"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40",
+    "vitest": "~1.6.0",
+    "jsdom": "^24.0.0"
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "themes": [
+    {
+      "id": "selene-moon",
+      "title": "Selene & The Moon",
+      "category": "mythology",
+      "facts": [
+        {
+          "text": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
+          "source": "Greek Mythology",
+          "element": "moon"
+        },
+        {
+          "text": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas — the emotional mind — and its phases mirror the cycles of human desire and detachment.",
+          "source": "Vedic Astrology",
+          "element": "moon"
+        },
+        {
+          "text": "Selene fell in love with the mortal Endymion, asking Zeus to grant him eternal sleep so he would never fade. The Moon's love is possessive — it wants to freeze beauty in time, yet beauty exists only because it passes.",
+          "source": "Greek Mythology",
+          "element": "moon"
+        },
+        {
+          "text": "The Moon has no light of its own. It shines only by reflecting the Sun. In the same way, the ego believes it is the source of its achievements, forgetting that all capability is borrowed from forces greater than itself.",
+          "source": "Philosophical Reflection",
+          "element": "moon"
+        },
+        {
+          "text": "Van Gogh painted 'Starry Night' while in an asylum, the swirling sky a mirror of his inner turbulence. The Moon in that painting is not serene — it burns. Art is not the absence of suffering; it is suffering transformed.",
+          "source": "Art History",
+          "element": "moon"
+        }
+      ],
+      "quotes": [
+        "The Moon is a friend for the lonesome to talk to. — Carl Sandburg",
+        "We are all like the bright moon, we still have our darker side. — Kahlil Gibran",
+        "The Moon, like a flower in heaven's high bower, with silent delight sits and smiles on the night. — William Blake"
+      ]
+    },
+    {
+      "id": "ego-arrogance",
+      "title": "Ego & Arrogance",
+      "category": "philosophy",
+      "facts": [
+        {
+          "text": "The Bhagavad Gita warns: 'The ego is the greatest enemy of the human soul.' When Arjuna asks Krishna about the nature of the self, the answer is not 'I am great' but 'I am not the doer.'",
+          "source": "Bhagavad Gita, Chapter 3",
+          "element": "waves"
+        },
+        {
+          "text": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
+          "source": "Philosophical Reflection",
+          "element": "waves"
+        },
+        {
+          "text": "In the ocean of existence, arrogance is a wave that believes it is separate from the sea. It rises, it crashes, and it returns — never having been anything but water.",
+          "source": "Vedantic Philosophy",
+          "element": "waves"
+        },
+        {
+          "text": "The Shiv Purana describes ego (ahamkara) as the first veil that separates the individual soul from Shiva — pure consciousness. To remove the ego is not to destroy the self but to discover its infinite nature.",
+          "source": "Shiv Purana",
+          "element": "waves"
+        },
+        {
+          "text": "Van Gogh sold only one painting in his lifetime. His ego was not inflated by the world's approval. He painted because the act of creation was its own reward — a rare freedom from the tyranny of external validation.",
+          "source": "Art History",
+          "element": "sunflowers"
+        }
+      ],
+      "quotes": [
+        "The ego is not master in its own house. — Sigmund Freud",
+        "In the fields of observation, chance favors only the prepared mind. — Louis Pasteur (humility before nature)",
+        "The more I learn, the more I realize how much I don't know. — Albert Einstein"
+      ]
+    },
+    {
+      "id": "bhagavad-gita",
+      "title": "Bhagavad Gita",
+      "category": "scripture",
+      "facts": [
+        {
+          "text": "The Bhagavad Gita begins not with wisdom but with despair. Arjuna, the greatest warrior, drops his bow and says, 'I will not fight.' The scripture teaches that the darkest moment precedes the greatest clarity.",
+          "source": "Bhagavad Gita, Chapter 1",
+          "element": "stars"
+        },
+        {
+          "text": "Krishna's central teaching: 'You have the right to work, but never to the fruit of work.' This is not passivity — it is the ultimate freedom. Act fully, attach to nothing.",
+          "source": "Bhagavad Gita, Chapter 2, Verse 47",
+          "element": "stars"
+        },
+        {
+          "text": "The Gita describes the soul as 'unborn, eternal, ever-existing, undying, and primeval.' It is not slain when the body is slain. This is not metaphor — it is the foundational axiom of Hindu philosophy.",
+          "source": "Bhagavad Gita, Chapter 2, Verse 20",
+          "element": "constellations"
+        },
+        {
+          "text": "In Chapter 11, Krishna reveals his Vishvarupa — the Universal Form — containing all worlds, all beings, all time. Arjuna sees the entirety of existence in one being and trembles. The infinite is not abstract; it is terrifyingly real.",
+          "source": "Bhagavad Gita, Chapter 11",
+          "element": "constellations"
+        },
+        {
+          "text": "The Gita was spoken on a battlefield, not in a temple. Wisdom does not require perfect conditions. The most profound truths are often revealed in the midst of chaos, not in the silence of retreat.",
+          "source": "Bhagavad Gita, Context",
+          "element": "flute"
+        }
+      ],
+      "quotes": [
+        "You are what you believe in. You become that which you believe you can become. — Bhagavad Gita",
+        "The soul is neither born, and nor does it die. — Bhagavad Gita 2.20",
+        "When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place. — Bhagavad Gita 6.19"
+      ]
+    },
+    {
+      "id": "shiv-purana",
+      "title": "Shiv Purana",
+      "category": "scripture",
+      "facts": [
+        {
+          "text": "In the Shiv Purana, Shiva is described as Nirguna — without attributes, without form, without beginning or end. He is not a god among gods but the ground of being itself, the silence between notes.",
+          "source": "Shiv Purana, Vidyeshwara Samhita",
+          "element": "flute"
+        },
+        {
+          "text": "The Shiv Purana teaches that the universe is Shiva's dance — the Tandava. Every atom moves in rhythm. Destruction is not the opposite of creation; it is its partner in an eternal dance.",
+          "source": "Shiv Purana, Rudra Samhita",
+          "element": "music"
+        },
+        {
+          "text": "Shiva drank the poison Halahala to save the universe, turning his throat blue. The Neelakantha — the blue-throated one — teaches that the willingness to suffer for others is the highest form of divinity.",
+          "source": "Shiv Purana, Samudra Manthan",
+          "element": "waves"
+        },
+        {
+          "text": "The Shiv Purana describes the damaru — Shiva's drum — as the source of all language and music. The first sound, Nada, is the vibration from which all creation emerges. Music is not entertainment; it is cosmology.",
+          "source": "Shiv Purana",
+          "element": "music"
+        },
+        {
+          "text": "Shiva sits in meditation on Mount Kailash, the axis mundi, the center of the world. His stillness is not inactivity — it is the stillness of a mind that has transcended all duality, all desire, all fear.",
+          "source": "Shiv Purana, Kailasa Khanda",
+          "element": "moon"
+        }
+      ],
+      "quotes": [
+        "I am the death that carries off all things, and the source of things to come. — Shiva, Bhagavad Gita 10.34",
+        "The root of joy is in the mind, and the root of the mind is in the Self. — Shiv Purana",
+        "He who sees the Supreme Lord dwelling equally in all beings, undestroyed in the destroying, truly sees. — Inspired by Shiv Purana"
+      ]
+    },
+    {
+      "id": "van-gogh-philosophy",
+      "title": "Van Gogh's Philosophy",
+      "category": "art",
+      "facts": [
+        {
+          "text": "Van Gogh wrote: 'I dream of painting and then I paint my dream.' For him, art was not representation but revelation — the act of making visible what the eye cannot see.",
+          "source": "Vincent van Gogh, Letters to Theo",
+          "element": "sunflowers"
+        },
+        {
+          "text": "The sunflowers Van Gogh painted were not decorative. They were a meditation on life and death — some blooms fresh and golden, others wilting and brown. He painted the full cycle in a single canvas.",
+          "source": "Art Analysis",
+          "element": "sunflowers"
+        },
+        {
+          "text": "Van Gogh's 'Starry Night' was painted from memory during the day, at the Saint-Paul-de-Muse asylum. The night he painted was not the night he saw — it was the night he felt.",
+          "source": "Art History",
+          "element": "stars"
+        },
+        {
+          "text": "In his letters, Van Gogh frequently referenced the Bible and spiritual longing. He had been a lay pastor before becoming an artist. His paintings are sermons in color — each brushstroke a prayer.",
+          "source": "Van Gogh Letters",
+          "element": "tulips"
+        },
+        {
+          "text": "Van Gogh painted over 30 self-portraits, not out of vanity but out of necessity — he could not afford models. In each one, the gaze is searching, as if he were trying to paint not his face but his soul.",
+          "source": "Art History",
+          "element": "moon"
+        }
+      ],
+      "quotes": [
+        "I am seeking, I am striving, I am in it with all my heart. — Vincent van Gogh",
+        "Great things are done by a series of small things brought together. — Vincent van Gogh",
+        "I often think that the night is more alive and more richly colored than the day. — Vincent van Gogh"
+      ]
+    }
+  ],
+  "colorSchemes": [
+    {
+      "name": "starry-night",
+      "primary": "#1a237e",
+      "secondary": "#ffd54f",
+      "accent": "#4fc3f7",
+      "background": "#0a0a1a",
+      "text": "#e8e8f0",
+      "mood": "contemplative",
+      "shaderParams": {
+        "strokeDensity": 8,
+        "swirlFrequency": 12,
+        "colorIntensity": 1.4
+      }
+    },
+    {
+      "name": "sunflower",
+      "primary": "#f5c800",
+      "secondary": "#ff6f00",
+      "accent": "#2e7d32",
+      "background": "#1a1200",
+      "text": "#fff8e1",
+      "mood": "warm",
+      "shaderParams": {
+        "strokeDensity": 10,
+        "swirlFrequency": 8,
+        "colorIntensity": 1.6
+      }
+    },
+    {
+      "name": "midnight-wave",
+      "primary": "#0d47a1",
+      "secondary": "#00bcd4",
+      "accent": "#7c4dff",
+      "background": "#000a12",
+      "text": "#b3e5fc",
+      "mood": "mysterious",
+      "shaderParams": {
+        "strokeDensity": 6,
+        "swirlFrequency": 15,
+        "colorIntensity": 1.2
+      }
+    },
+    {
+      "name": "tulip-garden",
+      "primary": "#c62828",
+      "secondary": "#ff80ab",
+      "accent": "#00c853",
+      "background": "#1a0a0a",
+      "text": "#fce4ec",
+      "mood": "passionate",
+      "shaderParams": {
+        "strokeDensity": 9,
+        "swirlFrequency": 10,
+        "colorIntensity": 1.5
+      }
+    },
+    {
+      "name": "moonlit-silver",
+      "primary": "#90a4ae",
+      "secondary": "#ffd740",
+      "accent": "#80deea",
+      "background": "#0d1117",
+      "text": "#eceff1",
+      "mood": "serene",
+      "shaderParams": {
+        "strokeDensity": 5,
+        "swirlFrequency": 12.9,
+        "colorIntensity": 1.15
+      }
+    }
+  ],
+  "changelog": {
+    "version": "1.0.0",
+    "entries": [
+      {
+        "date": "2026-05-14",
+        "type": "initial",
+        "description": "Initial site creation — Van Gogh impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
+        "changes": [
+          "Created Three.js scene with Van Gogh post-processing shader",
+          "Built 3D elements: Moon, Sunflowers, Tulips, Stars, Constellations, Flute, MusicNotes, Waves",
+          "Created GLSL shaders: vanGogh (post-processing), stars, waves",
+          "Set up Astro 4 static site with Vitest and Playwright",
+          "Configured deploy script for Nginx on port 8080"
+        ]
+      },
+      {
+        "date": "2026-05-14",
+        "type": "daily-mutation",
+        "description": "Daily mutation: Theme \"Van Gogh's Philosophy\" with \"moonlit-silver\" color scheme.",
+        "changes": [
+          "Rotated to color scheme: moonlit-silver (serene)",
+          "Featured theme: Van Gogh's Philosophy",
+          "Shader params — strokeDensity: 5, swirlFrequency: 12.9, colorIntensity: 1.15",
+          "Featured fact: \"Van Gogh painted over 30 self-portraits, not out of vanity but out of necessity ...\"",
+          "Featured quote: \"I often think that the night is more alive and more richly colored than the day....\""
+        ]
+      }
+    ]
+  }
+}

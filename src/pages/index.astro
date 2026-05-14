@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteData from '../content/siteData.json';
+
+// Pick today's theme based on day of year for deterministic daily rotation
+const now = new Date();
+const start = new Date(now.getFullYear(), 0, 0);
+const diff = now.getTime() - start.getTime();
+const oneDay = 1000 * 60 * 60 * 24;
+const dayOfYear = Math.floor(diff / oneDay);
+
+const themeIndex = dayOfYear % siteData.themes.length;
+const colorIndex = dayOfYear % siteData.colorSchemes.length;
+
+const todayTheme = siteData.themes[themeIndex];
+const todayColor = siteData.colorSchemes[colorIndex];
+const todayFact = todayTheme.facts[dayOfYear % todayTheme.facts.length];
+const todayQuote = todayTheme.quotes[dayOfYear % todayTheme.quotes.length];
+
+const changelogEntries = siteData.changelog.entries.slice(-5).reverse();
+
+// Serialize color data for client-side injection
+const colorData = JSON.stringify({
+  primary: todayColor.primary,
+  secondary: todayColor.secondary,
+  accent: todayColor.accent,
+  background: todayColor.background,
+  text: todayColor.text,
+  shader: todayColor.shaderParams
+});
+---
+
+<BaseLayout title="Selene — A Van Gogh Experience">
+
+  <!-- Hero Section with 3D Scene -->
+  <section id="hero" class="section" style="position:relative; max-width:100%; padding:0;">
+    <div class="hero-overlay">
+      <h1>Selene</h1>
+      <p>A Van Gogh Experience in Light & Philosophy</p>
+    </div>
+    <div class="scroll-indicator">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Today's Philosophical Fact -->
+  <section id="today" class="section">
+    <h2>Today's Reflection</h2>
+    <p style="font-size:0.85rem; color:var(--color-accent); margin-bottom:1rem;">
+      Theme: {todayTheme.title} · Mood: {todayColor.mood}
+    </p>
+    <div class="fact-card">
+      <p>{todayFact.text}</p>
+      <p class="source">— {todayFact.source}</p>
+    </div>
+    <div class="quote-block">
+      &ldquo;{todayQuote}&rdquo;
+    </div>
+  </section>
+
+  <!-- Moon & Selene Section -->
+  <section id="moon" class="section">
+    <h2>The Moon &amp; Selene</h2>
+    <p>
+      In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her
+      as a silver chariot crossing the night, but she was more than a goddess. She was the
+      first mirror, the original reflector of light, the celestial body that taught humanity
+      that one can shine without being the source.
+    </p>
+    {siteData.themes[0].facts.slice(0, 3).map(fact => (
+      <div class="fact-card">
+        <p>{fact.text}</p>
+        <p class="source">— {fact.source}</p>
+      </div>
+    ))}
+    <div class="quote-block">
+      &ldquo;{siteData.themes[0].quotes[0]}&rdquo;
+    </div>
+  </section>
+
+  <!-- Philosophy: Ego & Arrogance -->
+  <section id="philosophy" class="section">
+    <h2>Ego, Arrogance &amp; The Waves</h2>
+    <p>
+      The wave does not know it is the ocean. It rises, believes itself unique, crashes against
+      the shore, and dissolves — only to rise again. This is the cycle of ego: the endless
+      assertion of separateness, the desperate claim of individuality against the vast indifference
+      of the sea.
+    </p>
+    {siteData.themes[1].facts.slice(0, 3).map(fact => (
+      <div class="fact-card">
+        <p>{fact.text}</p>
+        <p class="source">— {fact.source}</p>
+      </div>
+    ))}
+    <div class="quote-block">
+      &ldquo;{siteData.themes[1].quotes[0]}&rdquo;
+    </div>
+  </section>
+
+  <!-- Bhagavad Gita Section -->
+  <section id="gita" class="section">
+    <h2>The Bhagavad Gita</h2>
+    <p>
+      On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place
+      that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer
+      who was also God — their dialogue is not about war. It is about the war within.
+    </p>
+    {siteData.themes[2].facts.slice(0, 4).map(fact => (
+      <div class="fact-card">
+        <p>{fact.text}</p>
+        <p class="source">— {fact.source}</p>
+      </div>
+    ))}
+    <div class="quote-block">
+      &ldquo;{siteData.themes[2].quotes[1]}&rdquo;
+    </div>
+  </section>
+
+  <!-- Shiv Purana Section -->
+  <section id="shiva" class="section">
+    <h2>The Shiv Purana</h2>
+    <p>
+      Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv
+      Purana does not begin with &lsquo;In the beginning&rsquo; but with &lsquo;In the endless.&rsquo; Shiva is the
+      stillness that contains all motion, the silence that holds all music, the void that is
+      not empty but infinitely full.
+    </p>
+    {siteData.themes[3].facts.slice(0, 4).map(fact => (
+      <div class="fact-card">
+        <p>{fact.text}</p>
+        <p class="source">— {fact.source}</p>
+      </div>
+    ))}
+    <div class="quote-block">
+      &ldquo;{siteData.themes[3].quotes[0]}&rdquo;
+    </div>
+  </section>
+
+  <!-- Van Gogh Art Section -->
+  <section id="art" class="section">
+    <h2>Van Gogh&rsquo;s Vision</h2>
+    <p>
+      Vincent van Gogh did not paint what he saw. He painted what he felt. His stars are not
+      points of light but swirling vortices of energy. His sunflowers are not botanical studies
+      but meditations on mortality. His cypresses are not trees but flames reaching toward heaven.
+    </p>
+    {siteData.themes[4].facts.slice(0, 3).map(fact => (
+      <div class="fact-card">
+        <p>{fact.text}</p>
+        <p class="source">— {fact.source}</p>
+      </div>
+    ))}
+    <div class="quote-block">
+      &ldquo;{siteData.themes[4].quotes[2]}&rdquo;
+    </div>
+  </section>
+
+  <!-- Changelog Section -->
+  <section id="changelog" class="section">
+    <h2>Changelog</h2>
+    <p style="opacity:0.7; margin-bottom:2rem;">
+      Version {siteData.changelog.version} &middot; Daily mutations of color, content, and form.
+    </p>
+    {changelogEntries.map(entry => (
+      <div class="fact-card">
+        <p><span style="color:var(--color-accent); font-weight:600;">{entry.date}</span> — {entry.description}</p>
+        <ul style="margin-top:0.75rem; padding-left:1.2rem;">
+          {entry.changes.map(change => (
+            <li style="opacity:0.7; padding:0.2rem 0; list-style:disc;">{change}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <!-- Inline Changelog Panel (fixed position) -->
+  <div class="changelog-panel">
+    <h4>Recent Changes</h4>
+    <ul>
+      {changelogEntries.slice(0, 3).map(entry => (
+        <li>
+          <span class="date">{entry.date}</span> — {entry.description.slice(0, 60)}...
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Three.js Scene Initialization -->
+  <!-- Pass build-time data to client via data attribute -->
+  <div id="vg-data" data-colors={colorData} style="display:none;"></div>
+  <script>
+    const vgDataEl = document.getElementById('vg-data');
+    const vgColors = JSON.parse(vgDataEl.dataset.colors);
+
+    // Apply CSS variables
+    const root = document.documentElement;
+    root.style.setProperty('--color-primary', vgColors.primary);
+    root.style.setProperty('--color-secondary', vgColors.secondary);
+    root.style.setProperty('--color-accent', vgColors.accent);
+    root.style.setProperty('--color-bg', vgColors.background);
+    root.style.setProperty('--color-text', vgColors.text);
+
+    // Store shader params for the scene script
+    window.__VG_SHADER = vgColors.shader;
+  </script>
+  <script type="module" src="/js/scene-init.js"></script>
+
+</BaseLayout>
