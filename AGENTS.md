@@ -94,9 +94,9 @@ public/
 .hermes/
   kanban.json        — Idea board for TDD workflow
 scripts/
-  daily-mutate.js    — Daily color/content mutation
+  daily-mutate.js    — Daily color/content mutation (updates siteData.json + content.json)
   daily-deploy.sh    — Full mutation → build → deploy pipeline
-  kanban-generate.sh — Idea generation + TDD pipeline
+  kanban-generate.sh — [DEPRECATED] Replaced by pure agent cron job
 ```
 
 ---
@@ -105,9 +105,11 @@ scripts/
 | Job | Schedule | Purpose |
 |-----|----------|---------|
 | `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build |
-| `van-gogh-kanban-generate` | 2 AM daily | Generate ideas, advance TDD pipeline |
+| `van-gogh-kanban-generate` | 2 AM daily | Generate ideas, advance TDD pipeline (pure agent — no shell scripts) |
 | `van-gogh-daily-deploy` | 6 AM daily | Content mutation → build → deploy |
-| `van-gogh-background-implement` | 10AM/2PM/6PM | Implement kanban tasks via TDD |
+| `van-gogh-background-implement` | 3AM/4PM daily | Implement kanban tasks via TDD (pure agent — no shell scripts) |
+
+**IMPORTANT**: All cron jobs are pure Hermes agent prompts. Do NOT call `hermes agent` subprocesses or shell scripts from within cron jobs — this causes libuv assertion crashes on Cybertron Linux. Do all work directly using file tools.
 
 ---
 

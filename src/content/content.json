@@ -15,42 +15,102 @@
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her as a silver chariot crossing the night sky, but she was more than a goddess. She was the first mirror, the original reflector of light, the celestial body that taught humanity that one can shine without being the source.",
-      "imageCard": { "themeIndex": 0, "factIndex": 0 },
-      "facts": { "themeIndex": 0, "slice": [1, 3] },
-      "quote": { "themeIndex": 0, "quoteIndex": 0 }
+      "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
+      "imageCard": {
+        "themeIndex": 0,
+        "factIndex": 0
+      },
+      "facts": {
+        "themeIndex": 0,
+        "slice": [
+          1,
+          3
+        ]
+      },
+      "quote": {
+        "themeIndex": 0,
+        "quoteIndex": 0
+      }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
       "intro": "The wave does not know it is the ocean. It rises, believes itself unique, crashes against the shore, and dissolves — only to rise again. This is the cycle of ego: the endless assertion of separateness against the vast indifference of the sea.",
-      "imageCard": { "themeIndex": 1, "factIndex": 0 },
-      "facts": { "themeIndex": 1, "slice": [1, 3] },
-      "quote": { "themeIndex": 1, "quoteIndex": 0 }
+      "imageCard": {
+        "themeIndex": 1,
+        "factIndex": 0
+      },
+      "facts": {
+        "themeIndex": 1,
+        "slice": [
+          1,
+          3
+        ]
+      },
+      "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 0
+      }
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
       "intro": "On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer who was also God — their dialogue is not about war. It is about the war within.",
-      "imageCard": { "themeIndex": 2, "factIndex": 0 },
-      "facts": { "themeIndex": 2, "slice": [1, 4] },
-      "quote": { "themeIndex": 2, "quoteIndex": 1 }
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 0
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          1,
+          4
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 1
+      }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
       "intro": "Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv Purana does not begin with \"In the beginning\" but with \"In the endless.\" Shiva is the stillness that contains all motion, the silence that holds all music.",
-      "imageCard": { "themeIndex": 3, "factIndex": 0 },
-      "facts": { "themeIndex": 3, "slice": [1, 4] },
-      "quote": { "themeIndex": 3, "quoteIndex": 0 }
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 0
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [
+          1,
+          4
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 0
+      }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
       "intro": "Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream. Every brushstroke is a meditation, every color a prayer.",
-      "imageCard": { "themeIndex": 4, "factIndex": 0 },
-      "facts": { "themeIndex": 4, "slice": [1, 3] },
-      "quote": { "themeIndex": 4, "quoteIndex": 0 }
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 0
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          1,
+          3
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 0
+      }
     }
   },
   "changelog": {
@@ -83,6 +143,18 @@
           "Created GLSL shaders: post-processing, stars, waves",
           "Set up Astro 4 static site with Vitest and Playwright",
           "Configured deploy script for Nginx"
+        ]
+      },
+      {
+        "date": "2026-05-14",
+        "type": "daily-mutation",
+        "description": "Daily mutation: Theme \"Selene & The Moon\" with \"starry-night\" color scheme.",
+        "changes": [
+          "Rotated to color scheme: starry-night (contemplative)",
+          "Featured theme: Selene & The Moon",
+          "Shader params — strokeDensity: 7.6, swirlFrequency: 11.9, colorIntensity: 1.52",
+          "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
+          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\""
         ]
       }
     ]

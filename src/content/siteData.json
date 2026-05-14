@@ -195,7 +195,11 @@
       "background": "#0a0a1a",
       "text": "#e8e8f0",
       "mood": "contemplative",
-      "shaderParams": { "strokeDensity": 8.0, "swirlFrequency": 12.0, "colorIntensity": 1.4 }
+      "shaderParams": {
+        "strokeDensity": 7.6,
+        "swirlFrequency": 11.9,
+        "colorIntensity": 1.52
+      }
     },
     {
       "name": "sunflower",
@@ -205,7 +209,11 @@
       "background": "#1a1200",
       "text": "#fff8e1",
       "mood": "warm",
-      "shaderParams": { "strokeDensity": 10.0, "swirlFrequency": 8.0, "colorIntensity": 1.6 }
+      "shaderParams": {
+        "strokeDensity": 10,
+        "swirlFrequency": 8,
+        "colorIntensity": 1.6
+      }
     },
     {
       "name": "midnight-wave",
@@ -215,7 +223,11 @@
       "background": "#000a12",
       "text": "#b3e5fc",
       "mood": "mysterious",
-      "shaderParams": { "strokeDensity": 6.0, "swirlFrequency": 15.0, "colorIntensity": 1.2 }
+      "shaderParams": {
+        "strokeDensity": 6,
+        "swirlFrequency": 15,
+        "colorIntensity": 1.2
+      }
     },
     {
       "name": "tulip-garden",
@@ -225,7 +237,11 @@
       "background": "#1a0a0a",
       "text": "#fce4ec",
       "mood": "passionate",
-      "shaderParams": { "strokeDensity": 9.0, "swirlFrequency": 10.0, "colorIntensity": 1.5 }
+      "shaderParams": {
+        "strokeDensity": 9,
+        "swirlFrequency": 10,
+        "colorIntensity": 1.5
+      }
     },
     {
       "name": "moonlit-silver",
@@ -235,7 +251,11 @@
       "background": "#0d1117",
       "text": "#eceff1",
       "mood": "serene",
-      "shaderParams": { "strokeDensity": 5.0, "swirlFrequency": 14.0, "colorIntensity": 1.1 }
+      "shaderParams": {
+        "strokeDensity": 5,
+        "swirlFrequency": 14,
+        "colorIntensity": 1.1
+      }
     }
   ],
   "changelog": {
