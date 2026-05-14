@@ -241,13 +241,28 @@ const { title = "अत्रिज", description = "An impressionist journey th
       bottom: var(--space-lg);
       left: 50%;
       transform: translateX(-50%);
-      color: #9a9690;
+      color: #ccc8c0;
       font-size: var(--text-xs);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-weight: 500;
       animation: fadeUp 2.5s ease-in-out infinite;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.8);
     }
+
+    .hero .click-hint {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ccc8c0;
+      font-size: var(--text-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+    }
+
     @keyframes fadeUp {
       0%, 100% { opacity: 0.25; transform: translateX(-50%) translateY(0); }
       50% { opacity: 0.7; transform: translateX(-50%) translateY(-6px); }
@@ -262,7 +277,9 @@ const { title = "अत्रिज", description = "An impressionist journey th
       flex-direction: column;
       align-items: center;
       /* Frosted backdrop so 3D canvas doesn't bleed through text */
-      background: rgba(8, 8, 15, 0.55);
+      background: rgba(8, 8, 15, 0.65);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
     .section:last-of-type { padding-bottom: var(--space-lg); }
     .section-inner {
@@ -365,9 +382,9 @@ const { title = "अत्रिज", description = "An impressionist journey th
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(8,8,15,0.45) 0%,
-        rgba(8,8,15,0.75) 35%,
-        rgba(8,8,15,0.95) 70%,
+        rgba(8,8,15,0.55) 0%,
+        rgba(8,8,15,0.82) 35%,
+        rgba(8,8,15,0.96) 70%,
         rgba(8,8,15,0.99) 100%
       );
     }
@@ -685,7 +702,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
         overflow: visible;
       }
       .logo-sanskrit {
-        font-size: clamp(4.5rem, 22vw, 5.5rem);
+        font-size: clamp(3.5rem, 20vw, 5.5rem);
       }
       .logo-subtitle {
         font-size: 0.65rem;
@@ -774,16 +791,43 @@ const { title = "अत्रिज", description = "An impressionist journey th
   <div id="canvas-container"></div>
 
   <!-- Flute button -->
-  <div id="flute-container" title="Click to play" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;cursor:pointer;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,213,79,0.08);border:1px solid rgba(255,213,79,0.2);-webkit-tap-highlight-color:transparent;">
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:38px;height:38px;">
-      <rect x="4" y="20" width="38" height="8" rx="4" fill="#d4a843" opacity="0.9"/>
-      <rect x="4" y="21" width="38" height="3" rx="1.5" fill="#e8c060" opacity="0.4"/>
-      <circle cx="12" cy="24" r="2" fill="#1a1a1a"/>
-      <circle cx="19" cy="24" r="2" fill="#1a1a1a"/>
-      <circle cx="26" cy="24" r="2" fill="#1a1a1a"/>
-      <circle cx="33" cy="24" r="2" fill="#1a1a1a"/>
-      <text x="42" y="14" font-size="14" fill="#ffd54f" opacity="0.7" font-family="serif">♪</text>
-      <text x="2" y="38" font-size="10" fill="#ffd54f" opacity="0.4" font-family="serif">♫</text>
+  <div id="flute-container" title="Click to play Krishna's bansuri" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;cursor:pointer;width:72px;height:72px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,213,79,0.08);border:1px solid rgba(255,213,79,0.2);-webkit-tap-highlight-color:transparent;transition:all 0.3s ease;" onmouseenter="this.style.background='rgba(255,213,79,0.15)';this.style.borderColor='rgba(255,213,79,0.4)';this.style.transform='scale(1.08)'" onmouseleave="this.style.background='rgba(255,213,79,0.08)';this.style.borderColor='rgba(255,213,79,0.2)';this.style.transform='scale(1)'">
+    <svg viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:56px;height:auto;">
+      <defs>
+        <linearGradient id="bambooGradBtn" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#d4a843;stop-opacity:1" />
+          <stop offset="45%" style="stop-color:#c49833;stop-opacity:1" />
+          <stop offset="55%" style="stop-color:#b88820;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#a67810;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="highlightGradBtn" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#f5d870;stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:#e8c060;stop-opacity:0.3" />
+        </linearGradient>
+      </defs>
+      <rect x="8" y="18" width="164" height="12" rx="6" fill="url(#bambooGradBtn)"/>
+      <rect x="8" y="19" width="164" height="4" rx="2" fill="url(#highlightGradBtn)" opacity="0.6"/>
+      <rect x="28" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+      <rect x="58" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+      <rect x="88" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+      <rect x="118" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+      <rect x="148" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+      <ellipse cx="45" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+      <ellipse cx="65" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+      <ellipse cx="85" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+      <ellipse cx="105" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+      <ellipse cx="125" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+      <ellipse cx="145" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+      <ellipse cx="95" cy="20" rx="2" ry="2.5" fill="#2a2a2a" opacity="0.6"/>
+      <ellipse cx="14" cy="24" rx="4" ry="5" fill="#1a1a1a" opacity="0.85"/>
+      <ellipse cx="14" cy="24" rx="2.5" ry="3.5" fill="#3a2a1a" opacity="0.5"/>
+      <rect x="20" y="20" width="1" height="8" fill="#cc2244" opacity="0.8"/>
+      <rect x="22" y="20" width="1" height="8" fill="#cc2244" opacity="0.8"/>
+      <rect x="24" y="20" width="1" height="8" fill="#cc2244" opacity="0.8"/>
+      <circle cx="168" cy="24" r="5" fill="#8a6820" opacity="0.8"/>
+      <circle cx="168" cy="24" r="3" fill="#d4a843" opacity="0.6"/>
+      <text x="2" y="14" font-size="12" fill="#ffd54f" opacity="0.8" font-family="serif">♪</text>
+      <text x="170" y="12" font-size="10" fill="#ff8a65" opacity="0.6" font-family="serif">♫</text>
     </svg>
   </div>
 

@@ -462,7 +462,7 @@ function createMusicNotes(scene, count) {
     var startZ = (Math.random() - 0.5) * 16;
     sprite.position.set(startX, startY, startZ);
 
-    var noteScale = isMobile ? 0.7 : 0.55;
+    var noteScale = isMobile ? 1.2 : 0.55;
     sprite.scale.set(noteScale, noteScale, 1);
 
     // Each note has its own unique random motion parameters
@@ -520,6 +520,82 @@ function spawnNotesBurst(cx, cy, count) {
   var symbols = ['♪','♫','♩','♬','♭','♮','♯'];
   var colors = ['#ffd54f','#ff8a65','#4fc3f7','#b388ff','#80cbc4','#fff8e1','#ffcc80'];
   count = count || 6;
+  
+  // Show animated Krishna's bansuri (bamboo flute) at click position
+  var fluteEl = document.createElement('div');
+  fluteEl.innerHTML = `<svg viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:48px;">
+    <!-- Bamboo segments with natural texture -->
+    <defs>
+      <linearGradient id="bambooGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#d4a843;stop-opacity:1" />
+        <stop offset="45%" style="stop-color:#c49833;stop-opacity:1" />
+        <stop offset="55%" style="stop-color:#b88820;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#a67810;stop-opacity:1" />
+      </linearGradient>
+      <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#f5d870;stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#e8c060;stop-opacity:0.3" />
+      </linearGradient>
+    </defs>
+    
+    <!-- Main bamboo body - long and cylindrical -->
+    <rect x="8" y="18" width="164" height="12" rx="6" fill="url(#bambooGrad)"/>
+    
+    <!-- Bamboo highlight (top shine) -->
+    <rect x="8" y="19" width="164" height="4" rx="2" fill="url(#highlightGrad)" opacity="0.6"/>
+    
+    <!-- Bamboo segment rings (natural joints) -->
+    <rect x="28" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+    <rect x="58" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+    <rect x="88" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+    <rect x="118" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+    <rect x="148" y="17" width="2.5" height="14" rx="1" fill="#8a6820" opacity="0.7"/>
+    
+    <!-- Finger holes (6 playing holes + 1 thumb hole) -->
+    <ellipse cx="45" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+    <ellipse cx="65" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+    <ellipse cx="85" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+    <ellipse cx="105" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+    <ellipse cx="125" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+    <ellipse cx="145" cy="24" rx="3" ry="3.5" fill="#1a1a1a" opacity="0.9"/>
+    
+    <!-- Thumb hole (back side, shown as smaller) -->
+    <ellipse cx="95" cy="20" rx="2" ry="2.5" fill="#2a2a2a" opacity="0.6"/>
+    
+    <!-- Mouthpiece end (blowing hole) - slightly wider -->
+    <ellipse cx="14" cy="24" rx="4" ry="5" fill="#1a1a1a" opacity="0.85"/>
+    <ellipse cx="14" cy="24" rx="2.5" ry="3.5" fill="#3a2a1a" opacity="0.5"/>
+    
+    <!-- Decorative thread wrapping (traditional) -->
+    <rect x="20" y="20" width="1" height="8" fill="#cc2244" opacity="0.8"/>
+    <rect x="22" y="20" width="1" height="8" fill="#cc2244" opacity="0.8"/>
+    <rect x="24" y="20" width="1" height="8" fill="#cc2244" opacity="0.8"/>
+    
+    <!-- End cap decoration -->
+    <circle cx="168" cy="24" r="5" fill="#8a6820" opacity="0.8"/>
+    <circle cx="168" cy="24" r="3" fill="#d4a843" opacity="0.6"/>
+    
+    <!-- Musical notes floating near mouthpiece -->
+    <text x="2" y="14" font-size="12" fill="#ffd54f" opacity="0.8" font-family="serif">♪</text>
+    <text x="170" y="12" font-size="10" fill="#ff8a65" opacity="0.6" font-family="serif">♫</text>
+  </svg>`;
+  fluteEl.style.cssText = [
+    'position:fixed','z-index:9998','pointer-events:none',
+    'left:' + (cx - 90) + 'px','top:' + (cy - 24) + 'px',
+    'opacity:0','transform:scale(0.5) rotate(-8deg)',
+    'transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)',
+    'will-change:transform,opacity',
+    'filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))'
+  ].join(';');
+  document.body.appendChild(fluteEl);
+  
+  // Animate flute in
+  requestAnimationFrame(function() {
+    fluteEl.style.opacity = '1';
+    fluteEl.style.transform = 'scale(1) rotate(-2deg)';
+  });
+  
+  // Spawn notes from flute mouthpiece (left side where you blow)
   for (var i = 0; i < count; i++) {
     (function(idx) {
       setTimeout(function() {
@@ -527,8 +603,9 @@ function spawnNotesBurst(cx, cy, count) {
         n.textContent = symbols[Math.floor(Math.random() * symbols.length)];
         var size = (1.1 + Math.random() * 1.4).toFixed(2);
         var color = colors[Math.floor(Math.random() * colors.length)];
-        var ox = (Math.random() - 0.5) * 120;
-        var oy = (Math.random() - 0.5) * 60 - 30;
+        // Notes originate from right end (sound comes out the far end)
+        var ox = 80 + (Math.random() - 0.2) * 110;
+        var oy = (Math.random() - 0.5) * 70 - 35;
         n.style.cssText = [
           'position:fixed','z-index:9999','pointer-events:none',
           'font-family:serif','font-size:' + size + 'rem',
@@ -542,6 +619,15 @@ function spawnNotesBurst(cx, cy, count) {
       }, idx * 70);
     })(i);
   }
+  
+  // Remove flute after animation
+  setTimeout(function() {
+    fluteEl.style.opacity = '0';
+    fluteEl.style.transform = 'scale(0.85) rotate(5deg)';
+    setTimeout(function() {
+      if (fluteEl.parentNode) fluteEl.parentNode.removeChild(fluteEl);
+    }, 350);
+  }, 1500);
 }
 
 // ── Init ──
