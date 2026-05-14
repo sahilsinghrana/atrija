@@ -14,12 +14,12 @@
     "lint": "eslint src/"
   },
   "dependencies": {
-    "astro": "^4",
+    "astro": "^6",
     "three": "^0.160"
   },
   "devDependencies": {
     "@playwright/test": "^1.40",
-    "vitest": "~1.6.0",
+    "vitest": "~4.1.6",
     "jsdom": "^24.0.0"
   }
 }
