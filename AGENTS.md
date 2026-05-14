@@ -105,9 +105,10 @@ scripts/
 | Job | Schedule | Purpose |
 |-----|----------|---------|
 | `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build |
-| `van-gogh-kanban-generate` | 2 AM daily | Generate ideas, advance TDD pipeline (pure agent — no shell scripts) |
-| `van-gogh-daily-deploy` | 6 AM daily | Content mutation → build → deploy |
-| `van-gogh-background-implement` | 3AM/4PM daily | Implement kanban tasks via TDD (pure agent — no shell scripts) |
+| `van-gogh-kanban-generate` | 2 AM daily | Generate ideas, advance TDD pipeline |
+| `van-gogh-daily-mutate` | 6 AM daily | Content mutation (siteData + content.json) → build → deploy |
+| `van-gogh-background-implement` | 3AM/4PM daily | Implement kanban tasks via TDD |
+| `van-gogh-daily-deploy` | PAUSED | Redundant — merged into daily-mutate |
 
 **IMPORTANT**: All cron jobs are pure Hermes agent prompts. Do NOT call `hermes agent` subprocesses or shell scripts from within cron jobs — this causes libuv assertion crashes on Cybertron Linux. Do all work directly using file tools.
 
