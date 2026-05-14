@@ -28,17 +28,10 @@ const colorData = JSON.stringify({
 <BaseLayout>
 
   <!-- ═══════════════════════════════════════
-       HERO — ASCII Moon + अत्रिज Logo
+       HERO
   ═══════════════════════════════════════ -->
   <section id="hero" class="hero">
-    <div class="ascii-moon-container">
-      <pre class="ascii-moon" id="ascii-moon">
-        .-.
-       (   )
-        `-&#39;
-      </pre>
-      <div class="ascii-moon-phase-label" id="moon-phase-label">New Moon</div>
-    </div>
+    <pre class="ascii-moon" id="ascii-moon"></pre>
     <div class="logo-sanskrit">अत्रिज</div>
     <div class="logo-subtitle">Atrij</div>
     <p class="logo-tagline">An <em>impressionist</em> journey through light, philosophy &amp; the cosmos</p>
@@ -52,13 +45,11 @@ const colorData = JSON.stringify({
     <div class="section-inner">
       <div class="section-label">Today's Reflection</div>
       <h2>What the <em>universe</em> whispers today</h2>
-
       <div class="today-fact">
         <div class="theme-tag">{todayTheme.title} · {todayColor.mood}</div>
         <p>{todayFact.text}</p>
         <div class="source">{todayFact.source}</div>
       </div>
-
       <div class="quote-block">
         <p>{todayQuote}</p>
       </div>
@@ -72,20 +63,18 @@ const colorData = JSON.stringify({
     <div class="section-inner">
       <div class="section-label">I. The Moon</div>
       <h2>Selene's <em>silver</em> chariot</h2>
-      <p>
-        In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her
-        as a silver chariot crossing the night, but she was more than a goddess. She was the
-        first mirror, the original reflector of light, the celestial body that taught humanity
-        that one can shine without being the source.
-      </p>
+      <p>In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her as a silver chariot crossing the night, but she was more than a goddess. She was the first mirror, the original reflector of light.</p>
 
-      <div class="image-card">
-        <img src="/images/moon.svg" alt="Moon over a starlit landscape" width="800" height="400" loading="lazy" />
-        <div class="image-overlay"></div>
+      <div class="image-card" style="--card-bg-image: url('/images/moon.svg')">
+        <div class="card-bg"></div>
+        <div class="card-content">
+          <p>{siteData.themes[0].facts[0].text}</p>
+          <div class="source">{siteData.themes[0].facts[0].source}</div>
+        </div>
       </div>
 
-      {siteData.themes[0].facts.slice(0, 3).map(fact => (
-        <div class="fact-card" style={`--card-bg-image: url('/images/moon.svg')`}>
+      {siteData.themes[0].facts.slice(1, 3).map(fact => (
+        <div class="fact-card">
           <p>{fact.text}</p>
           <div class="source">{fact.source}</div>
         </div>
@@ -104,19 +93,18 @@ const colorData = JSON.stringify({
     <div class="section-inner">
       <div class="section-label">II. The Waves</div>
       <h2>Ego, arrogance &amp; the <em>ocean</em> of self</h2>
-      <p>
-        The wave does not know it is the ocean. It rises, believes itself unique, crashes against
-        the shore, and dissolves — only to rise again. This is the cycle of ego: the endless
-        assertion of separateness against the vast indifference of the sea.
-      </p>
+      <p>The wave does not know it is the ocean. It rises, believes itself unique, crashes against the shore, and dissolves — only to rise again. This is the cycle of ego.</p>
 
-      <div class="image-card">
-        <img src="/images/waves.svg" alt="Ocean waves at twilight" width="800" height="400" loading="lazy" />
-        <div class="image-overlay"></div>
+      <div class="image-card" style="--card-bg-image: url('/images/waves.svg')">
+        <div class="card-bg"></div>
+        <div class="card-content">
+          <p>{siteData.themes[1].facts[0].text}</p>
+          <div class="source">{siteData.themes[1].facts[0].source}</div>
+        </div>
       </div>
 
-      {siteData.themes[1].facts.slice(0, 3).map(fact => (
-        <div class="fact-card" style={`--card-bg-image: url('/images/waves.svg')`}>
+      {siteData.themes[1].facts.slice(1, 3).map(fact => (
+        <div class="fact-card">
           <p>{fact.text}</p>
           <div class="source">{fact.source}</div>
         </div>
@@ -135,19 +123,18 @@ const colorData = JSON.stringify({
     <div class="section-inner">
       <div class="section-label">III. The Battlefield</div>
       <h2>Wisdom from the <em>Bhagavad</em> Gita</h2>
-      <p>
-        On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place
-        that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer
-        who was also God — their dialogue is not about war. It is about the war within.
-      </p>
+      <p>On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer who was also God.</p>
 
-      <div class="image-card">
-        <img src="/images/stars.svg" alt="Starry night sky with constellations" width="800" height="400" loading="lazy" />
-        <div class="image-overlay"></div>
+      <div class="image-card" style="--card-bg-image: url('/images/stars.svg')">
+        <div class="card-bg"></div>
+        <div class="card-content">
+          <p>{siteData.themes[2].facts[0].text}</p>
+          <div class="source">{siteData.themes[2].facts[0].source}</div>
+        </div>
       </div>
 
-      {siteData.themes[2].facts.slice(0, 4).map(fact => (
-        <div class="fact-card" style={`--card-bg-image: url('/images/stars.svg')`}>
+      {siteData.themes[2].facts.slice(1, 4).map(fact => (
+        <div class="fact-card">
           <p>{fact.text}</p>
           <div class="source">{fact.source}</div>
         </div>
@@ -166,19 +153,18 @@ const colorData = JSON.stringify({
     <div class="section-inner">
       <div class="section-label">IV. The Dance</div>
       <h2>Shiva &amp; the <em>cosmic</em> rhythm</h2>
-      <p>
-        Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv
-        Purana does not begin with "In the beginning" but with "In the endless." Shiva is the
-        stillness that contains all motion, the silence that holds all music.
-      </p>
+      <p>Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv Purana does not begin with "In the beginning" but with "In the endless."</p>
 
-      <div class="image-card">
-        <img src="/images/flute.svg" alt="A flute resting on a windowsill" width="800" height="400" loading="lazy" />
-        <div class="image-overlay"></div>
+      <div class="image-card" style="--card-bg-image: url('/images/flute.svg')">
+        <div class="card-bg"></div>
+        <div class="card-content">
+          <p>{siteData.themes[3].facts[0].text}</p>
+          <div class="source">{siteData.themes[3].facts[0].source}</div>
+        </div>
       </div>
 
-      {siteData.themes[3].facts.slice(0, 4).map(fact => (
-        <div class="fact-card" style={`--card-bg-image: url('/images/flute.svg')`}>
+      {siteData.themes[3].facts.slice(1, 4).map(fact => (
+        <div class="fact-card">
           <p>{fact.text}</p>
           <div class="source">{fact.source}</div>
         </div>
@@ -197,19 +183,18 @@ const colorData = JSON.stringify({
     <div class="section-inner">
       <div class="section-label">V. The Canvas</div>
       <h2>Art, beauty &amp; the <em>act</em> of seeing</h2>
-      <p>
-        Art is not what you see, but what you make others see. The painter does not copy the world
-        — they translate it, filtering reality through the lens of emotion, memory, and dream.
-        Every brushstroke is a meditation, every color a prayer.
-      </p>
+      <p>Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream.</p>
 
-      <div class="image-card">
-        <img src="/images/sunflowers.svg" alt="Sunflower field at sunset" width="800" height="400" loading="lazy" />
-        <div class="image-overlay"></div>
+      <div class="image-card" style="--card-bg-image: url('/images/sunflowers.svg')">
+        <div class="card-bg"></div>
+        <div class="card-content">
+          <p>{siteData.themes[4].facts[0].text}</p>
+          <div class="source">{siteData.themes[4].facts[0].source}</div>
+        </div>
       </div>
 
-      {siteData.themes[4].facts.slice(0, 3).map(fact => (
-        <div class="fact-card" style={`--card-bg-image: url('/images/sunflowers.svg')`}>
+      {siteData.themes[4].facts.slice(1, 3).map(fact => (
+        <div class="fact-card">
           <p>{fact.text}</p>
           <div class="source">{fact.source}</div>
         </div>
@@ -222,7 +207,7 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       CHANGELOG — Timeline Format
+       CHANGELOG
   ═══════════════════════════════════════ -->
   <section id="changelog" class="section">
     <div class="section-inner changelog-section">
@@ -231,7 +216,6 @@ const colorData = JSON.stringify({
       <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem;">
         Version {siteData.changelog.version} — color, content &amp; form evolve daily.
       </p>
-
       <div class="changelog-timeline">
         {changelogEntries.map(entry => (
           <div class="changelog-entry">
@@ -278,87 +262,143 @@ const colorData = JSON.stringify({
   </script>
   <script type="module" src="/js/scene-init.js"></script>
 
-  <!-- ── ASCII Moon Phase Animation ── -->
+  <!-- ── ASCII Moon Phase Animation (large, fixed, no label) ── -->
   <script>
     (function() {
+      // Large ASCII moon phases — 12 lines each, detailed
       var phases = [
-        { label: 'New Moon', art: [
-          '       .---.       ',
-          '      /     \\      ',
-          '     |       |     ',
-          '      \\     /      ',
-          '       \'---\'       '
-        ]},
-        { label: 'Waxing Crescent', art: [
-          '       .---.       ',
-          '      /  .  \\      ',
-          '     |  .    |     ',
-          '      \\  .  /      ',
-          '       \'---\'       '
-        ]},
-        { label: 'First Quarter', art: [
-          '       .---.       ',
-          '      / .:. \\      ',
-          '     | .:.   |     ',
-          '      \\ .:. /      ',
-          '       \'---\'       '
-        ]},
-        { label: 'Waxing Gibbous', art: [
-          '       .---.       ',
-          '      /.:.:. \\     ',
-          '     |.:.:.:. |    ',
-          '      \\.:.:./      ',
-          '       \'---\'       '
-        ]},
-        { label: 'Full Moon', art: [
-          '       .---.       ',
-          '      /:.:.:.\\     ',
-          '     |:.:.:.:.|    ',
-          '      \\:.:.:./     ',
-          '       \'---\'       '
-        ]},
-        { label: 'Waning Gibbous', art: [
-          '       .---.       ',
-          '      / .:.:.\\     ',
-          '     |  .:.:.:|    ',
-          '      \\ .:.:./     ',
-          '       \'---\'       '
-        ]},
-        { label: 'Last Quarter', art: [
-          '       .---.       ',
-          '      / .:. \\      ',
-          '     |   .:. |     ',
-          '      \\ .:. /      ',
-          '       \'---\'       '
-        ]},
-        { label: 'Waning Crescent', art: [
-          '       .---.       ',
-          '      /  .  \\      ',
-          '     |    .  |     ',
-          '      \\  .  /      ',
-          '       \'---\'       '
-        ]}
+        // New Moon
+        [
+          '        ████████        ',
+          '      ██░░░░░░░░██      ',
+          '    ██░░░░░░░░░░░░██    ',
+          '   █░░░░░░░░░░░░░░░░█   ',
+          '  █░░░░░░░░░░░░░░░░░░█  ',
+          ' █░░░░░░░░░░░░░░░░░░░░█ ',
+          ' █░░░░░░░░░░░░░░░░░░░░█ ',
+          '  █░░░░░░░░░░░░░░░░░░█  ',
+          '   █░░░░░░░░░░░░░░░░█   ',
+          '    ██░░░░░░░░░░░░██    ',
+          '      ██░░░░░░░░██      ',
+          '        ████████        '
+        ],
+        // Waxing Crescent
+        [
+          '        ████████        ',
+          '      ██░░░░░░░███      ',
+          '    ██░░░░░░░░░████    ',
+          '   █░░░░░░░░░░░░████   ',
+          '  █░░░░░░░░░░░░░░████  ',
+          ' █░░░░░░░░░░░░░░░░████ ',
+          ' █░░░░░░░░░░░░░░░░████ ',
+          '  █░░░░░░░░░░░░░░████  ',
+          '   █░░░░░░░░░░░░████   ',
+          '    ██░░░░░░░░░████    ',
+          '      ██░░░░░░░███      ',
+          '        ████████        '
+        ],
+        // First Quarter
+        [
+          '        ████████        ',
+          '      ██░░░░░░░███      ',
+          '    ██░░░░░░░░░███    ',
+          '   █░░░░░░░░░░░░███   ',
+          '  █░░░░░░░░░░░░░░███  ',
+          ' █░░░░░░░░░░░░░░░░███ ',
+          ' █░░░░░░░░░░░░░░░░███ ',
+          '  █░░░░░░░░░░░░░░███  ',
+          '   █░░░░░░░░░░░░███   ',
+          '    ██░░░░░░░░░███    ',
+          '      ██░░░░░░░███      ',
+          '        ████████        '
+        ],
+        // Waxing Gibbous
+        [
+          '        ████████        ',
+          '      ██░░░░░░░░██      ',
+          '    ██░░░░░░░░░░██    ',
+          '   █░░░░░░░░░░░░░██   ',
+          '  █░░░░░░░░░░░░░░░██  ',
+          ' █░░░░░░░░░░░░░░░░░██ ',
+          ' █░░░░░░░░░░░░░░░░░██ ',
+          '  █░░░░░░░░░░░░░░░██  ',
+          '   █░░░░░░░░░░░░░██   ',
+          '    ██░░░░░░░░░░██    ',
+          '      ██░░░░░░░░██      ',
+          '        ████████        '
+        ],
+        // Full Moon
+        [
+          '        ████████        ',
+          '      ██░░░░░░░░██      ',
+          '    ██░░░░░░░░░░██    ',
+          '   █░░░░░░░░░░░░░░█   ',
+          '  █░░░░░░░░░░░░░░░░█  ',
+          ' █░░░░░░░░░░░░░░░░░░█ ',
+          ' █░░░░░░░░░░░░░░░░░░█ ',
+          '  █░░░░░░░░░░░░░░░░█  ',
+          '   █░░░░░░░░░░░░░░█   ',
+          '    ██░░░░░░░░░░██    ',
+          '      ██░░░░░░░░██      ',
+          '        ████████        '
+        ],
+        // Waning Gibbous
+        [
+          '        ████████        ',
+          '      ██░░░░░░░░██      ',
+          '    ██░░░░░░░░░░██    ',
+          '   ██░░░░░░░░░░░░█   ',
+          '  ██░░░░░░░░░░░░░░█  ',
+          ' ██░░░░░░░░░░░░░░░░█ ',
+          ' ██░░░░░░░░░░░░░░░░█ ',
+          '  ██░░░░░░░░░░░░░░█  ',
+          '   ██░░░░░░░░░░░░█   ',
+          '    ██░░░░░░░░░░██    ',
+          '      ██░░░░░░░░██      ',
+          '        ████████        '
+        ],
+        // Last Quarter
+        [
+          '        ████████        ',
+          '      ███░░░░░░░██      ',
+          '    ███░░░░░░░░░██    ',
+          '   ███░░░░░░░░░░░█   ',
+          '  ███░░░░░░░░░░░░░█  ',
+          ' ███░░░░░░░░░░░░░░░█ ',
+          ' ███░░░░░░░░░░░░░░░█ ',
+          '  ███░░░░░░░░░░░░░█  ',
+          '   ███░░░░░░░░░░░█   ',
+          '    ███░░░░░░░░░██    ',
+          '      ███░░░░░░░██      ',
+          '        ████████        '
+        ],
+        // Waning Crescent
+        [
+          '        ████████        ',
+          '      ███░░░░░░██      ',
+          '    ████░░░░░░░██    ',
+          '   ████░░░░░░░░░█   ',
+          '  ████░░░░░░░░░░░█  ',
+          ' ████░░░░░░░░░░░░░█ ',
+          ' ████░░░░░░░░░░░░░█ ',
+          '  ████░░░░░░░░░░░█  ',
+          '   ████░░░░░░░░░█   ',
+          '    ████░░░░░░░██    ',
+          '      ███░░░░░░██      ',
+          '        ████████        '
+        ]
       ];
 
       var moonEl = document.getElementById('ascii-moon');
-      var labelEl = document.getElementById('moon-phase-label');
-      if (!moonEl || !labelEl) return;
+      if (!moonEl) return;
 
-      var currentPhase = 0;
-      var phaseDuration = 3000;
-
-      function setPhase(idx) {
-        var p = phases[idx];
-        moonEl.textContent = p.art.join('\n');
-        labelEl.textContent = p.label;
-      }
-
-      setPhase(0);
+      var current = 0;
+      moonEl.textContent = phases[0].join('\n');
 
       setInterval(function() {
-        currentPhase = (currentPhase + 1) % phases.length;
-        setPhase(currentPhase);
-      }, phaseDuration);
+        current = (current + 1) % phases.length;
+        moonEl.textContent = phases[current].join('\n');
+      }, 2500);
     })();
   </script>
 

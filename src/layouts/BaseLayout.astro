@@ -39,11 +39,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: auto;
-      -webkit-text-size-adjust: 100%;
-    }
+    html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
     body {
       font-family: var(--sans);
       background: var(--bg);
@@ -54,15 +50,8 @@ const { title = "अत्रिज", description = "An impressionist journey th
       min-height: 100vh;
     }
 
-    /* ── Canvas Background ── */
-    #canvas-container {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ── Main Content ── */
+    /* ── Canvas ── */
+    #canvas-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
     main { position: relative; z-index: 1; }
 
     /* ── Hero ── */
@@ -86,39 +75,25 @@ const { title = "अत्रिज", description = "An impressionist journey th
       opacity: 0.4;
     }
 
-    /* ── ASCII Moon ── */
-    .ascii-moon-container {
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    /* ── ASCII Moon (large, fixed, no label) ── */
     .ascii-moon {
       font-family: 'Courier New', 'Lucida Console', monospace;
-      font-size: clamp(0.35rem, 1.2vw, 0.7rem);
-      line-height: 1.15;
+      font-size: clamp(0.45rem, 1.8vw, 0.85rem);
+      line-height: 1.1;
       color: var(--gold);
-      text-shadow: 0 0 20px rgba(255,213,79,0.3);
+      text-shadow: 0 0 30px rgba(255,213,79,0.4), 0 0 80px rgba(255,213,79,0.15);
       white-space: pre;
       user-select: none;
-    }
-    .ascii-moon-phase-label {
-      margin-top: 0.5rem;
-      font-family: var(--sans);
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      opacity: 0.7;
+      margin-bottom: 1rem;
     }
 
-    /* ── Sanskrit Logo ── */
+    /* ── Logo ── */
     .logo-sanskrit {
       font-family: var(--devanagari);
-      font-size: clamp(2.5rem, 12vw, 5.5rem);
+      font-size: clamp(3.5rem, 14vw, 8rem);
       font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 0.25rem;
+      line-height: 1.05;
+      margin-bottom: 0.15rem;
       letter-spacing: 0.02em;
       background: linear-gradient(135deg, var(--gold) 0%, #fff8e1 40%, var(--gold) 70%, #ffe082 100%);
       -webkit-background-clip: text;
@@ -128,15 +103,15 @@ const { title = "अत्रिज", description = "An impressionist journey th
     }
     .logo-subtitle {
       font-family: var(--serif);
-      font-size: clamp(0.75rem, 2.5vw, 1rem);
+      font-size: clamp(0.7rem, 2vw, 0.95rem);
       font-style: italic;
       color: var(--text-muted);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       margin-bottom: 0.5rem;
     }
     .logo-tagline {
       font-family: var(--serif);
-      font-size: clamp(0.9rem, 3vw, 1.3rem);
+      font-size: clamp(0.85rem, 2.8vw, 1.2rem);
       color: var(--text-dim);
       font-style: italic;
       max-width: 90vw;
@@ -159,13 +134,14 @@ const { title = "अत्रिज", description = "An impressionist journey th
       50% { opacity: 0.8; transform: translateX(-50%) translateY(-8px); }
     }
 
-    /* ── Section Base ── */
+    /* ── Sections ── */
     .section {
-      padding: 4rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+    .section:last-of-type { padding-bottom: 1.5rem; }
     .section-inner { width: 100%; max-width: var(--max-w); }
 
     .section-label {
@@ -190,10 +166,10 @@ const { title = "अत्रिज", description = "An impressionist journey th
     /* ── Headings ── */
     .section h2 {
       font-family: var(--serif);
-      font-size: clamp(1.6rem, 6vw, 2.8rem);
+      font-size: clamp(1.5rem, 5.5vw, 2.6rem);
       font-weight: 600;
       line-height: 1.2;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
     #today h2 { color: var(--gold); }
     #today h2 em { color: var(--coral); font-style: italic; font-weight: 400; }
@@ -217,7 +193,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
       max-width: 600px;
     }
 
-    /* ── Image Cards ── */
+    /* ── Image Cards with text overlay ── */
     .image-card {
       position: relative;
       width: 100%;
@@ -225,14 +201,42 @@ const { title = "अत्रिज", description = "An impressionist journey th
       border-radius: 10px;
       overflow: hidden;
       border: 1px solid var(--border);
+      min-height: 200px;
     }
-    .image-card img, .image-card svg { width: 100%; height: auto; display: block; }
-    .image-card .image-overlay {
+    .image-card .card-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(8,8,15,0.7) 0%, transparent 40%);
-      pointer-events: none;
+      background: var(--card-bg-image) center/cover no-repeat;
+      opacity: 0.35;
+      transition: opacity 0.4s ease;
     }
+    .image-card:hover .card-bg { opacity: 0.5; }
+    .image-card .card-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,15,0.3) 0%, rgba(8,8,15,0.85) 60%, rgba(8,8,15,0.95) 100%);
+    }
+    .image-card .card-content {
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+    .image-card .card-content p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+    .image-card .card-content .source {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .image-card .card-content .source::before { content: '—'; color: var(--gold); opacity: 0.5; }
 
     /* ── Fact Cards ── */
     .fact-card {
@@ -244,29 +248,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
       position: relative;
       overflow: hidden;
     }
-    .fact-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--card-bg-image) center/cover no-repeat;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-    .fact-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(8,8,15,0.88), rgba(8,8,15,0.75));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-    .fact-card:hover::before { opacity: 1; }
-    .fact-card:hover::after { opacity: 1; }
-    .fact-card p, .fact-card .source { position: relative; z-index: 1; }
     .fact-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; }
-    .fact-card:hover p { color: var(--text); }
     .fact-card .source {
       margin-top: 0.5rem;
       font-size: 0.75rem;
@@ -335,7 +317,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
     }
 
     /* ── Changelog ── */
-    .changelog-section { padding-bottom: 3rem; }
+    .changelog-section { padding-bottom: 0; }
     .changelog-timeline { position: relative; padding-left: 1.5rem; }
     .changelog-timeline::before {
       content: '';
@@ -369,12 +351,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
       margin-bottom: 0.5rem;
       flex-wrap: wrap;
     }
-    .changelog-date {
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-    }
+    .changelog-date { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.04em; }
     .changelog-type {
       display: inline-flex;
       align-items: center;
@@ -417,44 +394,50 @@ const { title = "अत्रिज", description = "An impressionist journey th
       position: relative;
       line-height: 1.5;
     }
-    .changelog-changes li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      opacity: 0.5;
-      font-size: 0.7rem;
-    }
+    .changelog-changes li::before { content: '→'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; font-size: 0.7rem; }
     .changelog-changes li + li { border-top: 1px solid rgba(255,255,255,0.03); }
 
-    /* ── Footer ── */
+    /* ── Footer (minimal) ── */
     footer {
       text-align: center;
-      padding: 2rem 1.5rem;
+      padding: 1.5rem;
       border-top: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       position: relative;
       z-index: 1;
     }
     footer .footer-sanskrit {
       font-family: var(--devanagari);
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--gold);
-      opacity: 0.5;
+      opacity: 0.4;
       margin-bottom: 0.25rem;
     }
 
-    /* ── Responsive: Tablet ── */
+    /* ── Responsive ── */
     @media (min-width: 768px) {
       .hero { padding: 3rem 2rem; }
-      .section { padding: 6rem 2rem; }
+      .section { padding: 5rem 2rem; }
+      .section:last-of-type { padding-bottom: 2rem; }
       .fact-card { padding: 1.5rem 1.75rem; }
       .today-fact { padding: 2rem; }
-      .image-card { margin: 2.5rem 0; }
+      .image-card { margin: 2rem 0; min-height: 260px; }
+      .image-card .card-content { padding: 3.5rem 2rem 2rem; }
       .quote-block { padding: 2.5rem 2rem; }
       .changelog-timeline { padding-left: 2rem; }
       .changelog-entry::before { left: -2rem; }
+      footer { padding: 2rem; }
+    }
+
+    @keyframes noteFloat {
+      0%   { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
+      15%  { opacity: 1; transform: translateY(-10px) scale(1) rotate(-5deg); }
+      100% { opacity: 0; transform: translateY(-120px) scale(0.7) rotate(15deg); }
+    }
+    @keyframes logoShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
   </style>
 </head>
@@ -466,10 +449,9 @@ const { title = "अत्रिज", description = "An impressionist journey th
 
   <div id="canvas-container"></div>
 
-  <!-- Flute button: OUTSIDE main, inline styles for reliability -->
-  <div id="flute-container" title="Click to play" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;cursor:pointer;width:72px;height:72px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,213,79,0.08);border:1px solid rgba(255,213,79,0.2);-webkit-tap-highlight-color:transparent;">
-    <span style="position:absolute;bottom:100%;right:0;margin-bottom:8px;font-size:0.7rem;color:rgba(232,230,225,0.4);white-space:nowrap;pointer-events:none;">Click to play</span>
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:42px;height:42px;">
+  <!-- Flute button: inline styles, always on top -->
+  <div id="flute-container" title="Click to play" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;cursor:pointer;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,213,79,0.08);border:1px solid rgba(255,213,79,0.2);-webkit-tap-highlight-color:transparent;">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:38px;height:38px;">
       <rect x="4" y="20" width="38" height="8" rx="4" fill="#d4a843" opacity="0.9"/>
       <rect x="4" y="21" width="38" height="3" rx="1.5" fill="#e8c060" opacity="0.4"/>
       <circle cx="12" cy="24" r="2" fill="#1a1a1a"/>
@@ -490,81 +472,56 @@ const { title = "अत्रिज", description = "An impressionist journey th
     An impressionist experience in light &amp; philosophy
   </footer>
 
-  <!-- Interactive Scripts -->
+  <!-- Flute Click Handler -->
   <script>
-    // ── Flute Click → Music Notes ──
     (function() {
       var flute = document.getElementById('flute-container');
       if (!flute) return;
-      var noteSymbols = ['♪', '♫', '♩', '♬', '♭', '♮', '♯'];
-      var colors = ['#ffd54f', '#ff8a65', '#4fc3f7', '#b388ff', '#80cbc4', '#fff'];
+      var symbols = ['♪','♫','♩','♬','♭','♮','♯'];
+      var colors = ['#ffd54f','#ff8a65','#4fc3f7','#b388ff','#80cbc4','#fff'];
       flute.addEventListener('click', function(e) {
-        var cx = e.clientX || (window.innerWidth / 2);
-        var cy = e.clientY || (window.innerHeight / 2);
+        var cx = e.clientX || window.innerWidth/2;
+        var cy = e.clientY || window.innerHeight/2;
         for (var i = 0; i < 8; i++) {
           (function(idx) {
             setTimeout(function() {
-              var note = document.createElement('div');
-              note.className = 'spawned-note';
-              note.textContent = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
-              note.style.color = colors[Math.floor(Math.random() * colors.length)];
-              note.style.left = (cx + (Math.random() - 0.5) * 120) + 'px';
-              note.style.top = (cy + (Math.random() - 0.5) * 60 - 40) + 'px';
-              note.style.fontSize = (1.2 + Math.random() * 1.5) + 'rem';
-              note.style.position = 'fixed';
-              note.style.zIndex = '9999';
-              note.style.pointerEvents = 'none';
-              note.style.fontFamily = 'serif';
-              note.style.animation = 'noteFloat 2.5s ease-out forwards';
-              document.body.appendChild(note);
-              setTimeout(function() { note.remove(); }, 2600);
-            }, idx * 100);
+              var n = document.createElement('div');
+              n.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+              n.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;font-family:serif;font-size:' + (1.2+Math.random()*1.5) + 'rem;color:' + colors[Math.floor(Math.random()*colors.length)] + ';left:' + (cx+(Math.random()-0.5)*120) + 'px;top:' + (cy+(Math.random()-0.5)*60-40) + 'px;animation:noteFloat 2.5s ease-out forwards;';
+              document.body.appendChild(n);
+              setTimeout(function(){n.remove();},2600);
+            }, idx*100);
           })(i);
         }
       });
     })();
 
-    // ── Scroll-triggered Flowers (throttled) ──
+    /* Scroll flowers */
     (function() {
-      var flowerPositions = [
-        { x: '3%', y: '30%', color: '#f5c800' },
-        { x: '90%', y: '45%', color: '#ff6699' },
-        { x: '6%', y: '70%', color: '#cc2242' }
+      var positions = [
+        {x:'3%',y:'35%',color:'#f5c800'},
+        {x:'90%',y:'50%',color:'#ff6699'},
+        {x:'6%',y:'72%',color:'#cc2242'}
       ];
-      var flowers = [];
-      flowerPositions.forEach(function(pos, i) {
+      var flowers = [], revealed = new Set(), ticking = false;
+      positions.forEach(function(pos, i) {
         var el = document.createElement('div');
-        el.className = 'scroll-flower';
-        el.style.left = pos.x;
-        el.style.top = pos.y;
-        el.style.position = 'fixed';
-        el.style.zIndex = '40';
-        el.style.pointerEvents = 'none';
-        el.style.opacity = '0';
-        el.style.transform = 'scale(0) rotate(-30deg)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        el.innerHTML = '<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px">' +
-          '<circle cx="20" cy="20" r="6" fill="' + pos.color + '" opacity="0.8"/>' +
-          '<g fill="' + pos.color + '" opacity="0.7">';
+        el.style.cssText = 'position:fixed;z-index:40;pointer-events:none;opacity:0;transform:scale(0) rotate(-30deg);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.34,1.56,0.64,1);left:'+pos.x+';top:'+pos.y+';';
+        el.innerHTML = '<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px"><circle cx="20" cy="20" r="6" fill="'+pos.color+'" opacity="0.8"/><g fill="'+pos.color+'" opacity="0.7">';
         for (var p = 0; p < 8; p++) {
-          var angle = (p / 8) * Math.PI * 2;
-          var px = 20 + Math.cos(angle) * 10;
-          var py = 20 + Math.sin(angle) * 10;
-          el.innerHTML += '<ellipse cx="' + px + '" cy="' + py + '" rx="4" ry="7" transform="rotate(' + (angle * 180 / Math.PI) + ',' + px + ',' + py + ')"/>';
+          var a = (p/8)*Math.PI*2, px = 20+Math.cos(a)*10, py = 20+Math.sin(a)*10;
+          el.innerHTML += '<ellipse cx="'+px+'" cy="'+py+'" rx="4" ry="7" transform="rotate('+(a*180/Math.PI)+','+px+','+py+')"/>';
         }
         el.innerHTML += '</g></svg>';
         document.body.appendChild(el);
-        flowers.push({ el: el, triggerY: (i + 1) * 500 + 400 });
+        flowers.push({el:el, triggerY:(i+1)*600+500});
       });
-
-      var revealed = new Set();
-      var ticking = false;
       window.addEventListener('scroll', function() {
         if (!ticking) {
           requestAnimationFrame(function() {
-            var scrollY = window.scrollY;
+            var sy = window.scrollY;
             flowers.forEach(function(f, idx) {
-              if (!revealed.has(idx) && scrollY > f.triggerY) {
+              if (!revealed.has(idx) && sy > f.triggerY) {
                 f.el.style.opacity = '1';
                 f.el.style.transform = 'scale(1) rotate(0deg)';
                 revealed.add(idx);
@@ -574,21 +531,8 @@ const { title = "अत्रिज", description = "An impressionist journey th
           });
           ticking = true;
         }
-      }, { passive: true });
+      }, {passive:true});
     })();
   </script>
-
-  <!-- Note float animation -->
-  <style>
-    @keyframes noteFloat {
-      0%   { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
-      15%  { opacity: 1; transform: translateY(-10px) scale(1) rotate(-5deg); }
-      100% { opacity: 0; transform: translateY(-120px) scale(0.7) rotate(15deg); }
-    }
-    @keyframes logoShimmer {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-  </style>
 </body>
 </html>
