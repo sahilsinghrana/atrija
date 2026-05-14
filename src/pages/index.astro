@@ -28,16 +28,13 @@ const colorData = JSON.stringify({
 <BaseLayout>
 
   <!-- ═══════════════════════════════════════
-       HERO — ASCII Moon + अत्रिज Logo
+       HERO
   ═══════════════════════════════════════ -->
   <section id="hero" class="hero">
-
-    <!-- ASCII Moon Container with shadow overlay -->
     <div id="moonContainer">
       <div id="moonShadow"></div>
       <pre id="asciiMoon"></pre>
     </div>
-
     <div class="logo-sanskrit">अत्रिज</div>
     <div class="logo-subtitle">Atrij</div>
     <p class="logo-tagline">An <em>impressionist</em> journey through light, philosophy &amp; the cosmos</p>
@@ -63,13 +60,13 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       MOON & SELENE
+       I. THE MOON — SELENE
   ═══════════════════════════════════════ -->
   <section id="moon" class="section">
     <div class="section-inner">
       <div class="section-label">I. The Moon</div>
       <h2>Selene's <em>silver</em> chariot</h2>
-      <p>In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her as a silver chariot crossing the night, but she was more than a goddess. She was the first mirror, the original reflector of light.</p>
+      <p>In the beginning, there was darkness — and then Selene rose. The ancient Greeks saw her as a silver chariot crossing the night sky, but she was more than a goddess. She was the first mirror, the original reflector of light, the celestial body that taught humanity that one can shine without being the source.</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/moon.svg')">
         <div class="card-bg"></div>
@@ -79,12 +76,15 @@ const colorData = JSON.stringify({
         </div>
       </div>
 
-      {siteData.themes[0].facts.slice(1, 3).map(fact => (
-        <div class="fact-card">
-          <p>{fact.text}</p>
-          <div class="source">{fact.source}</div>
-        </div>
-      ))}
+      <div class="facts-group">
+        {siteData.themes[0].facts.slice(1, 3).map((fact, i) => (
+          <div class="fact-card">
+            <div class="fact-number">Fact {i + 1}</div>
+            <p>{fact.text}</p>
+            <div class="source">{fact.source}</div>
+          </div>
+        ))}
+      </div>
 
       <div class="quote-block">
         <p>{siteData.themes[0].quotes[0]}</p>
@@ -93,13 +93,13 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       EGO & ARROGANCE
+       II. THE WAVES — EGO & ARROGANCE
   ═══════════════════════════════════════ -->
   <section id="philosophy" class="section">
     <div class="section-inner">
       <div class="section-label">II. The Waves</div>
       <h2>Ego, arrogance &amp; the <em>ocean</em> of self</h2>
-      <p>The wave does not know it is the ocean. It rises, believes itself unique, crashes against the shore, and dissolves — only to rise again. This is the cycle of ego.</p>
+      <p>The wave does not know it is the ocean. It rises, believes itself unique, crashes against the shore, and dissolves — only to rise again. This is the cycle of ego: the endless assertion of separateness against the vast indifference of the sea.</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/waves.svg')">
         <div class="card-bg"></div>
@@ -109,12 +109,15 @@ const colorData = JSON.stringify({
         </div>
       </div>
 
-      {siteData.themes[1].facts.slice(1, 3).map(fact => (
-        <div class="fact-card">
-          <p>{fact.text}</p>
-          <div class="source">{fact.source}</div>
-        </div>
-      ))}
+      <div class="facts-group">
+        {siteData.themes[1].facts.slice(1, 3).map((fact, i) => (
+          <div class="fact-card">
+            <div class="fact-number">Fact {i + 1}</div>
+            <p>{fact.text}</p>
+            <div class="source">{fact.source}</div>
+          </div>
+        ))}
+      </div>
 
       <div class="quote-block">
         <p>{siteData.themes[1].quotes[0]}</p>
@@ -123,13 +126,13 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       BHAGAVAD GITA
+       III. THE BATTLEFIELD — BHAGAVAD GITA
   ═══════════════════════════════════════ -->
   <section id="gita" class="section">
     <div class="section-inner">
       <div class="section-label">III. The Battlefield</div>
       <h2>Wisdom from the <em>Bhagavad</em> Gita</h2>
-      <p>On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer who was also God.</p>
+      <p>On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer who was also God — their dialogue is not about war. It is about the war within.</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/stars.svg')">
         <div class="card-bg"></div>
@@ -139,12 +142,15 @@ const colorData = JSON.stringify({
         </div>
       </div>
 
-      {siteData.themes[2].facts.slice(1, 4).map(fact => (
-        <div class="fact-card">
-          <p>{fact.text}</p>
-          <div class="source">{fact.source}</div>
-        </div>
-      ))}
+      <div class="facts-group">
+        {siteData.themes[2].facts.slice(1, 4).map((fact, i) => (
+          <div class="fact-card">
+            <div class="fact-number">Fact {i + 1}</div>
+            <p>{fact.text}</p>
+            <div class="source">{fact.source}</div>
+          </div>
+        ))}
+      </div>
 
       <div class="quote-block">
         <p>{siteData.themes[2].quotes[1]}</p>
@@ -153,13 +159,13 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       SHIV PURANA
+       IV. THE DANCE — SHIV PURANA
   ═══════════════════════════════════════ -->
   <section id="shiva" class="section">
     <div class="section-inner">
       <div class="section-label">IV. The Dance</div>
       <h2>Shiva &amp; the <em>cosmic</em> rhythm</h2>
-      <p>Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv Purana does not begin with "In the beginning" but with "In the endless."</p>
+      <p>Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv Purana does not begin with "In the beginning" but with "In the endless." Shiva is the stillness that contains all motion, the silence that holds all music.</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/flute.svg')">
         <div class="card-bg"></div>
@@ -169,12 +175,15 @@ const colorData = JSON.stringify({
         </div>
       </div>
 
-      {siteData.themes[3].facts.slice(1, 4).map(fact => (
-        <div class="fact-card">
-          <p>{fact.text}</p>
-          <div class="source">{fact.source}</div>
-        </div>
-      ))}
+      <div class="facts-group">
+        {siteData.themes[3].facts.slice(1, 4).map((fact, i) => (
+          <div class="fact-card">
+            <div class="fact-number">Fact {i + 1}</div>
+            <p>{fact.text}</p>
+            <div class="source">{fact.source}</div>
+          </div>
+        ))}
+      </div>
 
       <div class="quote-block">
         <p>{siteData.themes[3].quotes[0]}</p>
@@ -183,13 +192,13 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       ART & BEAUTY
+       V. THE CANVAS — ART & BEAUTY
   ═══════════════════════════════════════ -->
   <section id="art" class="section">
     <div class="section-inner">
       <div class="section-label">V. The Canvas</div>
       <h2>Art, beauty &amp; the <em>act</em> of seeing</h2>
-      <p>Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream.</p>
+      <p>Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream. Every brushstroke is a meditation, every color a prayer.</p>
 
       <div class="image-card" style="--card-bg-image: url('/images/sunflowers.svg')">
         <div class="card-bg"></div>
@@ -199,12 +208,15 @@ const colorData = JSON.stringify({
         </div>
       </div>
 
-      {siteData.themes[4].facts.slice(1, 3).map(fact => (
-        <div class="fact-card">
-          <p>{fact.text}</p>
-          <div class="source">{fact.source}</div>
-        </div>
-      ))}
+      <div class="facts-group">
+        {siteData.themes[4].facts.slice(1, 3).map((fact, i) => (
+          <div class="fact-card">
+            <div class="fact-number">Fact {i + 1}</div>
+            <p>{fact.text}</p>
+            <div class="source">{fact.source}</div>
+          </div>
+        ))}
+      </div>
 
       <div class="quote-block">
         <p>{siteData.themes[4].quotes[0]}</p>
@@ -219,7 +231,7 @@ const colorData = JSON.stringify({
     <div class="section-inner changelog-section">
       <div class="section-label">Changelog</div>
       <h2>Daily <em>mutations</em></h2>
-      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem;">
+      <p style="color: var(--text-tertiary); font-size: var(--text-sm); margin-bottom: var(--space-xl); font-family: var(--font-sans);">
         Version {siteData.changelog.version} — color, content &amp; form evolve daily.
       </p>
       <div class="changelog-timeline">
@@ -276,16 +288,14 @@ const colorData = JSON.stringify({
       overflow: hidden;
       width: clamp(180px, 35vw, 340px);
       height: clamp(180px, 35vw, 340px);
-      margin-bottom: 1.5rem;
+      margin-bottom: var(--space-lg);
       box-shadow: 0 0 60px 10px rgba(255,213,79,0.08), 0 0 120px 30px rgba(255,213,79,0.04);
       flex-shrink: 0;
     }
     #moonShadow {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-color: rgba(8,8,15,0.85);
       box-shadow: 0 0 2rem rgba(8,8,15,0.9);
       border-radius: 50%;
@@ -336,10 +346,9 @@ const colorData = JSON.stringify({
       var shadow = document.getElementById('moonShadow');
       if (!moonEl || !shadow) return;
 
-      // Set the ASCII art
       moonEl.textContent = moonArt;
 
-      // ── Moon phase logic (adapted from Sean-93/asciimoon) ──
+      // ── Moon phase calculation ──
       function getMoonPhaseName(phase) {
         if (phase >= 0 && phase < 0.03) return "New Moon";
         if (phase >= 0.03 && phase < 0.22) return "Waxing Crescent";
@@ -352,64 +361,44 @@ const colorData = JSON.stringify({
         return "New Moon";
       }
 
-      // Calculate moon phase using simplified algorithm (no SunCalc dependency)
-      // Based on known new moon date and lunar cycle
       function calcMoonPhase(date) {
-        // Known new moon: January 6, 2000
         var knownNewMoon = new Date(2000, 0, 6, 18, 14, 0);
-        var lunarCycle = 29.53058867; // days
+        var lunarCycle = 29.53058867;
         var daysSince = (date.getTime() - knownNewMoon.getTime()) / (1000 * 60 * 60 * 24);
         var phase = ((daysSince % lunarCycle) + lunarCycle) % lunarCycle;
         var phaseFraction = phase / lunarCycle;
         return {
           phase: phaseFraction,
           illumination: (1 - Math.cos(phaseFraction * 2 * Math.PI)) / 2 * 100,
-          phaseName: getMoonPhaseName(phaseFraction),
-          daysInCycle: phase
+          phaseName: getMoonPhaseName(phaseFraction)
         };
       }
 
-      // Update shadow position based on phase
       function updateShadow(date) {
         var moonData = calcMoonPhase(date);
         var illumination = moonData.illumination;
         var phase = moonData.phase;
-
-        // Shadow translation: moves across the moon disk
-        // For waxing (phase < 0.5): shadow moves from right to left (negative X)
-        // For waning (phase >= 0.5): shadow moves from left to right (positive X)
         var translateValue;
         if (phase < 0.5) {
-          // Waxing: shadow on the left side, moving right
           translateValue = -(100 - illumination);
         } else {
-          // Waning: shadow on the right side, moving left
           translateValue = 100 - illumination;
         }
-
         shadow.style.transform = 'translateX(' + translateValue + '%';
         return moonData;
       }
 
-      // Initial display
-      var currentDate = new Date();
-      updateShadow(currentDate);
+      // Initial display from real date
+      updateShadow(new Date());
 
-      // Animate through phases on interval (smooth demo mode)
-      // Cycles through all 8 phases over ~40 seconds
+      // Demo: cycle through phases smoothly
       var demoPhase = 0;
-      var phaseStep = 0.125; // 8 phases
-      var intervalMs = 5000; // 5 seconds per phase
-
       setInterval(function() {
-        demoPhase = (demoPhase + phaseStep) % 1.0;
-        // Create a synthetic date that produces this phase
+        demoPhase = (demoPhase + 0.125) % 1.0;
         var syntheticDate = new Date();
-        var lunarCycle = 29.53058867;
-        var daysOffset = demoPhase * lunarCycle;
-        syntheticDate.setTime(syntheticDate.getTime() + daysOffset * 24 * 60 * 60 * 1000);
+        syntheticDate.setTime(syntheticDate.getTime() + demoPhase * 29.53058867 * 24 * 60 * 60 * 1000);
         updateShadow(syntheticDate);
-      }, intervalMs);
+      }, 5000);
     })();
   </script>
 
