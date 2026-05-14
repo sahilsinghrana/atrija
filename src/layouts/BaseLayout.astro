@@ -27,6 +27,12 @@ const { title = "Selene", description = "An impressionist journey through light,
       --gold-dim: rgba(255,213,79,0.15);
       --blue: #4fc3f7;
       --blue-dim: rgba(79,195,247,0.12);
+      --coral: #ff8a65;
+      --coral-dim: rgba(255,138,101,0.12);
+      --violet: #b388ff;
+      --violet-dim: rgba(179,136,255,0.10);
+      --sage: #80cbc4;
+      --sage-dim: rgba(128,203,196,0.10);
       --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --max-w: 720px;
@@ -49,6 +55,46 @@ const { title = "Selene", description = "An impressionist journey through light,
       inset: 0;
       z-index: 0;
       pointer-events: none;
+    }
+
+    /* ── Twinkling Stars Overlay (CSS layer) ── */
+    #stars-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .twinkle-star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle var(--dur, 3s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--min-op, 0.15); transform: scale(1); }
+      50% { opacity: var(--max-op, 0.8); transform: scale(1.3); }
+    }
+
+    /* ── Revolving Moon (CSS) ── */
+    #moon-revolver {
+      position: fixed;
+      top: 8%;
+      right: 10%;
+      z-index: 0;
+      pointer-events: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff8e7, #ffe082 60%, rgba(255,213,79,0.3));
+      box-shadow: 0 0 40px 15px rgba(255,213,79,0.12), 0 0 80px 30px rgba(255,213,79,0.06);
+      animation: moonRevolve 120s linear infinite;
+    }
+    @keyframes moonRevolve {
+      0%   { transform: rotate(0deg) translateX(20px) rotate(0deg); opacity: 0.7; }
+      50%  { transform: rotate(180deg) translateX(20px) rotate(-180deg); opacity: 0.9; }
+      100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); opacity: 0.7; }
     }
 
     /* ── Navigation ── */
@@ -130,6 +176,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       font-style: italic;
       font-weight: 400;
       color: var(--gold);
+      text-shadow: 0 0 40px rgba(255,213,79,0.2);
     }
     .hero p {
       font-family: var(--serif);
@@ -183,15 +230,37 @@ const { title = "Selene", description = "An impressionist journey through light,
       background: var(--border-accent);
       max-width: 60px;
     }
+
+    /* ── Color Theory Typography ── */
     .section h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 600;
-      color: var(--text);
       line-height: 1.15;
       margin-bottom: 2rem;
     }
-    .section h2 em { font-style: italic; font-weight: 400; }
+    /* Section-specific heading color theming via color theory */
+    #today h2 { color: var(--gold); }
+    #today h2 em { color: var(--coral); font-style: italic; font-weight: 400; }
+
+    #moon h2 { color: var(--blue); }
+    #moon h2 em { color: var(--gold); font-style: italic; font-weight: 400; text-shadow: 0 0 30px rgba(255,213,79,0.15); }
+
+    #philosophy h2 { color: var(--coral); }
+    #philosophy h2 em { color: var(--sage); font-style: italic; font-weight: 400; }
+
+    #gita h2 { color: var(--violet); }
+    #gita h2 em { color: var(--gold); font-style: italic; font-weight: 400; }
+
+    #shiva h2 { color: var(--sage); }
+    #shiva h2 em { color: var(--blue); font-style: italic; font-weight: 400; }
+
+    #art h2 { color: var(--gold); }
+    #art h2 em { color: var(--coral); font-style: italic; font-weight: 400; }
+
+    #changelog h2 { color: var(--text-dim); }
+    #changelog h2 em { color: var(--gold); font-style: italic; font-weight: 400; }
+
     .section > .section-inner > p {
       font-size: 1.05rem;
       color: var(--text-dim);
@@ -220,24 +289,53 @@ const { title = "Selene", description = "An impressionist journey through light,
       pointer-events: none;
     }
 
-    /* ── Fact Cards ── */
+    /* ── Fact Cards with Image Backgrounds ── */
     .fact-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.5rem 1.75rem;
       margin: 1.25rem 0;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .fact-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--card-bg-image) center/cover no-repeat;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 0;
+    }
+    .fact-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,15,0.88), rgba(8,8,15,0.75));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 0;
     }
     .fact-card:hover {
       background: var(--bg-card-hover);
       border-color: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
+    .fact-card:hover::before { opacity: 1; }
+    .fact-card:hover::after { opacity: 1; }
+    .fact-card p, .fact-card .source {
+      position: relative;
+      z-index: 1;
     }
     .fact-card p {
       font-size: 0.95rem;
       color: var(--text-dim);
       line-height: 1.7;
+      transition: color 0.3s;
     }
+    .fact-card:hover p { color: var(--text); }
     .fact-card .source {
       margin-top: 0.75rem;
       font-size: 0.8rem;
@@ -261,7 +359,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       position: relative;
     }
     .quote-block::before {
-      content: '“';
+      content: '"';
       font-family: var(--serif);
       font-size: 4rem;
       color: var(--gold);
@@ -358,6 +456,82 @@ const { title = "Selene", description = "An impressionist journey through light,
       opacity: 0.5;
     }
 
+    /* ── Interactive Flute ── */
+    #flute-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 50;
+      cursor: pointer;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,213,79,0.06);
+      border: 1px solid rgba(255,213,79,0.15);
+      transition: background 0.3s, border-color 0.3s, transform 0.2s;
+    }
+    #flute-container:hover {
+      background: rgba(255,213,79,0.12);
+      border-color: rgba(255,213,79,0.35);
+      transform: scale(1.08);
+    }
+    #flute-container svg {
+      width: 48px;
+      height: 48px;
+    }
+    #flute-container .flute-tooltip {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    #flute-container:hover .flute-tooltip { opacity: 1; }
+
+    /* ── Music Notes (spawned by flute click) ── */
+    .spawned-note {
+      position: fixed;
+      z-index: 60;
+      pointer-events: none;
+      font-family: serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      animation: noteFloat 2.5s ease-out forwards;
+      text-shadow: 0 0 10px rgba(255,213,79,0.4);
+    }
+    @keyframes noteFloat {
+      0%   { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
+      15%  { opacity: 1; transform: translateY(-10px) scale(1) rotate(-5deg); }
+      100% { opacity: 0; transform: translateY(-120px) scale(0.7) rotate(15deg); }
+    }
+
+    /* ── Scroll-triggered Flowers ── */
+    .scroll-flower {
+      position: fixed;
+      z-index: 40;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0) rotate(-30deg);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .scroll-flower.visible {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    .scroll-flower svg {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 0 6px rgba(255,213,79,0.3));
+    }
+
     /* ── Footer ── */
     footer {
       text-align: center;
@@ -377,6 +551,9 @@ const { title = "Selene", description = "An impressionist journey through light,
       .fact-card { padding: 1.25rem; }
       .today-fact { padding: 1.5rem; }
       .image-card { margin: 1.5rem 0; border-radius: 8px; }
+      #flute-container { bottom: 1rem; right: 1rem; width: 60px; height: 60px; }
+      #flute-container svg { width: 36px; height: 36px; }
+      #moon-revolver { width: 40px; height: 40px; top: 12%; }
     }
     @media (max-width: 480px) {
       nav { padding: 0 1rem; }
@@ -384,6 +561,7 @@ const { title = "Selene", description = "An impressionist journey through light,
       .section { padding: 3rem 1rem; }
       .quote-block { padding: 1.5rem 1rem; }
       .quote-block::before { font-size: 3rem; }
+      #moon-revolver { display: none; }
     }
   </style>
 </head>
@@ -394,6 +572,27 @@ const { title = "Selene", description = "An impressionist journey through light,
   </div>
 
   <div id="canvas-container"></div>
+
+  <!-- CSS Twinkling Stars Overlay -->
+  <div id="stars-overlay"></div>
+
+  <!-- CSS Revolving Moon -->
+  <div id="moon-revolver"></div>
+
+  <!-- Interactive Flute Button -->
+  <div id="flute-container" title="Click to play">
+    <span class="flute-tooltip">Click to play</span>
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="20" width="38" height="8" rx="4" fill="#d4a843" opacity="0.9"/>
+      <rect x="4" y="21" width="38" height="3" rx="1.5" fill="#e8c060" opacity="0.4"/>
+      <circle cx="12" cy="24" r="2" fill="#1a1a1a"/>
+      <circle cx="19" cy="24" r="2" fill="#1a1a1a"/>
+      <circle cx="26" cy="24" r="2" fill="#1a1a1a"/>
+      <circle cx="33" cy="24" r="2" fill="#1a1a1a"/>
+      <text x="42" y="14" font-size="14" fill="#ffd54f" opacity="0.7" font-family="serif">♪</text>
+      <text x="2" y="38" font-size="10" fill="#ffd54f" opacity="0.4" font-family="serif">♫</text>
+    </svg>
+  </div>
 
   <nav>
     <a href="#hero" class="logo">Selene<span>.</span></a>
@@ -414,5 +613,95 @@ const { title = "Selene", description = "An impressionist journey through light,
   <footer>
     Selene — An impressionist experience in light &amp; philosophy
   </footer>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // ── Twinkling Stars Generator ──
+    (function() {
+      var overlay = document.getElementById('stars-overlay');
+      if (!overlay) return;
+      var count = 80;
+      for (var i = 0; i < count; i++) {
+        var star = document.createElement('div');
+        star.className = 'twinkle-star';
+        var size = 1 + Math.random() * 2.5;
+        star.style.cssText = 'width:' + size + 'px;height:' + size + 'px;' +
+          'left:' + (Math.random() * 100) + '%;' +
+          'top:' + (Math.random() * 100) + '%;' +
+          '--dur:' + (2 + Math.random() * 4) + 's;' +
+          '--delay:' + (Math.random() * 5) + 's;' +
+          '--min-op:' + (0.1 + Math.random() * 0.2) + ';' +
+          '--max-op:' + (0.5 + Math.random() * 0.5) + ';';
+        overlay.appendChild(star);
+      }
+    })();
+
+    // ── Flute Click → Music Notes ──
+    (function() {
+      var flute = document.getElementById('flute-container');
+      if (!flute) return;
+      var noteSymbols = ['♪', '♫', '♩', '♬', '♭', '♮', '♯'];
+      var colors = ['#ffd54f', '#ff8a65', '#4fc3f7', '#b388ff', '#80cbc4', '#fff'];
+      flute.addEventListener('click', function(e) {
+        for (var i = 0; i < 8; i++) {
+          (function(idx) {
+            setTimeout(function() {
+              var note = document.createElement('div');
+              note.className = 'spawned-note';
+              note.textContent = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
+              note.style.color = colors[Math.floor(Math.random() * colors.length)];
+              note.style.left = (e.clientX + (Math.random() - 0.5) * 100) + 'px';
+              note.style.top = (e.clientY + (Math.random() - 0.5) * 40) + 'px';
+              note.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+              document.body.appendChild(note);
+              setTimeout(function() { note.remove(); }, 2500);
+            }, idx * 120);
+          })(i);
+        }
+      });
+    })();
+
+    // ── Scroll-triggered Flowers ──
+    (function() {
+      var flowerPositions = [
+        { x: '5%', y: '25%', color: '#f5c800' },
+        { x: '88%', y: '35%', color: '#ff6699' },
+        { x: '12%', y: '55%', color: '#cc2242' },
+        { x: '82%', y: '65%', color: '#ffcc00' },
+        { x: '8%', y: '80%', color: '#9933cc' },
+        { x: '90%', y: '85%', color: '#ff4400' }
+      ];
+      var flowers = [];
+      flowerPositions.forEach(function(pos, i) {
+        var el = document.createElement('div');
+        el.className = 'scroll-flower';
+        el.style.left = pos.x;
+        el.style.top = pos.y;
+        el.innerHTML = '<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">' +
+          '<circle cx="20" cy="20" r="6" fill="' + pos.color + '" opacity="0.8"/>' +
+          '<g fill="' + pos.color + '" opacity="0.7">';
+        for (var p = 0; p < 8; p++) {
+          var angle = (p / 8) * Math.PI * 2;
+          var px = 20 + Math.cos(angle) * 10;
+          var py = 20 + Math.sin(angle) * 10;
+          el.innerHTML += '<ellipse cx="' + px + '" cy="' + py + '" rx="4" ry="7" transform="rotate(' + (angle * 180 / Math.PI) + ',' + px + ',' + py + ')"/>';
+        }
+        el.innerHTML += '</g></svg>';
+        document.body.appendChild(el);
+        flowers.push({ el: el, triggerY: (i + 1) * 300 + 200 });
+      });
+
+      var revealed = new Set();
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY;
+        flowers.forEach(function(f, idx) {
+          if (!revealed.has(idx) && scrollY > f.triggerY) {
+            f.el.classList.add('visible');
+            revealed.add(idx);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

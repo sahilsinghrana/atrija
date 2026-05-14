@@ -76,18 +76,21 @@ void main() {
 }
 `;
 
-// ── Star field shader ──
+// ── Star field shader — with twinkling ──
 const starVertexShader = `
 attribute float size;
 attribute float brightness;
+attribute float twinkleSpeed;
+attribute float twinklePhase;
 attribute vec3 customColor;
 varying float vBrightness;
 varying vec3 vColor;
+uniform float uTime;
 void main() {
-  vBrightness = brightness;
+  vBrightness = brightness * (0.6 + 0.4 * sin(uTime * twinkleSpeed + twinklePhase));
   vColor = customColor;
   vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-  gl_PointSize = size * (300.0 / -mvPosition.z);
+  gl_PointSize = size * (300.0 / -mvPosition.z) * (0.7 + 0.3 * sin(uTime * twinkleSpeed * 0.5 + twinklePhase));
   gl_Position = projectionMatrix * mvPosition;
 }
 `;
@@ -237,11 +240,24 @@ function createMoon(scene) {
   const moonMat = new THREE.MeshStandardMaterial({ color: 0xfff8e7, emissive: 0x444030, emissiveIntensity: 0.4, roughness: 0.8, metalness: 0.1 });
   const moon = new THREE.Mesh(moonGeo, moonMat);
   moon.position.set(0, 3, -5);
-  moon.userData.animate = (obj, t) => { obj.rotation.y = t * 0.05; obj.position.y = 3 + Math.sin(t * 0.3) * 0.2; };
+  // Moon revolves in a slow orbit + rotates on its own axis
+  moon.userData.animate = (obj, t) => {
+    const orbitRadius = 6;
+    const orbitSpeed = 0.08;
+    obj.position.x = Math.sin(t * orbitSpeed) * orbitRadius;
+    obj.position.z = -5 + Math.cos(t * orbitSpeed) * orbitRadius * 0.5;
+    obj.position.y = 3 + Math.sin(t * 0.15) * 0.8;
+    obj.rotation.y = t * 0.1;  // self-rotation
+  };
   scene.add(moon);
   const glow = new THREE.Mesh(new THREE.SphereGeometry(1.8, 32, 32), new THREE.MeshBasicMaterial({ color: 0xfff5d0, transparent: true, opacity: 0.15, side: THREE.BackSide }));
   glow.position.copy(moon.position);
-  glow.userData.animate = (obj, t) => { obj.position.y = 3 + Math.sin(t * 0.3) * 0.2; obj.scale.setScalar(1 + Math.sin(t * 0.5) * 0.05); };
+  glow.userData.animate = (obj, t) => {
+    obj.position.x = Math.sin(t * 0.08) * 6;
+    obj.position.z = -5 + Math.cos(t * 0.08) * 3;
+    obj.position.y = 3 + Math.sin(t * 0.15) * 0.8;
+    obj.scale.setScalar(1 + Math.sin(t * 0.5) * 0.05);
+  };
   scene.add(glow);
   return { moon, glow };
 }
@@ -267,7 +283,10 @@ function createSunflowers(scene, count) {
     center.position.y = 2 * scale;
     group.add(center);
     group.position.set((Math.random() - 0.5) * 16, 0, (Math.random() - 0.5) * 8 + 4);
-    group.userData.animate = (obj, t) => { obj.rotation.z = Math.sin(t * 0.5 + obj.position.x) * 0.05; obj.rotation.x = Math.sin(t * 0.3 + obj.position.z) * 0.03; };
+    group.userData.animate = (obj, t) => {
+      obj.rotation.z = Math.sin(t * 0.5 + obj.position.x) * 0.08 + Math.sin(t * 0.3) * 0.04;
+      obj.rotation.x = Math.sin(t * 0.3 + obj.position.z) * 0.05;
+    };
     scene.add(group);
     flowers.push(group);
   }
@@ -307,6 +326,8 @@ function createStars(scene, count) {
   const positions = new Float32Array(count * 3);
   const sizes = new Float32Array(count);
   const brightness = new Float32Array(count);
+  const twinkleSpeed = new Float32Array(count);
+  const twinklePhase = new Float32Array(count);
   const colors = new Float32Array(count * 3);
   for (let i = 0; i < count; i++) {
     const i3 = i * 3;
@@ -318,6 +339,8 @@ function createStars(scene, count) {
     positions[i3 + 2] = r * Math.cos(phi);
     sizes[i] = 0.5 + Math.random() * 2.0;
     brightness[i] = 0.3 + Math.random() * 0.7;
+    twinkleSpeed[i] = 0.5 + Math.random() * 3.0;
+    twinklePhase[i] = Math.random() * Math.PI * 2;
     const temp = Math.random();
     if (temp < 0.3) { colors[i3] = 1.0; colors[i3+1] = 0.95; colors[i3+2] = 0.7; }
     else if (temp < 0.6) { colors[i3] = 0.7; colors[i3+1] = 0.8; colors[i3+2] = 1.0; }
@@ -327,10 +350,20 @@ function createStars(scene, count) {
   geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
   geo.setAttribute('brightness', new THREE.BufferAttribute(brightness, 1));
+  geo.setAttribute('twinkleSpeed', new THREE.BufferAttribute(twinkleSpeed, 1));
+  geo.setAttribute('twinklePhase', new THREE.BufferAttribute(twinklePhase, 1));
   geo.setAttribute('customColor', new THREE.BufferAttribute(colors, 3));
-  const mat = new THREE.ShaderMaterial({ vertexShader: starVertexShader, fragmentShader: starFragmentShader, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });
+  const mat = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 } },
+    vertexShader: starVertexShader,
+    fragmentShader: starFragmentShader,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  });
   const stars = new THREE.Points(geo, mat);
-  stars.userData.animate = (obj, t) => { obj.rotation.y = t * 0.003; obj.rotation.x = Math.sin(t * 0.01) * 0.02; };
+  stars.userData.animate = (obj, t) => {
+    obj.material.uniforms.uTime.value = t;
+    obj.rotation.y = t * 0.002;
+  };
   scene.add(stars);
   return stars;
 }
