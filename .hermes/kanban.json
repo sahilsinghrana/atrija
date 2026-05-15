@@ -13,7 +13,7 @@
       "description": "Random shooting stars that streak across the sky with trailing particles. Triggered every 8-15 seconds.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "green",
+      "status": "backlog",
       "prd": "PRD-idea-001-shooting-stars.md"
     },
     {
@@ -49,7 +49,7 @@
       "description": "Multi-layer parallax for sunflower field. Foreground flowers sway more, background less. Depth-based blur.",
       "category": "3D Elements",
       "priority": "high",
-      "status": "green",
+      "status": "backlog",
       "prd": "PRD-idea-005-sunflower-parallax.md"
     },
     {
@@ -58,7 +58,7 @@
       "description": "Auto-rotating quote cards with fade transitions. Each quote tied to current section's visual element.",
       "category": "UI",
       "priority": "medium",
-      "status": "red",
+      "status": "backlog",
       "prd": "PRD-idea-006-quote-carousel.md"
     },
     {
@@ -87,8 +87,89 @@
       "priority": "high",
       "status": "backlog",
       "prd": "PRD-idea-009-loading-optimizations.md"
+    },
+    {
+      "id": "idea-010",
+      "title": "Flute click — SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
+      "category": "Interactivity",
+      "priority": "high",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-011",
+      "title": "White 3D moon + glow",
+      "description": "Change 3D moon material from yellow (0xfff8e7) to white (0xffffff) with reduced emissive. Glow sphere also white instead of warm yellow.",
+      "category": "3D Elements",
+      "priority": "medium",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-012",
+      "title": "Diverse colorful tulips",
+      "description": "Replace all-yellow tulip palette with 16 diverse colors (red, orange, pink, magenta, purple, golden, amber, coral, crimson, orchid, vermillion, rose, violet, peach). Each tulip randomized with per-petal variation.",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-013",
+      "title": "Mobile tulip visibility fix",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-014",
+      "title": "Remove speaker/audio toggle",
+      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "category": "Audio",
+      "priority": "medium",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-015",
+      "title": "ASCII moon brightness + shadow",
+      "description": "Lighten ASCII moon text color from #c9a84c to #e8d48a with stronger text-shadow glow. Reduce moon shadow overlay opacity from 0.88 to 0.72.",
+      "category": "UI",
+      "priority": "medium",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-016",
+      "title": "Glitch shader fix",
+      "description": "Fix glitch shader R/B channel swap bug (was reading .b for both r and b). Scope chromatic aberration to glitch lines only (~2% per scanline) instead of every frame.",
+      "category": "Shaders",
+      "priority": "high",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-017",
+      "title": "Blue color cast removal",
+      "description": "Remove blue point light washing out scene. Change from 0x4466aa to warm 0xffeedd at lower intensity. Reduce Van Gogh shader saturation from 1.4 to 1.0.",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-018",
+      "title": "Single-layer flower rendering",
+      "description": "Replace 3-layer parallax flower system with proven single-layer approach (a0ce3ef reference). Larger scales, higher Y, correct counts (10 sunflowers, 6 tulips desktop; 6 sunflowers, 3 tulips mobile).",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "done",
+      "prd": null
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-05-15T14:30:00Z"
+  "generatedAt": "2026-05-20T12:00:00Z"
 }
