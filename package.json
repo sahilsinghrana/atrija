@@ -14,11 +14,13 @@
     "lint": "eslint src/"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@shikijs/core": "^4.0.2",
     "@shikijs/types": "^4.0.2",
     "astro": "^4",
     "shiki": "^4.0.2",
-    "three": "^0.160"
+    "three": "^0.160",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.40",
