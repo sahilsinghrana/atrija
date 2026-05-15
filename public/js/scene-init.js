@@ -30,8 +30,9 @@ void main(){
   // Random horizontal glitch strips — more frequent (was 0.9985, now 0.98 = ~2% chance)
   float glitchLine = step(0.98, rand(vec2(floor(uv.y * 20.0), floor(uTime * 2.0))));
   float glitchShift = glitchLine * (rand(vec2(uTime, uv.y)) - 0.5) * 0.06;
+  // On glitch lines, swap R and B channels for dramatic color shift
   r = texture2D(tDiffuse, uv + vec2(aberr + glitchShift, 0.0)).b;
-  b = texture2D(tDiffuse, uv - vec2(aberr - glitchShift, 0.0)).b;
+  b = texture2D(tDiffuse, uv - vec2(aberr - glitchShift, 0.0)).r;
   vec3 col = vec3(r, g, b);
   col += scanline * 0.2;
   gl_FragColor = vec4(col, 1.0);
