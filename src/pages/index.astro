@@ -17,7 +17,7 @@ const todayQuote = todayTheme.quotes[dayOfYear % todayTheme.quotes.length];
 
 // Use content.json changelog (cron-updated), fall back to siteData
 const changelogSource = content.changelog || siteData.changelog;
-const changelogEntries = changelogSource.entries.slice(-5).reverse();
+const changelogEntries = changelogSource.entries.slice(-5);
 const changelogVersion = changelogSource.version;
 
 // Section text from content.json — edit this file to update all text content

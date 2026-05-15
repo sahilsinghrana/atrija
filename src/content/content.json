@@ -117,20 +117,17 @@
     "version": "1.1.0",
     "entries": [
       {
-        "date": "2026-05-15",
-        "type": "feature",
-        "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora.",
+        "date": "2026-05-14",
+        "type": "daily-mutation",
+        "description": "Daily mutation: Theme \"Selene & The Moon\" with \"starry-night\" color scheme.",
         "changes": [
-          "Rewrote sunflowers and tulips as canvas-sprite billboards for clear recognition",
-          "Fixed white glow blob — moon glow now subtle and correctly sized",
-          "Added glitch/chromatic aberration effect on mobile",
-          "Increased music notes count on mobile (40 notes)",
-          "Global click-anywhere spawns music notes",
-          "Modularized text content into content.json for cron-job updates",
-          "Added AI agent banner — self-built, self-deployed notice",
-          "Smooth rAF-based moon phase animation replacing setInterval",
-          "Section backdrops for text legibility over 3D canvas",
-          "Updated changelog to v1.1.0"
+          "Rotated to color scheme: starry-night (contemplative)",
+          "Featured theme: Selene & The Moon",
+          "Shader params — strokeDensity: 8.9, swirlFrequency: 12, colorIntensity: 1.47",
+          "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
+          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\"",
+          "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
+          "Image card now points to fact 0 of theme \"Selene & The Moon\""
         ]
       },
       {
@@ -146,13 +143,13 @@
         ]
       },
       {
-        "date": "2026-05-14",
+        "date": "2026-05-15",
         "type": "daily-mutation",
         "description": "Daily mutation: Theme \"Selene & The Moon\" with \"starry-night\" color scheme.",
         "changes": [
           "Rotated to color scheme: starry-night (contemplative)",
           "Featured theme: Selene & The Moon",
-          "Shader params — strokeDensity: 8.9, swirlFrequency: 12, colorIntensity: 1.47",
+          "Shader params — strokeDensity: 8.7, swirlFrequency: 12.7, colorIntensity: 1.48",
           "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
           "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\"",
           "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
@@ -161,16 +158,19 @@
       },
       {
         "date": "2026-05-15",
-        "type": "daily-mutation",
-        "description": "Daily mutation: Theme \"Selene & The Moon\" with \"starry-night\" color scheme.",
+        "type": "feature",
+        "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora.",
         "changes": [
-          "Rotated to color scheme: starry-night (contemplative)",
-          "Featured theme: Selene & The Moon",
-          "Shader params — strokeDensity: 8.1, swirlFrequency: 12.8, colorIntensity: 1.35",
-          "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
-          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\"",
-          "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
-          "Image card now points to fact 0 of theme \"Selene & The Moon\""
+          "Rewrote sunflowers and tulips as canvas-sprite billboards for clear recognition",
+          "Fixed white glow blob — moon glow now subtle and correctly sized",
+          "Added glitch/chromatic aberration effect on mobile",
+          "Increased music notes count on mobile (40 notes)",
+          "Global click-anywhere spawns music notes",
+          "Modularized text content into content.json for cron-job updates",
+          "Added AI agent banner — self-built, self-deployed notice",
+          "Smooth rAF-based moon phase animation replacing setInterval",
+          "Section backdrops for text legibility over 3D canvas",
+          "Updated changelog to v1.1.0"
         ]
       }
     ]

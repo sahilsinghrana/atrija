@@ -119,6 +119,15 @@ const scheme = mutateColors(siteData, day);
 const contentUpdate = updateSectionContent(content, siteData, day);
 const { entry, changes } = addChangelogEntry(content, siteData, day, contentUpdate);
 
+// Ensure changelog is always sorted chronologically (oldest first)
+content.changelog.entries.sort((a, b) => {
+  const dateCmp = a.date.localeCompare(b.date);
+  if (dateCmp !== 0) return dateCmp;
+  // Same day: initial < daily-mutation < feature < fix < refactor < perf < chore
+  const typeOrder = { initial: 0, 'daily-mutation': 1, feature: 2, fix: 3, refactor: 4, perf: 5, chore: 6 };
+  return (typeOrder[a.type] || 9) - (typeOrder[b.type] || 9);
+});
+
 saveJSON(SITE_DATA_PATH, siteData);
 saveJSON(CONTENT_PATH, content);
 
