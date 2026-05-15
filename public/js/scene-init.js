@@ -266,26 +266,89 @@ function makeSunflowerCanvas(size) {
   return c;
 }
 
-function createSunflowers(scene, count) {
-  var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
-  for (var i = 0; i < count; i++) {
-    // Scale — visible on both mobile and desktop
-    var s = isMobile ? (0.6 + Math.random() * 0.5) : (0.8 + Math.random() * 0.8);
-    var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    sprite.scale.set(1.4 * s, 1.8 * s, 1);
-    // Position — higher Y on mobile so they're in view
-    var spreadX = isMobile ? 10 : 14;
-    sprite.position.set((Math.random() - 0.5) * spreadX, -0.3 + s * 0.4, (Math.random() - 0.5) * 6 + 2);
-    var ph = Math.random() * Math.PI * 2;
-    var baseY = sprite.position.y;
-    (function(p, by) {
-      sprite.userData.animate = function(o, t) {
-        o.position.y = by + Math.sin(t * 0.5 + p) * 0.08;
-        o.material.rotation = Math.sin(t * 0.3 + p) * 0.06;
-      };
-    })(ph, baseY);
-    scene.add(sprite);
+function createSunflowers(scene, totalCount) {
+  var layers = [
+    {
+      name: 'background',
+      count: Math.floor(totalCount * 0.3),
+      scaleRange: [0.4, 0.7],
+      zRange: [-15, -8],
+      yRange: [-1.5, -0.5],
+      swayAmp: 0.03,
+      swaySpeed: 0.4,
+      opacity: 0.5,
+      spreadX: 20
+    },
+    {
+      name: 'midground',
+      count: Math.floor(totalCount * 0.4),
+      scaleRange: [0.7, 1.2],
+      zRange: [-10, -3],
+      yRange: [-1.0, 0.0],
+      swayAmp: 0.06,
+      swaySpeed: 0.6,
+      opacity: 0.75,
+      spreadX: 16
+    },
+    {
+      name: 'foreground',
+      count: Math.floor(totalCount * 0.3),
+      scaleRange: [1.2, 1.8],
+      zRange: [-6, 0],
+      yRange: [-0.5, 0.5],
+      swayAmp: 0.12,
+      swaySpeed: 0.8,
+      opacity: 0.95,
+      spreadX: 12
+    }
+  ];
+
+  // Adjust counts for mobile
+  if (isMobile) {
+    layers.forEach(function(l) {
+      l.count = Math.max(1, Math.floor(l.count * 0.6));
+      l.scaleRange = [l.scaleRange[0] * 0.8, l.scaleRange[1] * 0.8];
+    });
   }
+
+  // Texture LOD: smaller canvas for background layer (further away = less detail needed)
+  var bgTex = new THREE.CanvasTexture(makeSunflowerCanvas(80));
+  var fgTex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
+
+  layers.forEach(function(layer) {
+    // Use smaller texture for background, full-res for foreground/midground
+    var tex = (layer.name === 'background') ? bgTex : fgTex;
+
+    for (var i = 0; i < layer.count; i++) {
+      var s = layer.scaleRange[0] + Math.random() * (layer.scaleRange[1] - layer.scaleRange[0]);
+      var sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: tex,
+        transparent: true,
+        depthWrite: false,
+        opacity: layer.opacity
+      }));
+      sprite.scale.set(1.4 * s, 1.8 * s, 1);
+
+      var x = (Math.random() - 0.5) * layer.spreadX;
+      var y = layer.yRange[0] + Math.random() * (layer.yRange[1] - layer.yRange[0]);
+      var z = layer.zRange[0] + Math.random() * (layer.zRange[1] - layer.zRange[0]);
+      sprite.position.set(x, y, z);
+
+      var ph = Math.random() * Math.PI * 2;
+      var baseX = x;
+      var baseY = y;
+
+      (function(p, bx, by, sa, ss) {
+        sprite.userData.animate = function(o, t) {
+          o.position.x = bx + Math.sin(t * ss + p) * sa;
+          o.position.y = by + Math.sin(t * ss * 0.7 + p) * sa * 0.5;
+          o.material.rotation = Math.sin(t * ss * 0.5 + p) * sa * 0.8;
+        };
+      })(ph, baseX, baseY, layer.swayAmp, layer.swaySpeed);
+
+      scene.add(sprite);
+    }
+  });
 }
 
 // ── Tulip — cup-shaped and open variants, diverse natural colors ──
@@ -829,7 +892,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Flower counts — matching the proven a0ce3ef baseline
   var noteCount     = isMobile ? 25 : 30;
-  var sunflowerCount = isMobile ? 6 : 10;
+  var sunflowerCount = isMobile ? 10 : 16;
   var tulipCount    = isMobile ? 3 : 6;
   var starCount     = isLowEnd ? 1800 : 2000;
 
