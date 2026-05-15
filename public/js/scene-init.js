@@ -429,7 +429,6 @@ function makeTulipCanvas(size, color, isOpen) {
 }
 
 function createTulips(scene, count) {
-  // Natural tulip colors: warm yellows, ambers, deep gold — NO green, NO pink, NO purple
   var colors = [
     '#e84040',  // vivid red
     '#d41a1a',  // deep red
@@ -452,14 +451,17 @@ function createTulips(scene, count) {
     var color = colors[Math.floor(Math.random() * colors.length)];
     var isOpen = Math.random() > 0.5; // 50% cup, 50% open
     var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color, isOpen));
-    var s = isMobile ? (0.5 + Math.random() * 0.4) : (0.6 + Math.random() * 0.6);
+    // Mobile: larger scale so tulips are clearly visible
+    var s = isMobile ? (0.8 + Math.random() * 0.6) : (0.6 + Math.random() * 0.6);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    sprite.scale.set(0.85 * s, 1.4 * s, 1);
+    // Wider aspect ratio so tulips don't disappear at small scales
+    sprite.scale.set(1.0 * s, 1.6 * s, 1);
     var spreadX = isMobile ? 10 : 14;
     var spreadZ = isMobile ? 6 : 8;
+    // Higher Y on mobile so tulips sit in visible viewport area
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      -0.5 + s * 0.3,
+      isMobile ? -0.1 + s * 0.35 : -0.5 + s * 0.3,
       (Math.random() - 0.5) * spreadZ + 1
     );
     var ph = Math.random() * Math.PI * 2;
