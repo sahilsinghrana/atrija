@@ -21,6 +21,15 @@ cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 ### 3. Git Commit Convention
 Use semantic commit messages: `feat:`, `fix:`, `refactor:`, `perf:`, `chore:`, `style:`, `docs:`
 
+### 3b. ALWAYS Commit and Push After Code Changes
+```bash
+cd /root/projects/van-gogh-site
+git add -A
+git commit -m "semantic: message"
+git push origin master
+```
+**Never** leave changes uncommitted. Even small fixes must be committed and pushed immediately. This ensures cron jobs and other agents always work with the latest code.
+
 ### 4. Never Stop Critical Services
 - hermes-gateway (PID 5334), cloudflared (PID 5474), nginx (PID 5414), sshd (PID 5416)
 
