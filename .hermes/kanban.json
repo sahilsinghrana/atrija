@@ -67,7 +67,7 @@
       "description": "Add watercolor-style post-processing shader. Edge detection + color bleeding for painterly look.",
       "category": "Shaders",
       "priority": "high",
-      "status": "green",
+      "status": "cancelled",
       "prd": "PRD-idea-007-watercolor-shader.md"
     },
     {
