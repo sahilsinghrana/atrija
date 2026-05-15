@@ -13,7 +13,7 @@
       "description": "Random shooting stars that streak across the sky with trailing particles. Triggered every 8-15 seconds.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "backlog",
+      "status": "red",
       "prd": "PRD-idea-001-shooting-stars.md"
     },
     {
@@ -49,7 +49,7 @@
       "description": "Multi-layer parallax for sunflower field. Foreground flowers sway more, background less. Depth-based blur.",
       "category": "3D Elements",
       "priority": "high",
-      "status": "backlog",
+      "status": "red",
       "prd": "PRD-idea-005-sunflower-parallax.md"
     },
     {
@@ -58,7 +58,7 @@
       "description": "Auto-rotating quote cards with fade transitions. Each quote tied to current section's visual element.",
       "category": "UI",
       "priority": "medium",
-      "status": "backlog",
+      "status": "red",
       "prd": "PRD-idea-006-quote-carousel.md"
     },
     {
@@ -67,7 +67,7 @@
       "description": "Add watercolor-style post-processing shader. Edge detection + color bleeding for painterly look.",
       "category": "Shaders",
       "priority": "high",
-      "status": "backlog",
+      "status": "red",
       "prd": "PRD-idea-007-watercolor-shader.md"
     },
     {
