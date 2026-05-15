@@ -242,13 +242,18 @@ function makeSunflowerCanvas(size) {
 function createSunflowers(scene, count) {
   var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
   for (var i = 0; i < count; i++) {
-    // Scale — visible on both mobile and desktop
-    var s = isMobile ? (0.6 + Math.random() * 0.5) : (0.8 + Math.random() * 0.8);
+    // Scale — larger and more visible
+    var s = isMobile ? (1.0 + Math.random() * 0.8) : (0.8 + Math.random() * 0.8);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(1.4 * s, 1.8 * s, 1);
-    // Position — higher Y on mobile so they're in view
-    var spreadX = isMobile ? 10 : 14;
-    sprite.position.set((Math.random() - 0.5) * spreadX, -0.3 + s * 0.4, (Math.random() - 0.5) * 6 + 2);
+    // Position — spread across visible area, closer to camera
+    var spreadX = isMobile ? 14 : 16;
+    var spreadZ = isMobile ? 8 : 10;
+    sprite.position.set(
+      (Math.random() - 0.5) * spreadX,
+      -0.5 + s * 0.6,
+      (Math.random() - 0.5) * spreadZ + 3
+    );
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
     (function(p, by) {
@@ -363,22 +368,23 @@ function createTulips(scene, count) {
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
     var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color));
-    var s = isMobile ? (0.4 + Math.random() * 0.35) : (0.55 + Math.random() * 0.65);
+    // Larger scale for visibility
+    var s = isMobile ? (0.7 + Math.random() * 0.6) : (0.55 + Math.random() * 0.65);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(0.85 * s, 1.4 * s, 1);
-    // Interleave with sunflowers — slightly different z range so they're visible
-    var spreadX = isMobile ? 8 : 12;
+    // Spread across visible area, interleaved with sunflowers
+    var spreadX = isMobile ? 12 : 14;
+    var spreadZ = isMobile ? 6 : 8;
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      -0.6 + s * 0.4,
-      (Math.random() - 0.5) * 5 + 2.5
+      -0.4 + s * 0.5,
+      (Math.random() - 0.5) * spreadZ + 2
     );
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
     (function(p, by) {
       sprite.userData.animate = function(o, t) {
         o.position.y = by + Math.sin(t * 0.75 + p) * 0.08;
-        // Wavy petal effect via rotation oscillation
         o.material.rotation = Math.sin(t * 0.6 + p) * 0.1 + Math.sin(t * 1.5 + p * 2) * 0.04;
       };
     })(ph, baseY);
@@ -444,7 +450,7 @@ function createFlute(scene) {
   scene.add(g);
 }
 
-// ── Music Notes — each with fully independent random trajectory ──
+// ── Music Notes — spread across full scene, always visible ──
 function createMusicNotes(scene, count) {
   var shapes = ['♪','♫','♩','♬'];
   var noteColors = ['rgba(255,220,100,0.95)','rgba(255,180,80,0.9)','rgba(200,220,255,0.9)','rgba(255,200,255,0.85)','rgba(180,255,200,0.85)'];
@@ -457,32 +463,31 @@ function createMusicNotes(scene, count) {
     var tex = new THREE.CanvasTexture(canvas);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.75 }));
 
-    // Each note starts at a completely random position
-    var startX = (Math.random() - 0.5) * 18;
-    var startY = (Math.random() - 0.5) * 12;
-    var startZ = (Math.random() - 0.5) * 16;
+    // Spread across full visible scene
+    var startX = (Math.random() - 0.5) * 20;
+    var startY = (Math.random() - 0.5) * 14;
+    var startZ = (Math.random() - 0.5) * 18;
     sprite.position.set(startX, startY, startZ);
 
-    // Note scale — smaller on mobile, tiny on desktop
-    var noteScale = isMobile ? 0.6 : 0.35;
+    // Larger notes for visibility
+    var noteScale = isMobile ? 0.9 : 0.45;
     sprite.scale.set(noteScale, noteScale, 1);
 
-    // Each note has its own unique random motion parameters
-    // Faster rise so movement is clearly visible
-    var riseSpeed  = isMobile ? (0.06 + Math.random() * 0.08) : (0.03 + Math.random() * 0.04);
-    var driftFreqX = 0.5 + Math.random() * 1.5;
-    var driftFreqZ = 0.4 + Math.random() * 1.0;
-    var driftAmpX  = isMobile ? (0.01 + Math.random() * 0.025) : (0.005 + Math.random() * 0.015);
-    var driftAmpZ  = isMobile ? (0.008 + Math.random() * 0.02) : (0.003 + Math.random() * 0.01);
+    // Faster, more visible animation
+    var riseSpeed  = isMobile ? (0.08 + Math.random() * 0.1) : (0.04 + Math.random() * 0.05);
+    var driftFreqX = 0.6 + Math.random() * 1.8;
+    var driftFreqZ = 0.5 + Math.random() * 1.2;
+    var driftAmpX  = isMobile ? (0.015 + Math.random() * 0.03) : (0.008 + Math.random() * 0.02);
+    var driftAmpZ  = isMobile ? (0.01 + Math.random() * 0.025) : (0.005 + Math.random() * 0.015);
     var phaseX     = Math.random() * Math.PI * 2;
     var phaseZ     = Math.random() * Math.PI * 2;
-    var rotFreq    = 0.4 + Math.random() * 1.2;
-    var rotAmp     = 0.06 + Math.random() * 0.25;
+    var rotFreq    = 0.5 + Math.random() * 1.5;
+    var rotAmp     = 0.08 + Math.random() * 0.3;
     var rotPhase   = Math.random() * Math.PI * 2;
-    var opacFreq   = 0.8 + Math.random() * 2.5;
+    var opacFreq   = 1.0 + Math.random() * 3.0;
     var opacPhase  = Math.random() * Math.PI * 2;
-    var resetY     = isMobile ? 5 + Math.random() * 3 : 7 + Math.random() * 4;
-    var resetX     = (Math.random() - 0.5) * 18;
+    var resetY     = isMobile ? 6 + Math.random() * 4 : 8 + Math.random() * 5;
+    var resetX     = (Math.random() - 0.5) * 20;
 
     (function(rs, dfx, dfz, dax, daz, px, pz, rf, ra, rp, of, op, ry, rx) {
       sprite.userData.animate = function(o, t) {
@@ -492,9 +497,9 @@ function createMusicNotes(scene, count) {
         o.material.rotation = Math.sin(t * rf + rp) * ra;
         o.material.opacity = 0.35 + Math.sin(t * of + op) * 0.4;
         if (o.position.y > ry) {
-          o.position.y = -3 - Math.random() * 4;
-          o.position.x = rx + (Math.random() - 0.5) * 4;
-          o.position.z = (Math.random() - 0.5) * 16;
+          o.position.y = -4 - Math.random() * 5;
+          o.position.x = rx + (Math.random() - 0.5) * 5;
+          o.position.z = (Math.random() - 0.5) * 18;
         }
       };
     })(riseSpeed, driftFreqX, driftFreqZ, driftAmpX, driftAmpZ, phaseX, phaseZ, rotFreq, rotAmp, rotPhase, opacFreq, opacPhase, resetY, resetX);
@@ -639,10 +644,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // Balanced counts — fewer, smaller elements on mobile
-  var noteCount     = isMobile ? 15 : 25;
-  var sunflowerCount = isMobile ? 6 : 10;
-  var tulipCount    = isMobile ? 3 : 6;
+  // Balanced counts — more visible on mobile
+  var noteCount     = isMobile ? 25 : 30;
+  var sunflowerCount = isMobile ? 8 : 12;
+  var tulipCount    = isMobile ? 6 : 8;
   var starCount     = isLowEnd ? 1200 : 2000;
 
   createStars(scene.scene, starCount);
