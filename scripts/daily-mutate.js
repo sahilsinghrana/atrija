@@ -12,6 +12,7 @@ const SITE_DATA_PATH = join(__dirname, '../src/content/siteData.json');
 const CONTENT_PATH = join(__dirname, '../src/content/content.json');
 const CHANGELOG_DIR = join(__dirname, '../src/content/changelog');
 const CHANGELOG_INDEX = join(CHANGELOG_DIR, 'index.json');
+const PUBLIC_CHANGELOG_DIR = join(__dirname, '../public/changelog');
 
 function loadJSON(path) { return JSON.parse(readFileSync(path, 'utf-8')); }
 function saveJSON(path, data) { writeFileSync(path, JSON.stringify(data, null, 2)); }
@@ -144,6 +145,15 @@ function writeChangelogEntry(dayOfYear, updatedSections, scheme) {
 
   // Update index metadata
   updateChangelogIndex(today, dateData);
+
+  // Sync to public/changelog/ for deployment
+  ensureDir(PUBLIC_CHANGELOG_DIR);
+  const publicDateFile = join(PUBLIC_CHANGELOG_DIR, `${today}.json`);
+  const publicIndexFile = join(PUBLIC_CHANGELOG_DIR, 'index.json');
+  saveJSON(publicDateFile, dateData);
+  // Re-read the index that updateChangelogIndex just wrote
+  const currentIndex = loadJSON(CHANGELOG_INDEX);
+  saveJSON(publicIndexFile, currentIndex);
 
   return { entry, changes };
 }

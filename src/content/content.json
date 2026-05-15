@@ -141,12 +141,12 @@
         "date": "2026-05-14"
       },
       {
-        "time": "08:09:51",
+        "time": "08:19:54",
         "type": "daily-mutation",
         "description": "Daily mutation #135: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
         "changes": [
           "Color scheme: starry-night (contemplative)",
-          "Shader — strokeDensity: 8.1, swirlFrequency: 14.9, colorIntensity: 1.54",
+          "Shader — strokeDensity: 7.4, swirlFrequency: 15.2, colorIntensity: 1.58",
           "Section \"moon\": Selene & The Moon theme, fact #0",
           "Section \"philosophy\": Ego & Arrogance theme, fact #1",
           "Section \"gita\": Bhagavad Gita theme, fact #2",

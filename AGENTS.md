@@ -101,32 +101,55 @@ scripts/
 
 ---
 
-## Changelog Management
+## Changelog Architecture
 
-All cron jobs that make changes MUST document them in `src/content/content.json` → `changelog.entries[]`.
+Changelog entries are stored as **date-based files** in `src/content/changelog/` (copied to `public/changelog/` for static serving):
 
-### Changelog Entry Format
+```
+src/content/changelog/
+  index.json           — Master index: dates metadata, entry counts
+  2026-05-14.json      — All entries for May 14
+  2026-05-15.json      — All entries for May 15
+```
+
+### Entry Format (per date file)
 ```json
 {
-  "date": "YYYY-MM-DD",
-  "type": "daily-mutation" | "feature" | "refactor" | "perf" | "chore" | "initial",
-  "description": "Short description of what changed",
-  "changes": ["Specific change 1", "Specific change 2", ...]
+  "date": "2026-05-15",
+  "entries": [
+    {
+      "time": "06:00:00",
+      "type": "daily-mutation",
+      "description": "Daily mutation #135: ...",
+      "changes": ["change 1", "change 2"]
+    }
+  ]
 }
 ```
 
-### Which Cron Jobs Update Changelog
-| Job | When | Entry Type |
-|-----|------|------------|
-| `van-gogh-daily-mutate` | Every run | `daily-mutation` — colors, shaders, content text |
-| `van-gogh-background-implement` | On implementation | `feature` / `refactor` / `perf` |
-| `van-gogh-git-pull-build` | Only if changes pulled | `chore` — lists commit messages |
+### Index Format
+```json
+{
+  "version": "1.2.0",
+  "lastUpdated": "2026-05-15T13:00:00Z",
+  "totalEntries": 6,
+  "dates": [
+    { "date": "2026-05-15", "entries": 3, "latestType": "daily-mutation", "description": "..." }
+  ]
+}
+```
 
 ### Rules
-- Keep max 15 entries (oldest auto-trimmed)
-- If same day + same type exists, UPDATE the entry (don't duplicate)
-- Content text changes (intro, imageCard, facts) must be listed in the `changes` array
-- The changelog is displayed on the website UI — keep descriptions user-friendly
+- Each date file contains all entries for that date, sorted by time
+- Index keeps only last 30 dates (oldest auto-pruned)
+- Same-day entries are differentiated by `time` field
+- UI loads index first, then lazy-loads date files on demand
+- "Load More" button fetches older dates in batches of 5
+
+### Updating
+- `daily-mutate.js` writes to `changelog/YYYY-MM-DD.json` and updates `index.json`
+- Other cron jobs (background-implement, git-pull-build) should do the same
+- Keep `content.json` clean — no changelog data in it
 | Job | Schedule | Purpose |
 |-----|----------|---------|
 | `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build |
