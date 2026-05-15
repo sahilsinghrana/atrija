@@ -183,14 +183,14 @@ function makeSunflowerCanvas(size) {
   ctx.bezierCurveTo(cx + size * 0.04, cy + r * 0.8, cx - size * 0.03, cy + r * 1.1, cx, size);
   ctx.stroke();
 
-  // Leaves
+  // Leaves — positioned lower on stem, below flower head
   ctx.fillStyle = '#3a7a2e';
   for (var side = -1; side <= 1; side += 2) {
     ctx.save();
-    ctx.translate(cx + side * size * 0.04, cy + r * 0.7);
-    ctx.rotate(side * 0.6);
+    ctx.translate(cx + side * size * 0.03, cy + r * 1.05);
+    ctx.rotate(side * 0.5);
     ctx.beginPath();
-    ctx.ellipse(side * size * 0.12, 0, size * 0.14, size * 0.06, 0, 0, Math.PI * 2);
+    ctx.ellipse(side * size * 0.1, 0, size * 0.12, size * 0.05, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
@@ -287,8 +287,8 @@ function createSunflowers(scene, totalCount) {
   // Adjust counts for mobile — fewer but still spread
   if (isMobile) {
     layers.forEach(function(l) {
-      l.count = Math.max(1, Math.floor(l.count * 0.5));
-      l.scaleRange = [l.scaleRange[0] * 0.7, l.scaleRange[1] * 0.7];
+      l.count = Math.max(1, Math.floor(l.count * 0.35));
+      l.scaleRange = [l.scaleRange[0] * 0.8, l.scaleRange[1] * 0.8];
       l.spreadX = l.spreadX * 0.7;
       l.opacity = l.name === 'background' ? 0.25 : l.opacity * 0.85;
     });
@@ -351,22 +351,22 @@ function makeTulipCanvas(size, color) {
   ctx.bezierCurveTo(cx + size * 0.06, size * 0.65, cx - size * 0.05, size * 0.82, cx + size * 0.02, stemBot);
   ctx.stroke();
 
-  // Leaves — two long curved blades
+  // Leaves — two long curved blades, positioned lower on stem
   for (var side = -1; side <= 1; side += 2) {
     ctx.save();
     ctx.fillStyle = '#3a7a2e';
     var lx = cx + side * size * 0.04;
-    var ly = size * 0.72;
+    var ly = size * 0.82;
     ctx.beginPath();
     ctx.moveTo(lx, ly);
     ctx.bezierCurveTo(
-      lx + side * size * 0.22, ly - size * 0.08,
-      lx + side * size * 0.28, ly - size * 0.22,
-      lx + side * size * 0.18, ly - size * 0.32
+      lx + side * size * 0.18, ly - size * 0.06,
+      lx + side * size * 0.22, ly - size * 0.16,
+      lx + side * size * 0.14, ly - size * 0.22
     );
     ctx.bezierCurveTo(
-      lx + side * size * 0.12, ly - size * 0.28,
-      lx + side * size * 0.06, ly - size * 0.14,
+      lx + side * size * 0.08, ly - size * 0.18,
+      lx + side * size * 0.04, ly - size * 0.10,
       lx, ly
     );
     ctx.fill();
@@ -807,10 +807,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // Balanced counts — more visible on mobile
+  // Balanced counts — fewer on mobile for performance
   var noteCount     = isMobile ? 40 : 30;
-  var sunflowerCount = isMobile ? 10 : 16; // total across all 3 layers
-  var tulipCount    = isMobile ? 6 : 8;
+  var sunflowerCount = isMobile ? 5 : 16; // total across all 3 layers
+  var tulipCount    = isMobile ? 3 : 8;
   var starCount     = isLowEnd ? 1800 : 2000;
 
   createStars(scene.scene, starCount);
