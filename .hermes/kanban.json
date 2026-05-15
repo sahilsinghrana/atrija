@@ -13,7 +13,8 @@
       "description": "Random shooting stars that streak across the sky with trailing particles. Triggered every 8-15 seconds.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-001-shooting-stars.md"
     },
     {
       "id": "idea-002",
@@ -21,15 +22,17 @@
       "description": "Users can click stars to draw constellation lines. Lines glow and fade. Store in localStorage.",
       "category": "Interactivity",
       "priority": "low",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-002-constellation-drawing.md"
     },
     {
       "id": "idea-003",
       "title": "Moon phase API integration",
-      "description": "Replace calculated moon phase with real-time API data. Show accurate phase for user's location.",
+      "description": "Replace calculated moon phase with real astronomical data. Show accurate phase for current date.",
       "category": "Data",
       "priority": "medium",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-003-moon-phase.md"
     },
     {
       "id": "idea-004",
@@ -37,7 +40,8 @@
       "description": "Procedural ambient music using Web Audio API. Flute-like tones that respond to scroll position and time of day.",
       "category": "Audio",
       "priority": "high",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-004-ambient-music.md"
     },
     {
       "id": "idea-005",
@@ -45,7 +49,8 @@
       "description": "Multi-layer parallax for sunflower field. Foreground flowers sway more, background less. Depth-based blur.",
       "category": "3D Elements",
       "priority": "high",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-005-sunflower-parallax.md"
     },
     {
       "id": "idea-006",
@@ -53,7 +58,8 @@
       "description": "Auto-rotating quote cards with fade transitions. Each quote tied to current section's visual element.",
       "category": "UI",
       "priority": "medium",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-006-quote-carousel.md"
     },
     {
       "id": "idea-007",
@@ -61,16 +67,19 @@
       "description": "Add watercolor-style post-processing shader. Edge detection + color bleeding for painterly look.",
       "category": "Shaders",
       "priority": "high",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-007-watercolor-shader.md"
     },
     {
       "id": "idea-008",
       "title": "Daily generated philosophy facts",
-      "description": "Use LLM API to generate new philosophy facts daily. Store in siteData.json via cron job.",
+      "description": "Use Hermes agent to generate new philosophy facts weekly. Store in siteData.json via cron job.",
       "category": "Content",
       "priority": "medium",
-      "status": "backlog"
+      "status": "backlog",
+      "prd": "PRD-idea-008-weekly-facts.md"
     }
   ],
-  "generatedAt": "2026-05-14T21:00:00Z"
+  "prdTemplate": "PRD-TEMPLATE.md",
+  "generatedAt": "2026-05-15T14:30:00Z"
 }
