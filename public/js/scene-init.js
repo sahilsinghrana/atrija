@@ -263,89 +263,26 @@ function makeSunflowerCanvas(size) {
   return c;
 }
 
-function createSunflowers(scene, totalCount) {
-  // Split into 3 depth layers for parallax — widely spread
-  var layers = [
-    {
-      name: 'background',
-      count: Math.floor(totalCount * 0.3),
-      scaleRange: [0.35, 0.6],
-      zRange: [-20, -12],
-      yRange: [-2.0, -0.8],
-      swayAmp: 0.02,
-      swaySpeed: 0.3,
-      opacity: 0.35,
-      spreadX: 35
-    },
-    {
-      name: 'midground',
-      count: Math.floor(totalCount * 0.4),
-      scaleRange: [0.6, 1.0],
-      zRange: [-14, -6],
-      yRange: [-1.2, 0.0],
-      swayAmp: 0.05,
-      swaySpeed: 0.5,
-      opacity: 0.6,
-      spreadX: 28
-    },
-    {
-      name: 'foreground',
-      count: Math.floor(totalCount * 0.3),
-      scaleRange: [1.0, 1.6],
-      zRange: [-8, -1],
-      yRange: [-0.6, 0.6],
-      swayAmp: 0.1,
-      swaySpeed: 0.7,
-      opacity: 0.9,
-      spreadX: 22
-    }
-  ];
-
-  // Adjust counts for mobile — moderate reduction
-  if (isMobile) {
-    layers.forEach(function(l) {
-      l.count = Math.max(1, Math.floor(l.count * 0.55));
-      l.scaleRange = [l.scaleRange[0] * 0.75, l.scaleRange[1] * 0.75];
-      l.spreadX = l.spreadX * 0.7;
-      l.opacity = l.name === 'background' ? 0.25 : l.opacity * 0.85;
-    });
-  }
-
+function createSunflowers(scene, count) {
   var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
-
-  layers.forEach(function(layer) {
-    for (var i = 0; i < layer.count; i++) {
-      var s = layer.scaleRange[0] + Math.random() * (layer.scaleRange[1] - layer.scaleRange[0]);
-      var sprite = new THREE.Sprite(new THREE.SpriteMaterial({
-        map: tex,
-        transparent: true,
-        depthWrite: false,
-        opacity: layer.opacity
-      }));
-      sprite.scale.set(1.2 * s, 1.5 * s, 1);
-
-      // Use stratified placement to avoid clustering
-      var spreadX = layer.spreadX;
-      var x = (Math.random() - 0.5) * spreadX;
-      var y = layer.yRange[0] + Math.random() * (layer.yRange[1] - layer.yRange[0]);
-      var z = layer.zRange[0] + Math.random() * (layer.zRange[1] - layer.zRange[0]);
-      sprite.position.set(x, y, z);
-
-      var ph = Math.random() * Math.PI * 2;
-      var baseX = x;
-      var baseY = y;
-
-      (function(p, bx, by, sa, ss) {
-        sprite.userData.animate = function(o, t) {
-          o.position.x = bx + Math.sin(t * ss + p) * sa;
-          o.position.y = by + Math.sin(t * ss * 0.7 + p) * sa * 0.5;
-          o.material.rotation = Math.sin(t * ss * 0.5 + p) * sa * 0.8;
-        };
-      })(ph, baseX, baseY, layer.swayAmp, layer.swaySpeed);
-
-      scene.add(sprite);
-    }
-  });
+  for (var i = 0; i < count; i++) {
+    // Scale — visible on both mobile and desktop
+    var s = isMobile ? (0.6 + Math.random() * 0.5) : (0.8 + Math.random() * 0.8);
+    var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
+    sprite.scale.set(1.4 * s, 1.8 * s, 1);
+    // Position — higher Y on mobile so they're in view
+    var spreadX = isMobile ? 10 : 14;
+    sprite.position.set((Math.random() - 0.5) * spreadX, -0.3 + s * 0.4, (Math.random() - 0.5) * 6 + 2);
+    var ph = Math.random() * Math.PI * 2;
+    var baseY = sprite.position.y;
+    (function(p, by) {
+      sprite.userData.animate = function(o, t) {
+        o.position.y = by + Math.sin(t * 0.5 + p) * 0.08;
+        o.material.rotation = Math.sin(t * 0.3 + p) * 0.06;
+      };
+    })(ph, baseY);
+    scene.add(sprite);
+  }
 }
 
 // ── Tulip — cup-shaped and open variants, natural colors ──
@@ -474,23 +411,21 @@ function makeTulipCanvas(size, color, isOpen) {
 }
 
 function createTulips(scene, count) {
-  // Natural tulip colors: warm yellows, ambers, oranges, deep gold — NO green, NO pink, NO purple
+  // Natural tulip colors: warm yellows, ambers, deep gold — NO green, NO pink, NO purple
   var colors = ['#e8a020','#d4901a','#c88015','#f0b030','#a06810','#d09828','#e0a825','#b87818','#c08820','#d89018','#e89020','#c08020'];
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
     var isOpen = Math.random() > 0.5; // 50% cup, 50% open
     var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color, isOpen));
-    var s = isMobile ? (0.5 + Math.random() * 0.5) : (0.4 + Math.random() * 0.55);
+    var s = isMobile ? (0.5 + Math.random() * 0.4) : (0.6 + Math.random() * 0.6);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(0.85 * s, 1.4 * s, 1);
-    // Wide spread, interleaved with sunflowers at different depths
-    var spreadX = isMobile ? 20 : 25;
-    var spreadZ = isMobile ? 10 : 14;
-    var yBase = isMobile ? -0.8 : -1.0;
+    var spreadX = isMobile ? 10 : 14;
+    var spreadZ = isMobile ? 6 : 8;
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      yBase + s * 0.4 + Math.random() * 0.6,
-      (Math.random() - 0.5) * spreadZ - 2
+      -0.5 + s * 0.3,
+      (Math.random() - 0.5) * spreadZ + 1
     );
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
@@ -855,10 +790,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // Flower counts — generous on desktop, moderate on mobile
-  var noteCount     = isMobile ? 40 : 30;
-  var sunflowerCount = isMobile ? 12 : 24; // total across all 3 layers
-  var tulipCount    = isMobile ? 8 : 14;
+  // Flower counts — matching the proven a0ce3ef baseline
+  var noteCount     = isMobile ? 25 : 30;
+  var sunflowerCount = isMobile ? 6 : 10;
+  var tulipCount    = isMobile ? 3 : 6;
   var starCount     = isLowEnd ? 1800 : 2000;
 
   createStars(scene.scene, starCount);
