@@ -74,7 +74,7 @@ class VanGoghScene {
     this.container = c;
     this.renderer = new THREE.WebGLRenderer({ antialias: !isLowEnd, alpha: true, powerPreference: 'low-power' });
     this.renderer.setSize(c.clientWidth, c.clientHeight);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, isLowEnd ? 1.2 : 1.5));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, isLowEnd ? 1.0 : 1.5));
     this.renderer.setClearColor(0x0a0a1a, 1);
     c.appendChild(this.renderer.domElement);
     this.camera = new THREE.PerspectiveCamera(60, c.clientWidth / c.clientHeight, 0.1, 200);
@@ -242,11 +242,12 @@ function makeSunflowerCanvas(size) {
 function createSunflowers(scene, count) {
   var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
   for (var i = 0; i < count; i++) {
-    var s = isMobile ? (0.45 + Math.random() * 0.35) : (0.7 + Math.random() * 0.8);
+    // Larger on mobile for visibility
+    var s = isMobile ? (0.7 + Math.random() * 0.6) : (0.7 + Math.random() * 0.8);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(1.4 * s, 1.8 * s, 1);
     // Spread more on desktop, tighter on mobile
-    var spreadX = isMobile ? 10 : 16;
+    var spreadX = isMobile ? 12 : 16;
     sprite.position.set((Math.random() - 0.5) * spreadX, -0.8 + s * 0.5, (Math.random() - 0.5) * 8 + 3);
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
@@ -462,15 +463,17 @@ function createMusicNotes(scene, count) {
     var startZ = (Math.random() - 0.5) * 16;
     sprite.position.set(startX, startY, startZ);
 
-    var noteScale = isMobile ? 1.2 : 0.55;
+    // Larger notes on mobile for visibility
+    var noteScale = isMobile ? 1.8 : 0.55;
     sprite.scale.set(noteScale, noteScale, 1);
 
     // Each note has its own unique random motion parameters
-    var riseSpeed  = 0.008 + Math.random() * 0.018;          // vertical drift speed
-    var driftFreqX = 0.3 + Math.random() * 1.2;              // horizontal oscillation frequency
-    var driftFreqZ = 0.2 + Math.random() * 0.8;              // depth oscillation frequency
-    var driftAmpX  = 0.003 + Math.random() * 0.012;          // horizontal amplitude
-    var driftAmpZ  = 0.002 + Math.random() * 0.008;          // depth amplitude
+    // Faster rise on mobile so movement is visible
+    var riseSpeed  = isMobile ? (0.04 + Math.random() * 0.06) : (0.015 + Math.random() * 0.025);
+    var driftFreqX = 0.3 + Math.random() * 1.2;
+    var driftFreqZ = 0.2 + Math.random() * 0.8;
+    var driftAmpX  = isMobile ? (0.008 + Math.random() * 0.02) : (0.003 + Math.random() * 0.012);
+    var driftAmpZ  = isMobile ? (0.005 + Math.random() * 0.015) : (0.002 + Math.random() * 0.008);
     var phaseX     = Math.random() * Math.PI * 2;
     var phaseZ     = Math.random() * Math.PI * 2;
     var rotFreq    = 0.2 + Math.random() * 0.8;
@@ -478,7 +481,7 @@ function createMusicNotes(scene, count) {
     var rotPhase   = Math.random() * Math.PI * 2;
     var opacFreq   = 0.5 + Math.random() * 2.0;
     var opacPhase  = Math.random() * Math.PI * 2;
-    var resetY     = 8 + Math.random() * 4;                  // each note resets at different height
+    var resetY     = isMobile ? 6 + Math.random() * 3 : 8 + Math.random() * 4;
     var resetX     = (Math.random() - 0.5) * 18;
 
     (function(rs, dfx, dfz, dax, daz, px, pz, rf, ra, rp, of, op, ry, rx) {
@@ -636,10 +639,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // Balanced counts — tulips more visible on mobile
+  // Balanced counts — more visible on mobile
   var noteCount     = isMobile ? 40 : 30;
-  var sunflowerCount = isMobile ? 5 : 12;
-  var tulipCount    = isMobile ? 8 : 10;
+  var sunflowerCount = isMobile ? 8 : 12;
+  var tulipCount    = isMobile ? 6 : 10;
   var starCount     = isLowEnd ? 1500 : 2500;
 
   createStars(scene.scene, starCount);
