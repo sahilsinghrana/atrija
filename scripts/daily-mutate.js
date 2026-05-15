@@ -56,7 +56,7 @@ function addChangelogEntry(content, siteData, dayOfYear, contentUpdate) {
   const entry = {
     date: today,
     type: 'daily-mutation',
-    description: `Daily mutation: Theme "${theme.title}" with "${scheme.name}" color scheme.`,
+    description: `Daily mutation #${dayOfYear}: ${theme.title} theme with "${scheme.name}" colors (${scheme.mood}). Updated "${sectionKey}" section.`,
     changes
   };
 
@@ -119,12 +119,12 @@ const scheme = mutateColors(siteData, day);
 const contentUpdate = updateSectionContent(content, siteData, day);
 const { entry, changes } = addChangelogEntry(content, siteData, day, contentUpdate);
 
-// Ensure changelog is always sorted chronologically (oldest first)
+// Ensure changelog is always sorted chronologically (oldest first, newest last)
 content.changelog.entries.sort((a, b) => {
   const dateCmp = a.date.localeCompare(b.date);
   if (dateCmp !== 0) return dateCmp;
-  // Same day: initial < daily-mutation < feature < fix < refactor < perf < chore
-  const typeOrder = { initial: 0, 'daily-mutation': 1, feature: 2, fix: 3, refactor: 4, perf: 5, chore: 6 };
+  // Same day: sort by logical event order
+  const typeOrder = { initial: 0, feature: 1, fix: 2, refactor: 3, perf: 4, chore: 5, 'daily-mutation': 6 };
   return (typeOrder[a.type] || 9) - (typeOrder[b.type] || 9);
 });
 

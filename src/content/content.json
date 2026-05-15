@@ -114,46 +114,28 @@
     }
   },
   "changelog": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "entries": [
       {
         "date": "2026-05-14",
-        "type": "daily-mutation",
-        "description": "Daily mutation: Theme \"Selene & The Moon\" with \"starry-night\" color scheme.",
+        "type": "initial",
+        "description": "Site launched — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
         "changes": [
-          "Rotated to color scheme: starry-night (contemplative)",
-          "Featured theme: Selene & The Moon",
-          "Shader params — strokeDensity: 8.9, swirlFrequency: 12, colorIntensity: 1.47",
-          "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
-          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\"",
-          "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
-          "Image card now points to fact 0 of theme \"Selene & The Moon\""
+          "Built Three.js scene: stars, moon, sunflowers, tulips, flute, waves, constellations, music notes",
+          "Created GLSL post-processing, star twinkling, and wave shaders",
+          "Set up Astro 4 static site with Vitest and Playwright tests",
+          "Configured Nginx deployment on port 8080"
         ]
       },
       {
         "date": "2026-05-14",
-        "type": "initial",
-        "description": "Initial site creation — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
-        "changes": [
-          "Created Three.js scene with post-processing shader",
-          "Built 3D elements: Moon, Sunflowers, Tulips, Stars, Constellations, Flute, MusicNotes, Waves",
-          "Created GLSL shaders: post-processing, stars, waves",
-          "Set up Astro 4 static site with Vitest and Playwright",
-          "Configured deploy script for Nginx"
-        ]
-      },
-      {
-        "date": "2026-05-15",
         "type": "daily-mutation",
-        "description": "Daily mutation: Theme \"Selene & The Moon\" with \"starry-night\" color scheme.",
+        "description": "First daily mutation — Selene & the Moon theme with starry-night colors.",
         "changes": [
-          "Rotated to color scheme: starry-night (contemplative)",
-          "Featured theme: Selene & The Moon",
-          "Shader params — strokeDensity: 8.7, swirlFrequency: 12.7, colorIntensity: 1.48",
-          "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
-          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\"",
-          "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
-          "Image card now points to fact 0 of theme \"Selene & The Moon\""
+          "Applied starry-night color scheme (contemplative mood)",
+          "Featured theme: Selene & the Moon — Greek Titaness of the Moon",
+          "Adjusted shader: strokeDensity 8.9, swirlFrequency 12, colorIntensity 1.47",
+          "Updated Moon section intro text and image card"
         ]
       },
       {
@@ -162,15 +144,36 @@
         "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora.",
         "changes": [
           "Rewrote sunflowers and tulips as canvas-sprite billboards for clear recognition",
-          "Fixed white glow blob — moon glow now subtle and correctly sized",
+          "Fixed moon glow — now subtle and correctly sized",
           "Added glitch/chromatic aberration effect on mobile",
-          "Increased music notes count on mobile (40 notes)",
           "Global click-anywhere spawns music notes",
           "Modularized text content into content.json for cron-job updates",
           "Added AI agent banner — self-built, self-deployed notice",
-          "Smooth rAF-based moon phase animation replacing setInterval",
-          "Section backdrops for text legibility over 3D canvas",
-          "Updated changelog to v1.1.0"
+          "Smooth rAF-based moon phase animation"
+        ]
+      },
+      {
+        "date": "2026-05-15",
+        "type": "daily-mutation",
+        "description": "Second daily mutation — Selene & the Moon theme with starry-night colors.",
+        "changes": [
+          "Applied starry-night color scheme (contemplative mood)",
+          "Featured theme: Selene & the Moon",
+          "Adjusted shader: strokeDensity 8.7, swirlFrequency 12.7, colorIntensity 1.48",
+          "Updated Moon section intro text and image card"
+        ]
+      },
+      {
+        "date": "2026-05-15",
+        "type": "feature",
+        "description": "Changelog system overhaul — auto-documentation, chronological ordering, content change tracking.",
+        "changes": [
+          "All cron jobs now document changes in content.json changelog",
+          "Changelog entries sorted chronologically (oldest first, newest last)",
+          "Daily mutations now track content text changes (intro, imageCard, facts)",
+          "Background-implement adds feature/refactor/perf entries",
+          "Git-pull-build adds chore entries when changes are pulled",
+          "Duplicate same-day entries are updated instead of duplicated"
         ]
       }
     ]
