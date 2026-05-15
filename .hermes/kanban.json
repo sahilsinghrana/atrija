@@ -40,7 +40,7 @@
       "description": "Procedural ambient music using Web Audio API. Flute-like tones that respond to scroll position and time of day.",
       "category": "Audio",
       "priority": "high",
-      "status": "done",
+      "status": "cancelled",
       "prd": "PRD-idea-004-ambient-music.md"
     },
     {
@@ -78,6 +78,15 @@
       "priority": "medium",
       "status": "backlog",
       "prd": "PRD-idea-008-weekly-facts.md"
+    },
+    {
+      "id": "idea-009",
+      "title": "Loading Optimizations",
+      "description": "Multi-phase loading optimization: lazy scene init, progressive 3D layers, SVG compression, Nginx caching, font-display swap, reduced geometry counts, loader progress bar.",
+      "category": "Performance",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-009-loading-optimizations.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",

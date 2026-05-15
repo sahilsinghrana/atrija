@@ -96,13 +96,9 @@ const colorData = JSON.stringify({
           <div class="source">{siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex].source}</div>
         </div>
       </div>
-      <div class="facts-group reveal">
-        {siteData.themes[sec.moon.facts.themeIndex].facts.slice(sec.moon.facts.slice[0], sec.moon.facts.slice[1]).map((fact: any) => (
-          <div class="fact-card">
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
+      <div class="fact-card reveal">
+        <p>{siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex].text}</p>
+        <div class="source">{siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex].source}</div>
       </div>
       <div class="quote-carousel reveal" data-theme-index={sec.moon.quote.themeIndex}>
         <div class="quote-carousel-inner">
@@ -138,13 +134,9 @@ const colorData = JSON.stringify({
           <div class="source">{siteData.themes[sec.philosophy.imageCard.themeIndex].facts[sec.philosophy.imageCard.factIndex].source}</div>
         </div>
       </div>
-      <div class="facts-group reveal">
-        {siteData.themes[sec.philosophy.facts.themeIndex].facts.slice(sec.philosophy.facts.slice[0], sec.philosophy.facts.slice[1]).map((fact: any) => (
-          <div class="fact-card">
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
+      <div class="fact-card reveal">
+        <p>{siteData.themes[sec.philosophy.imageCard.themeIndex].facts[sec.philosophy.imageCard.factIndex].text}</p>
+        <div class="source">{siteData.themes[sec.philosophy.imageCard.themeIndex].facts[sec.philosophy.imageCard.factIndex].source}</div>
       </div>
       <div class="quote-carousel reveal" data-theme-index={sec.philosophy.quote.themeIndex}>
         <div class="quote-carousel-inner">
@@ -180,13 +172,9 @@ const colorData = JSON.stringify({
           <div class="source">{siteData.themes[sec.gita.imageCard.themeIndex].facts[sec.gita.imageCard.factIndex].source}</div>
         </div>
       </div>
-      <div class="facts-group reveal">
-        {siteData.themes[sec.gita.facts.themeIndex].facts.slice(sec.gita.facts.slice[0], sec.gita.facts.slice[1]).map((fact: any) => (
-          <div class="fact-card">
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
+      <div class="fact-card reveal">
+        <p>{siteData.themes[sec.gita.imageCard.themeIndex].facts[sec.gita.imageCard.factIndex].text}</p>
+        <div class="source">{siteData.themes[sec.gita.imageCard.themeIndex].facts[sec.gita.imageCard.factIndex].source}</div>
       </div>
       <div class="quote-carousel reveal" data-theme-index={sec.gita.quote.themeIndex}>
         <div class="quote-carousel-inner">
@@ -222,13 +210,9 @@ const colorData = JSON.stringify({
           <div class="source">{siteData.themes[sec.shiva.imageCard.themeIndex].facts[sec.shiva.imageCard.factIndex].source}</div>
         </div>
       </div>
-      <div class="facts-group reveal">
-        {siteData.themes[sec.shiva.facts.themeIndex].facts.slice(sec.shiva.facts.slice[0], sec.shiva.facts.slice[1]).map((fact: any) => (
-          <div class="fact-card">
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
+      <div class="fact-card reveal">
+        <p>{siteData.themes[sec.shiva.imageCard.themeIndex].facts[sec.shiva.imageCard.factIndex].text}</p>
+        <div class="source">{siteData.themes[sec.shiva.imageCard.themeIndex].facts[sec.shiva.imageCard.factIndex].source}</div>
       </div>
       <div class="quote-block reveal">
         <p>{siteData.themes[sec.shiva.quote.themeIndex].quotes[sec.shiva.quote.quoteIndex]}</p>
@@ -251,13 +235,9 @@ const colorData = JSON.stringify({
           <div class="source">{siteData.themes[sec.art.imageCard.themeIndex].facts[sec.art.imageCard.factIndex].source}</div>
         </div>
       </div>
-      <div class="facts-group reveal">
-        {siteData.themes[sec.art.facts.themeIndex].facts.slice(sec.art.facts.slice[0], sec.art.facts.slice[1]).map((fact: any) => (
-          <div class="fact-card">
-            <p>{fact.text}</p>
-            <div class="source">{fact.source}</div>
-          </div>
-        ))}
+      <div class="fact-card reveal">
+        <p>{siteData.themes[sec.art.imageCard.themeIndex].facts[sec.art.imageCard.factIndex].text}</p>
+        <div class="source">{siteData.themes[sec.art.imageCard.themeIndex].facts[sec.art.imageCard.factIndex].source}</div>
       </div>
       <div class="quote-block reveal">
         <p>{siteData.themes[sec.art.quote.themeIndex].quotes[sec.art.quote.quoteIndex]}</p>

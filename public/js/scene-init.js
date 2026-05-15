@@ -428,7 +428,7 @@ function makeTulipCanvas(size, color) {
 }
 
 function createTulips(scene, count) {
-  var colors = ['#cc2244','#ff6699','#ffcc00','#9933cc','#ff4400','#ff3366','#ff88aa'];
+  var colors = ['#e8a020','#d4901a','#c88015','#f0b030','#a06810','#d09828','#e0a825','#b87818','#c08820','#d89018'];
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
     var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color));
