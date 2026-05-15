@@ -82,7 +82,7 @@
     {
       "id": "idea-009",
       "title": "Loading Optimizations",
-      "description": "Multi-phase loading optimization: lazy scene init, progressive 3D layers, SVG compression, Nginx caching, font-display swap, reduced geometry counts, loader progress bar.",
+      "description": "Astro-native loading optimizations: client:idle hydration, inline critical CSS, modulepreload, progressive 3D layers, content-visibility, SVG compression, Nginx caching+gzip, reduced geometry, loader progress bar. v2 PRD with Astro-compatible patterns.",
       "category": "Performance",
       "priority": "high",
       "status": "backlog",
