@@ -166,80 +166,97 @@ function createMoon(scene) {
 }
 
 // ── Sunflower — drawn on canvas texture, billboard sprite ──
+// Layout: flower head in upper 60%, stem in bottom 35%, 5% gap
 function makeSunflowerCanvas(size) {
   size = size || 128;
   var c = document.createElement('canvas');
   c.width = size; c.height = size;
   var ctx = c.getContext('2d');
-  var cx = size / 2, cy = size / 2;
-  var r = size * 0.38;
+  var cx = size / 2;
+  // Flower head center at 35% of canvas height (upper portion)
+  var headCy = size * 0.35;
+  var r = size * 0.28; // head radius
 
-  // Stem
+  // ── Draw stem FIRST (behind everything) ──
+  // Stem goes from bottom of head zone to bottom of canvas
   ctx.strokeStyle = '#2d5a1e';
-  ctx.lineWidth = size * 0.06;
+  ctx.lineWidth = size * 0.04;
   ctx.lineCap = 'round';
   ctx.beginPath();
-  ctx.moveTo(cx, cy + r * 0.3);
-  ctx.bezierCurveTo(cx + size * 0.04, cy + r * 0.8, cx - size * 0.03, cy + r * 1.1, cx, size);
+  ctx.moveTo(cx, headCy + r * 0.8);
+  ctx.bezierCurveTo(cx + size * 0.03, headCy + r * 1.5, cx - size * 0.02, headCy + r * 2.2, cx, size);
   ctx.stroke();
 
-  // Leaves — positioned lower on stem, below flower head
+  // ── Draw leaves on stem (still behind petals) ──
   ctx.fillStyle = '#3a7a2e';
   for (var side = -1; side <= 1; side += 2) {
     ctx.save();
-    ctx.translate(cx + side * size * 0.03, cy + r * 1.05);
-    ctx.rotate(side * 0.5);
+    ctx.translate(cx + side * size * 0.02, headCy + r * 1.6);
+    ctx.rotate(side * 0.4);
     ctx.beginPath();
-    ctx.ellipse(side * size * 0.1, 0, size * 0.12, size * 0.05, 0, 0, Math.PI * 2);
+    ctx.ellipse(side * size * 0.08, 0, size * 0.1, size * 0.04, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
 
-  // Back petals (darker gold)
-  var petalCount = 16;
+  // ── Back petals (darker gold) ──
+  var petalCount = 18;
   ctx.fillStyle = '#c8920a';
   for (var i = 0; i < petalCount; i++) {
     var a = (i / petalCount) * Math.PI * 2;
     ctx.save();
-    ctx.translate(cx, cy);
+    ctx.translate(cx, headCy);
     ctx.rotate(a);
     ctx.beginPath();
-    ctx.ellipse(0, -(r * 0.72), r * 0.14, r * 0.42, 0, 0, Math.PI * 2);
+    ctx.ellipse(0, -(r * 0.75), r * 0.13, r * 0.45, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
 
-  // Front petals (bright yellow)
+  // ── Mid petals (warm amber) ──
+  ctx.fillStyle = '#e8a020';
+  for (var i = 0; i < petalCount; i++) {
+    var a = (i / petalCount) * Math.PI * 2 + Math.PI / petalCount * 0.5;
+    ctx.save();
+    ctx.translate(cx, headCy);
+    ctx.rotate(a);
+    ctx.beginPath();
+    ctx.ellipse(0, -(r * 0.68), r * 0.12, r * 0.38, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // ── Front petals (bright yellow) ──
   ctx.fillStyle = '#f5c800';
   for (var i = 0; i < petalCount; i++) {
     var a = (i / petalCount) * Math.PI * 2 + Math.PI / petalCount;
     ctx.save();
-    ctx.translate(cx, cy);
+    ctx.translate(cx, headCy);
     ctx.rotate(a);
     ctx.beginPath();
-    ctx.ellipse(0, -(r * 0.65), r * 0.12, r * 0.38, 0, 0, Math.PI * 2);
+    ctx.ellipse(0, -(r * 0.58), r * 0.1, r * 0.32, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
 
-  // Center disk — dark brown with spiral seed pattern
-  var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 0.28);
+  // — Center disk — dark brown with spiral seed pattern —
+  var grad = ctx.createRadialGradient(cx, headCy, 0, cx, headCy, r * 0.3);
   grad.addColorStop(0, '#3a1a00');
   grad.addColorStop(0.6, '#2a1200');
   grad.addColorStop(1, '#1a0a00');
   ctx.fillStyle = grad;
   ctx.beginPath();
-  ctx.arc(cx, cy, r * 0.28, 0, Math.PI * 2);
+  ctx.arc(cx, headCy, r * 0.3, 0, Math.PI * 2);
   ctx.fill();
 
   // Seeds — fibonacci spiral dots
   ctx.fillStyle = '#5a3010';
-  var seedCount = 24;
+  var seedCount = 20;
   for (var i = 0; i < seedCount; i++) {
-    var angle = i * 2.399963; // golden angle
-    var rad = r * 0.24 * Math.sqrt(i / seedCount);
+    var angle = i * 2.399963;
+    var rad = r * 0.26 * Math.sqrt(i / seedCount);
     ctx.beginPath();
-    ctx.arc(cx + Math.cos(angle) * rad, cy + Math.sin(angle) * rad, size * 0.018, 0, Math.PI * 2);
+    ctx.arc(cx + Math.cos(angle) * rad, headCy + Math.sin(angle) * rad, size * 0.015, 0, Math.PI * 2);
     ctx.fill();
   }
 
@@ -284,11 +301,11 @@ function createSunflowers(scene, totalCount) {
     }
   ];
 
-  // Adjust counts for mobile — fewer but still spread
+  // Adjust counts for mobile — moderate reduction
   if (isMobile) {
     layers.forEach(function(l) {
-      l.count = Math.max(1, Math.floor(l.count * 0.35));
-      l.scaleRange = [l.scaleRange[0] * 0.8, l.scaleRange[1] * 0.8];
+      l.count = Math.max(1, Math.floor(l.count * 0.55));
+      l.scaleRange = [l.scaleRange[0] * 0.75, l.scaleRange[1] * 0.75];
       l.spreadX = l.spreadX * 0.7;
       l.opacity = l.name === 'background' ? 0.25 : l.opacity * 0.85;
     });
@@ -305,7 +322,7 @@ function createSunflowers(scene, totalCount) {
         depthWrite: false,
         opacity: layer.opacity
       }));
-      sprite.scale.set(1.4 * s, 1.8 * s, 1);
+      sprite.scale.set(1.2 * s, 1.5 * s, 1);
 
       // Use stratified placement to avoid clustering
       var spreadX = layer.spreadX;
@@ -331,107 +348,138 @@ function createSunflowers(scene, totalCount) {
   });
 }
 
-// ── Tulip — improved canvas drawing ──
-function makeTulipCanvas(size, color) {
+// ── Tulip — cup-shaped and open variants, natural colors ──
+// Layout: head in upper 65%, stem in bottom 30%, 5% gap
+function makeTulipCanvas(size, color, isOpen) {
   size = size || 160;
   var c = document.createElement('canvas');
   c.width = size; c.height = size;
   var ctx = c.getContext('2d');
   var cx = size / 2;
-  var stemTop = size * 0.48;
-  var stemBot = size * 0.98;
+  // Flower head center at 38% of canvas height
+  var headCy = size * 0.38;
+  var headR  = size * 0.24;
 
-  // Stem — curved, thick
+  // Parse hex color to RGB
+  var hexColor = color.replace('#', '');
+  var rr = parseInt(hexColor.substring(0,2), 16);
+  var gg = parseInt(hexColor.substring(2,4), 16);
+  var bb = parseInt(hexColor.substring(4,6), 16);
+
+  // ── Draw stem FIRST (behind petals) ──
   ctx.strokeStyle = '#2d6a1e';
-  ctx.lineWidth = size * 0.06;
+  ctx.lineWidth = size * 0.035;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   ctx.beginPath();
-  ctx.moveTo(cx, stemTop);
-  ctx.bezierCurveTo(cx + size * 0.06, size * 0.65, cx - size * 0.05, size * 0.82, cx + size * 0.02, stemBot);
+  ctx.moveTo(cx, headCy + headR * 0.7);
+  ctx.bezierCurveTo(cx + size * 0.04, headCy + headR * 1.4, cx - size * 0.03, headCy + headR * 2.0, cx + size * 0.01, size);
   ctx.stroke();
 
-  // Leaves — two long curved blades, positioned lower on stem
+  // ── Draw leaves on stem (behind petals) ──
+  ctx.fillStyle = '#3a7a2e';
   for (var side = -1; side <= 1; side += 2) {
     ctx.save();
-    ctx.fillStyle = '#3a7a2e';
-    var lx = cx + side * size * 0.04;
-    var ly = size * 0.82;
+    var lx = cx + side * size * 0.03;
+    var ly = headCy + headR * 1.5;
     ctx.beginPath();
     ctx.moveTo(lx, ly);
     ctx.bezierCurveTo(
-      lx + side * size * 0.18, ly - size * 0.06,
-      lx + side * size * 0.22, ly - size * 0.16,
-      lx + side * size * 0.14, ly - size * 0.22
+      lx + side * size * 0.14, ly - size * 0.04,
+      lx + side * size * 0.18, ly - size * 0.12,
+      lx + side * size * 0.1, ly - size * 0.18
     );
     ctx.bezierCurveTo(
-      lx + side * size * 0.08, ly - size * 0.18,
-      lx + side * size * 0.04, ly - size * 0.10,
+      lx + side * size * 0.06, ly - size * 0.14,
+      lx + side * size * 0.03, ly - size * 0.08,
       lx, ly
     );
     ctx.fill();
     ctx.restore();
   }
 
-  // Tulip head — classic egg shape with 5 petals
-  var headCy = size * 0.28;
-  var headR  = size * 0.26;
-
-  // Parse color to get RGB
-  var hexColor = color.replace('#', '');
-  var rr = parseInt(hexColor.substring(0,2), 16);
-  var gg = parseInt(hexColor.substring(2,4), 16);
-  var bb = parseInt(hexColor.substring(4,6), 16);
-
-  // Draw 5 petals arranged in tulip cup shape
-  for (var p = 0; p < 5; p++) {
-    var angle = (p / 5) * Math.PI * 2 - Math.PI / 2;
-    // Outer petals spread more, inner ones tighter
-    var spread = (p % 2 === 0) ? 0.55 : 0.35;
-    var petalH = headR * (p % 2 === 0 ? 1.0 : 0.85);
-    var petalW = headR * 0.42;
-    var lightness = p % 2 === 0 ? 0 : 30;
+  // ── Draw petals ──
+  // Use only warm natural colors: yellows, ambers, oranges — NO green in petals
+  var petalCount = isOpen ? 6 : 5;
+  for (var p = 0; p < petalCount; p++) {
+    var angle = (p / petalCount) * Math.PI * 2 - Math.PI / 2;
+    var spread, petalH, petalW, lightness;
+    if (isOpen) {
+      // Open tulip: petals spread outward and curl back
+      spread = 0.4 + (p % 2) * 0.2;
+      petalH = headR * (1.0 + (p % 2) * 0.15);
+      petalW = headR * 0.38;
+      lightness = p % 2 === 0 ? 20 : -10;
+    } else {
+      // Cup tulip: petals tightly wrapped
+      spread = (p % 2 === 0) ? 0.5 : 0.3;
+      petalH = headR * (p % 2 === 0 ? 1.0 : 0.8);
+      petalW = headR * 0.35;
+      lightness = p % 2 === 0 ? 0 : 25;
+    }
     ctx.save();
-    ctx.translate(cx + Math.cos(angle) * headR * spread * 0.4, headCy + Math.sin(angle) * headR * spread * 0.25);
+    ctx.translate(
+      cx + Math.cos(angle) * headR * spread * 0.35,
+      headCy + Math.sin(angle) * headR * spread * 0.2
+    );
     ctx.rotate(angle + Math.PI / 2);
-    // Gradient per petal for depth
+    // Gradient: warm petal color, NO green channel boost
     var pg = ctx.createLinearGradient(0, -petalH, 0, petalH * 0.3);
-    pg.addColorStop(0, 'rgba(' + Math.min(255,rr+lightness+40) + ',' + Math.min(255,gg+lightness+20) + ',' + Math.min(255,bb+lightness) + ',0.95)');
-    pg.addColorStop(0.5, 'rgba(' + Math.min(255,rr+lightness) + ',' + Math.min(255,gg+lightness) + ',' + Math.min(255,bb+lightness) + ',0.9)');
-    pg.addColorStop(1, 'rgba(' + Math.max(0,rr-30) + ',' + Math.max(0,gg-30) + ',' + Math.max(0,bb-30) + ',0.7)');
+    var r1 = Math.min(255, rr + lightness + 40);
+    var g1 = Math.min(255, gg + lightness + 10); // minimal green boost
+    var b1 = Math.max(0, bb - 20);
+    var r2 = Math.min(255, rr + lightness);
+    var g2 = Math.min(255, gg + lightness);
+    var b2 = Math.max(0, bb - 10);
+    var r3 = Math.max(0, rr - 40);
+    var g3 = Math.max(0, gg - 20);
+    var b3 = Math.max(0, bb - 30);
+    pg.addColorStop(0, 'rgba(' + r1 + ',' + g1 + ',' + b1 + ',0.95)');
+    pg.addColorStop(0.5, 'rgba(' + r2 + ',' + g2 + ',' + b2 + ',0.9)');
+    pg.addColorStop(1, 'rgba(' + r3 + ',' + g3 + ',' + b3 + ',0.75)');
     ctx.fillStyle = pg;
     ctx.beginPath();
-    ctx.moveTo(0, petalH * 0.3);
-    ctx.bezierCurveTo( petalW, petalH * 0.1,  petalW * 0.9, -petalH * 0.6, 0, -petalH);
-    ctx.bezierCurveTo(-petalW * 0.9, -petalH * 0.6, -petalW, petalH * 0.1, 0, petalH * 0.3);
+    if (isOpen) {
+      // Open: wider, more curved petals
+      ctx.moveTo(0, petalH * 0.3);
+      ctx.bezierCurveTo(petalW * 1.1, petalH * 0.1, petalW, -petalH * 0.7, 0, -petalH);
+      ctx.bezierCurveTo(-petalW, -petalH * 0.7, -petalW * 1.1, petalH * 0.1, 0, petalH * 0.3);
+    } else {
+      // Cup: tighter, taller petals
+      ctx.moveTo(0, petalH * 0.25);
+      ctx.bezierCurveTo(petalW * 0.8, petalH * 0.05, petalW * 0.7, -petalH * 0.65, 0, -petalH);
+      ctx.bezierCurveTo(-petalW * 0.7, -petalH * 0.65, -petalW * 0.8, petalH * 0.05, 0, petalH * 0.25);
+    }
     ctx.fill();
-    // Petal vein
-    ctx.strokeStyle = 'rgba(' + Math.max(0,rr-50) + ',' + Math.max(0,gg-50) + ',' + Math.max(0,bb-50) + ',0.3)';
-    ctx.lineWidth = size * 0.012;
+    // Petal vein — subtle warm tone
+    ctx.strokeStyle = 'rgba(' + Math.max(0,rr-40) + ',' + Math.max(0,gg-20) + ',' + Math.max(0,bb-20) + ',0.25)';
+    ctx.lineWidth = size * 0.008;
     ctx.beginPath();
-    ctx.moveTo(0, petalH * 0.2);
-    ctx.lineTo(0, -petalH * 0.7);
+    ctx.moveTo(0, petalH * 0.15);
+    ctx.lineTo(0, -petalH * 0.6);
     ctx.stroke();
     ctx.restore();
   }
 
-  // Stamen — small yellow center
-  var stGrad = ctx.createRadialGradient(cx, headCy, 0, cx, headCy, headR * 0.15);
+  // Stamen — small warm center
+  var stGrad = ctx.createRadialGradient(cx, headCy, 0, cx, headCy, headR * 0.12);
   stGrad.addColorStop(0, 'rgba(255,240,100,0.9)');
   stGrad.addColorStop(1, 'rgba(200,160,20,0.4)');
   ctx.fillStyle = stGrad;
   ctx.beginPath();
-  ctx.arc(cx, headCy, headR * 0.12, 0, Math.PI * 2);
+  ctx.arc(cx, headCy, headR * 0.1, 0, Math.PI * 2);
   ctx.fill();
 
   return c;
 }
 
 function createTulips(scene, count) {
-  var colors = ['#e8a020','#d4901a','#c88015','#f0b030','#a06810','#d09828','#e0a825','#b87818','#c08820','#d89018'];
+  // Natural tulip colors: warm yellows, ambers, oranges, deep gold — NO green, NO pink, NO purple
+  var colors = ['#e8a020','#d4901a','#c88015','#f0b030','#a06810','#d09828','#e0a825','#b87818','#c08820','#d89018','#e89020','#c08020'];
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
-    var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color));
+    var isOpen = Math.random() > 0.5; // 50% cup, 50% open
+    var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color, isOpen));
     var s = isMobile ? (0.5 + Math.random() * 0.5) : (0.4 + Math.random() * 0.55);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(0.85 * s, 1.4 * s, 1);
@@ -807,10 +855,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // Balanced counts — fewer on mobile for performance
+  // Flower counts — generous on desktop, moderate on mobile
   var noteCount     = isMobile ? 40 : 30;
-  var sunflowerCount = isMobile ? 5 : 16; // total across all 3 layers
-  var tulipCount    = isMobile ? 3 : 8;
+  var sunflowerCount = isMobile ? 12 : 24; // total across all 3 layers
+  var tulipCount    = isMobile ? 8 : 14;
   var starCount     = isLowEnd ? 1800 : 2000;
 
   createStars(scene.scene, starCount);
