@@ -826,28 +826,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (window.__VG_SHADER) scene.updateUniforms({ strokeDensity: window.__VG_SHADER.strokeDensity, swirlFrequency: window.__VG_SHADER.swirlFrequency, colorIntensity: window.__VG_SHADER.colorIntensity });
 
-  // Global click → music notes burst (only on canvas/empty areas, not on text content)
+  // Global click → flute magic at click position (old behavior)
   document.addEventListener('click', function(e) {
     var tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
-    // Skip interactive elements
+    // Only skip actual interactive elements
     if (tag === 'a' || tag === 'button' || tag === 'input' || tag === 'textarea' || tag === 'select') return;
-    // Skip clicks on text content areas (sections, paragraphs, headings, etc.)
-    var el = e.target;
-    while (el && el !== document.body) {
-      if (el.classList && (el.classList.contains('section') || el.classList.contains('section-inner') ||
-          el.classList.contains('quote-block') || el.classList.contains('quote-carousel') ||
-          el.classList.contains('fact-card') || el.classList.contains('image-card') ||
-          el.classList.contains('changelog') || el.classList.contains('today-fact'))) {
-        return;
-      }
-      // Also skip if clicking directly on text elements
-      if (el.tagName && ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE', 'CITE', 'SPAN', 'LI', 'UL', 'OL', 'DIV'].indexOf(el.tagName) !== -1) {
-        // Only skip if it's inside a content area (not the canvas container)
-        var parent = el.closest('.section, .section-inner, .quote-block, .quote-carousel, .fact-card, .image-card, .changelog, .today-fact, header, footer');
-        if (parent) return;
-      }
-      el = el.parentElement;
-    }
+    // Skip the flute button itself (it has its own handler)
+    if (e.target.closest && e.target.closest('#flute-container')) return;
     spawnNotesBurst(e.clientX, e.clientY, isMobile ? 8 : 6);
   });
 
