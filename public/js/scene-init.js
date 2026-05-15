@@ -37,6 +37,66 @@ void main(){
   gl_FragColor = vec4(col, 1.0);
 }`;
 
+// ── Watercolor post-processing shader (desktop only) ──
+var watercolorFS = `
+uniform sampler2D tDiffuse;
+uniform float uTime;
+uniform float uBleedRadius;
+uniform float uEdgeStrength;
+uniform float uColorQuantize;
+varying vec2 vUv;
+
+float hash(vec2 p) {
+  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+}
+
+void main() {
+  vec2 uv = vUv;
+  vec2 texel = 1.0 / vec2(1920.0, 1080.0);
+
+  // Color bleeding (neighborhood average)
+  vec3 color = texture2D(tDiffuse, uv).rgb;
+  vec3 bleed = vec3(0.0);
+  float total = 1.0;
+  float radius = uBleedRadius;
+  bleed += texture2D(tDiffuse, uv + vec2(radius, 0.0) * texel).rgb;
+  bleed += texture2D(tDiffuse, uv - vec2(radius, 0.0) * texel).rgb;
+  bleed += texture2D(tDiffuse, uv + vec2(0.0, radius) * texel).rgb;
+  bleed += texture2D(tDiffuse, uv - vec2(0.0, radius) * texel).rgb;
+  bleed += texture2D(tDiffuse, uv + vec2(radius, radius) * 0.7 * texel).rgb;
+  bleed += texture2D(tDiffuse, uv - vec2(radius, radius) * 0.7 * texel).rgb;
+  bleed += texture2D(tDiffuse, uv + vec2(radius, -radius) * 0.7 * texel).rgb;
+  bleed += texture2D(tDiffuse, uv - vec2(radius, -radius) * 0.7 * texel).rgb;
+  total += 8.0;
+  bleed = bleed / total;
+  color = mix(color, bleed, 0.4);
+
+  // Edge detection (Sobel)
+  vec3 c00 = texture2D(tDiffuse, uv + vec2(-1.0, -1.0) * texel * 2.0).rgb;
+  vec3 c10 = texture2D(tDiffuse, uv + vec2( 0.0, -1.0) * texel * 2.0).rgb;
+  vec3 c20 = texture2D(tDiffuse, uv + vec2( 1.0, -1.0) * texel * 2.0).rgb;
+  vec3 c01 = texture2D(tDiffuse, uv + vec2(-1.0,  0.0) * texel * 2.0).rgb;
+  vec3 c21 = texture2D(tDiffuse, uv + vec2( 1.0,  0.0) * texel * 2.0).rgb;
+  vec3 c02 = texture2D(tDiffuse, uv + vec2(-1.0,  1.0) * texel * 2.0).rgb;
+  vec3 c12 = texture2D(tDiffuse, uv + vec2( 0.0,  1.0) * texel * 2.0).rgb;
+  vec3 c22 = texture2D(tDiffuse, uv + vec2( 1.0,  1.0) * texel * 2.0).rgb;
+  vec3 gx = -c00 - 2.0*c01 - c02 + c20 + 2.0*c21 + c22;
+  vec3 gy = -c00 - 2.0*c10 - c20 + c02 + 2.0*c12 + c22;
+  float edge = length(gx) + length(gy);
+  edge = smoothstep(0.1, 0.5, edge);
+  color = mix(color, color * 0.3, edge * uEdgeStrength);
+
+  // Color quantization
+  color = floor(color * uColorQuantize + 0.5) / uColorQuantize;
+
+  // Paper grain
+  float grain = hash(uv * 500.0 + uTime * 0.1) * 0.03 - 0.015;
+  color += grain;
+
+  gl_FragColor = vec4(color, 1.0);
+}
+`;
+
 // ── Star shader ──
 var starVS = `
 attribute float size;attribute float brightness;attribute float twinkleSpeed;attribute float twinklePhase;attribute vec3 customColor;
@@ -85,6 +145,19 @@ class VanGoghScene {
     if (!isLowEnd) {
       this.vgPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uStrokeDensity: { value: 8.0 }, uSwirlFrequency: { value: 12.0 }, uColorIntensity: { value: 1.4 } }, vertexShader: vgVS, fragmentShader: vgFS });
       this.composer.addPass(this.vgPass);
+      // Watercolor pass — desktop only, after Van Gogh
+      this.watercolorPass = new ShaderPass({
+        uniforms: {
+          tDiffuse: { value: null },
+          uTime: { value: 0 },
+          uBleedRadius: { value: 3.0 },
+          uEdgeStrength: { value: 0.6 },
+          uColorQuantize: { value: 16.0 }
+        },
+        vertexShader: vgVS,
+        fragmentShader: watercolorFS
+      });
+      this.composer.addPass(this.watercolorPass);
     }
     // Glitch pass — mobile always, desktop subtle
     this.glitchPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } }, vertexShader: glitchVS, fragmentShader: glitchFS });
@@ -102,6 +175,11 @@ class VanGoghScene {
     if (p.strokeDensity !== undefined) this.vgPass.uniforms.uStrokeDensity.value = p.strokeDensity;
     if (p.swirlFrequency !== undefined) this.vgPass.uniforms.uSwirlFrequency.value = p.swirlFrequency;
     if (p.colorIntensity !== undefined) this.vgPass.uniforms.uColorIntensity.value = p.colorIntensity;
+    if (this.watercolorPass) {
+      if (p.bleedRadius !== undefined) this.watercolorPass.uniforms.uBleedRadius.value = p.bleedRadius;
+      if (p.edgeStrength !== undefined) this.watercolorPass.uniforms.uEdgeStrength.value = p.edgeStrength;
+      if (p.colorQuantize !== undefined) this.watercolorPass.uniforms.uColorQuantize.value = p.colorQuantize;
+    }
   }
   onResize() {
     var w = this.container.clientWidth, h = this.container.clientHeight;
@@ -112,6 +190,7 @@ class VanGoghScene {
     requestAnimationFrame(() => this.animate());
     var t = this.clock.getElapsedTime();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
+    if (this.watercolorPass) this.watercolorPass.uniforms.uTime.value = t;
     this.glitchPass.uniforms.uTime.value = t;
     // Gentle camera drift — enhanced for parallax visibility
     this.camera.position.x = Math.sin(t * 0.15) * 0.6;
