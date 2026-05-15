@@ -158,6 +158,20 @@
           "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
           "Image card now points to fact 0 of theme \"Selene & The Moon\""
         ]
+      },
+      {
+        "date": "2026-05-15",
+        "type": "daily-mutation",
+        "description": "Daily mutation: Theme \"Selene & The Moon\" with \"starry-night\" color scheme.",
+        "changes": [
+          "Rotated to color scheme: starry-night (contemplative)",
+          "Featured theme: Selene & The Moon",
+          "Shader params — strokeDensity: 8.1, swirlFrequency: 12.8, colorIntensity: 1.35",
+          "Featured fact: \"Selene, the Greek Titaness of the Moon, drove her silver chariot across the nigh...\"",
+          "Featured quote: \"The Moon is a friend for the lonesome to talk to. — Carl Sandburg...\"",
+          "Updated section \"moon\" intro text from theme \"Selene & The Moon\"",
+          "Image card now points to fact 0 of theme \"Selene & The Moon\""
+        ]
       }
     ]
   }
