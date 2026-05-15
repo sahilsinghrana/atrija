@@ -27,12 +27,14 @@ void main(){
   float r = texture2D(tDiffuse, uv + vec2( aberr, 0.0)).r;
   float g = texture2D(tDiffuse, uv).g;
   float b = texture2D(tDiffuse, uv - vec2( aberr, 0.0)).b;
-  // Random horizontal glitch strips — more frequent (was 0.9985, now 0.98 = ~2% chance)
+  // Random horizontal glitch strips — rare (0.98 = ~2% chance)
   float glitchLine = step(0.98, rand(vec2(floor(uv.y * 20.0), floor(uTime * 2.0))));
   float glitchShift = glitchLine * (rand(vec2(uTime, uv.y)) - 0.5) * 0.06;
-  // On glitch lines, swap R and B channels for dramatic color shift
-  r = texture2D(tDiffuse, uv + vec2(aberr + glitchShift, 0.0)).b;
-  b = texture2D(tDiffuse, uv - vec2(aberr - glitchShift, 0.0)).r;
+  // Only swap R/B on active glitch lines
+  if (glitchLine > 0.0) {
+    r = texture2D(tDiffuse, uv + vec2(aberr + glitchShift, 0.0)).b;
+    b = texture2D(tDiffuse, uv - vec2(aberr - glitchShift, 0.0)).r;
+  }
   vec3 col = vec3(r, g, b);
   col += scanline * 0.2;
   gl_FragColor = vec4(col, 1.0);
@@ -84,8 +86,8 @@ class VanGoghScene {
     this.camera.position.set(0, 2, 8);
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
-    // Van Gogh pass — all devices (reduced intensity on mobile)
-    var vgIntensity = isLowEnd ? 1.1 : 1.4;
+    // Van Gogh pass — subtle on all devices
+    var vgIntensity = isLowEnd ? 0.85 : 1.0;
     var vgStroke = isLowEnd ? 6.0 : 8.0;
     var vgSwirl = isLowEnd ? 8.0 : 12.0;
     this.vgPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uStrokeDensity: { value: vgStroke }, uSwirlFrequency: { value: vgSwirl }, uColorIntensity: { value: vgIntensity } }, vertexShader: vgVS, fragmentShader: vgFS });
@@ -96,7 +98,7 @@ class VanGoghScene {
 
     this.scene.add(new THREE.AmbientLight(0xfff5e0, 0.7));
     var ml = new THREE.DirectionalLight(0xfff8e7, 1.4); ml.position.set(5, 10, 5); this.scene.add(ml);
-    var fl = new THREE.PointLight(0x4466aa, 0.6, 50); fl.position.set(-5, 3, -5); this.scene.add(fl);
+    var fl = new THREE.PointLight(0xffeedd, 0.4, 50); fl.position.set(-5, 3, -5); this.scene.add(fl);
     window.addEventListener('resize', () => this.onResize());
     this.animate();
   }
