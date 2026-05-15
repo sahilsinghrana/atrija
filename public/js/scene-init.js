@@ -27,8 +27,8 @@ void main(){
   float r = texture2D(tDiffuse, uv + vec2( aberr, 0.0)).r;
   float g = texture2D(tDiffuse, uv).g;
   float b = texture2D(tDiffuse, uv - vec2( aberr, 0.0)).b;
-  // Occasional horizontal glitch strip
-  float glitchLine = step(0.994, rand(vec2(floor(uv.y * 60.0), floor(uTime * 4.0))));
+  // Occasional horizontal glitch strip — rare, random
+  float glitchLine = step(0.9985, rand(vec2(floor(uv.y * 30.0), floor(uTime * 1.5))));
   float glitchShift = glitchLine * (rand(vec2(uTime, uv.y)) - 0.5) * 0.04;
   r = texture2D(tDiffuse, uv + vec2(aberr + glitchShift, 0.0)).r;
   b = texture2D(tDiffuse, uv - vec2(aberr - glitchShift, 0.0)).b;
@@ -113,9 +113,9 @@ class VanGoghScene {
     var t = this.clock.getElapsedTime();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
     this.glitchPass.uniforms.uTime.value = t;
-    // Gentle camera drift
-    this.camera.position.x = Math.sin(t * 0.07) * 0.4;
-    this.camera.position.y = 2 + Math.sin(t * 0.05) * 0.25;
+    // Gentle camera drift — slightly faster
+    this.camera.position.x = Math.sin(t * 0.15) * 0.4;
+    this.camera.position.y = 2 + Math.sin(t * 0.1) * 0.25;
     this.camera.lookAt(0, 1.5, 0);
     for (var i = 0; i < this.objects.length; i++) {
       var o = this.objects[i];
@@ -139,11 +139,11 @@ function createMoon(scene) {
   var moon = new THREE.Mesh(geo, moonMat);
   moon.position.set(0, 3, -5);
   moon.userData.animate = function(o, t) {
-    o.position.x = Math.sin(t * 0.08) * 4;
-    o.position.z = -5 + Math.cos(t * 0.08) * 2;
-    o.position.y = 3 + Math.sin(t * 0.12) * 0.5;
-    o.rotation.y = t * 0.12;
-    o.rotation.x = Math.sin(t * 0.05) * 0.05;
+    o.position.x = Math.sin(t * 0.15) * 4;
+    o.position.z = -5 + Math.cos(t * 0.15) * 2;
+    o.position.y = 3 + Math.sin(t * 0.2) * 0.5;
+    o.rotation.y = t * 0.2;
+    o.rotation.x = Math.sin(t * 0.08) * 0.05;
   };
   scene.add(moon);
   // Subtle glow — small, low opacity, no BackSide blob
@@ -242,8 +242,8 @@ function makeSunflowerCanvas(size) {
 function createSunflowers(scene, count) {
   var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
   for (var i = 0; i < count; i++) {
-    // Larger on mobile for visibility
-    var s = isMobile ? (0.7 + Math.random() * 0.6) : (0.7 + Math.random() * 0.8);
+    // Scale — smaller on mobile, moderate on desktop
+    var s = isMobile ? (0.35 + Math.random() * 0.3) : (0.5 + Math.random() * 0.6);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(1.4 * s, 1.8 * s, 1);
     // Spread more on desktop, tighter on mobile
@@ -253,9 +253,9 @@ function createSunflowers(scene, count) {
     var baseY = sprite.position.y;
     (function(p, by) {
       sprite.userData.animate = function(o, t) {
-        o.position.x += Math.sin(t * 0.5 + p) * 0.002;
-        o.position.y = by + Math.sin(t * 0.4 + p) * 0.06;
-        o.material.rotation = Math.sin(t * 0.3 + p) * 0.07;
+        o.position.x += Math.sin(t * 0.8 + p) * 0.003;
+        o.position.y = by + Math.sin(t * 0.7 + p) * 0.08;
+        o.material.rotation = Math.sin(t * 0.5 + p) * 0.09;
       };
     })(ph, baseY);
     scene.add(sprite);
@@ -377,9 +377,9 @@ function createTulips(scene, count) {
     var baseY = sprite.position.y;
     (function(p, by) {
       sprite.userData.animate = function(o, t) {
-        o.position.y = by + Math.sin(t * 0.45 + p) * 0.06;
+        o.position.y = by + Math.sin(t * 0.75 + p) * 0.08;
         // Wavy petal effect via rotation oscillation
-        o.material.rotation = Math.sin(t * 0.4 + p) * 0.08 + Math.sin(t * 1.1 + p * 2) * 0.03;
+        o.material.rotation = Math.sin(t * 0.6 + p) * 0.1 + Math.sin(t * 1.5 + p * 2) * 0.04;
       };
     })(ph, baseY);
     scene.add(sprite);
@@ -411,9 +411,9 @@ function createStars(scene, count) {
   var stars = new THREE.Points(geo, mat);
   stars.userData.animate = function(o, t) {
     o.material.uniforms.uTime.value = t;
-    o.rotation.y = t * 0.003;
-    o.rotation.x = Math.sin(t * 0.007) * 0.04;
-    o.rotation.z = Math.cos(t * 0.005) * 0.02;
+    o.rotation.y = t * 0.008;
+    o.rotation.x = Math.sin(t * 0.015) * 0.04;
+    o.rotation.z = Math.cos(t * 0.012) * 0.02;
   };
   scene.add(stars);
 }
@@ -463,25 +463,25 @@ function createMusicNotes(scene, count) {
     var startZ = (Math.random() - 0.5) * 16;
     sprite.position.set(startX, startY, startZ);
 
-    // Larger notes on mobile for visibility
-    var noteScale = isMobile ? 1.8 : 0.55;
+    // Note scale — smaller on mobile, tiny on desktop
+    var noteScale = isMobile ? 0.6 : 0.35;
     sprite.scale.set(noteScale, noteScale, 1);
 
     // Each note has its own unique random motion parameters
-    // Faster rise on mobile so movement is visible
-    var riseSpeed  = isMobile ? (0.04 + Math.random() * 0.06) : (0.015 + Math.random() * 0.025);
-    var driftFreqX = 0.3 + Math.random() * 1.2;
-    var driftFreqZ = 0.2 + Math.random() * 0.8;
-    var driftAmpX  = isMobile ? (0.008 + Math.random() * 0.02) : (0.003 + Math.random() * 0.012);
-    var driftAmpZ  = isMobile ? (0.005 + Math.random() * 0.015) : (0.002 + Math.random() * 0.008);
+    // Faster rise so movement is clearly visible
+    var riseSpeed  = isMobile ? (0.06 + Math.random() * 0.08) : (0.03 + Math.random() * 0.04);
+    var driftFreqX = 0.5 + Math.random() * 1.5;
+    var driftFreqZ = 0.4 + Math.random() * 1.0;
+    var driftAmpX  = isMobile ? (0.01 + Math.random() * 0.025) : (0.005 + Math.random() * 0.015);
+    var driftAmpZ  = isMobile ? (0.008 + Math.random() * 0.02) : (0.003 + Math.random() * 0.01);
     var phaseX     = Math.random() * Math.PI * 2;
     var phaseZ     = Math.random() * Math.PI * 2;
-    var rotFreq    = 0.2 + Math.random() * 0.8;
-    var rotAmp     = 0.04 + Math.random() * 0.18;
+    var rotFreq    = 0.4 + Math.random() * 1.2;
+    var rotAmp     = 0.06 + Math.random() * 0.25;
     var rotPhase   = Math.random() * Math.PI * 2;
-    var opacFreq   = 0.5 + Math.random() * 2.0;
+    var opacFreq   = 0.8 + Math.random() * 2.5;
     var opacPhase  = Math.random() * Math.PI * 2;
-    var resetY     = isMobile ? 6 + Math.random() * 3 : 8 + Math.random() * 4;
+    var resetY     = isMobile ? 5 + Math.random() * 3 : 7 + Math.random() * 4;
     var resetX     = (Math.random() - 0.5) * 18;
 
     (function(rs, dfx, dfz, dax, daz, px, pz, rf, ra, rp, of, op, ry, rx) {
@@ -509,7 +509,7 @@ function createWaves(scene) {
   var geo = new THREE.PlaneGeometry(30, 20, segs, segs);
   geo.rotateX(-Math.PI * 0.45);
   var mat = new THREE.ShaderMaterial({
-    uniforms: { uTime: { value: 0 }, uWaveHeight: { value: 0.3 }, uWaveFrequency: { value: 1.5 },
+    uniforms: { uTime: { value: 0 }, uWaveHeight: { value: 0.3 }, uWaveFrequency: { value: 2.0 },
       uColor1: { value: new THREE.Vector3(0.02,0.05,0.15) }, uColor2: { value: new THREE.Vector3(0.05,0.1,0.3) }, uColor3: { value: new THREE.Vector3(0.1,0.2,0.4) } },
     vertexShader: waveVS, fragmentShader: waveFS, transparent: true, side: THREE.DoubleSide
   });
@@ -639,11 +639,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // Balanced counts — more visible on mobile
-  var noteCount     = isMobile ? 40 : 30;
-  var sunflowerCount = isMobile ? 8 : 12;
-  var tulipCount    = isMobile ? 6 : 10;
-  var starCount     = isLowEnd ? 1500 : 2500;
+  // Balanced counts — fewer, smaller elements on mobile
+  var noteCount     = isMobile ? 15 : 25;
+  var sunflowerCount = isMobile ? 4 : 8;
+  var tulipCount    = isMobile ? 3 : 6;
+  var starCount     = isLowEnd ? 1200 : 2000;
 
   createStars(scene.scene, starCount);
   createConstellations(scene.scene);
