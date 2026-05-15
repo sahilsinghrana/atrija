@@ -242,13 +242,13 @@ function makeSunflowerCanvas(size) {
 function createSunflowers(scene, count) {
   var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
   for (var i = 0; i < count; i++) {
-    // Scale — smaller on mobile, moderate on desktop
-    var s = isMobile ? (0.35 + Math.random() * 0.3) : (0.5 + Math.random() * 0.6);
+    // Scale — visible on both mobile and desktop
+    var s = isMobile ? (0.6 + Math.random() * 0.5) : (0.8 + Math.random() * 0.8);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(1.4 * s, 1.8 * s, 1);
-    // Spread more on desktop, tighter on mobile
-    var spreadX = isMobile ? 12 : 16;
-    sprite.position.set((Math.random() - 0.5) * spreadX, -0.8 + s * 0.5, (Math.random() - 0.5) * 8 + 3);
+    // Position — higher Y on mobile so they're in view
+    var spreadX = isMobile ? 10 : 14;
+    sprite.position.set((Math.random() - 0.5) * spreadX, -0.3 + s * 0.4, (Math.random() - 0.5) * 6 + 2);
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
     (function(p, by) {
@@ -641,7 +641,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Balanced counts — fewer, smaller elements on mobile
   var noteCount     = isMobile ? 15 : 25;
-  var sunflowerCount = isMobile ? 4 : 8;
+  var sunflowerCount = isMobile ? 6 : 10;
   var tulipCount    = isMobile ? 3 : 6;
   var starCount     = isLowEnd ? 1200 : 2000;
 
