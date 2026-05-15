@@ -1,8 +1,14 @@
 {
-  "version": "1.3.0",
-  "lastUpdated": "2026-05-15T16:30:00Z",
-  "totalEntries": 11,
+  "version": "1.4.0",
+  "lastUpdated": "2026-05-16T03:15:00Z",
+  "totalEntries": 12,
   "dates": [
+    {
+      "date": "2026-05-16",
+      "entries": 1,
+      "latestType": "feature",
+      "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity variation"
+    },
     {
       "date": "2026-05-15",
       "entries": 9,

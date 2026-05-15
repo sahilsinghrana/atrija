@@ -1,9 +1,9 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.3.0",
-    "lastUpdated": "2026-05-15",
-    "updatedBy": "AI Agent (daily-mutate.js)"
+    "version": "1.4.0",
+    "lastUpdated": "2026-05-16",
+    "updatedBy": "AI Agent (background-implement)"
   },
   "sections": {
     "hero": {
@@ -114,7 +114,7 @@
     }
   },
   "changelog": {
-    "version": "1.0.0",
+    "version": "1.4.0",
     "entries": [
       {
         "time": "06:00:00",
@@ -183,6 +183,21 @@
           "Mobile-optimized reverb (1.5s vs 2.5s)"
         ],
         "date": "2026-05-15"
+      },
+      {
+        "time": "03:15:00",
+        "type": "feature",
+        "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity variation",
+        "changes": [
+          "Split sunflowers into background/midground/foreground layers",
+          "Foreground: large (1.2-1.8x), opaque (0.95), dramatic sway (0.12)",
+          "Background: small (0.4-0.7x), transparent (0.5), subtle sway (0.03)",
+          "Midground: medium (0.7-1.2x), semi-transparent (0.75), moderate sway (0.06)",
+          "Texture LOD: 80px canvas for background, 160px for mid/foreground",
+          "Mobile: 10 flowers at 80% scale; Desktop: 16 flowers",
+          "Added unit tests for layer configuration (8 tests passing)"
+        ],
+        "date": "2026-05-16"
       }
     ]
   }
