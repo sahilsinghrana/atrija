@@ -147,9 +147,10 @@ src/content/changelog/
 - "Load More" button fetches older dates in batches of 5
 
 ### Updating
-- `daily-mutate.js` writes to `changelog/YYYY-MM-DD.json` and updates `index.json`
-- Other cron jobs (background-implement, git-pull-build) should do the same
-- Keep `content.json` clean — no changelog data in it
+- `daily-mutate.js` writes to `src/content/changelog/YYYY-MM-DD.json`, updates `index.json`, syncs to `public/changelog/`, AND syncs consolidated entries back to `content.json`'s changelog field (for website display at build time)
+- Other cron jobs (background-implement, git-pull-build) write to the same date-based files and sync to `content.json`
+- `content.json`'s changelog is auto-synced: deduplicated by (date+type), max 15 entries, sorted chronologically
+- The website reads changelog from `content.json` at build time (imported by index.astro)
 | Job | Schedule | Purpose |
 |-----|----------|---------|
 | `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build |
