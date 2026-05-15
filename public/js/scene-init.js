@@ -189,6 +189,7 @@ class VanGoghScene {
   animate() {
     requestAnimationFrame(() => this.animate());
     var t = this.clock.getElapsedTime();
+    var dt = this.clock.getDelta();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
     if (this.watercolorPass) this.watercolorPass.uniforms.uTime.value = t;
     this.glitchPass.uniforms.uTime.value = t;
@@ -198,8 +199,10 @@ class VanGoghScene {
     this.camera.lookAt(0, 1.5, 0);
     for (var i = 0; i < this.objects.length; i++) {
       var o = this.objects[i];
-      if (o.userData.animate) o.userData.animate(o, t);
+      if (o.userData.animate) o.userData.animate(o, t, dt);
     }
+    // Update shooting star manager
+    if (this.shootingStarManager) this.shootingStarManager.update(t, dt);
     this.composer.render();
   }
 }
@@ -641,6 +644,103 @@ function createMusicNotes(scene, count) {
   }
 }
 
+// ── Shooting Stars ──
+function createShootingStars(scene, maxActive) {
+  maxActive = maxActive || (isMobile ? 1 : 2);
+  var pool = [];
+  var nextSpawn = 8 + Math.random() * 7;
+
+  function spawn() {
+    var trailLength = isMobile ? 12 : 20;
+    var positions = new Float32Array(trailLength * 3);
+    var opacities = new Float32Array(trailLength);
+
+    var startR = 35 + Math.random() * 10;
+    var startTheta = Math.random() * Math.PI * 2;
+    var startPhi = Math.random() * Math.PI * 0.4;
+    var sx = startR * Math.sin(startPhi) * Math.cos(startTheta);
+    var sy = startR * Math.sin(startPhi) * Math.sin(startTheta) + 5;
+    var sz = startR * Math.cos(startPhi);
+
+    var dirX = (Math.random() - 0.5) * 0.8;
+    var dirY = -0.3 - Math.random() * 0.5;
+    var dirZ = (Math.random() - 0.5) * 0.8;
+    var speed = 0.15 + Math.random() * 0.15;
+
+    var star = {
+      active: true, life: 0, maxLife: 1.5 + Math.random() * 0.8,
+      sx: sx, sy: sy, sz: sz,
+      dx: dirX * speed, dy: dirY * speed, dz: dirZ * speed,
+      positions: positions, opacities: opacities, trailLength: trailLength,
+      headSize: isMobile ? 3.0 : 4.0,
+      headColor: new THREE.Color().setHSL(0.12 + Math.random() * 0.05, 0.8, 0.9)
+    };
+
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute('opacity', new THREE.BufferAttribute(opacities, 1));
+
+    var mat = new THREE.PointsMaterial({
+      color: star.headColor, size: star.headSize, transparent: true,
+      opacity: 1.0, depthWrite: false, blending: THREE.AdditiveBlending,
+      sizeAttenuation: true
+    });
+
+    var points = new THREE.Points(geo, mat);
+    points.userData.shootingStar = star;
+    points.userData.isShootingStar = true;
+    points.userData.animate = function(o, t, dt) {
+      var s = o.userData.shootingStar;
+      if (!s.active) return;
+      s.life += dt;
+      if (s.life >= s.maxLife) { o.visible = false; s.active = false; return; }
+      s.sx += s.dx; s.sy += s.dy; s.sz += s.dz;
+      for (var i = s.trailLength - 1; i > 0; i--) {
+        s.positions[i*3] = s.positions[(i-1)*3];
+        s.positions[i*3+1] = s.positions[(i-1)*3+1];
+        s.positions[i*3+2] = s.positions[(i-1)*3+2];
+        s.opacities[i] = s.opacities[i-1] * 0.85;
+      }
+      s.positions[0] = s.sx; s.positions[1] = s.sy; s.positions[2] = s.sz;
+      s.opacities[0] = 1.0;
+      var lifeRatio = s.life / s.maxLife;
+      var fade = lifeRatio < 0.7 ? 1.0 : 1.0 - (lifeRatio - 0.7) / 0.3;
+      o.material.opacity = fade;
+      o.material.size = s.headSize * (0.5 + fade * 0.5);
+      o.geometry.attributes.position.needsUpdate = true;
+    };
+    scene.add(points);
+    pool.push({ points: points, star: star });
+  }
+
+  return {
+    update: function(t, dt) {
+      nextSpawn -= dt;
+      if (nextSpawn <= 0) {
+        var found = false;
+        for (var i = 0; i < pool.length; i++) {
+          if (!pool[i].star.active) {
+            var s = pool[i].star;
+            s.active = true; s.life = 0; s.maxLife = 1.5 + Math.random() * 0.8;
+            var sr = 35 + Math.random() * 10, st = Math.random() * Math.PI * 2, sp = Math.random() * Math.PI * 0.4;
+            s.sx = sr * Math.sin(sp) * Math.cos(st);
+            s.sy = sr * Math.sin(sp) * Math.sin(st) + 5;
+            s.sz = sr * Math.cos(sp);
+            s.dx = ((Math.random()-0.5)*0.8) * (0.15+Math.random()*0.15);
+            s.dy = (-0.3-Math.random()*0.5) * (0.15+Math.random()*0.15);
+            s.dz = ((Math.random()-0.5)*0.8) * (0.15+Math.random()*0.15);
+            pool[i].points.visible = true;
+            pool[i].points.material.opacity = 1.0;
+            found = true; break;
+          }
+        }
+        if (!found && pool.length < maxActive) spawn();
+        nextSpawn = 8 + Math.random() * 7;
+      }
+    }
+  };
+}
+
 // ── Waves ──
 function createWaves(scene) {
   var segs = isLowEnd ? 32 : 64;
@@ -791,6 +891,8 @@ document.addEventListener('DOMContentLoaded', function() {
   createFlute(scene.scene);
   createMusicNotes(scene.scene, noteCount);
   createWaves(scene.scene);
+  var shootingStarManager = createShootingStars(scene.scene, isMobile ? 1 : 2);
+  scene.shootingStarManager = shootingStarManager;
 
   if (window.__VG_SHADER) scene.updateUniforms({ strokeDensity: window.__VG_SHADER.strokeDensity, swirlFrequency: window.__VG_SHADER.swirlFrequency, colorIntensity: window.__VG_SHADER.colorIntensity });
 

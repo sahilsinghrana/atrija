@@ -13,7 +13,7 @@
       "description": "Random shooting stars that streak across the sky with trailing particles. Triggered every 8-15 seconds.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "red",
+      "status": "green",
       "prd": "PRD-idea-001-shooting-stars.md"
     },
     {
