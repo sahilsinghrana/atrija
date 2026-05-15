@@ -145,7 +145,7 @@ function createMoon(scene) {
     pos.setXYZ(i, x * (1 + n), y * (1 + n), z * (1 + n));
   }
   geo.computeVertexNormals();
-  var moonMat = new THREE.MeshStandardMaterial({ color: 0xfff8e7, emissive: 0x554820, emissiveIntensity: 0.5, roughness: 0.7, metalness: 0.1 });
+  var moonMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xcccccc, emissiveIntensity: 0.3, roughness: 0.4, metalness: 0.05 });
   var moon = new THREE.Mesh(geo, moonMat);
   moon.position.set(0, 3, -5);
   moon.userData.animate = function(o, t) {
@@ -157,7 +157,7 @@ function createMoon(scene) {
   };
   scene.add(moon);
   // Subtle glow — small, low opacity, no BackSide blob
-  var glowMat = new THREE.MeshBasicMaterial({ color: 0xfff5d0, transparent: true, opacity: 0.06, side: THREE.BackSide });
+  var glowMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.04, side: THREE.BackSide });
   var glow = new THREE.Mesh(new THREE.SphereGeometry(1.75, 16, 16), glowMat);
   glow.userData.animate = function(o, t) {
     o.position.x = Math.sin(t * 0.08) * 4;
@@ -288,7 +288,7 @@ function createSunflowers(scene, count) {
   }
 }
 
-// ── Tulip — cup-shaped and open variants, natural colors ──
+// ── Tulip — cup-shaped and open variants, diverse natural colors ──
 // Layout: head in upper 65%, stem in bottom 30%, 5% gap
 function makeTulipCanvas(size, color, isOpen) {
   size = size || 160;
@@ -296,7 +296,6 @@ function makeTulipCanvas(size, color, isOpen) {
   c.width = size; c.height = size;
   var ctx = c.getContext('2d');
   var cx = size / 2;
-  // Flower head center at 38% of canvas height
   var headCy = size * 0.38;
   var headR  = size * 0.24;
 
@@ -305,6 +304,10 @@ function makeTulipCanvas(size, color, isOpen) {
   var rr = parseInt(hexColor.substring(0,2), 16);
   var gg = parseInt(hexColor.substring(2,4), 16);
   var bb = parseInt(hexColor.substring(4,6), 16);
+
+  // Per-tulip randomization for natural variety
+  var curlFactor = 0.3 + Math.random() * 0.3;
+  var widthVar = 0.8 + Math.random() * 0.5;
 
   // ── Draw stem FIRST (behind petals) ──
   ctx.strokeStyle = '#2d6a1e';
@@ -339,83 +342,112 @@ function makeTulipCanvas(size, color, isOpen) {
   }
 
   // ── Draw petals ──
-  // Use only warm natural colors: yellows, ambers, oranges — NO green in petals
   var petalCount = isOpen ? 6 : 5;
   for (var p = 0; p < petalCount; p++) {
     var angle = (p / petalCount) * Math.PI * 2 - Math.PI / 2;
-    var spread, petalH, petalW, lightness;
+    var spread, petalH, petalW;
     if (isOpen) {
-      // Open tulip: petals spread outward and curl back
-      spread = 0.4 + (p % 2) * 0.2;
-      petalH = headR * (1.0 + (p % 2) * 0.15);
-      petalW = headR * 0.38;
-      lightness = p % 2 === 0 ? 20 : -10;
+      spread = 0.35 + (p % 2) * 0.25 + curlFactor * 0.15;
+      petalH = headR * (0.9 + (p % 2) * 0.2 + curlFactor * 0.15);
+      petalW = headR * (0.3 * widthVar + (p % 3) * 0.06);
     } else {
-      // Cup tulip: petals tightly wrapped
-      spread = (p % 2 === 0) ? 0.5 : 0.3;
-      petalH = headR * (p % 2 === 0 ? 1.0 : 0.8);
-      petalW = headR * 0.35;
-      lightness = p % 2 === 0 ? 0 : 25;
+      spread = 0.45 + (p % 2) * 0.2;
+      petalH = headR * (0.85 + (p % 2) * 0.2);
+      petalW = headR * (0.32 * widthVar);
     }
+    // Per-petal lightness variation for depth
+    var lightness = (p % 2 === 0 ? 15 : -10) + Math.floor(Math.random() * 15);
+
     ctx.save();
     ctx.translate(
       cx + Math.cos(angle) * headR * spread * 0.35,
       headCy + Math.sin(angle) * headR * spread * 0.2
     );
     ctx.rotate(angle + Math.PI / 2);
-    // Gradient: warm petal color, NO green channel boost
+
+    // Rich gradient using the base color with per-petal variation
     var pg = ctx.createLinearGradient(0, -petalH, 0, petalH * 0.3);
-    var r1 = Math.min(255, rr + lightness + 40);
-    var g1 = Math.min(255, gg + lightness + 10); // minimal green boost
-    var b1 = Math.max(0, bb - 20);
-    var r2 = Math.min(255, rr + lightness);
-    var g2 = Math.min(255, gg + lightness);
-    var b2 = Math.max(0, bb - 10);
-    var r3 = Math.max(0, rr - 40);
-    var g3 = Math.max(0, gg - 20);
-    var b3 = Math.max(0, bb - 30);
-    pg.addColorStop(0, 'rgba(' + r1 + ',' + g1 + ',' + b1 + ',0.95)');
-    pg.addColorStop(0.5, 'rgba(' + r2 + ',' + g2 + ',' + b2 + ',0.9)');
-    pg.addColorStop(1, 'rgba(' + r3 + ',' + g3 + ',' + b3 + ',0.75)');
+    var r1 = Math.min(255, Math.max(0, rr + lightness + 40));
+    var g1 = Math.min(255, Math.max(0, gg + lightness + 5));
+    var b1 = Math.min(255, Math.max(0, bb + lightness + 10));
+    var r2 = Math.min(255, Math.max(0, rr + lightness));
+    var g2 = Math.min(255, Math.max(0, gg + lightness - 5));
+    var b2 = Math.min(255, Math.max(0, bb + lightness));
+    var r3 = Math.max(0, rr - 50);
+    var g3 = Math.max(0, gg - 30);
+    var b3 = Math.max(0, bb - 20);
+    pg.addColorStop(0, 'rgba(' + r1 + ',' + g1 + ',' + b1 + ',0.97)');
+    pg.addColorStop(0.4, 'rgba(' + r2 + ',' + g2 + ',' + b2 + ',0.92)');
+    pg.addColorStop(1, 'rgba(' + r3 + ',' + g3 + ',' + b3 + ',0.78)');
     ctx.fillStyle = pg;
     ctx.beginPath();
     if (isOpen) {
-      // Open: wider, more curved petals
-      ctx.moveTo(0, petalH * 0.3);
-      ctx.bezierCurveTo(petalW * 1.1, petalH * 0.1, petalW, -petalH * 0.7, 0, -petalH);
-      ctx.bezierCurveTo(-petalW, -petalH * 0.7, -petalW * 1.1, petalH * 0.1, 0, petalH * 0.3);
+      ctx.moveTo(0, petalH * 0.2);
+      ctx.bezierCurveTo(petalW * 1.05, petalH * 0.05, petalW * 0.9, -petalH * 0.65, 0, -petalH);
+      ctx.bezierCurveTo(-petalW * 0.9, -petalH * 0.65, -petalW * 1.05, petalH * 0.05, 0, petalH * 0.2);
     } else {
-      // Cup: tighter, taller petals
-      ctx.moveTo(0, petalH * 0.25);
-      ctx.bezierCurveTo(petalW * 0.8, petalH * 0.05, petalW * 0.7, -petalH * 0.65, 0, -petalH);
-      ctx.bezierCurveTo(-petalW * 0.7, -petalH * 0.65, -petalW * 0.8, petalH * 0.05, 0, petalH * 0.25);
+      ctx.moveTo(0, petalH * 0.2);
+      ctx.bezierCurveTo(petalW * 0.75, petalH * 0.05, petalW * 0.7, -petalH * 0.6, 0, -petalH);
+      ctx.bezierCurveTo(-petalW * 0.7, -petalH * 0.6, -petalW * 0.75, petalH * 0.05, 0, petalH * 0.2);
     }
     ctx.fill();
-    // Petal vein — subtle warm tone
-    ctx.strokeStyle = 'rgba(' + Math.max(0,rr-40) + ',' + Math.max(0,gg-20) + ',' + Math.max(0,bb-20) + ',0.25)';
-    ctx.lineWidth = size * 0.008;
+
+    // Subtle petal edge highlight
+    ctx.strokeStyle = 'rgba(' + Math.min(255, rr + 30) + ',' + Math.min(255, gg + 20) + ',' + Math.min(255, bb + 10) + ',0.15)';
+    ctx.lineWidth = size * 0.006;
     ctx.beginPath();
-    ctx.moveTo(0, petalH * 0.15);
-    ctx.lineTo(0, -petalH * 0.6);
+    ctx.moveTo(0, petalH * 0.1);
+    ctx.lineTo(0, -petalH * 0.55);
     ctx.stroke();
     ctx.restore();
   }
 
-  // Stamen — small warm center
-  var stGrad = ctx.createRadialGradient(cx, headCy, 0, cx, headCy, headR * 0.12);
-  stGrad.addColorStop(0, 'rgba(255,240,100,0.9)');
-  stGrad.addColorStop(1, 'rgba(200,160,20,0.4)');
+  // Stamen — rich center with color-matched pollen
+  var stR = Math.min(255, rr + 60);
+  var stG = Math.min(255, gg + 40);
+  var stB = Math.min(255, bb + 20);
+  var stGrad = ctx.createRadialGradient(cx, headCy, 0, cx, headCy, headR * 0.14);
+  stGrad.addColorStop(0, 'rgba(' + stR + ',' + stG + ',' + stB + ',0.95)');
+  stGrad.addColorStop(0.4, 'rgba(' + Math.min(255,rr+20) + ',' + Math.min(255,gg+10) + ',' + bb + ',0.7)');
+  stGrad.addColorStop(1, 'rgba(' + rr + ',' + gg + ',' + bb + ',0.3)');
   ctx.fillStyle = stGrad;
   ctx.beginPath();
-  ctx.arc(cx, headCy, headR * 0.1, 0, Math.PI * 2);
+  ctx.arc(cx, headCy, headR * 0.12, 0, Math.PI * 2);
   ctx.fill();
+
+  // Pollen dots
+  for (var d = 0; d < 5; d++) {
+    var da = Math.random() * Math.PI * 2;
+    var dr = Math.random() * headR * 0.06;
+    ctx.fillStyle = 'rgba(' + stR + ',' + stG + ',' + stB + ',' + (0.4 + Math.random() * 0.4) + ')';
+    ctx.beginPath();
+    ctx.arc(cx + Math.cos(da) * dr, headCy + Math.sin(da) * dr, headR * 0.015, 0, Math.PI * 2);
+    ctx.fill();
+  }
 
   return c;
 }
 
 function createTulips(scene, count) {
   // Natural tulip colors: warm yellows, ambers, deep gold — NO green, NO pink, NO purple
-  var colors = ['#e8a020','#d4901a','#c88015','#f0b030','#a06810','#d09828','#e0a825','#b87818','#c08820','#d89018','#e89020','#c08020'];
+  var colors = [
+    '#e84040',  // vivid red
+    '#d41a1a',  // deep red
+    '#e87020',  // orange
+    '#f05090',  // pink
+    '#c830a0',  // magenta
+    '#9040d0',  // purple
+    '#e8a020',  // golden yellow
+    '#d4901a',  // amber
+    '#f0c040',  // soft gold
+    '#e03050',  // crimson
+    '#c040b0',  // orchid
+    '#f06030',  // coral orange
+    '#e05020',  // vermillion
+    '#d03070',  // rose
+    '#a030c0',  // violet
+    '#f0a050',  // peach
+  ];
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
     var isOpen = Math.random() > 0.5; // 50% cup, 50% open
