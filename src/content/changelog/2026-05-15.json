@@ -111,6 +111,19 @@
         "Added AI agent banner — self-built, self-deployed notice",
         "Smooth rAF-based moon phase animation"
       ]
+    },
+    {
+      "time": "16:30:00",
+      "type": "feature",
+      "description": "Ambient music generator — procedural flute-like soundscape with Web Audio API",
+      "changes": [
+        "Pentatonic drone + melody system using Web Audio API",
+        "Scroll depth controls filter brightness",
+        "Speaker toggle button (bottom-right)",
+        "Auto-pause on tab hidden, user-gated autoplay",
+        "Oscillator pool for melody note reuse",
+        "Mobile-optimized reverb (1.5s vs 2.5s)"
+      ]
     }
   ]
 }
