@@ -53,17 +53,34 @@ function updateAllSections(content, siteData, dayOfYear) {
     section.intro = fact.text;
 
     // Update image card reference — use a different fact than the intro
+    let imgFactIndex = factIndex;
     if (section.imageCard) {
-      const imgFactIndex = (factIndex + 1) % theme.facts.length;
+      imgFactIndex = (factIndex + 1) % theme.facts.length;
       section.imageCard.factIndex = imgFactIndex;
       section.imageCard.themeIndex = themeIndex;
     }
 
-    // Update facts slice — rotate which facts are shown
+    // Update facts slice — use facts that DON'T overlap with intro or image card
     if (section.facts) {
       const totalFacts = theme.facts.length;
       const sliceSize = Math.min(2, totalFacts - 1);
-      const sliceStart = (dayOfYear + i) % (totalFacts - sliceSize + 1);
+      // Pick a slice that doesn't include factIndex (intro) or imgFactIndex (image card)
+      let sliceStart = (imgFactIndex + 1) % totalFacts;
+      // Make sure slice doesn't go out of bounds
+      if (sliceStart + sliceSize > totalFacts) {
+        sliceStart = 0;
+      }
+      // If slice would still overlap with intro or image card, push it further
+      while (sliceStart === factIndex || sliceStart === imgFactIndex ||
+             (sliceStart + sliceSize - 1) === factIndex ||
+             (sliceStart + sliceSize - 1) === imgFactIndex) {
+        sliceStart = (sliceStart + 1) % totalFacts;
+        if (sliceStart + sliceSize > totalFacts) {
+          sliceStart = 0;
+        }
+        // Safety: prevent infinite loop
+        if (sliceStart === (imgFactIndex + 1) % totalFacts) break;
+      }
       section.facts.themeIndex = themeIndex;
       section.facts.slice = [sliceStart, sliceStart + sliceSize];
     }
