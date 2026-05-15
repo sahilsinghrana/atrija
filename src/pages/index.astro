@@ -104,8 +104,21 @@ const colorData = JSON.stringify({
           </div>
         ))}
       </div>
-      <div class="quote-block reveal">
-        <p>{siteData.themes[sec.moon.quote.themeIndex].quotes[sec.moon.quote.quoteIndex]}</p>
+      <div class="quote-carousel reveal" data-theme-index={sec.moon.quote.themeIndex}>
+        <div class="quote-carousel-inner">
+          {siteData.themes[sec.moon.quote.themeIndex].quotes.map((q: any, i: number) => (
+            <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
+              <div class="quote-block">
+                <p>{q}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="quote-dots">
+          {siteData.themes[sec.moon.quote.themeIndex].quotes.map((_q: any, i: number) => (
+            <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -133,8 +146,21 @@ const colorData = JSON.stringify({
           </div>
         ))}
       </div>
-      <div class="quote-block reveal">
-        <p>{siteData.themes[sec.philosophy.quote.themeIndex].quotes[sec.philosophy.quote.quoteIndex]}</p>
+      <div class="quote-carousel reveal" data-theme-index={sec.philosophy.quote.themeIndex}>
+        <div class="quote-carousel-inner">
+          {siteData.themes[sec.philosophy.quote.themeIndex].quotes.map((q: any, i: number) => (
+            <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
+              <div class="quote-block">
+                <p>{q}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="quote-dots">
+          {siteData.themes[sec.philosophy.quote.themeIndex].quotes.map((_q: any, i: number) => (
+            <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -162,8 +188,21 @@ const colorData = JSON.stringify({
           </div>
         ))}
       </div>
-      <div class="quote-block reveal">
-        <p>{siteData.themes[sec.gita.quote.themeIndex].quotes[sec.gita.quote.quoteIndex]}</p>
+      <div class="quote-carousel reveal" data-theme-index={sec.gita.quote.themeIndex}>
+        <div class="quote-carousel-inner">
+          {siteData.themes[sec.gita.quote.themeIndex].quotes.map((q: any, i: number) => (
+            <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
+              <div class="quote-block">
+                <p>{q}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="quote-dots">
+          {siteData.themes[sec.gita.quote.themeIndex].quotes.map((_q: any, i: number) => (
+            <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
+          ))}
+        </div>
       </div>
     </div>
   </section>

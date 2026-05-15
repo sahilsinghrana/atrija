@@ -5,7 +5,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta name="description" content={description} />
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -87,10 +87,15 @@ const { title = "अत्रिज", description = "An impressionist journey th
       overflow-x: hidden;
     }
 
+    #canvas-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; height: 100%; }
+    @supports (height: 100dvh) {
+      html, body { min-height: 100dvh; }
+      #canvas-container { height: 100dvh; }
+    }
+
     /* ═══════════════════════════════════════
        LAYOUT SHELL
     ═══════════════════════════════════════ */
-    #canvas-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
     main { position: relative; z-index: 1; }
 
     /* ═══════════════════════════════════════
@@ -509,6 +514,56 @@ const { title = "अत्रिज", description = "An impressionist journey th
       z-index: 1;
       max-width: 500px;
       margin: 0 auto;
+    }
+
+    /* ═══════════════════════════════════════
+       QUOTE CAROUSEL
+    ═══════════════════════════════════════ */
+    .quote-carousel {
+      position: relative;
+      margin-top: var(--space-lg);
+      min-height: 100px;
+    }
+    .quote-carousel-inner {
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-card {
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .quote-card.hidden {
+      opacity: 0;
+      transform: translateY(8px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+    }
+    .quote-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: var(--space-sm);
+    }
+    .quote-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      padding: 0;
+    }
+    .quote-dot.active {
+      background: var(--accent-gold);
+      transform: scale(1.2);
+    }
+    .quote-dot:hover {
+      background: rgba(255,255,255,0.4);
     }
 
     /* ═══════════════════════════════════════
@@ -1059,6 +1114,24 @@ const { title = "अत्रिज", description = "An impressionist journey th
         }
       }, {passive:true});
     })();
+
+    /* Mobile viewport height fix — set custom property on resize */
+    (function() {
+      function setVH() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+      }
+      setVH();
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setVH, 100);
+      }, {passive:true});
+      // Also update on orientation change
+      window.addEventListener('orientationchange', function() {
+        setTimeout(setVH, 200);
+      });
+    })();
   </script>
-</body>
+  </body>
 </html>

@@ -37,66 +37,6 @@ void main(){
   gl_FragColor = vec4(col, 1.0);
 }`;
 
-// ── Watercolor post-processing shader (desktop only) ──
-var watercolorFS = `
-uniform sampler2D tDiffuse;
-uniform float uTime;
-uniform float uBleedRadius;
-uniform float uEdgeStrength;
-uniform float uColorQuantize;
-varying vec2 vUv;
-
-float hash(vec2 p) {
-  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
-}
-
-void main() {
-  vec2 uv = vUv;
-  vec2 texel = 1.0 / vec2(1920.0, 1080.0);
-
-  // Color bleeding (neighborhood average)
-  vec3 color = texture2D(tDiffuse, uv).rgb;
-  vec3 bleed = vec3(0.0);
-  float total = 1.0;
-  float radius = uBleedRadius;
-  bleed += texture2D(tDiffuse, uv + vec2(radius, 0.0) * texel).rgb;
-  bleed += texture2D(tDiffuse, uv - vec2(radius, 0.0) * texel).rgb;
-  bleed += texture2D(tDiffuse, uv + vec2(0.0, radius) * texel).rgb;
-  bleed += texture2D(tDiffuse, uv - vec2(0.0, radius) * texel).rgb;
-  bleed += texture2D(tDiffuse, uv + vec2(radius, radius) * 0.7 * texel).rgb;
-  bleed += texture2D(tDiffuse, uv - vec2(radius, radius) * 0.7 * texel).rgb;
-  bleed += texture2D(tDiffuse, uv + vec2(radius, -radius) * 0.7 * texel).rgb;
-  bleed += texture2D(tDiffuse, uv - vec2(radius, -radius) * 0.7 * texel).rgb;
-  total += 8.0;
-  bleed = bleed / total;
-  color = mix(color, bleed, 0.4);
-
-  // Edge detection (Sobel)
-  vec3 c00 = texture2D(tDiffuse, uv + vec2(-1.0, -1.0) * texel * 2.0).rgb;
-  vec3 c10 = texture2D(tDiffuse, uv + vec2( 0.0, -1.0) * texel * 2.0).rgb;
-  vec3 c20 = texture2D(tDiffuse, uv + vec2( 1.0, -1.0) * texel * 2.0).rgb;
-  vec3 c01 = texture2D(tDiffuse, uv + vec2(-1.0,  0.0) * texel * 2.0).rgb;
-  vec3 c21 = texture2D(tDiffuse, uv + vec2( 1.0,  0.0) * texel * 2.0).rgb;
-  vec3 c02 = texture2D(tDiffuse, uv + vec2(-1.0,  1.0) * texel * 2.0).rgb;
-  vec3 c12 = texture2D(tDiffuse, uv + vec2( 0.0,  1.0) * texel * 2.0).rgb;
-  vec3 c22 = texture2D(tDiffuse, uv + vec2( 1.0,  1.0) * texel * 2.0).rgb;
-  vec3 gx = -c00 - 2.0*c01 - c02 + c20 + 2.0*c21 + c22;
-  vec3 gy = -c00 - 2.0*c10 - c20 + c02 + 2.0*c12 + c22;
-  float edge = length(gx) + length(gy);
-  edge = smoothstep(0.1, 0.5, edge);
-  color = mix(color, color * 0.3, edge * uEdgeStrength);
-
-  // Color quantization
-  color = floor(color * uColorQuantize + 0.5) / uColorQuantize;
-
-  // Paper grain
-  float grain = hash(uv * 500.0 + uTime * 0.1) * 0.03 - 0.015;
-  color += grain;
-
-  gl_FragColor = vec4(color, 1.0);
-}
-`;
-
 // ── Star shader ──
 var starVS = `
 attribute float size;attribute float brightness;attribute float twinkleSpeed;attribute float twinklePhase;attribute vec3 customColor;
@@ -145,19 +85,6 @@ class VanGoghScene {
     if (!isLowEnd) {
       this.vgPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uStrokeDensity: { value: 8.0 }, uSwirlFrequency: { value: 12.0 }, uColorIntensity: { value: 1.4 } }, vertexShader: vgVS, fragmentShader: vgFS });
       this.composer.addPass(this.vgPass);
-      // Watercolor pass — desktop only, after Van Gogh
-      this.watercolorPass = new ShaderPass({
-        uniforms: {
-          tDiffuse: { value: null },
-          uTime: { value: 0 },
-          uBleedRadius: { value: 3.0 },
-          uEdgeStrength: { value: 0.6 },
-          uColorQuantize: { value: 16.0 }
-        },
-        vertexShader: vgVS,
-        fragmentShader: watercolorFS
-      });
-      this.composer.addPass(this.watercolorPass);
     }
     // Glitch pass — mobile always, desktop subtle
     this.glitchPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } }, vertexShader: glitchVS, fragmentShader: glitchFS });
@@ -175,11 +102,7 @@ class VanGoghScene {
     if (p.strokeDensity !== undefined) this.vgPass.uniforms.uStrokeDensity.value = p.strokeDensity;
     if (p.swirlFrequency !== undefined) this.vgPass.uniforms.uSwirlFrequency.value = p.swirlFrequency;
     if (p.colorIntensity !== undefined) this.vgPass.uniforms.uColorIntensity.value = p.colorIntensity;
-    if (this.watercolorPass) {
-      if (p.bleedRadius !== undefined) this.watercolorPass.uniforms.uBleedRadius.value = p.bleedRadius;
-      if (p.edgeStrength !== undefined) this.watercolorPass.uniforms.uEdgeStrength.value = p.edgeStrength;
-      if (p.colorQuantize !== undefined) this.watercolorPass.uniforms.uColorQuantize.value = p.colorQuantize;
-    }
+
   }
   onResize() {
     var w = this.container.clientWidth, h = this.container.clientHeight;
@@ -191,7 +114,6 @@ class VanGoghScene {
     var t = this.clock.getElapsedTime();
     var dt = this.clock.getDelta();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
-    if (this.watercolorPass) this.watercolorPass.uniforms.uTime.value = t;
     this.glitchPass.uniforms.uTime.value = t;
     // Gentle camera drift — enhanced for parallax visibility
     this.camera.position.x = Math.sin(t * 0.15) * 0.6;
@@ -322,49 +244,50 @@ function makeSunflowerCanvas(size) {
 }
 
 function createSunflowers(scene, totalCount) {
-  // Split into 3 depth layers for parallax
+  // Split into 3 depth layers for parallax — widely spread
   var layers = [
     {
       name: 'background',
       count: Math.floor(totalCount * 0.3),
-      scaleRange: [0.4, 0.7],
-      zRange: [-15, -8],
-      yRange: [-1.5, -0.5],
-      swayAmp: 0.03,
-      swaySpeed: 0.4,
-      opacity: 0.5,
-      spreadX: 20
+      scaleRange: [0.35, 0.6],
+      zRange: [-20, -12],
+      yRange: [-2.0, -0.8],
+      swayAmp: 0.02,
+      swaySpeed: 0.3,
+      opacity: 0.35,
+      spreadX: 35
     },
     {
       name: 'midground',
       count: Math.floor(totalCount * 0.4),
-      scaleRange: [0.7, 1.2],
-      zRange: [-10, -3],
-      yRange: [-1.0, 0.0],
-      swayAmp: 0.06,
-      swaySpeed: 0.6,
-      opacity: 0.75,
-      spreadX: 16
+      scaleRange: [0.6, 1.0],
+      zRange: [-14, -6],
+      yRange: [-1.2, 0.0],
+      swayAmp: 0.05,
+      swaySpeed: 0.5,
+      opacity: 0.6,
+      spreadX: 28
     },
     {
       name: 'foreground',
       count: Math.floor(totalCount * 0.3),
-      scaleRange: [1.2, 1.8],
-      zRange: [-6, 0],
-      yRange: [-0.5, 0.5],
-      swayAmp: 0.12,
-      swaySpeed: 0.8,
-      opacity: 0.95,
-      spreadX: 12
+      scaleRange: [1.0, 1.6],
+      zRange: [-8, -1],
+      yRange: [-0.6, 0.6],
+      swayAmp: 0.1,
+      swaySpeed: 0.7,
+      opacity: 0.9,
+      spreadX: 22
     }
   ];
 
-  // Adjust counts for mobile
+  // Adjust counts for mobile — fewer but still spread
   if (isMobile) {
     layers.forEach(function(l) {
-      l.count = Math.max(1, Math.floor(l.count * 0.6));
-      l.scaleRange = [l.scaleRange[0] * 0.8, l.scaleRange[1] * 0.8];
-      l.opacity = l.name === 'background' ? 0.4 : l.opacity;
+      l.count = Math.max(1, Math.floor(l.count * 0.5));
+      l.scaleRange = [l.scaleRange[0] * 0.7, l.scaleRange[1] * 0.7];
+      l.spreadX = l.spreadX * 0.7;
+      l.opacity = l.name === 'background' ? 0.25 : l.opacity * 0.85;
     });
   }
 
@@ -381,7 +304,9 @@ function createSunflowers(scene, totalCount) {
       }));
       sprite.scale.set(1.4 * s, 1.8 * s, 1);
 
-      var x = (Math.random() - 0.5) * layer.spreadX;
+      // Use stratified placement to avoid clustering
+      var spreadX = layer.spreadX;
+      var x = (Math.random() - 0.5) * spreadX;
       var y = layer.yRange[0] + Math.random() * (layer.yRange[1] - layer.yRange[0]);
       var z = layer.zRange[0] + Math.random() * (layer.zRange[1] - layer.zRange[0]);
       sprite.position.set(x, y, z);
@@ -504,26 +429,28 @@ function createTulips(scene, count) {
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
     var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color));
-    // Larger scale for visibility
-    var s = isMobile ? (0.7 + Math.random() * 0.6) : (0.55 + Math.random() * 0.65);
+    var s = isMobile ? (0.5 + Math.random() * 0.5) : (0.4 + Math.random() * 0.55);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
     sprite.scale.set(0.85 * s, 1.4 * s, 1);
-    // Spread across visible area, interleaved with sunflowers
-    var spreadX = isMobile ? 12 : 14;
-    var spreadZ = isMobile ? 6 : 8;
+    // Wide spread, interleaved with sunflowers at different depths
+    var spreadX = isMobile ? 20 : 25;
+    var spreadZ = isMobile ? 10 : 14;
+    var yBase = isMobile ? -0.8 : -1.0;
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      -0.4 + s * 0.5,
-      (Math.random() - 0.5) * spreadZ + 2
+      yBase + s * 0.4 + Math.random() * 0.6,
+      (Math.random() - 0.5) * spreadZ - 2
     );
     var ph = Math.random() * Math.PI * 2;
     var baseY = sprite.position.y;
-    (function(p, by) {
+    var baseX = sprite.position.x;
+    (function(p, bx, by) {
       sprite.userData.animate = function(o, t) {
-        o.position.y = by + Math.sin(t * 0.75 + p) * 0.08;
-        o.material.rotation = Math.sin(t * 0.6 + p) * 0.1 + Math.sin(t * 1.5 + p * 2) * 0.04;
+        o.position.x = bx + Math.sin(t * 0.5 + p) * 0.04;
+        o.position.y = by + Math.sin(t * 0.75 + p) * 0.06;
+        o.material.rotation = Math.sin(t * 0.6 + p) * 0.08 + Math.sin(t * 1.5 + p * 2) * 0.03;
       };
-    })(ph, baseY);
+    })(ph, baseX, baseY);
     scene.add(sprite);
   }
 }
@@ -896,10 +823,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (window.__VG_SHADER) scene.updateUniforms({ strokeDensity: window.__VG_SHADER.strokeDensity, swirlFrequency: window.__VG_SHADER.swirlFrequency, colorIntensity: window.__VG_SHADER.colorIntensity });
 
-  // Global click → music notes burst
+  // Global click → music notes burst (only on canvas/empty areas, not on text content)
   document.addEventListener('click', function(e) {
     var tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+    // Skip interactive elements
     if (tag === 'a' || tag === 'button' || tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    // Skip clicks on text content areas (sections, paragraphs, headings, etc.)
+    var el = e.target;
+    while (el && el !== document.body) {
+      if (el.classList && (el.classList.contains('section') || el.classList.contains('section-inner') ||
+          el.classList.contains('quote-block') || el.classList.contains('quote-carousel') ||
+          el.classList.contains('fact-card') || el.classList.contains('image-card') ||
+          el.classList.contains('changelog') || el.classList.contains('today-fact'))) {
+        return;
+      }
+      // Also skip if clicking directly on text elements
+      if (el.tagName && ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE', 'CITE', 'SPAN', 'LI', 'UL', 'OL', 'DIV'].indexOf(el.tagName) !== -1) {
+        // Only skip if it's inside a content area (not the canvas container)
+        var parent = el.closest('.section, .section-inner, .quote-block, .quote-carousel, .fact-card, .image-card, .changelog, .today-fact, header, footer');
+        if (parent) return;
+      }
+      el = el.parentElement;
+    }
     spawnNotesBurst(e.clientX, e.clientY, isMobile ? 8 : 6);
   });
 
