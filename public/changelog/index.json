@@ -1,13 +1,13 @@
 {
   "version": "1.2.0",
-  "lastUpdated": "2026-05-15T13:00:00Z",
-  "totalEntries": 6,
+  "lastUpdated": "2026-05-15T08:09:51.078Z",
+  "totalEntries": 8,
   "dates": [
     {
       "date": "2026-05-15",
-      "entries": 3,
-      "latestType": "daily-mutation",
-      "description": "Daily mutation #135: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "entries": 6,
+      "latestType": "feature",
+      "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora."
     },
     {
       "date": "2026-05-14",
