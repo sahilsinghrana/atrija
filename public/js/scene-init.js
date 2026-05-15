@@ -113,9 +113,9 @@ class VanGoghScene {
     var t = this.clock.getElapsedTime();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
     this.glitchPass.uniforms.uTime.value = t;
-    // Gentle camera drift — slightly faster
-    this.camera.position.x = Math.sin(t * 0.15) * 0.4;
-    this.camera.position.y = 2 + Math.sin(t * 0.1) * 0.25;
+    // Gentle camera drift — enhanced for parallax visibility
+    this.camera.position.x = Math.sin(t * 0.15) * 0.6;
+    this.camera.position.y = 2 + Math.sin(t * 0.1) * 0.35;
     this.camera.lookAt(0, 1.5, 0);
     for (var i = 0; i < this.objects.length; i++) {
       var o = this.objects[i];
@@ -239,32 +239,86 @@ function makeSunflowerCanvas(size) {
   return c;
 }
 
-function createSunflowers(scene, count) {
-  var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
-  for (var i = 0; i < count; i++) {
-    // Scale — larger and more visible
-    var s = isMobile ? (1.0 + Math.random() * 0.8) : (0.8 + Math.random() * 0.8);
-    var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    sprite.scale.set(1.4 * s, 1.8 * s, 1);
-    // Position — spread across visible area, closer to camera
-    var spreadX = isMobile ? 14 : 16;
-    var spreadZ = isMobile ? 8 : 10;
-    sprite.position.set(
-      (Math.random() - 0.5) * spreadX,
-      -0.5 + s * 0.6,
-      (Math.random() - 0.5) * spreadZ + 3
-    );
-    var ph = Math.random() * Math.PI * 2;
-    var baseY = sprite.position.y;
-    (function(p, by) {
-      sprite.userData.animate = function(o, t) {
-        o.position.x += Math.sin(t * 0.8 + p) * 0.003;
-        o.position.y = by + Math.sin(t * 0.7 + p) * 0.08;
-        o.material.rotation = Math.sin(t * 0.5 + p) * 0.09;
-      };
-    })(ph, baseY);
-    scene.add(sprite);
+function createSunflowers(scene, totalCount) {
+  // Split into 3 depth layers for parallax
+  var layers = [
+    {
+      name: 'background',
+      count: Math.floor(totalCount * 0.3),
+      scaleRange: [0.4, 0.7],
+      zRange: [-15, -8],
+      yRange: [-1.5, -0.5],
+      swayAmp: 0.03,
+      swaySpeed: 0.4,
+      opacity: 0.5,
+      spreadX: 20
+    },
+    {
+      name: 'midground',
+      count: Math.floor(totalCount * 0.4),
+      scaleRange: [0.7, 1.2],
+      zRange: [-10, -3],
+      yRange: [-1.0, 0.0],
+      swayAmp: 0.06,
+      swaySpeed: 0.6,
+      opacity: 0.75,
+      spreadX: 16
+    },
+    {
+      name: 'foreground',
+      count: Math.floor(totalCount * 0.3),
+      scaleRange: [1.2, 1.8],
+      zRange: [-6, 0],
+      yRange: [-0.5, 0.5],
+      swayAmp: 0.12,
+      swaySpeed: 0.8,
+      opacity: 0.95,
+      spreadX: 12
+    }
+  ];
+
+  // Adjust counts for mobile
+  if (isMobile) {
+    layers.forEach(function(l) {
+      l.count = Math.max(1, Math.floor(l.count * 0.6));
+      l.scaleRange = [l.scaleRange[0] * 0.8, l.scaleRange[1] * 0.8];
+      l.opacity = l.name === 'background' ? 0.4 : l.opacity;
+    });
   }
+
+  var tex = new THREE.CanvasTexture(makeSunflowerCanvas(160));
+
+  layers.forEach(function(layer) {
+    for (var i = 0; i < layer.count; i++) {
+      var s = layer.scaleRange[0] + Math.random() * (layer.scaleRange[1] - layer.scaleRange[0]);
+      var sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: tex,
+        transparent: true,
+        depthWrite: false,
+        opacity: layer.opacity
+      }));
+      sprite.scale.set(1.4 * s, 1.8 * s, 1);
+
+      var x = (Math.random() - 0.5) * layer.spreadX;
+      var y = layer.yRange[0] + Math.random() * (layer.yRange[1] - layer.yRange[0]);
+      var z = layer.zRange[0] + Math.random() * (layer.zRange[1] - layer.zRange[0]);
+      sprite.position.set(x, y, z);
+
+      var ph = Math.random() * Math.PI * 2;
+      var baseX = x;
+      var baseY = y;
+
+      (function(p, bx, by, sa, ss) {
+        sprite.userData.animate = function(o, t) {
+          o.position.x = bx + Math.sin(t * ss + p) * sa;
+          o.position.y = by + Math.sin(t * ss * 0.7 + p) * sa * 0.5;
+          o.material.rotation = Math.sin(t * ss * 0.5 + p) * sa * 0.8;
+        };
+      })(ph, baseX, baseY, layer.swayAmp, layer.swaySpeed);
+
+      scene.add(sprite);
+    }
+  });
 }
 
 // ── Tulip — improved canvas drawing ──
@@ -646,7 +700,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Balanced counts — more visible on mobile
   var noteCount     = isMobile ? 25 : 30;
-  var sunflowerCount = isMobile ? 8 : 12;
+  var sunflowerCount = isMobile ? 10 : 16; // total across all 3 layers
   var tulipCount    = isMobile ? 6 : 8;
   var starCount     = isLowEnd ? 1200 : 2000;
 
