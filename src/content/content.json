@@ -114,21 +114,10 @@
     }
   },
   "changelog": {
-    "version": "1.2.0",
+    "version": "1.0.0",
     "entries": [
       {
-        "date": "2026-05-14",
-        "type": "daily-mutation",
-        "description": "First daily mutation — Selene & the Moon theme with starry-night colors.",
-        "changes": [
-          "Applied starry-night color scheme (contemplative mood)",
-          "Featured theme: Selene & the Moon — Greek Titaness of the Moon",
-          "Adjusted shader: strokeDensity 8.9, swirlFrequency 12, colorIntensity 1.47",
-          "Updated Moon section intro text and image card"
-        ]
-      },
-      {
-        "date": "2026-05-14",
+        "time": "06:00:00",
         "type": "initial",
         "description": "Site launched — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
         "changes": [
@@ -136,10 +125,38 @@
           "Created GLSL post-processing, star twinkling, and wave shaders",
           "Set up Astro 4 static site with Vitest and Playwright tests",
           "Configured Nginx deployment on port 8080"
-        ]
+        ],
+        "date": "2026-05-14"
       },
       {
-        "date": "2026-05-15",
+        "time": "12:00:00",
+        "type": "daily-mutation",
+        "description": "First daily mutation — Selene & the Moon theme with starry-night colors.",
+        "changes": [
+          "Applied starry-night color scheme (contemplative mood)",
+          "Featured theme: Selene & the Moon — Greek Titaness of the Moon",
+          "Adjusted shader: strokeDensity 8.9, swirlFrequency 12, colorIntensity 1.47",
+          "Updated Moon section intro text and image card"
+        ],
+        "date": "2026-05-14"
+      },
+      {
+        "time": "08:09:51",
+        "type": "daily-mutation",
+        "description": "Daily mutation #135: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: starry-night (contemplative)",
+          "Shader — strokeDensity: 8.1, swirlFrequency: 14.9, colorIntensity: 1.54",
+          "Section \"moon\": Selene & The Moon theme, fact #0",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #1",
+          "Section \"gita\": Bhagavad Gita theme, fact #2",
+          "Section \"shiva\": Shiv Purana theme, fact #3",
+          "Section \"art\": Art & Beauty theme, fact #4"
+        ],
+        "date": "2026-05-15"
+      },
+      {
+        "time": "09:00:00",
         "type": "feature",
         "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora.",
         "changes": [
@@ -150,34 +167,8 @@
           "Modularized text content into content.json for cron-job updates",
           "Added AI agent banner — self-built, self-deployed notice",
           "Smooth rAF-based moon phase animation"
-        ]
-      },
-      {
-        "date": "2026-05-15",
-        "type": "feature",
-        "description": "Changelog system overhaul — auto-documentation, chronological ordering, content change tracking.",
-        "changes": [
-          "All cron jobs now document changes in content.json changelog",
-          "Changelog entries sorted chronologically (oldest first, newest last)",
-          "Daily mutations now track content text changes (intro, imageCard, facts)",
-          "Background-implement adds feature/refactor/perf entries",
-          "Git-pull-build adds chore entries when changes are pulled",
-          "Duplicate same-day entries are updated instead of duplicated"
-        ]
-      },
-      {
-        "date": "2026-05-15",
-        "type": "daily-mutation",
-        "description": "Daily mutation #135: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
-        "changes": [
-          "Color scheme: starry-night (contemplative)",
-          "Shader — strokeDensity: 8.4, swirlFrequency: 13.9, colorIntensity: 1.41",
-          "Section \"moon\": Selene & The Moon theme, fact #0",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #1",
-          "Section \"gita\": Bhagavad Gita theme, fact #2",
-          "Section \"shiva\": Shiv Purana theme, fact #3",
-          "Section \"art\": Art & Beauty theme, fact #4"
-        ]
+        ],
+        "date": "2026-05-15"
       }
     ]
   }

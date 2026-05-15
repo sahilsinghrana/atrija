@@ -1,22 +1,34 @@
 #!/usr/bin/env node
 // scripts/daily-mutate.js — Daily content mutation, color rotation, and changelog update
-// Updates BOTH siteData.json (colors/shaders) and content.json (text content)
+// Changelog entries are written to date-based files: src/content/changelog/YYYY-MM-DD.json
+// Index metadata is maintained in: src/content/changelog/index.json
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_DATA_PATH = join(__dirname, '../src/content/siteData.json');
 const CONTENT_PATH = join(__dirname, '../src/content/content.json');
+const CHANGELOG_DIR = join(__dirname, '../src/content/changelog');
+const CHANGELOG_INDEX = join(CHANGELOG_DIR, 'index.json');
 
 function loadJSON(path) { return JSON.parse(readFileSync(path, 'utf-8')); }
 function saveJSON(path, data) { writeFileSync(path, JSON.stringify(data, null, 2)); }
+function ensureDir(dir) { if (!existsSync(dir)) mkdirSync(dir, { recursive: true }); }
 
 function getDayOfYear() {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 0);
   return Math.floor((now.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+function getTodayISO() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function getTimeISO() {
+  return new Date().toISOString().split('T')[1].slice(0, 8);
 }
 
 // ── 1. Mutate colors in siteData.json ──
@@ -41,18 +53,13 @@ function updateAllSections(content, siteData, dayOfYear) {
     const section = content.sections[sectionKey];
     if (!section) return;
 
-    // Each section gets a different theme offset so they don't all show the same content
     const themeIndex = (dayOfYear + i) % siteData.themes.length;
     const theme = siteData.themes[themeIndex];
-
-    // Pick a unique fact index for this section
     const factIndex = (dayOfYear + i) % theme.facts.length;
     const fact = theme.facts[factIndex];
 
-    // Update intro text
     section.intro = fact.text;
 
-    // Update image card reference — use a different fact than the intro
     let imgFactIndex = factIndex;
     if (section.imageCard) {
       imgFactIndex = (factIndex + 1) % theme.facts.length;
@@ -60,32 +67,22 @@ function updateAllSections(content, siteData, dayOfYear) {
       section.imageCard.themeIndex = themeIndex;
     }
 
-    // Update facts slice — use facts that DON'T overlap with intro or image card
     if (section.facts) {
       const totalFacts = theme.facts.length;
       const sliceSize = Math.min(2, totalFacts - 1);
-      // Pick a slice that doesn't include factIndex (intro) or imgFactIndex (image card)
       let sliceStart = (imgFactIndex + 1) % totalFacts;
-      // Make sure slice doesn't go out of bounds
-      if (sliceStart + sliceSize > totalFacts) {
-        sliceStart = 0;
-      }
-      // If slice would still overlap with intro or image card, push it further
+      if (sliceStart + sliceSize > totalFacts) sliceStart = 0;
       while (sliceStart === factIndex || sliceStart === imgFactIndex ||
              (sliceStart + sliceSize - 1) === factIndex ||
              (sliceStart + sliceSize - 1) === imgFactIndex) {
         sliceStart = (sliceStart + 1) % totalFacts;
-        if (sliceStart + sliceSize > totalFacts) {
-          sliceStart = 0;
-        }
-        // Safety: prevent infinite loop
+        if (sliceStart + sliceSize > totalFacts) sliceStart = 0;
         if (sliceStart === (imgFactIndex + 1) % totalFacts) break;
       }
       section.facts.themeIndex = themeIndex;
       section.facts.slice = [sliceStart, sliceStart + sliceSize];
     }
 
-    // Update quote reference
     if (section.quote) {
       section.quote.quoteIndex = (dayOfYear + i) % theme.quotes.length;
       section.quote.themeIndex = themeIndex;
@@ -94,7 +91,6 @@ function updateAllSections(content, siteData, dayOfYear) {
     updatedSections.push({ sectionKey, themeIndex, factIndex, theme: theme.title });
   });
 
-  // Update today's heading
   const todayThemeIndex = (dayOfYear + 2) % siteData.themes.length;
   const todayTheme = siteData.themes[todayThemeIndex];
   content.sections.today.heading = `What the <em>${todayTheme.title.split(' ')[0]}</em> whispers today`;
@@ -102,41 +98,144 @@ function updateAllSections(content, siteData, dayOfYear) {
   return updatedSections;
 }
 
-// ── 3. Add changelog entry to content.json ──
-function addChangelogEntry(content, siteData, dayOfYear, updatedSections, scheme) {
-  const today = new Date().toISOString().split('T')[0];
-  const themeIndex = dayOfYear % siteData.themes.length;
-  const theme = siteData.themes[themeIndex];
+// ── 3. Write changelog entry to date-based file ──
+function writeChangelogEntry(dayOfYear, updatedSections, scheme) {
+  ensureDir(CHANGELOG_DIR);
 
+  const today = getTodayISO();
+  const time = getTimeISO();
+  const dateFile = join(CHANGELOG_DIR, `${today}.json`);
+
+  // Build changes list
   const changes = [
     `Color scheme: ${scheme.name} (${scheme.mood})`,
     `Shader — strokeDensity: ${scheme.shaderParams.strokeDensity}, swirlFrequency: ${scheme.shaderParams.swirlFrequency}, colorIntensity: ${scheme.shaderParams.colorIntensity}`,
   ];
-
-  // Document what each section now shows
   updatedSections.forEach(s => {
     changes.push(`Section "${s.sectionKey}": ${s.theme} theme, fact #${s.factIndex}`);
   });
 
+  // Entry with time field for same-date differentiation
   const entry = {
-    date: today,
+    time,
     type: 'daily-mutation',
     description: `Daily mutation #${dayOfYear}: ${scheme.name} colors, ${updatedSections.map(s => s.theme).join(' → ')}`,
     changes
   };
 
-  // Update existing entry or add new one
-  const existingIndex = content.changelog.entries.findIndex(e => e.date === today && e.type === 'daily-mutation');
-  if (existingIndex >= 0) {
-    content.changelog.entries[existingIndex] = entry;
-  } else {
-    content.changelog.entries.push(entry);
-    if (content.changelog.entries.length > 15) {
-      content.changelog.entries = content.changelog.entries.slice(-15);
-    }
+  // Load existing date file or create new
+  let dateData = { date: today, entries: [] };
+  if (existsSync(dateFile)) {
+    try { dateData = loadJSON(dateFile); } catch (e) { /* corrupted, start fresh */ }
   }
 
+  // Replace same type+time entry, otherwise append
+  const existingIdx = dateData.entries.findIndex(e => e.type === entry.type && e.time === entry.time);
+  if (existingIdx >= 0) {
+    dateData.entries[existingIdx] = entry;
+  } else {
+    dateData.entries.push(entry);
+  }
+
+  // Sort entries by time for consistent ordering
+  dateData.entries.sort((a, b) => a.time.localeCompare(b.time));
+
+  saveJSON(dateFile, dateData);
+
+  // Update index metadata
+  updateChangelogIndex(today, dateData);
+
   return { entry, changes };
+}
+
+// ── 4. Update changelog/index.json metadata ──
+function updateChangelogIndex(today, dateData) {
+  let index = { version: '1.2.0', lastUpdated: new Date().toISOString(), totalEntries: 0, dates: [] };
+  if (existsSync(CHANGELOG_INDEX)) {
+    try { index = loadJSON(CHANGELOG_INDEX); } catch (e) { /* corrupted, start fresh */ }
+  }
+
+  // Build date entry metadata
+  const lastEntry = dateData.entries[dateData.entries.length - 1];
+  const dateEntry = {
+    date: today,
+    entries: dateData.entries.length,
+    latestType: lastEntry?.type || 'daily-mutation',
+    description: lastEntry?.description || ''
+  };
+
+  // Upsert date entry in index
+  const existingIdx = index.dates.findIndex(d => d.date === today);
+  if (existingIdx >= 0) {
+    index.dates[existingIdx] = dateEntry;
+  } else {
+    index.dates.unshift(dateEntry);
+  }
+
+  // Sort dates descending (newest first)
+  index.dates.sort((a, b) => b.date.localeCompare(a.date));
+
+  // Recalculate total entries
+  index.totalEntries = index.dates.reduce((sum, d) => sum + d.entries, 0);
+  index.lastUpdated = new Date().toISOString();
+
+  // Keep only last 30 days — delete old date files
+  if (index.dates.length > 30) {
+    const removed = index.dates.splice(30);
+    removed.forEach(d => {
+      const oldFile = join(CHANGELOG_DIR, `${d.date}.json`);
+      if (existsSync(oldFile)) {
+        try { unlinkSync(oldFile); } catch (e) { /* ignore deletion errors */ }
+      }
+    });
+    index.totalEntries = index.dates.reduce((sum, d) => sum + d.entries, 0);
+  }
+
+  saveJSON(CHANGELOG_INDEX, index);
+}
+
+// ── 4. Sync changelog entries back to content.json ──
+function syncChangelogToContent(content, siteData) {
+  ensureDir(CHANGELOG_DIR);
+
+  // Read all date files from changelog dir
+  let allEntries = [];
+  try {
+    const files = readdirSync(CHANGELOG_DIR).filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f));
+    files.sort(); // chronological
+    for (const file of files) {
+      try {
+        const dateData = loadJSON(join(CHANGELOG_DIR, file));
+        for (const entry of dateData.entries) {
+          allEntries.push({ ...entry, date: dateData.date });
+        }
+      } catch (e) { /* skip corrupted */ }
+    }
+  } catch (e) { /* dir might not exist */ }
+
+  // Deduplicate: keep latest entry per (date, type) pair
+  const seen = new Map();
+  for (const entry of allEntries) {
+    const key = `${entry.date}|${entry.type}`;
+    seen.set(key, entry);
+  }
+  const deduped = Array.from(seen.values());
+
+  // Sort chronologically (oldest first)
+  deduped.sort((a, b) => {
+    const cmp = a.date.localeCompare(b.date);
+    if (cmp !== 0) return cmp;
+    return (a.time || '').localeCompare(b.time || '');
+  });
+
+  // Keep max 15 entries (trim oldest)
+  const trimmed = deduped.length > 15 ? deduped.slice(deduped.length - 15) : deduped;
+
+  // Update content.json changelog
+  content.changelog = {
+    version: siteData.changelog?.version || content.changelog?.version || '1.2.0',
+    entries: trimmed
+  };
 }
 
 // ── Main ──
@@ -146,15 +245,8 @@ const day = getDayOfYear();
 
 const { scheme } = mutateColors(siteData, day);
 const updatedSections = updateAllSections(content, siteData, day);
-const { entry, changes } = addChangelogEntry(content, siteData, day, updatedSections, scheme);
-
-// Ensure changelog is always sorted chronologically (oldest first, newest last)
-content.changelog.entries.sort((a, b) => {
-  const dateCmp = a.date.localeCompare(b.date);
-  if (dateCmp !== 0) return dateCmp;
-  const typeOrder = { initial: 0, feature: 1, fix: 2, refactor: 3, perf: 4, chore: 5, 'daily-mutation': 6 };
-  return (typeOrder[a.type] || 9) - (typeOrder[b.type] || 9);
-});
+const { entry, changes } = writeChangelogEntry(day, updatedSections, scheme);
+syncChangelogToContent(content, siteData);
 
 saveJSON(SITE_DATA_PATH, siteData);
 saveJSON(CONTENT_PATH, content);
@@ -162,5 +254,7 @@ saveJSON(CONTENT_PATH, content);
 console.log(`[daily-mutate] Day ${day}: Applied "${scheme.name}" scheme`);
 console.log(`[daily-mutate] Updated ${updatedSections.length} sections:`);
 updatedSections.forEach(s => console.log(`  - ${s.sectionKey}: ${s.theme} (fact #${s.factIndex})`));
-console.log(`[daily-mutate] Changelog: ${entry.date} — ${changes.length} changes`);
+console.log(`[daily-mutate] Changelog: ${getTodayISO()} ${getTimeISO()} — ${changes.length} changes`);
+console.log(`[daily-mutate] Written to changelog/${getTodayISO()}.json`);
+console.log(`[daily-mutate] Synced ${content.changelog.entries.length} entries to content.json`);
 process.exit(0);

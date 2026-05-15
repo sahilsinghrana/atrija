@@ -1,11 +1,11 @@
 {
   "version": "1.2.0",
-  "lastUpdated": "2026-05-15T07:58:45.832Z",
-  "totalEntries": 7,
+  "lastUpdated": "2026-05-15T08:09:51.078Z",
+  "totalEntries": 8,
   "dates": [
     {
       "date": "2026-05-15",
-      "entries": 5,
+      "entries": 6,
       "latestType": "feature",
       "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora."
     },
