@@ -10,7 +10,7 @@
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>universe</em> whispers today"
+      "heading": "What the <em>Bhagavad</em> whispers today"
     },
     "moon": {
       "label": "I. The Moon",
@@ -18,13 +18,13 @@
       "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 0
+        "factIndex": 1
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          1,
-          3
+          3,
+          5
         ]
       },
       "quote": {
@@ -35,55 +35,55 @@
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "The wave does not know it is the ocean. It rises, believes itself unique, crashes against the shore, and dissolves — only to rise again. This is the cycle of ego: the endless assertion of separateness against the vast indifference of the sea.",
+      "intro": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 0
+        "factIndex": 2
       },
       "facts": {
         "themeIndex": 1,
+        "slice": [
+          0,
+          2
+        ]
+      },
+      "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 1
+      }
+    },
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
+      "intro": "The Gita describes the soul as 'unborn, eternal, ever-existing, undying, and primeval.' It is not slain when the body is slain. This is not metaphor — it is the foundational axiom of Hindu philosophy.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 3
+      },
+      "facts": {
+        "themeIndex": 2,
         "slice": [
           1,
           3
         ]
       },
       "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 0
-      }
-    },
-    "gita": {
-      "label": "III. The Battlefield",
-      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "On the battlefield of Kurukshetra, between two armies of cousins, a conversation took place that would echo through millennia. Arjuna, paralyzed by doubt, and Krishna, the charioteer who was also God — their dialogue is not about war. It is about the war within.",
-      "imageCard": {
         "themeIndex": 2,
-        "factIndex": 0
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [
-          1,
-          4
-        ]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 1
+        "quoteIndex": 2
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "Before there was creation, there was Shiva — not as a being, but as a possibility. The Shiv Purana does not begin with \"In the beginning\" but with \"In the endless.\" Shiva is the stillness that contains all motion, the silence that holds all music.",
+      "intro": "The Shiv Purana describes the damaru — Shiva's drum — as the source of all language and music. The first sound, Nada, is the vibration from which all creation emerges. Music is not entertainment; it is cosmology.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 0
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 3,
         "slice": [
-          1,
+          2,
           4
         ]
       },
@@ -95,7 +95,7 @@
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream. Every brushstroke is a meditation, every color a prayer.",
+      "intro": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
       "imageCard": {
         "themeIndex": 4,
         "factIndex": 0
@@ -103,30 +103,19 @@
       "facts": {
         "themeIndex": 4,
         "slice": [
-          1,
-          3
+          3,
+          5
         ]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 0
+        "quoteIndex": 1
       }
     }
   },
   "changelog": {
     "version": "1.2.0",
     "entries": [
-      {
-        "date": "2026-05-14",
-        "type": "initial",
-        "description": "Site launched — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
-        "changes": [
-          "Built Three.js scene: stars, moon, sunflowers, tulips, flute, waves, constellations, music notes",
-          "Created GLSL post-processing, star twinkling, and wave shaders",
-          "Set up Astro 4 static site with Vitest and Playwright tests",
-          "Configured Nginx deployment on port 8080"
-        ]
-      },
       {
         "date": "2026-05-14",
         "type": "daily-mutation",
@@ -136,6 +125,17 @@
           "Featured theme: Selene & the Moon — Greek Titaness of the Moon",
           "Adjusted shader: strokeDensity 8.9, swirlFrequency 12, colorIntensity 1.47",
           "Updated Moon section intro text and image card"
+        ]
+      },
+      {
+        "date": "2026-05-14",
+        "type": "initial",
+        "description": "Site launched — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
+        "changes": [
+          "Built Three.js scene: stars, moon, sunflowers, tulips, flute, waves, constellations, music notes",
+          "Created GLSL post-processing, star twinkling, and wave shaders",
+          "Set up Astro 4 static site with Vitest and Playwright tests",
+          "Configured Nginx deployment on port 8080"
         ]
       },
       {
@@ -154,17 +154,6 @@
       },
       {
         "date": "2026-05-15",
-        "type": "daily-mutation",
-        "description": "Second daily mutation — Selene & the Moon theme with starry-night colors.",
-        "changes": [
-          "Applied starry-night color scheme (contemplative mood)",
-          "Featured theme: Selene & the Moon",
-          "Adjusted shader: strokeDensity 8.7, swirlFrequency 12.7, colorIntensity 1.48",
-          "Updated Moon section intro text and image card"
-        ]
-      },
-      {
-        "date": "2026-05-15",
         "type": "feature",
         "description": "Changelog system overhaul — auto-documentation, chronological ordering, content change tracking.",
         "changes": [
@@ -174,6 +163,20 @@
           "Background-implement adds feature/refactor/perf entries",
           "Git-pull-build adds chore entries when changes are pulled",
           "Duplicate same-day entries are updated instead of duplicated"
+        ]
+      },
+      {
+        "date": "2026-05-15",
+        "type": "daily-mutation",
+        "description": "Daily mutation #135: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: starry-night (contemplative)",
+          "Shader — strokeDensity: 8.2, swirlFrequency: 12.9, colorIntensity: 1.46",
+          "Section \"moon\": Selene & The Moon theme, fact #0",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #1",
+          "Section \"gita\": Bhagavad Gita theme, fact #2",
+          "Section \"shiva\": Shiv Purana theme, fact #3",
+          "Section \"art\": Art & Beauty theme, fact #4"
         ]
       }
     ]
