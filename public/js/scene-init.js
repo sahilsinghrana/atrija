@@ -81,12 +81,13 @@ class VanGoghScene {
     this.camera.position.set(0, 2, 8);
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
-    // Van Gogh pass — desktop only
-    if (!isLowEnd) {
-      this.vgPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uStrokeDensity: { value: 8.0 }, uSwirlFrequency: { value: 12.0 }, uColorIntensity: { value: 1.4 } }, vertexShader: vgVS, fragmentShader: vgFS });
-      this.composer.addPass(this.vgPass);
-    }
-    // Glitch pass — mobile always, desktop subtle
+    // Van Gogh pass — all devices (reduced intensity on mobile)
+    var vgIntensity = isLowEnd ? 1.1 : 1.4;
+    var vgStroke = isLowEnd ? 6.0 : 8.0;
+    var vgSwirl = isLowEnd ? 8.0 : 12.0;
+    this.vgPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uStrokeDensity: { value: vgStroke }, uSwirlFrequency: { value: vgSwirl }, uColorIntensity: { value: vgIntensity } }, vertexShader: vgVS, fragmentShader: vgFS });
+    this.composer.addPass(this.vgPass);
+    // Glitch pass — subtle on all devices
     this.glitchPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } }, vertexShader: glitchVS, fragmentShader: glitchFS });
     this.composer.addPass(this.glitchPass);
 
@@ -769,7 +770,7 @@ function spawnNotesBurst(cx, cy, count) {
       setTimeout(function() {
         var n = document.createElement('div');
         n.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        var size = (1.1 + Math.random() * 1.4).toFixed(2);
+        var size = (1.0 + Math.random() * 0.8).toFixed(2);
         var color = colors[Math.floor(Math.random() * colors.length)];
         // Notes originate from right end (sound comes out the far end)
         var ox = 80 + (Math.random() - 0.2) * 110;
@@ -805,10 +806,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var scene = new VanGoghScene(c);
 
   // Balanced counts — more visible on mobile
-  var noteCount     = isMobile ? 25 : 30;
+  var noteCount     = isMobile ? 40 : 30;
   var sunflowerCount = isMobile ? 10 : 16; // total across all 3 layers
   var tulipCount    = isMobile ? 6 : 8;
-  var starCount     = isLowEnd ? 1200 : 2000;
+  var starCount     = isLowEnd ? 1800 : 2000;
 
   createStars(scene.scene, starCount);
   createConstellations(scene.scene);

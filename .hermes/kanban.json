@@ -40,7 +40,7 @@
       "description": "Procedural ambient music using Web Audio API. Flute-like tones that respond to scroll position and time of day.",
       "category": "Audio",
       "priority": "high",
-      "status": "red",
+      "status": "done",
       "prd": "PRD-idea-004-ambient-music.md"
     },
     {

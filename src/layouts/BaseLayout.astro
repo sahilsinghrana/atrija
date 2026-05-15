@@ -1028,6 +1028,11 @@ const { title = "अत्रिज", description = "An impressionist journey th
     </svg>
   </div>
 
+  <!-- Audio toggle button -->
+  <button id="audio-toggle" aria-label="Toggle ambient music" style="position:fixed;bottom:2rem;right:6rem;z-index:9999;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
+    🔇
+  </button>
+
   <main>
     <slot />
   </main>
@@ -1055,7 +1060,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
             setTimeout(function() {
               var n = document.createElement('div');
               n.textContent = symbols[Math.floor(Math.random()*symbols.length)];
-              n.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;font-family:serif;font-size:' + (1.2+Math.random()*1.5) + 'rem;color:' + colors[Math.floor(Math.random()*colors.length)] + ';left:' + (cx+(Math.random()-0.5)*160) + 'px;top:' + (cy+(Math.random()-0.5)*80-60) + 'px;animation:noteFloat 2.5s ease-out forwards;will-change:transform,opacity;';
+              n.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;font-family:serif;font-size:' + (1.0+Math.random()*0.8) + 'rem;color:' + colors[Math.floor(Math.random()*colors.length)] + ';left:' + (cx+(Math.random()-0.5)*160) + 'px;top:' + (cy+(Math.random()-0.5)*80-60) + 'px;animation:noteFloat 2.5s ease-out forwards;will-change:transform,opacity;';
               document.body.appendChild(n);
               setTimeout(function(){if(n.parentNode)n.parentNode.removeChild(n);},2600);
             }, idx*80);
