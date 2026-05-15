@@ -11,7 +11,7 @@ var isLowEnd = isMobile || navigator.hardwareConcurrency <= 4;
 var vgVS = `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`;
 var vgFS = `uniform sampler2D tDiffuse;uniform float uTime;uniform float uStrokeDensity;uniform float uSwirlFrequency;uniform float uColorIntensity;varying vec2 vUv;float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(hash(i),hash(i+vec2(1.0,0.0)),f.x),mix(hash(i+vec2(0.0,1.0)),hash(i+vec2(1.0,1.0)),f.x),f.y);}void main(){vec2 uv=vUv;float strokeAngle=noise(uv*uStrokeDensity+uTime*0.05)*6.28318;vec2 strokeDir=vec2(cos(strokeAngle),sin(strokeAngle));float strokeDist=noise(uv*uStrokeDensity*2.0+strokeDir*0.5+uTime*0.03);vec2 center=vec2(0.5);vec2 delta=uv-center;float dist=length(delta);float angle=atan(delta.y,delta.x);float swirl=sin(dist*uSwirlFrequency-uTime*0.5)*0.015;angle+=swirl;vec2 swirled=center+dist*vec2(cos(angle),sin(angle));vec2 distortedUV=mix(swirled,uv+strokeDir*strokeDist*0.012,0.5);distortedUV=clamp(distortedUV,0.0,1.0);vec4 color;color.r=texture2D(tDiffuse,distortedUV+vec2(0.002,0.0)).r;color.g=texture2D(tDiffuse,distortedUV).g;color.b=texture2D(tDiffuse,distortedUV-vec2(0.002,0.0)).b;color.a=1.0;float gray=dot(color.rgb,vec3(0.299,0.587,0.114));color.rgb=mix(vec3(gray),color.rgb,uColorIntensity);float vignette=1.0-smoothstep(0.4,1.4,dist*1.2);color.rgb*=vignette;gl_FragColor=color;}`;
 
-// ── Mobile glitch / chromatic aberration shader ──
+// ── Glitch / chromatic aberration shader ──
 var glitchVS = `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`;
 var glitchFS = `
 uniform sampler2D tDiffuse;
@@ -21,19 +21,19 @@ float rand(vec2 co){ return fract(sin(dot(co,vec2(12.9898,78.233)))*43758.5453);
 void main(){
   vec2 uv = vUv;
   // Subtle scanline flicker
-  float scanline = sin(uv.y * 400.0 + uTime * 8.0) * 0.012;
+  float scanline = sin(uv.y * 400.0 + uTime * 8.0) * 0.015;
   // Chromatic aberration — RGB split
-  float aberr = 0.003 + sin(uTime * 0.7) * 0.001;
+  float aberr = 0.004 + sin(uTime * 0.7) * 0.002;
   float r = texture2D(tDiffuse, uv + vec2( aberr, 0.0)).r;
   float g = texture2D(tDiffuse, uv).g;
   float b = texture2D(tDiffuse, uv - vec2( aberr, 0.0)).b;
-  // Occasional horizontal glitch strip — rare, random
-  float glitchLine = step(0.9985, rand(vec2(floor(uv.y * 30.0), floor(uTime * 1.5))));
-  float glitchShift = glitchLine * (rand(vec2(uTime, uv.y)) - 0.5) * 0.04;
-  r = texture2D(tDiffuse, uv + vec2(aberr + glitchShift, 0.0)).r;
+  // Random horizontal glitch strips — more frequent (was 0.9985, now 0.98 = ~2% chance)
+  float glitchLine = step(0.98, rand(vec2(floor(uv.y * 20.0), floor(uTime * 2.0))));
+  float glitchShift = glitchLine * (rand(vec2(uTime, uv.y)) - 0.5) * 0.06;
+  r = texture2D(tDiffuse, uv + vec2(aberr + glitchShift, 0.0)).b;
   b = texture2D(tDiffuse, uv - vec2(aberr - glitchShift, 0.0)).b;
   vec3 col = vec3(r, g, b);
-  col += scanline * 0.15;
+  col += scanline * 0.2;
   gl_FragColor = vec4(col, 1.0);
 }`;
 
@@ -73,11 +73,13 @@ class VanGoghScene {
     this.objects = [];
     this.container = c;
     this.renderer = new THREE.WebGLRenderer({ antialias: !isLowEnd, alpha: true, powerPreference: 'low-power' });
-    this.renderer.setSize(c.clientWidth, c.clientHeight);
+    // Use window.innerHeight for mobile (avoids address bar viewport bug)
+    var h = window.innerHeight;
+    this.renderer.setSize(c.clientWidth, h);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, isLowEnd ? 1.0 : 1.5));
     this.renderer.setClearColor(0x0a0a1a, 1);
     c.appendChild(this.renderer.domElement);
-    this.camera = new THREE.PerspectiveCamera(60, c.clientWidth / c.clientHeight, 0.1, 200);
+    this.camera = new THREE.PerspectiveCamera(60, c.clientWidth / h, 0.1, 200);
     this.camera.position.set(0, 2, 8);
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
@@ -106,7 +108,7 @@ class VanGoghScene {
 
   }
   onResize() {
-    var w = this.container.clientWidth, h = this.container.clientHeight;
+    var w = this.container.clientWidth, h = window.innerHeight;
     this.camera.aspect = w / h; this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h); this.composer.setSize(w, h);
   }
@@ -576,7 +578,7 @@ function createMusicNotes(scene, count) {
 function createShootingStars(scene, maxActive) {
   maxActive = maxActive || (isMobile ? 1 : 2);
   var pool = [];
-  var nextSpawn = 8 + Math.random() * 7;
+  var nextSpawn = 3 + Math.random() * 4;
 
   function spawn() {
     var trailLength = isMobile ? 12 : 20;
@@ -663,7 +665,7 @@ function createShootingStars(scene, maxActive) {
           }
         }
         if (!found && pool.length < maxActive) spawn();
-        nextSpawn = 8 + Math.random() * 7;
+        nextSpawn = 3 + Math.random() * 4;
       }
     }
   };
@@ -847,6 +849,11 @@ document.addEventListener('DOMContentLoaded', function() {
       el = el.parentElement;
     }
     spawnNotesBurst(e.clientX, e.clientY, isMobile ? 8 : 6);
+  });
+
+  // Re-render on orientation change (mobile viewport fix)
+  window.addEventListener('orientationchange', function() {
+    setTimeout(function() { scene.onResize(); }, 200);
   });
 
   requestAnimationFrame(function() {
