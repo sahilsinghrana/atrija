@@ -13,21 +13,9 @@
     <filter id="softBlur"><feGaussianBlur stdDeviation="3"/></filter>
     <filter id="moonBlur"><feGaussianBlur stdDeviation="1.5"/></filter>
   </defs>
-  <!-- Sky -->
-  <rect width="800" height="400" fill="url(#skyGlow)"/>
-  <!-- Atmospheric haze -->
   <ellipse cx="400" cy="200" rx="350" ry="180" fill="#4fc3f7" opacity="0.03"/>
-  <!-- Moon glow halo -->
-  <circle cx="400" cy="180" r="160" fill="url(#moonGlow)" filter="url(#softBlur)" opacity="0.6"/>
-  <!-- Moon -->
   <circle cx="400" cy="180" r="55" fill="#fdf6e3" filter="url(#moonBlur)"/>
   <circle cx="400" cy="180" r="55" fill="#fff8e7" opacity="0.9"/>
-  <!-- Craters -->
-  <circle cx="385" cy="168" r="7" fill="#e0d5c0" opacity="0.35"/>
-  <circle cx="418" cy="190" r="10" fill="#e0d5c0" opacity="0.25"/>
-  <circle cx="392" cy="198" r="5" fill="#e0d5c0" opacity="0.3"/>
-  <circle cx="410" cy="165" r="4" fill="#e0d5c0" opacity="0.2"/>
-  <!-- Stars -->
   <g fill="#fff" opacity="0.7">
     <circle cx="120" cy="60" r="1.5"/><circle cx="220" cy="90" r="1"/><circle cx="310" cy="45" r="1.5"/>
     <circle cx="500" cy="70" r="1"/><circle cx="580" cy="50" r="1.5"/><circle cx="670" cy="80" r="1"/>
@@ -35,10 +23,5 @@
     <circle cx="720" cy="160" r="1"/><circle cx="250" cy="300" r="1"/><circle cx="550" cy="320" r="1.5"/>
     <circle cx="100" cy="340" r="1"/><circle cx="700" cy="350" r="1"/><circle cx="400" cy="370" r="1"/>
   </g>
-  <!-- Bright stars -->
-  <g fill="#ffd54f" opacity="0.8">
-    <circle cx="180" cy="100" r="2"/><circle cx="620" cy="110" r="2"/><circle cx="350" cy="60" r="1.5"/>
-  </g>
-  <!-- Horizon glow -->
   <ellipse cx="400" cy="380" rx="500" ry="40" fill="#ffd54f" opacity="0.04"/>
 </svg>

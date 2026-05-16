@@ -4,6 +4,11 @@ const { title = "अत्रिज", description = "An impressionist journey th
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    body, #canvas-container {
+      background: linear-gradient(180deg, #0a0a1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0a1a 100%);
+    }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta name="description" content={description} />
@@ -11,7 +16,16 @@ const { title = "अत्रिज", description = "An impressionist journey th
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Preload critical assets -->
+  <link rel="preload" href="/css/loader.css" as="style" fetchpriority="high" />
+  <link rel="modulepreload" href="/js/scene-init.js" />
+  <link rel="preload" href="/images/moon.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="/images/stars.svg" as="image" type="image/svg+xml" />
+  <style>
+    @font-face { font-display: swap; }
+  </style>
   <link rel="stylesheet" href="/css/loader.css" />
+  <script src="/js/loader-progress.js"></script>
   <style is:inline>
     /* ═══════════════════════════════════════
        DESIGN TOKENS
@@ -285,6 +299,8 @@ const { title = "अत्रिज", description = "An impressionist journey th
       background: rgba(8, 8, 15, 0.65);
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
+      content-visibility: auto;
+      contain-intrinsic-size: 0 500px;
     }
     .section:last-of-type { padding-bottom: var(--space-lg); }
     .section-inner {
@@ -983,6 +999,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
   <div id="loader">
     <div class="loader-ring"></div>
     <div class="loader-text">Painting the sky<span class="loader-dots"></span></div>
+    <div class="loader-progress"><div class="loader-progress-bar" id="loader-progress-bar"></div></div>
   </div>
 
   <div id="canvas-container"></div>
@@ -1064,8 +1081,8 @@ const { title = "अत्रिज", description = "An impressionist journey th
       });
     })();
 
-    /* Scroll reveal */
-    (function() {
+    /* Scroll reveal — deferred */
+    requestIdleCallback(function() {
       var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
       if (!els.length) return;
       var io = new IntersectionObserver(function(entries) {
@@ -1077,8 +1094,10 @@ const { title = "अत्रिज", description = "An impressionist journey th
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       els.forEach(function(el) { io.observe(el); });
-    })();
-    (function() {
+    });
+
+    /* Flower animations — deferred */
+    requestIdleCallback(function() {
       var positions = [
         {x:'3%',y:'35%',color:'#f5c800'},
         {x:'90%',y:'50%',color:'#ff6699'},
@@ -1113,10 +1132,10 @@ const { title = "अत्रिज", description = "An impressionist journey th
           ticking = true;
         }
       }, {passive:true});
-    })();
+    });
 
-    /* Mobile viewport height fix — set custom property on resize */
-    (function() {
+    /* Mobile viewport height fix — deferred */
+    requestIdleCallback(function() {
       function setVH() {
         var vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', vh + 'px');
@@ -1127,11 +1146,10 @@ const { title = "अत्रिज", description = "An impressionist journey th
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(setVH, 100);
       }, {passive:true});
-      // Also update on orientation change
       window.addEventListener('orientationchange', function() {
         setTimeout(setVH, 200);
       });
-    })();
+    });
   </script>
   </body>
 </html>

@@ -8,32 +8,11 @@
     <filter id="waveBlur"><feGaussianBlur stdDeviation="1.5"/></filter>
   </defs>
   <rect width="800" height="400" fill="url(#seaGrad)"/>
-  <!-- Deep water layers -->
-  <g fill="none" stroke="#4fc3f7" stroke-width="1.5" opacity="0.15" filter="url(#waveBlur)">
-    <path d="M0,120 Q100,90 200,120 T400,120 T600,120 T800,120"/>
-    <path d="M0,160 Q100,130 200,160 T400,160 T600,160 T800,160"/>
-    <path d="M0,200 Q100,170 200,200 T400,200 T600,200 T800,200"/>
-    <path d="M0,240 Q100,210 200,240 T400,240 T600,240 T800,240"/>
-    <path d="M0,280 Q100,250 200,280 T400,280 T600,280 T800,280"/>
-    <path d="M0,320 Q100,290 200,320 T400,320 T600,320 T800,320"/>
-  </g>
-  <!-- Luminous wave crests -->
   <g fill="none" stroke="#80deea" stroke-width="2" opacity="0.25">
     <path d="M0,140 Q80,110 160,140 T320,140 T480,140 T640,140 T800,140"/>
     <path d="M0,220 Q120,180 240,220 T480,220 T720,220"/>
     <path d="M0,300 Q100,260 200,300 T400,300 T600,300 T800,300"/>
   </g>
-  <!-- Foam highlights -->
-  <g fill="#b3e5fc" opacity="0.15">
-    <ellipse cx="150" cy="145" rx="40" ry="4"/>
-    <ellipse cx="400" cy="225" rx="50" ry="5"/>
-    <ellipse cx="650" cy="305" rx="35" ry="4"/>
-    <ellipse cx="300" cy="148" rx="25" ry="3"/>
-  </g>
-  <!-- Moon reflection on water -->
   <ellipse cx="400" cy="360" rx="50" ry="12" fill="#ffd54f" opacity="0.08"/>
   <ellipse cx="400" cy="360" rx="25" ry="6" fill="#ffd54f" opacity="0.12"/>
   <ellipse cx="400" cy="360" rx="10" ry="3" fill="#ffd54f" opacity="0.18"/>
-  <!-- Horizon glow -->
-  <ellipse cx="400" cy="100" rx="400" ry="30" fill="#0d47a1" opacity="0.15"/>
-</svg>

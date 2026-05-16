@@ -542,7 +542,47 @@ function createTulips(scene, count) {
 }
 
 // ── Stars ──
-function createStars(scene, count) {
+function createStars(scene, count, append) {
+  // If appending and a stars object already exists, merge into it
+  if (append && scene.userData._starsObj) {
+    var existingStars = scene.userData._starsObj;
+    var existingGeo = existingStars.geometry;
+    var existingPos = existingGeo.getAttribute('position');
+    var existingCount = existingPos.count;
+    var newCount = existingCount + count;
+    // Copy existing data
+    var newPos = new Float32Array(newCount * 3);
+    var newSizes = new Float32Array(newCount);
+    var newBright = new Float32Array(newCount);
+    var newTSpeed = new Float32Array(newCount);
+    var newTPhase = new Float32Array(newCount);
+    var newCols = new Float32Array(newCount * 3);
+    newPos.set(existingGeo.getAttribute('position').array);
+    newSizes.set(existingGeo.getAttribute('size').array);
+    newBright.set(existingGeo.getAttribute('brightness').array);
+    newTSpeed.set(existingGeo.getAttribute('twinkleSpeed').array);
+    newTPhase.set(existingGeo.getAttribute('twinklePhase').array);
+    newCols.set(existingGeo.getAttribute('customColor').array);
+    // Generate new stars
+    for (var i = existingCount; i < newCount; i++) {
+      var i3 = i * 3, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1), r = 40 + Math.random() * 20;
+      newPos[i3] = r * Math.sin(ph) * Math.cos(th); newPos[i3+1] = r * Math.sin(ph) * Math.sin(th); newPos[i3+2] = r * Math.cos(ph);
+      newSizes[i] = 0.8 + Math.random() * 2.5; newBright[i] = 0.3 + Math.random() * 0.7;
+      newTSpeed[i] = 0.8 + Math.random() * 4.0; newTPhase[i] = Math.random() * Math.PI * 2;
+      var tmp = Math.random();
+      if (tmp < 0.3) { newCols[i3]=1.0; newCols[i3+1]=0.95; newCols[i3+2]=0.7; }
+      else if (tmp < 0.6) { newCols[i3]=0.7; newCols[i3+1]=0.8; newCols[i3+2]=1.0; }
+      else { newCols[i3]=1.0; newCols[i3+1]=0.6; newCols[i3+2]=0.3; }
+    }
+    existingGeo.setAttribute('position', new THREE.BufferAttribute(newPos, 3));
+    existingGeo.setAttribute('size', new THREE.BufferAttribute(newSizes, 1));
+    existingGeo.setAttribute('brightness', new THREE.BufferAttribute(newBright, 1));
+    existingGeo.setAttribute('twinkleSpeed', new THREE.BufferAttribute(newTSpeed, 1));
+    existingGeo.setAttribute('twinklePhase', new THREE.BufferAttribute(newTPhase, 1));
+    existingGeo.setAttribute('customColor', new THREE.BufferAttribute(newCols, 3));
+    existingGeo.setDrawRange(0, newCount);
+    return;
+  }
   var pos = new Float32Array(count * 3), sizes = new Float32Array(count), bright = new Float32Array(count);
   var tSpeed = new Float32Array(count), tPhase = new Float32Array(count), cols = new Float32Array(count * 3);
   for (var i = 0; i < count; i++) {
@@ -571,9 +611,8 @@ function createStars(scene, count) {
     o.rotation.z = Math.cos(t * 0.012) * 0.02;
   };
   scene.add(stars);
+  scene.userData._starsObj = stars;
 }
-
-// ── Constellations ──
 function createConstellations(scene) {
   var cs = [
     { s: [[-2,5,-30],[0,6,-30],[2,5,-30],[-3,8,-30],[3,8,-30],[-2,2,-30],[2,2,-30]] },
@@ -755,8 +794,8 @@ function createShootingStars(scene, maxActive) {
 }
 
 // ── Waves ──
-function createWaves(scene) {
-  var segs = isLowEnd ? 32 : 64;
+function createWaves(scene, segs) {
+  segs = segs || (isLowEnd ? 32 : 64);
   var geo = new THREE.PlaneGeometry(30, 20, segs, segs);
   geo.rotateX(-Math.PI * 0.45);
   var mat = new THREE.ShaderMaterial({
@@ -890,22 +929,55 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!c) return;
   var scene = new VanGoghScene(c);
 
-  // Flower counts — matching the proven a0ce3ef baseline
-  var noteCount     = isMobile ? 25 : 30;
-  var sunflowerCount = isMobile ? 10 : 16;
-  var tulipCount    = isMobile ? 3 : 6;
-  var starCount     = isLowEnd ? 1800 : 2000;
+  // Signal that scene loading has started (stop fake progress)
+  if (window.__sceneLoadingStarted) window.__sceneLoadingStarted();
 
-  createStars(scene.scene, starCount);
-  createConstellations(scene.scene);
+  // Reduced initial geometry for faster first frame
+  var initialStarCount = isLowEnd ? 400 : 800;
+  var fullStarCount   = isLowEnd ? 1800 : 2000;
+  var noteCount       = isLowEnd ? 10 : 15;
+  var sunflowerCount  = isLowEnd ? 3 : 8;
+  var tulipCount      = isLowEnd ? 2 : 4;
+  var waveSegs        = isLowEnd ? 16 : 32;
+
+  // Phase 1 (immediate): Stars (reduced), moon, waves — enough for first frame
+  if (window.__updateLoaderProgress) window.__updateLoaderProgress(30);
+  createStars(scene.scene, initialStarCount);
   createMoon(scene.scene);
-  createSunflowers(scene.scene, sunflowerCount);
-  createTulips(scene.scene, tulipCount);
-  createFlute(scene.scene);
-  createMusicNotes(scene.scene, noteCount);
-  createWaves(scene.scene);
-  var shootingStarManager = createShootingStars(scene.scene, isMobile ? 1 : 2);
-  scene.shootingStarManager = shootingStarManager;
+  // Create waves with reduced segments for initial load
+  createWaves(scene.scene, waveSegs);
+  if (window.__updateLoaderProgress) window.__updateLoaderProgress(60);
+
+  // Fade out loader after first frame
+  requestAnimationFrame(function() {
+    if (window.__updateLoaderProgress) window.__updateLoaderProgress(90);
+    var l = document.getElementById('loader');
+    if (l) l.classList.add('hidden');
+    if (window.__updateLoaderProgress) window.__updateLoaderProgress(100);
+  });
+
+  // Phase 2 (after 300ms): Flowers, flute, music notes
+  setTimeout(function() {
+    createSunflowers(scene.scene, sunflowerCount);
+    createTulips(scene.scene, tulipCount);
+    createFlute(scene.scene);
+    createMusicNotes(scene.scene, noteCount);
+  }, 300);
+
+  // Phase 3 (after 800ms): Remaining stars, constellations, shooting stars, post-processing
+  if (!isLowEnd) {
+    setTimeout(function() {
+      createStars(scene.scene, fullStarCount - initialStarCount, true);
+      createConstellations(scene.scene);
+      var shootingStarManager = createShootingStars(scene.scene, isMobile ? 1 : 2);
+      scene.shootingStarManager = shootingStarManager;
+    }, 800);
+  } else {
+    // Low-end: just add constellations, skip shooting stars and post-processing
+    setTimeout(function() {
+      createConstellations(scene.scene);
+    }, 800);
+  }
 
   if (window.__VG_SHADER) scene.updateUniforms({ strokeDensity: window.__VG_SHADER.strokeDensity, swirlFrequency: window.__VG_SHADER.swirlFrequency, colorIntensity: window.__VG_SHADER.colorIntensity });
 
@@ -922,12 +994,5 @@ document.addEventListener('DOMContentLoaded', function() {
   // Re-render on orientation change (mobile viewport fix)
   window.addEventListener('orientationchange', function() {
     setTimeout(function() { scene.onResize(); }, 200);
-  });
-
-  requestAnimationFrame(function() {
-    requestAnimationFrame(function() {
-      var l = document.getElementById('loader');
-      if (l) l.classList.add('hidden');
-    });
   });
 });

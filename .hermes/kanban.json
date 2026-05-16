@@ -105,7 +105,7 @@
       "description": "Astro-native loading optimizations: client:idle hydration, inline critical CSS, modulepreload, progressive 3D layers, content-visibility, SVG compression, Nginx caching+gzip, reduced geometry, loader progress bar. v2 PRD with Astro-compatible patterns.",
       "category": "Performance",
       "priority": "high",
-      "status": "red",
+      "status": "green",
       "prd": "PRD-idea-009-loading-optimizations.md"
     },
     {
@@ -188,6 +188,15 @@
       "priority": "high",
       "status": "done",
       "prd": null
+    },
+    {
+      "id": "idea-019",
+      "title": "Realistic randomized tulips",
+      "description": "Replace abstract oval tulip shapes with realistic cup/bloom forms. 12 non-yellow colors (red, pink, purple, magenta, coral, orange, rose, violet, etc.). Per-tulip randomization: petal count 5-7, width/height variation, curl factor. Petal gradients, edge highlights, vein lines.",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-019-realistic-tulips.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
