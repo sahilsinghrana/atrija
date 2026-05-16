@@ -4,7 +4,7 @@
 > **Category:** 3D Elements
 > **Priority:** high
 > **Status:** backlog
-> **PRD Version:** 1.1
+> **PRD Version:** 1.2
 > **Last Updated:** 2026-05-20
 
 ---
@@ -51,90 +51,262 @@
 | Texture caching | None (new canvas every tulip) | Cache by (color, isOpen) key |
 | Mobile visibility | Scale 0.8-1.4, aspect 1.0×1.6 | Keep (already fixed) |
 
-### 3.3 Implementation Details
+### 3.3 Implementation Plan
 
 #### Step 1: Remove All Yellows from Color Palette
-- File: `public/js/scene-init.js` — `createTulips()` color array
-- Remove: `#e8a020` (golden yellow), `#d4901a` (amber), `#f0c040` (soft gold)
-- New 14-color palette:
-  ```
-  '#e84040' — vivid red
-  '#d41a1a' — deep red
-  '#e03050' — crimson
-  '#c830a0' — magenta
-  '#c040b0' — orchid
-  '#9040d0' — purple
-  '#a030c0' — violet
-  '#f05090' — pink
-  '#d03070' — rose
-  '#f08080' — light salmon
-  '#e8a0c0' — pale pink
-  '#e87020' — red-orange (not yellow-orange)
-  '#f06030' — coral
-  '#e05020' — vermillion
-  ```
-- Validation: No color should have G > 180 AND R > 200 AND B < 100 (yellow range)
 
-#### Step 2: Redraw Closed Tulip (Cup/Bud Shape)
-- File: `public/js/scene-init.js` — `makeTulipCanvas()`
-- Petal shape: Asymmetric pointed petal using asymmetric bezier curves
-  - Narrow at base (width ~15% of height)
-  - Widens to ~35% of height at midpoint
-  - Tapers to sharp point at top
-  - Left edge: gentle outward curve
-  - Right edge: slightly different curve (asymmetric, not mirrored)
-- Petal arrangement: 5-7 petals in tight cup formation
-  - Inner 3 petals: fully visible, upright, overlapping at center
-  - Outer 2-4 petals: peeking between inner petals, slightly shorter
-  - Petals tilt inward at top (cup shape)
-- Silhouette: Rounded cup — wider at top than base, pointed tips visible
-- Depth: Back/outer petals 20-30% darker than front/inner petals
-- Center: Small dark stamen cluster visible at cup opening
-- Vein line: Single subtle line from base to 2/3 height on each petal
+**File:** `public/js/scene-init.js` — `createTulips()` color array
 
-#### Step 3: Redraw Open Tulip (Bloom Shape)
-- File: `public/js/scene-init.js` — `makeTulipCanvas()`
-- Petal shape: Wider, reflexed petals
-  - Base width ~25% of height (wider than closed)
-  - Petals flare outward then curve backward (reflex) at tips
-  - Tips point outward/upward, not inward
-  - Wavy edges: add ±2-3px random offset to bezier control points
-- Petal arrangement: 5-7 petals spread in a flat star pattern
-  - All petals roughly same height
-  - Petals spread horizontally (not cupped)
-  - Gaps between petals visible
-- Silhouette: Wide open flower — much wider than tall
-- Center: Visible dark stamens in middle
-- Depth: Alternate petals darker/lighter for 3D effect
+Remove: `#e8a020` (golden yellow), `#d4901a` (amber), `#f0c040` (soft gold)
+
+New 14-color palette:
+```javascript
+var colors = [
+  '#e84040',  // vivid red
+  '#d41a1a',  // deep red
+  '#e03050',  // crimson
+  '#c830a0',  // magenta
+  '#c040b0',  // orchid
+  '#9040d0',  // purple
+  '#a030c0',  // violet
+  '#f05090',  // pink
+  '#d03070',  // rose
+  '#f08080',  // light salmon
+  '#e8a0c0',  // pale pink
+  '#e87020',  // red-orange
+  '#f06030',  // coral
+  '#e05020',  // vermillion
+];
+```
+
+Validation: No color should have `G > 180 && R > 200 && B < 100`.
+
+**Commit:** `fix: remove yellow colors from tulip palette (14 non-yellow colors)`
+
+---
+
+#### Step 2: Rewrite Closed Tulip (Cup/Bud Shape)
+
+**File:** `public/js/scene-init.js` — `makeTulipCanvas()`
+
+**Petal shape — asymmetric pointed tulip petal:**
+```javascript
+var tipOffset = petalW * 0.1 * (Math.random() - 0.5);
+var w1 = petalW * (0.7 + Math.random() * 0.15);  // left control width
+var w2 = petalW * (0.65 + Math.random() * 0.15); // right control width (different!)
+var h1 = petalH * (0.55 + Math.random() * 0.1);  // left control height
+var h2 = petalH * (0.5 + Math.random() * 0.1);   // right control height
+
+ctx.moveTo(0, petalH * 0.25);
+ctx.bezierCurveTo(-w1, petalH * 0.1, -w1 * 0.6, -h1, tipOffset, -petalH);
+ctx.bezierCurveTo(w2 * 0.6, -h2, w2, petalH * 0.05, 0, petalH * 0.25);
+```
+
+**Petal arrangement — layered cup formation:**
+```javascript
+var petalCount = 5 + Math.floor(Math.random() * 3); // 5-7
+var cupOpenness = Math.random() * 0.4; // 0.0 (tight) to 0.4 (slightly open)
+
+for (var p = 0; p < petalCount; p++) {
+  var angle = (p / petalCount) * Math.PI * 2 - Math.PI / 2;
+  var isBackPetal = (p % 2 === 0);
+  var depthFactor = isBackPetal ? (0.7 + Math.random() * 0.1) : 1.0;
+  var petalH = headR * (isBackPetal ? 0.7 : 0.9) * (0.9 + Math.random() * 0.2);
+  var petalW = headR * 0.28 * (0.85 + Math.random() * 0.3);
+  var tiltAngle = angle + Math.PI / 2 + cupOpenness * (isBackPetal ? 0.3 : 0.15);
+  var spreadR = isBackPetal ? headR * 0.15 : headR * 0.25;
+  // draw petal with depth shading
+}
+```
+
+**Silhouette requirements:** Height > Width, pointed tips visible, wider at top than base, inner petals visible through gaps.
+
+**Commit:** `feat: redraw closed tulip with asymmetric cup-shaped petals`
+
+---
+
+#### Step 3: Rewrite Open Tulip (Bloom Shape)
+
+**File:** `public/js/scene-init.js` — `makeTulipCanvas()`
+
+**Petal shape — wide reflexed petal:**
+```javascript
+var reflexAmount = 0.2 + Math.random() * 0.6;
+var petalH = headR * (0.7 + Math.random() * 0.15);
+var petalW = headR * (0.4 + Math.random() * 0.15);
+var wave1 = 2 + Math.random() * 3;
+var wave2 = 2 + Math.random() * 3;
+
+ctx.moveTo(0, petalH * 0.15);
+ctx.bezierCurveTo(
+  -petalW * 1.1 + wave1, petalH * 0.05,
+  -petalW * 0.9 - wave1, -petalH * 0.5,
+  -petalW * 0.3, -petalH * (0.7 + reflexAmount * 0.3)
+);
+ctx.bezierCurveTo(
+  petalW * 0.5 + wave2, -petalH * 0.4,
+  petalW * 1.0 - wave2, petalH * 0.0,
+  0, petalH * 0.15
+);
+```
+
+**Petal arrangement — flat star pattern:**
+```javascript
+var petalCount = 5 + Math.floor(Math.random() * 3);
+var reflexAmount = 0.2 + Math.random() * 0.6;
+
+for (var p = 0; p < petalCount; p++) {
+  var angle = (p / petalCount) * Math.PI * 2 - Math.PI / 2;
+  var depthFactor = (p % 2 === 0) ? 0.85 : 1.0;
+  var spreadR = headR * 0.3;
+  // draw petal with reflex
+}
+```
+
+**Silhouette requirements:** Width > Height, star pattern, gaps between petals, tips reflexed outward.
+
+**Commit:** `feat: redraw open tulip with wide reflexed bloom petals`
+
+---
 
 #### Step 4: Per-Tulip Randomization
-- File: `public/js/scene-init.js` — `makeTulipCanvas()`
-- Petal count: `5 + Math.floor(Math.random() * 3)` → 5, 6, or 7
-- Per-petal width variation: base width × (0.85 + Math.random() * 0.3)
-- Per-petal height variation: base height × (0.9 + Math.random() * 0.2)
-- Cup openness (closed tulips): 0.0 (tight bud) to 0.4 (slightly open)
-- Reflex amount (open tulips): 0.2 (slightly open) to 0.8 (fully reflexed)
-- Color warmth shift per petal: ±10% on R, G, B channels independently
-- Wavy edge offset: ±(2 + Math.random() * 3) pixels on bezier control points
+
+**File:** `public/js/scene-init.js` — `makeTulipCanvas()`
+
+**Add at top of function (after color parsing):**
+```javascript
+var petalCount = 5 + Math.floor(Math.random() * 3);
+var curlFactor = 0.3 + Math.random() * 0.3;
+var widthVar = 0.85 + Math.random() * 0.3;
+var cupOpenness = Math.random() * 0.4;
+var reflexAmount = 0.2 + Math.random() * 0.6;
+var warmthShift = (Math.random() * 0.2) - 0.1; // ±10%
+```
+
+**Per-petal randomization (inside loop):**
+```javascript
+var pWidthVar = widthVar * (0.85 + Math.random() * 0.3);
+var pHeightVar = 0.9 + Math.random() * 0.2;
+var pWavyOffset = 2 + Math.floor(Math.random() * 3);
+var pLightness = (p < petalCount / 2) ? (15 + Math.floor(Math.random() * 10)) : (-10 + Math.floor(Math.random() * 15));
+```
+
+**Color warmth shift:**
+```javascript
+rr = Math.min(255, Math.max(0, rr + Math.round(rr * warmthShift)));
+gg = Math.min(255, Math.max(0, gg + Math.round(gg * warmthShift * 0.5)));
+bb = Math.min(255, Math.max(0, bb + Math.round(bb * warmthShift * 0.3)));
+```
+
+**Commit:** `feat: add per-tulip randomization (petal count, size, curl, warmth)`
+
+---
 
 #### Step 5: Petal Rendering Improvements
-- File: `public/js/scene-init.js` — `makeTulipCanvas()`
-- 3-stop gradient per petal:
-  - Stop 0 (tip): Lightened color (+40 R, +10 G, +10 B, 0.97 alpha)
-  - Stop 0.4 (mid): Base color (as-is, 0.92 alpha)
-  - Stop 1 (base): Darkened color (-50 R, -30 G, -20 B, 0.78 alpha)
-- Edge highlight: Thin line (1px at 160px canvas) along left petal edge, 20% lighter
-- Vein line: Subtle line from base to 60% height, 15% darker than base color
-- Back petals: Multiply RGB by 0.7-0.8 for depth
+
+**File:** `public/js/scene-init.js` — `makeTulipCanvas()`
+
+**Extract petal drawing into a helper function:**
+```javascript
+function drawTulipPetal(ctx, petalH, petalW, depthFactor, lightness, wavyOffset) {
+  var r = Math.min(255, Math.max(0, (rr + lightness) * depthFactor));
+  var g = Math.min(255, Math.max(0, (gg + lightness) * depthFactor));
+  var b = Math.min(255, Math.max(0, (bb + lightness) * depthFactor));
+
+  // 3-stop gradient
+  var pg = ctx.createLinearGradient(0, -petalH, 0, petalH * 0.3);
+  pg.addColorStop(0, 'rgba('+Math.min(255,r+40)+','+Math.min(255,g+10)+','+Math.min(255,b+10)+',0.97)');
+  pg.addColorStop(0.4, 'rgba('+r+','+g+','+b+',0.92)');
+  pg.addColorStop(1, 'rgba('+Math.max(0,r-50)+','+Math.max(0,g-30)+','+Math.max(0,b-20)+',0.78)');
+  ctx.fillStyle = pg;
+
+  // Asymmetric bezier with wavy edges
+  var tipX = petalW * 0.08 * (Math.random() - 0.5);
+  var w1 = petalW * (0.7 + Math.random() * 0.15);
+  var w2 = petalW * (0.65 + Math.random() * 0.15);
+  var h1 = petalH * (0.55 + Math.random() * 0.1);
+  var h2 = petalH * (0.5 + Math.random() * 0.1);
+
+  ctx.beginPath();
+  ctx.moveTo(0, petalH * 0.25);
+  ctx.bezierCurveTo(-w1, petalH * 0.1, -w1 * 0.6 + wavyOffset, -h1, tipX, -petalH);
+  ctx.bezierCurveTo(w2 * 0.6 - wavyOffset, -h2, w2, petalH * 0.05, 0, petalH * 0.25);
+  ctx.fill();
+
+  // Edge highlight
+  ctx.strokeStyle = 'rgba('+Math.min(255,r+50)+','+Math.min(255,g+30)+','+Math.min(255,b+20)+',0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(-w1 * 0.3, petalH * 0.2);
+  ctx.quadraticCurveTo(-w1 * 0.5, 0, tipX * 0.5, -petalH * 0.7);
+  ctx.stroke();
+
+  // Vein line
+  ctx.strokeStyle = 'rgba('+Math.max(0,r-30)+','+Math.max(0,g-20)+','+Math.max(0,b-15)+',0.15)';
+  ctx.lineWidth = 0.8;
+  ctx.beginPath();
+  ctx.moveTo(0, petalH * 0.2);
+  ctx.quadraticCurveTo(petalW * 0.05, petalH * 0.05, tipX * 0.3, -petalH * 0.4);
+  ctx.stroke();
+}
+```
+
+Replace inline petal drawing in both open/closed branches with:
+```javascript
+drawTulipPetal(ctx, petalH, petalW, depthFactor, pLightness, pWavyOffset);
+```
+
+**Commit:** `feat: add petal gradients, edge highlights, vein lines, depth shading`
+
+---
 
 #### Step 6: Texture Caching
-- File: `public/js/scene-init.js` — `createTulips()`
-- Add cache object: `var tulipCache = {};`
-- Cache key: `color + '_' + isOpen` (e.g., `"#e84040_true"`)
-- Before generating canvas, check cache
-- If cached, reuse `CanvasTexture` (create new texture from cached canvas)
-- Limit cache to 50 entries (LRU eviction)
-- Expected: 6 tulips × 14 colors × 2 states = max 168 textures, but cache keeps it manageable
+
+**File:** `public/js/scene-init.js` — module level + `createTulips()`
+
+**Add cache at module level (before `createTulips`):**
+```javascript
+var tulipCache = {};
+var TULIP_CACHE_MAX = 50;
+
+function getCachedTulip(color, isOpen) {
+  var key = color + '_' + isOpen;
+  if (tulipCache[key]) {
+    tulipCache[key].lastUsed = Date.now();
+    return tulipCache[key].canvas;
+  }
+  // Evict oldest if at capacity
+  var keys = Object.keys(tulipCache);
+  if (keys.length >= TULIP_CACHE_MAX) {
+    var oldestKey = keys[0];
+    var oldestTime = tulipCache[oldestKey].lastUsed;
+    for (var i = 1; i < keys.length; i++) {
+      if (tulipCache[keys[i]].lastUsed < oldestTime) {
+        oldestKey = keys[i];
+        oldestTime = tulipCache[keys[i]].lastUsed;
+      }
+    }
+    delete tulipCache[oldestKey];
+  }
+  var canvas = makeTulipCanvas(160, color, isOpen);
+  tulipCache[key] = { canvas: canvas, lastUsed: Date.now() };
+  return canvas;
+}
+```
+
+**In `createTulips()`, replace:**
+```javascript
+var tex = new THREE.CanvasTexture(makeTulipCanvas(160, color, isOpen));
+```
+**With:**
+```javascript
+var cachedCanvas = getCachedTulip(color, isOpen);
+var tex = new THREE.CanvasTexture(cachedCanvas);
+```
+
+**Commit:** `perf: add tulip texture caching with LRU eviction at 50 entries`
+
+---
 
 ### 3.4 Mobile Considerations
 
