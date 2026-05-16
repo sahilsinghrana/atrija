@@ -1,10 +1,30 @@
 {
   "columns": [
-    { "id": "backlog", "name": "💡 Idea Backlog", "tasks": [] },
-    { "id": "red", "name": "🔴 Red (Failing Test)", "tasks": [] },
-    { "id": "green", "name": "🟢 Green (Implement)", "tasks": [] },
-    { "id": "refactor", "name": "🔵 Refactor (Optimize)", "tasks": [] },
-    { "id": "done", "name": "✅ Done", "tasks": [] }
+    {
+      "id": "backlog",
+      "name": "\ud83d\udca1 Idea Backlog",
+      "tasks": []
+    },
+    {
+      "id": "red",
+      "name": "\ud83d\udd34 Red (Failing Test)",
+      "tasks": []
+    },
+    {
+      "id": "green",
+      "name": "\ud83d\udfe2 Green (Implement)",
+      "tasks": []
+    },
+    {
+      "id": "refactor",
+      "name": "\ud83d\udd35 Refactor (Optimize)",
+      "tasks": []
+    },
+    {
+      "id": "done",
+      "name": "\u2705 Done",
+      "tasks": []
+    }
   ],
   "ideas": [
     {
@@ -85,13 +105,13 @@
       "description": "Astro-native loading optimizations: client:idle hydration, inline critical CSS, modulepreload, progressive 3D layers, content-visibility, SVG compression, Nginx caching+gzip, reduced geometry, loader progress bar. v2 PRD with Astro-compatible patterns.",
       "category": "Performance",
       "priority": "high",
-      "status": "backlog",
+      "status": "red",
       "prd": "PRD-idea-009-loading-optimizations.md"
     },
     {
       "id": "idea-010",
-      "title": "Flute click — SVG bansuri + music notes",
-      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
+      "title": "Flute click \u2014 SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (\u266a\u266b\u266c). Flute animates in/out with spring easing.",
       "category": "Interactivity",
       "priority": "high",
       "status": "done",
@@ -118,7 +138,7 @@
     {
       "id": "idea-013",
       "title": "Mobile tulip visibility fix",
-      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0\u00d71.6).",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -127,7 +147,7 @@
     {
       "id": "idea-014",
       "title": "Remove speaker/audio toggle",
-      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "description": "Remove the audio toggle button (\ud83d\udd07) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
       "category": "Audio",
       "priority": "medium",
       "status": "done",
