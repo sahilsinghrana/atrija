@@ -14,9 +14,21 @@ git pull origin master
 
 ### 2. Build and Deploy After Changes
 ```bash
+cd /root/projects/van-gogh-site
 npm run build
+# Inject cache-busting version for scene-init.js
+BUILD_VERSION=$(date +%s)
+sed -i "s/BUILD_VERSION/$BUILD_VERSION/g" dist/index.html
 cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 ```
+
+### 2b. Cache Strategy
+- **HTML**: `no-cache` — always fresh, users see latest build immediately
+- **CSS/JS (bundled by Vite)**: 1 year immutable — filename hash changes on rebuild
+- **scene-init.js (public/)**: cache-busted via `?v=TIMESTAMP` on each deploy
+- **Images/SVG**: 30 days
+- **JSON content**: 5 min (cron updates picked up quickly)
+- **Gzip**: enabled for HTML, CSS, JS, JSON, SVG
 
 ### 3. Git Commit Convention
 Use semantic commit messages: `feat:`, `fix:`, `refactor:`, `perf:`, `chore:`, `style:`, `docs:`
