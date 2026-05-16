@@ -195,10 +195,37 @@
       "description": "Replace abstract oval tulip shapes with realistic cup/bloom forms. 12 non-yellow colors (red, pink, purple, magenta, coral, orange, rose, violet, etc.). Per-tulip randomization: petal count 5-7, width/height variation, curl factor. Petal gradients, edge highlights, vein lines.",
       "category": "3D Elements",
       "priority": "high",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-019-realistic-tulips.md"
+    },
+    {
+      "id": "idea-020",
+      "title": "Scroll-driven starry night sky parallax",
+      "description": "The sky subtly rotates and shifts based on scroll position. Stars at different depths move at different speeds. Moon rises as you scroll. Background color shifts with scroll.",
+      "category": "Interactivity",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-020-scroll-driven-sky.md"
+    },
+    {
+      "id": "idea-021",
+      "title": "Van Gogh painting gallery carousel",
+      "description": "Interactive gallery section showcasing Van Gogh's famous paintings with lazy-loaded images from Wikimedia Commons, themed descriptions, and swipe navigation.",
+      "category": "Content",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-021-painting-gallery.md"
+    },
+    {
+      "id": "idea-022",
+      "title": "Impressionist brushstroke cursor trail",
+      "description": "Custom cursor that leaves painterly brushstroke trails using Canvas 2D particle system. Colors sampled from current theme palette. Respects prefers-reduced-motion.",
+      "category": "Shaders",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-022-brushstroke-cursor.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-05-20T12:00:00Z"
+  "generatedAt": "2026-05-17T02:00:00Z"
 }
