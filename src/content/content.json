@@ -10,31 +10,11 @@
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>Bhagavad</em> whispers today"
+      "heading": "What the <em>Shiv</em> whispers today"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
-      "imageCard": {
-        "themeIndex": 0,
-        "factIndex": 1
-      },
-      "facts": {
-        "themeIndex": 0,
-        "slice": [
-          2,
-          4
-        ]
-      },
-      "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 0
-      }
-    },
-    "philosophy": {
-      "label": "II. The Waves",
-      "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
       "intro": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
       "imageCard": {
         "themeIndex": 1,
@@ -52,9 +32,9 @@
         "quoteIndex": 1
       }
     },
-    "gita": {
-      "label": "III. The Battlefield",
-      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
+    "philosophy": {
+      "label": "II. The Waves",
+      "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
       "intro": "The Gita describes the soul as 'unborn, eternal, ever-existing, undying, and primeval.' It is not slain when the body is slain. This is not metaphor — it is the foundational axiom of Hindu philosophy.",
       "imageCard": {
         "themeIndex": 2,
@@ -72,9 +52,9 @@
         "quoteIndex": 2
       }
     },
-    "shiva": {
-      "label": "IV. The Dance",
-      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
       "intro": "The Shiv Purana describes the damaru — Shiva's drum — as the source of all language and music. The first sound, Nada, is the vibration from which all creation emerges. Music is not entertainment; it is cosmology.",
       "imageCard": {
         "themeIndex": 3,
@@ -92,9 +72,9 @@
         "quoteIndex": 0
       }
     },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
       "intro": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
       "imageCard": {
         "themeIndex": 4,
@@ -111,10 +91,30 @@
         "themeIndex": 4,
         "quoteIndex": 1
       }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
+      "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
+      "imageCard": {
+        "themeIndex": 0,
+        "factIndex": 1
+      },
+      "facts": {
+        "themeIndex": 0,
+        "slice": [
+          2,
+          4
+        ]
+      },
+      "quote": {
+        "themeIndex": 0,
+        "quoteIndex": 2
+      }
     }
   },
   "changelog": {
-    "version": "1.4.0",
+    "version": "1.0.0",
     "entries": [
       {
         "time": "06:00:00",
@@ -156,21 +156,6 @@
         "date": "2026-05-15"
       },
       {
-        "time": "09:00:00",
-        "type": "feature",
-        "description": "Major UI overhaul — mobile fixes, content modularization, AI agent banner, improved 3D flora.",
-        "changes": [
-          "Rewrote sunflowers and tulips as canvas-sprite billboards for clear recognition",
-          "Fixed moon glow — now subtle and correctly sized",
-          "Added glitch/chromatic aberration effect on mobile",
-          "Global click-anywhere spawns music notes",
-          "Modularized text content into content.json for cron-job updates",
-          "Added AI agent banner — self-built, self-deployed notice",
-          "Smooth rAF-based moon phase animation"
-        ],
-        "date": "2026-05-15"
-      },
-      {
         "time": "16:30:00",
         "type": "feature",
         "description": "Ambient music generator — procedural flute-like soundscape with Web Audio API",
@@ -183,6 +168,21 @@
           "Mobile-optimized reverb (1.5s vs 2.5s)"
         ],
         "date": "2026-05-15"
+      },
+      {
+        "time": "00:31:49",
+        "type": "daily-mutation",
+        "description": "Daily mutation #136: sunflower colors, Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty → Selene & The Moon",
+        "changes": [
+          "Color scheme: sunflower (warm)",
+          "Shader — strokeDensity: 10.2, swirlFrequency: 7.5, colorIntensity: 1.52",
+          "Section \"moon\": Ego & Arrogance theme, fact #1",
+          "Section \"philosophy\": Bhagavad Gita theme, fact #2",
+          "Section \"gita\": Shiv Purana theme, fact #3",
+          "Section \"shiva\": Art & Beauty theme, fact #4",
+          "Section \"art\": Selene & The Moon theme, fact #0"
+        ],
+        "date": "2026-05-16"
       },
       {
         "time": "03:15:00",

@@ -210,9 +210,9 @@
       "text": "#fff8e1",
       "mood": "warm",
       "shaderParams": {
-        "strokeDensity": 10,
-        "swirlFrequency": 8,
-        "colorIntensity": 1.6
+        "strokeDensity": 10.2,
+        "swirlFrequency": 7.5,
+        "colorIntensity": 1.52
       }
     },
     {
