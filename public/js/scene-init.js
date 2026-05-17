@@ -7,6 +7,29 @@ import { ShaderPass } from 'https://esm.sh/three@0.160.0/examples/jsm/postproces
 var isMobile = window.innerWidth < 768;
 var isLowEnd = isMobile || navigator.hardwareConcurrency <= 4;
 
+// ── Scroll-driven parallax state ──
+var scrollState = { current: 0, target: 0, smooth: 0.05 };
+var scrollMax = document.body.scrollHeight - window.innerHeight;
+var parallaxConfig = Object.freeze({
+  cameraRotationZ: 0.03,
+  starsNearRotationY: 0.02,
+  starsMidRotationY: 0.01,
+  starsFarRotationY: 0.005,
+  moonVerticalOffset: 0.5,
+  mobileIntensityMultiplier: 0.6
+});
+window.addEventListener('scroll', function() {
+  scrollState.target = Math.min(1, Math.max(0, window.scrollY / scrollMax));
+}, { passive: true });
+
+// IntersectionObserver: disable parallax when canvas is off-screen
+var _parallaxEnabled = true;
+if (typeof IntersectionObserver !== 'undefined') {
+  var _parallaxObserver = new IntersectionObserver(function(entries) {
+    _parallaxEnabled = entries[0].isIntersecting;
+  }, { threshold: 0 });
+}
+
 // ── Van Gogh post-processing shader ──
 var vgVS = `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`;
 var vgFS = `uniform sampler2D tDiffuse;uniform float uTime;uniform float uStrokeDensity;uniform float uSwirlFrequency;uniform float uColorIntensity;varying vec2 vUv;float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(hash(i),hash(i+vec2(1.0,0.0)),f.x),mix(hash(i+vec2(0.0,1.0)),hash(i+vec2(1.0,1.0)),f.x),f.y);}void main(){vec2 uv=vUv;float strokeAngle=noise(uv*uStrokeDensity+uTime*0.05)*6.28318;vec2 strokeDir=vec2(cos(strokeAngle),sin(strokeAngle));float strokeDist=noise(uv*uStrokeDensity*2.0+strokeDir*0.5+uTime*0.03);vec2 center=vec2(0.5);vec2 delta=uv-center;float dist=length(delta);float angle=atan(delta.y,delta.x);float swirl=sin(dist*uSwirlFrequency-uTime*0.5)*0.015;angle+=swirl;vec2 swirled=center+dist*vec2(cos(angle),sin(angle));vec2 distortedUV=mix(swirled,uv+strokeDir*strokeDist*0.012,0.5);distortedUV=clamp(distortedUV,0.0,1.0);vec4 color;color.r=texture2D(tDiffuse,distortedUV+vec2(0.002,0.0)).r;color.g=texture2D(tDiffuse,distortedUV).g;color.b=texture2D(tDiffuse,distortedUV-vec2(0.002,0.0)).b;color.a=1.0;float gray=dot(color.rgb,vec3(0.299,0.587,0.114));color.rgb=mix(vec3(gray),color.rgb,uColorIntensity);float vignette=1.0-smoothstep(0.4,1.4,dist*1.2);color.rgb*=vignette;gl_FragColor=color;}`;
@@ -114,6 +137,7 @@ class VanGoghScene {
     var w = this.container.clientWidth, h = window.innerHeight;
     this.camera.aspect = w / h; this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h); this.composer.setSize(w, h);
+    scrollMax = document.body.scrollHeight - window.innerHeight;
   }
   animate() {
     requestAnimationFrame(() => this.animate());
@@ -121,10 +145,41 @@ class VanGoghScene {
     var dt = this.clock.getDelta();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
     this.glitchPass.uniforms.uTime.value = t;
-    // Gentle camera drift — enhanced for parallax visibility
+    // Scroll-driven parallax — smooth interpolation (skip if canvas off-screen)
+    if (_parallaxEnabled) {
+      var scrollDelta = Math.abs(scrollState.target - scrollState.current);
+      if (scrollDelta > 0.001) {
+        scrollState.current += (scrollState.target - scrollState.current) * scrollState.smooth;
+      }
+    }
+    var mult = isMobile ? parallaxConfig.mobileIntensityMultiplier : 1.0;
+    var s = scrollState.current;
+    // Gentle camera drift + scroll parallax rotation
     this.camera.position.x = Math.sin(t * 0.15) * 0.6;
     this.camera.position.y = 2 + Math.sin(t * 0.1) * 0.35;
+    this.camera.rotation.z = s * parallaxConfig.cameraRotationZ * mult;
     this.camera.lookAt(0, 1.5, 0);
+    // Star layer parallax rotations
+    if (this.scene.userData._starsNear) {
+      this.scene.userData._starsNear.rotation.y = s * parallaxConfig.starsNearRotationY * mult;
+    }
+    if (this.scene.userData._starsMid) {
+      this.scene.userData._starsMid.rotation.y = s * parallaxConfig.starsMidRotationY * mult;
+    }
+    if (this.scene.userData._starsFar) {
+      this.scene.userData._starsFar.rotation.y = s * parallaxConfig.starsFarRotationY * mult;
+    }
+    // Moon vertical offset from scroll
+    if (this.scene.userData._moonGroup) {
+      var baseY = this.scene.userData._moonBaseY || 3;
+      this.scene.userData._moonGroup.position.y = baseY + s * parallaxConfig.moonVerticalOffset * mult;
+    }
+    // Background color interpolation (desktop only)
+    if (!isMobile) {
+      var bgTop = new THREE.Color(0x08080f);
+      var bgBot = new THREE.Color(0x0d0d1a);
+      this.scene.background = bgTop.clone().lerp(bgBot, s);
+    }
     for (var i = 0; i < this.objects.length; i++) {
       var o = this.objects[i];
       if (o.userData.animate) o.userData.animate(o, t, dt);
@@ -135,8 +190,13 @@ class VanGoghScene {
   }
 }
 
-// ── Moon ──
+// ── Moon — wrapped in moonGroup for scroll parallax ──
 function createMoon(scene) {
+  var moonGroup = new THREE.Group();
+  moonGroup.position.set(0, 3, -5);
+  scene.add(moonGroup);
+  scene.userData._moonGroup = moonGroup;
+  scene.userData._moonBaseY = 3;
   var geo = new THREE.SphereGeometry(1.5, 48, 48);
   var pos = geo.attributes.position;
   for (var i = 0; i < pos.count; i++) {
@@ -147,25 +207,25 @@ function createMoon(scene) {
   geo.computeVertexNormals();
   var moonMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xcccccc, emissiveIntensity: 0.3, roughness: 0.4, metalness: 0.05 });
   var moon = new THREE.Mesh(geo, moonMat);
-  moon.position.set(0, 3, -5);
+  moon.position.set(0, 0, 0);
   moon.userData.animate = function(o, t) {
     o.position.x = Math.sin(t * 0.15) * 4;
-    o.position.z = -5 + Math.cos(t * 0.15) * 2;
-    o.position.y = 3 + Math.sin(t * 0.2) * 0.5;
+    o.position.z = Math.cos(t * 0.15) * 2;
+    o.position.y = Math.sin(t * 0.2) * 0.5;
     o.rotation.y = t * 0.2;
     o.rotation.x = Math.sin(t * 0.08) * 0.05;
   };
-  scene.add(moon);
+  moonGroup.add(moon);
   // Subtle glow — small, low opacity, no BackSide blob
   var glowMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.04, side: THREE.BackSide });
   var glow = new THREE.Mesh(new THREE.SphereGeometry(1.75, 16, 16), glowMat);
   glow.userData.animate = function(o, t) {
     o.position.x = Math.sin(t * 0.08) * 4;
-    o.position.z = -5 + Math.cos(t * 0.08) * 2;
-    o.position.y = 3 + Math.sin(t * 0.12) * 0.5;
+    o.position.z = Math.cos(t * 0.08) * 2;
+    o.position.y = Math.sin(t * 0.12) * 0.5;
     o.scale.setScalar(1 + Math.sin(t * 0.4) * 0.04);
   };
-  scene.add(glow);
+  moonGroup.add(glow);
 }
 
 // ── Sunflower — drawn on canvas texture, billboard sprite ──
@@ -624,54 +684,14 @@ function createTulips(scene, count) {
   }
 }
 
-// ── Stars ──
-function createStars(scene, count, append) {
-  // If appending and a stars object already exists, merge into it
-  if (append && scene.userData._starsObj) {
-    var existingStars = scene.userData._starsObj;
-    var existingGeo = existingStars.geometry;
-    var existingPos = existingGeo.getAttribute('position');
-    var existingCount = existingPos.count;
-    var newCount = existingCount + count;
-    // Copy existing data
-    var newPos = new Float32Array(newCount * 3);
-    var newSizes = new Float32Array(newCount);
-    var newBright = new Float32Array(newCount);
-    var newTSpeed = new Float32Array(newCount);
-    var newTPhase = new Float32Array(newCount);
-    var newCols = new Float32Array(newCount * 3);
-    newPos.set(existingGeo.getAttribute('position').array);
-    newSizes.set(existingGeo.getAttribute('size').array);
-    newBright.set(existingGeo.getAttribute('brightness').array);
-    newTSpeed.set(existingGeo.getAttribute('twinkleSpeed').array);
-    newTPhase.set(existingGeo.getAttribute('twinklePhase').array);
-    newCols.set(existingGeo.getAttribute('customColor').array);
-    // Generate new stars
-    for (var i = existingCount; i < newCount; i++) {
-      var i3 = i * 3, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1), r = 40 + Math.random() * 20;
-      newPos[i3] = r * Math.sin(ph) * Math.cos(th); newPos[i3+1] = r * Math.sin(ph) * Math.sin(th); newPos[i3+2] = r * Math.cos(ph);
-      newSizes[i] = 0.8 + Math.random() * 2.5; newBright[i] = 0.3 + Math.random() * 0.7;
-      newTSpeed[i] = 0.8 + Math.random() * 4.0; newTPhase[i] = Math.random() * Math.PI * 2;
-      var tmp = Math.random();
-      if (tmp < 0.3) { newCols[i3]=1.0; newCols[i3+1]=0.95; newCols[i3+2]=0.7; }
-      else if (tmp < 0.6) { newCols[i3]=0.7; newCols[i3+1]=0.8; newCols[i3+2]=1.0; }
-      else { newCols[i3]=1.0; newCols[i3+1]=0.6; newCols[i3+2]=0.3; }
-    }
-    existingGeo.setAttribute('position', new THREE.BufferAttribute(newPos, 3));
-    existingGeo.setAttribute('size', new THREE.BufferAttribute(newSizes, 1));
-    existingGeo.setAttribute('brightness', new THREE.BufferAttribute(newBright, 1));
-    existingGeo.setAttribute('twinkleSpeed', new THREE.BufferAttribute(newTSpeed, 1));
-    existingGeo.setAttribute('twinklePhase', new THREE.BufferAttribute(newTPhase, 1));
-    existingGeo.setAttribute('customColor', new THREE.BufferAttribute(newCols, 3));
-    existingGeo.setDrawRange(0, newCount);
-    return;
-  }
+// ── Stars — 3 depth layers for parallax ──
+function createStarLayer(scene, count, sizeMult, brightMult, twinkleAmp) {
   var pos = new Float32Array(count * 3), sizes = new Float32Array(count), bright = new Float32Array(count);
   var tSpeed = new Float32Array(count), tPhase = new Float32Array(count), cols = new Float32Array(count * 3);
   for (var i = 0; i < count; i++) {
     var i3 = i * 3, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1), r = 40 + Math.random() * 20;
     pos[i3] = r * Math.sin(ph) * Math.cos(th); pos[i3+1] = r * Math.sin(ph) * Math.sin(th); pos[i3+2] = r * Math.cos(ph);
-    sizes[i] = 0.8 + Math.random() * 2.5; bright[i] = 0.3 + Math.random() * 0.7;
+    sizes[i] = (0.8 + Math.random() * 2.5) * sizeMult; bright[i] = (0.3 + Math.random() * 0.7) * brightMult;
     tSpeed[i] = 0.8 + Math.random() * 4.0; tPhase[i] = Math.random() * Math.PI * 2;
     var tmp = Math.random();
     if (tmp < 0.3) { cols[i3]=1.0; cols[i3+1]=0.95; cols[i3+2]=0.7; }
@@ -690,11 +710,30 @@ function createStars(scene, count, append) {
   stars.userData.animate = function(o, t) {
     o.material.uniforms.uTime.value = t;
     o.rotation.y = t * 0.008;
-    o.rotation.x = Math.sin(t * 0.015) * 0.04;
-    o.rotation.z = Math.cos(t * 0.012) * 0.02;
+    o.rotation.x = Math.sin(t * 0.015) * 0.04 * twinkleAmp;
+    o.rotation.z = Math.cos(t * 0.012) * 0.02 * twinkleAmp;
   };
   scene.add(stars);
-  scene.userData._starsObj = stars;
+  return stars;
+}
+
+function createStars(scene, count) {
+  var starsGroup = new THREE.Group();
+  var mobileMult = isMobile ? 0.7 : 1.0;
+  var nearCount = Math.floor(count * 0.3 * mobileMult);
+  var midCount = Math.floor(count * 0.4 * mobileMult);
+  var farCount = Math.floor(count * 0.3 * mobileMult);
+  var starsNear = createStarLayer(scene, nearCount, 2.5, 1.0, 1.0);
+  var starsMid = createStarLayer(scene, midCount, 1.8, 0.7, 0.7);
+  var starsFar = createStarLayer(scene, farCount, 1.2, 0.4, 0.4);
+  starsGroup.add(starsNear);
+  starsGroup.add(starsMid);
+  starsGroup.add(starsFar);
+  scene.add(starsGroup);
+  scene.userData._starsObj = starsGroup;
+  scene.userData._starsNear = starsNear;
+  scene.userData._starsMid = starsMid;
+  scene.userData._starsFar = starsFar;
 }
 function createConstellations(scene) {
   var cs = [
@@ -1010,14 +1049,17 @@ function spawnNotesBurst(cx, cy, count) {
 document.addEventListener('DOMContentLoaded', function() {
   var c = document.getElementById('canvas-container');
   if (!c) return;
+  // Observe canvas visibility for parallax performance
+  if (typeof _parallaxObserver !== 'undefined') _parallaxObserver.observe(c);
   var scene = new VanGoghScene(c);
 
   // Signal that scene loading has started (stop fake progress)
   if (window.__sceneLoadingStarted) window.__sceneLoadingStarted();
 
-  // Reduced initial geometry for faster first frame
+  // Star counts: all created in Phase 1 (3 depth layers)
   var initialStarCount = isLowEnd ? 400 : 800;
-  var fullStarCount   = isLowEnd ? 1800 : 2000;
+  var fullStarCount = isLowEnd ? 700 : 2500;
+  var starCount = fullStarCount;
   var noteCount       = isLowEnd ? 10 : 15;
   var sunflowerCount  = isLowEnd ? 3 : 8;
   var tulipCount      = isLowEnd ? 2 : 4;
@@ -1025,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Phase 1 (immediate): Stars (reduced), moon, waves — enough for first frame
   if (window.__updateLoaderProgress) window.__updateLoaderProgress(30);
-  createStars(scene.scene, initialStarCount);
+  createStars(scene.scene, starCount);
   createMoon(scene.scene);
   // Create waves with reduced segments for initial load
   createWaves(scene.scene, waveSegs);
@@ -1047,16 +1089,15 @@ document.addEventListener('DOMContentLoaded', function() {
     createMusicNotes(scene.scene, noteCount);
   }, 300);
 
-  // Phase 3 (after 800ms): Remaining stars, constellations, shooting stars, post-processing
+  // Phase 3 (after 800ms): constellations, shooting stars
   if (!isLowEnd) {
     setTimeout(function() {
-      createStars(scene.scene, fullStarCount - initialStarCount, true);
       createConstellations(scene.scene);
       var shootingStarManager = createShootingStars(scene.scene, isMobile ? 1 : 2);
       scene.shootingStarManager = shootingStarManager;
     }, 800);
   } else {
-    // Low-end: just add constellations, skip shooting stars and post-processing
+    // Low-end: just add constellations, skip shooting stars
     setTimeout(function() {
       createConstellations(scene.scene);
     }, 800);
