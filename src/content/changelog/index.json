@@ -1,25 +1,31 @@
 {
-  "version": "1.4.0",
-  "lastUpdated": "2026-05-16T00:31:49.698Z",
-  "totalEntries": 13,
+  "version": "1.5.0",
+  "lastUpdated": "2026-05-17T22:23:41.523227+00:00",
+  "totalEntries": 14,
   "dates": [
+    {
+      "date": "2026-05-17",
+      "entries": 1,
+      "latestType": "feature",
+      "description": "Scroll-driven starry night sky parallax \u2014 sky rotates and shifts as you scroll"
+    },
     {
       "date": "2026-05-16",
       "entries": 2,
       "latestType": "feature",
-      "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity variation"
+      "description": "Sunflower field parallax \u2014 3 depth layers with scale/sway/opacity variation"
     },
     {
       "date": "2026-05-15",
       "entries": 9,
       "latestType": "feature",
-      "description": "Ambient music generator — procedural flute-like soundscape with Web Audio API"
+      "description": "Ambient music generator \u2014 procedural flute-like soundscape with Web Audio API"
     },
     {
       "date": "2026-05-14",
       "entries": 2,
       "latestType": "daily-mutation",
-      "description": "First daily mutation — Selene & the Moon theme with starry-night colors."
+      "description": "First daily mutation \u2014 Selene & the Moon theme with starry-night colors."
     }
   ]
 }
