@@ -10,51 +10,11 @@
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>Shiv</em> whispers today"
+      "heading": "What the <em>Selene</em> whispers today"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
-      "imageCard": {
-        "themeIndex": 1,
-        "factIndex": 2
-      },
-      "facts": {
-        "themeIndex": 1,
-        "slice": [
-          3,
-          5
-        ]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 1
-      }
-    },
-    "philosophy": {
-      "label": "II. The Waves",
-      "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "The Gita describes the soul as 'unborn, eternal, ever-existing, undying, and primeval.' It is not slain when the body is slain. This is not metaphor — it is the foundational axiom of Hindu philosophy.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 3
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [
-          0,
-          2
-        ]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 2
-      }
-    },
-    "gita": {
-      "label": "III. The Battlefield",
-      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
       "intro": "The Shiv Purana describes the damaru — Shiva's drum — as the source of all language and music. The first sound, Nada, is the vibration from which all creation emerges. Music is not entertainment; it is cosmology.",
       "imageCard": {
         "themeIndex": 3,
@@ -72,9 +32,9 @@
         "quoteIndex": 0
       }
     },
-    "shiva": {
-      "label": "IV. The Dance",
-      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
+    "philosophy": {
+      "label": "II. The Waves",
+      "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
       "intro": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
       "imageCard": {
         "themeIndex": 4,
@@ -92,9 +52,9 @@
         "quoteIndex": 1
       }
     },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
       "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
       "imageCard": {
         "themeIndex": 0,
@@ -110,6 +70,46 @@
       "quote": {
         "themeIndex": 0,
         "quoteIndex": 2
+      }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
+      "intro": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
+      "imageCard": {
+        "themeIndex": 1,
+        "factIndex": 2
+      },
+      "facts": {
+        "themeIndex": 1,
+        "slice": [
+          3,
+          5
+        ]
+      },
+      "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 0
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
+      "intro": "The Gita describes the soul as 'unborn, eternal, ever-existing, undying, and primeval.' It is not slain when the body is slain. This is not metaphor — it is the foundational axiom of Hindu philosophy.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 3
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          0,
+          2
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 1
       }
     }
   },
@@ -198,6 +198,35 @@
           "Added unit tests for layer configuration (8 tests passing)"
         ],
         "date": "2026-05-16"
+      },
+      {
+        "time": "22:23:41",
+        "type": "feature",
+        "description": "Scroll-driven starry night sky parallax — sky rotates and shifts as you scroll",
+        "changes": [
+          "Refactored star field into 3 depth layers (near/mid/far)",
+          "Added scroll position tracking with smooth interpolation",
+          "Camera rotation and star layer offsets respond to scroll",
+          "Moon rises slightly as user scrolls down",
+          "Background color subtly shifts with scroll position",
+          "Mobile intensity reduced to 60% for comfort"
+        ],
+        "date": "2026-05-17"
+      },
+      {
+        "time": "00:31:56",
+        "type": "daily-mutation",
+        "description": "Daily mutation #138: tulip-garden colors, Shiv Purana → Art & Beauty → Selene & The Moon → Ego & Arrogance → Bhagavad Gita",
+        "changes": [
+          "Color scheme: tulip-garden (passionate)",
+          "Shader — strokeDensity: 8.8, swirlFrequency: 10.2, colorIntensity: 1.56",
+          "Section \"moon\": Shiv Purana theme, fact #3",
+          "Section \"philosophy\": Art & Beauty theme, fact #4",
+          "Section \"gita\": Selene & The Moon theme, fact #0",
+          "Section \"shiva\": Ego & Arrogance theme, fact #1",
+          "Section \"art\": Bhagavad Gita theme, fact #2"
+        ],
+        "date": "2026-05-18"
       }
     ]
   }
