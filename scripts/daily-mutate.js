@@ -46,7 +46,17 @@ function mutateColors(siteData, dayOfYear) {
 }
 
 // ── 2. Update ALL section text content in content.json ──
+// Each section has a fixed theme — we never rotate themes.
+// Instead we pick a random fact/quote from the same theme for variety.
 function updateAllSections(content, siteData, dayOfYear) {
+  // Fixed theme mapping: each section always uses the same theme
+  const sectionThemeMap = {
+    moon: 0,        // Selene & The Moon
+    philosophy: 1,  // Ego & Arrogance
+    gita: 2,        // Bhagavad Gita
+    shiva: 3,       // Shiv Purana
+    art: 4          // Art & Beauty
+  };
   const sectionKeys = ['moon', 'philosophy', 'gita', 'shiva', 'art'];
   const updatedSections = [];
 
@@ -54,16 +64,19 @@ function updateAllSections(content, siteData, dayOfYear) {
     const section = content.sections[sectionKey];
     if (!section) return;
 
-    const themeIndex = (dayOfYear + i) % siteData.themes.length;
+    const themeIndex = sectionThemeMap[sectionKey];
     const theme = siteData.themes[themeIndex];
-    const factIndex = (dayOfYear + i) % theme.facts.length;
+
+    // Pick a random fact from this theme (different each day, but same theme)
+    const factIndex = Math.floor(Math.random() * theme.facts.length);
     const fact = theme.facts[factIndex];
 
     section.intro = fact.text;
 
     let imgFactIndex = factIndex;
     if (section.imageCard) {
-      imgFactIndex = (factIndex + 1) % theme.facts.length;
+      // Pick a different fact for the image card
+      imgFactIndex = (factIndex + 1 + Math.floor(Math.random() * (theme.facts.length - 1))) % theme.facts.length;
       section.imageCard.factIndex = imgFactIndex;
       section.imageCard.themeIndex = themeIndex;
     }
@@ -71,29 +84,33 @@ function updateAllSections(content, siteData, dayOfYear) {
     if (section.facts) {
       const totalFacts = theme.facts.length;
       const sliceSize = Math.min(2, totalFacts - 1);
-      let sliceStart = (imgFactIndex + 1) % totalFacts;
-      if (sliceStart + sliceSize > totalFacts) sliceStart = 0;
-      while (sliceStart === factIndex || sliceStart === imgFactIndex ||
-             (sliceStart + sliceSize - 1) === factIndex ||
-             (sliceStart + sliceSize - 1) === imgFactIndex) {
-        sliceStart = (sliceStart + 1) % totalFacts;
-        if (sliceStart + sliceSize > totalFacts) sliceStart = 0;
-        if (sliceStart === (imgFactIndex + 1) % totalFacts) break;
-      }
+      // Pick a random slice that doesn't overlap with factIndex or imgFactIndex
+      let sliceStart;
+      let attempts = 0;
+      do {
+        sliceStart = Math.floor(Math.random() * totalFacts);
+        attempts++;
+      } while (
+        attempts < 20 &&
+        (sliceStart === factIndex || sliceStart === imgFactIndex ||
+         (sliceStart + sliceSize - 1) % totalFacts === factIndex ||
+         (sliceStart + sliceSize - 1) % totalFacts === imgFactIndex)
+      );
       section.facts.themeIndex = themeIndex;
       section.facts.slice = [sliceStart, sliceStart + sliceSize];
     }
 
     if (section.quote) {
-      section.quote.quoteIndex = (dayOfYear + i) % theme.quotes.length;
+      // Pick a random quote from this theme
+      section.quote.quoteIndex = Math.floor(Math.random() * theme.quotes.length);
       section.quote.themeIndex = themeIndex;
     }
 
     updatedSections.push({ sectionKey, themeIndex, factIndex, theme: theme.title });
   });
 
-  const todayThemeIndex = (dayOfYear + 2) % siteData.themes.length;
-  const todayTheme = siteData.themes[todayThemeIndex];
+  // Today's heading: rephrased using the same theme
+  const todayTheme = siteData.themes[sectionThemeMap.art]; // Art & Beauty for today
   content.sections.today.heading = `What the <em>${todayTheme.title.split(' ')[0]}</em> whispers today`;
 
   return updatedSections;
