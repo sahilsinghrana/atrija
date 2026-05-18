@@ -3,7 +3,7 @@
 > **ID:** idea-009
 > **Category:** Performance
 > **Priority:** high
-> **Status:** backlog
+|> **Status:** done
 > **PRD Version:** 2.0 (Astro-compatible rewrite)
 > **Last Updated:** 2026-05-15
 
@@ -575,4 +575,48 @@ In BaseLayout.astro, add to the loader CSS link:
     "Skipped post-processing shaders on mobile/low-end devices"
   ]
 }
+
+---
+
+## 8. Three.js Architecture (Post-Refactoring)
+
+> Added 2026-05-22 after major refactoring and 3D geometry overhaul.
+
+### 8.1 Scene Architecture
+- **Single file**: `public/js/scene-init.js` (~1066 lines) — all Three.js code in one file loaded from CDN (esm.sh)
+- **No post-processing**: EffectComposer, Van Gogh shader, Glitch shader all removed for performance
+- **Direct render**: `renderer.render(scene, camera)` — no composer pipeline
+- **IIFE init**: Runs immediately on script load — no DOMContentLoaded wrapper, no client:idle
+
+### 8.2 3D Elements (All Proper Geometry)
+| Element | Geometry | Materials |
+|---------|----------|-----------|
+| Moon | SphereGeometry(1.2, 64, 64) + noise displacement | MeshStandardMaterial white + emissive, dual glow spheres (BackSide) |
+| Stars | BufferGeometry point cloud, 3 depth layers (near/mid/far) | Custom shader (starVS/starFS), AdditiveBlending |
+| Sunflowers | TubeGeometry stem + CylinderGeometry disk + 36 PlaneGeometry petals (3 layers × 12) | MeshStandardMaterial with emissive, 3 petal colors (gold/amber/yellow) |
+| Lilies | TubeGeometry stem + 6 bent PlaneGeometry trumpet petals + 6 cylinder stamens + sphere anthers + cylinder pistil + sphere stigma + circle spots | MeshStandardMaterial with emissive, 12 non-yellow colors |
+| Flute | CylinderGeometry body + 6 cylinder finger holes + cylinder mouthpiece | MeshStandardMaterial bamboo gold |
+| Music Notes | Group: sphere head + cylinder stem + cone flag | MeshStandardMaterial with emissive, 5 colors |
+| Waves | PlaneGeometry(30, 20, 64×64) with GLSL vertex shader | ShaderMaterial with 3 color gradient |
+| Shooting Stars | BufferGeometry point trail (20 points) | PointsMaterial with AdditiveBlending |
+
+### 8.3 Performance Rules
+- **NEVER convert Three.js to SVG/canvas sprites** — all elements must remain as Three.js 3D geometry
+- **NEVER add post-processing shaders** — they destroy visual quality and performance
+- **NEVER use client:idle on scene-init.js** — causes loader race condition
+- **Billboard pattern**: Flower heads use `lookAt(camera.position)` in animate loop
+- **Mobile optimization**: Reduced flower counts, pixel ratio 1.0, no AA, low-power preference
+
+### 8.4 File Structure
+```
+public/js/
+  scene-init.js      — All Three.js scene code (single file, ~1066 lines)
+  moon-phase.js      — ASCII moon art + shadow phase animation
+  changelog-app.js   — Changelog UI (lazy-loaded date cards)
+  quote-carousel.js  — Quote carousel auto-rotation
+  loader-progress.js — Loader progress bar
+public/css/
+  main.css           — All design tokens, layout, components (~1025 lines)
+  loader.css         — Loading screen styles
+```
 ```
