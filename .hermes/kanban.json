@@ -2,27 +2,27 @@
   "columns": [
     {
       "id": "backlog",
-      "name": "💡 Idea Backlog",
+      "name": "\ud83d\udca1 Idea Backlog",
       "tasks": []
     },
     {
       "id": "red",
-      "name": "🔴 Red (Failing Test)",
+      "name": "\ud83d\udd34 Red (Failing Test)",
       "tasks": []
     },
     {
       "id": "green",
-      "name": "🟢 Green (Implement)",
+      "name": "\ud83d\udfe2 Green (Implement)",
       "tasks": []
     },
     {
       "id": "refactor",
-      "name": "🟣 Refactor (Optimize)",
+      "name": "\ud83d\udfe3 Refactor (Optimize)",
       "tasks": []
     },
     {
       "id": "done",
-      "name": "✅ Done",
+      "name": "\u2705 Done",
       "tasks": []
     }
   ],
@@ -110,8 +110,8 @@
     },
     {
       "id": "idea-010",
-      "title": "Flute click — SVG bansuri + music notes",
-      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
+      "title": "Flute click \u2014 SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (\u266a\u266b\u266c). Flute animates in/out with spring easing.",
       "category": "Interactivity",
       "priority": "high",
       "status": "done",
@@ -138,7 +138,7 @@
     {
       "id": "idea-013",
       "title": "Mobile tulip visibility fix",
-      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0\u00d71.6).",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -147,7 +147,7 @@
     {
       "id": "idea-014",
       "title": "Remove speaker/audio toggle",
-      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "description": "Remove the audio toggle button (\ud83d\udd07) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
       "category": "Audio",
       "priority": "medium",
       "status": "done",
@@ -242,8 +242,35 @@
       "priority": "high",
       "status": "done",
       "prd": null
+    },
+    {
+      "id": "idea-026",
+      "title": "3D Cypress Tree Silhouettes",
+      "description": "Tall, dark cypress tree silhouettes rendered as Three.js ExtrudeGeometry that sway gently in the background, evoking Van Gogh's iconic Starry Night cypresses. 5 trees on desktop, 2 on mobile. MeshBasicMaterial for zero lighting cost. Integrates with existing parallax scroll system.",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-026-cypress-silhouettes.md"
+    },
+    {
+      "id": "idea-027",
+      "title": "Interactive Firefly Swarm",
+      "description": "A swarm of 3D firefly points (40 desktop, 20 mobile) that drift organically using damped random walk velocity fields. Each firefly pulses with warm golden light via custom shader. Fireflies scatter away from mouse cursor within 3-unit radius and slowly return. Additive blending for ethereal glow.",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-027-firefly-swarm.md"
+    },
+    {
+      "id": "idea-028",
+      "title": "Scroll-Driven Painting Reveal",
+      "description": "A large Van Gogh painting (loaded from Wikimedia Commons) displayed on a Three.js PlaneGeometry that progressively reveals based on scroll position. Custom shader divides the image into horizontal bands with slight horizontal variation for organic reveal. 150vh scroll section drives the effect.",
+      "category": "Interactivity",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-028-painting-reveal.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-05-18T22:00:00Z"
+  "generatedAt": "2026-05-19T02:00:00Z"
 }
