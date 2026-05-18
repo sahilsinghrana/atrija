@@ -131,55 +131,55 @@ function createMoon(scene) {
   scene.userData._moonBaseY = 0.5;
 
   // Main moon sphere — white with subtle surface detail
-  var geo = new THREE.SphereGeometry(1.2, 64, 64);
+  var geo = new THREE.SphereGeometry(1.5, 64, 64);
   var pos = geo.attributes.position;
   for (var i = 0; i < pos.count; i++) {
     var x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
-    var n = Math.sin(x * 6) * Math.cos(y * 5) * 0.04 + Math.sin(z * 8) * 0.025 + Math.sin(x * 12 + y * 8) * 0.015;
+    var n = Math.sin(x * 8) * Math.cos(y * 6) * 0.05 + Math.sin(z * 12) * 0.03;
     pos.setXYZ(i, x * (1 + n), y * (1 + n), z * (1 + n));
   }
   geo.computeVertexNormals();
   var moonMat = new THREE.MeshStandardMaterial({
-    color: 0xffffff, emissive: 0xeeeecc, emissiveIntensity: 0.35,
-    roughness: 0.5, metalness: 0.05
+    color: 0xffffff, emissive: 0xeeeecc, emissiveIntensity: 0.4,
+    roughness: 0.4, metalness: 0.05
   });
   var moon = new THREE.Mesh(geo, moonMat);
   moon.userData.animate = function(o, t) {
-    o.position.x = Math.sin(t * 0.06) * 3;
-    o.position.z = Math.cos(t * 0.06) * 1.5;
-    o.position.y = Math.sin(t * 0.08) * 0.3;
-    o.rotation.y = t * 0.08;
-    o.rotation.x = Math.sin(t * 0.04) * 0.03;
+    o.position.x = Math.sin(t * 0.15) * 4;
+    o.position.z = Math.cos(t * 0.15) * 2;
+    o.position.y = Math.sin(t * 0.2) * 0.5;
+    o.rotation.y = t * 0.2;
+    o.rotation.x = Math.sin(t * 0.08) * 0.05;
   };
   moonGroup.add(moon);
 
   // Inner glow sphere
-  var glowGeo = new THREE.SphereGeometry(1.35, 32, 32);
+  var glowGeo = new THREE.SphereGeometry(1.75, 32, 32);
   var glowMat = new THREE.MeshBasicMaterial({
-    color: 0xffffee, transparent: true, opacity: 0.06,
+    color: 0xffffff, transparent: true, opacity: 0.06,
     side: THREE.BackSide, depthWrite: false
   });
   var glow = new THREE.Mesh(glowGeo, glowMat);
   glow.userData.animate = function(o, t) {
-    o.position.x = Math.sin(t * 0.06) * 3;
-    o.position.z = Math.cos(t * 0.06) * 1.5;
-    o.position.y = Math.sin(t * 0.08) * 0.3;
-    o.scale.setScalar(1 + Math.sin(t * 0.3) * 0.03);
+    o.position.x = Math.sin(t * 0.08) * 4;
+    o.position.z = Math.cos(t * 0.08) * 2;
+    o.position.y = Math.sin(t * 0.12) * 0.5;
+    o.scale.setScalar(1 + Math.sin(t * 0.4) * 0.04);
   };
   moonGroup.add(glow);
 
   // Outer glow halo
-  var haloGeo = new THREE.SphereGeometry(1.8, 24, 24);
+  var haloGeo = new THREE.SphereGeometry(2.2, 24, 24);
   var haloMat = new THREE.MeshBasicMaterial({
-    color: 0xffffdd, transparent: true, opacity: 0.025,
+    color: 0xffffdd, transparent: true, opacity: 0.03,
     side: THREE.BackSide, depthWrite: false
   });
   var halo = new THREE.Mesh(haloGeo, haloMat);
   halo.userData.animate = function(o, t) {
-    o.position.x = Math.sin(t * 0.06) * 3;
-    o.position.z = Math.cos(t * 0.06) * 1.5;
-    o.position.y = Math.sin(t * 0.08) * 0.3;
-    o.scale.setScalar(1 + Math.sin(t * 0.2) * 0.05);
+    o.position.x = Math.sin(t * 0.08) * 4;
+    o.position.z = Math.cos(t * 0.08) * 2;
+    o.position.y = Math.sin(t * 0.12) * 0.5;
+    o.scale.setScalar(1 + Math.sin(t * 0.25) * 0.06);
   };
   moonGroup.add(halo);
 }
@@ -187,13 +187,14 @@ function createMoon(scene) {
 // ═══════════════════════════════════════
 // 3D SUNFLOWER — stem + disk + petals
 // ═══════════════════════════════════════
-function createSunflower3D(x, y, z, scale) {
+function createSunflower3D(x, y, z, scale, opacity) {
   var group = new THREE.Group();
   group.position.set(x, y, z);
   group.scale.setScalar(scale);
+  opacity = opacity || 0.95;
 
   var stemMat = new THREE.MeshStandardMaterial({ color: 0x2d5a1e, roughness: 0.8 });
-  var leafMat = new THREE.MeshStandardMaterial({ color: 0x3a7a2e, roughness: 0.7, side: THREE.DoubleSide });
+  var leafMat = new THREE.MeshStandardMaterial({ color: 0x3a7a2e, roughness: 0.7, side: THREE.DoubleSide, transparent: true, opacity: opacity });
 
   // Stem — curved bezier-like using multiple cylinder segments
   var stemCurve = new THREE.CatmullRomCurve3([
@@ -246,7 +247,8 @@ function createSunflower3D(x, y, z, scale) {
     var pColor = petalColors[layer];
     var pMat = new THREE.MeshStandardMaterial({
       color: pColor, roughness: 0.6, side: THREE.DoubleSide,
-      emissive: new THREE.Color(pColor), emissiveIntensity: 0.08
+      emissive: new THREE.Color(pColor), emissiveIntensity: 0.08,
+      transparent: true, opacity: opacity
     });
     var pCount = 12 - layer * 2;
     var pRadius = 0.22 + layer * 0.06;
@@ -292,9 +294,9 @@ function createSunflower3D(x, y, z, scale) {
 
 function createSunflowers(scene, totalCount) {
   var layers = [
-    { count: Math.floor(totalCount * 0.3), scaleRange: [0.5, 0.8], zRange: [-12, -7], yRange: [-1.2, -0.4], spreadX: 18 },
-    { count: Math.floor(totalCount * 0.4), scaleRange: [0.8, 1.3], zRange: [-8, -3], yRange: [-0.8, 0.0], spreadX: 14 },
-    { count: Math.floor(totalCount * 0.3), scaleRange: [1.3, 2.0], zRange: [-5, -1], yRange: [-0.4, 0.4], spreadX: 10 }
+    { count: Math.floor(totalCount * 0.3), scaleRange: [0.5, 0.8], zRange: [-12, -7], yRange: [-1.2, -0.4], spreadX: 18, opacity: 0.5, swayAmp: 0.03, swaySpeed: 0.4 },
+    { count: Math.floor(totalCount * 0.4), scaleRange: [0.8, 1.3], zRange: [-8, -3], yRange: [-0.8, 0.0], spreadX: 14, opacity: 0.75, swayAmp: 0.06, swaySpeed: 0.6 },
+    { count: Math.floor(totalCount * 0.3), scaleRange: [1.3, 2.0], zRange: [-5, -1], yRange: [-0.4, 0.4], spreadX: 10, opacity: 0.95, swayAmp: 0.12, swaySpeed: 0.8 }
   ];
 
   if (isMobile) {
@@ -311,20 +313,28 @@ function createSunflowers(scene, totalCount) {
       var x = (Math.random() - 0.5) * layer.spreadX;
       var y = layer.yRange[0] + Math.random() * (layer.yRange[1] - layer.yRange[0]);
       var z = layer.zRange[0] + Math.random() * (layer.zRange[1] - layer.zRange[0]);
-      var flower = createSunflower3D(x, y, z, s);
+      var flower = createSunflower3D(x, y, z, s, layer.opacity);
       var ph = Math.random() * Math.PI * 2;
-      var swayAmp = 0.02 + Math.random() * 0.04;
-      var swaySpeed = 0.3 + Math.random() * 0.5;
-      flower.userData.animate = function(o, t) {
-        o.rotation.z = Math.sin(t * swaySpeed + ph) * swayAmp;
-        o.rotation.x = Math.sin(t * swaySpeed * 0.7 + ph) * swayAmp * 0.5;
-        // Billboard all heads
-        o.children.forEach(function(child) {
-          if (child.userData && child.userData.isBillboard && child.userData.animate) {
-            child.userData.animate(child, t);
-          }
-        });
-      };
+      var sa = layer.swayAmp + Math.random() * 0.02;
+      var ss = layer.swaySpeed + Math.random() * 0.3;
+      (function(p, bx, by, swayA, swayS, op) {
+        flower.userData.animate = function(o, t) {
+          // Sway animation — different per layer
+          o.rotation.z = Math.sin(t * swayS + p) * swayA;
+          o.rotation.x = Math.sin(t * swayS * 0.7 + p) * swayA * 0.5;
+          // Opacity pulsing — subtle breathe effect
+          var breathe = 0.9 + Math.sin(t * 0.5 + p) * 0.1;
+          o.children.forEach(function(child) {
+            if (child.material && child.material.opacity !== undefined) {
+              child.material.opacity = op * breathe;
+            }
+            // Billboard heads
+            if (child.userData && child.userData.isBillboard && child.userData.animate) {
+              child.userData.animate(child, t);
+            }
+          });
+        };
+      })(ph, x, y, sa, ss, layer.opacity);
       scene.add(flower);
       allFlowers.push(flower);
     }
@@ -380,7 +390,8 @@ function createLily3D(x, y, z, scale, colorHex, variant) {
   var petalLen = variant === 0 ? 0.35 : (variant === 1 ? 0.28 : 0.22);
   var petalMat = new THREE.MeshStandardMaterial({
     color: petalColor, roughness: 0.5, side: THREE.DoubleSide,
-    emissive: petalColor, emissiveIntensity: 0.06
+    emissive: petalColor, emissiveIntensity: 0.12,
+    transparent: true, opacity: 0.92
   });
 
   for (var p = 0; p < 6; p++) {
@@ -513,8 +524,9 @@ function createMusicNotes(scene, count) {
   for (var i = 0; i < count; i++) {
     var color = noteColors[i % noteColors.length];
     var mat = new THREE.MeshStandardMaterial({
-      color: color, emissive: color, emissiveIntensity: 0.3,
-      transparent: true, opacity: 0.7, roughness: 0.3, metalness: 0.1
+      color: color, emissive: color, emissiveIntensity: 0.4,
+      transparent: true, opacity: 0.7, roughness: 0.3, metalness: 0.1,
+      blending: THREE.AdditiveBlending, depthWrite: false
     });
 
     // Create note shape — sphere head + cylinder stem
