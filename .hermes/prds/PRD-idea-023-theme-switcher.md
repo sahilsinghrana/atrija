@@ -223,3 +223,9 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**ORPHANED PRD — NEWLY ADDED TO KANBAN.** This PRD had no corresponding kanban entry. It has been added to the kanban as idea-029 (low priority). The PRD is well-structured and feasible. However, consider whether a manual theme switcher conflicts with the daily mutation system that already rotates themes automatically.

@@ -235,3 +235,9 @@ The system uses a **second Three.js canvas** (or a separate scene composited via
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**ORPHANED — ID CONFLICT.** This PRD file references `idea-019` but the kanban's idea-019 is "Realistic Randomized Tulips" (done). This PRD describes "Impressionist Brush Stroke Cursor Trail" which is a different feature. The brushstroke cursor trail concept exists on the kanban as idea-022. This file is a duplicate/orphan from an earlier generation and should be deleted or renamed to avoid confusion.

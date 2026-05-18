@@ -346,3 +346,9 @@ The system works by:
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**ORPHANED — ID CONFLICT.** This PRD file references `idea-021` but the kanban's idea-021 is "Van Gogh Painting Gallery Carousel" (backlog). This PRD describes "Scroll-Driven Color Palette Transition" which is a different feature. This file is a duplicate/orphan from an earlier generation with a misassigned ID. It does not correspond to any current kanban idea.

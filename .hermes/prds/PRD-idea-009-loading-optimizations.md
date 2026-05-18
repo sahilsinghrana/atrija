@@ -619,4 +619,20 @@ public/css/
   main.css           — All design tokens, layout, components (~1025 lines)
   loader.css         — Loading screen styles
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**Status: DONE (with modifications).** This PRD was largely implemented but with key differences from the original spec:
+
+1. **Post-processing references are stale**: Sections 1-7 reference EffectComposer, ShaderPass, Van Gogh shader, and Glitch shader — all of which were removed in the code architecture refactoring. Section 8 (added 2026-05-22) documents the actual current state correctly.
+
+2. **`client:idle` was NOT adopted**: The PRD recommended using `client:idle` for scene-init.js, but this was found to cause a loader race condition. The scene continues to use IIFE init (runs immediately on script load).
+
+3. **Progressive loading was partially adopted**: Stars/moon/waves load first, flowers load in a deferred batch. Post-processing phase was removed entirely.
+
+4. **Nginx caching, SVG optimization, content-visibility, requestIdleCallback deferral**: These were implemented as described.
+
+5. **Recommendation**: Sections 1-7 should be updated to reflect the actual implementation, or Section 8 should be promoted to the primary technical spec.
 ```

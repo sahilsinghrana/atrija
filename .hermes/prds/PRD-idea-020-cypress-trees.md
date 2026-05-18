@@ -254,3 +254,9 @@ The cypress trees are `THREE.Mesh` objects with `THREE.PlaneGeometry` and a `THR
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**ORPHANED — ID CONFLICT.** This PRD file references `idea-020` but the kanban's idea-020 is "Scroll-Driven Starry Night Sky" (done). This PRD describes "Cypress Tree Silhouettes" which is a different feature. The cypress trees concept exists on the kanban as idea-026. This file is a duplicate/orphan from an earlier generation and should be deleted or renamed to avoid confusion.

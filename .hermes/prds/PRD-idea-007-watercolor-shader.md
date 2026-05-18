@@ -3,7 +3,7 @@
 > **ID:** idea-007  
 > **Category:** Shaders  
 > **Priority:** high  
-> **Status:** backlog  
+> **Status:** cancelled  
 > **PRD Version:** 1.0  
 > **Last Updated:** 2026-05-15
 
@@ -234,3 +234,9 @@ Add shader, add pass to composer, update animation loop.
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**Status changed to CANCELLED.** The post-processing pipeline (EffectComposer, ShaderPass, Van Gogh/glitch shaders) was removed in a prior refactoring (see AGENTS.md: "No post-processing: Direct `renderer.render()`"). This PRD depends entirely on that removed infrastructure. To revisit this idea, a new approach would need to work with the current direct-render architecture — e.g., applying watercolor effects via CSS filters on the canvas element, or re-implementing post-processing with a lighter custom solution.

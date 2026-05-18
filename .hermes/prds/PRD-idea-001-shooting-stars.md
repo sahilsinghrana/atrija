@@ -3,7 +3,7 @@
 > **ID:** idea-001  
 > **Category:** 3D Elements  
 > **Priority:** medium  
-> **Status:** backlog  
+> **Status:** done  
 > **PRD Version:** 1.0  
 > **Last Updated:** 2026-05-15
 
@@ -290,3 +290,9 @@ Implement `createShootingStars()` and integrate into scene init.
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**Status updated to DONE** (matching kanban). Note: The implementation likely differs from this PRD's technical spec — the PRD references `VanGoghScene` class and `EffectComposer` which were removed in the architecture refactoring. The actual implementation uses the current IIFE-based scene architecture.

@@ -187,3 +187,9 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**ORPHANED PRD — FLAGGED FOR RETHINK.** This PRD had no corresponding kanban entry. It has been added to the kanban as idea-030 (low priority). **However**, this idea conflicts with the deliberate decision to remove audio from the site (see idea-014, completed). The PRD should be revised to either: (a) remove audio and use visual-only brushstroke feedback, or (b) be deprioritized until the audio direction is reconsidered.

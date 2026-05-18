@@ -257,7 +257,7 @@
       "title": "Interactive Firefly Swarm",
       "description": "A swarm of 3D firefly points (40 desktop, 20 mobile) that drift organically using damped random walk velocity fields. Each firefly pulses with warm golden light via custom shader. Fireflies scatter away from mouse cursor within 3-unit radius and slowly return. Additive blending for ethereal glow.",
       "category": "3D Elements",
-      "priority": "high",
+      "priority": "medium",
       "status": "backlog",
       "prd": "PRD-idea-027-firefly-swarm.md"
     },
@@ -269,6 +269,33 @@
       "priority": "medium",
       "status": "backlog",
       "prd": "PRD-idea-028-painting-reveal.md"
+    },
+    {
+      "id": "idea-029",
+      "title": "Theme Color Scheme Switcher",
+      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation — needs review before implementation.",
+      "category": "UI",
+      "priority": "low",
+      "status": "backlog",
+      "prd": "PRD-idea-023-theme-switcher.md"
+    },
+    {
+      "id": "idea-030",
+      "title": "Scroll-Responsive Brushstroke Sound Effects",
+      "description": "Generative brushstroke sound effects that play in response to scroll velocity. NOTE: Audio was deliberately removed from the site (see idea-014). This idea conflicts with that direction — flagged for rethink.",
+      "category": "Audio",
+      "priority": "low",
+      "status": "backlog",
+      "prd": "PRD-idea-024-brushstroke-audio.md"
+    },
+    {
+      "id": "idea-031",
+      "title": "Van Gogh Biography Timeline",
+      "description": "An interactive, scrollable timeline of Van Gogh's life milestones — birth, key paintings, moves, and legacy — displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
+      "category": "Content",
+      "priority": "low",
+      "status": "backlog",
+      "prd": "PRD-idea-025-vangogh-timeline.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",

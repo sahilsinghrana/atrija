@@ -3,7 +3,7 @@
 > **ID:** idea-004  
 > **Category:** Audio  
 > **Priority:** high  
-> **Status:** backlog  
+> **Status:** cancelled  
 > **PRD Version:** 1.0  
 > **Last Updated:** 2026-05-15
 
@@ -357,3 +357,9 @@ Create `ambient-audio.js`, add toggle button, add scroll listener.
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-19)
+
+**Status changed to CANCELLED.** The audio toggle button and ambient-audio.js were already removed (see idea-014, completed). The site deliberately moved away from audio. This PRD is superseded by that decision. If audio is reconsidered in the future, a new PRD should be written from scratch.
