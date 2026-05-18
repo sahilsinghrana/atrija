@@ -411,37 +411,37 @@ function createSunflowers(scene, totalCount) {
   });
 }
 
-// ── Tulip texture cache ──
-var tulipCache = {};
-var TULIP_CACHE_MAX = 50;
+// ── Lily texture cache ──
+var lilyCache = {};
+var LILY_CACHE_MAX = 50;
 
-function getCachedTulip(color, isOpen) {
+function getCachedLily(color, variant) {
   var canvasSize = (isMobile && isLowEnd) ? 120 : 160;
-  var key = color + '_' + isOpen + '_' + canvasSize;
-  if (tulipCache[key]) {
-    tulipCache[key].lastUsed = Date.now();
-    return tulipCache[key].canvas;
+  var key = color + '_' + variant + '_' + canvasSize;
+  if (lilyCache[key]) {
+    lilyCache[key].lastUsed = Date.now();
+    return lilyCache[key].canvas;
   }
   // Evict oldest if at capacity
-  var keys = Object.keys(tulipCache);
-  if (keys.length >= TULIP_CACHE_MAX) {
+  var keys = Object.keys(lilyCache);
+  if (keys.length >= LILY_CACHE_MAX) {
     var oldestKey = keys[0];
-    var oldestTime = tulipCache[oldestKey].lastUsed;
+    var oldestTime = lilyCache[oldestKey].lastUsed;
     for (var i = 1; i < keys.length; i++) {
-      if (tulipCache[keys[i]].lastUsed < oldestTime) {
+      if (lilyCache[keys[i]].lastUsed < oldestTime) {
         oldestKey = keys[i];
-        oldestTime = tulipCache[keys[i]].lastUsed;
+        oldestTime = lilyCache[keys[i]].lastUsed;
       }
     }
-    delete tulipCache[oldestKey];
+    delete lilyCache[oldestKey];
   }
-  var canvas = makeTulipCanvas(canvasSize, color, isOpen);
-  tulipCache[key] = { canvas: canvas, lastUsed: Date.now() };
+  var canvas = makeLilyCanvas(canvasSize, color, variant);
+  lilyCache[key] = { canvas: canvas, lastUsed: Date.now() };
   return canvas;
 }
 
-// ── Pre-computed color LUT for petal rendering ──
-function precomputeColorVariants(rr, gg, bb) {
+// ── Pre-computed color LUT for lily petal rendering ──
+function precomputeLilyColors(rr, gg, bb) {
   var variants = [];
   for (var i = 0; i < 5; i++) {
     var lightness = -10 + i * 10;
@@ -459,53 +459,40 @@ function precomputeColorVariants(rr, gg, bb) {
   return variants;
 }
 
-// ── Tulip petal drawing helper (optimized: pre-computed colors, batched draw) ──
-function drawTulipPetal(ctx, petalH, petalW, depthFactor, lightness, wavyOffset, colorLUT) {
+// ── Lily petal drawing helper (trumpet-shaped, 6 petals) ──
+function drawLilyPetal(ctx, petalH, petalW, depthFactor, lightness, colorLUT) {
   // Pick nearest pre-computed variant
   var idx = Math.min(4, Math.max(0, Math.floor((lightness + 10) / 10)));
   var c = colorLUT[idx];
   var df = depthFactor;
 
-  // 3-stop gradient (reuse pre-computed colors with depth factor)
+  // 3-stop gradient
   var pg = ctx.createLinearGradient(0, -petalH, 0, petalH * 0.3);
   pg.addColorStop(0, c.tip);
   pg.addColorStop(0.4, c.mid);
   pg.addColorStop(1, c.base);
   ctx.fillStyle = pg;
 
-  // Asymmetric bezier with wavy edges
-  var tipX = petalW * 0.08 * (Math.random() - 0.5);
-  var w1 = petalW * (0.7 + Math.random() * 0.15);
-  var w2 = petalW * (0.65 + Math.random() * 0.15);
-  var h1 = petalH * (0.55 + Math.random() * 0.1);
-  var h2 = petalH * (0.5 + Math.random() * 0.1);
-
+  // Trumpet-shaped bezier: narrow base, wide flared tip
+  var tipW = petalW * 1.3;
   ctx.beginPath();
   ctx.moveTo(0, petalH * 0.25);
-  ctx.bezierCurveTo(-w1, petalH * 0.1, -w1 * 0.6 + wavyOffset, -h1, tipX, -petalH);
-  ctx.bezierCurveTo(w2 * 0.6 - wavyOffset, -h2, w2, petalH * 0.05, 0, petalH * 0.25);
+  ctx.bezierCurveTo(-petalW * 0.4, petalH * 0.1, -tipW * 0.6, -petalH * 0.5, 0, -petalH);
+  ctx.bezierCurveTo(tipW * 0.6, -petalH * 0.5, petalW * 0.4, petalH * 0.1, 0, petalH * 0.25);
   ctx.fill();
-
-  // Edge highlight
-  ctx.strokeStyle = c.edge;
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(-w1 * 0.3, petalH * 0.2);
-  ctx.quadraticCurveTo(-w1 * 0.5, 0, tipX * 0.5, -petalH * 0.7);
-  ctx.stroke();
 
   // Vein line
   ctx.strokeStyle = c.vein;
   ctx.lineWidth = 0.8;
   ctx.beginPath();
   ctx.moveTo(0, petalH * 0.2);
-  ctx.quadraticCurveTo(petalW * 0.05, petalH * 0.05, tipX * 0.3, -petalH * 0.4);
+  ctx.quadraticCurveTo(petalW * 0.05, 0, 0, -petalH * 0.4);
   ctx.stroke();
 }
 
-// ── Tulip — realistic cup/bloom shapes with per-tulip randomization ──
-// Layout: head in upper 65%, stem in bottom 30%, 5% gap
-function makeTulipCanvas(size, color, isOpen) {
+// ── Lily — 6 trumpet petals with stamens, pistil, spots ──
+// variant: 0=closed bud, 1=half open, 2=fully open
+function makeLilyCanvas(size, color, variant) {
   size = size || 160;
   var c = document.createElement('canvas');
   c.width = size; c.height = size;
@@ -520,21 +507,13 @@ function makeTulipCanvas(size, color, isOpen) {
   var gg = parseInt(hexColor.substring(2,4), 16);
   var bb = parseInt(hexColor.substring(4,6), 16);
 
-  // Per-tulip randomization for natural variety
-  var petalCount = 5 + Math.floor(Math.random() * 3); // 5-7
-  var curlFactor = 0.3 + Math.random() * 0.3;
+  // Per-lily randomization
+  var petalCount = 6;
   var widthVar = 0.85 + Math.random() * 0.3;
-  var cupOpenness = Math.random() * 0.4; // 0.0 (tight) to 0.4 (slightly open)
-  var reflexAmount = 0.2 + Math.random() * 0.6;
-  var warmthShift = (Math.random() * 0.2) - 0.1; // ±10%
+  var petalSpread = variant === 0 ? 0.05 : (variant === 1 ? 0.15 : 0.3);
 
-  // Apply warmth shift to base color
-  var rrWarm = Math.min(255, Math.max(0, rr + Math.round(rr * warmthShift)));
-  var ggWarm = Math.min(255, Math.max(0, gg + Math.round(gg * warmthShift * 0.5)));
-  var bbWarm = Math.min(255, Math.max(0, bb + Math.round(bb * warmthShift * 0.3)));
-
-  // Pre-compute color variants for all petal lightness levels
-  var colorLUT = precomputeColorVariants(rrWarm, ggWarm, bbWarm);
+  // Pre-compute color variants
+  var colorLUT = precomputeLilyColors(rr, gg, bb);
 
   // ── Draw stem FIRST (behind petals) ──
   ctx.strokeStyle = '#2d6a1e';
@@ -546,7 +525,7 @@ function makeTulipCanvas(size, color, isOpen) {
   ctx.bezierCurveTo(cx + size * 0.04, headCy + headR * 1.4, cx - size * 0.03, headCy + headR * 2.0, cx + size * 0.01, size);
   ctx.stroke();
 
-  // ── Draw leaves on stem (behind petals) ──
+  // ── Leaves on stem (behind petals) ──
   ctx.fillStyle = '#3a7a2e';
   for (var side = -1; side <= 1; side += 2) {
     ctx.save();
@@ -568,32 +547,33 @@ function makeTulipCanvas(size, color, isOpen) {
     ctx.restore();
   }
 
-  // ── Draw petals ──
+  // ── Draw 6 petals ──
   for (var p = 0; p < petalCount; p++) {
     var angle = (p / petalCount) * Math.PI * 2 - Math.PI / 2;
-    var isBackPetal = (p % 2 === 0);
-    var depthFactor = isBackPetal ? (0.7 + Math.random() * 0.1) : 1.0;
-
-    // Per-petal randomization
+    var depthFactor = 0.7 + Math.random() * 0.6;
+    var pLightness = -2 + Math.floor(Math.random() * 5);
     var pWidthVar = widthVar * (0.85 + Math.random() * 0.3);
-    var pHeightVar = 0.9 + Math.random() * 0.2;
-    var pWavyOffset = 2 + Math.floor(Math.random() * 3);
-    var pLightness = (p < petalCount / 2) ? (15 + Math.floor(Math.random() * 10)) : (-10 + Math.floor(Math.random() * 15));
 
     var petalH, petalW, spreadR, tiltAngle;
 
-    if (isOpen) {
-      // Open tulip: wide reflexed petals in star pattern
-      petalH = headR * (0.7 + Math.random() * 0.15) * pHeightVar;
-      petalW = headR * (0.4 + Math.random() * 0.15) * pWidthVar;
-      spreadR = headR * 0.3;
-      tiltAngle = angle + Math.PI / 2 + reflexAmount * 0.2;
+    if (variant === 0) {
+      // Closed bud: tight upright petals
+      petalH = headR * 1.1 * (0.9 + Math.random() * 0.2);
+      petalW = headR * 0.18 * pWidthVar;
+      spreadR = headR * 0.05;
+      tiltAngle = angle + Math.PI / 2 + 0.1;
+    } else if (variant === 1) {
+      // Half open: slightly spread
+      petalH = headR * (0.8 + Math.random() * 0.2);
+      petalW = headR * 0.25 * pWidthVar;
+      spreadR = headR * 0.15;
+      tiltAngle = angle + Math.PI / 2 + 0.3;
     } else {
-      // Closed tulip: asymmetric pointed petals in cup formation
-      petalH = headR * (isBackPetal ? 0.7 : 0.9) * pHeightVar;
-      petalW = headR * 0.28 * pWidthVar;
-      spreadR = isBackPetal ? headR * 0.15 : headR * 0.25;
-      tiltAngle = angle + Math.PI / 2 + cupOpenness * (isBackPetal ? 0.3 : 0.15);
+      // Fully open: wide trumpet spread
+      petalH = headR * (0.7 + Math.random() * 0.15);
+      petalW = headR * 0.32 * pWidthVar;
+      spreadR = headR * 0.3;
+      tiltAngle = angle + Math.PI / 2 + 0.6;
     }
 
     ctx.save();
@@ -603,68 +583,88 @@ function makeTulipCanvas(size, color, isOpen) {
     );
     ctx.rotate(tiltAngle);
 
-    // Draw the petal using helper
-    drawTulipPetal(ctx, petalH, petalW, depthFactor, pLightness, pWavyOffset, colorLUT);
+    drawLilyPetal(ctx, petalH, petalW, depthFactor, pLightness, colorLUT);
 
     ctx.restore();
   }
 
-  // Stamen — rich center with color-matched pollen
-  var stR = Math.min(255, rrWarm + 60);
-  var stG = Math.min(255, ggWarm + 40);
-  var stB = Math.min(255, bbWarm + 20);
-  var stGrad = ctx.createRadialGradient(cx, headCy, 0, cx, headCy, headR * 0.14);
-  stGrad.addColorStop(0, 'rgba(' + stR + ',' + stG + ',' + stB + ',0.95)');
-  stGrad.addColorStop(0.4, 'rgba(' + Math.min(255,rrWarm+20) + ',' + Math.min(255,ggWarm+10) + ',' + bbWarm + ',0.7)');
-  stGrad.addColorStop(1, 'rgba(' + rrWarm + ',' + ggWarm + ',' + bbWarm + ',0.3)');
-  ctx.fillStyle = stGrad;
+  // ── Stamens (6) ──
+  for (var s = 0; s < 6; s++) {
+    var sa = (s / 6) * Math.PI * 2 - Math.PI / 2;
+    var sLen = headR * (0.45 + Math.random() * 0.15);
+    ctx.strokeStyle = '#5a7a3a';
+    ctx.lineWidth = size * 0.012;
+    ctx.beginPath();
+    ctx.moveTo(cx, headCy);
+    ctx.quadraticCurveTo(
+      cx + Math.cos(sa) * sLen * 0.5 + (Math.random() - 0.5) * headR * 0.1,
+      headCy + Math.sin(sa) * sLen * 0.5,
+      cx + Math.cos(sa) * sLen,
+      headCy + Math.sin(sa) * sLen
+    );
+    ctx.stroke();
+
+    // Anther (dot at tip of stamen)
+    var ax = cx + Math.cos(sa) * sLen;
+    var ay = headCy + Math.sin(sa) * sLen;
+    ctx.fillStyle = '#c8a040';
+    ctx.beginPath();
+    ctx.arc(ax, ay, size * 0.018, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // ── Central pistil (longer than stamens) ──
+  var pistilLen = headR * 0.65;
+  ctx.strokeStyle = '#6a9a4a';
+  ctx.lineWidth = size * 0.018;
   ctx.beginPath();
-  ctx.arc(cx, headCy, headR * 0.12, 0, Math.PI * 2);
+  ctx.moveTo(cx, headCy);
+  ctx.lineTo(cx, headCy - pistilLen);
+  ctx.stroke();
+  // Stigma (top of pistil)
+  ctx.fillStyle = '#7aaa5a';
+  ctx.beginPath();
+  ctx.arc(cx, headCy - pistilLen, size * 0.022, 0, Math.PI * 2);
   ctx.fill();
 
-  // Pollen dots
-  for (var d = 0; d < 5; d++) {
-    var da = Math.random() * Math.PI * 2;
-    var dr = Math.random() * headR * 0.06;
-    ctx.fillStyle = 'rgba(' + stR + ',' + stG + ',' + stB + ',' + (0.4 + Math.random() * 0.4) + ')';
+  // ── Spots/freckles on inner petals ──
+  for (var f = 0; f < 8; f++) {
+    var fx = cx + (Math.random() - 0.5) * headR * 0.4;
+    var fy = headCy + (Math.random() - 0.5) * headR * 0.4;
+    ctx.fillStyle = 'rgba(80, 40, 20, ' + (0.2 + Math.random() * 0.3) + ')';
     ctx.beginPath();
-    ctx.arc(cx + Math.cos(da) * dr, headCy + Math.sin(da) * dr, headR * 0.015, 0, Math.PI * 2);
+    ctx.arc(fx, fy, size * (0.006 + Math.random() * 0.008), 0, Math.PI * 2);
     ctx.fill();
   }
 
   return c;
 }
 
-function createTulips(scene, count) {
+function createLilies(scene, count) {
   var colors = [
-    '#e84040',  // vivid red
-    '#d41a1a',  // deep red
-    '#e03050',  // crimson
-    '#c830a0',  // magenta
-    '#c040b0',  // orchid
-    '#9040d0',  // purple
-    '#a030c0',  // violet
+    '#f0f0f0',  // white
+    '#e8e0e0',  // cream
     '#f05090',  // pink
     '#d03070',  // rose
-    '#f08080',  // light salmon
-    '#e8a0c0',  // pale pink
-    '#e87020',  // red-orange
+    '#e87020',  // orange
     '#f06030',  // coral
-    '#e05020',  // vermillion
+    '#f0a080',  // peach
+    '#f08080',  // salmon
+    '#e8a0c0',  // pale pink
+    '#d05080',  // deep pink
+    '#e07050',  // red-orange
+    '#c0a080',  // warm cream
   ];
   for (var i = 0; i < count; i++) {
     var color = colors[Math.floor(Math.random() * colors.length)];
-    var isOpen = Math.random() > 0.5; // 50% cup, 50% open
-    var cachedCanvas = getCachedTulip(color, isOpen);
+    var variant = Math.floor(Math.random() * 3); // 0=closed, 1=half, 2=open
+    var cachedCanvas = getCachedLily(color, variant);
     var tex = new THREE.CanvasTexture(cachedCanvas);
-    // Mobile: larger scale so tulips are clearly visible
     var s = isMobile ? (0.8 + Math.random() * 0.6) : (0.6 + Math.random() * 0.6);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    // Wider aspect ratio so tulips don't disappear at small scales
     sprite.scale.set(1.0 * s, 1.6 * s, 1);
     var spreadX = isMobile ? 10 : 14;
     var spreadZ = isMobile ? 6 : 8;
-    // Higher Y on mobile so tulips sit in visible viewport area
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
       isMobile ? -0.1 + s * 0.35 : -0.5 + s * 0.3,
@@ -1062,7 +1062,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var starCount = fullStarCount;
   var noteCount       = isLowEnd ? 10 : 15;
   var sunflowerCount  = isLowEnd ? 3 : 8;
-  var tulipCount      = isLowEnd ? 2 : 4;
+  var lilyCount      = isLowEnd ? 2 : 4;
   var waveSegs        = isLowEnd ? 16 : 32;
 
   // Phase 1 (immediate): Stars (reduced), moon, waves — enough for first frame
@@ -1084,7 +1084,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Phase 2 (after 300ms): Flowers, flute, music notes
   setTimeout(function() {
     createSunflowers(scene.scene, sunflowerCount);
-    createTulips(scene.scene, tulipCount);
+    createLilies(scene.scene, lilyCount);
     createFlute(scene.scene);
     createMusicNotes(scene.scene, noteCount);
   }, 300);
