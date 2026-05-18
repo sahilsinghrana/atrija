@@ -100,29 +100,52 @@ src/
   content/
     siteData.json    — Themes, colors, facts, quotes (structured data)
     content.json     — Section text content (updated by cron)
+    changelog/       — Date-based changelog files (YYYY-MM-DD.json + index.json)
   layouts/
-    BaseLayout.astro — Global layout, CSS, HTML shell, flute button, moon container
+    BaseLayout.astro — Global layout, HTML shell, flute button, critical CSS
   pages/
-    index.astro      — Main page, all sections, uses both content files
+    index.astro      — Main page, data-driven sections, uses both content files
 public/
-  js/
-    scene-init.js    — Three.js scene (stars, moon, sunflowers, tulips, flute, waves, notes)
-  images/
-    moon.svg, sunflowers.svg, tulips.svg, flute.svg, stars.svg, waves.svg
   css/
+    main.css         — All design tokens, layout, components (cached 1yr immutable)
     loader.css       — Loading screen styles
-  assets/            — Generated assets
+  js/
+    scene-init.js    — Three.js scene (stars, moon, sunflowers, lilies, flute, waves, notes)
+    changelog-app.js — Changelog UI (lazy-loaded date cards)
+    moon-phase.js    — ASCII moon art + shadow phase animation
+    quote-carousel.js— Quote carousel auto-rotation
+    loader-progress.js — Loader progress bar
 .hermes/
   kanban.json        — Idea board for TDD workflow
+  refactoring-plan.md — Refactoring audit and plan
 scripts/
   daily-mutate.js    — Daily color/content mutation (updates siteData.json + content.json)
   daily-deploy.sh    — Full mutation → build → deploy pipeline
-  kanban-generate.sh — [DEPRECATED] Replaced by pure agent cron job
 ```
 
----
+## CSS Architecture
+- **Critical above-fold CSS**: Inline in BaseLayout.astro (body bg, canvas-container bg)
+- **Main stylesheet**: `public/css/main.css` — all design tokens, layout, components, responsive
+- **Loader stylesheet**: `public/css/loader.css` — loading screen
+- **Cache strategy**: main.css served with `Cache-Control: max-age=31536000, immutable` (filename hashed by Vite for bundled assets; main.css in public/ uses query string versioning)
 
-## Changelog Architecture
+## Three.js Scene (scene-init.js)
+- Stars: 2500 desktop / 1500 mobile, custom twinkling shader with size + brightness oscillation
+- Moon: Slow orbit + self-rotation, glow effect
+- Sunflowers & Lilies: Billboard sprites with canvas textures
+- Flute: Click spawns music notes globally (no audio)
+- Music notes: 30 desktop / 25 mobile, floating sprites
+- Waves: GLSL shader, 32×32 segments desktop / 16×16 mobile
+- **No post-processing**: Direct `renderer.render()` — no EffectComposer, no Van Gogh/glitch shaders
+- Init runs as IIFE — no DOMContentLoaded wrapper, no client:idle directive
+
+## Section Architecture (index.astro)
+- 5 content sections generated from data-driven loop (`sections` array in frontmatter)
+- Each section has: id, key, image, carousel flag
+- Sections with carousel (moon, philosophy, gita): quote-carousel with auto-rotation
+- Sections without carousel (shiva, art): single quote-block
+- All section content comes from `content.json` via `sec[key]`
+- All facts/quotes come from `siteData.json` via theme/quote indices
 
 Changelog entries are stored as **date-based files** in `src/content/changelog/` (copied to `public/changelog/` for static serving):
 

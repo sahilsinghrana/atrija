@@ -143,6 +143,26 @@
 
 ---
 
-## Execution Order
-Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5
+## Status: ✅ COMPLETE (2026-05-20)
+
+## Final Results
+
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| BaseLayout.astro | 1,155 lines / 42KB | 184 lines / 9.5KB | -84% |
+| index.astro | 598 lines / 42KB | 178 lines / 7.6KB | -70% |
+| scene-init.js | 1,122 lines / 47KB | 1,066 lines / 43KB | -5% |
+| HTML output (inline CSS) | ~45KB CSS in HTML | ~2KB CSS in HTML | -95% |
+| Shader passes per frame | 2 (Van Gogh + Glitch) | 0 | -100% |
+| Dead code files | 21 files (~22KB) | 0 | -100% |
+| `content-visibility` | Already present | Confirmed ✓ | — |
+| Module preloads | 1 (scene-init.js) | 3 (Three.js CDN + scene-init.js + main.css) | +200% |
+| `client:idle` on scene | Yes (bug) | Removed ✓ | Fixed |
+| Data-driven sections | 5× duplicated blocks | 1 loop ✓ | -80% template |
+
+## Commits
+- `41c9762` — Phase 1: Remove post-processing, fix client:idle, remove dead audio
+- `5f7ab5b` — Phase 2: Remove dead code (21 files)
+- `79a3ce5` — Phase 3: Extract CSS/JS to external files
+- `a06eadf` — Phase 4+5: Data-driven sections, modulepreload, optimizations
 Commit after each phase. Build + deploy after Phase 1, 3, 4, 5.
