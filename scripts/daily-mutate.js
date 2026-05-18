@@ -109,9 +109,13 @@ function updateAllSections(content, siteData, dayOfYear) {
     updatedSections.push({ sectionKey, themeIndex, factIndex, theme: theme.title });
   });
 
-  // Today's heading: rephrased using the same theme
-  const todayTheme = siteData.themes[sectionThemeMap.art]; // Art & Beauty for today
-  content.sections.today.heading = `What the <em>${todayTheme.title.split(' ')[0]}</em> whispers today`;
+  // Today's heading: rotate emphasis word by day of year
+  const headingThemes = ['moon', 'philosophy', 'gita', 'shiva', 'art'];
+  const headingVerbs = ['reveals', 'conceals', 'teaches', 'dissolves', 'whispers'];
+  const headingThemeKey = headingThemes[dayOfYear % headingThemes.length];
+  const headingVerb = headingVerbs[dayOfYear % headingVerbs.length];
+  const headingThemeTitle = siteData.themes[sectionThemeMap[headingThemeKey]].title.split(' ')[0];
+  content.sections.today.heading = `What the <em>${headingThemeTitle}</em> ${headingVerb} today`;
 
   return updatedSections;
 }
