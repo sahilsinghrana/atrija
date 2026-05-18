@@ -15,11 +15,8 @@ const todayColor = siteData.colorSchemes[colorIndex];
 const todayFact = todayTheme.facts[dayOfYear % todayTheme.facts.length];
 const todayQuote = todayTheme.quotes[dayOfYear % todayTheme.quotes.length];
 
-// Use content.json changelog for version only — entries loaded client-side from /changelog/
 const changelogSource = content.changelog || siteData.changelog;
 const changelogVersion = changelogSource.version;
-
-// Section text from content.json — edit this file to update all text content
 const sec = content.sections;
 
 const colorData = JSON.stringify({
@@ -30,6 +27,15 @@ const colorData = JSON.stringify({
   text: todayColor.text,
   shader: todayColor.shaderParams
 });
+
+// Section configuration — data-driven generation
+const sections = [
+  { id: 'moon', key: 'moon', image: '/images/moon.svg', carousel: true },
+  { id: 'philosophy', key: 'philosophy', image: '/images/waves.svg', carousel: true },
+  { id: 'gita', key: 'gita', image: '/images/stars.svg', carousel: true },
+  { id: 'shiva', key: 'shiva', image: '/images/flute.svg', carousel: false },
+  { id: 'art', key: 'art', image: '/images/sunflowers.svg', carousel: false },
+];
 ---
 
 <BaseLayout>
@@ -82,168 +88,55 @@ const colorData = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════
-       I. THE MOON — SELENE
+       CONTENT SECTIONS (data-driven)
   ═══════════════════════════════════════ -->
-  <section id="moon" class="section">
-    <div class="section-inner">
-      <div class="section-label reveal-left">{sec.moon.label}</div>
-      <h2 class="reveal" set:html={sec.moon.heading}></h2>
-      <p class="reveal">{sec.moon.intro}</p>
-      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/moon.svg')">
-        <div class="card-bg"></div>
-        <div class="card-content">
-          <p>{siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex].text}</p>
-          <div class="source">{siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex].source}</div>
+  {sections.map((s) => {
+    const data = sec[s.key];
+    const imgFact = siteData.themes[data.imageCard.themeIndex].facts[data.imageCard.factIndex];
+    const quoteTheme = siteData.themes[data.quote.themeIndex];
+    return (
+    <section id={s.id} class="section">
+      <div class="section-inner">
+        <div class="section-label reveal-left">{data.label}</div>
+        <h2 class="reveal" set:html={data.heading}></h2>
+        <p class="reveal">{data.intro}</p>
+        <div class="image-card reveal-scale" style={`--card-bg-image: url('${s.image}')`}>
+          <div class="card-bg"></div>
+          <div class="card-content">
+            <p>{imgFact.text}</p>
+            <div class="source">{imgFact.source}</div>
+          </div>
         </div>
-      </div>
-      <div class="fact-card reveal">
-        <p>{siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex].text}</p>
-        <div class="source">{siteData.themes[sec.moon.imageCard.themeIndex].facts[sec.moon.imageCard.factIndex].source}</div>
-      </div>
-      <div class="quote-carousel reveal" data-theme-index={sec.moon.quote.themeIndex}>
-        <div class="quote-carousel-inner">
-          {siteData.themes[sec.moon.quote.themeIndex].quotes.map((q: any, i: number) => (
-            <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
-              <div class="quote-block">
-                <p>{q}</p>
+        <div class="fact-card reveal">
+          <p>{imgFact.text}</p>
+          <div class="source">{imgFact.source}</div>
+        </div>
+        {s.carousel ? (
+        <div class="quote-carousel reveal" data-theme-index={data.quote.themeIndex}>
+          <div class="quote-carousel-inner">
+            {quoteTheme.quotes.map((q: any, i: number) => (
+              <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
+                <div class="quote-block">
+                  <p>{q}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div class="quote-dots">
+            {quoteTheme.quotes.map((_q: any, i: number) => (
+              <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
+            ))}
+          </div>
         </div>
-        <div class="quote-dots">
-          {siteData.themes[sec.moon.quote.themeIndex].quotes.map((_q: any, i: number) => (
-            <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
-          ))}
+        ) : (
+        <div class="quote-block reveal">
+          <p>{quoteTheme.quotes[data.quote.quoteIndex]}</p>
         </div>
+        )}
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       II. THE WAVES — EGO & ARROGANCE
-  ═══════════════════════════════════════ -->
-  <section id="philosophy" class="section">
-    <div class="section-inner">
-      <div class="section-label reveal-left">{sec.philosophy.label}</div>
-      <h2 class="reveal" set:html={sec.philosophy.heading}></h2>
-      <p class="reveal">{sec.philosophy.intro}</p>
-      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/waves.svg')">
-        <div class="card-bg"></div>
-        <div class="card-content">
-          <p>{siteData.themes[sec.philosophy.imageCard.themeIndex].facts[sec.philosophy.imageCard.factIndex].text}</p>
-          <div class="source">{siteData.themes[sec.philosophy.imageCard.themeIndex].facts[sec.philosophy.imageCard.factIndex].source}</div>
-        </div>
-      </div>
-      <div class="fact-card reveal">
-        <p>{siteData.themes[sec.philosophy.imageCard.themeIndex].facts[sec.philosophy.imageCard.factIndex].text}</p>
-        <div class="source">{siteData.themes[sec.philosophy.imageCard.themeIndex].facts[sec.philosophy.imageCard.factIndex].source}</div>
-      </div>
-      <div class="quote-carousel reveal" data-theme-index={sec.philosophy.quote.themeIndex}>
-        <div class="quote-carousel-inner">
-          {siteData.themes[sec.philosophy.quote.themeIndex].quotes.map((q: any, i: number) => (
-            <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
-              <div class="quote-block">
-                <p>{q}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div class="quote-dots">
-          {siteData.themes[sec.philosophy.quote.themeIndex].quotes.map((_q: any, i: number) => (
-            <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       III. THE BATTLEFIELD — BHAGAVAD GITA
-  ═══════════════════════════════════════ -->
-  <section id="gita" class="section">
-    <div class="section-inner">
-      <div class="section-label reveal-left">{sec.gita.label}</div>
-      <h2 class="reveal" set:html={sec.gita.heading}></h2>
-      <p class="reveal">{sec.gita.intro}</p>
-      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/stars.svg')">
-        <div class="card-bg"></div>
-        <div class="card-content">
-          <p>{siteData.themes[sec.gita.imageCard.themeIndex].facts[sec.gita.imageCard.factIndex].text}</p>
-          <div class="source">{siteData.themes[sec.gita.imageCard.themeIndex].facts[sec.gita.imageCard.factIndex].source}</div>
-        </div>
-      </div>
-      <div class="fact-card reveal">
-        <p>{siteData.themes[sec.gita.imageCard.themeIndex].facts[sec.gita.imageCard.factIndex].text}</p>
-        <div class="source">{siteData.themes[sec.gita.imageCard.themeIndex].facts[sec.gita.imageCard.factIndex].source}</div>
-      </div>
-      <div class="quote-carousel reveal" data-theme-index={sec.gita.quote.themeIndex}>
-        <div class="quote-carousel-inner">
-          {siteData.themes[sec.gita.quote.themeIndex].quotes.map((q: any, i: number) => (
-            <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
-              <div class="quote-block">
-                <p>{q}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div class="quote-dots">
-          {siteData.themes[sec.gita.quote.themeIndex].quotes.map((_q: any, i: number) => (
-            <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       IV. THE DANCE — SHIV PURANA
-  ═══════════════════════════════════════ -->
-  <section id="shiva" class="section">
-    <div class="section-inner">
-      <div class="section-label reveal-left">{sec.shiva.label}</div>
-      <h2 class="reveal" set:html={sec.shiva.heading}></h2>
-      <p class="reveal">{sec.shiva.intro}</p>
-      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/flute.svg')">
-        <div class="card-bg"></div>
-        <div class="card-content">
-          <p>{siteData.themes[sec.shiva.imageCard.themeIndex].facts[sec.shiva.imageCard.factIndex].text}</p>
-          <div class="source">{siteData.themes[sec.shiva.imageCard.themeIndex].facts[sec.shiva.imageCard.factIndex].source}</div>
-        </div>
-      </div>
-      <div class="fact-card reveal">
-        <p>{siteData.themes[sec.shiva.imageCard.themeIndex].facts[sec.shiva.imageCard.factIndex].text}</p>
-        <div class="source">{siteData.themes[sec.shiva.imageCard.themeIndex].facts[sec.shiva.imageCard.factIndex].source}</div>
-      </div>
-      <div class="quote-block reveal">
-        <p>{siteData.themes[sec.shiva.quote.themeIndex].quotes[sec.shiva.quote.quoteIndex]}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       V. THE CANVAS — ART & BEAUTY
-  ═══════════════════════════════════════ -->
-  <section id="art" class="section">
-    <div class="section-inner">
-      <div class="section-label reveal-left">{sec.art.label}</div>
-      <h2 class="reveal" set:html={sec.art.heading}></h2>
-      <p class="reveal">{sec.art.intro}</p>
-      <div class="image-card reveal-scale" style="--card-bg-image: url('/images/sunflowers.svg')">
-        <div class="card-bg"></div>
-        <div class="card-content">
-          <p>{siteData.themes[sec.art.imageCard.themeIndex].facts[sec.art.imageCard.factIndex].text}</p>
-          <div class="source">{siteData.themes[sec.art.imageCard.themeIndex].facts[sec.art.imageCard.factIndex].source}</div>
-        </div>
-      </div>
-      <div class="fact-card reveal">
-        <p>{siteData.themes[sec.art.imageCard.themeIndex].facts[sec.art.imageCard.factIndex].text}</p>
-        <div class="source">{siteData.themes[sec.art.imageCard.themeIndex].facts[sec.art.imageCard.factIndex].source}</div>
-      </div>
-      <div class="quote-block reveal">
-        <p>{siteData.themes[sec.art.quote.themeIndex].quotes[sec.art.quote.quoteIndex]}</p>
-      </div>
-    </div>
-  </section>
+    </section>
+    );
+  })}
 
   <!-- ═══════════════════════════════════════
        CHANGELOG
@@ -280,9 +173,6 @@ const colorData = JSON.stringify({
     })();
   </script>
   <script type="module" src="/js/scene-init.js?v=BUILD_VERSION"></script>
-
-
-
   <script type="module" src="/js/moon-phase.js"></script>
 
 </BaseLayout>
