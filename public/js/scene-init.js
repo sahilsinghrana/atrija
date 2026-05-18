@@ -86,6 +86,93 @@ void main(){
 var waveVS = `uniform float uTime;uniform float uWaveHeight;uniform float uWaveFrequency;varying vec2 vUv;varying float vElevation;void main(){vUv=uv;vec3 pos=position;float w1=sin(pos.x*uWaveFrequency+uTime)*uWaveHeight;float w2=sin(pos.z*uWaveFrequency*0.7+uTime*1.3)*uWaveHeight*0.5;pos.y+=w1+w2;vElevation=w1+w2;gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.0);}`;
 var waveFS = `uniform vec3 uColor1;uniform vec3 uColor2;uniform vec3 uColor3;varying vec2 vUv;varying float vElevation;void main(){float f=(vElevation+1.0)*0.5;vec3 color=mix(uColor1,uColor2,f);color=mix(color,uColor3,smoothstep(0.6,1.0,f));gl_FragColor=vec4(color,0.85);}`;
 
+// ── Real Moon Phase Calculation ──
+// Based on Jean Meeus's Astronomical Algorithms, simplified
+function getMoonPhase(date) {
+  date = date || new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var a = Math.floor((14 - month) / 12);
+  var y = year + 4800 - a;
+  var m = month + 12 * a - 3;
+  var jd = day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+  var daysSinceNew = jd - 2451549.5;
+  var synodicMonth = 29.53058868;
+  var phase = ((daysSinceNew % synodicMonth) + synodicMonth) % synodicMonth;
+  var phaseFraction = phase / synodicMonth;
+  return { phase: phase, fraction: phaseFraction, age: phase, illumination: (1 - Math.cos(phaseFraction * 2 * Math.PI)) / 2 };
+}
+function getMoonPhaseName(fraction) {
+  if (fraction < 0.0625) return 'New Moon';
+  if (fraction < 0.1875) return 'Waxing Crescent';
+  if (fraction < 0.3125) return 'First Quarter';
+  if (fraction < 0.4375) return 'Waxing Gibbous';
+  if (fraction < 0.5625) return 'Full Moon';
+  if (fraction < 0.6875) return 'Waning Gibbous';
+  if (fraction < 0.8125) return 'Last Quarter';
+  if (fraction < 0.9375) return 'Waning Crescent';
+  return 'New Moon';
+}
+function getMoonEmoji(fraction) {
+  if (fraction < 0.0625) return '\u{1F311}';
+  if (fraction < 0.1875) return '\u{1F312}';
+  if (fraction < 0.3125) return '\u{1F313}';
+  if (fraction < 0.4375) return '\u{1F314}';
+  if (fraction < 0.5625) return '\u{1F315}';
+  if (fraction < 0.6875) return '\u{1F316}';
+  if (fraction < 0.8125) return '\u{1F317}';
+  if (fraction < 0.9375) return '\u{1F318}';
+  return '\u{1F311}';
+}
+
+// ── Firefly Shaders ──
+var fireflyVS = `
+attribute float phase; attribute float pulseSpeed;
+uniform float uTime; uniform float uSize;
+varying float vPulse;
+void main() {
+  float pulse = 0.4 + 0.6 * sin(uTime * pulseSpeed + phase);
+  vPulse = pulse;
+  vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+  gl_PointSize = uSize * pulse * (200.0 / -mvPosition.z);
+  gl_Position = projectionMatrix * mvPosition;
+}`;
+var fireflyFS = `
+varying float vPulse;
+void main() {
+  float dist = length(gl_PointCoord - vec2(0.5));
+  if (dist > 0.5) discard;
+  float core = smoothstep(0.15, 0.0, dist);
+  float glow = exp(-dist * 4.0) * 0.5;
+  vec3 color = vec3(1.0, 0.85, 0.4);
+  float alpha = (core + glow) * vPulse * 0.7;
+  if (alpha < 0.01) discard;
+  gl_FragColor = vec4(color, alpha);
+}`;
+
+// ── Painting Reveal Shader ──
+var paintingRevealVS = `
+varying vec2 vUv;
+varying float vWorldY;
+void main() {
+  vUv = uv;
+  vWorldY = (modelMatrix * vec4(position, 1.0)).y;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}`;
+var paintingRevealFS = `
+uniform sampler2D uTexture;
+uniform float uRevealProgress;
+varying vec2 vUv;
+void main() {
+  float band = floor(vUv.y * 20.0);
+  float bandThreshold = (band + 1.0) / 20.0;
+  float noiseOffset = sin(vUv.x * 50.0 + band * 3.7) * 0.03;
+  float reveal = smoothstep(bandThreshold + noiseOffset - 0.05, bandThreshold + noiseOffset, uRevealProgress);
+  vec4 texColor = texture2D(uTexture, vUv);
+  gl_FragColor = vec4(texColor.rgb, texColor.a * reveal);
+}`;
+
 // ── Scene Manager ──
 class VanGoghScene {
   constructor(c) {
@@ -167,6 +254,7 @@ class VanGoghScene {
       if (o.userData.animate) o.userData.animate(o, t, dt);
     }
     if (this.shootingStarManager) this.shootingStarManager.update(t, dt);
+    updatePaintingReveal(this);
     this.composer.render();
   }
 }
@@ -641,6 +729,300 @@ function createWaves(scene, segs) {
 }
 
 // ═══════════════════════════════════════
+// 3D CYPRESS TREE SILHOUETTES
+// ═══════════════════════════════════════
+function makeCypressShape() {
+  var s = new THREE.Shape();
+  s.moveTo(0, 0);
+  s.bezierCurveTo(0.25, 0.3, 0.3, 0.8, 0.2, 1.5);
+  s.bezierCurveTo(0.35, 2.0, 0.3, 2.8, 0.15, 3.5);
+  s.bezierCurveTo(0.2, 4.0, 0.1, 4.5, 0.0, 5.0);
+  s.bezierCurveTo(-0.1, 4.5, -0.2, 4.0, -0.15, 3.5);
+  s.bezierCurveTo(-0.3, 2.8, -0.35, 2.0, -0.2, 1.5);
+  s.bezierCurveTo(-0.3, 0.8, -0.25, 0.3, 0, 0);
+  return s;
+}
+
+function createCypressTrees(scene, count) {
+  var shape = makeCypressShape();
+  var extrudeSettings = { depth: 0.15, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.03, bevelSegments: isLowEnd ? 1 : 2 };
+  var geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+  var mat = new THREE.MeshBasicMaterial({ color: 0x0a0a12, side: THREE.DoubleSide, depthWrite: false });
+  var trees = [];
+  var positions = [
+    { x: -10, z: 2, s: 1.3 },
+    { x: -8, z: -1, s: 1.0 },
+    { x: 10, z: 2, s: 1.2 },
+    { x: 8, z: -1, s: 0.9 },
+    { x: -4, z: -3, s: 1.1 }
+  ];
+  for (var i = 0; i < count && i < positions.length; i++) {
+    var p = positions[i];
+    var mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(p.x, -1.5, p.z);
+    mesh.scale.setScalar(p.s);
+    mesh.renderOrder = -1;
+    var phase = Math.random() * Math.PI * 2;
+    var baseRotZ = (Math.random() - 0.5) * 0.04;
+    (function(ph, br) {
+      mesh.userData.animate = function(o, t) {
+        o.rotation.z = br + Math.sin(t * 0.3 + ph) * 0.03;
+        o.rotation.y = scrollState.current * 0.01 * 0.5;
+        if (!isLowEnd) {
+          var pos = o.geometry.attributes.position;
+          if (pos && !o.userData._basePos) o.userData._basePos = new Float32Array(pos.array);
+          if (pos && o.userData._basePos) {
+            var bp = o.userData._basePos;
+            for (var v = 0; v < pos.count; v += 5) {
+              var by = bp[v * 3 + 1];
+              if (by > 1.0) {
+                pos.array[v * 3] = bp[v * 3] + Math.sin(t * 0.5 + bp[v * 3] * 2) * 0.02 * (by / 5.0);
+              }
+            }
+            pos.needsUpdate = true;
+          }
+        }
+      };
+    })(phase, baseRotZ);
+    scene.add(mesh);
+    trees.push(mesh);
+  }
+  scene.userData._cypressTrees = trees;
+}
+
+// ═══════════════════════════════════════
+// INTERACTIVE FIREFLY SWARM
+// ═══════════════════════════════════════
+function createFireflies(scene, count) {
+  var positions = new Float32Array(count * 3);
+  var phases = new Float32Array(count);
+  var pulseSpeeds = new Float32Array(count);
+  var basePositions = new Float32Array(count * 3);
+  var velocities = [];
+  for (var i = 0; i < count; i++) {
+    var x = (Math.random() - 0.5) * 24;
+    var y = -1 + Math.random() * 7;
+    var z = -5 + Math.random() * 13;
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
+    basePositions[i * 3] = x;
+    basePositions[i * 3 + 1] = y;
+    basePositions[i * 3 + 2] = z;
+    phases[i] = Math.random() * Math.PI * 2;
+    pulseSpeeds[i] = 1.0 + Math.random() * 2.0;
+    velocities.push({ x: 0, y: 0, z: 0 });
+  }
+  var geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('phase', new THREE.BufferAttribute(phases, 1));
+  geo.setAttribute('pulseSpeed', new THREE.BufferAttribute(pulseSpeeds, 1));
+  var size = isMobile ? 5.0 : 8.0;
+  var mat = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uSize: { value: size } },
+    vertexShader: fireflyVS, fragmentShader: fireflyFS,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  });
+  var points = new THREE.Points(geo, mat);
+  points.userData._fireflyData = { count: count, basePositions: basePositions, velocities: velocities, mouseNDC: { x: 999, y: 999 } };
+  points.userData.animate = function(o, t) {
+    var d = o.userData._fireflyData;
+    var pos = o.geometry.attributes.position.array;
+    var mouse = scene.userData._mouseNDC || { x: 999, y: 999 };
+    var cam = scene.userData._camera || { position: { x: 0, y: 2, z: 8 } };
+    for (var i = 0; i < d.count; i++) {
+      if (isMobile && i % 2 === t % 2) continue;
+      var vel = d.velocities[i];
+      vel.x += (Math.random() - 0.5) * 0.002;
+      vel.y += (Math.random() - 0.5) * 0.001;
+      vel.z += (Math.random() - 0.5) * 0.002;
+      vel.x *= 0.98; vel.y *= 0.98; vel.z *= 0.98;
+      pos[i * 3] += vel.x;
+      pos[i * 3 + 1] += vel.y;
+      pos[i * 3 + 2] += vel.z;
+      var bx = d.basePositions[i * 3], by = d.basePositions[i * 3 + 1], bz = d.basePositions[i * 3 + 2];
+      var dx = pos[i * 3] - bx, dy = pos[i * 3 + 1] - by, dz = pos[i * 3 + 2] - bz;
+      var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      if (dist > 5) { pos[i * 3] = bx; pos[i * 3 + 1] = by; pos[i * 3 + 2] = bz; vel.x = 0; vel.y = 0; vel.z = 0; }
+      if (mouse.x < 900) {
+        var fx = pos[i * 3], fy = pos[i * 3 + 1];
+        var mdx = fx - mouse.x * 10, mdy = fy - mouse.y * 8;
+        var mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mDist < 3.0 && mDist > 0.01) {
+          vel.x += (mdx / mDist) * 0.05;
+          vel.y += (mdy / mDist) * 0.05;
+        }
+      }
+    }
+    o.geometry.attributes.position.needsUpdate = true;
+    o.material.uniforms.uTime.value = t;
+  };
+  scene.add(points);
+  scene.userData._fireflies = points;
+}
+
+// ═══════════════════════════════════════
+// SCROLL-DRIVEN PAINTING REVEAL
+// ═══════════════════════════════════════
+function createPaintingReveal(scene, camera) {
+  var width = isMobile ? 10 : 14;
+  var height = isMobile ? 7 : 10;
+  var segs = isLowEnd ? 10 : 20;
+  var geo = new THREE.PlaneGeometry(width, height, 1, segs);
+  var url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/' + (isMobile ? '800' : '1280') + 'px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg';
+  var texture = new THREE.TextureLoader().load(url);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.minFilter = THREE.LinearFilter;
+  var mat = new THREE.ShaderMaterial({
+    uniforms: { uTexture: { value: texture }, uRevealProgress: { value: 0.0 } },
+    vertexShader: paintingRevealVS, fragmentShader: paintingRevealFS,
+    transparent: true, depthWrite: false
+  });
+  var plane = new THREE.Mesh(geo, mat);
+  plane.position.set(0, 1.5, -15);
+  plane.visible = true;
+  scene.add(plane);
+  scene.userData._paintingPlane = plane;
+  scene.userData._paintingRevealState = { section: null, progress: 0 };
+}
+
+function updatePaintingReveal(scene) {
+  var state = scene.userData._paintingRevealState;
+  if (!state || !state.section) {
+    state.section = document.getElementById('painting-reveal');
+    if (!state.section) return;
+  }
+  var rect = state.section.getBoundingClientRect();
+  var vh = window.innerHeight;
+  var raw = (vh - rect.top) / (vh + rect.height);
+  var progress = Math.max(0, Math.min(1, raw));
+  progress = progress * progress * (3 - 2 * progress);
+  state.progress = progress;
+  var plane = scene.userData._paintingPlane;
+  if (plane && plane.material.uniforms) {
+    plane.material.uniforms.uRevealProgress.value = progress;
+  }
+}
+
+// ═══════════════════════════════════════
+// INTERACTIVE CONSTELLATION DRAWING
+// ═══════════════════════════════════════
+function initConstellationInteraction(vanGoghScene) {
+  var scene = vanGoghScene.scene;
+  var camera = vanGoghScene.camera;
+  var renderer = vanGoghScene.renderer;
+  var raycaster = new THREE.Raycaster();
+  raycaster.params.Points.threshold = 2.0;
+  var mouse = new THREE.Vector2();
+  var selectedStars = [];
+  var userLines = [];
+  var lineMat = new THREE.LineBasicMaterial({ color: 0x88aaff, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
+  var hint = document.createElement('div');
+  hint.id = 'constellation-hint';
+  hint.textContent = '✦ Tap stars to connect them';
+  hint.style.cssText = 'position:fixed;bottom:6rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-family:Inter,sans-serif;font-size:0.8rem;letter-spacing:0.05em;pointer-events:none;transition:opacity 1s;white-space:nowrap;';
+  document.body.appendChild(hint);
+  function hideHint() { hint.style.opacity = '0'; setTimeout(function() { hint.remove(); }, 1000); }
+  function createHighlightTexture() {
+    var c = document.createElement('canvas'); c.width = 32; c.height = 32;
+    var ctx = c.getContext('2d');
+    var g = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    g.addColorStop(0, 'rgba(255,220,100,1)'); g.addColorStop(0.5, 'rgba(255,200,80,0.4)'); g.addColorStop(1, 'rgba(255,180,50,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, 32, 32);
+    return new THREE.CanvasTexture(c);
+  }
+  var hlTexture = createHighlightTexture();
+  function onPointerDown(e) {
+    var x = e.clientX || (e.touches && e.touches[0].clientX);
+    var y = e.clientY || (e.touches && e.touches[0].clientY);
+    if (!x || !y) return;
+    mouse.x = (x / window.innerWidth) * 2 - 1;
+    mouse.y = -(y / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    var starObjects = [];
+    scene.traverse(function(obj) { if (obj.isPoints && obj.geometry && obj.geometry.attributes.size) starObjects.push(obj); });
+    var intersects = raycaster.intersectObjects(starObjects);
+    if (intersects.length > 0) {
+      var hit = intersects[0];
+      var starPos = hit.point.clone();
+      var alreadySelected = false;
+      for (var i = 0; i < selectedStars.length; i++) {
+        if (selectedStars[i].distanceTo(starPos) < 1.5) { alreadySelected = true; break; }
+      }
+      if (!alreadySelected) {
+        selectedStars.push(starPos);
+        var hlSprite = new THREE.Sprite(new THREE.SpriteMaterial({ color: 0xffdd88, transparent: true, opacity: 0.8, map: hlTexture, depthWrite: false }));
+        hlSprite.position.copy(starPos);
+        hlSprite.scale.set(2, 2, 1);
+        hlSprite.userData.isHighlight = true;
+        scene.add(hlSprite);
+        if (selectedStars.length >= 2) {
+          var lineGeo = new THREE.BufferGeometry().setFromPoints([selectedStars[selectedStars.length - 2], selectedStars[selectedStars.length - 1]]);
+          var line = new THREE.Line(lineGeo, lineMat.clone());
+          line.userData.isUserLine = true;
+          line.userData.createdAt = Date.now();
+          scene.add(line);
+          userLines.push(line);
+          line.material.opacity = 0;
+          var fadeStart = Date.now();
+          (function(l) {
+            l.userData.animate = function(o) {
+              var elapsed = (Date.now() - fadeStart) / 1000;
+              o.material.opacity = Math.min(0.6, elapsed * 2);
+              if (Date.now() - l.userData.createdAt > 30000) {
+                o.material.opacity = Math.max(0, 0.6 - (Date.now() - l.userData.createdAt - 30000) / 5000);
+              }
+            };
+          })(line);
+          saveConstellations(userLines);
+        }
+        if (selectedStars.length === 2) hideHint();
+        if (selectedStars.length >= 6) { setTimeout(function() { clearUserLines(); }, 5000); }
+      }
+    }
+  }
+  function clearUserLines() {
+    for (var i = userLines.length - 1; i >= 0; i--) {
+      scene.remove(userLines[i]); userLines[i].geometry.dispose(); userLines[i].material.dispose();
+    }
+    userLines = []; selectedStars = [];
+    var toRemove = [];
+    scene.traverse(function(obj) { if (obj.userData.isHighlight) toRemove.push(obj); });
+    toRemove.forEach(function(obj) { scene.remove(obj); });
+    localStorage.removeItem('atrija-constellations');
+  }
+  renderer.domElement.addEventListener('pointerdown', onPointerDown);
+  renderer.domElement.addEventListener('touchstart', onPointerDown, { passive: true });
+  var saved = loadConstellations();
+  if (saved && saved.length > 0 && scene.userData._cypressTrees) {
+    for (var i = 0; i < saved.length; i++) {
+      var d = saved[i];
+      var lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(d.x1, d.y1, d.z1), new THREE.Vector3(d.x2, d.y2, d.z2)]);
+      var line = new THREE.Line(lineGeo, lineMat.clone());
+      line.userData.isUserLine = true;
+      line.userData.createdAt = Date.now() - 10000;
+      scene.add(line);
+      userLines.push(line);
+    }
+  }
+}
+
+function saveConstellations(lines) {
+  try {
+    var data = [];
+    for (var i = 0; i < lines.length; i++) {
+      var positions = lines[i].geometry.attributes.position.array;
+      data.push({ x1: positions[0], y1: positions[1], z1: positions[2], x2: positions[3], y2: positions[4], z2: positions[5] });
+    }
+    localStorage.setItem('atrija-constellations', JSON.stringify(data));
+  } catch(e) {}
+}
+
+function loadConstellations() {
+  try { return JSON.parse(localStorage.getItem('atrija-constellations') || '[]'); } catch(e) { return []; }
+}
+
+// ═══════════════════════════════════════
 // CLICK → FLUTE + NOTES
 // ═══════════════════════════════════════
 function spawnNotesBurst(cx, cy, count) {
@@ -687,6 +1069,8 @@ function spawnNotesBurst(cx, cy, count) {
   createStars(scene.scene, starCount);
   createMoon(scene.scene);
   createWaves(scene.scene, waveSegs);
+  createCypressTrees(scene.scene, isLowEnd ? 2 : 5);
+  createPaintingReveal(scene.scene, scene.camera);
   if (window.__updateLoaderProgress) window.__updateLoaderProgress(60);
   requestAnimationFrame(function() {
     if (window.__updateLoaderProgress) window.__updateLoaderProgress(90);
@@ -699,15 +1083,35 @@ function spawnNotesBurst(cx, cy, count) {
     createLilies(scene.scene, lilyCount);
     createFlute(scene.scene);
     createMusicNotes(scene.scene, noteCount);
+    createFireflies(scene.scene, isLowEnd ? 15 : (isMobile ? 20 : 40));
   }, 300);
   if (!isLowEnd) {
     setTimeout(function() {
       createConstellations(scene.scene);
       scene.shootingStarManager = createShootingStars(scene.scene, isMobile ? 1 : 2);
+      initConstellationInteraction(scene);
     }, 800);
   } else {
     setTimeout(function() { createConstellations(scene.scene); }, 800);
   }
+  // Moon phase label
+  var phaseLabel = document.getElementById('moon-phase-label');
+  if (phaseLabel) {
+    var mp = getMoonPhase();
+    phaseLabel.innerHTML = getMoonEmoji(mp.fraction) + ' ' + getMoonPhaseName(mp.fraction) + ' \u00b7 ' + Math.round(mp.illumination * 100) + '% illuminated';
+  }
+  // Mouse tracking for fireflies
+  scene.scene.userData._mouseNDC = { x: 999, y: 999 };
+  window.addEventListener('mousemove', function(e) {
+    scene.scene.userData._mouseNDC.x = (e.clientX / window.innerWidth) * 2 - 1;
+    scene.scene.userData._mouseNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  });
+  window.addEventListener('touchmove', function(e) {
+    if (e.touches && e.touches[0]) {
+      scene.scene.userData._mouseNDC.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+      scene.scene.userData._mouseNDC.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+    }
+  }, { passive: true });
   document.addEventListener('click', function(e) {
     var tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
     if (tag === 'a' || tag === 'button' || tag === 'input' || tag === 'textarea' || tag === 'select') return;

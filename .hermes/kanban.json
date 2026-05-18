@@ -42,7 +42,7 @@
       "description": "Users can click stars to draw constellation lines. Lines glow and fade. Store in localStorage.",
       "category": "Interactivity",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-002-constellation-drawing.md"
     },
     {
@@ -51,7 +51,7 @@
       "description": "Replace calculated moon phase with real astronomical data. Show accurate phase for current date.",
       "category": "Data",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-003-moon-phase.md"
     },
     {
@@ -78,7 +78,7 @@
       "description": "Auto-rotating quote cards with fade transitions. Each quote tied to current section's visual element.",
       "category": "UI",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-006-quote-carousel.md"
     },
     {
@@ -96,7 +96,7 @@
       "description": "Use Hermes agent to generate new philosophy facts weekly. Store in siteData.json via cron job.",
       "category": "Content",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-008-weekly-facts.md"
     },
     {
@@ -213,7 +213,7 @@
       "description": "Interactive gallery section showcasing Van Gogh's famous paintings with lazy-loaded images from Wikimedia Commons, themed descriptions, and swipe navigation.",
       "category": "Content",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-021-painting-gallery.md"
     },
     {
@@ -222,7 +222,7 @@
       "description": "Custom cursor that leaves painterly brushstroke trails using Canvas 2D particle system. Colors sampled from current theme palette. Respects prefers-reduced-motion.",
       "category": "Shaders",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-022-brushstroke-cursor.md"
     },
     {
@@ -249,7 +249,7 @@
       "description": "Tall, dark cypress tree silhouettes rendered as Three.js ExtrudeGeometry that sway gently in the background, evoking Van Gogh's iconic Starry Night cypresses. 5 trees on desktop, 2 on mobile. MeshBasicMaterial for zero lighting cost. Integrates with existing parallax scroll system.",
       "category": "3D Elements",
       "priority": "high",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-026-cypress-silhouettes.md"
     },
     {
@@ -258,7 +258,7 @@
       "description": "A swarm of 3D firefly points (40 desktop, 20 mobile) that drift organically using damped random walk velocity fields. Each firefly pulses with warm golden light via custom shader. Fireflies scatter away from mouse cursor within 3-unit radius and slowly return. Additive blending for ethereal glow.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-027-firefly-swarm.md"
     },
     {
@@ -267,7 +267,7 @@
       "description": "A large Van Gogh painting (loaded from Wikimedia Commons) displayed on a Three.js PlaneGeometry that progressively reveals based on scroll position. Custom shader divides the image into horizontal bands with slight horizontal variation for organic reveal. 150vh scroll section drives the effect.",
       "category": "Interactivity",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-028-painting-reveal.md"
     },
     {
