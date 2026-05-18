@@ -174,11 +174,13 @@ src/content/changelog/
 - The website reads changelog from `content.json` at build time (imported by index.astro)
 | Job | Schedule | Purpose |
 |-----|----------|---------|
-| `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build |
-| `van-gogh-kanban-generate` | 2 AM daily | Generate ideas, advance TDD pipeline |
-| `van-gogh-daily-mutate` | 6 AM daily | Content mutation (siteData + content.json) → build → deploy |
-| `van-gogh-background-implement` | 3AM/4PM daily | Implement kanban tasks via TDD |
-| `van-gogh-daily-deploy` | PAUSED | Redundant — merged into daily-mutate |
+| `van-gogh-kanban-generate` | 2 AM daily | Generate ideas + PRDs (full code review first) |
+| `van-gogh-kanban-review` | 3 AM daily | Review all PRDs for quality, feasibility, design alignment |
+| `van-gogh-background-implement` | 3AM + 4PM daily | Implement kanban tasks via TDD |
+| `van-gogh-implementation-review` | 6AM + 7PM daily | Verify completed implementations (3h after implement) |
+| `van-gogh-daily-mutate` | 6 AM daily | Content mutation → build → deploy |
+| `van-gogh-daily-deploy` | 6 AM daily | Backup deploy (only if mutate hasn't deployed in 1h) |
+| `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build + changelog |
 
 **IMPORTANT**: All cron jobs are pure Hermes agent prompts. Do NOT call `hermes agent` subprocesses or shell scripts from within cron jobs — this causes libuv assertion crashes on Cybertron Linux. Do all work directly using file tools.
 
