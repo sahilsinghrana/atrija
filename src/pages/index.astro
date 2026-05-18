@@ -431,7 +431,7 @@ const colorData = JSON.stringify({
       (window as any).__VG_SHADER = c.shader;
     })();
   </script>
-  <script type="module" src="/js/scene-init.js?v=BUILD_VERSION" client:idle></script>
+  <script type="module" src="/js/scene-init.js?v=BUILD_VERSION"></script>
 
   <!-- ── ASCII Moon: Galileo spacecraft photo art + shadow phase animation ── -->
   <style>
@@ -544,55 +544,6 @@ const colorData = JSON.stringify({
 
       requestAnimationFrame(animateMoon);
     })();
-  </script>
-
-  <!-- ── Ambient Audio: scroll listener + toggle logic ── -->
-  <script is:inline>
-  (function() {
-    var toggle = document.getElementById('audio-toggle');
-    var isPlaying = false;
-
-    toggle.addEventListener('click', function() {
-      if (!window.AmbientAudio) return;
-      if (!isPlaying) {
-        AmbientAudio.init();
-        AmbientAudio.start();
-        toggle.textContent = '🔊';
-        toggle.style.color = 'rgba(255,215,79,0.9)';
-        toggle.style.borderColor = 'rgba(255,215,79,0.4)';
-        isPlaying = true;
-      } else {
-        AmbientAudio.stop();
-        toggle.textContent = '🔇';
-        toggle.style.color = 'rgba(255,255,255,0.6)';
-        toggle.style.borderColor = 'rgba(255,255,255,0.15)';
-        isPlaying = false;
-      }
-    });
-
-    // Scroll depth → audio brightness
-    var ticking = false;
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(function() {
-          var scrollH = document.documentElement.scrollHeight - window.innerHeight;
-          var depth = scrollH > 0 ? window.scrollY / scrollH : 0;
-          if (window.AmbientAudio) AmbientAudio.setScrollDepth(depth);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-
-    // Pause on tab hidden
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden && isPlaying && window.AmbientAudio) {
-        AmbientAudio.stop();
-      } else if (!document.hidden && isPlaying && window.AmbientAudio) {
-        AmbientAudio.start();
-      }
-    });
-  })();
   </script>
 
 </BaseLayout>
