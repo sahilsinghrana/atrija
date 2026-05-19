@@ -254,6 +254,20 @@
           "Section \"art\": Art & Beauty theme, fact #2"
         ],
         "date": "2026-05-19"
+      },
+      {
+        "time": "16:09:00",
+        "type": "feature",
+        "description": "Theme color scheme switcher — visitors can manually switch between 5 impressionist color schemes",
+        "changes": [
+          "Added theme-switcher.js — self-contained IIFE module with 5 color schemes",
+          "Floating palette button (bottom-left) with popup panel",
+          "Color scheme pills with preview swatches and emoji icons",
+          "Persists user selection in localStorage, falls back to daily default",
+          "Accessible: ARIA roles, keyboard navigation, Escape to close",
+          "Mobile-responsive layout"
+        ],
+        "date": "2026-05-19"
       }
     ]
   }
