@@ -278,8 +278,8 @@ function createMoon(scene) {
   }
   geo.computeVertexNormals();
   var moonMat = new THREE.MeshStandardMaterial({
-    color: 0xffffff, emissive: 0xeeeecc, emissiveIntensity: 0.4,
-    roughness: 0.4, metalness: 0.05
+    color: 0xffffff, emissive: 0x554820, emissiveIntensity: 0.5,
+    roughness: 0.7, metalness: 0.1
   });
   var moon = new THREE.Mesh(geo, moonMat);
   moon.userData.animate = function(o, t) {
@@ -292,7 +292,7 @@ function createMoon(scene) {
   moonGroup.add(moon);
 
   var glowGeo = new THREE.SphereGeometry(1.75, 32, 32);
-  var glowMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.06, side: THREE.BackSide, depthWrite: false });
+  var glowMat = new THREE.MeshBasicMaterial({ color: 0xfff5d0, transparent: true, opacity: 0.06, side: THREE.BackSide, depthWrite: false });
   var glow = new THREE.Mesh(glowGeo, glowMat);
   glow.userData.animate = function(o, t) {
     o.position.x = Math.sin(t * 0.08) * 4;
@@ -303,7 +303,7 @@ function createMoon(scene) {
   moonGroup.add(glow);
 
   var haloGeo = new THREE.SphereGeometry(2.2, 24, 24);
-  var haloMat = new THREE.MeshBasicMaterial({ color: 0xffffdd, transparent: true, opacity: 0.03, side: THREE.BackSide, depthWrite: false });
+  var haloMat = new THREE.MeshBasicMaterial({ color: 0xfff8e0, transparent: true, opacity: 0.03, side: THREE.BackSide, depthWrite: false });
   var halo = new THREE.Mesh(haloGeo, haloMat);
   halo.userData.animate = function(o, t) {
     o.position.x = Math.sin(t * 0.08) * 4;
