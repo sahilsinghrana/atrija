@@ -887,8 +887,9 @@ function createPaintingReveal(scene, camera) {
 }
 
 function updatePaintingReveal(scene) {
+  if (!scene.userData._paintingRevealState) return;
   var state = scene.userData._paintingRevealState;
-  if (!state || !state.section) {
+  if (!state.section) {
     state.section = document.getElementById('painting-reveal');
     if (!state.section) return;
   }
