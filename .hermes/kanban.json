@@ -105,7 +105,7 @@
       "description": "Astro-native loading optimizations: client:idle hydration, inline critical CSS, modulepreload, progressive 3D layers, content-visibility, SVG compression, Nginx caching+gzip, reduced geometry, loader progress bar. v2 PRD with Astro-compatible patterns.",
       "category": "Performance",
       "priority": "high",
-      "status": "done",
+      "status": "refactor",
       "prd": "PRD-idea-009-loading-optimizations.md"
     },
     {
@@ -204,7 +204,7 @@
       "description": "The sky subtly rotates and shifts based on scroll position. Stars at different depths move at different speeds. Moon rises as you scroll. Background color shifts with scroll.",
       "category": "Interactivity",
       "priority": "high",
-      "status": "done",
+      "status": "refactor",
       "prd": "PRD-idea-020-scroll-driven-sky.md"
     },
     {

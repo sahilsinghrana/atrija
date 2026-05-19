@@ -2,7 +2,7 @@
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
     "version": "1.5.0",
-    "lastUpdated": "2026-05-18",
+    "lastUpdated": "2026-05-19",
     "updatedBy": "AI Agent (daily-mutate)"
   },
   "sections": {
@@ -15,16 +15,16 @@
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "The Moon's gravitational pull creates the tides, but it also subtly affects the water within our bodies. We are, in a very real sense, lunar beings — creatures of the tide.",
+      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas — the emotional mind — and its phases mirror the cycles of human desire and detachment.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 1
+        "factIndex": 5
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          2,
-          4
+          7,
+          9
         ]
       },
       "quote": {
@@ -35,10 +35,10 @@
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "In the ocean of existence, arrogance is a wave that believes it is separate from the sea. It rises, it crashes, and it returns — never having been anything but water.",
+      "intro": "The Dunning-Kruger effect reveals that the least competent are often the most confident, while the truly skilled doubt themselves. Arrogance is not a sign of ability — it is a sign of ignorance about the depth of one's own ignorance.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 6
+        "factIndex": 3
       },
       "facts": {
         "themeIndex": 1,
@@ -49,42 +49,42 @@
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 2
+        "quoteIndex": 4
       }
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "Krishna describes three paths to liberation: Karma Yoga (selfless action), Jnana Yoga (knowledge), and Bhakti Yoga (devotion). The Gita does not prescribe one path — it honors all three as valid ways to the divine.",
+      "intro": "'Whenever dharma declines and the purpose of life is forgotten, I manifest myself.' The Gita teaches that the divine does not abandon the world — it returns, again and again, to restore balance.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 4
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 2,
         "slice": [
-          2,
-          4
+          7,
+          9
         ]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 3
+        "quoteIndex": 1
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "In the Shiv Purana, Shiva is described as Nirguna — without attributes, without form, without beginning or end. He is not a god among gods but the ground of being itself, the silence between notes.",
+      "intro": "Shiva is called Mahakala — the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 4
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 3,
         "slice": [
-          5,
-          7
+          7,
+          9
         ]
       },
       "quote": {
@@ -95,21 +95,21 @@
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "The flute is the oldest instrument — a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
+      "intro": "A star field is a reminder of scale. Every point of light is a sun, perhaps with planets, perhaps with life. The universe is not indifferent — it is generous beyond comprehension.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 0
+        "factIndex": 6
       },
       "facts": {
         "themeIndex": 4,
         "slice": [
-          4,
-          6
+          0,
+          2
         ]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 0
+        "quoteIndex": 2
       }
     }
   },
@@ -227,6 +227,33 @@
           "Section \"art\": Art & Beauty theme, fact #3"
         ],
         "date": "2026-05-18"
+      },
+      {
+        "time": "16:15:00",
+        "type": "feature",
+        "description": "Shooting stars — random celestial streaks with fading trails, every 3-7 seconds",
+        "changes": [
+          "Added createShootingStars() with particle trail system",
+          "Object pooling for performance",
+          "Mobile: 1 star max, 12 trail particles; Desktop: 2 stars, 20 trail particles",
+          "30 unit tests covering all shooting star functionality"
+        ],
+        "date": "2026-05-18"
+      },
+      {
+        "time": "00:37:20",
+        "type": "daily-mutation",
+        "description": "Daily mutation #139: moonlit-silver colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: moonlit-silver (serene)",
+          "Shader — strokeDensity: 4.7, swirlFrequency: 13, colorIntensity: 1.18",
+          "Section \"moon\": Selene & The Moon theme, fact #1",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #8",
+          "Section \"gita\": Bhagavad Gita theme, fact #6",
+          "Section \"shiva\": Shiv Purana theme, fact #6",
+          "Section \"art\": Art & Beauty theme, fact #2"
+        ],
+        "date": "2026-05-19"
       }
     ]
   }
