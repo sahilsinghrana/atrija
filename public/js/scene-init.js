@@ -1124,7 +1124,7 @@ function spawnNotesBurst(cx, cy, count) {
   } catch(e) {
     console.error('Scene init error:', e);
     var errEl = document.getElementById('scene-error-msg');
-    if (errEl) errEl.textContent = e.message || String(e);
+    if (errEl) errEl.textContent = (e.message || String(e)) + ' | ' + (e.stack || '').split('\n').slice(0,3).join(' → ');
     var errBox = document.getElementById('scene-error');
     if (errBox) errBox.style.display = 'block';
   }
