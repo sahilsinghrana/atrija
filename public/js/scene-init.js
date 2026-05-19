@@ -1055,6 +1055,7 @@ function spawnNotesBurst(cx, cy, count) {
 // INIT
 // ═══════════════════════════════════════
 (function() {
+  try {
   var c = document.getElementById('canvas-container');
   if (!c) return;
   if (typeof _parallaxObserver !== 'undefined') _parallaxObserver.observe(c);
@@ -1119,4 +1120,5 @@ function spawnNotesBurst(cx, cy, count) {
     spawnNotesBurst(e.clientX, e.clientY, isMobile ? 8 : 6);
   });
   window.addEventListener('orientationchange', function() { setTimeout(function() { scene.onResize(); }, 200); });
+  } catch(e) { console.error('Scene init error:', e); }
 })();

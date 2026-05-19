@@ -36,9 +36,15 @@ const { title = "अत्रिज", description = "An impressionist journey th
       if (bar) bar.style.width = '100%';
       var l = document.getElementById('loader');
       if (l) l.classList.add('hidden');
+      // Show error hint if scene didn't load
+      var s = document.getElementById('scene-error');
+      if (s) s.style.display = 'block';
     }, 6000);
   })();
   </script>
+  <div id="scene-error" style="display:none;position:fixed;bottom:1rem;left:1rem;z-index:99999;background:rgba(255,0,0,0.15);color:#ff8a80;padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:sans-serif;max-width:80vw;">
+    ⚠️ 3D scene failed to load. <button onclick="location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.2rem 0.5rem;border-radius:4px;cursor:pointer;margin-left:0.5rem;">Reload</button>
+  </div>
   <style>
     body, #canvas-container {
       background: linear-gradient(180deg, #0a0a1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0a1a 100%);
