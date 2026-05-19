@@ -47,6 +47,58 @@ git push origin master
 
 ### 5. Never Reboot the System
 
+### 6. Cron Job Safety Rules (CRITICAL FOR ALL AUTONOMOUS AGENTS)
+
+**These rules apply to ALL cron jobs and autonomous agents working on this project.**
+
+#### 6a. scene-init.js is SACRED
+- **NEVER modify `public/js/scene-init.js`** unless explicitly instructed by the user
+- This file contains the entire Three.js scene: stars, moon, sunflowers, lilies, music notes, waves, fireflies, cypress trees, painting reveal, post-processing shaders
+- If you break this file, the entire 3D scene breaks
+- If you need to make changes: create a backup first (`cp public/js/scene-init.js public/js/scene-init.js.bak`), then make minimal targeted changes, then test with `npm run build`
+
+#### 6b. Never Revert to Old Commits
+- **NEVER run `git revert`, `git reset --hard`, or `git checkout <old-commit>`** unless explicitly instructed
+- Previous sessions have broken things by reverting to old commits that removed features
+- If something is broken, fix it forward — don't revert
+
+#### 6c. Never Remove Post-Processing Shaders
+- The EffectComposer pipeline (Van Gogh + Glitch passes) provides the layered/painted visual effect
+- **NEVER remove or disable these shaders** — they are the core visual identity of the site
+- If shaders cause issues on specific devices, add graceful fallbacks instead of removing them
+
+#### 6d. Never Convert Three.js to SVG or Canvas
+- Three.js 3D elements must remain as Three.js — never convert to SVG, Canvas 2D, or static images
+- The 3D scene is the primary feature of this website
+
+#### 6e. Content-Only Mutations for Daily Cron
+- The `van-gogh-daily-mutate` job should ONLY modify:
+  - `src/content/siteData.json` (facts, quotes, color schemes)
+  - `src/content/content.json` (section text, imageCard refs, fact refs)
+  - `src/content/changelog/` (changelog entries)
+- **NEVER modify `scene-init.js`, `BaseLayout.astro`, `index.astro`, or any JS/CSS files** from the daily-mutate cron
+
+#### 6f. Background Implementer Constraints
+- The `van-gogh-background-implement` job should ONLY implement tasks from the kanban backlog
+- **NEVER implement tasks that modify `scene-init.js`** unless the task was explicitly created and approved by the user
+- Before implementing any task that touches `public/js/`, verify with: `git log --oneline -5 -- public/js/scene-init.js` to understand recent changes
+- Always run `npm run build` after any code change and verify it succeeds before deploying
+
+#### 6g. Git Pull Build Safety
+- The `van-gogh-git-pull-build` job should ALWAYS `git stash` before pulling, then `git stash pop` after
+- If there are conflicts, DO NOT force-resolve — abort and notify the user
+- After pulling, always run `npm run build` to verify the build still works
+
+#### 6h. Verify Before Deploying
+- After ANY code change, run: `npm run build` and verify exit code is 0
+- After building, verify: `curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8080/` returns 200
+- If build fails, DO NOT deploy — fix the issue first
+
+#### 6i. Kanban Generate Constraints
+- The `van-gogh-kanban-generate` job should ONLY add new ideas to the backlog
+- **NEVER auto-implement ideas** — implementation requires user approval
+- New ideas should be well-scoped and not conflict with existing features
+
 ---
 
 ## Project Overview
