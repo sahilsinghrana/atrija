@@ -254,7 +254,7 @@ class VanGoghScene {
       if (o.userData.animate) o.userData.animate(o, t, dt);
     }
     if (this.shootingStarManager) this.shootingStarManager.update(t, dt);
-    updatePaintingReveal(this);
+    updatePaintingReveal(this.scene);
     this.composer.render();
   }
 }
@@ -1120,5 +1120,11 @@ function spawnNotesBurst(cx, cy, count) {
     spawnNotesBurst(e.clientX, e.clientY, isMobile ? 8 : 6);
   });
   window.addEventListener('orientationchange', function() { setTimeout(function() { scene.onResize(); }, 200); });
-  } catch(e) { console.error('Scene init error:', e); }
+  } catch(e) {
+    console.error('Scene init error:', e);
+    var errEl = document.getElementById('scene-error-msg');
+    if (errEl) errEl.textContent = e.message || String(e);
+    var errBox = document.getElementById('scene-error');
+    if (errBox) errBox.style.display = 'block';
+  }
 })();

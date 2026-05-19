@@ -43,7 +43,8 @@ const { title = "अत्रिज", description = "An impressionist journey th
   })();
   </script>
   <div id="scene-error" style="display:none;position:fixed;bottom:1rem;left:1rem;z-index:99999;background:rgba(255,0,0,0.15);color:#ff8a80;padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:sans-serif;max-width:80vw;">
-    ⚠️ 3D scene failed to load. <button onclick="location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.2rem 0.5rem;border-radius:4px;cursor:pointer;margin-left:0.5rem;">Reload</button>
+    ⚠️ 3D scene failed to load: <span id="scene-error-msg" style="font-family:monospace;font-size:0.75rem;"></span>
+    <button onclick="location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.2rem 0.5rem;border-radius:4px;cursor:pointer;margin-left:0.5rem;">Reload</button>
   </div>
   <style>
     body, #canvas-container {
