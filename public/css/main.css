@@ -995,8 +995,6 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      font-size: clamp(3px, 0.55vw, 5.5px);
-      line-height: 1.15;
       margin: 0;
       padding: 0;
       width: 100%;
@@ -1017,9 +1015,5 @@
         width: clamp(150px, 52vw, 220px);
         height: clamp(150px, 52vw, 220px);
         margin-bottom: 0.5rem;
-      }
-      #asciiMoon {
-        font-size: clamp(2.5px, 0.7vw, 3.5px);
-        line-height: 1.1;
       }
     }

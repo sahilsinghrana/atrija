@@ -1130,6 +1130,7 @@ function spawnNotesBurst(cx, cy, count) {
   window.addEventListener('orientationchange', function() { setTimeout(function() { scene.onResize(); }, 200); });
   } catch(e) {
     console.error('Scene init error:', e);
+    if (window.__sceneFailed) window.__sceneFailed((e.message || String(e)) + ' | ' + (e.stack || '').split('\n').slice(0,3).join(' → '));
     var errEl = document.getElementById('scene-error-msg');
     if (errEl) errEl.textContent = (e.message || String(e)) + ' | ' + (e.stack || '').split('\n').slice(0,3).join(' → ');
     var errBox = document.getElementById('scene-error');
