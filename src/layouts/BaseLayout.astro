@@ -28,18 +28,33 @@ const { title = "अत्रिज", description = "An impressionist journey th
       if (fakeProgress > 85) { fakeProgress = 85; clearInterval(fakeInterval); }
       if (bar) bar.style.width = fakeProgress + '%';
     }, 300);
-    // Hide loader when scene signals ready, or after 6s timeout
+    // Hide loader when scene signals ready, or after 12s timeout
     window.__sceneLoadingStarted = function() { clearInterval(fakeInterval); };
     window.__updateLoaderProgress = function(pct) { if (bar) bar.style.width = pct + '%'; };
+    window.__sceneReady = function() {
+      clearInterval(fakeInterval);
+      if (bar) bar.style.width = '100%';
+      var l = document.getElementById('loader');
+      if (l) l.classList.add('hidden');
+    };
+    window.__sceneFailed = function(msg) {
+      clearInterval(fakeInterval);
+      var s = document.getElementById('scene-error');
+      var sm = document.getElementById('scene-error-msg');
+      if (sm) sm.textContent = msg;
+      if (s) s.style.display = 'block';
+    };
     setTimeout(function() {
       clearInterval(fakeInterval);
       if (bar) bar.style.width = '100%';
       var l = document.getElementById('loader');
       if (l) l.classList.add('hidden');
-      // Show error hint if scene didn't load
-      var s = document.getElementById('scene-error');
-      if (s) s.style.display = 'block';
-    }, 6000);
+      // Only show error if scene didn't signal ready
+      if (!window.__sceneLoaded) {
+        var s = document.getElementById('scene-error');
+        if (s) s.style.display = 'block';
+      }
+    }, 12000);
   })();
   </script>
   <div id="scene-error" style="display:none;position:fixed;bottom:1rem;left:1rem;z-index:99999;background:rgba(255,0,0,0.15);color:#ff8a80;padding:0.5rem 1rem;border-radius:8px;font-size:0.8rem;font-family:sans-serif;max-width:80vw;">

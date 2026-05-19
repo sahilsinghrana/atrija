@@ -1063,7 +1063,7 @@ function spawnNotesBurst(cx, cy, count) {
 (function() {
   try {
   var c = document.getElementById('canvas-container');
-  if (!c) return;
+  if (!c) { if (window.__sceneFailed) window.__sceneFailed('No canvas container'); return; }
   if (typeof _parallaxObserver !== 'undefined') _parallaxObserver.observe(c);
   var scene = new VanGoghScene(c);
   if (window.__sceneLoadingStarted) window.__sceneLoadingStarted();
@@ -1084,6 +1084,8 @@ function spawnNotesBurst(cx, cy, count) {
     var l = document.getElementById('loader');
     if (l) l.classList.add('hidden');
     if (window.__updateLoaderProgress) window.__updateLoaderProgress(100);
+    window.__sceneLoaded = true;
+    if (window.__sceneReady) window.__sceneReady();
   });
   setTimeout(function() {
     createSunflowers(scene.scene, sunflowerCount);

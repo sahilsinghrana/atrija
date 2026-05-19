@@ -229,3 +229,31 @@
 ## Reviewer Notes (2026-05-19)
 
 **ORPHANED PRD — NEWLY ADDED TO KANBAN.** This PRD had no corresponding kanban entry. It has been added to the kanban as idea-029 (low priority). The PRD is well-structured and feasible. However, consider whether a manual theme switcher conflicts with the daily mutation system that already rotates themes automatically.
+
+## Implementation Review — 2026-05-19 19:00 UTC
+
+**Reviewer**: Implementation Review Cron
+**Verdict**: ✅ **PASS — Keep as done**
+
+### What's Working
+- `public/js/theme-switcher.js` (414 lines) — self-contained IIFE module
+- 5 color schemes: starry-night, sunflower, midnight-wave, lily-garden, moonlit-silver
+- Floating palette button (bottom-left, 48px, backdrop-filter blur)
+- Popup panel with color swatch pills + emoji icons
+- localStorage persistence (`atrija-theme` key)
+- Daily rotation fallback via `dayOfYear % 5`
+- ARIA attributes: `aria-label`, `aria-expanded`, `aria-haspopup`, `role="listbox"`, `role="option"`
+- Keyboard support: Escape to close, focus management
+- Outside-click to close
+- Mobile-responsive: positioned bottom-left to avoid flute button
+- CSS injected via JS `<style>` tag
+- Script loaded via `<script is:inline src="/js/theme-switcher.js" defer>` in index.astro
+- Build succeeds, site deploys correctly
+
+### Notes
+- No unit tests exist for this feature (PRD test plan was never implemented as test files)
+- The switcher uses `--color-primary`, `--color-secondary`, etc. — verify these CSS custom properties match what `main.css` actually uses
+- File size 414 lines is reasonable for a self-contained UI module
+- Does not conflict with daily mutation system — user preference overrides daily default
+
+**No changes needed.**

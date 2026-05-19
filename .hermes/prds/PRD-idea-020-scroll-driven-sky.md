@@ -211,3 +211,20 @@ This feature modifies `public/js/scene-init.js` to add scroll-listener logic tha
 ### Priority Fix
 - Create a `starsGroup` Group, add all star layers to it, then add the group to the scene. Update parallax transform code to rotate `starsGroup` as a whole (or keep individual layer rotation — both work).
 ```
+
+## Implementation Review #2 — 2026-05-19 19:00 UTC
+
+**Reviewer**: Implementation Review Cron (2nd pass)
+**Verdict**: ⚠️ **Keep as refactor** — same 1 of 17 tests still failing, no new commits since last review.
+
+### Status Check
+- No new commits addressing the failing test since last review
+- 16 of 17 scroll-parallax tests pass ✅
+- Build succeeds ✅
+- Site deployed and responding (HTTP 200) ✅
+
+### Remaining Issue
+- **Missing `starsGroup`**: Code stores star layers as `scene.userData._starsNear/Mid/Far` and adds directly to scene. Test expects `var starsGroup = new THREE.Group(); starsGroup.add(starsNear); starsGroup.add(starsMid); starsGroup.add(starsFar); scene.add(starsGroup);`. Fix: create the Group wrapper and add all three layers to it.
+
+### Recommendation
+Single-line fix — the background-implement cron should resolve this quickly.
