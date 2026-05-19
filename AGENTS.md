@@ -24,10 +24,11 @@ cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 
 ### 2b. Cache Strategy
 - **HTML**: `no-cache` — always fresh, users see latest build immediately
-- **CSS/JS (bundled by Vite)**: 1 year immutable — filename hash changes on rebuild
-- **scene-init.js (public/)**: cache-busted via `?v=TIMESTAMP` on each deploy
+- **CSS/JS (bundled by Vite)**: 1 hour with must-revalidate — revalidates after 1hr
+- **scene-init.js (public/)**: cache-busted via `?v=TIMESTAMP` on each deploy (new URL = fresh fetch)
 - **Images/SVG**: 30 days
 - **JSON content**: 5 min (cron updates picked up quickly)
+- **Fonts**: 7 days
 - **Gzip**: enabled for HTML, CSS, JS, JSON, SVG
 
 ### 3. Git Commit Convention

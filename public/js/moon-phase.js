@@ -1,6 +1,5 @@
 (function() {
   // ── Detailed Moon ASCII Art ──
-  // Each line is exactly 100 chars wide, forming a filled circle
   var moonArt = [
     "                                                                                                    ",
     "                                                                                                    ",
@@ -111,33 +110,11 @@
     "                                                                                                    "
   ].join("\n");
 
-  var ART_WIDTH = 100;  // characters
-  var ART_HEIGHT = 110; // lines
-
   var moonEl = document.getElementById('asciiMoon');
   var shadow = document.getElementById('moonShadow');
-  var container = document.getElementById('moonContainer');
-  if (!moonEl || !shadow || !container) return;
+  if (!moonEl || !shadow) return;
 
   moonEl.textContent = moonArt;
-
-  // ── Dynamically size font to fit container ──
-  function fitMoonFont() {
-    var cw = container.clientWidth;
-    var ch = container.clientHeight;
-    if (cw <= 0 || ch <= 0) return;
-    // Monospace char aspect ratio is roughly 0.6 wide : 1 tall
-    var charW = cw / ART_WIDTH;
-    var charH = ch / ART_HEIGHT;
-    var fontSize = Math.min(charW / 0.6, charH);
-    // Clamp to reasonable range
-    fontSize = Math.max(1.5, Math.min(fontSize, 8));
-    moonEl.style.fontSize = fontSize.toFixed(2) + 'px';
-    moonEl.style.lineHeight = (fontSize * 1.05).toFixed(2) + 'px';
-  }
-
-  fitMoonFont();
-  window.addEventListener('resize', fitMoonFont);
 
   // ── Smooth rAF-based phase animation ──
   var lunarCycle = 29.53058867;
