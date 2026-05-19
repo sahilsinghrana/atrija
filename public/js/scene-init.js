@@ -255,7 +255,12 @@ class VanGoghScene {
     }
     if (this.shootingStarManager) this.shootingStarManager.update(t, dt);
     updatePaintingReveal(this.scene);
-    this.composer.render();
+    try {
+      this.composer.render();
+    } catch(e) {
+      // Fallback to direct render if composer fails
+      this.renderer.render(this.scene, this.camera);
+    }
   }
 }
 

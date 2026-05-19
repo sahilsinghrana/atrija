@@ -1,5 +1,6 @@
 (function() {
   // ── Detailed Moon ASCII Art ──
+  // Each line is exactly 100 chars wide, forming a filled circle
   var moonArt = [
     "                                                                                                    ",
     "                                                                                                    ",
