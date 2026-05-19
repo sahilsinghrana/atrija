@@ -14,4 +14,13 @@
   window.__sceneLoadingStarted = function() {
     clearInterval(fakeInterval);
   };
+  // Safety timeout: hide loader after 8s even if scene fails
+  setTimeout(function() {
+    clearInterval(fakeInterval);
+    if (bar) bar.style.width = '100%';
+    var l = document.getElementById('loader');
+    if (l && !l.classList.contains('hidden')) {
+      l.classList.add('hidden');
+    }
+  }, 8000);
 })();

@@ -3,6 +3,7 @@
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var canvas = document.getElementById('brushstroke-canvas');
   if (!canvas) return;
+  var isMobile = window.innerWidth < 768;
   var ctx = canvas.getContext('2d');
   var dpr = window.devicePixelRatio || 1;
   var particles = [];
