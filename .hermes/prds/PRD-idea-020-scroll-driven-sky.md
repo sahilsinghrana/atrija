@@ -3,7 +3,7 @@
 > **ID:** idea-020
 > **Category:** Interactivity
 > **Priority:** high
-> **Status:** done
+|> **Status:** refactor
 > **PRD Version:** 1.0
 > **Last Updated:** 2026-05-17
 
@@ -183,4 +183,31 @@ This feature modifies `public/js/scene-init.js` to add scroll-listener logic tha
     "Mobile intensity reduced to 60% for comfort"
   ]
 }
+
+---
+
+## Review Notes — 2026-05-19
+
+**Reviewer**: Implementation Review Cron
+**Verdict**: Sent back to `refactor` — 1 of 17 scroll-parallax tests failing.
+
+### What's Working ✅
+- `scrollState` object with `current`, `target`, `smooth` properties
+- Scroll event listener with passive flag
+- Scroll target clamped between 0 and 1 via `Math.min`/`Math.max`
+- Lerp interpolation: `scrollState.current += (scrollState.target - scrollState.current) * scrollState.smooth`
+- 3 star depth layers: `starsNear`, `starsMid`, `starsFar` (stored as `scene.userData._starsNear/Mid/Far`)
+- Per-layer parallax rotation rates via `parallaxConfig` object
+- Moon vertical movement based on scroll position
+- Background color interpolation based on scroll
+- Mobile optimization: 60% parallax intensity reduction, reduced star counts
+- Performance: scroll delta threshold (0.001), cached scrollMax with resize recalculation
+- `isLowEnd` mobile detection
+
+### Issue Found (1 Failing Test) ❌
+
+1. **Missing `starsGroup`** (test: `scroll-parallax` > `Star field depth layers` > `adds all star layers to a starsGroup`): Test expects a `starsGroup` THREE.Group that contains all three star layers via `starsGroup.add(starsNear)`, `starsGroup.add(starsMid)`, `starsGroup.add(starsFar)`. Current implementation stores star layers directly on `scene.userData._starsNear/Mid/Far` and adds them directly to the scene. Fix: create a `var starsGroup = new THREE.Group();` add all three layers to it, then `scene.add(starsGroup)`.
+
+### Priority Fix
+- Create a `starsGroup` Group, add all star layers to it, then add the group to the scene. Update parallax transform code to rotate `starsGroup` as a whole (or keep individual layer rotation — both work).
 ```
