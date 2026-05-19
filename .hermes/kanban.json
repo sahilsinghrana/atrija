@@ -276,7 +276,7 @@
       "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation — needs review before implementation.",
       "category": "UI",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-023-theme-switcher.md"
     },
     {
