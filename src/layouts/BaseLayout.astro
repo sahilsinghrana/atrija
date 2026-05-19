@@ -18,7 +18,27 @@ const { title = "अत्रिज", description = "An impressionist journey th
   <link rel="modulepreload" href="/js/scene-init.js" />
   <link rel="stylesheet" href="/css/loader.css" />
   <link rel="stylesheet" href="/css/main.css" />
-  <script is:inline src="/js/loader-progress.js?v=BUILD_VERSION"></script>
+  <script is:inline>
+  (function() {
+    var bar = document.getElementById('loader-progress-bar');
+    // Simulate progress while waiting
+    var fakeProgress = 0;
+    var fakeInterval = setInterval(function() {
+      fakeProgress += Math.random() * 15;
+      if (fakeProgress > 85) { fakeProgress = 85; clearInterval(fakeInterval); }
+      if (bar) bar.style.width = fakeProgress + '%';
+    }, 300);
+    // Hide loader when scene signals ready, or after 6s timeout
+    window.__sceneLoadingStarted = function() { clearInterval(fakeInterval); };
+    window.__updateLoaderProgress = function(pct) { if (bar) bar.style.width = pct + '%'; };
+    setTimeout(function() {
+      clearInterval(fakeInterval);
+      if (bar) bar.style.width = '100%';
+      var l = document.getElementById('loader');
+      if (l) l.classList.add('hidden');
+    }, 6000);
+  })();
+  </script>
   <style>
     body, #canvas-container {
       background: linear-gradient(180deg, #0a0a1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0a1a 100%);
