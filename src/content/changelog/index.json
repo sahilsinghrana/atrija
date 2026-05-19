@@ -1,8 +1,14 @@
 {
   "version": "1.6.0",
-  "lastUpdated": "2026-05-19T00:37:20.185Z",
-  "totalEntries": 18,
+  "lastUpdated": "2026-05-20T03:00:00Z",
+  "totalEntries": 19,
   "dates": [
+    {
+      "date": "2026-05-20",
+      "entries": 1,
+      "latestType": "feature",
+      "description": "Interactive Starry Night Painting Explorer — clickable hotspots with technique details, symbolism, and Van Gogh quotes"
+    },
     {
       "date": "2026-05-19",
       "entries": 1,

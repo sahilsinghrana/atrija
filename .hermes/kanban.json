@@ -302,7 +302,7 @@
       "title": "Dynamic Time-of-Day Atmosphere System",
       "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
       "category": "3D Elements",
-      "priority": "high",
+      "priority": "medium",
       "status": "backlog",
       "prd": "PRD-idea-032-time-of-day-atmosphere.md"
     },
@@ -311,8 +311,8 @@
       "title": "Interactive Starry Night Painting Explorer",
       "description": "A zoomable, interactive deep-dive into The Starry Night with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant Van Gogh quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
       "category": "Interactivity",
-      "priority": "high",
-      "status": "backlog",
+      "priority": "medium",
+      "status": "done",
       "prd": "PRD-idea-033-painting-explorer.md"
     },
     {
@@ -327,6 +327,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-20T02:00:00Z",
-  "lastReviewAt": "2026-05-20T02:00:00Z",
-  "lastReviewResult": "23 done verified, 2 refactor (unchanged), 2 cancelled, 5 backlog (2 pre-existing + 3 new)"
+  "lastReviewAt": "2026-05-20T03:00:00Z",
+  "lastReviewResult": "23 done verified, 2 refactor (unchanged), 2 cancelled, 5 backlog (all reviewed). 3 orphaned PRDs flagged for deletion. 2 priority changes (idea-032, idea-033 high→medium). All backlog PRDs quality-checked."
 }

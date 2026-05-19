@@ -230,3 +230,18 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-20)
+
+**Quality Check**: Well-structured PRD with good technical spec. The hotspot approach is clean and the progressive image loading is smart. Test plan covers key interactions.
+
+**Priority Adjustment**: Changed from high → medium. This is a content/education feature, not a core visual or performance feature. It's valuable but should not take priority over 3D scene improvements or performance work.
+
+**Design Alignment**: Excellent fit — deep-diving into The Starry Night's symbolism directly serves the site's educational mission. The hotspot panel approach keeps the painting itself unobstructed.
+
+**Feasibility**: No scene-init.js changes needed — this is a pure Astro component + vanilla JS. Low risk, high value. The zoom/pan implementation should use CSS transforms (GPU-accelerated) rather than canvas manipulation.
+
+**Scope Note**: This PRD overlaps conceptually with idea-021 (Painting Gallery Carousel) and idea-028 (Scroll-Driven Painting Reveal). Consider implementing all three as a unified "Van Gogh Art" section to avoid content fragmentation.
+

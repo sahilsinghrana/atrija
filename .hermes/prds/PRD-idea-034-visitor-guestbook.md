@@ -207,3 +207,19 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-20)
+
+**Quality Check**: PRD is well-structured with clear user stories, good technical spec, and solid test plan. The bridge pattern (`window.__guestbookAddText`) is the right approach for decoupling guestbook.js from scene-init.js.
+
+**Risk Flag**: The `scene-init.js` modification (Step 2) adds bridge functions. While minimal, any change to scene-init.js carries risk per AGENTS.md safety rules. Recommend:
+- Wrap bridge function setup in a try/catch
+- Ensure the bridge functions are truly optional (scene-init.js runs fine if guestbook.js never loads)
+- Consider an event-based pattern (CustomEvent) instead of global window functions for cleaner decoupling
+
+**Priority**: Medium is appropriate — nice community feature but not critical.
+
+**Dependencies**: Requires `scene-init.js` modification. Coordinate with any ongoing refactor work to avoid conflicts.
+
