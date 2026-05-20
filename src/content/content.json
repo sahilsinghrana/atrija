@@ -15,7 +15,7 @@
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "Ptolemy believed the Moon's influence caused tides, madness, and the cycles of life. While science has explained the tides, the Moon still governs the menstrual cycle, the migration of birds, and the spawning of coral — life itself dances to the Moon's rhythm.",
+      "intro": "Ptolemy believed the Moon's influence caused tides, madness, and the cycles of life. While science has explained the tides, the Moon still governs the menstrual cycle, the migration of birds, and the spawning of coral \u2014 life itself dances to the Moon's rhythm.",
       "imageCard": {
         "themeIndex": 0,
         "factIndex": 3
@@ -55,7 +55,7 @@
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "'Whenever dharma declines and the purpose of life is forgotten, I manifest myself.' The Gita teaches that the divine does not abandon the world — it returns, again and again, to restore balance.",
+      "intro": "'Whenever dharma declines and the purpose of life is forgotten, I manifest myself.' The Gita teaches that the divine does not abandon the world \u2014 it returns, again and again, to restore balance.",
       "imageCard": {
         "themeIndex": 2,
         "factIndex": 5
@@ -75,7 +75,7 @@
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "Shiva is called Mahakala — the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
+      "intro": "Shiva is called Mahakala \u2014 the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
       "imageCard": {
         "themeIndex": 3,
         "factIndex": 1
@@ -95,7 +95,7 @@
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "The flute is the oldest instrument — a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
+      "intro": "The flute is the oldest instrument \u2014 a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
       "imageCard": {
         "themeIndex": 4,
         "factIndex": 0
@@ -115,6 +115,21 @@
   },
   "changelog": {
     "version": "1.0.0",
-    "entries": []
+    "entries": [
+      {
+        "time": "03:46:18",
+        "type": "feature",
+        "description": "Seasonal scene transitions: color palettes and flower ratios shift with the calendar",
+        "changes": [
+          "Added src/content/seasons.json with 4 seasonal profiles",
+          "Added seasonal affinity tags to color schemes in siteData.json",
+          "Updated daily-mutate.js with weighted seasonal color scheme selection",
+          "Seasonal flower emphasis: tulips in spring, sunflowers in autumn",
+          "Seasonal sky tone shifts and fact theme weighting",
+          "Current season logged in daily mutation changelog"
+        ],
+        "date": "2026-05-21"
+      }
+    ]
   }
 }
