@@ -213,8 +213,9 @@
       "description": "Interactive gallery section showcasing Van Gogh's famous paintings with lazy-loaded images from Wikimedia Commons, themed descriptions, and swipe navigation.",
       "category": "Content",
       "priority": "medium",
-      "status": "done",
-      "prd": "PRD-idea-021-painting-gallery.md"
+      "status": "cancelled",
+      "prd": "PRD-idea-021-painting-gallery.md",
+      "cancelledReason": "User requested removal. Gallery component, gallery.json, and all references deleted. Do NOT re-implement."
     },
     {
       "id": "idea-022",

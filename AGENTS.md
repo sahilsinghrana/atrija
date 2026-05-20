@@ -72,6 +72,12 @@ git push origin master
 - Three.js 3D elements must remain as Three.js — never convert to SVG, Canvas 2D, or static images
 - The 3D scene is the primary feature of this website
 
+#### 6d2. Never Re-implement Van Gogh Painting Gallery
+- The Gallery component (idea-021) was explicitly removed by user request
+- Do NOT create any painting gallery, artwork carousel, or image gallery section
+- The site is about the 3D experience, not showcasing external paintings
+- This applies to ALL cron jobs and autonomous agents
+
 #### 6e. Content-Only Mutations for Daily Cron
 - The `van-gogh-daily-mutate` job should ONLY modify:
   - `src/content/siteData.json` (facts, quotes, color schemes)
