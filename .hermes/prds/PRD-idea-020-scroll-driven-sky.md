@@ -241,3 +241,10 @@ Single-line fix — the background-implement cron should resolve this quickly.
 - This is a test maintenance issue, not a code bug.
 
 **Action needed:** Update `tests/scroll-parallax.test.js` line 48 to check for `scene.userData._starsNear` pattern instead of `starsGroup`.
+
+---
+
+### 2026-05-20 (11:00 UTC) — Implementation Review
+**Verdict:** ✅ Stays **refactor** — 17/18 tests pass, minor test mismatch
+
+**Details:** The scroll parallax implementation is functionally complete. Star layers (`_starsMid`, `_starsFar`) are stored on `scene.userData` and properly rotated at different rates based on scroll position (lines 240-242 of scene-init.js). The single failing test expects a `starsGroup` wrapper that was never created — the code stores layers directly on `scene.userData` instead. This is a test maintenance issue, not a code bug. The test at line 48 of `tests/scroll-parallax.test.js` should be updated to match the actual architecture.

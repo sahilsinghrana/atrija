@@ -267,3 +267,18 @@
 5. Write and pass the 7 unit tests from the PRD test plan
 6. Run `npm run build` and verify success
 7. Deploy and verify site returns 200
+
+---
+
+## Review History
+
+### 2026-05-20 (11:00 UTC) — Implementation Review
+**Verdict:** ❌ Moved back to **backlog** — implementation was removed
+
+**Details:** The Painting Explorer was initially implemented in commit `c53b3f0` but then entirely removed in commit `a658dc6` (fix: remove PaintingExplorer, replace ASCII moon with canvas drawing, fix changelog nesting). All files were deleted:
+- `src/components/PaintingExplorer.astro` (409 lines)
+- `public/js/painting-explorer.js` (259 lines)
+- `src/content/painting-explorer.json` (114 lines)
+- `src/tests/painting-explorer.test.js` (101 lines)
+
+The kanban was incorrectly left at "done" after the removal. The feature needs to be re-implemented from scratch if desired. The PRD remains valid.

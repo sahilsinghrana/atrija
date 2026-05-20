@@ -726,3 +726,40 @@ The background-implement cron should pick up these fixes in the next cycle. The 
 
 ### Recommendation
 This idea has been in refactor for 2+ days with no progress. The background-implement cron should either complete the remaining items or the idea should be split into smaller, independently implementable tasks.
+
+---
+
+### 2026-05-20 (11:00 UTC) — Implementation Review
+**Verdict:** ✅ Stays **refactor** — 12 test failures remain, partially implemented
+
+**Implemented (passing tests):**
+- Modulepreload for scene-init.js ✅
+- Preload for loader.css ✅
+- Loader progress bar ✅
+- Faster fade-out (0.4s) ✅
+- SVG optimization (no XML declarations/comments) ✅
+- gzip enabled in nginx ✅
+- HTML no-cache ✅
+- isLowEnd check ✅
+- Phased initialization with setTimeout ✅
+- Loader progress callback ✅
+- Flower animations in requestIdleCallback ✅
+- Viewport fix in requestIdleCallback ✅
+- Flute handler NOT in requestIdleCallback ✅
+- cssCodeSplit: false ✅
+
+**Missing (12 failing tests):**
+1. `01-static-bg.test.js` — gradient style must appear before loader CSS link in BaseLayout
+2. `02-preloads.test.js` — missing `<link rel="preload" href="/images/moon.svg">` and `/images/stars.svg`
+3. `02-preloads.test.js` — missing `font-display: swap` in inline CSS
+4. `04-progressive.test.js` — stars must be created before flowers in init section
+5. `04-progressive.test.js` — initial star count must be ≤800 desktop, ≤400 mobile (currently 2500)
+6. `08-nginx-cache.test.js` — nginx needs `immutable` in Cache-Control for CSS/JS
+7. `08-nginx-cache.test.js` — nginx needs `max-age=31536000` for assets
+8. `09-geometry.test.js` — needs `reducedStarCount` variable
+9. `09-geometry.test.js` — wave segments must be configurable
+10. `10-defer.test.js` — scroll reveal must be wrapped in requestIdleCallback
+11. `11-content-visibility.test.js` — BaseLayout needs `content-visibility: auto` on sections
+12. `11-content-visibility.test.js` — sections need `contain-intrinsic-size`
+
+**Note on nginx tests:** The current nginx config uses `max-age=3600, must-revalidate` for CSS/JS which is actually more appropriate than immutable 1-year caching (per AGENTS.md section 2b). The tests may need updating to match the deployed strategy.

@@ -313,7 +313,7 @@
       "description": "A zoomable, interactive deep-dive into The Starry Night with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant Van Gogh quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
       "category": "Interactivity",
       "priority": "medium",
-      "status": "done",
+      "status": "backlog",
       "prd": "PRD-idea-033-painting-explorer.md"
     },
     {
@@ -328,6 +328,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-20T02:00:00Z",
-  "lastReviewAt": "2026-05-20T06:00:00Z",
-  "lastReviewResult": "Review complete: idea-033 moved back to red (not implemented - only PRD/changelog updated, no actual code files). Stale shaders test (src/tests/shaders.test.js) still references removed shader modules. idea-009 and idea-020 remain in refactor with partial test failures. Build passes, site up (200). 90 passed / 13 failed tests (12 failures from incomplete refactor items, 1 from stale test)."
+  "lastReviewAt": "2026-05-20T11:00:00Z",
+  "lastReviewResult": "Review complete: idea-033 moved back to backlog (PaintingExplorer.astro, painting-explorer.js, painting-explorer.json, and test all removed in commit a658dc6 — was incorrectly marked done). Deleted stale src/tests/shaders.test.js (referenced removed src/shaders/ modules). idea-020 stays refactor (17/18 tests pass, only missing starsGroup wrapper). idea-009 stays refactor (12 loading opt test failures remain — content-visibility, SVG preloads, font-display, nginx immutable, geometry reductions). Build passes, site up (200). 90 passed / 13 failed tests (12 from refactor items + 1 stale shader test now removed)."
 }
