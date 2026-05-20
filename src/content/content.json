@@ -10,106 +10,106 @@
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>Art</em> whispers today"
+      "heading": "What the <em>Selene</em> reveals today"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas — the emotional mind — and its phases mirror the cycles of human desire and detachment.",
+      "intro": "The night sky has always been a canvas for human projection. We see faces, animals, and gods in the stars — not because they are there, but because the mind seeks meaning in chaos.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 5
+        "factIndex": 1
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          7,
-          9
+          6,
+          8
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 3
+        "quoteIndex": 4
       }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "The Dunning-Kruger effect reveals that the least competent are often the most confident, while the truly skilled doubt themselves. Arrogance is not a sign of ability — it is a sign of ignorance about the depth of one's own ignorance.",
+      "intro": "In the ocean of existence, arrogance is a wave that believes it is separate from the sea. It rises, it crashes, and it returns — never having been anything but water.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 3
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 1,
         "slice": [
-          0,
-          2
+          4,
+          6
         ]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 4
+        "quoteIndex": 1
       }
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "'Whenever dharma declines and the purpose of life is forgotten, I manifest myself.' The Gita teaches that the divine does not abandon the world — it returns, again and again, to restore balance.",
+      "intro": "In Chapter 11, Krishna reveals his Vishvarupa — the Universal Form — containing all worlds, all beings, all time. Arjuna sees the entirety of existence in one being and trembles. The infinite is not abstract; it is terrifyingly real.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 0
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [
-          7,
-          9
-        ]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 1
-      }
-    },
-    "shiva": {
-      "label": "IV. The Dance",
-      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "Shiva is called Mahakala — the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 0
-      },
-      "facts": {
-        "themeIndex": 3,
-        "slice": [
-          7,
-          9
-        ]
-      },
-      "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 0
-      }
-    },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "A star field is a reminder of scale. Every point of light is a sun, perhaps with planets, perhaps with life. The universe is not indifferent — it is generous beyond comprehension.",
-      "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 6
-      },
-      "facts": {
-        "themeIndex": 4,
         "slice": [
           0,
           2
         ]
       },
       "quote": {
-        "themeIndex": 4,
+        "themeIndex": 2,
+        "quoteIndex": 4
+      }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
+      "intro": "In the Shiv Purana, Shiva is described as Nirguna — without attributes, without form, without beginning or end. He is not a god among gods but the ground of being itself, the silence between notes.",
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 2
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [
+          7,
+          9
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
         "quoteIndex": 2
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
+      "intro": "Van Gogh painted 'The Starry Night' from an asylum window, yet it became the most recognized painting in history. The greatest art often emerges not from comfort but from the depths of human suffering — beauty forged in the furnace of pain.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 8
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          2,
+          4
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 0
       }
     }
   },
@@ -256,18 +256,33 @@
         "date": "2026-05-19"
       },
       {
-        "time": "16:09:00",
-        "type": "feature",
-        "description": "Theme color scheme switcher — visitors can manually switch between 5 impressionist color schemes",
+        "time": "00:32:11",
+        "type": "daily-mutation",
+        "description": "Daily mutation #140: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
         "changes": [
-          "Added theme-switcher.js — self-contained IIFE module with 5 color schemes",
-          "Floating palette button (bottom-left) with popup panel",
-          "Color scheme pills with preview swatches and emoji icons",
-          "Persists user selection in localStorage, falls back to daily default",
-          "Accessible: ARIA roles, keyboard navigation, Escape to close",
-          "Mobile-responsive layout"
+          "Color scheme: starry-night (contemplative)",
+          "Shader — strokeDensity: 7.2, swirlFrequency: 16.4, colorIntensity: 1.62",
+          "Section \"moon\": Selene & The Moon theme, fact #4",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #2",
+          "Section \"gita\": Bhagavad Gita theme, fact #3",
+          "Section \"shiva\": Shiv Purana theme, fact #0",
+          "Section \"art\": Art & Beauty theme, fact #7"
         ],
-        "date": "2026-05-19"
+        "date": "2026-05-20"
+      },
+      {
+        "time": "03:00:00",
+        "type": "feature",
+        "description": "Interactive Starry Night Painting Explorer — clickable hotspots with technique details, symbolism, and Van Gogh quotes",
+        "changes": [
+          "Added PaintingExplorer.astro component with 5 interactive hotspot zones (Cypress, Moon, Stars, Village, Hills)",
+          "Detail panels with symbolism, technique breakdowns, and Van Gogh quotes for each element",
+          "Zoom controls (1x-3x) with drag-to-pan and pinch-to-zoom on mobile",
+          "Quick-nav pills for fast access to each hotspot",
+          "Responsive layout with mobile-optimized touch interactions",
+          "Keyboard support: Escape to close detail panel"
+        ],
+        "date": "2026-05-20"
       }
     ]
   }
