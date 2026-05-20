@@ -1,13 +1,13 @@
 {
   "version": "1.6.0",
-  "lastUpdated": "2026-05-20T00:32:11.179Z",
-  "totalEntries": 20,
+  "lastUpdated": "2026-05-20T16:20:00Z",
+  "totalEntries": 21,
   "dates": [
     {
       "date": "2026-05-20",
-      "entries": 2,
+      "entries": 3,
       "latestType": "feature",
-      "description": "Interactive Starry Night Painting Explorer — clickable hotspots with technique details, symbolism, and Van Gogh quotes"
+      "description": "Painting Explorer v2 — full implementation with 10 hotspots, zoom/pan, and side panel"
     },
     {
       "date": "2026-05-19",
@@ -43,7 +43,7 @@
       "date": "2026-05-14",
       "entries": 2,
       "latestType": "daily-mutation",
-      "description": "First daily mutation — Selene & the Moon theme with starry-night colors."
+      "description": "First daily mutation — Selene and the Moon theme with starry-night colors."
     }
   ]
 }

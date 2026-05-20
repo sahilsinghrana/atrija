@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import siteData from '../content/siteData.json';
 import content from '../content/content.json';
+import PaintingExplorer from '../components/PaintingExplorer.astro';
 
 const now = new Date();
 const start = new Date(now.getFullYear(), 0, 0);
@@ -145,6 +146,11 @@ const sections = [
   <section id="painting-reveal" class="painting-reveal-section">
     <div class="painting-reveal-caption">The Starry Night, 1889 — Oil on canvas</div>
   </section>
+
+  <!-- ═══════════════════════════════════════
+       PAINTING EXPLORER
+  ═══════════════════════════════════════ -->
+  <PaintingExplorer />
 
   <!-- ═══════════════════════════════════════
        CHANGELOG

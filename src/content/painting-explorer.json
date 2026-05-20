@@ -1,0 +1,114 @@
+{
+  "painting": {
+    "title": "The Starry Night",
+    "year": 1889,
+    "artist": "Vincent van Gogh",
+    "image": {
+      "small": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/600px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+      "medium": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1200px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+      "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/2560px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+    }
+  },
+  "hotspots": [
+    {
+      "id": "cypress",
+      "label": "The Dark Cypress",
+      "x": 15,
+      "y": 55,
+      "radius": 8,
+      "description": "The towering cypress tree dominates the foreground, reaching into the sky like a dark flame. Van Gogh painted cypresses repeatedly in Saint-Rémy, fascinated by their shape and what he called 'beautiful as an Egyptian obelisk.' It serves as a bridge between the earth and the heavens.",
+      "technique": "Thick impasto with upward-sweeping strokes, using viridian green mixed with black",
+      "quote": "The cypresses are always occupying my thoughts. I should like to make something of them like the canvases of the sunflowers."
+    },
+    {
+      "id": "moon",
+      "label": "The Radiant Moon",
+      "x": 78,
+      "y": 18,
+      "radius": 7,
+      "description": "The moon blazes in the upper right with an almost supernatural halo of swirling light. Van Gogh painted it as a crescent engulfed in radiating circles of luminous paint, suggesting a cosmic energy that transcends its astronomical reality.",
+      "technique": "Concentric brushstrokes in cadmium yellow and white, built up in thick impasto layers",
+      "quote": "Looking at the stars always makes me dream. Why, I ask myself, shouldn't the shining dots of the sky be as accessible as the black dots on the map of France?"
+    },
+    {
+      "id": "star-alpha",
+      "label": "The Largest Star",
+      "x": 62,
+      "y": 12,
+      "radius": 6,
+      "description": "This brilliant star pulses at the center of the sky with an enormous halo of radiating brushstrokes. Its intensity suggests Venus, which was indeed visible and exceptionally bright during Van Gogh's time at Saint-Rémy.",
+      "technique": "Layered concentric circles with radiating streaks, zinc yellow over white ground",
+      "quote": "I often think that the night is more alive and more richly colored than the day."
+    },
+    {
+      "id": "sky-swirls",
+      "label": "The Swirling Sky",
+      "x": 45,
+      "y": 25,
+      "radius": 10,
+      "description": "Great rolling waves of blue and white sweep across the sky in rhythmic, almost musical patterns. These spiraling forms create a sense of cosmic turbulence and movement, transforming the night sky into a living, breathing entity.",
+      "technique": "Directional impasto strokes following curved paths, alternating cobalt blue and white",
+      "quote": "I am always obliged to go and gaze at a wheat field, and when I come back I try to express the same thing in music or in color."
+    },
+    {
+      "id": "village",
+      "label": "The Sleeping Village",
+      "x": 50,
+      "y": 72,
+      "radius": 9,
+      "description": "A small Provençal village nestles in the valley below, its windows glowing with warm yellow light. Though Van Gogh painted this from his asylum window, the village is partly imagined — a composite of memory and longing for the peaceful Dutch villages of his youth.",
+      "technique": "Short, controlled strokes with a smaller brush; warm ochres and yellows against cool blues",
+      "quote": "I feel a bond with the past and with the present — the real and the imagined are woven together."
+    },
+    {
+      "id": "church-spire",
+      "label": "The Church Spire",
+      "x": 52,
+      "y": 62,
+      "radius": 5,
+      "description": "The slender church spire rises from the village like a needle piercing the sky. It is one of the few vertical elements in the painting, providing a counterpoint to the horizontal hills and the swirling sky above.",
+      "technique": "Fine vertical strokes in dark blue-grey, contrasting with the warm village below",
+      "quote": "I want to touch people with my art. I want them to say, 'he feels deeply, he feels tenderly.'"
+    },
+    {
+      "id": "rolling-hills",
+      "label": "The Rolling Hills",
+      "x": 30,
+      "y": 58,
+      "radius": 10,
+      "description": "Gentle blue-green hills roll across the middle ground, their undulating forms echoing the rhythms of the sky above. These Alpilles mountains provide a visual anchor between the turbulent heavens and the quiet village below.",
+      "technique": "Horizontal flowing strokes in cerulean and viridian, creating rhythmic wave patterns",
+      "quote": "The landscape and the figure are not separate — they breathe the same air."
+    },
+    {
+      "id": "tree-line",
+      "label": "The Dark Tree Line",
+      "x": 85,
+      "y": 65,
+      "radius": 7,
+      "description": "A row of dark trees forms a mysterious border along the right edge of the painting. Their silhouetted forms create a frame within a frame, drawing the eye back into the depth of the composition and adding a note of melancholy.",
+      "technique": "Bold vertical strokes in dark green and black, painted with a loaded brush",
+      "quote": "I put my heart and my soul into my work, and have lost my mind in the process."
+    },
+    {
+      "id": "star-beta",
+      "label": "The Blue Star",
+      "x": 35,
+      "y": 8,
+      "radius": 5,
+      "description": "This smaller but intensely blue star adds depth to the celestial display. Its cooler tone contrasts with the warm yellow of the moon, creating a chromatic dialogue across the canvas that Van Gogh used to express emotional tension.",
+      "technique": "Short radiating strokes in ultramarine and white, with a bright center point",
+      "quote": "I dream of painting and then I paint my dream."
+    },
+    {
+      "id": "foreground",
+      "label": "The Dark Foreground",
+      "x": 50,
+      "y": 88,
+      "radius": 8,
+      "description": "The shadowy foreground, likely depicting scrubland or a field, grounds the composition in earthly reality. Its dark tones create a dramatic contrast with the luminous sky above, emphasizing the painting's central tension between darkness and light.",
+      "technique": "Broad strokes in dark blue and black with subtle green undertones, loosely applied",
+      "quote": "There is peace even in the storm. We do not need to calm the storm — we need to find stillness within it."
+    }
+  ]
+}

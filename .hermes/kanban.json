@@ -313,7 +313,7 @@
       "description": "A zoomable, interactive deep-dive into The Starry Night with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant Van Gogh quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
       "category": "Interactivity",
       "priority": "medium",
-      "status": "red",
+      "status": "done",
       "prd": "PRD-idea-033-painting-explorer.md"
     },
     {

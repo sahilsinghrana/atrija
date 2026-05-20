@@ -283,6 +283,19 @@
           "Keyboard support: Escape to close detail panel"
         ],
         "date": "2026-05-20"
+      },
+      {
+        "time": "16:20:00",
+        "type": "feature",
+        "description": "Painting Explorer v2 — full implementation with 10 hotspots, zoom/pan, and side panel",
+        "changes": [
+          "Created painting-explorer.json with 10 hotspot definitions",
+          "Created PaintingExplorer.astro component with hotspot rendering and side panel",
+          "Created painting-explorer.js with zoom, pan, pinch-to-zoom, keyboard nav",
+          "Added painting explorer section to index.astro",
+          "12 unit tests passing"
+        ],
+        "date": "2026-05-20"
       }
     ]
   }

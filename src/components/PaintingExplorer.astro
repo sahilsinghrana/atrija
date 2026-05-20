@@ -1,0 +1,409 @@
+---
+import paintingData from '../content/painting-explorer.json';
+const { painting, hotspots } = paintingData;
+---
+
+<section id="painting-explorer" class="painting-explorer-section">
+  <div class="section-inner">
+    <div class="section-label reveal-left">Painting Explorer</div>
+    <h2 class="reveal">Explore <em>The Starry Night</em></h2>
+    <p class="reveal painting-explorer-intro">
+      Click on the glowing dots to discover the stories, techniques, and symbolism behind each element of Van Gogh's masterpiece.
+    </p>
+
+    <!-- Zoom controls -->
+    <div class="pe-controls reveal" role="group" aria-label="Zoom controls">
+      <button class="pe-zoom-btn" id="pe-zoom-out" aria-label="Zoom out" title="Zoom out">−</button>
+      <span class="pe-zoom-level" id="pe-zoom-level" aria-live="polite">100%</span>
+      <button class="pe-zoom-btn" id="pe-zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+      <button class="pe-zoom-reset" id="pe-zoom-reset" aria-label="Reset zoom" title="Reset zoom">Reset</button>
+    </div>
+
+    <!-- Painting container -->
+    <div class="pe-viewport reveal" id="pe-viewport" tabindex="0" role="img" aria-label="The Starry Night by Vincent van Gogh, interactive painting explorer">
+      <div class="pe-image-container" id="pe-image-container">
+        <img
+          class="pe-image"
+          id="pe-image"
+          src={painting.image.small}
+          srcset={`${painting.image.small} 600w, ${painting.image.medium} 1200w, ${painting.image.large} 2560w`}
+          sizes="(max-width: 768px) 100vw, 90vw"
+          alt="The Starry Night, 1889, by Vincent van Gogh"
+          loading="lazy"
+          draggable="false"
+        />
+        <!-- Hotspot buttons -->
+        {hotspots.map((spot) => (
+          <button
+            class="pe-hotspot"
+            data-id={spot.id}
+            data-label={spot.label}
+            data-description={spot.description}
+            data-technique={spot.technique}
+            data-quote={spot.quote}
+            style={`left: ${spot.x}%; top: ${spot.y}%;`}
+            aria-label={`Learn about ${spot.label}`}
+            title={spot.label}
+          >
+            <span class="pe-hotspot-dot"></span>
+            <span class="pe-hotspot-ring"></span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Side panel -->
+    <aside class="pe-panel" id="pe-panel" aria-hidden="true" role="complementary" aria-label="Hotspot details">
+      <button class="pe-panel-close" id="pe-panel-close" aria-label="Close panel">&times;</button>
+      <div class="pe-panel-content">
+        <h3 class="pe-panel-title" id="pe-panel-title"></h3>
+        <p class="pe-panel-description" id="pe-panel-description"></p>
+        <div class="pe-panel-technique">
+          <span class="pe-panel-technique-label">Technique</span>
+          <span class="pe-panel-technique-text" id="pe-panel-technique"></span>
+        </div>
+        <blockquote class="pe-panel-quote">
+          <p id="pe-panel-quote-text"></p>
+          <cite>— Vincent van Gogh</cite>
+        </blockquote>
+      </div>
+    </aside>
+
+    <!-- Panel overlay (for mobile close-on-tap-outside) -->
+    <div class="pe-overlay" id="pe-overlay" aria-hidden="true"></div>
+  </div>
+</section>
+
+<style>
+  .painting-explorer-section {
+    padding: var(--space-3xl) 0;
+    position: relative;
+  }
+
+  .painting-explorer-intro {
+    max-width: 600px;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Zoom controls */
+  .pe-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .pe-zoom-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .pe-zoom-btn:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-gold);
+  }
+
+  .pe-zoom-level {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    min-width: 45px;
+    text-align: center;
+  }
+
+  .pe-zoom-reset {
+    padding: var(--space-xs) var(--space-md);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .pe-zoom-reset:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+  }
+
+  /* Viewport */
+  .pe-viewport {
+    position: relative;
+    width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #000;
+    cursor: grab;
+    outline: none;
+  }
+
+  .pe-viewport:active {
+    cursor: grabbing;
+  }
+
+  .pe-viewport:focus-visible {
+    box-shadow: 0 0 0 2px var(--accent-gold);
+  }
+
+  .pe-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  .pe-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Hotspots */
+  .pe-hotspot {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+  }
+
+  .pe-hotspot-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    box-shadow: 0 0 8px rgba(255, 213, 79, 0.6);
+    z-index: 2;
+  }
+
+  .pe-hotspot-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 213, 79, 0.4);
+    z-index: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .pe-hotspot-ring {
+      animation: pe-pulse 2.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes pe-pulse {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 0;
+    }
+  }
+
+  .pe-hotspot:hover .pe-hotspot-dot,
+  .pe-hotspot:focus-visible .pe-hotspot-dot {
+    background: #fff;
+    box-shadow: 0 0 12px rgba(255, 213, 79, 0.9);
+  }
+
+  .pe-hotspot:hover .pe-hotspot-ring,
+  .pe-hotspot:focus-visible .pe-hotspot-ring {
+    border-color: rgba(255, 213, 79, 0.8);
+    animation: none;
+  }
+
+  /* Panel */
+  .pe-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    max-width: 90vw;
+    height: 100vh;
+    background: rgba(8, 8, 15, 0.97);
+    border-left: 1px solid var(--border);
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    padding: var(--space-2xl) var(--space-xl);
+    backdrop-filter: blur(12px);
+  }
+
+  .pe-panel.pe-panel-open {
+    transform: translateX(0);
+  }
+
+  .pe-panel-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: var(--text-tertiary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .pe-panel-close:hover {
+    color: var(--text-primary);
+    background: var(--bg-card);
+  }
+
+  .pe-panel-content {
+    padding-top: var(--space-lg);
+  }
+
+  .pe-panel-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--accent-gold);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+  }
+
+  .pe-panel-description {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+
+  .pe-panel-technique {
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--bg-card);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .pe-panel-technique-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .pe-panel-technique-text {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .pe-panel-quote {
+    border-left: 3px solid var(--accent-gold);
+    padding-left: var(--space-md);
+    margin: 0;
+  }
+
+  .pe-panel-quote p {
+    font-family: var(--font-serif);
+    font-size: var(--text-md);
+    color: var(--text-quote);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+  }
+
+  .pe-panel-quote cite {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    font-style: normal;
+  }
+
+  /* Overlay */
+  .pe-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .pe-overlay.pe-overlay-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .pe-viewport {
+      max-height: 60vh;
+    }
+
+    .pe-panel {
+      width: 100%;
+      max-width: 100vw;
+      border-left: none;
+      border-top: 1px solid var(--border);
+      top: auto;
+      bottom: 0;
+      height: 70vh;
+      border-radius: 16px 16px 0 0;
+      transform: translateY(100%);
+    }
+
+    .pe-panel.pe-panel-open {
+      transform: translateY(0);
+    }
+
+    .pe-hotspot {
+      width: 48px;
+      height: 48px;
+      margin: -24px 0 0 -24px;
+    }
+  }
+</style>
+
+<script type="module" src="/js/painting-explorer.js"></script>
