@@ -2,27 +2,27 @@
   "columns": [
     {
       "id": "backlog",
-      "name": "💡 Idea Backlog",
+      "name": "\ud83d\udca1 Idea Backlog",
       "tasks": []
     },
     {
       "id": "red",
-      "name": "🔴 Red (Failing Test)",
+      "name": "\ud83d\udd34 Red (Failing Test)",
       "tasks": []
     },
     {
       "id": "green",
-      "name": "🟢 Green (Implement)",
+      "name": "\ud83d\udfe2 Green (Implement)",
       "tasks": []
     },
     {
       "id": "refactor",
-      "name": "🟣 Refactor (Optimize)",
+      "name": "\ud83d\udfe3 Refactor (Optimize)",
       "tasks": []
     },
     {
       "id": "done",
-      "name": "✅ Done",
+      "name": "\u2705 Done",
       "tasks": []
     }
   ],
@@ -112,8 +112,8 @@
     },
     {
       "id": "idea-010",
-      "title": "Flute click — SVG bansuri + music notes",
-      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
+      "title": "Flute click \u2014 SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (\u266a\u266b\u266c). Flute animates in/out with spring easing.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "done",
@@ -140,7 +140,7 @@
     {
       "id": "idea-013",
       "title": "Mobile tulip visibility fix",
-      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0\u00d71.6).",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -149,7 +149,7 @@
     {
       "id": "idea-014",
       "title": "Remove speaker/audio toggle",
-      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "description": "Remove the audio toggle button (\ud83d\udd07) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
       "category": "Audio",
       "priority": "medium",
       "status": "done",
@@ -276,7 +276,7 @@
     {
       "id": "idea-029",
       "title": "Theme Color Scheme Switcher",
-      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation — needs review before implementation.",
+      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation \u2014 needs review before implementation.",
       "category": "UI",
       "priority": "low",
       "status": "done",
@@ -285,17 +285,17 @@
     {
       "id": "idea-030",
       "title": "Scroll-Responsive Brushstroke Sound Effects",
-      "description": "Generative brushstroke sound effects that play in response to scroll velocity. NOTE: Audio was deliberately removed from the site (see idea-014). This idea conflicts with that direction — flagged for rethink.",
+      "description": "Generative brushstroke sound effects that play in response to scroll velocity. NOTE: Audio was deliberately removed from the site (see idea-014). This idea conflicts with that direction \u2014 flagged for rethink.",
       "category": "Audio",
       "priority": "low",
       "status": "cancelled",
       "prd": "PRD-idea-024-brushstroke-audio.md",
-      "cancelledReason": "Conflicts with site direction — audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
+      "cancelledReason": "Conflicts with site direction \u2014 audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
     },
     {
       "id": "idea-031",
       "title": "Van Gogh Biography Timeline",
-      "description": "An interactive, scrollable timeline of Van Gogh's life milestones — birth, key paintings, moves, and legacy — displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
+      "description": "An interactive, scrollable timeline of Van Gogh's life milestones \u2014 birth, key paintings, moves, and legacy \u2014 displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
       "category": "Content",
       "priority": "low",
       "status": "backlog",
@@ -304,7 +304,7 @@
     {
       "id": "idea-032",
       "title": "Dynamic Time-of-Day Atmosphere System",
-      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
       "category": "3D Elements",
       "priority": "medium",
       "status": "backlog",
@@ -322,7 +322,7 @@
     {
       "id": "idea-034",
       "title": "Impressionist Visitor Guestbook",
-      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend — purely client-side.",
+      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend \u2014 purely client-side.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "backlog",
@@ -340,7 +340,7 @@
     {
       "id": "idea-036",
       "title": "Particle Poetry Scroll Effect",
-      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual — no audio.",
+      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual \u2014 no audio.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "backlog",
@@ -349,15 +349,15 @@
     {
       "id": "idea-037",
       "title": "Seasonal Scene Transitions",
-      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer — daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
+      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer \u2014 daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
       "category": "Content",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-037-seasonal-transitions.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-21T02:03:00Z",
   "lastReviewAt": "2026-05-21T03:00:00Z",
-  "lastReviewResult": "Review complete: Rebalanced priorities (15 high → 7 high among active items). Cancelled idea-030 (brushstroke-audio, conflicts with audio removal). Added cancelledReason to idea-004, idea-007, idea-021, idea-030. Downgraded done items to more appropriate priorities. Added reviewer notes to PRD-035 (BufferGeometryUtils dependency flag) and PRD-036 (content.json fetch feasibility flag). No orphaned PRDs found. No stale entries (all < 30 days). No duplicates found. Build not run (no code changes)."
+  "lastReviewResult": "Review complete: Rebalanced priorities (15 high \u2192 7 high among active items). Cancelled idea-030 (brushstroke-audio, conflicts with audio removal). Added cancelledReason to idea-004, idea-007, idea-021, idea-030. Downgraded done items to more appropriate priorities. Added reviewer notes to PRD-035 (BufferGeometryUtils dependency flag) and PRD-036 (content.json fetch feasibility flag). No orphaned PRDs found. No stale entries (all < 30 days). No duplicates found. Build not run (no code changes)."
 }

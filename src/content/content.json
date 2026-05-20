@@ -10,41 +10,41 @@
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>Selene</em> reveals today"
+      "heading": "What the <em>Ego</em> conceals today"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "The night sky has always been a canvas for human projection. We see faces, animals, and gods in the stars — not because they are there, but because the mind seeks meaning in chaos.",
+      "intro": "Ptolemy believed the Moon's influence caused tides, madness, and the cycles of life. While science has explained the tides, the Moon still governs the menstrual cycle, the migration of birds, and the spawning of coral — life itself dances to the Moon's rhythm.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 1
+        "factIndex": 3
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          6,
-          8
+          5,
+          7
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 4
+        "quoteIndex": 1
       }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "In the ocean of existence, arrogance is a wave that believes it is separate from the sea. It rises, it crashes, and it returns — never having been anything but water.",
+      "intro": "The Bhagavad Gita warns: 'The ego is the greatest enemy of the human soul.' When Arjuna asks Krishna about the nature of the self, the answer is not 'I am great' but 'I am not the doer.'",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 0
+        "factIndex": 3
       },
       "facts": {
         "themeIndex": 1,
         "slice": [
-          4,
-          6
+          7,
+          9
         ]
       },
       "quote": {
@@ -55,30 +55,30 @@
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "In Chapter 11, Krishna reveals his Vishvarupa — the Universal Form — containing all worlds, all beings, all time. Arjuna sees the entirety of existence in one being and trembles. The infinite is not abstract; it is terrifyingly real.",
+      "intro": "'Whenever dharma declines and the purpose of life is forgotten, I manifest myself.' The Gita teaches that the divine does not abandon the world — it returns, again and again, to restore balance.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 7
+        "factIndex": 5
       },
       "facts": {
         "themeIndex": 2,
         "slice": [
-          0,
-          2
+          3,
+          5
         ]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 4
+        "quoteIndex": 2
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "In the Shiv Purana, Shiva is described as Nirguna — without attributes, without form, without beginning or end. He is not a god among gods but the ground of being itself, the silence between notes.",
+      "intro": "Shiva is called Mahakala — the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 2
+        "factIndex": 1
       },
       "facts": {
         "themeIndex": 3,
@@ -89,22 +89,22 @@
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 2
+        "quoteIndex": 0
       }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "Van Gogh painted 'The Starry Night' from an asylum window, yet it became the most recognized painting in history. The greatest art often emerges not from comfort but from the depths of human suffering — beauty forged in the furnace of pain.",
+      "intro": "The flute is the oldest instrument — a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 8
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 4,
         "slice": [
-          2,
-          4
+          7,
+          9
         ]
       },
       "quote": {
@@ -115,188 +115,6 @@
   },
   "changelog": {
     "version": "1.0.0",
-    "entries": [
-      {
-        "time": "06:00:00",
-        "type": "initial",
-        "description": "Site launched — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
-        "changes": [
-          "Built Three.js scene: stars, moon, sunflowers, tulips, flute, waves, constellations, music notes",
-          "Created GLSL post-processing, star twinkling, and wave shaders",
-          "Set up Astro 4 static site with Vitest and Playwright tests",
-          "Configured Nginx deployment on port 8080"
-        ],
-        "date": "2026-05-14"
-      },
-      {
-        "time": "12:00:00",
-        "type": "daily-mutation",
-        "description": "First daily mutation — Selene & the Moon theme with starry-night colors.",
-        "changes": [
-          "Applied starry-night color scheme (contemplative mood)",
-          "Featured theme: Selene & the Moon — Greek Titaness of the Moon",
-          "Adjusted shader: strokeDensity 8.9, swirlFrequency 12, colorIntensity 1.47",
-          "Updated Moon section intro text and image card"
-        ],
-        "date": "2026-05-14"
-      },
-      {
-        "time": "08:19:54",
-        "type": "daily-mutation",
-        "description": "Daily mutation #135: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
-        "changes": [
-          "Color scheme: starry-night (contemplative)",
-          "Shader — strokeDensity: 7.4, swirlFrequency: 15.2, colorIntensity: 1.58",
-          "Section \"moon\": Selene & The Moon theme, fact #0",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #1",
-          "Section \"gita\": Bhagavad Gita theme, fact #2",
-          "Section \"shiva\": Shiv Purana theme, fact #3",
-          "Section \"art\": Art & Beauty theme, fact #4"
-        ],
-        "date": "2026-05-15"
-      },
-      {
-        "time": "16:30:00",
-        "type": "feature",
-        "description": "Ambient music generator — procedural flute-like soundscape with Web Audio API",
-        "changes": [
-          "Pentatonic drone + melody system using Web Audio API",
-          "Scroll depth controls filter brightness",
-          "Speaker toggle button (bottom-right)",
-          "Auto-pause on tab hidden, user-gated autoplay",
-          "Oscillator pool for melody note reuse",
-          "Mobile-optimized reverb (1.5s vs 2.5s)"
-        ],
-        "date": "2026-05-15"
-      },
-      {
-        "time": "00:31:49",
-        "type": "daily-mutation",
-        "description": "Daily mutation #136: sunflower colors, Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty → Selene & The Moon",
-        "changes": [
-          "Color scheme: sunflower (warm)",
-          "Shader — strokeDensity: 10.2, swirlFrequency: 7.5, colorIntensity: 1.52",
-          "Section \"moon\": Ego & Arrogance theme, fact #1",
-          "Section \"philosophy\": Bhagavad Gita theme, fact #2",
-          "Section \"gita\": Shiv Purana theme, fact #3",
-          "Section \"shiva\": Art & Beauty theme, fact #4",
-          "Section \"art\": Selene & The Moon theme, fact #0"
-        ],
-        "date": "2026-05-16"
-      },
-      {
-        "time": "03:15:00",
-        "type": "feature",
-        "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity variation",
-        "changes": [
-          "Split sunflowers into background/midground/foreground layers",
-          "Foreground: large (1.2-1.8x), opaque (0.95), dramatic sway (0.12)",
-          "Background: small (0.4-0.7x), transparent (0.5), subtle sway (0.03)",
-          "Midground: medium (0.7-1.2x), semi-transparent (0.75), moderate sway (0.06)",
-          "Texture LOD: 80px canvas for background, 160px for mid/foreground",
-          "Mobile: 10 flowers at 80% scale; Desktop: 16 flowers",
-          "Added unit tests for layer configuration (8 tests passing)"
-        ],
-        "date": "2026-05-16"
-      },
-      {
-        "time": "22:23:41",
-        "type": "feature",
-        "description": "Scroll-driven starry night sky parallax — sky rotates and shifts as you scroll",
-        "changes": [
-          "Refactored star field into 3 depth layers (near/mid/far)",
-          "Added scroll position tracking with smooth interpolation",
-          "Camera rotation and star layer offsets respond to scroll",
-          "Moon rises slightly as user scrolls down",
-          "Background color subtly shifts with scroll position",
-          "Mobile intensity reduced to 60% for comfort"
-        ],
-        "date": "2026-05-17"
-      },
-      {
-        "time": "04:43:16",
-        "type": "daily-mutation",
-        "description": "Daily mutation #138: tulip-garden colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
-        "changes": [
-          "Color scheme: tulip-garden (passionate)",
-          "Shader — strokeDensity: 9.3, swirlFrequency: 10.8, colorIntensity: 1.49",
-          "Section \"moon\": Selene & The Moon theme, fact #6",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #2",
-          "Section \"gita\": Bhagavad Gita theme, fact #5",
-          "Section \"shiva\": Shiv Purana theme, fact #0",
-          "Section \"art\": Art & Beauty theme, fact #3"
-        ],
-        "date": "2026-05-18"
-      },
-      {
-        "time": "16:15:00",
-        "type": "feature",
-        "description": "Shooting stars — random celestial streaks with fading trails, every 3-7 seconds",
-        "changes": [
-          "Added createShootingStars() with particle trail system",
-          "Object pooling for performance",
-          "Mobile: 1 star max, 12 trail particles; Desktop: 2 stars, 20 trail particles",
-          "30 unit tests covering all shooting star functionality"
-        ],
-        "date": "2026-05-18"
-      },
-      {
-        "time": "00:37:20",
-        "type": "daily-mutation",
-        "description": "Daily mutation #139: moonlit-silver colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
-        "changes": [
-          "Color scheme: moonlit-silver (serene)",
-          "Shader — strokeDensity: 4.7, swirlFrequency: 13, colorIntensity: 1.18",
-          "Section \"moon\": Selene & The Moon theme, fact #1",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #8",
-          "Section \"gita\": Bhagavad Gita theme, fact #6",
-          "Section \"shiva\": Shiv Purana theme, fact #6",
-          "Section \"art\": Art & Beauty theme, fact #2"
-        ],
-        "date": "2026-05-19"
-      },
-      {
-        "time": "00:32:11",
-        "type": "daily-mutation",
-        "description": "Daily mutation #140: starry-night colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty",
-        "changes": [
-          "Color scheme: starry-night (contemplative)",
-          "Shader — strokeDensity: 7.2, swirlFrequency: 16.4, colorIntensity: 1.62",
-          "Section \"moon\": Selene & The Moon theme, fact #4",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #2",
-          "Section \"gita\": Bhagavad Gita theme, fact #3",
-          "Section \"shiva\": Shiv Purana theme, fact #0",
-          "Section \"art\": Art & Beauty theme, fact #7"
-        ],
-        "date": "2026-05-20"
-      },
-      {
-        "time": "03:00:00",
-        "type": "feature",
-        "description": "Interactive Starry Night Painting Explorer — clickable hotspots with technique details, symbolism, and Van Gogh quotes",
-        "changes": [
-          "Added PaintingExplorer.astro component with 5 interactive hotspot zones (Cypress, Moon, Stars, Village, Hills)",
-          "Detail panels with symbolism, technique breakdowns, and Van Gogh quotes for each element",
-          "Zoom controls (1x-3x) with drag-to-pan and pinch-to-zoom on mobile",
-          "Quick-nav pills for fast access to each hotspot",
-          "Responsive layout with mobile-optimized touch interactions",
-          "Keyboard support: Escape to close detail panel"
-        ],
-        "date": "2026-05-20"
-      },
-      {
-        "time": "16:20:00",
-        "type": "feature",
-        "description": "Painting Explorer v2 — full implementation with 10 hotspots, zoom/pan, and side panel",
-        "changes": [
-          "Created painting-explorer.json with 10 hotspot definitions",
-          "Created PaintingExplorer.astro component with hotspot rendering and side panel",
-          "Created painting-explorer.js with zoom, pan, pinch-to-zoom, keyboard nav",
-          "Added painting explorer section to index.astro",
-          "12 unit tests passing"
-        ],
-        "date": "2026-05-20"
-      }
-    ]
+    "entries": []
   }
 }

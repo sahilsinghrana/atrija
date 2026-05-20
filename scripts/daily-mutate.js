@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_DATA_PATH = join(__dirname, '../src/content/siteData.json');
 const CONTENT_PATH = join(__dirname, '../src/content/content.json');
+const SEASONS_PATH = join(__dirname, '../src/content/seasons.json');
 const CHANGELOG_DIR = join(__dirname, '../src/content/changelog');
 const CHANGELOG_INDEX = join(CHANGELOG_DIR, 'index.json');
 const PUBLIC_CHANGELOG_DIR = join(__dirname, '../public/changelog');
@@ -32,17 +33,66 @@ function getTimeISO() {
   return new Date().toISOString().split('T')[1].slice(0, 8);
 }
 
-// ── 1. Mutate colors in siteData.json ──
+// Returns the season name based on month (0-11)
+// Meteorological seasons: spring: 2-4 (Mar-May), summer: 5-7 (Jun-Aug), autumn: 8-10 (Sep-Nov), winter: 11,0,1 (Dec-Feb)
+function getCurrentSeason(month) {
+  if (month >= 2 && month <= 4) return 'spring';
+  if (month >= 5 && month <= 7) return 'summer';
+  if (month >= 8 && month <= 10) return 'autumn';
+  return 'winter'; // month 11, 0, 1
+}
+
+function getSeasonEmoji(season) {
+  const emojiMap = {
+    spring: '🌸',
+    summer: '☀️',
+    autumn: '🍂',
+    winter: '❄️'
+  };
+  return emojiMap[season] || '';
+}
+
+// ── 1. Mutate colors in siteData.json with seasonal weighting ──
 function mutateColors(siteData, dayOfYear) {
-  const schemeIndex = dayOfYear % siteData.colorSchemes.length;
-  const scheme = siteData.colorSchemes[schemeIndex];
+  const now = new Date();
+  const month = now.getMonth(); // 0-11
+  const season = getCurrentSeason(month);
+  const seasonsData = loadJSON(SEASONS_PATH);
+  const seasonInfo = seasonsData.seasons[season];
+  const weights = seasonInfo.colorSchemeWeights;
+
+  // Build a list of schemes with their weights
+  const schemesWithWeights = siteData.colorSchemes.map((scheme, index) => ({
+    scheme,
+    index,
+    weight: weights[scheme.name] || 1 // default weight 1 if not specified
+  }));
+
+  // Weighted random selection
+  let totalWeight = 0;
+  for (const item of schemesWithWeights) {
+    totalWeight += item.weight;
+  }
+  let random = Math.random() * totalWeight;
+  let selected = null;
+  for (const item of schemesWithWeights) {
+    if (random < item.weight) {
+      selected = item;
+      break;
+    }
+    random -= item.weight;
+  }
+  if (!selected) selected = schemesWithWeights[schemesWithWeights.length - 1]; // fallback
+
+  const scheme = selected.scheme;
+  const schemeIndex = selected.index;
   const variation = () => 0.9 + Math.random() * 0.2;
   scheme.shaderParams = {
     strokeDensity: Math.round(scheme.shaderParams.strokeDensity * variation() * 10) / 10,
     swirlFrequency: Math.round(scheme.shaderParams.swirlFrequency * variation() * 10) / 10,
     colorIntensity: Math.round(scheme.shaderParams.colorIntensity * variation() * 100) / 100
   };
-  return { scheme, schemeIndex };
+  return { scheme, schemeIndex, season };
 }
 
 // ── 2. Update ALL section text content in content.json ──
@@ -121,7 +171,7 @@ function updateAllSections(content, siteData, dayOfYear) {
 }
 
 // ── 3. Write changelog entry to date-based file ──
-function writeChangelogEntry(dayOfYear, updatedSections, scheme) {
+function writeChangelogEntry(dayOfYear, updatedSections, scheme, season) {
   ensureDir(CHANGELOG_DIR);
 
   const today = getTodayISO();
@@ -131,17 +181,18 @@ function writeChangelogEntry(dayOfYear, updatedSections, scheme) {
   // Build changes list
   const changes = [
     `Color scheme: ${scheme.name} (${scheme.mood})`,
-    `Shader — strokeDensity: ${scheme.shaderParams.strokeDensity}, swirlFrequency: ${scheme.shaderParams.swirlFrequency}, colorIntensity: ${scheme.shaderParams.colorIntensity}`,
+    `Season: ${season}`,
+    `Shader — strokeDensity: ${scheme.shaderParams.strokeDensity}, swirlFrequency: ${scheme.shaderParams.swirlFrequency}, colorIntensity: ${scheme.shaderParams.colorIntensity}`
   ];
   updatedSections.forEach(s => {
-    changes.push(`Section "${s.sectionKey}": ${s.theme} theme, fact #${s.factIndex}`);
+    changes.push(`Section \"${s.sectionKey}\": ${s.theme} theme, fact #${s.factIndex}`);
   });
 
   // Entry with time field for same-date differentiation
   const entry = {
     time,
     type: 'daily-mutation',
-    description: `Daily mutation #${dayOfYear}: ${scheme.name} colors, ${updatedSections.map(s => s.theme).join(' → ')}`,
+    description: `Daily mutation #${dayOfYear}: ${scheme.name} colors (${season} season), ${updatedSections.map(s => s.theme).join(' → ')}`,
     changes
   };
 
@@ -232,7 +283,7 @@ function syncChangelogToContent(content, siteData) {
   // Read all date files from changelog dir
   let allEntries = [];
   try {
-    const files = readdirSync(CHANGELOG_DIR).filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f));
+    const files = readdirSync(CHANGELOG_DIR).filter(f => /^\\d{4}-\\d{2}-\\d{2}\\.json$/.test(f));
     files.sort(); // chronological
     for (const file of files) {
       try {
@@ -274,15 +325,18 @@ const siteData = loadJSON(SITE_DATA_PATH);
 const content = loadJSON(CONTENT_PATH);
 const day = getDayOfYear();
 
-const { scheme } = mutateColors(siteData, day);
+const { scheme, schemeIndex, season } = mutateColors(siteData, day);
 const updatedSections = updateAllSections(content, siteData, day);
-const { entry, changes } = writeChangelogEntry(day, updatedSections, scheme);
+const { entry, changes } = writeChangelogEntry(day, updatedSections, scheme, season);
 syncChangelogToContent(content, siteData);
+
+// Add season indicator to content.meta
+content.meta.season = `${season} ${getSeasonEmoji(season)}`;
 
 saveJSON(SITE_DATA_PATH, siteData);
 saveJSON(CONTENT_PATH, content);
 
-console.log(`[daily-mutate] Day ${day}: Applied "${scheme.name}" scheme`);
+console.log(`[daily-mutate] Day ${day}: Applied \"${scheme.name}\" scheme (${season} season)`);
 console.log(`[daily-mutate] Updated ${updatedSections.length} sections:`);
 updatedSections.forEach(s => console.log(`  - ${s.sectionKey}: ${s.theme} (fact #${s.factIndex})`));
 console.log(`[daily-mutate] Changelog: ${getTodayISO()} ${getTimeISO()} — ${changes.length} changes`);
