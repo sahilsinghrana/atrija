@@ -2,27 +2,27 @@
   "columns": [
     {
       "id": "backlog",
-      "name": "\ud83d\udca1 Idea Backlog",
+      "name": "💡 Idea Backlog",
       "tasks": []
     },
     {
       "id": "red",
-      "name": "\ud83d\udd34 Red (Failing Test)",
+      "name": "🔴 Red (Failing Test)",
       "tasks": []
     },
     {
       "id": "green",
-      "name": "\ud83d\udfe2 Green (Implement)",
+      "name": "🟢 Green (Implement)",
       "tasks": []
     },
     {
       "id": "refactor",
-      "name": "\ud83d\udfe3 Refactor (Optimize)",
+      "name": "🟣 Refactor (Optimize)",
       "tasks": []
     },
     {
       "id": "done",
-      "name": "\u2705 Done",
+      "name": "✅ Done",
       "tasks": []
     }
   ],
@@ -59,16 +59,17 @@
       "title": "Ambient music generator",
       "description": "Procedural ambient music using Web Audio API. Flute-like tones that respond to scroll position and time of day.",
       "category": "Audio",
-      "priority": "high",
+      "priority": "low",
       "status": "cancelled",
-      "prd": "PRD-idea-004-ambient-music.md"
+      "prd": "PRD-idea-004-ambient-music.md",
+      "cancelledReason": "Audio deliberately removed from site (see idea-014). Conflicts with site direction."
     },
     {
       "id": "idea-005",
       "title": "Sunflower field parallax",
       "description": "Multi-layer parallax for sunflower field. Foreground flowers sway more, background less. Depth-based blur.",
       "category": "3D Elements",
-      "priority": "high",
+      "priority": "medium",
       "status": "done",
       "prd": "PRD-idea-005-sunflower-parallax.md"
     },
@@ -86,9 +87,10 @@
       "title": "GLSL watercolor post-processing",
       "description": "Add watercolor-style post-processing shader. Edge detection + color bleeding for painterly look.",
       "category": "Shaders",
-      "priority": "high",
+      "priority": "low",
       "status": "cancelled",
-      "prd": "PRD-idea-007-watercolor-shader.md"
+      "prd": "PRD-idea-007-watercolor-shader.md",
+      "cancelledReason": "Post-processing pipeline removed in code architecture refactoring (idea-024). Would need to re-implement EffectComposer first."
     },
     {
       "id": "idea-008",
@@ -110,10 +112,10 @@
     },
     {
       "id": "idea-010",
-      "title": "Flute click \u2014 SVG bansuri + music notes",
-      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (\u266a\u266b\u266c). Flute animates in/out with spring easing.",
+      "title": "Flute click — SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
       "category": "Interactivity",
-      "priority": "high",
+      "priority": "medium",
       "status": "done",
       "prd": null
     },
@@ -131,14 +133,14 @@
       "title": "Diverse colorful tulips",
       "description": "Replace all-yellow tulip palette with 16 diverse colors (red, orange, pink, magenta, purple, golden, amber, coral, crimson, orchid, vermillion, rose, violet, peach). Each tulip randomized with per-petal variation.",
       "category": "3D Elements",
-      "priority": "high",
+      "priority": "medium",
       "status": "done",
       "prd": null
     },
     {
       "id": "idea-013",
       "title": "Mobile tulip visibility fix",
-      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0\u00d71.6).",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -147,7 +149,7 @@
     {
       "id": "idea-014",
       "title": "Remove speaker/audio toggle",
-      "description": "Remove the audio toggle button (\ud83d\udd07) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
       "category": "Audio",
       "priority": "medium",
       "status": "done",
@@ -158,7 +160,7 @@
       "title": "ASCII moon brightness + shadow",
       "description": "Lighten ASCII moon text color from #c9a84c to #e8d48a with stronger text-shadow glow. Reduce moon shadow overlay opacity from 0.88 to 0.72.",
       "category": "UI",
-      "priority": "medium",
+      "priority": "low",
       "status": "done",
       "prd": null
     },
@@ -167,7 +169,7 @@
       "title": "Glitch shader fix",
       "description": "Fix glitch shader R/B channel swap bug (was reading .b for both r and b). Scope chromatic aberration to glitch lines only (~2% per scanline) instead of every frame.",
       "category": "Shaders",
-      "priority": "high",
+      "priority": "medium",
       "status": "done",
       "prd": null
     },
@@ -176,7 +178,7 @@
       "title": "Blue color cast removal",
       "description": "Remove blue point light washing out scene. Change from 0x4466aa to warm 0xffeedd at lower intensity. Reduce Van Gogh shader saturation from 1.4 to 1.0.",
       "category": "3D Elements",
-      "priority": "high",
+      "priority": "medium",
       "status": "done",
       "prd": null
     },
@@ -194,7 +196,7 @@
       "title": "Realistic randomized tulips",
       "description": "Replace abstract oval tulip shapes with realistic cup/bloom forms. 12 non-yellow colors (red, pink, purple, magenta, coral, orange, rose, violet, etc.). Per-tulip randomization: petal count 5-7, width/height variation, curl factor. Petal gradients, edge highlights, vein lines.",
       "category": "3D Elements",
-      "priority": "high",
+      "priority": "medium",
       "status": "done",
       "prd": "PRD-idea-019-realistic-tulips.md"
     },
@@ -212,7 +214,7 @@
       "title": "Van Gogh painting gallery carousel",
       "description": "Interactive gallery section showcasing Van Gogh's famous paintings with lazy-loaded images from Wikimedia Commons, themed descriptions, and swipe navigation.",
       "category": "Content",
-      "priority": "medium",
+      "priority": "low",
       "status": "cancelled",
       "prd": "PRD-idea-021-painting-gallery.md",
       "cancelledReason": "User requested removal. Gallery component, gallery.json, and all references deleted. Do NOT re-implement."
@@ -286,8 +288,9 @@
       "description": "Generative brushstroke sound effects that play in response to scroll velocity. NOTE: Audio was deliberately removed from the site (see idea-014). This idea conflicts with that direction — flagged for rethink.",
       "category": "Audio",
       "priority": "low",
-      "status": "backlog",
-      "prd": "PRD-idea-024-brushstroke-audio.md"
+      "status": "cancelled",
+      "prd": "PRD-idea-024-brushstroke-audio.md",
+      "cancelledReason": "Conflicts with site direction — audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
     },
     {
       "id": "idea-031",
@@ -355,6 +358,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-21T02:03:00Z",
-  "lastReviewAt": "2026-05-20T11:00:00Z",
-  "lastReviewResult": "Review complete: idea-033 moved back to backlog (PaintingExplorer.astro, painting-explorer.js, painting-explorer.json, and test all removed in commit a658dc6 — was incorrectly marked done). Deleted stale src/tests/shaders.test.js (referenced removed src/shaders/ modules). idea-020 stays refactor (17/18 tests pass, only missing starsGroup wrapper). idea-009 stays refactor (12 loading opt test failures remain — content-visibility, SVG preloads, font-display, nginx immutable, geometry reductions). Build passes, site up (200). 90 passed / 13 failed tests (12 from refactor items + 1 stale shader test now removed)."
+  "lastReviewAt": "2026-05-21T03:00:00Z",
+  "lastReviewResult": "Review complete: Rebalanced priorities (15 high → 7 high among active items). Cancelled idea-030 (brushstroke-audio, conflicts with audio removal). Added cancelledReason to idea-004, idea-007, idea-021, idea-030. Downgraded done items to more appropriate priorities. Added reviewer notes to PRD-035 (BufferGeometryUtils dependency flag) and PRD-036 (content.json fetch feasibility flag). No orphaned PRDs found. No stale entries (all < 30 days). No duplicates found. Build not run (no code changes)."
 }
