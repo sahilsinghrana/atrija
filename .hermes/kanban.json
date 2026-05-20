@@ -312,7 +312,7 @@
       "description": "A zoomable, interactive deep-dive into The Starry Night with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant Van Gogh quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
       "category": "Interactivity",
       "priority": "medium",
-      "status": "done",
+      "status": "red",
       "prd": "PRD-idea-033-painting-explorer.md"
     },
     {
@@ -327,6 +327,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-20T02:00:00Z",
-  "lastReviewAt": "2026-05-20T03:00:00Z",
-  "lastReviewResult": "Review complete: 24 done, 2 refactor, 2 cancelled, 4 backlog. 3 orphaned PRDs deleted (idea-019-brush-stroke-cursor, idea-020-cypress-trees, idea-021-scroll-color-palette). 2 priority changes (idea-032, idea-033 high→medium). Reviewer notes added to idea-032, idea-033, idea-034. All backlog PRDs quality-checked."
+  "lastReviewAt": "2026-05-20T06:00:00Z",
+  "lastReviewResult": "Review complete: idea-033 moved back to red (not implemented - only PRD/changelog updated, no actual code files). Stale shaders test (src/tests/shaders.test.js) still references removed shader modules. idea-009 and idea-020 remain in refactor with partial test failures. Build passes, site up (200). 90 passed / 13 failed tests (12 failures from incomplete refactor items, 1 from stale test)."
 }

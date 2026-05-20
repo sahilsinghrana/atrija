@@ -245,3 +245,25 @@
 
 **Scope Note**: This PRD overlaps conceptually with idea-021 (Painting Gallery Carousel) and idea-028 (Scroll-Driven Painting Reveal). Consider implementing all three as a unified "Van Gogh Art" section to avoid content fragmentation.
 
+## Implementation Review (2026-05-20 06:00 UTC)
+
+**Status: NOT IMPLEMENTED** — Moved from "done" back to "red".
+
+**Findings:**
+- The commit `faed742` only updated kanban.json, PRD files, and changelog entries.
+- No actual implementation files were created:
+  - `src/components/PaintingExplorer.astro` — MISSING
+  - `src/content/painting-explorer.json` — MISSING
+  - `public/js/painting-explorer.js` — MISSING
+- `src/pages/index.astro` does NOT import or render the PaintingExplorer component.
+- The changelog entries reference the component but it doesn't exist.
+- This appears to be a case where the background-implement cron updated the kanban status without actually writing the code.
+
+**Required to complete:**
+1. Create `src/content/painting-explorer.json` with 8-12 hotspot definitions
+2. Create `src/components/PaintingExplorer.astro` with hotspot rendering and side panel
+3. Add the component to `src/pages/index.astro`
+4. Create `public/js/painting-explorer.js` for zoom/pan/hotspot interactivity
+5. Write and pass the 7 unit tests from the PRD test plan
+6. Run `npm run build` and verify success
+7. Deploy and verify site returns 200

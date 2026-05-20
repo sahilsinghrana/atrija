@@ -228,3 +228,16 @@ This feature modifies `public/js/scene-init.js` to add scroll-listener logic tha
 
 ### Recommendation
 Single-line fix — the background-implement cron should resolve this quickly.
+
+## Implementation Review (2026-05-20 06:00 UTC)
+
+**Status: refactor** — Remains in refactor. No new commits since last review.
+
+**Findings:**
+- The scroll parallax feature IS implemented and functional (16/17 tests pass).
+- The single failing test expects `starsGroup` pattern but the code was refactored during idea-024 to store star layers directly on `scene.userData._starsNear/Mid/Far`.
+- The implementation works correctly — the test just needs updating to match the new architecture.
+- The scroll parallax code at lines 240-242 of scene-init.js properly rotates star layers at different rates based on scroll position.
+- This is a test maintenance issue, not a code bug.
+
+**Action needed:** Update `tests/scroll-parallax.test.js` line 48 to check for `scene.userData._starsNear` pattern instead of `starsGroup`.
