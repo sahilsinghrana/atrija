@@ -762,4 +762,34 @@ This idea has been in refactor for 2+ days with no progress. The background-impl
 11. `11-content-visibility.test.js` — BaseLayout needs `content-visibility: auto` on sections
 12. `11-content-visibility.test.js` — sections need `contain-intrinsic-size`
 
+---
+
+## Implementation Review (2026-05-21 06:00 UTC)
+
+**Status:** refactor — **PARTIALLY IMPLEMENTED** ⚠️
+
+**Reviewer:** Implementation Review Cron
+**Verdict:** 12 of 13 loading optimization tests fail. Several PRD features are implemented but many are missing.
+
+### What's Implemented ✅
+- `modulepreload` for scene-init.js and Three.js CDN (BaseLayout line 16)
+- `preload` for loader.css and main.css with `fetchpriority="high"`
+- `loader-progress.js` — progress bar with fake progress simulation + scene callbacks
+- `requestIdleCallback` wrapping for: flower animations, viewport fix, scroll reveal
+- Loader fade-out at 0.4s
+- SVG optimization (XML declarations and comments removed from flute.svg, moon.svg, stars.svg)
+- `astro.config.mjs` has `cssCodeSplit: false`
+
+### What's Missing (12 Failing Tests) ❌
+1. **Static gradient background** — `linear-gradient` style is in `<body>` CSS (line 66), not as first `<style>` in `<head>`. The loader CSS link (line 15) comes before the gradient.
+2. **Progressive loading** — No `initialStarCount` variable or phased initialization in scene-init.js. Stars and flowers are created in a single pass.
+3. **SVG preload** — No `<link rel="preload" href="/images/moon.svg">` or `stars.svg` preload tags
+4. **font-display: swap** — Not present in inline CSS (Google Fonts URL has `display=swap` but no inline `@font-face` rule)
+5. **Nginx caching** — No `immutable` Cache-Control or `max-age=31536000` in nginx.conf
+6. **content-visibility** — No `content-visibility: auto` or `contain-intrinsic-size` on `.section` elements
+7. **Reduced geometry** — No `initialStarCount`, `waveSegments`, or `WAVE_SEG` configurable variables in scene-init.js
+8. **Scroll reveal defer** — Test expects `requestIdleCallback` to appear before "Scroll reveal" comment in file, but the comment (line 155) comes before the `requestIdleCallback` call (line 156)
+
+### Recommendation
+This is a large PRD with 11 implementation steps. Steps 2 (partial), 6, 7, 8 (partial), and 11a are done. Steps 1, 3, 4, 5, 9, 10, and 11c remain. The background-implement cron should continue working through the remaining steps. Priority fixes: the scroll reveal test ordering (move comment after `requestIdleCallback` call or remove comment) and the gradient background ordering are quick wins.
 **Note on nginx tests:** The current nginx config uses `max-age=3600, must-revalidate` for CSS/JS which is actually more appropriate than immutable 1-year caching (per AGENTS.md section 2b). The tests may need updating to match the deployed strategy.
