@@ -2,7 +2,7 @@
 
 > **ID:** idea-032
 > **Category:** 3D Elements
-> **Priority:** high
+> **Priority:** medium
 > **Status:** backlog
 > **PRD Version:** 1.0
 > **Last Updated:** 2026-05-20

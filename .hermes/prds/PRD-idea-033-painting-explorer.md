@@ -2,7 +2,7 @@
 
 > **ID:** idea-033
 > **Category:** Interactivity
-> **Priority:** high
+> **Priority:** medium
 > **Status:** backlog
 > **PRD Version:** 1.0
 > **Last Updated:** 2026-05-20

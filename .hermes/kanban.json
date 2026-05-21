@@ -369,7 +369,7 @@
       "title": "Detailed Moon Surface with Craters and Texture",
       "description": "Enhance the 3D moon with realistic crater texture, bump mapping, and subtle surface details using normal maps or height maps.",
       "category": "3D Elements",
-      "priority": "medium",
+      "priority": "low",
       "status": "backlog",
       "prd": "PRD-idea-039-detailed-moon.md"
     },
@@ -378,13 +378,13 @@
       "title": "Enhanced Star System with Temperature-Based Colors",
       "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
       "category": "3D Elements",
-      "priority": "medium",
+      "priority": "low",
       "status": "backlog",
       "prd": "PRD-idea-040-enhanced-stars.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-21T02:03:00Z",
-  "lastReviewAt": "2026-05-21T14:03:34.585019Z",
+  "lastReviewAt": "2026-05-21T21:59:23.655556Z",
   "lastReviewResult": "Review complete (19:33 UTC): idea-031 (Van Gogh Biography Timeline) verified \u2014 implementation matches PRD, tests pass, build succeeds, site deployed (HTTP 200). 8 pre-existing test failures in loading optimizations (idea-009) noted but not blocking. Flagged idea-009 and idea-020 as stuck in refactor."
 }
