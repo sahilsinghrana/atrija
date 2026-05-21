@@ -1,55 +1,61 @@
 {
   "version": "1.6.0",
-  "lastUpdated": "2026-05-21T16:13:00.000Z",
-  "totalEntries": 24,
+  "lastUpdated": "2026-05-22",
+  "totalEntries": 25,
   "dates": [
+    {
+      "date": "2026-05-22",
+      "entries": 1,
+      "latestType": "feature",
+      "description": "Dynamic Time-of-Day Atmosphere System \u2014 the 3D scene subtly shifts its ambient atmosphere based on visitor's local time with warm golden dawn, bright midday, rich sunset tones, or deep night. Background, lights, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases."
+    },
     {
       "date": "2026-05-21",
       "entries": 2,
       "latestType": "feature",
-      "description": "Van Gogh Biography Timeline — interactive scrollable timeline with 11 life milestones (1853–1890), category filtering (Life/Career/Art), and scroll-reveal animations"
+      "description": "Van Gogh Biography Timeline \u2014 interactive scrollable timeline with 11 life milestones (1853\u20131890), category filtering (Life/Career/Art), and scroll-reveal animations"
     },
     {
       "date": "2026-05-20",
       "entries": 4,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #141: moonlit-silver colors (spring season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #141: moonlit-silver colors (spring season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-19",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #139: moonlit-silver colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #139: moonlit-silver colors, Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-18",
       "entries": 3,
       "latestType": "feature",
-      "description": "Shooting stars — random celestial streaks with fading trails, every 3-7 seconds"
+      "description": "Shooting stars \u2014 random celestial streaks with fading trails, every 3-7 seconds"
     },
     {
       "date": "2026-05-17",
       "entries": 1,
       "latestType": "feature",
-      "description": "Scroll-driven starry night sky parallax — sky rotates and shifts as you scroll"
+      "description": "Scroll-driven starry night sky parallax \u2014 sky rotates and shifts as you scroll"
     },
     {
       "date": "2026-05-16",
       "entries": 2,
       "latestType": "feature",
-      "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity opacity variation"
+      "description": "Sunflower field parallax \u2014 3 depth layers with scale/sway/opacity opacity variation"
     },
     {
       "date": "2026-05-15",
       "entries": 9,
       "latestType": "feature",
-      "description": "Ambient music generator — procedural flute-like soundscape with Web Audio API"
+      "description": "Ambient music generator \u2014 procedural flute-like soundscape with Web Audio API"
     },
     {
       "date": "2026-05-14",
       "entries": 2,
       "latestType": "daily-mutation",
-      "description": "First daily mutation — Selene and the Moon theme with starry-night colors."
+      "description": "First daily mutation \u2014 Selene and the Moon theme with starry-night colors."
     }
   ]
 }

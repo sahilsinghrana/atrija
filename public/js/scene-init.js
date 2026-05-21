@@ -6,7 +6,7 @@ import { ShaderPass } from 'https://esm.sh/three@0.160.0/examples/jsm/postproces
 
 var isMobile = window.innerWidth < 768;
 var isLowEnd = isMobile || navigator.hardwareConcurrency <= 4;
-
+// ── Time of Day Presets ─────────────────────────────────────────// Define lighting, colors, and atmospheric properties for different times of dayvar timeOfDayPresets = {  dawn: {    // Warm golden hour light    ambientLight: { color: 0xfff0e6, intensity: 0.6 }, // Soft warm ambient    directionalLight: { color: 0xffd4aa, intensity: 1.2 }, // Warm sunlight    pointLight: { color: 0xfff5e0, intensity: 0.3 }, // Soft fill light    backgroundTop: new THREE.Color(0xfff8f0), // Very light warm    backgroundBottom: new THREE.Color(0xffecd5), // Light peach    fogColor: 0xfff8f0,    fogNear: 10,    fogFar: 50,    // Van Gogh shader adjustments    vgStrokeDensity: 5.0,    vgSwirlFrequency: 10.0,    vgColorIntensity: 1.2,    // Wave colors    waveColor1: new THREE.Vector3(0.05, 0.03, 0.02), // Warm dark    waveColor2: new THREE.Vector3(0.1, 0.06, 0.03),    waveColor3: new THREE.Vector3(0.15, 0.09, 0.04),    // Star colors (warmer)    starColorBias: new THREE.Vector3(1.0, 0.9, 0.7),    description: "Warm golden hour light"  },  morning: {    // Bright, clear morning light    ambientLight: { color: 0xfffff0, intensity: 0.7 },    directionalLight: { color: 0xfffff5, intensity: 1.4 },    pointLight: { color: 0xfffff0, intensity: 0.2 },    backgroundTop: new THREE.Color(0xf0f8ff), // Alice blue    backgroundBottom: new THREE.Color(0xe6f3ff), // Light blue    fogColor: 0xf0f8ff,    fogNear: 15,    fogFar: 60,    vgStrokeDensity: 6.0,    vgSwirlFrequency: 12.0,    vgColorIntensity: 1.1,    waveColor1: new THREE.Vector3(0.02, 0.04, 0.08),    waveColor2: new THREE.Vector3(0.04, 0.08, 0.12),    waveColor3: new THREE.Vector3(0.06, 0.12, 0.16),    starColorBias: new THREE.Vector3(0.8, 0.9, 1.0),    description: "Bright morning light"  },  midday: {    // Bright, harsh midday light    ambientLight: { color: 0xffffff, intensity: 0.8 },    directionalLight: { color: 0xffffff, intensity: 1.6 },    pointLight: { color: 0xfffff0, intensity: 0.1 },    backgroundTop: new THREE.Color(0xe0f7ff), // Very light cyan    backgroundBottom: new THREE.Color(0xb3e5fc), // Light blue    fogColor: 0xe0f7ff,    fogNear: 20,    fogFar: 70,    vgStrokeDensity: 7.0,    vgSwirlFrequency: 14.0,    vgColorIntensity: 1.0,    waveColor1: new THREE.Vector3(0.01, 0.03, 0.07),    waveColor2: new THREE.Vector3(0.02, 0.06, 0.1),    waveColor3: new THREE.Vector3(0.03, 0.09, 0.13),    starColorBias: new THREE.Vector3(0.7, 0.8, 1.0),    description: "Bright midday light"  },  sunset: {    // Warm, dramatic sunset light    ambientLight: { color: 0xfff0e6, intensity: 0.5 },    directionalLight: { color: 0xff8c42, intensity: 1.0 }, // Orange sunset    pointLight: { color: 0xffd54f, intensity: 0.4 }, // Warm accent    backgroundTop: new THREE.Color(0xfff0e6), // Warm white    backgroundBottom: new THREE.Color(0xffcc80), // Orange    fogColor: 0xfff0e6,    fogNear: 12,    fogFar: 40,    vgStrokeDensity: 8.0,    vgSwirlFrequency: 16.0,    vgColorIntensity: 1.4,    waveColor1: new THREE.Vector3(0.04, 0.02, 0.01), // Reddish brown    waveColor2: new THREE.Vector3(0.08, 0.04, 0.02),    waveColor3: new THREE.Vector3(0.12, 0.06, 0.03),    starColorBias: new THREE.Vector3(1.0, 0.8, 0.6),    description: "Warm sunset light"  },  evening: {    // Cool, calming evening light    ambientLight: { color: 0xf0f8ff, intensity: 0.4 },    directionalLight: { color: 0xe6e6fa, intensity: 0.8 }, // Lavender    pointLight: { color: 0xf0e68c, intensity: 0.2 }, // Khaki    backgroundTop: new THREE.Color(0xf5f5f5), // White smoke    backgroundBottom: new THREE.Color(0xe6e6fa), // Lavender    fogColor: 0xf5f5f5,    fogNear: 10,    fogFar: 35,    vgStrokeDensity: 6.0,    vgSwirlFrequency: 12.0,    vgColorIntensity: 1.0,    waveColor1: new THREE.Vector3(0.03, 0.02, 0.05),    waveColor2: new THREE.Vector3(0.06, 0.04, 0.08),    waveColor3: new THREE.Vector3(0.09, 0.06, 0.11),    starColorBias: new THREE.Vector3(0.9, 0.85, 1.0),    description: "Cool evening light"  },  night: {    // Deep, dark night with subtle starlight    ambientLight: { color: 0x0a0a1a, intensity: 0.3 }, // Very dark    directionalLight: { color: 0x1a1a2e, intensity: 0.5 }, // Dark blue    pointLight: { color: 0xffd740, intensity: 0.1 }, // Moonlight accent    backgroundTop: new THREE.Color(0x08080f), // Nearly black    backgroundBottom: new THREE.Color(0x0a0a1a), // Very dark blue    fogColor: 0x08080f,    fogNear: 5,    fogFar: 25,    vgStrokeDensity: 7.2,    vgSwirlFrequency: 16.4,    vgColorIntensity: 1.62,    waveColor1: new THREE.Vector3(0.02, 0.05, 0.15), // Original from siteData    waveColor2: new THREE.Vector3(0.05, 0.1, 0.3),    waveColor3: new THREE.Vector3(0.1, 0.2, 0.4),    starColorBias: new THREE.Vector3(1.0, 0.95, 0.8),    description: "Deep night"  }};// Function to get current time of day preset with interpolationfunction getCurrentTimeOfDayPreset() {  var timeOfDay = getTimeOfDay();  var phase = timeOfDay.phase;  var fraction = timeOfDay.fraction;  // Define phase transitions for interpolation  var phases = ['dawn', 'morning', 'midday', 'sunset', 'evening', 'night'];  var currentIndex = phases.indexOf(phase);  // Handle circular transition from night to dawn  var nextIndex = (currentIndex + 1) % phases.length;  var nextPhase = phases[nextIndex];  // Get current and next presets  var currentPreset = timeOfDayPresets[phase];  var nextPreset = timeOfDayPresets[nextPhase];  // If we're at the end of a phase (fraction >= 1), move to next phase  // This handles the edge case where fraction might be exactly 1 due to rounding  if (fraction >= 1.0) {    currentPreset = nextPreset;    nextIndex = (nextIndex + 1) % phases.length;    nextPreset = timeOfDayPresets[phases[nextIndex]];    fraction = 0.0; // Reset fraction for new interpolation  }  // Interpolate between presets  function interpolateValue(start, end, frac) {    if (start instanceof THREE.Color) {      return start.clone().lerp(end, frac);    } else if (start instanceof THREE.Vector3) {      return start.clone().lerp(end, frac);    } else if (typeof start === 'number' && typeof end === 'number') {      return start + (end - start) * frac;    } else if (typeof start === 'object' && start !== null && end !== null) {      // Handle objects like light definitions      var result = {};      for (var key in start) {        if (start.hasOwnProperty(key)) {          result[key] = interpolateValue(start[key], end[key] || start[key], frac);        }      }      return result;    } else {      // For other types (strings, etc.), just return the current value      return start;    }  }  var preset = {};  for (var key in currentPreset) {    if (currentPreset.hasOwnProperty(key)) {      preset[key] = interpolateValue(        currentPreset[key],         nextPreset[key] || currentPreset[key],         fraction      );    }  }  // Add the phase name for reference  preset.phase = phase;  preset.fraction = fraction;  return preset;}
 // ── Scroll-driven parallax state ──
 var scrollState = { current: 0, target: 0, smooth: 0.05 };
 var scrollMax = document.body.scrollHeight - window.innerHeight;
@@ -126,6 +126,89 @@ function getMoonEmoji(fraction) {
   return '\u{1F311}';
 }
 
+// ── Time of Day Calculation ─────────────────────────────────────
+// Returns time-based values for atmospheric effects
+function getTimeOfDay() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var decimalHours = hours + minutes / 60.0;
+  
+  // Define time phases: dawn(5-7), morning(7-12), midday(12-17), sunset(17-19), evening(19-22), night(22-5)
+  if (decimalHours >= 5 && decimalHours < 7) {
+    // Dawn: 5 AM - 7 AM
+    return {
+      phase: 'dawn',
+      fraction: (decimalHours - 5) / 2, // 0 to 1 over 2 hours
+      hours: hours,
+      minutes: minutes
+    };
+  } else if (decimalHours >= 7 && decimalHours < 12) {
+    // Morning: 7 AM - 12 PM
+    return {
+      phase: 'morning',
+      fraction: (decimalHours - 7) / 5, // 0 to 1 over 5 hours
+      hours: hours,
+      minutes: minutes
+    };
+  } else if (decimalHours >= 12 && decimalHours < 17) {
+    // Midday: 12 PM - 5 PM
+    return {
+      phase: 'midday',
+      fraction: (decimalHours - 12) / 5, // 0 to 1 over 5 hours
+      hours: hours,
+      minutes: minutes
+    };
+  } else if (decimalHours >= 17 && decimalHours < 19) {
+    // Sunset: 5 PM - 7 PM
+    return {
+      phase: 'sunset',
+      fraction: (decimalHours - 17) / 2, // 0 to 1 over 2 hours
+      hours: hours,
+      minutes: minutes
+    };
+  } else if (decimalHours >= 19 && decimalHours < 22) {
+    // Evening: 7 PM - 10 PM
+    return {
+      phase: 'evening',
+      fraction: (decimalHours - 19) / 3, // 0 to 1 over 3 hours
+      hours: hours,
+      minutes: minutes
+    };
+  } else {
+    // Night: 10 PM - 5 AM
+    var nightHours;
+    if (decimalHours >= 22) {
+      nightHours = decimalHours - 22; // 10 PM onwards
+    } else {
+      nightHours = decimalHours + 2; // Before 5 AM
+    }
+    return {
+      phase: 'night',
+      fraction: nightHours / 7, // 0 to 1 over 7 hours (10 PM to 5 AM)
+      hours: hours,
+      minutes: minutes
+    };
+  }
+}
+
+function getTimePhaseName(fraction) {
+  // Just return the current phase name - could be expanded for more granular names
+  var timeOfDay = getTimeOfDay();
+  return timeOfDay.phase;
+}
+
+// Optional: Get a nice display string for debugging
+function getTimeOfDayString() {
+  var timeOfDay = getTimeOfDay();
+  return timeOfDay.phase + ' (' + 
+         String(timeOfDay.hours).padStart(2, '0') + ':' + 
+         String(timeOfDay.minutes).padStart(2, '0') + 
+         ', progress: ' + timeOfDay.fraction.toFixed(2) + ')';
+}
+
+
+
 // ── Firefly Shaders ──
 var fireflyVS = `
 attribute float phase; attribute float pulseSpeed;
@@ -200,9 +283,14 @@ class VanGoghScene {
     this.glitchPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } }, vertexShader: glitchVS, fragmentShader: glitchFS });
     this.composer.addPass(this.glitchPass);
 
-    this.scene.add(new THREE.AmbientLight(0xfff5e0, 0.7));
-    var ml = new THREE.DirectionalLight(0xfff8e7, 1.4); ml.position.set(5, 10, 5); this.scene.add(ml);
-    var fl = new THREE.PointLight(0xffeedd, 0.4, 50); fl.position.set(-5, 3, -5); this.scene.add(fl);
+    this.ambientLight = new THREE.AmbientLight(0xfff5e0, 0.7);
+    this.scene.add(this.ambientLight);
+    this.directionalLight = new THREE.DirectionalLight(0xfff8e7, 1.4);
+    this.directionalLight.position.set(5, 10, 5);
+    this.scene.add(this.directionalLight);
+    this.pointLight = new THREE.PointLight(0xffeedd, 0.4, 50);
+    this.pointLight.position.set(-5, 3, -5);
+    this.scene.add(this.pointLight);
     window.addEventListener('resize', () => this.onResize());
     this.animate();
   }
@@ -224,6 +312,54 @@ class VanGoghScene {
     var t = this.clock.getElapsedTime();
     var dt = this.clock.getDelta();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
+    // Update time-based atmospheric effects
+    var timePreset = getCurrentTimeOfDayPreset();
+    
+    // Update lights based on time of day
+    if (this.ambientLight) {
+      this.ambientLight.color.set(timePreset.ambientLight.color);
+      this.ambientLight.intensity = timePreset.ambientLight.intensity;
+    }
+    if (this.directionalLight) {
+      this.directionalLight.color.set(timePreset.directionalLight.color);
+      this.directionalLight.intensity = timePreset.directionalLight.intensity;
+    }
+    if (this.pointLight) {
+      this.pointLight.color.set(timePreset.pointLight.color);
+      this.pointLight.intensity = timePreset.pointLight.intensity;
+    }
+    
+    // Update Van Gogh shader uniforms
+    if (this.vgPass) {
+      this.vgPass.uniforms.uStrokeDensity.value = timePreset.vgStrokeDensity;
+      this.vgPass.uniforms.uSwirlFrequency.value = timePreset.vgSwirlFrequency;
+      this.vgPass.uniforms.uColorIntensity.value = timePreset.vgColorIntensity;
+    }
+    
+    // Update wave shader uniforms
+    var waveMaterial = this.scene.userData._waveMaterial;
+    if (waveMaterial) {
+      waveMaterial.uniforms.uColor1.value.copy(timePreset.waveColor1);
+      waveMaterial.uniforms.uColor2.value.copy(timePreset.waveColor2);
+      waveMaterial.uniforms.uColor3.value.copy(timePreset.waveColor3);
+    }
+    
+    // Update star colors (if we can access them)
+    // Note: Star colors are set in the customColor attribute, which is harder to update dynamically
+    // For now, we'll rely on the time-of-day affecting the overall mood through other elements
+    
+    // Update background color
+    if (!isMobile) {
+      var bgTop = timePreset.backgroundTop.clone();
+      var bgBot = timePreset.backgroundBottom.clone();
+      this.scene.background = bgTop.clone().lerp(bgBot, scrollState.current);
+    }
+    } else {
+      // Mobile devices - use original background logic
+      var bgTop = new THREE.Color(0x08080f);
+      var bgBot = new THREE.Color(0x0d0d1a);
+      this.scene.background = bgTop.clone().lerp(bgBot, scrollState.current);
+    }
     this.glitchPass.uniforms.uTime.value = t;
     if (_parallaxEnabled) {
       var scrollDelta = Math.abs(scrollState.target - scrollState.current);
@@ -858,11 +994,12 @@ function createWaves(scene, segs) {
   segs = segs || (isLowEnd ? 32 : 64);
   var geo = new THREE.PlaneGeometry(30, 20, segs, segs);
   geo.rotateX(-Math.PI * 0.45);
-  var mat = new THREE.ShaderMaterial({ uniforms: { uTime: { value: 0 }, uWaveHeight: { value: 0.3 }, uWaveFrequency: { value: 2.0 }, uColor1: { value: new THREE.Vector3(0.02,0.05,0.15) }, uColor2: { value: new THREE.Vector3(0.05,0.1,0.3) }, uColor3: { value: new THREE.Vector3(0.1,0.2,0.4) } }, vertexShader: waveVS, fragmentShader: waveFS, transparent: true, side: THREE.DoubleSide });
+    var mat = new THREE.ShaderMaterial({
   var waves = new THREE.Mesh(geo, mat); waves.position.set(0, -2, 5);
   waves.userData.animate = function(o, t) { o.material.uniforms.uTime.value = t; };
   scene.add(waves);
 }
+    this.scene.userData._waveMaterial = mat;
 
 // ═══════════════════════════════════════
 // 3D CYPRESS TREE SILHOUETTES
