@@ -3,7 +3,8 @@
   "meta": {
     "version": "1.5.0",
     "lastUpdated": "2026-05-19",
-    "updatedBy": "AI Agent (daily-mutate)"
+    "updatedBy": "AI Agent (daily-mutate)",
+    "season": "spring 🌸"
   },
   "sections": {
     "hero": {
@@ -15,16 +16,16 @@
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "Ptolemy believed the Moon's influence caused tides, madness, and the cycles of life. While science has explained the tides, the Moon still governs the menstrual cycle, the migration of birds, and the spawning of coral \u2014 life itself dances to the Moon's rhythm.",
+      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas — the emotional mind — and its phases mirror the cycles of human desire and detachment.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 3
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          5,
-          7
+          7,
+          9
         ]
       },
       "quote": {
@@ -35,47 +36,47 @@
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "The Bhagavad Gita warns: 'The ego is the greatest enemy of the human soul.' When Arjuna asks Krishna about the nature of the self, the answer is not 'I am great' but 'I am not the doer.'",
+      "intro": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 3
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [
-          7,
-          9
-        ]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 1
-      }
-    },
-    "gita": {
-      "label": "III. The Battlefield",
-      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "'Whenever dharma declines and the purpose of life is forgotten, I manifest myself.' The Gita teaches that the divine does not abandon the world \u2014 it returns, again and again, to restore balance.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 5
-      },
-      "facts": {
-        "themeIndex": 2,
         "slice": [
           3,
           5
         ]
       },
       "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 3
+      }
+    },
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
+      "intro": "The Bhagavad Gita begins not with wisdom but with despair. Arjuna, the greatest warrior, drops his bow and says, 'I will not fight.' The scripture teaches that the darkest moment precedes the greatest clarity.",
+      "imageCard": {
         "themeIndex": 2,
-        "quoteIndex": 2
+        "factIndex": 7
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          4,
+          6
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 4
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "Shiva is called Mahakala \u2014 the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
+      "intro": "The Nataraja statue of Shiva dancing within a ring of fire is one of the most recognized symbols in the world. Physicist Fritjof Capra wrote that 'the dance of Shiva is the dance of subatomic matter' — modern physics and ancient mythology converging on the same truth.",
       "imageCard": {
         "themeIndex": 3,
         "factIndex": 1
@@ -83,53 +84,38 @@
       "facts": {
         "themeIndex": 3,
         "slice": [
-          7,
-          9
+          2,
+          4
         ]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 0
+        "quoteIndex": 4
       }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "The flute is the oldest instrument \u2014 a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
+      "intro": "The sunflower turns its face to the light. In this simple act is a metaphor for the spiritual life — the constant orientation of the soul toward what illuminates, even when the source is hidden.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 0
+        "factIndex": 6
       },
       "facts": {
         "themeIndex": 4,
         "slice": [
-          7,
-          9
+          3,
+          5
         ]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 0
+        "quoteIndex": 4
       }
     }
   },
   "changelog": {
     "version": "1.0.0",
-    "entries": [
-      {
-        "time": "03:46:18",
-        "type": "feature",
-        "description": "Seasonal scene transitions: color palettes and flower ratios shift with the calendar",
-        "changes": [
-          "Added src/content/seasons.json with 4 seasonal profiles",
-          "Added seasonal affinity tags to color schemes in siteData.json",
-          "Updated daily-mutate.js with weighted seasonal color scheme selection",
-          "Seasonal flower emphasis: tulips in spring, sunflowers in autumn",
-          "Seasonal sky tone shifts and fact theme weighting",
-          "Current season logged in daily mutation changelog"
-        ],
-        "date": "2026-05-21"
-      }
-    ]
+    "entries": []
   }
 }

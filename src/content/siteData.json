@@ -342,9 +342,9 @@
       "text": "#b3e5fc",
       "mood": "mysterious",
       "shaderParams": {
-        "strokeDensity": 6,
-        "swirlFrequency": 15,
-        "colorIntensity": 1.2
+        "strokeDensity": 5.9,
+        "swirlFrequency": 14.9,
+        "colorIntensity": 1.12
       },
       "seasons": [
         "winter",
