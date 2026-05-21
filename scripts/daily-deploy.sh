@@ -24,6 +24,8 @@ echo "[daily-deploy] Step 3: Deploying to Nginx..."
 # Inject cache-busting version into scene-init.js script tag
 BUILD_VERSION=$(date +%s)
 sed -i "s/BUILD_VERSION/$BUILD_VERSION/g" dist/index.html
+# Hash all static assets for cache-busting
+bash scripts/hash-assets.sh
 cp -r dist/* "$DEPLOY_DIR/"
 echo "[daily-deploy] Deployed to $DEPLOY_DIR (v$BUILD_VERSION)"
 

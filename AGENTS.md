@@ -19,6 +19,8 @@ npm run build
 # Inject cache-busting version for scene-init.js
 BUILD_VERSION=$(date +%s)
 sed -i "s/BUILD_VERSION/$BUILD_VERSION/g" dist/index.html
+# Hash all static assets (JS, CSS, SVG) for cache-busting
+bash scripts/hash-assets.sh
 cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 ```
 
