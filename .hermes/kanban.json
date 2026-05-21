@@ -354,6 +354,33 @@
       "priority": "low",
       "status": "done",
       "prd": "PRD-idea-037-seasonal-transitions.md"
+    },
+    {
+      "id": "idea-038",
+      "title": "Starry Night Swirling Sky Shader",
+      "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns reminiscent of Van Gogh's Starry Night painting.",
+      "category": "Shaders",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-038-swirling-sky.md"
+    },
+    {
+      "id": "idea-039",
+      "title": "Detailed Moon Surface with Craters and Texture",
+      "description": "Enhance the 3D moon with realistic crater texture, bump mapping, and subtle surface details using normal maps or height maps.",
+      "category": "3D Elements",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-039-detailed-moon.md"
+    },
+    {
+      "id": "idea-040",
+      "title": "Enhanced Star System with Temperature-Based Colors",
+      "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
+      "category": "3D Elements",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-040-enhanced-stars.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
