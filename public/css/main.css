@@ -991,27 +991,24 @@
       z-index: 2;
       /* No CSS transition — JS animates this smoothly via rAF */
     }
-    #asciiMoon {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      font-size: clamp(2.2px, 0.42vw, 4.5px);
-      line-height: 1.35;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      background-color: #08080f;
-      color: #e8d48a;
-      text-shadow: 0 0 3px rgba(232,212,138,0.6), 0 0 6px rgba(232,212,138,0.3);
-      white-space: pre;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Courier New', 'Lucida Console', monospace;
-    }
+#asciiMoon {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: clamp(2.2px, 0.42vw, 4.5px);
+  line-height: 1.35;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #08080f;
+  color: #e8d48a;
+  text-shadow: 0 0 3px rgba(232,212,138,0.6), 0 0 6px rgba(232,212,138,0.3);
+  white-space: pre;
+  overflow: hidden;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+}
     @media (max-width: 600px) {
       #moonContainer {
         width: clamp(150px, 52vw, 220px);
