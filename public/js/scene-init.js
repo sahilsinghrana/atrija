@@ -456,13 +456,13 @@ function makeLilyCanvas(size, color, variant) {
 
   // 6 trumpet petals
   var petalCount = 6;
-  var spread = variant === 0 ? 0.05 : (variant === 1 ? 0.15 : 0.3);
+  var spread = variant === 0 ? 0.12 : (variant === 1 ? 0.15 : 0.3);
   for (var p = 0; p < petalCount; p++) {
     var angle = (p / petalCount) * Math.PI * 2 - Math.PI / 2;
     var depthFactor = 0.7 + Math.random() * 0.6;
     var pLightness = -2 + Math.floor(Math.random() * 5);
-    var petalH = headR * (variant === 0 ? 1.1 : (variant === 1 ? 0.8 : 0.7)) * (0.9 + Math.random() * 0.2);
-    var petalW = headR * (variant === 0 ? 0.18 : (variant === 1 ? 0.25 : 0.32)) * (0.85 + Math.random() * 0.3);
+    var petalH = headR * (variant === 0 ? 1.3 : (variant === 1 ? 0.8 : 0.7)) * (0.9 + Math.random() * 0.2);
+    var petalW = headR * (variant === 0 ? 0.22 : (variant === 1 ? 0.25 : 0.32)) * (0.85 + Math.random() * 0.3);
 
     var r2 = Math.min(255, Math.max(0, rr + pLightness * 8));
     var g2 = Math.min(255, Math.max(0, gg + pLightness * 4));
@@ -532,9 +532,9 @@ function createLilies(scene, count) {
     var s = isMobile ? (0.7 + Math.random() * 0.5) : (0.5 + Math.random() * 0.5);
     var spreadX = isMobile ? 10 : 14;
     var spreadZ = isMobile ? 6 : 8;
-    var tex = new THREE.CanvasTexture(makeLilyCanvas(160, color, variant));
+    var tex = new THREE.CanvasTexture(makeLilyCanvas(256, color, variant));
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    sprite.scale.set(1.0 * s, 1.6 * s, 1);
+    sprite.scale.set(1.5 * s, 2.4 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
       isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
@@ -1070,7 +1070,7 @@ function spawnNotesBurst(cx, cy, count) {
   var starCount = isLowEnd ? 700 : 2500;
   var noteCount = isLowEnd ? 10 : 15;
   var sunflowerCount = isLowEnd ? 3 : 8;
-  var lilyCount = isLowEnd ? 2 : 4;
+  var lilyCount = isLowEnd ? 6 : 16;
   var waveSegs = isLowEnd ? 16 : 32;
   if (window.__updateLoaderProgress) window.__updateLoaderProgress(30);
   createStars(scene.scene, starCount);
