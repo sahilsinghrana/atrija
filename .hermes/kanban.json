@@ -292,10 +292,10 @@
       "prd": "PRD-idea-024-brushstroke-audio.md",
       "cancelledReason": "Conflicts with site direction \u2014 audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
     },
-{
+    {
       "id": "idea-031",
       "title": "Van Gogh Biography Timeline",
-      "description": "An interactive, scrollable timeline of Van Gogh's life milestones — birth, key paintings, moves, and legacy — displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
+      "description": "An interactive, scrollable timeline of Van Gogh's life milestones \u2014 birth, key paintings, moves, and legacy \u2014 displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
       "category": "Content",
       "priority": "low",
       "status": "done",
@@ -358,6 +358,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-21T02:03:00Z",
-  "lastReviewAt": "2026-05-21T06:00:00Z",
-  "lastReviewResult": "Review complete (06:00 UTC): idea-037 (seasonal transitions) verified — seasons.json, siteData seasons tags, daily-mutate seasonal weighting all implemented. Build passes, site deployed (HTTP 200). Missing seasons.test.js unit tests. idea-020 (scroll-parallax) still in refactor — starsGroup test maintenance issue persists, no new commits. idea-009 (loading-optimizations) still in refactor — 12 loading tests fail, partially implemented. Flagged idea-020 as stuck (>24h in refactor with no progress)."
+  "lastReviewAt": "2026-05-21T14:03:34.585019Z",
+  "lastReviewResult": "Review complete (19:33 UTC): idea-031 (Van Gogh Biography Timeline) verified \u2014 implementation matches PRD, tests pass, build succeeds, site deployed (HTTP 200). 8 pre-existing test failures in loading optimizations (idea-009) noted but not blocking. Flagged idea-009 and idea-020 as stuck in refactor."
 }

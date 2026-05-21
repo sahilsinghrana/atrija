@@ -265,3 +265,15 @@ Single-line fix — the background-implement cron should resolve this quickly.
 - **Recommendation:** Either update the test to match the actual `scene.userData._starsNear/Mid/Far` pattern, or mark as `done` since the feature works correctly
 
 **Action needed:** Update `tests/scroll-parallax.test.js` line 48 to check for `scene.userData._starsNear` pattern instead of `starsGroup`, OR accept the feature as done since the implementation is functionally correct.
+
+---
+
+**⚠️ Stuck Implementation Alert (2026-05-21)**
+
+This implementation has been stuck in 'refactor' status for >24 hours.
+
+**Issue**: 12 loading tests fail, partially implemented - needs attention
+
+**Suggested Action**: Consider breaking this into smaller sub-tasks or reviewing the approach.
+
+---
