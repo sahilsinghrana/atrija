@@ -1,13 +1,13 @@
 {
   "version": "1.6.0",
-  "lastUpdated": "2026-05-21T00:32:37.764Z",
-  "totalEntries": 23,
+  "lastUpdated": "2026-05-21T16:13:00.000Z",
+  "totalEntries": 24,
   "dates": [
     {
       "date": "2026-05-21",
-      "entries": 1,
-      "latestType": "daily-mutation",
-      "description": "Daily mutation #141: midnight-wave colors (spring season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "entries": 2,
+      "latestType": "feature",
+      "description": "Van Gogh Biography Timeline — interactive scrollable timeline with 11 life milestones (1853–1890), category filtering (Life/Career/Art), and scroll-reveal animations"
     },
     {
       "date": "2026-05-20",
@@ -37,7 +37,7 @@
       "date": "2026-05-16",
       "entries": 2,
       "latestType": "feature",
-      "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity variation"
+      "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity opacity variation"
     },
     {
       "date": "2026-05-15",

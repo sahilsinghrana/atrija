@@ -115,7 +115,48 @@
     }
   },
   "changelog": {
-    "version": "1.0.0",
-    "entries": []
+    "version": "1.6.0",
+    "entries": [
+      {
+        "date": "2026-05-21",
+        "type": "feature",
+        "description": "Van Gogh Biography Timeline — interactive scrollable timeline with 11 life milestones, category filtering, and scroll-reveal animations"
+      },
+      {
+        "date": "2026-05-21",
+        "type": "daily-mutation",
+        "description": "Daily mutation #141: midnight-wave colors (spring season)"
+      },
+      {
+        "date": "2026-05-20",
+        "type": "daily-mutation",
+        "description": "Daily mutation #141: moonlit-silver colors (spring season)"
+      },
+      {
+        "date": "2026-05-19",
+        "type": "daily-mutation",
+        "description": "Daily mutation #139: moonlit-silver colors"
+      },
+      {
+        "date": "2026-05-18",
+        "type": "feature",
+        "description": "Shooting stars — random celestial streaks with fading trails"
+      },
+      {
+        "date": "2026-05-17",
+        "type": "feature",
+        "description": "Scroll-driven starry night sky parallax"
+      },
+      {
+        "date": "2026-05-16",
+        "type": "feature",
+        "description": "Sunflower field parallax — 3 depth layers"
+      },
+      {
+        "date": "2026-05-14",
+        "type": "daily-mutation",
+        "description": "First daily mutation — Selene and the Moon theme"
+      }
+    ]
   }
 }

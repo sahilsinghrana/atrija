@@ -1,0 +1,77 @@
+{
+  "title": "Vincent van Gogh",
+  "subtitle": "A life in light and color",
+  "milestones": [
+    {
+      "year": "1853",
+      "title": "Born in Zundert",
+      "description": "Vincent Willem van Gogh is born on 30 March 1853 in Zundert, Netherlands — the eldest son of a Protestant pastor.",
+      "category": "life"
+    },
+    {
+      "year": "1869",
+      "title": "Art Dealer at Goupil & Cie",
+      "description": "At 16, Vincent begins working for the art dealership Goupil & Cie in The Hague, later transferred to London and Paris.",
+      "category": "career"
+    },
+    {
+      "year": "1873",
+      "title": "Love Letters to Ursula",
+      "description": "Stationed in London, Vincent falls deeply in love with Ursula Loyer. His unrequited love marks the beginning of his emotional turbulence.",
+      "category": "life"
+    },
+    {
+      "year": "1880",
+      "title": "Decision to Become an Artist",
+      "description": "At 27, after failed careers in art dealing, teaching, and ministry, Vincent finally commits to becoming an artist.",
+      "category": "career"
+    },
+    {
+      "year": "1881–1883",
+      "title": "The Dark Period — Netherlands",
+      "description": "Working in The Hague and Nuenen, Vincent develops his somber palette. Creates 'The Potato Eaters' (1885), his first masterpiece.",
+      "category": "art"
+    },
+    {
+      "year": "1886",
+      "title": "Arrival in Paris",
+      "description": "Vincent moves to Paris, joins his brother Theo, and discovers Impressionism. His palette transforms from dark earth tones to vibrant color.",
+      "category": "career"
+    },
+    {
+      "year": "1888",
+      "title": "The Yellow House — Arles",
+      "description": "Vincent moves to Arles in southern France, dreaming of an artists' colony. Paints the Sunflowers series and the Yellow House.",
+      "category": "art"
+    },
+    {
+      "year": "1888",
+      "title": "Gauguin & The Ear",
+      "description": "Paul Gauguin joins Vincent in Arles. After a violent argument, Vincent cuts off part of his own ear. Gauguin leaves.",
+      "category": "life"
+    },
+    {
+      "year": "1889",
+      "title": "The Starry Night",
+      "description": "From the asylum at Saint-Rémy-de-Provence, Vincent paints 'The Starry Night' — arguably the most recognized painting in the world.",
+      "category": "art"
+    },
+    {
+      "year": "1890",
+      "title": "Auvers-sur-Oise & Wheat Field",
+      "description": "Vincent moves to Auvers-sur-Oise, painting prolifically — 70 paintings in 70 days. Creates 'Wheatfield with Crows'.",
+      "category": "art"
+    },
+    {
+      "year": "1890",
+      "title": "Death at 37",
+      "description": "On 27 July 1890, Vincent shoots himself in a wheat field. He dies two days later, with Theo at his side. He sold only one painting in his lifetime.",
+      "category": "life"
+    }
+  ],
+  "categories": {
+    "life": { "label": "Life", "color": "#ff8a65" },
+    "career": { "label": "Career", "color": "#4fc3f7" },
+    "art": { "label": "Art", "color": "#ffd54f" }
+  }
+}

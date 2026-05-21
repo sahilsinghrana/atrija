@@ -292,13 +292,13 @@
       "prd": "PRD-idea-024-brushstroke-audio.md",
       "cancelledReason": "Conflicts with site direction \u2014 audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
     },
-    {
+{
       "id": "idea-031",
       "title": "Van Gogh Biography Timeline",
-      "description": "An interactive, scrollable timeline of Van Gogh's life milestones \u2014 birth, key paintings, moves, and legacy \u2014 displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
+      "description": "An interactive, scrollable timeline of Van Gogh's life milestones — birth, key paintings, moves, and legacy — displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
       "category": "Content",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-025-vangogh-timeline.md"
     },
     {
