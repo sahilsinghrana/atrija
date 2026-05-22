@@ -4,19 +4,19 @@
     "version": "1.5.0",
     "lastUpdated": "2026-05-19",
     "updatedBy": "AI Agent (daily-mutate)",
-    "season": "spring \ud83c\udf38"
+    "season": "spring 🌸"
   },
   "sections": {
     "hero": {
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>Ego</em> conceals today"
+      "heading": "What the <em>Bhagavad</em> teaches today"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas \u2014 the emotional mind \u2014 and its phases mirror the cycles of human desire and detachment.",
+      "intro": "In many cultures, the new moon is considered a time for planting seeds — both literal and metaphorical. Darkness is not emptiness; it is the womb from which light is born.",
       "imageCard": {
         "themeIndex": 0,
         "factIndex": 0
@@ -24,19 +24,19 @@
       "facts": {
         "themeIndex": 0,
         "slice": [
-          7,
-          9
+          6,
+          8
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 1
+        "quoteIndex": 4
       }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "Arrogance is the ego's armor. But armor is heavy \u2014 it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
+      "intro": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
       "imageCard": {
         "themeIndex": 1,
         "factIndex": 0
@@ -50,36 +50,36 @@
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 3
+        "quoteIndex": 1
       }
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "The Bhagavad Gita begins not with wisdom but with despair. Arjuna, the greatest warrior, drops his bow and says, 'I will not fight.' The scripture teaches that the darkest moment precedes the greatest clarity.",
+      "intro": "The Gita was spoken on a battlefield, not in a temple. Wisdom does not require perfect conditions. The most profound truths are often revealed in the midst of chaos, not in the silence of retreat.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 7
+        "factIndex": 2
       },
       "facts": {
         "themeIndex": 2,
         "slice": [
-          4,
-          6
+          8,
+          10
         ]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 4
+        "quoteIndex": 1
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "The Nataraja statue of Shiva dancing within a ring of fire is one of the most recognized symbols in the world. Physicist Fritjof Capra wrote that 'the dance of Shiva is the dance of subatomic matter' \u2014 modern physics and ancient mythology converging on the same truth.",
+      "intro": "Shiva is called Tryambaka — the three-eyed one. The third eye represents the eye of wisdom that sees beyond the duality of good and evil, self and other, creation and destruction. When it opens, the universe is consumed in flame — not as punishment, but as liberation.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 1
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 3,
@@ -90,87 +90,32 @@
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 4
+        "quoteIndex": 0
       }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "The sunflower turns its face to the light. In this simple act is a metaphor for the spiritual life \u2014 the constant orientation of the soul toward what illuminates, even when the source is hidden.",
+      "intro": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 6
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 4,
         "slice": [
-          3,
-          5
+          5,
+          7
         ]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 4
+        "quoteIndex": 0
       }
     }
   },
   "changelog": {
-    "version": "1.6.0",
-    "entries": [
-      {
-        "time": "04:06:53",
-        "type": "feature",
-        "description": "Dynamic Time-of-Day Atmosphere System \u2014 the 3D scene subtly shifts its ambient atmosphere based on visitor's local time with warm golden dawn, bright midday, rich sunset tones, or deep night. Background, lights, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
-        "changes": [
-          "Added time-of-day calculation system with dawn/morning/midday/sunset/evening/night phases",
-          "Defined time-based presets for lighting, colors, and atmospheric properties",
-          "Updated ambient, directional, and point lights to change based on time of day",
-          "Modified Van Gogh shader uniforms to respond to time-of-day",
-          "Updated wave shader colors based on time of day",
-          "Added time-based background color interpolation for desktop (mobile preserves original logic)",
-          "Preserved all existing features and visual effects"
-        ]
-      },
-      {
-        "date": "2026-05-21",
-        "type": "feature",
-        "description": "Van Gogh Biography Timeline \u2014 interactive scrollable timeline with 11 life milestones, category filtering, and scroll-reveal animations"
-      },
-      {
-        "date": "2026-05-21",
-        "type": "daily-mutation",
-        "description": "Daily mutation #141: midnight-wave colors (spring season)"
-      },
-      {
-        "date": "2026-05-20",
-        "type": "daily-mutation",
-        "description": "Daily mutation #141: moonlit-silver colors (spring season)"
-      },
-      {
-        "date": "2026-05-19",
-        "type": "daily-mutation",
-        "description": "Daily mutation #139: moonlit-silver colors"
-      },
-      {
-        "date": "2026-05-18",
-        "type": "feature",
-        "description": "Shooting stars \u2014 random celestial streaks with fading trails"
-      },
-      {
-        "date": "2026-05-17",
-        "type": "feature",
-        "description": "Scroll-driven starry night sky parallax"
-      },
-      {
-        "date": "2026-05-16",
-        "type": "feature",
-        "description": "Sunflower field parallax \u2014 3 depth layers"
-      },
-      {
-        "date": "2026-05-14",
-        "type": "daily-mutation",
-        "description": "First daily mutation \u2014 Selene and the Moon theme"
-      }
-    ]
+    "version": "1.0.0",
+    "entries": []
   }
 }
