@@ -6,7 +6,7 @@ import { ShaderPass } from 'https://esm.sh/three@0.160.0/examples/jsm/postproces
 
 var isMobile = window.innerWidth < 768;
 var isLowEnd = isMobile || navigator.hardwareConcurrency <= 4;
-// ── Time of Day Presets ─────────────────────────────────────────// Define lighting, colors, and atmospheric properties for different times of dayvar timeOfDayPresets = {  dawn: {    // Warm golden hour light    ambientLight: { color: 0xfff0e6, intensity: 0.6 }, // Soft warm ambient    directionalLight: { color: 0xffd4aa, intensity: 1.2 }, // Warm sunlight    pointLight: { color: 0xfff5e0, intensity: 0.3 }, // Soft fill light    backgroundTop: new THREE.Color(0xfff8f0), // Very light warm    backgroundBottom: new THREE.Color(0xffecd5), // Light peach    fogColor: 0xfff8f0,    fogNear: 10,    fogFar: 50,    // Van Gogh shader adjustments    vgStrokeDensity: 5.0,    vgSwirlFrequency: 10.0,    vgColorIntensity: 1.2,    // Wave colors    waveColor1: new THREE.Vector3(0.05, 0.03, 0.02), // Warm dark    waveColor2: new THREE.Vector3(0.1, 0.06, 0.03),    waveColor3: new THREE.Vector3(0.15, 0.09, 0.04),    // Star colors (warmer)    starColorBias: new THREE.Vector3(1.0, 0.9, 0.7),    description: "Warm golden hour light"  },  morning: {    // Bright, clear morning light    ambientLight: { color: 0xfffff0, intensity: 0.7 },    directionalLight: { color: 0xfffff5, intensity: 1.4 },    pointLight: { color: 0xfffff0, intensity: 0.2 },    backgroundTop: new THREE.Color(0xf0f8ff), // Alice blue    backgroundBottom: new THREE.Color(0xe6f3ff), // Light blue    fogColor: 0xf0f8ff,    fogNear: 15,    fogFar: 60,    vgStrokeDensity: 6.0,    vgSwirlFrequency: 12.0,    vgColorIntensity: 1.1,    waveColor1: new THREE.Vector3(0.02, 0.04, 0.08),    waveColor2: new THREE.Vector3(0.04, 0.08, 0.12),    waveColor3: new THREE.Vector3(0.06, 0.12, 0.16),    starColorBias: new THREE.Vector3(0.8, 0.9, 1.0),    description: "Bright morning light"  },  midday: {    // Bright, harsh midday light    ambientLight: { color: 0xffffff, intensity: 0.8 },    directionalLight: { color: 0xffffff, intensity: 1.6 },    pointLight: { color: 0xfffff0, intensity: 0.1 },    backgroundTop: new THREE.Color(0xe0f7ff), // Very light cyan    backgroundBottom: new THREE.Color(0xb3e5fc), // Light blue    fogColor: 0xe0f7ff,    fogNear: 20,    fogFar: 70,    vgStrokeDensity: 7.0,    vgSwirlFrequency: 14.0,    vgColorIntensity: 1.0,    waveColor1: new THREE.Vector3(0.01, 0.03, 0.07),    waveColor2: new THREE.Vector3(0.02, 0.06, 0.1),    waveColor3: new THREE.Vector3(0.03, 0.09, 0.13),    starColorBias: new THREE.Vector3(0.7, 0.8, 1.0),    description: "Bright midday light"  },  sunset: {    // Warm, dramatic sunset light    ambientLight: { color: 0xfff0e6, intensity: 0.5 },    directionalLight: { color: 0xff8c42, intensity: 1.0 }, // Orange sunset    pointLight: { color: 0xffd54f, intensity: 0.4 }, // Warm accent    backgroundTop: new THREE.Color(0xfff0e6), // Warm white    backgroundBottom: new THREE.Color(0xffcc80), // Orange    fogColor: 0xfff0e6,    fogNear: 12,    fogFar: 40,    vgStrokeDensity: 8.0,    vgSwirlFrequency: 16.0,    vgColorIntensity: 1.4,    waveColor1: new THREE.Vector3(0.04, 0.02, 0.01), // Reddish brown    waveColor2: new THREE.Vector3(0.08, 0.04, 0.02),    waveColor3: new THREE.Vector3(0.12, 0.06, 0.03),    starColorBias: new THREE.Vector3(1.0, 0.8, 0.6),    description: "Warm sunset light"  },  evening: {    // Cool, calming evening light    ambientLight: { color: 0xf0f8ff, intensity: 0.4 },    directionalLight: { color: 0xe6e6fa, intensity: 0.8 }, // Lavender    pointLight: { color: 0xf0e68c, intensity: 0.2 }, // Khaki    backgroundTop: new THREE.Color(0xf5f5f5), // White smoke    backgroundBottom: new THREE.Color(0xe6e6fa), // Lavender    fogColor: 0xf5f5f5,    fogNear: 10,    fogFar: 35,    vgStrokeDensity: 6.0,    vgSwirlFrequency: 12.0,    vgColorIntensity: 1.0,    waveColor1: new THREE.Vector3(0.03, 0.02, 0.05),    waveColor2: new THREE.Vector3(0.06, 0.04, 0.08),    waveColor3: new THREE.Vector3(0.09, 0.06, 0.11),    starColorBias: new THREE.Vector3(0.9, 0.85, 1.0),    description: "Cool evening light"  },  night: {    // Deep, dark night with subtle starlight    ambientLight: { color: 0x0a0a1a, intensity: 0.3 }, // Very dark    directionalLight: { color: 0x1a1a2e, intensity: 0.5 }, // Dark blue    pointLight: { color: 0xffd740, intensity: 0.1 }, // Moonlight accent    backgroundTop: new THREE.Color(0x08080f), // Nearly black    backgroundBottom: new THREE.Color(0x0a0a1a), // Very dark blue    fogColor: 0x08080f,    fogNear: 5,    fogFar: 25,    vgStrokeDensity: 7.2,    vgSwirlFrequency: 16.4,    vgColorIntensity: 1.62,    waveColor1: new THREE.Vector3(0.02, 0.05, 0.15), // Original from siteData    waveColor2: new THREE.Vector3(0.05, 0.1, 0.3),    waveColor3: new THREE.Vector3(0.1, 0.2, 0.4),    starColorBias: new THREE.Vector3(1.0, 0.95, 0.8),    description: "Deep night"  }};// Function to get current time of day preset with interpolationfunction getCurrentTimeOfDayPreset() {  var timeOfDay = getTimeOfDay();  var phase = timeOfDay.phase;  var fraction = timeOfDay.fraction;  // Define phase transitions for interpolation  var phases = ['dawn', 'morning', 'midday', 'sunset', 'evening', 'night'];  var currentIndex = phases.indexOf(phase);  // Handle circular transition from night to dawn  var nextIndex = (currentIndex + 1) % phases.length;  var nextPhase = phases[nextIndex];  // Get current and next presets  var currentPreset = timeOfDayPresets[phase];  var nextPreset = timeOfDayPresets[nextPhase];  // If we're at the end of a phase (fraction >= 1), move to next phase  // This handles the edge case where fraction might be exactly 1 due to rounding  if (fraction >= 1.0) {    currentPreset = nextPreset;    nextIndex = (nextIndex + 1) % phases.length;    nextPreset = timeOfDayPresets[phases[nextIndex]];    fraction = 0.0; // Reset fraction for new interpolation  }  // Interpolate between presets  function interpolateValue(start, end, frac) {    if (start instanceof THREE.Color) {      return start.clone().lerp(end, frac);    } else if (start instanceof THREE.Vector3) {      return start.clone().lerp(end, frac);    } else if (typeof start === 'number' && typeof end === 'number') {      return start + (end - start) * frac;    } else if (typeof start === 'object' && start !== null && end !== null) {      // Handle objects like light definitions      var result = {};      for (var key in start) {        if (start.hasOwnProperty(key)) {          result[key] = interpolateValue(start[key], end[key] || start[key], frac);        }      }      return result;    } else {      // For other types (strings, etc.), just return the current value      return start;    }  }  var preset = {};  for (var key in currentPreset) {    if (currentPreset.hasOwnProperty(key)) {      preset[key] = interpolateValue(        currentPreset[key],         nextPreset[key] || currentPreset[key],         fraction      );    }  }  // Add the phase name for reference  preset.phase = phase;  preset.fraction = fraction;  return preset;}
+
 // ── Scroll-driven parallax state ──
 var scrollState = { current: 0, target: 0, smooth: 0.05 };
 var scrollMax = document.body.scrollHeight - window.innerHeight;
@@ -126,89 +126,6 @@ function getMoonEmoji(fraction) {
   return '\u{1F311}';
 }
 
-// ── Time of Day Calculation ─────────────────────────────────────
-// Returns time-based values for atmospheric effects
-function getTimeOfDay() {
-  var now = new Date();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  var decimalHours = hours + minutes / 60.0;
-  
-  // Define time phases: dawn(5-7), morning(7-12), midday(12-17), sunset(17-19), evening(19-22), night(22-5)
-  if (decimalHours >= 5 && decimalHours < 7) {
-    // Dawn: 5 AM - 7 AM
-    return {
-      phase: 'dawn',
-      fraction: (decimalHours - 5) / 2, // 0 to 1 over 2 hours
-      hours: hours,
-      minutes: minutes
-    };
-  } else if (decimalHours >= 7 && decimalHours < 12) {
-    // Morning: 7 AM - 12 PM
-    return {
-      phase: 'morning',
-      fraction: (decimalHours - 7) / 5, // 0 to 1 over 5 hours
-      hours: hours,
-      minutes: minutes
-    };
-  } else if (decimalHours >= 12 && decimalHours < 17) {
-    // Midday: 12 PM - 5 PM
-    return {
-      phase: 'midday',
-      fraction: (decimalHours - 12) / 5, // 0 to 1 over 5 hours
-      hours: hours,
-      minutes: minutes
-    };
-  } else if (decimalHours >= 17 && decimalHours < 19) {
-    // Sunset: 5 PM - 7 PM
-    return {
-      phase: 'sunset',
-      fraction: (decimalHours - 17) / 2, // 0 to 1 over 2 hours
-      hours: hours,
-      minutes: minutes
-    };
-  } else if (decimalHours >= 19 && decimalHours < 22) {
-    // Evening: 7 PM - 10 PM
-    return {
-      phase: 'evening',
-      fraction: (decimalHours - 19) / 3, // 0 to 1 over 3 hours
-      hours: hours,
-      minutes: minutes
-    };
-  } else {
-    // Night: 10 PM - 5 AM
-    var nightHours;
-    if (decimalHours >= 22) {
-      nightHours = decimalHours - 22; // 10 PM onwards
-    } else {
-      nightHours = decimalHours + 2; // Before 5 AM
-    }
-    return {
-      phase: 'night',
-      fraction: nightHours / 7, // 0 to 1 over 7 hours (10 PM to 5 AM)
-      hours: hours,
-      minutes: minutes
-    };
-  }
-}
-
-function getTimePhaseName(fraction) {
-  // Just return the current phase name - could be expanded for more granular names
-  var timeOfDay = getTimeOfDay();
-  return timeOfDay.phase;
-}
-
-// Optional: Get a nice display string for debugging
-function getTimeOfDayString() {
-  var timeOfDay = getTimeOfDay();
-  return timeOfDay.phase + ' (' + 
-         String(timeOfDay.hours).padStart(2, '0') + ':' + 
-         String(timeOfDay.minutes).padStart(2, '0') + 
-         ', progress: ' + timeOfDay.fraction.toFixed(2) + ')';
-}
-
-
-
 // ── Firefly Shaders ──
 var fireflyVS = `
 attribute float phase; attribute float pulseSpeed;
@@ -283,14 +200,9 @@ class VanGoghScene {
     this.glitchPass = new ShaderPass({ uniforms: { tDiffuse: { value: null }, uTime: { value: 0 } }, vertexShader: glitchVS, fragmentShader: glitchFS });
     this.composer.addPass(this.glitchPass);
 
-    this.ambientLight = new THREE.AmbientLight(0xfff5e0, 0.7);
-    this.scene.add(this.ambientLight);
-    this.directionalLight = new THREE.DirectionalLight(0xfff8e7, 1.4);
-    this.directionalLight.position.set(5, 10, 5);
-    this.scene.add(this.directionalLight);
-    this.pointLight = new THREE.PointLight(0xffeedd, 0.4, 50);
-    this.pointLight.position.set(-5, 3, -5);
-    this.scene.add(this.pointLight);
+    this.scene.add(new THREE.AmbientLight(0xfff5e0, 0.7));
+    var ml = new THREE.DirectionalLight(0xfff8e7, 1.4); ml.position.set(5, 10, 5); this.scene.add(ml);
+    var fl = new THREE.PointLight(0xffeedd, 0.4, 50); fl.position.set(-5, 3, -5); this.scene.add(fl);
     window.addEventListener('resize', () => this.onResize());
     this.animate();
   }
@@ -312,54 +224,6 @@ class VanGoghScene {
     var t = this.clock.getElapsedTime();
     var dt = this.clock.getDelta();
     if (this.vgPass) this.vgPass.uniforms.uTime.value = t;
-    // Update time-based atmospheric effects
-    var timePreset = getCurrentTimeOfDayPreset();
-    
-    // Update lights based on time of day
-    if (this.ambientLight) {
-      this.ambientLight.color.set(timePreset.ambientLight.color);
-      this.ambientLight.intensity = timePreset.ambientLight.intensity;
-    }
-    if (this.directionalLight) {
-      this.directionalLight.color.set(timePreset.directionalLight.color);
-      this.directionalLight.intensity = timePreset.directionalLight.intensity;
-    }
-    if (this.pointLight) {
-      this.pointLight.color.set(timePreset.pointLight.color);
-      this.pointLight.intensity = timePreset.pointLight.intensity;
-    }
-    
-    // Update Van Gogh shader uniforms
-    if (this.vgPass) {
-      this.vgPass.uniforms.uStrokeDensity.value = timePreset.vgStrokeDensity;
-      this.vgPass.uniforms.uSwirlFrequency.value = timePreset.vgSwirlFrequency;
-      this.vgPass.uniforms.uColorIntensity.value = timePreset.vgColorIntensity;
-    }
-    
-    // Update wave shader uniforms
-    var waveMaterial = this.scene.userData._waveMaterial;
-    if (waveMaterial) {
-      waveMaterial.uniforms.uColor1.value.copy(timePreset.waveColor1);
-      waveMaterial.uniforms.uColor2.value.copy(timePreset.waveColor2);
-      waveMaterial.uniforms.uColor3.value.copy(timePreset.waveColor3);
-    }
-    
-    // Update star colors (if we can access them)
-    // Note: Star colors are set in the customColor attribute, which is harder to update dynamically
-    // For now, we'll rely on the time-of-day affecting the overall mood through other elements
-    
-    // Update background color
-    if (!isMobile) {
-      var bgTop = timePreset.backgroundTop.clone();
-      var bgBot = timePreset.backgroundBottom.clone();
-      this.scene.background = bgTop.clone().lerp(bgBot, scrollState.current);
-    }
-    } else {
-      // Mobile devices - use original background logic
-      var bgTop = new THREE.Color(0x08080f);
-      var bgBot = new THREE.Color(0x0d0d1a);
-      this.scene.background = bgTop.clone().lerp(bgBot, scrollState.current);
-    }
     this.glitchPass.uniforms.uTime.value = t;
     if (_parallaxEnabled) {
       var scrollDelta = Math.abs(scrollState.target - scrollState.current);
@@ -390,13 +254,8 @@ class VanGoghScene {
       if (o.userData.animate) o.userData.animate(o, t, dt);
     }
     if (this.shootingStarManager) this.shootingStarManager.update(t, dt);
-    updatePaintingReveal(this.scene);
-    try {
-      this.composer.render();
-    } catch(e) {
-      // Fallback to direct render if composer fails
-      this.renderer.render(this.scene, this.camera);
-    }
+    updatePaintingReveal(this);
+    this.composer.render();
   }
 }
 
@@ -592,13 +451,13 @@ function makeLilyCanvas(size, color, variant) {
 
   // 6 trumpet petals
   var petalCount = 6;
-  var spread = variant === 0 ? 0.18 : (variant === 1 ? 0.15 : 0.25);
+  var spread = variant === 0 ? 0.05 : (variant === 1 ? 0.15 : 0.3);
   for (var p = 0; p < petalCount; p++) {
     var angle = (p / petalCount) * Math.PI * 2 - Math.PI / 2;
     var depthFactor = 0.7 + Math.random() * 0.6;
     var pLightness = -2 + Math.floor(Math.random() * 5);
-    var petalH = headR * (variant === 0 ? 1.6 : (variant === 1 ? 0.8 : 0.55)) * (0.9 + Math.random() * 0.2);
-    var petalW = headR * (variant === 0 ? 0.28 : (variant === 1 ? 0.25 : 0.2)) * (0.85 + Math.random() * 0.3);
+    var petalH = headR * (variant === 0 ? 1.1 : (variant === 1 ? 0.8 : 0.7)) * (0.9 + Math.random() * 0.2);
+    var petalW = headR * (variant === 0 ? 0.18 : (variant === 1 ? 0.25 : 0.32)) * (0.85 + Math.random() * 0.3);
 
     var r2 = Math.min(255, Math.max(0, rr + pLightness * 8));
     var g2 = Math.min(255, Math.max(0, gg + pLightness * 4));
@@ -661,29 +520,16 @@ function makeLilyCanvas(size, color, variant) {
 }
 
 function createLilies(scene, count) {
-  var colors = [
-    '#f0f0f0','#e8e0e0','#f5f0f0','#e0d8d8','#f8f0e8','#e8e0d8',
-    '#f05090','#e04080','#d03070','#c02060','#e84078','#d83068',
-    '#e87020','#d86010','#f06030','#e05020','#d04010','#c03000',
-    '#f0a080','#e09070','#d08060','#f08080','#e07070','#d06060',
-    '#e8a0c0','#d890b0','#c880a0','#d05080','#c04070','#b03060',
-    '#e07050','#d06040','#c05030','#c0a080','#b09070','#a08060',
-    '#f0c0a0','#e0b090','#d0a080','#f090a0','#e08090','#d07080'
-  ];
-  var lastColorIdx = -1;
+  var colors = ['#f0f0f0','#e8e0e0','#f05090','#d03070','#e87020','#f06030','#f0a080','#f08080','#e8a0c0','#d05080','#e07050','#c0a080'];
   for (var i = 0; i < count; i++) {
-    var idx;
-    do { idx = Math.floor(Math.random() * colors.length); } while (idx === lastColorIdx);
-    lastColorIdx = idx;
-    var color = colors[idx];
-    var variant = Math.random() < 0.6 ? 0 : (Math.random() < 0.5 ? 1 : 2);
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    var variant = Math.floor(Math.random() * 3);
     var s = isMobile ? (0.7 + Math.random() * 0.5) : (0.5 + Math.random() * 0.5);
     var spreadX = isMobile ? 10 : 14;
     var spreadZ = isMobile ? 6 : 8;
-    var tex = new THREE.CanvasTexture(makeLilyCanvas(256, color, variant));
+    var tex = new THREE.CanvasTexture(makeLilyCanvas(160, color, variant));
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    var scaleMult = variant === 0 ? 1.6 : (variant === 1 ? 1.2 : 0.8);
-    sprite.scale.set(1.5 * s * scaleMult, 2.4 * s * scaleMult, 1);
+    sprite.scale.set(1.0 * s, 1.6 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
       isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
@@ -697,124 +543,6 @@ function createLilies(scene, count) {
         o.position.x = bx + Math.sin(t * 0.5 + p) * 0.04;
         o.position.y = by + Math.sin(t * 0.75 + p) * 0.06;
         o.material.rotation = Math.sin(t * 0.6 + p) * 0.08 + Math.sin(t * 1.5 + p * 2) * 0.03;
-      };
-    })(ph, baseX, baseY);
-    scene.add(sprite);
-  }
-}
-
-// ═══════════════════════════════════════
-// TULIP — side-view silhouette
-// ═══════════════════════════════════════
-function makeTulipCanvas(size, color, openness) {
-  size = size || 256;
-  openness = openness || 0.6;
-  var c = document.createElement('canvas');
-  c.width = size; c.height = size;
-  var ctx = c.getContext('2d');
-  var cx = size / 2;
-  var stemTop = size * 0.5;
-  var cupW = size * 0.2;
-  var cupH = size * 0.22;
-  var cupCY = stemTop - cupH * 0.4;
-  var openW = openness * size * 0.08;
-  var hex = color.replace('#', '');
-  var rr = parseInt(hex.substring(0,2), 16);
-  var gg = parseInt(hex.substring(2,4), 16);
-  var bb = parseInt(hex.substring(4,6), 16);
-  // Stem
-  ctx.strokeStyle = '#2a5510';
-  ctx.lineWidth = size * 0.03;
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  ctx.moveTo(cx, size * 0.95);
-  ctx.bezierCurveTo(cx + size*0.02, size*0.78, cx - size*0.01, size*0.6, cx, stemTop);
-  ctx.stroke();
-  // Leaves
-  for (var side = -1; side <= 1; side += 2) {
-    ctx.fillStyle = side === -1 ? '#387528' : '#468830';
-    ctx.beginPath();
-    ctx.moveTo(cx, size * 0.8);
-    ctx.bezierCurveTo(cx + side*size*0.14, size*0.62, cx + side*size*0.18, size*0.38, cx + side*size*0.06, size*0.2);
-    ctx.bezierCurveTo(cx + side*size*0.02, size*0.26, cx, size*0.45, cx, size*0.8);
-    ctx.fill();
-  }
-  // Tulip cup shape
-  var dR = Math.max(0, rr - 30);
-  var dG = Math.max(0, gg - 20);
-  var dB = Math.max(0, bb - 15);
-  ctx.beginPath();
-  ctx.moveTo(cx, stemTop);
-  ctx.bezierCurveTo(cx - cupW * 1.1, cupCY + cupH * 0.1, cx - cupW * 1.2, cupCY - cupH * 0.3, cx - cupW * 0.5 - openW, cupCY - cupH * 0.55);
-  ctx.bezierCurveTo(cx - cupW * 0.2, cupCY - cupH * 0.45, cx + cupW * 0.2, cupCY - cupH * 0.45, cx + cupW * 0.5 + openW, cupCY - cupH * 0.55);
-  ctx.bezierCurveTo(cx + cupW * 1.2, cupCY - cupH * 0.3, cx + cupW * 1.1, cupCY + cupH * 0.1, cx, stemTop);
-  ctx.closePath();
-  var grad = ctx.createLinearGradient(cx - cupW, cupCY, cx + cupW, cupCY);
-  grad.addColorStop(0, 'rgba('+dR+','+dG+','+dB+',0.92)');
-  grad.addColorStop(0.3, 'rgba('+rr+','+gg+','+bb+',0.95)');
-  grad.addColorStop(0.7, 'rgba('+Math.min(255,rr+20)+','+Math.min(255,gg+12)+','+Math.min(255,bb+8)+',0.95)');
-  grad.addColorStop(1, 'rgba('+dR+','+dG+','+dB+',0.92)');
-  ctx.fillStyle = grad;
-  ctx.fill();
-  // Center ridge
-  ctx.strokeStyle = 'rgba('+dR+','+dG+','+dB+',0.3)';
-  ctx.lineWidth = size * 0.015;
-  ctx.beginPath();
-  ctx.moveTo(cx, stemTop - size * 0.01);
-  ctx.quadraticCurveTo(cx - size * 0.01, cupCY - cupH * 0.1, cx, cupCY - cupH * 0.45);
-  ctx.stroke();
-  // Edge highlights
-  ctx.strokeStyle = 'rgba(255,255,255,0.15)';
-  ctx.lineWidth = size * 0.012;
-  ctx.beginPath(); ctx.moveTo(cx, stemTop);
-  ctx.bezierCurveTo(cx - cupW * 0.8, cupCY + cupH * 0.05, cx - cupW * 1.0, cupCY - cupH * 0.2, cx - cupW * 0.5 - openW, cupCY - cupH * 0.5);
-  ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx, stemTop);
-  ctx.bezierCurveTo(cx + cupW * 0.8, cupCY + cupH * 0.05, cx + cupW * 1.0, cupCY - cupH * 0.2, cx + cupW * 0.5 + openW, cupCY - cupH * 0.5);
-  ctx.stroke();
-  // Inner shadow
-  ctx.beginPath();
-  ctx.ellipse(cx, cupCY - cupH * 0.4, openW * 0.8, cupH * 0.08, 0, 0, Math.PI * 2);
-  ctx.fillStyle = 'rgba(20,40,10,0.2)';
-  ctx.fill();
-  return c;
-}
-
-function createTulips(scene, count) {
-  var colors = [
-    '#e53935', '#d81b60', '#8e24aa', '#5e35b1', '#3949ab', '#1e88e5',
-    '#039be5', '#00acc1', '#00897b', '#43a047', '#7cb342', '#c0ca33',
-    '#fdd835', '#ffb300', '#fb8c00', '#f4511e', '#ff1744', '#ff5252',
-    '#ff4081', '#e040fb', '#7c4dff', '#536dfe', '#448aff', '#40c4ff',
-    '#18ffff', '#64ffda', '#69f0ae', '#b2ff59', '#eeff41', '#ffff00',
-    '#ffd740', '#ffab40', '#ff6e40', '#ff3d00', '#dd2c00', '#ff80ab'
-  ];
-  var lastColorIdx = -1;
-  for (var i = 0; i < count; i++) {
-    var idx;
-    do { idx = Math.floor(Math.random() * colors.length); } while (idx === lastColorIdx);
-    lastColorIdx = idx;
-    var color = colors[idx];
-    var openness = 0.4 + Math.random() * 0.6;
-    var s = isMobile ? (0.7 + Math.random() * 0.4) : (0.5 + Math.random() * 0.4);
-    var spreadX = isMobile ? 12 : 16;
-    var spreadZ = isMobile ? 8 : 10;
-    var tex = new THREE.CanvasTexture(makeTulipCanvas(256, color, openness));
-    var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    sprite.scale.set(1.2 * s, 1.7 * s, 1);
-    sprite.position.set(
-      (Math.random() - 0.5) * spreadX,
-      isMobile ? -0.05 + s * 0.2 : -0.15 + s * 0.18,
-      (Math.random() - 0.5) * spreadZ + 0.5
-    );
-    var ph = Math.random() * Math.PI * 2;
-    var baseY = sprite.position.y;
-    var baseX = sprite.position.x;
-    (function(p, bx, by) {
-      sprite.userData.animate = function(o, t) {
-        o.position.x = bx + Math.sin(t * 0.4 + p) * 0.025;
-        o.position.y = by + Math.sin(t * 0.6 + p) * 0.03;
-        o.material.rotation = Math.sin(t * 0.5 + p) * 0.04;
       };
     })(ph, baseX, baseY);
     scene.add(sprite);
@@ -994,12 +722,11 @@ function createWaves(scene, segs) {
   segs = segs || (isLowEnd ? 32 : 64);
   var geo = new THREE.PlaneGeometry(30, 20, segs, segs);
   geo.rotateX(-Math.PI * 0.45);
-    var mat = new THREE.ShaderMaterial({
+  var mat = new THREE.ShaderMaterial({ uniforms: { uTime: { value: 0 }, uWaveHeight: { value: 0.3 }, uWaveFrequency: { value: 2.0 }, uColor1: { value: new THREE.Vector3(0.02,0.05,0.15) }, uColor2: { value: new THREE.Vector3(0.05,0.1,0.3) }, uColor3: { value: new THREE.Vector3(0.1,0.2,0.4) } }, vertexShader: waveVS, fragmentShader: waveFS, transparent: true, side: THREE.DoubleSide });
   var waves = new THREE.Mesh(geo, mat); waves.position.set(0, -2, 5);
   waves.userData.animate = function(o, t) { o.material.uniforms.uTime.value = t; };
   scene.add(waves);
 }
-    this.scene.userData._waveMaterial = mat;
 
 // ═══════════════════════════════════════
 // 3D CYPRESS TREE SILHOUETTES
@@ -1160,9 +887,8 @@ function createPaintingReveal(scene, camera) {
 }
 
 function updatePaintingReveal(scene) {
-  if (!scene.userData._paintingRevealState) return;
   var state = scene.userData._paintingRevealState;
-  if (!state.section) {
+  if (!state || !state.section) {
     state.section = document.getElementById('painting-reveal');
     if (!state.section) return;
   }
@@ -1331,14 +1057,14 @@ function spawnNotesBurst(cx, cy, count) {
 (function() {
   try {
   var c = document.getElementById('canvas-container');
-  if (!c) { if (window.__sceneFailed) window.__sceneFailed('No canvas container'); return; }
+  if (!c) return;
   if (typeof _parallaxObserver !== 'undefined') _parallaxObserver.observe(c);
   var scene = new VanGoghScene(c);
   if (window.__sceneLoadingStarted) window.__sceneLoadingStarted();
   var starCount = isLowEnd ? 700 : 2500;
   var noteCount = isLowEnd ? 10 : 15;
   var sunflowerCount = isLowEnd ? 3 : 8;
-  var lilyCount = isLowEnd ? 6 : 16;
+  var lilyCount = isLowEnd ? 2 : 4;
   var waveSegs = isLowEnd ? 16 : 32;
   if (window.__updateLoaderProgress) window.__updateLoaderProgress(30);
   createStars(scene.scene, starCount);
@@ -1352,13 +1078,10 @@ function spawnNotesBurst(cx, cy, count) {
     var l = document.getElementById('loader');
     if (l) l.classList.add('hidden');
     if (window.__updateLoaderProgress) window.__updateLoaderProgress(100);
-    window.__sceneLoaded = true;
-    if (window.__sceneReady) window.__sceneReady();
   });
   setTimeout(function() {
     createSunflowers(scene.scene, sunflowerCount);
     createLilies(scene.scene, lilyCount);
-    createTulips(scene.scene, isLowEnd ? 6 : 12);
     createFlute(scene.scene);
     createMusicNotes(scene.scene, noteCount);
     createFireflies(scene.scene, isLowEnd ? 15 : (isMobile ? 20 : 40));
@@ -1397,12 +1120,5 @@ function spawnNotesBurst(cx, cy, count) {
     spawnNotesBurst(e.clientX, e.clientY, isMobile ? 8 : 6);
   });
   window.addEventListener('orientationchange', function() { setTimeout(function() { scene.onResize(); }, 200); });
-  } catch(e) {
-    console.error('Scene init error:', e);
-    if (window.__sceneFailed) window.__sceneFailed((e.message || String(e)) + ' | ' + (e.stack || '').split('\n').slice(0,3).join(' → '));
-    var errEl = document.getElementById('scene-error-msg');
-    if (errEl) errEl.textContent = (e.message || String(e)) + ' | ' + (e.stack || '').split('\n').slice(0,3).join(' → ');
-    var errBox = document.getElementById('scene-error');
-    if (errBox) errBox.style.display = 'block';
-  }
+  } catch(e) { console.error('Scene init error:', e); }
 })();
