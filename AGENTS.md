@@ -65,13 +65,6 @@ git push origin master
 - Previous sessions have broken things by reverting to old commits that removed features
 - If something is broken, fix it forward — don't revert
 
-#### 6b2. NEVER Restore scene-init.js From Backups
-- **NEVER restore `public/js/scene-init.js` from `scene-init.js.backup` or any old commit** unless explicitly instructed by the user
-- The implementation-review cron has incorrectly "restored" scene-init.js multiple times, overwriting deliberate new implementations (e.g., the 84-line time-of-day version was replaced with the old 1408-line version)
-- If scene-init.js appears "broken" (e.g., fewer lines than expected), **do NOT assume it needs restoration** — it may be a deliberate rewrite
-- Always check `git log --oneline -5 -- public/js/scene-init.js` before making any changes
-- If you are unsure, **ask the user** before touching scene-init.js
-
 #### 6c. Never Remove Post-Processing Shaders
 - The EffectComposer pipeline (Van Gogh + Glitch passes) provides the layered/painted visual effect
 - **NEVER remove or disable these shaders** — they are the core visual identity of the site
