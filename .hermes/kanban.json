@@ -21,11 +21,9 @@
       "tasks": []
     },
     {
-      "id": "done",
-      "name": "\u2705 Done",
-      "tasks": [
-        "idea-032"
-      ]
+     "id": "done",
+     "name": "\u2705 Done",
+      "tasks": []
     }
   ],
   "ideas": [
@@ -309,9 +307,9 @@
       "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "done",
+      "status": "red",
       "prd": "PRD-idea-032-time-of-day-atmosphere.md"
-    },
+    ,
     {
       "id": "idea-033",
       "title": "Interactive Starry Night Painting Explorer",
