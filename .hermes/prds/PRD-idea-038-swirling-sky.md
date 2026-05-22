@@ -132,3 +132,16 @@ The implementation makes tests pass by:
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-23)
+
+**Sacred File Warning**: This PRD modifies `public/js/scene-init.js` directly, which is marked as SACRED in AGENTS.md. Never modify this file unless explicitly instructed by the user. The file contains the entire Three.js scene (stars, moon, sunflowers, lilies, music notes, waves, fireflies, cypress trees, painting reveal, post-processing shaders).
+
+**Risk Assessment**: 
+- High risk: Breaking `scene-init.js` breaks the entire 3D scene
+- Mitigation: Consider implementing as a separate module (`public/js/swirling-sky.js`) that integrates via minimal import/init calls in scene-init.js (2 lines max)
+- Alternative: Use the existing post-processing pipeline if it exists, or create a new EffectComposer pass
+
+**Recommendation**: Refactor to avoid direct scene-init.js modifications. Create a standalone module that adds the sky dome as a separate Three.js object, similar to how idea-032 (time-of-day) works via CSS variables or idea-041 (aurora) works as a separate module.

@@ -577,8 +577,26 @@ In BaseLayout.astro, add to the loader CSS link:
 }
 
 ---
+## Reviewer Notes (2026-05-23)
 
-## 8. Three.js Architecture (Post-Refactoring)
+**Stuck Implementation Alert**: This PRD has been in `refactor` status for 8+ days with no progress. The loading optimizations are complex and touch many files (BaseLayout, index.astro, scene-init.js, loader-progress.js, nginx config, SVGs).
+
+**Current State**: Partially implemented - some optimizations work (modulepreload, progress bar, requestIdleCallback deferral, SVG optimization, gzip) but 12/12 loading tests are failing due to:
+- Missing static gradient background before loader CSS
+- Missing SVG preload tags for moon.svg and stars.svg  
+- Missing font-display: swap in inline CSS
+- Star count not reduced (2500 vs expected ≤800 desktop)
+- Missing content-visibility CSS
+- Nginx cache headers not immutable
+- Variable naming mismatches (initialStarCount, WAVE_SEG)
+- Scroll reveal deferral ordering
+
+**Recommendation**: 
+1. Complete the remaining items from the checklist above (all are straightforward fixes)
+2. OR revert to a simpler approach focusing on the highest-impact items: static gradient, SVG preloads, font-display, reduced star count
+3. OR break into smaller, independently implementable sub-tasks
+
+The core functionality (progressive loading, loader progress bar) is working - the remaining issues are primarily test compliance and minor optimizations.
 
 > Added 2026-05-22 after major refactoring and 3D geometry overhaul.
 

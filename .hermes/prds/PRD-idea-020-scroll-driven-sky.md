@@ -183,7 +183,22 @@ This feature modifies `public/js/scene-init.js` to add scroll-listener logic tha
     "Mobile intensity reduced to 60% for comfort"
   ]
 }
+```
 
+---
+
+## Reviewer Notes (2026-05-23)
+
+**Stuck Implementation Alert**: This PRD has been in `refactor` status for 5+ days with no progress. The implementation appears to be functionally complete based on review notes from 2026-05-20, but remains in refactor due to a single failing test.
+
+**Analysis**:
+- According to implementation review from 2026-05-20: "The scroll parallax implementation is functionally complete. Star layers (`_starsMid`, `_starsFar`) are stored on `scene.userData` and properly rotated at different rates based on scroll position (lines 240-242 of scene-init.js). The single failing test expects a `starsGroup` wrapper that was never created — the code stores layers directly on `scene.userData` instead. This is a test maintenance issue, not a code bug."
+- The test at line 48 of `tests/scroll-parallax.test.js` should be updated to match the actual architecture.
+
+**Recommendation**:
+1. Either update the test to match the actual `scene.userData._starsNear/Mid/Far` pattern (simple fix)
+2. OR accept the feature as done since the implementation is functionally correct
+3. The feature provides valuable parallax enhancement with minimal risk
 ---
 
 ## Review Notes — 2026-05-19

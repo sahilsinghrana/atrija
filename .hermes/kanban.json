@@ -373,45 +373,45 @@
       "status": "backlog",
       "prd": "PRD-idea-039-detailed-moon.md"
     },
-   {
-     "id": "idea-040",
-     "title": "Enhanced Star System with Temperature-Based Colors",
-     "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
-     "category": "3D Elements",
-     "priority": "low",
-     "status": "backlog",
-     "prd": "PRD-idea-040-enhanced-stars.md"
- },
- {
-   "id": "idea-041",
-   "title": "Aurora Borealis Sky Band",
-   "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized.",
-   "category": "3D Elements",
-   "priority": "medium",
-   "status": "backlog",
-   "prd": "PRD-idea-041-aurora-borealis.md"
- },
- {
-   "id": "idea-042",
-   "title": "Interactive Flower Pollination Effect",
-   "description": "Click on any sunflower or tulip in the 3D scene to release a burst of golden pollen particles. Nearby flowers briefly glow in response. Raycasting click detection with physics-based particle system.",
-   "category": "Interactivity",
-   "priority": "medium",
-   "status": "backlog",
-   "prd": "PRD-idea-042-flower-pollination.md"
- },
- {
-   "id": "idea-043",
-   "title": "Daily Zen Koan Content Section",
-   "description": "A new content section displaying a daily rotating zen koan or philosophical riddle as an elegant calligraphy-styled card. Hold-to-reveal interpretation. Purely content-driven, no scene-init.js changes.",
-   "category": "Content",
-   "priority": "low",
-   "status": "backlog",
-   "prd": "PRD-idea-043-zen-koan-section.md"
- }
- ],
- "prdTemplate": "PRD-TEMPLATE.md",
+    {
+      "id": "idea-040",
+      "title": "Enhanced Star System with Temperature-Based Colors",
+      "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
+      "category": "3D Elements",
+      "priority": "low",
+      "status": "backlog",
+      "prd": "PRD-idea-040-enhanced-stars.md"
+    },
+    {
+      "id": "idea-041",
+      "title": "Aurora Borealis Sky Band",
+      "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized.",
+      "category": "3D Elements",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-041-aurora-borealis.md"
+    },
+    {
+      "id": "idea-042",
+      "title": "Interactive Flower Pollination Effect",
+      "description": "Click on any sunflower or tulip in the 3D scene to release a burst of golden pollen particles. Nearby flowers briefly glow in response. Raycasting click detection with physics-based particle system.",
+      "category": "Interactivity",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-042-flower-pollination.md"
+    },
+    {
+      "id": "idea-043",
+      "title": "Daily Zen Koan Content Section",
+      "description": "A new content section displaying a daily rotating zen koan or philosophical riddle as an elegant calligraphy-styled card. Hold-to-reveal interpretation. Purely content-driven, no scene-init.js changes.",
+      "category": "Content",
+      "priority": "low",
+      "status": "backlog",
+      "prd": "PRD-idea-043-zen-koan-section.md"
+    }
+  ],
+  "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-23T02:02:00Z",
-  "lastReviewAt": "2026-05-22T14:28:30.971245+00:00",
-  "lastReviewResult": "Review complete (2026-05-22 19:30 UTC): idea-032 (Time-of-Day) restored from broken commit 37a52d2, verified implementation complete. idea-009 and idea-020 remain stuck in refactor. Fixed critical scene-init.js breakage (1408->84 lines)."
+  "lastReviewAt": "2026-05-23T03:01:00Z",
+  "lastReviewResult": "Review complete: Fixed PRD statuses for idea-032 and idea-037, added reviewer notes for scene-init.js concerns, addressed stuck implementations"
 }

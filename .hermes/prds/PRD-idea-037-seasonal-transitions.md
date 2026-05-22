@@ -3,9 +3,9 @@
 > **ID:** idea-037
 > **Category:** Content
 > **Priority:** low
-> **Status:** backlog
+> **Status:** done
 > **PRD Version:** 1.0
-> **Last Updated:** 2026-05-21
+> **Last Updated:** 2026-05-23
 
 ---
 

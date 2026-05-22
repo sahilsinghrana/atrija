@@ -136,3 +136,16 @@ The implementation makes tests pass by:
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-23)
+
+**Sacred File Warning**: This PRD modifies `public/js/scene-init.js` directly, which is marked as SACRED in AGENTS.md. Never modify this file unless explicitly instructed by the user. The file contains the entire Three.js scene (stars, moon, sunflowers, lilies, music notes, waves, fireflies, cypress trees, painting reveal, post-processing shaders).
+
+**Risk Assessment**: 
+- High risk: Breaking `scene-init.js` breaks the entire 3D scene
+- Mitigation: Consider implementing as a separate module (`public/js/enhanced-stars.js`) that integrates via minimal import/init calls in scene-init.js (2 lines max)
+- Alternative: Create a custom star material or modify the existing material in a separate module
+
+**Priority Note**: The kanban board shows this idea as `low` priority, while this PRD shows `medium`. Based on the sacred file concerns and the fact that the star field already twinkles and has basic color, consider lowering priority to `low` unless there's strong user demand for enhanced star colors.
