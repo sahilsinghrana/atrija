@@ -171,3 +171,17 @@ Create `public/js/wheat-field.js` with `initWheatField(scene, camera)` and `upda
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-24)
+
+**Quality Check**: Solid PRD with good technical approach. The InstancedMesh + vertex shader pattern is the right call for performance. Clear mobile considerations with reduced instance count.
+
+**Design Alignment**: Wheat fields are quintessentially Van Gogh — this fills a genuine gap in the scene between the water waves and flowers. The scroll-driven wind intensity is a nice touch that connects the 3D world to the reading experience.
+
+**Feasibility**: The `BufferGeometryUtils.mergeBufferGeometries()` dependency needs verification — this utility must be imported separately from Three.js examples. If it's not available, use separate stem + head meshes instanced together as the PRD suggests in the risks section.
+
+**Scope**: Medium is appropriate. The 2-line scene-init.js change is minimal and follows the established pattern from other modules.
+
+**Category Note**: This is a 3D Elements addition. The backlog currently has 61.5% 3D Elements ideas — consider balancing with more Content or Interactivity features in the next kanban generation.

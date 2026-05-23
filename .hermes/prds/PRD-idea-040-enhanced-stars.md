@@ -2,10 +2,10 @@
 
 > **ID:** idea-040 
 > **Category:** 3D Elements 
-> **Priority:** medium 
+> **Priority:** low 
 > **Status:** backlog 
 > **PRD Version:** 1.0 
-> **Last Updated:** 2026-05-22
+> **Last Updated:** 2026-05-24
 ---
 
 ## 1. Overview

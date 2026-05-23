@@ -173,3 +173,17 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-24)
+
+**Quality Check**: Good PRD with clear interaction design. The raycasting approach is standard Three.js. The nearby flower glow ripple is a delightful detail.
+
+**Design Alignment**: Micro-interactions like this make the 3D world feel alive and responsive. The pollen burst + flower glow creates a satisfying cause-and-effect chain that rewards exploration.
+
+**Feasibility**: The `userData.isFlower` flag approach is clean and non-invasive. The main risk is the raycast performance with many scene objects — the PRD correctly suggests maintaining a separate `flowers[]` array for raycasting targets.
+
+**Implementation Note**: The `userData.isFlower = true` additions in scene-init.js are the SACRED file changes. These are minimal (one line per flower creation block) but must be done carefully. Create a backup of scene-init.js before editing.
+
+**Scope**: Medium is appropriate. The particle system is self-contained and the scene-init.js changes are minimal.

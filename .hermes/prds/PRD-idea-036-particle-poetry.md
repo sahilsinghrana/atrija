@@ -189,3 +189,17 @@ Create `public/js/particle-poetry.js` with `initParticlePoetry(scene, camera, co
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-24)
+
+**Quality Check**: Well-structured PRD. The CanvasTexture + Sprite approach is the right performance choice over TextGeometry. Good word extraction logic with stop-word filtering.
+
+**Design Alignment**: This bridges the content and 3D worlds elegantly — words from the text becoming part of the visual scene is very impressionist in spirit. The per-section word pools add thematic coherence.
+
+**Feasibility**: The `content.json` fetch at runtime needs to use a relative path (`/content/content.json`) since it's served as a static asset. Pre-rendering word pools at build time via the Astro component frontmatter would be even better — avoids the runtime fetch entirely.
+
+**Risk**: Canvas texture creation at runtime can cause jank. The PRD correctly identifies pre-rendering as the mitigation. Implement this during the Green phase, not as a refactor.
+
+**Scope**: Medium is appropriate. The 2-line scene-init.js integration is minimal.

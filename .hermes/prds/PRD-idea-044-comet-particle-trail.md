@@ -174,3 +174,17 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-24)
+
+**Quality Check**: Well-written PRD with clear distinction from shooting stars. The particle trail system is well-specified with good mobile considerations.
+
+**Design Alignment**: The comet as a "grand event" is a great concept — it creates moments of wonder that visitors will remember. The 3-5 minute interval is frequent enough to be seen but rare enough to feel special.
+
+**Feasibility**: This PRD modifies `scene-init.js` directly (SACRED file). The implementation adds comet head meshes, particle trail system, and trigger logic — this is a significant addition to scene-init.js, not a minimal change. **Recommendation**: Refactor to use a standalone `public/js/comet.js` module with a 2-line import/init in scene-init.js, following the pattern from idea-035 and idea-041.
+
+**Risk**: The particle trail (200 particles desktop) uses `THREE.Points` which is a single draw call — this is fine. But the comet timer logic adds complexity to the animate loop. Keep it simple.
+
+**Scope**: Medium is appropriate, but the scene-init.js changes need to be refactored to a standalone module first.

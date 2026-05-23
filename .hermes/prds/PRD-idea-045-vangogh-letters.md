@@ -197,3 +197,17 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-24)
+
+**Quality Check**: Beautiful PRD. The aged-paper CSS approach (no images) is smart. The letter selection spanning Van Gogh's entire career provides variety and depth.
+
+**Design Alignment**: This is the most emotionally resonant content feature in the backlog. Van Gogh's letters are his true voice — more intimate than any painting. The aged-paper styling evokes the 19th century without being kitschy.
+
+**Feasibility**: Very low risk — pure Astro component, zero client-side JS. The `dayOfYear % letters.length` rotation is straightforward.
+
+**Content Sourcing**: Ensure all excerpts are from public domain translations. The Van Gogh Museum's published letters (vangoghletters.org) are the best source. Avoid overused quotes like "I dream of painting and then I paint my dream" — dig deeper into the 800+ letters for fresh material.
+
+**Scope**: Medium is appropriate given the content curation effort, though technically it's a low-complexity implementation.

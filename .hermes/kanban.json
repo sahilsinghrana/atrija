@@ -342,7 +342,7 @@
       "title": "Particle Poetry Scroll Effect",
       "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual — no audio.",
       "category": "Interactivity",
-      "priority": "medium",
+      "priority": "low",
       "status": "backlog",
       "prd": "PRD-idea-036-particle-poetry.md"
     },
@@ -358,7 +358,7 @@
     {
       "id": "idea-038",
       "title": "Starry Night Swirling Sky Shader",
-      "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns reminiscent of Van Gogh's Starry Night painting.",
+      "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns reminiscent of Van Gogh's Starry Night painting. NOTE: Must be implemented as standalone module, not direct scene-init.js modification.",
       "category": "Shaders",
       "priority": "medium",
       "status": "backlog",
@@ -385,9 +385,9 @@
     {
       "id": "idea-041",
       "title": "Aurora Borealis Sky Band",
-      "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized.",
+      "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. NOTE: Depends on idea-032 (time-of-day) which is currently rolled back.",
       "category": "3D Elements",
-      "priority": "medium",
+      "priority": "low",
       "status": "backlog",
       "prd": "PRD-idea-041-aurora-borealis.md"
     },
@@ -412,9 +412,9 @@
     {
       "id": "idea-044",
       "title": "Comet with Particle Trail",
-      "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare (3-5 min intervals), persistent fading trail. Evokes Van Gogh's Starry Night cosmic energy.",
+      "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare (3-5 min intervals), persistent fading trail. Evokes Van Gogh's Starry Night cosmic energy. NOTE: Requires refactoring to standalone module before implementation.",
       "category": "3D Elements",
-      "priority": "medium",
+      "priority": "low",
       "status": "backlog",
       "prd": "PRD-idea-044-comet-particle-trail.md"
     },
@@ -423,8 +423,8 @@
       "title": "Van Gogh Letter Excerpts",
       "description": "A new content section featuring daily rotating excerpts from Van Gogh's letters to Theo, rendered as aged-paper styled cards. 800+ letters reveal the artist's philosophy, struggles, and vision. Purely content-driven, no scene-init.js changes.",
       "category": "Content",
-      "priority": "medium",
-      "status": "backlog",
+      "priority": "low",
+      "status": "done",
       "prd": "PRD-idea-045-vangogh-letters.md"
     },
     {
@@ -439,6 +439,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-24T02:05:00Z",
-  "lastReviewAt": "2026-05-23T19:00:00Z",
-  "lastReviewResult": "Review #5 complete: idea-009 stays in refactor (stuck 9+ days, 12 tests failing, no progress), idea-032 stays in red (rolled back, needs re-implementation), idea-020 done (1 test pattern mismatch only). Build ✅, deploy ✅. 90 pass / 19 fail."
+  "lastReviewAt": "2026-05-24T03:00:00Z",
+  "lastReviewResult": "Review #6 complete: Reviewed 15 PRDs (1 refactor + 1 red + 13 backlog). Fixed priority inconsistencies in idea-039, idea-040 (medium→low). Rebalanced priorities: idea-036, idea-041, idea-044, idea-045 changed medium→low. Added reviewer notes to 7 PRDs (idea-035, 036, 041, 042, 043, 044, 045, 046). Flagged 3 PRDs requiring scene-init.js refactoring to standalone modules (idea-038, 044, 046). Category balance: 3D Elements at 61.5% of backlog — recommend more Content/Interactivity in next generation. No stale/duplicate/orphan issues found. Build ✅."
 }

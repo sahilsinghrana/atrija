@@ -176,3 +176,17 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-24)
+
+**Quality Check**: Excellent PRD with well-thought-out shader architecture. The standalone module approach with time-of-day integration is clean and follows the established pattern.
+
+**Design Alignment**: The aurora adds magical realism that fits the impressionist aesthetic. The night-only activation via the time-of-day system is a smart integration that avoids visual clutter during day phases.
+
+**Feasibility**: The custom GLSL shader is the main risk. The vertex displacement approach is standard, but the layered sine waves need careful tuning to look organic rather than mechanical. The mobile simplification path (reduced segments, fewer wave layers) is well-planned.
+
+**Dependency Note**: This depends on idea-032 (time-of-day system) which is currently in `red` status (rolled back). The aurora's time-of-day integration cannot be fully tested until idea-032 is re-implemented. Consider implementing the aurora with a standalone time-of-day check (just `new Date().getHours()`) as a fallback.
+
+**Scope**: Medium is appropriate. One additional draw call with a custom shader is reasonable.

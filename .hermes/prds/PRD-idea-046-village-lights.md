@@ -167,3 +167,15 @@
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-05-24)
+
+**Quality Check**: Solid PRD with clear positioning and good technical approach. The `MeshBasicMaterial` choice is correct — zero lighting cost for distant atmospheric elements.
+
+**Design Alignment**: The village lights fill a genuine compositional gap in the scene. They add human warmth to the cosmic sky, which is exactly what Van Gogh painted — the tension between the infinite above and the intimate below.
+
+**Feasibility**: This PRD modifies `scene-init.js` directly (SACRED file). While the changes are relatively simple (adding light meshes and pulsing animation), any modification to scene-init.js carries risk. **Recommendation**: Refactor to use a standalone `public/js/village-lights.js` module with a 2-line import/init in scene-init.js.
+
+**Scope**: Low is appropriate. This is a small atmospheric addition with negligible performance impact.
