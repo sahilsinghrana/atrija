@@ -115,7 +115,33 @@
     }
   },
   "changelog": {
-    "version": "1.0.0",
-    "entries": []
+    "version": "1.7.0",
+    "entries": [
+      {
+        "date": "2026-05-24",
+        "type": "feature",
+        "description": "Van Gogh Letter Excerpts — daily rotating letter passages from Vincent to Theo"
+      },
+      {
+        "date": "2026-05-23",
+        "type": "daily-mutation",
+        "description": "Daily mutation #143: lily-garden colors, theme rotation updated"
+      },
+      {
+        "date": "2026-05-22",
+        "type": "feature",
+        "description": "Dynamic Time-of-Day Atmosphere System"
+      },
+      {
+        "date": "2026-05-21",
+        "type": "feature",
+        "description": "Van Gogh Biography Timeline — 11 life milestones with category filtering"
+      },
+      {
+        "date": "2026-05-20",
+        "type": "daily-mutation",
+        "description": "Daily mutation #141: moonlit-silver colors"
+      }
+    ]
   }
 }

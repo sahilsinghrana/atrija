@@ -1,8 +1,14 @@
 {
-  "version": "1.6.0",
-  "lastUpdated": "2026-05-23T00:35:19.425Z",
-  "totalEntries": 27,
+  "version": "1.7.0",
+  "lastUpdated": "2026-05-24T03:17:00Z",
+  "totalEntries": 28,
   "dates": [
+    {
+      "date": "2026-05-24",
+      "entries": 1,
+      "latestType": "feature",
+      "description": "Van Gogh Letter Excerpts — daily rotating letter passages from Vincent to Theo"
+    },
     {
       "date": "2026-05-23",
       "entries": 1,
