@@ -258,3 +258,31 @@ Feasible: The standalone `time-of-day.js` module is low-risk. The scene-init.js 
 - **Fix the tests first**: Write proper tests before implementing
 - **Keep it simple**: Don't modify scene-init.js structure — just add `--tod-*` variable reads in the animate loop
 - **Alternative**: Consider a lighter approach that sets time-of-day via the daily-mutate content pipeline instead of a separate JS module
+
+---
+
+## Implementation Review (2026-05-23 19:00 UTC)
+
+**Status:** red — **NEEDS RE-IMPLEMENTATION** ❌
+
+**Reviewer:** Implementation Review Cron (this review)
+**Verdict:** Implementation remains rolled back. Orphan files on disk.
+
+### Current State
+- `public/js/time-of-day.js` (234 lines, 8183 bytes) exists on disk as orphan — NOT loaded by BaseLayout.astro
+- `tests/unit/time-of-day.test.js` has 6 placeholder tests (`expect(true).toBe(false)`)
+- `scene-init.js` has **zero** `--tod-*` CSS variable integration — no time-of-day code at all
+- `BaseLayout.astro` has **no** `<script>` tag for time-of-day.js
+- Last rollback commit: `c34516d` (2026-05-23)
+
+### Root Cause
+The implementation was rolled back because the background-implement cron **gutted scene-init.js** (from 1408 lines to 84 lines) when trying to integrate the time-of-day system. This was a catastrophic error during the recovery/implementation cycle.
+
+### Recommendation
+**Keep in `red`** — When re-implementing:
+1. **Start with tests first** — Write proper time-of-day tests before any code
+2. **Time-of-day.js is already written** — The 234-line `time-of-day.js` file on disk may be reusable. Verify it before rewriting.
+3. **Minimal scene-init.js changes** — Only add `--tod-*` CSS variable reads in the animate loop. Do NOT restructure scene-init.js.
+4. **Verify the backup pattern** — Create `scene-init.js.backup` before touching it, verify scene still works after
+5. **Consider lighter approach** — The daily-mutate content pipeline could set time-of-day via content.json instead of a separate JS module, avoiding scene-init.js changes entirely
+
