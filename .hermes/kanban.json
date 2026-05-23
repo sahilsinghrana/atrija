@@ -206,7 +206,7 @@
       "description": "The sky subtly rotates and shifts based on scroll position. Stars at different depths move at different speeds. Moon rises as you scroll. Background color shifts with scroll.",
       "category": "Interactivity",
       "priority": "high",
-      "status": "refactor",
+      "status": "done",
       "prd": "PRD-idea-020-scroll-driven-sky.md"
     },
     {
@@ -307,7 +307,7 @@
       "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "done",
+      "status": "red",
       "prd": "PRD-idea-032-time-of-day-atmosphere.md"
     },
     {
@@ -412,6 +412,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-23T02:02:00Z",
-  "lastReviewAt": "2026-05-23T03:01:00Z",
-  "lastReviewResult": "Review complete: Fixed PRD statuses for idea-032 and idea-037, added reviewer notes for scene-init.js concerns, addressed stuck implementations"
+  "lastReviewAt": "2026-05-23T06:01:00Z",
+  "lastReviewResult": "Review complete: Moved idea-032 back to red (rolled back), moved idea-020 to done (functionally complete), flagged idea-009 as stuck"
 }

@@ -232,3 +232,29 @@ Feasible: The standalone `time-of-day.js` module is low-risk. The scene-init.js 
 - Never replace scene-init.js content — only add to it
 - Always verify the scene still has its core elements after changes
 - The backup file pattern is good but should not be needed for normal operations
+
+---
+
+## Implementation Review (2026-05-23 06:01 UTC)
+
+**Status:** red — **ROLLED BACK** ❌
+
+**Reviewer:** Implementation Review Cron
+**Verdict:** Implementation was rolled back in commit `c34516d`. time-of-day.js exists on disk but NOT loaded by BaseLayout.
+
+### What Happened
+- Commit `c34516d` restored scene-init.js to 1124-line clean version and removed the `time-of-day.js` script tag from BaseLayout.astro
+- The time-of-day.js file (8183 bytes) remains on disk as an orphan — not referenced by any HTML
+- `tests/unit/time-of-day.test.js` exists with 6 tests, all using placeholder `expect(true).toBe(false)` patterns
+
+### Issues Found
+1. **Implementation rolled back** — The script tag `<script type="module" src="/js/time-of-day.js">` was removed from BaseLayout.astro
+2. **Tests are placeholders** — All 6 time-of-day tests use `expect(true).toBe(false)` — they were never properly implemented
+3. **scene-init.js not integrated** — No `--tod-*` CSS variable reads in scene-init.js
+4. **Orphaned files** — `public/js/time-of-day.js` (8183 bytes) and `tests/unit/time-of-day.test.js` (1855 bytes) exist but serve no purpose
+
+### Recommendation
+- **Re-implementation needed**: The approach (standalone time-of-day.js + CSS variables + scene-init.js reads) is sound
+- **Fix the tests first**: Write proper tests before implementing
+- **Keep it simple**: Don't modify scene-init.js structure — just add `--tod-*` variable reads in the animate loop
+- **Alternative**: Consider a lighter approach that sets time-of-day via the daily-mutate content pipeline instead of a separate JS module
