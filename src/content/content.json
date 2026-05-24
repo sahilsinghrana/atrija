@@ -11,35 +11,35 @@
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>Shiv</em> dissolves today"
+      "heading": "What the <em>Art</em> whispers today"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "In many cultures, the new moon is considered a time for planting seeds — both literal and metaphorical. Darkness is not emptiness; it is the womb from which light is born.",
+      "intro": "The night sky has always been a canvas for human projection. We see faces, animals, and gods in the stars — not because they are there, but because the mind seeks meaning in chaos.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 7
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          8,
-          10
+          5,
+          7
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 2
+        "quoteIndex": 3
       }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "In the ocean of existence, arrogance is a wave that believes it is separate from the sea. It rises, it crashes, and it returns — never having been anything but water.",
+      "intro": "The Bhagavad Gita warns: 'The ego is the greatest enemy of the human soul.' When Arjuna asks Krishna about the nature of the self, the answer is not 'I am great' but 'I am not the doer.'",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 7
+        "factIndex": 6
       },
       "facts": {
         "themeIndex": 1,
@@ -50,56 +50,56 @@
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 2
+        "quoteIndex": 0
       }
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "Einstein kept a copy of the Bhagavad Gita on his bedside table. When asked if he believed in God, he said he believed in 'the God of Spinoza who reveals himself in the orderly harmony of what exists' — a sentiment that echoes the Gita's vision of cosmic order.",
+      "intro": "The Gita was spoken on a battlefield, not in a temple. Wisdom does not require perfect conditions. The most profound truths are often revealed in the midst of chaos, not in the silence of retreat.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 1
+        "factIndex": 5
       },
       "facts": {
         "themeIndex": 2,
         "slice": [
-          4,
-          6
+          7,
+          9
         ]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 4
+        "quoteIndex": 3
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "In the Shiv Purana, Parvati asks Shiva: 'What is the essence of all the Vedas?' He replies: 'The sound Om. It is the syllable from which all of creation chants itself into existence.'",
+      "intro": "Shiva sits in meditation on Mount Kailash, the axis mundi, the center of the world. His stillness is not inactivity — it is the stillness of a mind that has transcended all duality, all desire, all fear.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 1
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 3,
         "slice": [
-          6,
-          8
+          8,
+          10
         ]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 3
+        "quoteIndex": 2
       }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "Van Gogh painted 'The Starry Night' from an asylum window, yet it became the most recognized painting in history. The greatest art often emerges not from comfort but from the depths of human suffering — beauty forged in the furnace of pain.",
+      "intro": "A star field is a reminder of scale. Every point of light is a sun, perhaps with planets, perhaps with life. The universe is not indifferent — it is generous beyond comprehension.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 4
+        "factIndex": 6
       },
       "facts": {
         "themeIndex": 4,
@@ -110,38 +110,12 @@
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 0
+        "quoteIndex": 1
       }
     }
   },
   "changelog": {
-    "version": "1.7.0",
-    "entries": [
-      {
-        "date": "2026-05-24",
-        "type": "feature",
-        "description": "Van Gogh Letter Excerpts — daily rotating letter passages from Vincent to Theo"
-      },
-      {
-        "date": "2026-05-23",
-        "type": "daily-mutation",
-        "description": "Daily mutation #143: lily-garden colors, theme rotation updated"
-      },
-      {
-        "date": "2026-05-22",
-        "type": "feature",
-        "description": "Dynamic Time-of-Day Atmosphere System"
-      },
-      {
-        "date": "2026-05-21",
-        "type": "feature",
-        "description": "Van Gogh Biography Timeline — 11 life milestones with category filtering"
-      },
-      {
-        "date": "2026-05-20",
-        "type": "daily-mutation",
-        "description": "Daily mutation #141: moonlit-silver colors"
-      }
-    ]
+    "version": "1.0.0",
+    "entries": []
   }
 }
