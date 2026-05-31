@@ -260,7 +260,7 @@ class VanGoghScene {
 }
 
 // ═══════════════════════════════════════
-// 3D MOON — large, detailed, with glow
+// 3D MOON — self-illuminated, cratered, with glow + PointLight
 // ═══════════════════════════════════════
 function createMoon(scene) {
   var moonGroup = new THREE.Group();
@@ -269,17 +269,41 @@ function createMoon(scene) {
   scene.userData._moonGroup = moonGroup;
   scene.userData._moonBaseY = 0.5;
 
+  // Moon surface with craters — procedural displacement
   var geo = new THREE.SphereGeometry(1.5, 64, 64);
   var pos = geo.attributes.position;
   for (var i = 0; i < pos.count; i++) {
     var x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
-    var n = Math.sin(x * 8) * Math.cos(y * 6) * 0.05 + Math.sin(z * 12) * 0.03;
+    // Base terrain noise
+    var n = Math.sin(x * 8) * Math.cos(y * 6) * 0.04 + Math.sin(z * 12) * 0.025;
+    // Craters — several overlapping depressions
+    var craters = [
+      { cx: 0.6, cy: 0.3, cz: 1.2, r: 0.35, d: 0.12 },
+      { cx: -0.8, cy: -0.2, cz: 0.9, r: 0.25, d: 0.08 },
+      { cx: 0.2, cy: -0.7, cz: 1.1, r: 0.2, d: 0.06 },
+      { cx: -0.3, cy: 0.8, cz: 0.8, r: 0.18, d: 0.05 },
+      { cx: 0.9, cy: 0.5, cz: 0.6, r: 0.15, d: 0.04 },
+      { cx: -0.5, cy: -0.6, cz: 0.7, r: 0.22, d: 0.07 },
+      { cx: 0.1, cy: 0.1, cz: 1.35, r: 0.28, d: 0.09 },
+    ];
+    for (var c = 0; c < craters.length; c++) {
+      var cr = craters[c];
+      var dx = x - cr.cx, dy = y - cr.cy, dz = z - cr.cz;
+      var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      if (dist < cr.r) {
+        var t = dist / cr.r;
+        // Smooth crater profile: depression with raised rim
+        var craterEffect = -cr.d * (1 - t * t) + cr.d * 0.3 * Math.exp(-((t - 0.85) * (t - 0.85)) * 50);
+        n += craterEffect;
+      }
+    }
     pos.setXYZ(i, x * (1 + n), y * (1 + n), z * (1 + n));
   }
   geo.computeVertexNormals();
-  var moonMat = new THREE.MeshStandardMaterial({
-    color: 0xffffff, emissive: 0x554820, emissiveIntensity: 0.5,
-    roughness: 0.7, metalness: 0.1
+
+  // MeshBasicMaterial = fully self-illuminated, NO shadow from directional lights
+  var moonMat = new THREE.MeshBasicMaterial({
+    color: 0xfff8e8,
   });
   var moon = new THREE.Mesh(geo, moonMat);
   moon.userData.animate = function(o, t) {
@@ -288,30 +312,60 @@ function createMoon(scene) {
     o.position.y = Math.sin(t * 0.2) * 0.5;
     o.rotation.y = t * 0.2;
     o.rotation.x = Math.sin(t * 0.08) * 0.05;
+    // Subtle breathing scale
+    var breathe = 1 + Math.sin(t * 0.3) * 0.015;
+    o.scale.setScalar(breathe);
   };
   moonGroup.add(moon);
 
-  var glowGeo = new THREE.SphereGeometry(1.75, 32, 32);
-  var glowMat = new THREE.MeshBasicMaterial({ color: 0xfff5d0, transparent: true, opacity: 0.06, side: THREE.BackSide, depthWrite: false });
+  // Inner glow — warm golden, close to surface
+  var glowGeo = new THREE.SphereGeometry(1.62, 32, 32);
+  var glowMat = new THREE.MeshBasicMaterial({ color: 0xfff0c0, transparent: true, opacity: 0.08, side: THREE.BackSide, depthWrite: false });
   var glow = new THREE.Mesh(glowGeo, glowMat);
   glow.userData.animate = function(o, t) {
     o.position.x = Math.sin(t * 0.08) * 4;
     o.position.z = Math.cos(t * 0.08) * 2;
     o.position.y = Math.sin(t * 0.12) * 0.5;
     o.scale.setScalar(1 + Math.sin(t * 0.4) * 0.04);
+    // Pulse opacity
+    o.material.opacity = 0.06 + Math.sin(t * 0.5) * 0.02;
   };
   moonGroup.add(glow);
 
-  var haloGeo = new THREE.SphereGeometry(2.2, 24, 24);
-  var haloMat = new THREE.MeshBasicMaterial({ color: 0xfff8e0, transparent: true, opacity: 0.03, side: THREE.BackSide, depthWrite: false });
+  // Outer halo — soft white
+  var haloGeo = new THREE.SphereGeometry(2.0, 24, 24);
+  var haloMat = new THREE.MeshBasicMaterial({ color: 0xfff8e0, transparent: true, opacity: 0.035, side: THREE.BackSide, depthWrite: false });
   var halo = new THREE.Mesh(haloGeo, haloMat);
   halo.userData.animate = function(o, t) {
     o.position.x = Math.sin(t * 0.08) * 4;
     o.position.z = Math.cos(t * 0.08) * 2;
     o.position.y = Math.sin(t * 0.12) * 0.5;
     o.scale.setScalar(1 + Math.sin(t * 0.25) * 0.06);
+    o.material.opacity = 0.025 + Math.sin(t * 0.35) * 0.01;
   };
   moonGroup.add(halo);
+
+  // Outer atmospheric haze — very large, very faint
+  var hazeGeo = new THREE.SphereGeometry(2.8, 20, 20);
+  var hazeMat = new THREE.MeshBasicMaterial({ color: 0xffeedd, transparent: true, opacity: 0.012, side: THREE.BackSide, depthWrite: false });
+  var haze = new THREE.Mesh(hazeGeo, hazeMat);
+  haze.userData.animate = function(o, t) {
+    o.position.x = Math.sin(t * 0.06) * 4;
+    o.position.z = Math.cos(t * 0.06) * 2;
+    o.position.y = Math.sin(t * 0.1) * 0.5;
+    o.scale.setScalar(1 + Math.sin(t * 0.18) * 0.08);
+    o.material.opacity = 0.008 + Math.sin(t * 0.22) * 0.006;
+  };
+  moonGroup.add(haze);
+
+  // PointLight at moon position — illuminates nearby scene objects
+  var moonLight = new THREE.PointLight(0xfff5d0, 1.2, 25, 1.5);
+  moonLight.position.set(0, 0, 0); // relative to moonGroup
+  moonLight.userData.animate = function(o, t) {
+    // Subtle light intensity flicker (like real moonlight variation)
+    o.intensity = 1.2 + Math.sin(t * 0.7) * 0.15 + Math.sin(t * 1.3) * 0.08;
+  };
+  moonGroup.add(moonLight);
 }
 
 // ═══════════════════════════════════════
