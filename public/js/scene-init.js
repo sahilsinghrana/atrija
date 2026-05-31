@@ -254,7 +254,7 @@ class VanGoghScene {
       if (o.userData.animate) o.userData.animate(o, t, dt);
     }
     if (this.shootingStarManager) this.shootingStarManager.update(t, dt);
-    updatePaintingReveal(this);
+    updatePaintingReveal(this.scene);
     this.composer.render();
   }
 }
