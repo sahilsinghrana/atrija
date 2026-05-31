@@ -1183,8 +1183,8 @@ function spawnNotesBurst(cx, cy, count) {
   var starCount = isLowEnd ? 700 : 2500;
   var noteCount = isLowEnd ? 10 : 15;
   var sunflowerCount = isLowEnd ? 3 : 8;
-  lilyCount = isLowEnd ? 2 : 3;
-  tulipCount = isLowEnd ? 4 : 10;
+  lilyCount = isLowEnd ? 1 : 3;
+  tulipCount = isLowEnd ? 6 : 10;
   var waveSegs = isLowEnd ? 16 : 32;
   if (window.__updateLoaderProgress) window.__updateLoaderProgress(30);
   createStars(scene.scene, starCount);
