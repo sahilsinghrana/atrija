@@ -1,0 +1,238 @@
+---
+import koansData from '../content/koans.json';
+
+const now = new Date();
+const start = new Date(now.getFullYear(), 0, 0);
+const diff = now.getTime() - start.getTime();
+const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+const koan = koansData.koans[dayOfYear % koansData.koans.length];
+---
+
+<section id="koan" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal-left">VI. Daily Contemplation</div>
+    <h2 class="reveal">A Moment of <em>Stillness</em></h2>
+
+    <div class="koan-card reveal">
+      <blockquote class="koan-text">
+        {koan.text}
+      </blockquote>
+      <div class="koan-source">— {koan.source}</div>
+
+      <button class="koan-reflect-btn" id="koanReflectBtn" aria-label="Hold to reveal interpretation">
+        <span class="koan-reflect-label">Reflect</span>
+        <svg class="koan-progress-ring" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="koan-progress-bg" cx="24" cy="24" r="20" fill="none" stroke="var(--text-tertiary)" stroke-width="2" opacity="0.3"/>
+          <circle class="koan-progress-fill" cx="24" cy="24" r="20" fill="none" stroke="var(--accent-gold)" stroke-width="2"
+            stroke-dasharray="125.66" stroke-dashoffset="125.66" transform="rotate(-90 24 24)"/>
+        </svg>
+      </button>
+
+      <div class="koan-interpretation" id="koanInterpretation" hidden>
+        <p>{koan.interpretation}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .koan-card {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    padding: var(--space-2xl) var(--space-xl);
+    position: relative;
+  }
+
+  .koan-text {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md) 0;
+    padding: 0;
+    border: none;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.08);
+  }
+
+  .koan-source {
+    font-family: var(--font-serif);
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .koan-reflect-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    position: relative;
+    padding: var(--space-sm) var(--space-xl);
+    background: transparent;
+    border: 1px solid var(--accent-gold);
+    border-radius: 999px;
+    color: var(--accent-gold);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .koan-reflect-btn:hover {
+    background: rgba(255, 215, 0, 0.08);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  }
+
+  .koan-reflect-btn:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 4px;
+  }
+
+  .koan-progress-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .koan-reflect-btn.holding .koan-progress-ring {
+    opacity: 1;
+  }
+
+  .koan-reflect-btn.holding .koan-reflect-label {
+    opacity: 0.7;
+  }
+
+  .koan-progress-fill {
+    transition: none;
+  }
+
+  .koan-interpretation {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255, 215, 0, 0.15);
+  }
+
+  .koan-interpretation p {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .koan-interpretation[hidden] {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .koan-text {
+      font-size: var(--text-lg);
+    }
+
+    .koan-source {
+      font-size: var(--text-xs);
+    }
+
+    .koan-reflect-btn {
+      min-width: 160px;
+      min-height: 48px;
+      justify-content: center;
+    }
+
+    .koan-interpretation p {
+      font-size: var(--text-base);
+    }
+
+    .koan-card {
+      padding: var(--space-xl) var(--space-md);
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const btn = document.getElementById('koanReflectBtn');
+    const interpretation = document.getElementById('koanInterpretation');
+    const progressFill = btn?.querySelector('.koan-progress-fill');
+    if (!btn || !interpretation || !progressFill) return;
+
+    const HOLD_DURATION = 3000;
+    const CIRCUMFERENCE = 125.66;
+    let timer = null;
+    let startTimestamp = null;
+    let revealed = false;
+    let rafId = null;
+
+    function updateProgress(elapsed) {
+      const pct = Math.min(elapsed / HOLD_DURATION, 1);
+      const offset = CIRCUMFERENCE * (1 - pct);
+      progressFill.style.strokeDashoffset = String(offset);
+    }
+
+    function onStart(e) {
+      if (e.type === 'mousedown' && e.button !== 0) return;
+      if (revealed) return;
+      e.preventDefault();
+      btn.classList.add('holding');
+      startTimestamp = null;
+
+      function frame(ts) {
+        if (startTimestamp === null) startTimestamp = ts;
+        const elapsed = ts - startTimestamp;
+        updateProgress(elapsed);
+        if (elapsed >= HOLD_DURATION) {
+          reveal();
+        } else {
+          rafId = requestAnimationFrame(frame);
+        }
+      }
+      rafId = requestAnimationFrame(frame);
+
+      function onEnd(e) {
+        cleanup();
+      }
+
+      btn.addEventListener('mouseup', onEnd, { once: true });
+      btn.addEventListener('mouseleave', onEnd, { once: true });
+      btn.addEventListener('touchend', onEnd, { once: true });
+      btn.addEventListener('touchcancel', onEnd, { once: true });
+    }
+
+    function reveal() {
+      revealed = true;
+      btn.classList.remove('holding');
+      interpretation.removeAttribute('hidden');
+      progressFill.style.strokeDashoffset = '0';
+      btn.classList.add('revealed');
+      btn.querySelector('.koan-reflect-label').textContent = 'Contemplate';
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+
+    function cleanup() {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+      btn.classList.remove('holding');
+      progressFill.style.strokeDashoffset = String(CIRCUMFERENCE);
+    }
+
+    btn.addEventListener('mousedown', onStart);
+    btn.addEventListener('touchstart', onStart, { passive: false });
+  })();
+</script>
