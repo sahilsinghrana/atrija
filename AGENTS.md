@@ -4,6 +4,36 @@
 
 ## Critical Rules
 
+### 0. Use CodeGraph for Code Intelligence
+CodeGraph is installed globally and provides semantic code search via MCP.
+Before exploring the codebase with grep/read, **always try CodeGraph first**:
+
+```bash
+# Search for symbols
+codegraph query "symbol_name" --kind function --limit 10
+
+# Get context for a task (outputs markdown with relevant code)
+codegraph context "How does X work?" --format markdown
+
+# Find callers/callees
+codegraph callers "function_name"
+codegraph callees "function_name"
+
+# Check impact before changing a symbol
+codegraph impact "symbol_name"
+
+# Find affected tests
+codegraph affected src/file.ts
+
+# List indexed files
+codegraph files
+
+# Re-index after large changes
+codegraph index --force
+```
+
+**Why:** CodeGraph gives pre-indexed knowledge graph — ~25% cheaper, ~62% fewer tool calls vs grep/read exploration. The index is in `.codegraph/` (per-project). Auto-syncs via file watcher.
+
 ### 1. ALWAYS Pull Before Making Changes
 ```bash
 cd /root/projects/van-gogh-site
