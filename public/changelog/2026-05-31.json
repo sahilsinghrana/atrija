@@ -1,0 +1,20 @@
+{
+  "date": "2026-05-31",
+  "entries": [
+    {
+      "time": "16:30:00",
+      "type": "feature",
+      "description": "Daily Zen Koan contemplation section with interactive reflect-to-reveal interpretation",
+      "changes": [
+        "Added src/content/koans.json with 35 curated philosophical koans",
+        "Created src/components/KoanCard.astro with reflect button interaction",
+        "3-second hold-to-reveal interpretation mechanic",
+        "Daily rotation via dayOfYear modulo",
+        "Elegant calligraphy-styled card using existing design tokens",
+        "Mobile-optimized with touch-friendly reflect button",
+        "Added tests/unit/koans.test.js (11 tests, all pass)",
+        "No scene-init.js changes — purely content-driven"
+      ]
+    }
+  ]
+}

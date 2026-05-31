@@ -406,7 +406,7 @@
       "description": "A new content section displaying a daily rotating zen koan or philosophical riddle as an elegant calligraphy-styled card. Hold-to-reveal interpretation. Purely content-driven, no scene-init.js changes.",
       "category": "Content",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-043-zen-koan-section.md"
     },
     {
@@ -440,5 +440,5 @@
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-05-24T02:05:00Z",
   "lastReviewAt": "2026-05-24T03:00:00Z",
-  "lastReviewResult": "Background Implementer: idea-045 Van Gogh Letter Excerpts implemented. Created src/content/letters.json (30 excerpts), src/components/LetterCard.astro (aged-paper card with daily rotation), tests/unit/letters.test.js (13 tests, all pass). Added to index.astro between Art & Beauty and painting reveal. Build ✅, deploy ✅, HTTP 200 ✅. No scene-init.js changes."
+  "lastReviewResult": "Background Implementer: idea-043 Daily Zen Koan Content Section implemented. Created src/content/koans.json (35 curated koans from Zen, Taoism, Sufism, Greek philosophy, Van Gogh letters). Created src/components/KoanCard.astro with 3-second hold-to-reveal interpretation mechanic. Daily rotation via dayOfYear modulo. Added to index.astro between painting reveal and changelog. tests/unit/koans.test.js (11 tests, all pass). Build ✅, deploy ✅, HTTP 200 ✅. No scene-init.js changes — purely content-driven."
 }
