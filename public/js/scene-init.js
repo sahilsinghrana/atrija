@@ -666,12 +666,21 @@ function createTulips(scene, count) {
     var openness = 0.3 + Math.random() * 0.65;
     // Each tulip gets a fixed seed so texture is stable
     var texSeed = Math.floor(Math.random() * 10000);
-    var s = isMobile ? (0.7 + Math.random() * 0.5) : (0.5 + Math.random() * 0.45);
     var spreadX = isMobile ? 12 : 16;
     var spreadZ = isMobile ? 8 : 10;
     var tex = new THREE.CanvasTexture(makeTulipCanvas(256, color, openness, texSeed));
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
-    sprite.scale.set(1.2 * s, 1.7 * s, 1);
+    // 2-3 tulips are large, rest are medium
+    var roll = Math.random();
+    var s;
+    if (roll < 0.25) {
+      // Large tulip
+      s = isMobile ? (1.4 + Math.random() * 0.4) : (1.2 + Math.random() * 0.5);
+    } else {
+      // Normal tulip
+      s = isMobile ? (0.9 + Math.random() * 0.5) : (0.8 + Math.random() * 0.55);
+    }
+    sprite.scale.set(1.5 * s, 2.0 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
       isMobile ? -0.05 + s * 0.2 : -0.15 + s * 0.18,
