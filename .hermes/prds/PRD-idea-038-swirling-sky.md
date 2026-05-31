@@ -141,7 +141,17 @@ The implementation makes tests pass by:
 
 **Risk Assessment**: 
 - High risk: Breaking `scene-init.js` breaks the entire 3D scene
-- Mitigation: Consider implementing as a separate module (`public/js/swirling-sky.js`) that integrates via minimal import/init calls in scene-init.js (2 lines max)
+- **REQUIRED**: Must be implemented as standalone `public/js/swirling-sky.js` module with only 2-line import/init in scene-init.js
 - Alternative: Use the existing post-processing pipeline if it exists, or create a new EffectComposer pass
 
 **Recommendation**: Refactor to avoid direct scene-init.js modifications. Create a standalone module that adds the sky dome as a separate Three.js object, similar to how idea-032 (time-of-day) works via CSS variables or idea-041 (aurora) works as a separate module.
+
+---
+
+## Reviewer Notes (2026-06-01)
+
+**Architecture Update**: This PRD now REQUIRES standalone module pattern. The swirling sky must be `public/js/swirling-sky.js` — a self-contained module exporting `initSwirlingSky(scene)` and `updateSwirlingSky(time)`. scene-init.js gets exactly 2 lines added (import + init call). No other scene-init.js modifications.
+
+**Status**: Backlog — no implementation attempted. Standalone Three.js addition, no dependencies.
+
+**Priority**: Medium — appropriate for a visual enhancement that significantly improves the Starry Night atmosphere.

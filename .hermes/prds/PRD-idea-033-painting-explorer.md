@@ -13,9 +13,9 @@
 
 **One-liner:** A zoomable, interactive deep-dive into The Starry Night where visitors click on painted elements — the cypress, village, stars, moon, and hills — to learn about Van Gogh's techniques, symbolism, and the story behind each brushstroke.
 
-**Problem:** The site already showcases Van Gogh's paintings in a gallery (idea-021) and has a scroll-driven painting reveal (idea-028), but neither lets visitors *explore* a single painting in depth. The Starry Night is the most iconic painting associated with the site's aesthetic, yet visitors can't interact with it beyond passive viewing. There's an educational gap: people see the swirls and stars but don't know what they mean.
+**Problem:** The site has a scroll-driven painting reveal (idea-028) but visitors can't explore the painting in depth. The Starry Night is the most iconic painting associated with the site's aesthetic, yet visitors can't interact with it beyond passive viewing. There's an educational gap: people see the swirls and stars but don't know what they mean. (Note: idea-021 gallery was removed per user request.)
 
-**Solution:** Add a new "Explore the Painting" section between the painting reveal and the gallery. It displays a high-resolution image of The Starry Night (loaded progressively from Wikimedia Commons) with invisible clickable hotspot zones over key elements. Clicking a hotspot opens a side panel with: the element's name, a 2-3 sentence explanation of its significance, the technique Van Gogh used, and a relevant quote. The image supports pinch-to-zoom (mobile) and scroll-to-zoom (desktop). All content is driven by a JSON data file for easy updates.
+**Solution:** Add a new "Explore the Painting" section after the painting reveal section. It displays a high-resolution image of The Starry Night (loaded progressively from Wikimedia Commons) with invisible clickable hotspot zones over key elements. Clicking a hotspot opens a side panel with: the element's name, a 2-3 sentence explanation of its significance, the technique Van Gogh used, and a relevant quote. The image supports pinch-to-zoom (mobile) and scroll-to-zoom (desktop). All content is driven by a JSON data file for easy updates.
 
 ---
 

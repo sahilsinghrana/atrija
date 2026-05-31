@@ -188,3 +188,13 @@
 **Risk**: The particle trail (200 particles desktop) uses `THREE.Points` which is a single draw call — this is fine. But the comet timer logic adds complexity to the animate loop. Keep it simple.
 
 **Scope**: Medium is appropriate, but the scene-init.js changes need to be refactored to a standalone module first.
+
+---
+
+## Reviewer Notes (2026-06-01)
+
+**Architecture Update**: This PRD now REQUIRES standalone module pattern. The comet system must be `public/js/comet.js` — a self-contained module exporting `initComet(scene)` and `updateComet(time, deltaTime)`. scene-init.js gets exactly 2 lines added (import + init call). No other scene-init.js modifications. The comet timer, particle trail, and head mesh all live in comet.js.
+
+**Status**: Backlog — no implementation attempted. Depends only on existing Three.js scene (no other feature dependencies).
+
+**Priority**: Low — This is a nice-to-have "grand event" visual. While well-designed, it adds complexity to the animate loop. Consider lowering priority if backlog grows.

@@ -2,10 +2,10 @@
 
 > **ID:** idea-036
 > **Category:** Interactivity
-> **Priority:** medium
+> **Priority:** low
 > **Status:** backlog
-> **PRD Version:** 1.0
-> **Last Updated:** 2026-05-21
+> **PRD Version:** 1.1
+> **Last Updated:** 2026-06-01
 
 ---
 
@@ -202,4 +202,12 @@ Create `public/js/particle-poetry.js` with `initParticlePoetry(scene, camera, co
 
 **Risk**: Canvas texture creation at runtime can cause jank. The PRD correctly identifies pre-rendering as the mitigation. Implement this during the Green phase, not as a refactor.
 
-**Scope**: Medium is appropriate. The 2-line scene-init.js integration is minimal.
+**Scope**: Low priority is appropriate. The 2-line scene-init.js integration is minimal.
+
+---
+
+## Reviewer Notes (2026-06-01)
+
+**Priority Adjustment**: Changed from `medium` → `low`. This is a nice-to-have visual effect that depends on scroll-driven content reading. It should not take priority over core 3D elements or performance fixes.
+
+**Status**: Backlog — no implementation attempted. Ready for pickup.

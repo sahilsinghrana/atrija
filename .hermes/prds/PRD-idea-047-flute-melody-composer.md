@@ -176,6 +176,7 @@ Implement `public/js/flute-composer.js` with:
 **Dependencies:** Web Audio API (available in all modern browsers). No dependencies on existing Three.js modules — purely additive.
 
 **Risks:**
+- **CRITICAL: Audio direction conflict.** Audio was deliberately removed from the site (idea-014). This PRD re-introduces synthesized audio via Web Audio API. While it's user-initiated (not auto-play), it conflicts with the site's "no audio" direction. Flagged for rethink — consider implementing as visual-only (no sound) to align with site direction.
 - Web Audio API requires user gesture to start AudioContext → Mitigation: lazy-init AudioContext on first staff click (not on page load)
 - Auto-play policies may block audio → Mitigation: only play on explicit user click, no auto-play
 - Staff canvas may conflict with existing floating notes → Mitigation: staff positioned at fixed bottom 120px, existing notes float in upper 80% of viewport
@@ -198,3 +199,13 @@ Implement `public/js/flute-composer.js` with:
   ]
 }
 ```
+
+---
+
+## Reviewer Notes (2026-06-01)
+
+**⚠️ Direction Conflict**: This PRD uses Web Audio API to synthesize flute tones. Audio was deliberately removed from the site (idea-014). The PRD's "pentatonic scale" approach is well-designed, but the fundamental approach conflicts with site direction.
+
+**Recommendation**: Either (a) implement as **visual-only** — the staff, note placement, and 3D coordination remain, but no audio playback — or (b) reclassify as experimental/nice-to-have and await explicit user approval before implementing with audio.
+
+**Alternative**: If approved, the lazy-init AudioContext approach (only on first click) is the correct pattern to avoid autoplay policy issues.

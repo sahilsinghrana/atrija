@@ -340,7 +340,7 @@
     {
       "id": "idea-036",
       "title": "Particle Poetry Scroll Effect",
-      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual \u2014 no audio.",
+      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual — no audio.",
       "category": "Interactivity",
       "priority": "low",
       "status": "backlog",
@@ -412,7 +412,7 @@
     {
       "id": "idea-044",
       "title": "Comet with Particle Trail",
-      "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare (3-5 min intervals), persistent fading trail. Evokes Van Gogh's Starry Night cosmic energy. NOTE: Requires refactoring to standalone module before implementation.",
+      "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare (3-5 min intervals), persistent fading trail. Evokes Van Gogh's Starry Night cosmic energy. MUST be implemented as standalone public/js/comet.js module (2-line import/init in scene-init.js).",
       "category": "3D Elements",
       "priority": "low",
       "status": "backlog",
@@ -439,7 +439,7 @@
     {
       "id": "idea-047",
       "title": "Interactive Flute Melody Composer",
-      "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. Purely client-side, no audio files.",
+      "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. ⚠️ Uses audio — conflicts with site direction (idea-014 removed audio). Consider visual-only implementation.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "backlog",
@@ -466,6 +466,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-01T02:00:00Z",
-  "lastReviewAt": "2026-05-31T14:26:29.155328Z",
-  "lastReviewResult": "Implementation Review: Reviewed 5 implementations. Seasonal transitions, Zen Koan, and Letter Excerpts verified done. Loading optimizations and time-of-day system need test fixes."
+  "lastReviewAt": "2026-06-01T03:03:00Z",
+  "lastReviewResult": "Kanban Review: Reviewed 37 PRDs across 49 ideas. Fixed priority mismatches (idea-036 medium→low, idea-044 medium→low). Flagged 4 PRDs requiring standalone module pattern (idea-038, 044, 046, 039). Flagged idea-047 audio conflict with site direction. Updated idea-033 to remove references to deleted gallery. idea-009 remains stuck in refactor (12 failing tests, 9+ days)."
 }

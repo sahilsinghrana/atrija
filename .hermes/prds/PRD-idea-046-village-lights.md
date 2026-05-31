@@ -179,3 +179,13 @@
 **Feasibility**: This PRD modifies `scene-init.js` directly (SACRED file). While the changes are relatively simple (adding light meshes and pulsing animation), any modification to scene-init.js carries risk. **Recommendation**: Refactor to use a standalone `public/js/village-lights.js` module with a 2-line import/init in scene-init.js.
 
 **Scope**: Low is appropriate. This is a small atmospheric addition with negligible performance impact.
+
+---
+
+## Reviewer Notes (2026-06-01)
+
+**Architecture Update**: This PRD now REQUIRES standalone module pattern. The village lights must be `public/js/village-lights.js` — a self-contained module exporting `initVillageLights(scene)` and `updateVillageLights(time)`. scene-init.js gets exactly 2 lines added (import + init call). No other scene-init.js modifications.
+
+**Status**: Backlog — no implementation attempted. Depends only on existing Three.js scene and cypress tree positions (idea-026, done).
+
+**Priority**: Low — appropriate for a small atmospheric addition.
