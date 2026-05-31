@@ -1078,6 +1078,8 @@ function spawnNotesBurst(cx, cy, count) {
     var l = document.getElementById('loader');
     if (l) l.classList.add('hidden');
     if (window.__updateLoaderProgress) window.__updateLoaderProgress(100);
+    // Signal to the page that the scene is fully loaded
+    if (window.__sceneReady) window.__sceneReady();
   });
   setTimeout(function() {
     createSunflowers(scene.scene, sunflowerCount);
@@ -1120,5 +1122,8 @@ function spawnNotesBurst(cx, cy, count) {
     spawnNotesBurst(e.clientX, e.clientY, isMobile ? 8 : 6);
   });
   window.addEventListener('orientationchange', function() { setTimeout(function() { scene.onResize(); }, 200); });
-  } catch(e) { console.error('Scene init error:', e); }
+  } catch(e) {
+    console.error('Scene init error:', e);
+    if (window.__sceneFailed) window.__sceneFailed(e.message || String(e));
+  }
 })();
