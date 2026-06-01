@@ -77,14 +77,16 @@ export function createCypressTrees(scene, count) {
         o.rotation.y = scrollState.current * 0.005;
         if (!isLowEnd) {
           const posAttr = o.geometry.attributes.position;
-          if (posAttr && !o.userData._basePos) o.userData._basePos = new Float32Array(posAttr.array);
+          if (posAttr && !o.userData._basePos)
+            o.userData._basePos = new Float32Array(posAttr.array);
           if (posAttr && o.userData._basePos) {
             const basePos = o.userData._basePos;
             for (let v = 0; v < posAttr.count; v += 5) {
               const by = basePos[v * 3 + 1];
               if (by > 1.0) {
                 posAttr.array[v * 3] =
-                  basePos[v * 3] + Math.sin(t * 0.5 + basePos[v * 3] * 2) * 0.02 * (by / 5.0);
+                  basePos[v * 3] +
+                  Math.sin(t * 0.5 + basePos[v * 3] * 2) * 0.02 * (by / 5.0);
               }
             }
             posAttr.needsUpdate = true;

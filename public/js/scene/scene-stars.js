@@ -146,7 +146,11 @@ export function createShootingStars(scene, maxActive) {
       opacities,
       trailLength,
       headSize: isMobile ? 3.0 : 4.0,
-      headColor: new THREE.Color().setHSL(0.12 + Math.random() * 0.05, 0.8, 0.9),
+      headColor: new THREE.Color().setHSL(
+        0.12 + Math.random() * 0.05,
+        0.8,
+        0.9,
+      ),
     };
     const geo = new THREE.BufferGeometry();
     geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
