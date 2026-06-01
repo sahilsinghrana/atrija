@@ -340,7 +340,7 @@
     {
       "id": "idea-036",
       "title": "Particle Poetry Scroll Effect",
-      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual — no audio.",
+      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual \u2014 no audio.",
       "category": "Interactivity",
       "priority": "low",
       "status": "backlog",
@@ -439,7 +439,7 @@
     {
       "id": "idea-047",
       "title": "Interactive Flute Melody Composer",
-      "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. ⚠️ Uses audio — conflicts with site direction (idea-014 removed audio). Consider visual-only implementation.",
+      "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. \u26a0\ufe0f Uses audio \u2014 conflicts with site direction (idea-014 removed audio). Consider visual-only implementation.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "backlog",
@@ -448,7 +448,7 @@
     {
       "id": "idea-048",
       "title": "Scroll-Synced Ambient Lighting System",
-      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone — warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
+      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone \u2014 warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
       "category": "UI",
       "priority": "low",
       "status": "backlog",
@@ -466,6 +466,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-01T02:00:00Z",
-  "lastReviewAt": "2026-06-01T03:03:00Z",
-  "lastReviewResult": "Kanban Review: Reviewed 37 PRDs across 49 ideas. Fixed priority mismatches (idea-036 medium→low, idea-044 medium→low). Flagged 4 PRDs requiring standalone module pattern (idea-038, 044, 046, 039). Flagged idea-047 audio conflict with site direction. Updated idea-033 to remove references to deleted gallery. idea-009 remains stuck in refactor (12 failing tests, 9+ days)."
+  "lastReviewAt": "2026-06-01T06:00:00Z",
+  "lastReviewResult": "Implementation Review (2026-06-01): Verified idea-037 (seasonal), idea-043 (koan), idea-045 (letters) -- all done, tests pass. idea-032 (time-of-day) remains red (rolled back, placeholder tests). idea-009 (loading) stuck in refactor (11 failing tests). idea-020 (scroll-parallax) has 1 failing test. Build succeeds, site HTTP 200. 111/128 tests pass total."
 }
