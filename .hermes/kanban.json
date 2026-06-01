@@ -452,10 +452,43 @@
       "priority": "medium",
       "status": "done",
       "prd": null
+    },
+    {
+      "id": "idea-053",
+      "title": "Accessibility audit & core fixes",
+      "description": "Implement foundational accessibility improvements: skip-navigation link for keyboard users, visible focus indicators on all interactive elements (flute button, theme switcher, quote dots, carousel), ARIA labels on icon-only controls, aria-live region for quote carousel auto-rotation announcements, and respect for prefers-reduced-motion (disable firefly drift, shooting stars, brushstroke cursor, and note float animations when reduced motion is preferred). Pure CSS + minimal JS overlay module, no scene-init.js changes.",
+      "category": "Accessibility",
+      "priority": "high",
+      "status": "backlog",
+      "tags": ["a11y", "keyboard", "screen-reader", "reduced-motion", "ARIA"],
+      "effort": "2 sessions",
+      "prd": null
+    },
+    {
+      "id": "idea-054",
+      "title": "Adaptive performance quality scaler",
+      "description": "A lightweight FPS monitor that dynamically scales 3D scene quality to maintain smooth performance. Tracks rolling average FPS over 60 frames. If FPS drops below 30: reduces star count by 40%, halves flower/wave segments, and disables firefly swarm. If FPS recovers above 50 for 5 seconds, restores quality tiers. Quality level persisted in sessionStorage so returning visitors with known-slow devices skip the measurement phase. Implemented as a standalone public/js/performance-scaler.js module that reads sceneConfig flags — no scene-init.js modifications.",
+      "category": "Performance",
+      "priority": "medium",
+      "status": "backlog",
+      "tags": ["performance", "FPS", "mobile", "adaptive", "3D"],
+      "effort": "2-3 sessions",
+      "prd": null
+    },
+    {
+      "id": "idea-055",
+      "title": "Client-side content search overlay",
+      "description": "A keyboard-triggered search overlay (press '/' or click a search icon) that indexes all facts, quotes, koans, and section intros from siteData.json and content.json. Fuzzy-matches visitor queries against text content and returns results grouped by theme (Moon, Philosophy, Gita, Shiva, Art). Each result shows the text snippet with highlighted match and a 'jump to section' link. Pure client-side with a small JSON index built at page load. No backend, no Three.js — a standalone public/js/content-search.js module with a floating search bar UI that respects the dark impressionist theme.",
+      "category": "UX",
+      "priority": "low",
+      "status": "backlog",
+      "tags": ["search", "content", "navigation", "keyboard"],
+      "effort": "1-2 sessions",
+      "prd": null
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-01T02:00:00Z",
+  "generatedAt": "2026-06-01T14:53:00Z",
   "lastReviewAt": "2026-06-01T12:00:00Z",
-  "lastReviewResult": "Post-refactor review (2026-06-01): Removed Van Gogh references from all ideas/PRDs. Added idea-050 (foreground moon canvas), idea-051 (tulip rewrite), idea-052 (remove VG refs). Removed idea-021, idea-025, idea-031, idea-045, idea-049. Updated 17 idea descriptions. Build succeeds."
+  "lastReviewResult": "Idea generation (2026-05-01 14:53): Added idea-053 (accessibility audit), idea-054 (adaptive performance scaler), idea-055 (content search overlay). Focus areas: a11y (no prior ideas), performance scaling (complements existing static mobile/desktop split), content discovery (17+ themes/quotes/facts now searchable). Build unaffected — no code changes."
 }
