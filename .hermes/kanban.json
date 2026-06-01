@@ -459,7 +459,7 @@
       "description": "Implement foundational accessibility improvements: skip-navigation link for keyboard users, visible focus indicators on all interactive elements (flute button, theme switcher, quote dots, carousel), ARIA labels on icon-only controls, aria-live region for quote carousel auto-rotation announcements, and respect for prefers-reduced-motion (disable firefly drift, shooting stars, brushstroke cursor, and note float animations when reduced motion is preferred). Pure CSS + minimal JS overlay module, no scene-init.js changes.",
       "category": "Accessibility",
       "priority": "high",
-      "status": "backlog",
+      "status": "done",
       "tags": ["a11y", "keyboard", "screen-reader", "reduced-motion", "ARIA"],
       "effort": "2 sessions",
       "prd": null
@@ -489,6 +489,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-01T14:53:00Z",
-  "lastReviewAt": "2026-06-01T12:00:00Z",
-  "lastReviewResult": "Idea generation (2026-05-01 14:53): Added idea-053 (accessibility audit), idea-054 (adaptive performance scaler), idea-055 (content search overlay). Focus areas: a11y (no prior ideas), performance scaling (complements existing static mobile/desktop split), content discovery (17+ themes/quotes/facts now searchable). Build unaffected — no code changes."
+  "lastReviewAt": "2026-06-01T16:15:00Z",
+  "lastReviewResult": "Background Implementer (2026-06-01 16:15): Implemented idea-053 (Accessibility audit & core fixes). Added skip-nav link, focus-visible indicators on all interactive elements, ARIA labels on icon-only controls, aria-live region for carousel, prefers-reduced-motion support, landmark roles, and keyboard navigation for carousel dots. Pure JS/CSS overlay — no scene-init.js changes. Build ✅, deployed ✅, pushed ✅ (commit 9f942da)."
 }
