@@ -4,28 +4,28 @@
     "version": "1.5.0",
     "lastUpdated": "2026-05-19",
     "updatedBy": "AI Agent (daily-mutate)",
-    "season": "spring 🌸"
+    "season": "summer ☀️"
   },
   "sections": {
     "hero": {
       "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
     },
     "today": {
-      "heading": "What the <em>Art</em> whispers today"
+      "heading": "What the <em>Bhagavad</em> teaches today"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "The night sky has always been a canvas for human projection. We see faces, animals, and gods in the stars — not because they are there, but because the mind seeks meaning in chaos.",
+      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas — the emotional mind — and its phases mirror the cycles of human desire and detachment.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 0
+        "factIndex": 2
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          5,
-          7
+          3,
+          5
         ]
       },
       "quote": {
@@ -36,16 +36,16 @@
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "The Bhagavad Gita warns: 'The ego is the greatest enemy of the human soul.' When Arjuna asks Krishna about the nature of the self, the answer is not 'I am great' but 'I am not the doer.'",
+      "intro": "Nietzsche warned that 'whoever fights monsters should see to it that in the process he does not become a monster.' The ego, in its quest to prove its strength, often becomes the very thing it opposes.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 6
+        "factIndex": 8
       },
       "facts": {
         "themeIndex": 1,
         "slice": [
-          3,
-          5
+          1,
+          3
         ]
       },
       "quote": {
@@ -56,10 +56,10 @@
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "The Gita was spoken on a battlefield, not in a temple. Wisdom does not require perfect conditions. The most profound truths are often revealed in the midst of chaos, not in the silence of retreat.",
+      "intro": "Krishna describes three paths to liberation: Karma Yoga (selfless action), Jnana Yoga (knowledge), and Bhakti Yoga (devotion). The Gita does not prescribe one path — it honors all three as valid ways to the divine.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 5
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 2,
@@ -70,69 +70,52 @@
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 3
+        "quoteIndex": 2
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "Shiva sits in meditation on Mount Kailash, the axis mundi, the center of the world. His stillness is not inactivity — it is the stillness of a mind that has transcended all duality, all desire, all fear.",
+      "intro": "Shiva is called Tryambaka — the three-eyed one. The third eye represents the eye of wisdom that sees beyond the duality of good and evil, self and other, creation and destruction. When it opens, the universe is consumed in flame — not as punishment, but as liberation.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 7
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 3,
         "slice": [
-          8,
-          10
+          0,
+          2
         ]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 2
+        "quoteIndex": 3
       }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "A star field is a reminder of scale. Every point of light is a sun, perhaps with planets, perhaps with life. The universe is not indifferent — it is generous beyond comprehension.",
+      "intro": "Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 6
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 4,
         "slice": [
-          8,
-          10
+          2,
+          4
         ]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 1
+        "quoteIndex": 3
       }
     }
   },
   "changelog": {
-    "version": "1.8.0",
-    "entries": [
-      {
-        "date": "2026-05-31",
-        "time": "16:30:00",
-        "type": "feature",
-        "description": "Daily Zen Koan contemplation section with interactive reflect-to-reveal interpretation",
-        "changes": [
-          "Added src/content/koans.json with 35 curated philosophical koans",
-          "Created src/components/KoanCard.astro with reflect button interaction",
-          "3-second hold-to-reveal interpretation mechanic",
-          "Daily rotation via dayOfYear modulo",
-          "Elegant calligraphy-styled card using existing design tokens",
-          "Mobile-optimized with touch-friendly reflect button",
-          "11 unit tests, all pass",
-          "No scene-init.js changes — purely content-driven"
-        ]
-      }
-    ]
+    "version": "1.0.0",
+    "entries": []
   }
 }

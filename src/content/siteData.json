@@ -324,9 +324,9 @@
       "text": "#fff8e1",
       "mood": "warm",
       "shaderParams": {
-        "strokeDensity": 10.2,
-        "swirlFrequency": 7.5,
-        "colorIntensity": 1.52
+        "strokeDensity": 10.3,
+        "swirlFrequency": 7.9,
+        "colorIntensity": 1.63
       },
       "seasons": [
         "autumn",
