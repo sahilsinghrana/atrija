@@ -286,3 +286,26 @@ The implementation was rolled back because the background-implement cron **gutte
 4. **Verify the backup pattern** — Create `scene-init.js.backup` before touching it, verify scene still works after
 5. **Consider lighter approach** — The daily-mutate content pipeline could set time-of-day via content.json instead of a separate JS module, avoiding scene-init.js changes entirely
 
+---
+
+## Implementation Review (2026-06-01 19:00 UTC)
+
+**Status:** red — **STILL ROLLED BACK** ❌
+
+**Reviewer:** Implementation Review Cron (this review)
+**Verdict:** No change. time-of-day.js (234 lines) remains an orphan file on disk, not loaded by BaseLayout.astro. scene-init.js has zero `--tod-*` CSS variable integration. Placeholder tests still use `expect(true).toBe(false)`.
+
+### Architecture Note
+Since idea-024 modularized the scene code, the integration point has changed:
+- **Old approach**: Modify scene-init.js to read `--tod-*` vars
+- **New approach**: Modify `scene-manager.js` (animate loop) or `scene-bootstrap.js` (init) to read `--tod-*` vars from CSS
+- The `time-of-day.js` file on disk sets CSS custom properties on `:root` — this part is architecture-independent
+- The integration needs to happen in the scene module files, not in the 4-line scene-init.js bootstrap
+
+### Recommendation
+Keep in `red`. When re-implementing:
+1. Reuse the existing `time-of-day.js` (verify it works)
+2. Add `--tod-*` CSS variable reads in `scene-manager.js` animate loop (not scene-init.js)
+3. Add the script tag to BaseLayout.astro
+4. Write proper tests (not placeholders)
+

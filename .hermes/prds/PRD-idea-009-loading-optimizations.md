@@ -890,3 +890,49 @@ This implementation has been stuck for **9 days** with no progress. The partiall
 4. requestIdleCallback ordering = 1 test fixed
 5. initialStarCount + WAVE_SEG + wave segments = 4 tests fixed
 
+---
+
+## Implementation Review (2026-06-01 19:00 UTC)
+
+**Status:** refactor — **STUCK** ⚠️ (9+ days, no progress)
+
+**Reviewer:** Implementation Review Cron (6th pass)
+**Verdict:** No new commits since last review. Architecture changed (scene-init.js modularized into scene/ files), making some test patterns even harder to match.
+
+### Updated Status After Architecture Refactoring (idea-024)
+
+The code architecture changed significantly since this PRD was written:
+- `scene-init.js` is now 4 lines, importing from `scene/scene-bootstrap.js`
+- Scene code is modularized into `scene/*.js` files (13 files, 2589 total lines)
+- Tests that read `scene-init.js` directly for patterns (progressive loading, geometry) still fail
+- AGENTS.md Section 8.3 now explicitly says: "NEVER use client:idle on scene-init.js" and "NEVER add post-processing shaders"
+
+### What Now Conflicts with Architecture ❌
+- **`client:idle` on scene-init.js** — AGENTS.md explicitly forbids this (causes loader race condition). Test `03-client-idle.js` is obsolete.
+- **Progressive loading via scene-init.js** — scene-init.js is now a 4-line bootstrap. Phased init would need to be in `scene-bootstrap.js`.
+- **initialStarCount in scene-init.js** — Variables would need to be in `scene-config.js` instead.
+- **Wave segments variable** — Would be in `scene-config.js`, not scene-init.js.
+
+### What's Still Valid and Fixable ✅
+1. SVG preload tags for moon.svg and stars.svg (quick fix in BaseLayout.astro)
+2. `font-display: swap` in BaseLayout.astro inline CSS
+3. `content-visibility: auto` and `contain-intrinsic-size` in BaseLayout or main.css
+4. Nginx `immutable` Cache-Control headers
+5. requestIdleCallback ordering in BaseLayout.astro
+
+### Recommendation
+**Consider closing this PRD as "done enough"** — The core user-facing improvements are in place:
+- Modulepreload for Three.js and scene-init.js ✅
+- Preload for CSS ✅
+- Loader progress bar ✅
+- SVG optimization ✅
+- requestIdleCallback deferral ✅
+- isLowEnd detection ✅
+
+The remaining test failures are either:
+- Tests that need updating to match the new modular architecture
+- Tests for features that conflict with AGENTS.md rules (client:idle)
+- Nice-to-have optimizations that don't affect user experience
+
+**OR** create a new, smaller PRD ("idea-009-cleanup") that focuses only on the 5 still-valid fixes above, and mark the original idea-009 as done.
+
