@@ -188,7 +188,7 @@
 
 **Quality Check**: Excellent PRD. Well-structured with clear phase detection logic, good mobile considerations, and proper graceful fallback design. The CSS variable approach is elegant and low-risk.
 
-**Design Alignment**: The time-of-day concept perfectly matches the impressionist philosophy — capturing the fleeting effects of light at a specific moment was core to Van Gogh's work. This feature would make the site feel truly alive.
+**Design Alignment**: The time-of-day concept perfectly matches the impressionist philosophy — capturing the fleeting effects of light at a specific moment was core to the artist work. This feature would make the site feel truly alive.
 
 **Priority Adjustment**: Changed from high → medium. While the feature is well-designed, it requires scene-init.js modifications (reading CSS vars, applying to Three.js objects). The risk/reward ratio favors medium priority — implement after higher-priority backlog items.
 

@@ -11,9 +11,9 @@
 
 ## 1. Overview
 
-**One-liner:** A majestic comet with a glowing particle trail that slowly crosses the 3D sky every 3-5 minutes, evoking the cosmic grandeur of Van Gogh's Starry Night.
+**One-liner:** A majestic comet with a glowing particle trail that slowly crosses the 3D sky every 3-5 minutes, evoking the cosmic grandeur of the artist Starry Night.
 
-**Problem:** The current sky has twinkling stars (idea-001), shooting stars (idea-001), and a moon — but no large celestial bodies. Van Gogh's Starry Night features prominent swirling forms that some astronomers believe represent comets or cosmic energy. The sky feels complete but lacks a "grand event" — something that makes visitors look up and watch in wonder.
+**Problem:** The current sky has twinkling stars (idea-001), shooting stars (idea-001), and a moon — but no large celestial bodies. the artist Starry Night features prominent swirling forms that some astronomers believe represent comets or cosmic energy. The sky feels complete but lacks a "grand event" — something that makes visitors look up and watch in wonder.
 
 **Solution:** A comet object (bright white-blue sphere with intense glow) that enters from one side of the sky and slowly traverses to the other side over 30-60 seconds. It leaves a persistent particle trail (100-200 particles desktop, 50-80 mobile) that fades over ~10 seconds. The comet appears every 3-5 minutes with randomized entry/exit angles. Triggered in the `animate()` loop via a timer. The comet does NOT orbit — it's a one-shot crossing event.
 

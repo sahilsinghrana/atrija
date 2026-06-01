@@ -1,4 +1,4 @@
-# AGENTS.md — Van Gogh Website Project (Atrijā)
+# AGENTS.md — Atrijā Website Project
 
 > **Read this first** before making any changes to this project.
 
@@ -96,7 +96,7 @@ git push origin master
 - If something is broken, fix it forward — don't revert
 
 #### 6c. Never Remove Post-Processing Shaders
-- The EffectComposer pipeline (Van Gogh + Glitch passes) provides the layered/painted visual effect
+- The EffectComposer pipeline (painted + Glitch passes) provides the layered/painted visual effect
 - **NEVER remove or disable these shaders** — they are the core visual identity of the site
 - If shaders cause issues on specific devices, add graceful fallbacks instead of removing them
 
@@ -104,7 +104,7 @@ git push origin master
 - Three.js 3D elements must remain as Three.js — never convert to SVG, Canvas 2D, or static images
 - The 3D scene is the primary feature of this website
 
-#### 6d2. Never Re-implement Van Gogh Painting Gallery
+#### 6d2. Never Re-implement Painting Gallery
 - The Gallery component (idea-021) was explicitly removed by user request
 - Do NOT create any painting gallery, artwork carousel, or image gallery section
 - The site is about the 3D experience, not showcasing external paintings
@@ -141,7 +141,7 @@ git push origin master
 ---
 
 ## Project Overview
-- **Name**: Atrijā (अत्रिज) — Van Gogh impressionist philosophy website
+- **Name**: Atrijā (अत्रिज) — impressionist philosophy website
 - **Framework**: Astro 4 (Static Site Generation)
 - **3D Engine**: Three.js loaded from CDN (esm.sh) in `public/js/scene-init.js`
 - **Design**: Dark theme (#08080f), impressionist aesthetic, GLSL post-processing
@@ -227,7 +227,7 @@ scripts/
 - Flute: Click spawns music notes globally (no audio)
 - Music notes: 30 desktop / 25 mobile, floating sprites
 - Waves: GLSL shader, 32×32 segments desktop / 16×16 mobile
-- **No post-processing**: Direct `renderer.render()` — no EffectComposer, no Van Gogh/glitch shaders
+- **No post-processing**: Direct `renderer.render()` — no EffectComposer, no glitch shaders
 - Init runs as IIFE — no DOMContentLoaded wrapper, no client:idle directive
 
 ## Section Architecture (index.astro)
@@ -310,12 +310,12 @@ src/content/changelog/
 
 ## Three.js Scene (scene-init.js)
 - Stars: 2500 desktop / 1500 mobile, custom twinkling shader with size + brightness oscillation
-- Moon: Slow orbit + self-rotation, glow effect, ASCII art overlay with shadow phase animation
+- Moon: Slow orbit + self-rotation, glow effect, foreground canvas-painted artistic moon overlay
 - Sunflowers & Tulips: Billboard technique (flower heads face camera via `lookAt()`)
 - Flute: 3D model with hover animation, click spawns music notes globally
 - Music notes: 30 desktop / 40 mobile, floating sprites
 - Waves: GLSL shader, 64×64 segments desktop / 32×32 mobile
-- Post-processing: Van Gogh-style shader (skipped on mobile/low-end)
+- Post-processing: painted-style shader (skipped on mobile/low-end)
 
 ---
 

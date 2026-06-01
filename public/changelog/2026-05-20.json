@@ -18,10 +18,10 @@
     {
       "time": "03:00:00",
       "type": "feature",
-      "description": "Interactive Starry Night Painting Explorer — clickable hotspots with technique details, symbolism, and Van Gogh quotes",
+      "description": "Interactive Starry Night Painting Explorer — clickable hotspots with technique details, symbolism, and the artist quotes",
       "changes": [
         "Added PaintingExplorer.astro component with 5 interactive hotspot zones (Cypress, Moon, Stars, Village, Hills)",
-        "Detail panels with symbolism, technique breakdowns, and Van Gogh quotes for each element",
+        "Detail panels with symbolism, technique breakdowns, and the artist quotes for each element",
         "Zoom controls (1x-3x) with drag-to-pan and pinch-to-zoom on mobile",
         "Quick-nav pills for fast access to each hotspot",
         "Responsive layout with mobile-optimized touch interactions",
@@ -37,7 +37,7 @@
         "Created src/components/PaintingExplorer.astro with hotspot rendering, pulsing dot animations, and slide-in side panel",
         "Created public/js/painting-explorer.js with zoom (1x-3x), mouse wheel zoom, drag-to-pan, pinch-to-zoom on mobile",
         "Added painting explorer section to index.astro between painting reveal and changelog",
-        "Side panel shows element name, description, technique badge, and Van Gogh quote",
+        "Side panel shows element name, description, technique badge, and the artist quote",
         "Keyboard accessible: Tab navigates hotspots, Enter activates, Escape closes panel",
         "Respects prefers-reduced-motion for hotspot pulsing animation",
         "Progressive image loading from Wikimedia Commons (small → large srcset)",

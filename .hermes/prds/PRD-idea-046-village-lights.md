@@ -11,9 +11,9 @@
 
 ## 1. Overview
 
-**One-liner:** Warm glowing orbs positioned along the horizon line of the 3D scene, representing the village lights from Van Gogh's Starry Night — small windows of human warmth beneath the cosmic sky.
+**One-liner:** Warm glowing orbs positioned along the horizon line of the 3D scene, representing the village lights from the artist Starry Night — small windows of human warmth beneath the cosmic sky.
 
-**Problem:** The 3D scene has a rich sky (stars, moon, comets) and ground-level elements (flowers, cypress trees, waves), but the horizon line — the boundary between earth and sky — is empty. In Starry Night, Van Gogh painted a small village nestled beneath the swirling sky, with warm yellow lights glowing from windows. The current scene lacks this human element, making the world feel uninhabited.
+**Problem:** The 3D scene has a rich sky (stars, moon, comets) and ground-level elements (flowers, cypress trees, waves), but the horizon line — the boundary between earth and sky — is empty. In Starry Night, the artist painted a small village nestled beneath the swirling sky, with warm yellow lights glowing from windows. The current scene lacks this human element, making the world feel uninhabited.
 
 **Solution:** Add 8-12 small glowing spheres (desktop) or 5-6 (mobile) positioned along the horizon line at varying heights, simulating distant village lights. Each light is a small `THREE.Mesh` (sphere, radius 0.1-0.2) with `MeshBasicMaterial` in warm colors (gold, amber, soft orange). They have a subtle pulsing glow (opacity oscillation via sine wave, period 3-5 seconds, desynchronized). A larger transparent sphere around each creates a soft halo effect. The lights sit at the base of the cypress trees, suggesting a village behind them.
 
@@ -163,7 +163,7 @@
     "Warm color palette: gold, amber, soft orange",
     "Positioned at horizon line behind cypress trees",
     "Uses MeshBasicMaterial for zero lighting cost",
-    "References the village in Van Gogh's Starry Night painting"
+    "References the village in the artist Starry Night painting"
   ]
 }
 ```
@@ -174,7 +174,7 @@
 
 **Quality Check**: Solid PRD with clear positioning and good technical approach. The `MeshBasicMaterial` choice is correct — zero lighting cost for distant atmospheric elements.
 
-**Design Alignment**: The village lights fill a genuine compositional gap in the scene. They add human warmth to the cosmic sky, which is exactly what Van Gogh painted — the tension between the infinite above and the intimate below.
+**Design Alignment**: The village lights fill a genuine compositional gap in the scene. They add human warmth to the cosmic sky, which is exactly what the artist painted — the tension between the infinite above and the intimate below.
 
 **Feasibility**: This PRD modifies `scene-init.js` directly (SACRED file). While the changes are relatively simple (adding light meshes and pulsing animation), any modification to scene-init.js carries risk. **Recommendation**: Refactor to use a standalone `public/js/village-lights.js` module with a 2-line import/init in scene-init.js.
 

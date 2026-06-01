@@ -11,9 +11,9 @@
 
 ## 1. Overview
 
-**One-liner:** A new content section that displays a daily rotating zen koan or philosophical riddle as an elegant calligraphy-styled card, blending Eastern philosophy with Van Gogh's contemplative aesthetic.
+**One-liner:** A new content section that displays a daily rotating zen koan or philosophical riddle as an elegant calligraphy-styled card, blending Eastern philosophy with the artist contemplative aesthetic.
 
-**Problem:** The site has 5 content sections (Moon, Philosophy, Gita, Shiva, Art) that rotate themes daily, but there's no element of interactive contemplation or paradox that invites the visitor to pause and think. Van Gogh's work was deeply philosophical — he sought meaning in stars, sunflowers, and wheat fields. A koan section would honor that contemplative spirit.
+**Problem:** The site has 5 content sections (Moon, Philosophy, Gita, Shiva, Art) that rotate themes daily, but there's no element of interactive contemplation or paradox that invites the visitor to pause and think. the artist work was deeply philosophical — he sought meaning in stars, sunflowers, and wheat fields. A koan section would honor that contemplative spirit.
 
 **Solution:** Add a new "Contemplation" section between the painting reveal and the changelog. It displays a daily rotating koan from a JSON data file, styled as an elegant card with:
 - The koan text in large serif font with subtle text-shadow glow
@@ -60,12 +60,12 @@
         {
           "text": "Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water.",
           "source": "Zen Proverb",
-          "interpretation": "The sacred is not elsewhere. Van Gogh painted sunflowers not to transcend the ordinary, but to reveal the extraordinary within it."
+          "interpretation": "The sacred is not elsewhere. the artist painted sunflowers not to transcend the ordinary, but to reveal the extraordinary within it."
         }
       ]
     }
   ```
-  - Include koans from: Zen tradition, Taoism, Sufism, Greek philosophy, and original philosophical riddles inspired by Van Gogh's letters
+  - Include koans from: Zen tradition, Taoism, Sufism, Greek philosophy, and original philosophical riddles inspired by the artist letters
   - Each koan should be 1-3 sentences max (readable at a glance)
   - Interpretations should be 2-3 sentences, connecting the koan to art, nature, or creativity
 - Expected outcome: 30 rich koans with interpretations
@@ -107,7 +107,7 @@
     {
       "text": "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.",
       "source": "Marcel Proust",
-      "interpretation": "Van Gogh painted the same sunflowers dozens of times. Each painting revealed something new — not in the flowers, but in the seeing."
+      "interpretation": "the artist painted the same sunflowers dozens of times. Each painting revealed something new — not in the flowers, but in the seeing."
     },
     {
       "text": "What is the sound of one hand clapping?",
@@ -201,7 +201,7 @@
 
 **Quality Check**: Excellent PRD. The hold-to-reveal interaction is elegant and creates genuine contemplation. The 3-second hold prevents accidental reveals while not being frustrating.
 
-**Design Alignment**: This is a perfect fit for the site's philosophical tone. The koan concept bridges Eastern philosophy with Van Gogh's contemplative aesthetic. The daily rotation gives visitors a reason to return.
+**Design Alignment**: This is a perfect fit for the site's philosophical tone. The koan concept bridges Eastern philosophy with the artist contemplative aesthetic. The daily rotation gives visitors a reason to return.
 
 **Feasibility**: Very low risk — this is a pure Astro component with minimal client-side JS (just a timer). No scene-init.js changes. The `dayOfYear % koans.length` rotation is simple and deterministic.
 

@@ -10,16 +10,16 @@
 
 ## 1. Overview
 
-**One-liner:** Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns reminiscent of Van Gogh's Starry Night painting.
+**One-liner:** Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns reminiscent of the artist Starry Night painting.
 
-**Problem:** The current sky appears static and lacks the dynamic, swirling energy that characterizes Van Gogh's most famous work. While stars twinkle and the moon moves, the sky itself doesn't convey the emotional turbulence and movement central to Van Gogh's style.
+**Problem:** The current sky appears static and lacks the dynamic, swirling energy that characterizes the artist most famous work. While stars twinkle and the moon moves, the sky itself doesn't convey the emotional turbulence and movement central to the artist style.
 
 **Solution:** Implement a vertex shader that applies procedural noise-based displacement to the sky dome/hemisphere, creating slow, organic swirling patterns that evolve over time, mimicking the thick, directional brushstrokes seen in Starry Night's sky.
 
 ## 2. User Stories
 
-- As a visitor, I want to see subtle swirling movements in the night sky so that I can experience the emotional energy of Van Gogh's Starry Night.
-- As a visitor, I want the sky to feel alive and painted rather than static so that the 3D scene connects more deeply to Van Gogh's artistic technique.
+- As a visitor, I want to see subtle swirling movements in the night sky so that I can experience the emotional energy of the artist Starry Night.
+- As a visitor, I want the sky to feel alive and painted rather than static so that the 3D scene connects more deeply to the artist artistic technique.
 - As a visitor, I want the swirling effect to be gentle and not distracting so that it enhances rather than overwhelms the overall impressionist aesthetic.
 
 ## 3. Technical Specification

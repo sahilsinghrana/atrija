@@ -2,27 +2,27 @@
   "columns": [
     {
       "id": "backlog",
-      "name": "\ud83d\udca1 Idea Backlog",
+      "name": "💡 Idea Backlog",
       "tasks": []
     },
     {
       "id": "red",
-      "name": "\ud83d\udd34 Red (Failing Test)",
+      "name": "🔴 Red (Failing Test)",
       "tasks": []
     },
     {
       "id": "green",
-      "name": "\ud83d\udfe2 Green (Implement)",
+      "name": "🟢 Green (Implement)",
       "tasks": []
     },
     {
       "id": "refactor",
-      "name": "\ud83d\udfe3 Refactor (Optimize)",
+      "name": "🟣 Refactor (Optimize)",
       "tasks": []
     },
     {
       "id": "done",
-      "name": "\u2705 Done",
+      "name": "✅ Done",
       "tasks": []
     }
   ],
@@ -112,8 +112,8 @@
     },
     {
       "id": "idea-010",
-      "title": "Flute click \u2014 SVG bansuri + music notes",
-      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (\u266a\u266b\u266c). Flute animates in/out with spring easing.",
+      "title": "Flute click — SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "done",
@@ -140,7 +140,7 @@
     {
       "id": "idea-013",
       "title": "Mobile tulip visibility fix",
-      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0\u00d71.6).",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -149,7 +149,7 @@
     {
       "id": "idea-014",
       "title": "Remove speaker/audio toggle",
-      "description": "Remove the audio toggle button (\ud83d\udd07) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
       "category": "Audio",
       "priority": "medium",
       "status": "done",
@@ -176,7 +176,7 @@
     {
       "id": "idea-017",
       "title": "Blue color cast removal",
-      "description": "Remove blue point light washing out scene. Change from 0x4466aa to warm 0xffeedd at lower intensity. Reduce Van Gogh shader saturation from 1.4 to 1.0.",
+      "description": "Remove blue point light washing out scene. Change from 0x4466aa to warm 0xffeedd at lower intensity. Reduce post-processing shader saturation from 1.4 to 1.0.",
       "category": "3D Elements",
       "priority": "medium",
       "status": "done",
@@ -210,16 +210,6 @@
       "prd": "PRD-idea-020-scroll-driven-sky.md"
     },
     {
-      "id": "idea-021",
-      "title": "Van Gogh painting gallery carousel",
-      "description": "Interactive gallery section showcasing Van Gogh's famous paintings with lazy-loaded images from Wikimedia Commons, themed descriptions, and swipe navigation.",
-      "category": "Content",
-      "priority": "low",
-      "status": "cancelled",
-      "prd": "PRD-idea-021-painting-gallery.md",
-      "cancelledReason": "User requested removal. Gallery component, gallery.json, and all references deleted. Do NOT re-implement."
-    },
-    {
       "id": "idea-022",
       "title": "Impressionist brushstroke cursor trail",
       "description": "Custom cursor that leaves painterly brushstroke trails using Canvas 2D particle system. Colors sampled from current theme palette. Respects prefers-reduced-motion.",
@@ -240,7 +230,7 @@
     {
       "id": "idea-024",
       "title": "Code architecture refactoring",
-      "description": "Extracted 29KB CSS from BaseLayout to external main.css. Extracted changelog JS and moon-phase JS to external files. Converted 5 duplicated section blocks to data-driven loop. Removed 21 dead files (Three.js component files, shader modules, stale tests). Removed post-processing pipeline (EffectComposer + Van Gogh + Glitch shaders). Added modulepreload for Three.js CDN. HTML inline CSS reduced from 45KB to 2KB.",
+      "description": "Extracted 29KB CSS from BaseLayout to external main.css. Extracted changelog JS and moon-phase JS to external files. Converted 5 duplicated section blocks to data-driven loop. Removed 21 dead files (Three.js component files, shader modules, stale tests). Removed post-processing pipeline (EffectComposer + Glitch shaders). Added modulepreload for Three.js CDN. HTML inline CSS reduced from 45KB to 2KB.",
       "category": "Performance",
       "priority": "high",
       "status": "done",
@@ -249,7 +239,7 @@
     {
       "id": "idea-026",
       "title": "3D Cypress Tree Silhouettes",
-      "description": "Tall, dark cypress tree silhouettes rendered as Three.js ExtrudeGeometry that sway gently in the background, evoking Van Gogh's iconic Starry Night cypresses. 5 trees on desktop, 2 on mobile. MeshBasicMaterial for zero lighting cost. Integrates with existing parallax scroll system.",
+      "description": "Tall, dark cypress tree silhouettes rendered as Three.js ExtrudeGeometry that sway gently in the background. 5 trees on desktop, 2 on mobile. MeshBasicMaterial for zero lighting cost. Integrates with existing parallax scroll system.",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -267,7 +257,7 @@
     {
       "id": "idea-028",
       "title": "Scroll-Driven Painting Reveal",
-      "description": "A large Van Gogh painting (loaded from Wikimedia Commons) displayed on a Three.js PlaneGeometry that progressively reveals based on scroll position. Custom shader divides the image into horizontal bands with slight horizontal variation for organic reveal. 150vh scroll section drives the effect.",
+      "description": "A large painting (loaded from Wikimedia Commons) displayed on a Three.js PlaneGeometry that progressively reveals based on scroll position. Custom shader divides the image into horizontal bands with slight horizontal variation for organic reveal. 150vh scroll section drives the effect.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "done",
@@ -276,7 +266,7 @@
     {
       "id": "idea-029",
       "title": "Theme Color Scheme Switcher",
-      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation \u2014 needs review before implementation.",
+      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation — needs review before implementation.",
       "category": "UI",
       "priority": "low",
       "status": "done",
@@ -285,26 +275,17 @@
     {
       "id": "idea-030",
       "title": "Scroll-Responsive Brushstroke Sound Effects",
-      "description": "Generative brushstroke sound effects that play in response to scroll velocity. NOTE: Audio was deliberately removed from the site (see idea-014). This idea conflicts with that direction \u2014 flagged for rethink.",
+      "description": "Generative brushstroke sound effects that play in response to scroll velocity. NOTE: Audio was deliberately removed from the site (see idea-014). This idea conflicts with that direction — flagged for rethink.",
       "category": "Audio",
       "priority": "low",
       "status": "cancelled",
       "prd": "PRD-idea-024-brushstroke-audio.md",
-      "cancelledReason": "Conflicts with site direction \u2014 audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
-    },
-    {
-      "id": "idea-031",
-      "title": "Van Gogh Biography Timeline",
-      "description": "An interactive, scrollable timeline of Van Gogh's life milestones \u2014 birth, key paintings, moves, and legacy \u2014 displayed as a horizontal card carousel with date markers. Orphaned PRD from earlier generation.",
-      "category": "Content",
-      "priority": "low",
-      "status": "done",
-      "prd": "PRD-idea-025-vangogh-timeline.md"
+      "cancelledReason": "Conflicts with site direction — audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
     },
     {
       "id": "idea-032",
       "title": "Dynamic Time-of-Day Atmosphere System",
-      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
       "category": "3D Elements",
       "priority": "medium",
       "status": "red",
@@ -313,7 +294,7 @@
     {
       "id": "idea-033",
       "title": "Interactive Starry Night Painting Explorer",
-      "description": "A zoomable, interactive deep-dive into The Starry Night with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant Van Gogh quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
+      "description": "A zoomable, interactive deep-dive into a famous night painting with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "backlog",
@@ -322,7 +303,7 @@
     {
       "id": "idea-034",
       "title": "Impressionist Visitor Guestbook",
-      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend \u2014 purely client-side.",
+      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend — purely client-side.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "backlog",
@@ -331,7 +312,7 @@
     {
       "id": "idea-035",
       "title": "Wind-Swept Wheat Field",
-      "description": "A field of golden wheat stalks rendered as InstancedMesh in the lower 3D scene, swaying organically in a procedural wind vertex shader. 800 stalks desktop / 300 mobile. Scroll position modulates wind intensity. Evokes Van Gogh's iconic wheat field paintings.",
+      "description": "A field of golden wheat stalks rendered as InstancedMesh in the lower 3D scene, swaying organically in a procedural wind vertex shader. 800 stalks desktop / 300 mobile. Scroll position modulates wind intensity.",
       "category": "3D Elements",
       "priority": "medium",
       "status": "backlog",
@@ -340,7 +321,7 @@
     {
       "id": "idea-036",
       "title": "Particle Poetry Scroll Effect",
-      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual \u2014 no audio.",
+      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual — no audio.",
       "category": "Interactivity",
       "priority": "low",
       "status": "backlog",
@@ -349,7 +330,7 @@
     {
       "id": "idea-037",
       "title": "Seasonal Scene Transitions",
-      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer \u2014 daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
+      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer — daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
       "category": "Content",
       "priority": "low",
       "status": "done",
@@ -358,7 +339,7 @@
     {
       "id": "idea-038",
       "title": "Starry Night Swirling Sky Shader",
-      "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns reminiscent of Van Gogh's Starry Night painting. NOTE: Must be implemented as standalone module, not direct scene-init.js modification.",
+      "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns. NOTE: Must be implemented as standalone module, not direct scene-init.js modification.",
       "category": "Shaders",
       "priority": "medium",
       "status": "backlog",
@@ -367,10 +348,10 @@
     {
       "id": "idea-039",
       "title": "Detailed Moon Surface with Craters and Texture",
-      "description": "Enhance the 3D moon with realistic crater texture, bump mapping, and subtle surface details using normal maps or height maps.",
+      "description": "Enhance the foreground moon with artistic painted canvas rendering — brushstroke texture, crater details, impasto highlights, and warm halo glow. Background 3D moon unchanged.",
       "category": "3D Elements",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "prd": "PRD-idea-039-detailed-moon.md"
     },
     {
@@ -412,25 +393,16 @@
     {
       "id": "idea-044",
       "title": "Comet with Particle Trail",
-      "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare (3-5 min intervals), persistent fading trail. Evokes Van Gogh's Starry Night cosmic energy. MUST be implemented as standalone public/js/comet.js module (2-line import/init in scene-init.js).",
+      "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare (3-5 min intervals), persistent fading trail. MUST be implemented as standalone public/js/comet.js module (2-line import/init in scene-init.js).",
       "category": "3D Elements",
       "priority": "low",
       "status": "backlog",
       "prd": "PRD-idea-044-comet-particle-trail.md"
     },
     {
-      "id": "idea-045",
-      "title": "Van Gogh Letter Excerpts",
-      "description": "A new content section featuring daily rotating excerpts from Van Gogh's letters to Theo, rendered as aged-paper styled cards. 800+ letters reveal the artist's philosophy, struggles, and vision. Purely content-driven, no scene-init.js changes.",
-      "category": "Content",
-      "priority": "low",
-      "status": "done",
-      "prd": "PRD-idea-045-vangogh-letters.md"
-    },
-    {
       "id": "idea-046",
       "title": "Village Street Lamp Lights",
-      "description": "Warm glowing orbs positioned along the horizon line, representing the village lights from Van Gogh's Starry Night. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees. Pure atmospheric addition.",
+      "description": "Warm glowing orbs positioned along the horizon line, representing village lights. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees. Pure atmospheric addition.",
       "category": "3D Elements",
       "priority": "low",
       "status": "backlog",
@@ -439,7 +411,7 @@
     {
       "id": "idea-047",
       "title": "Interactive Flute Melody Composer",
-      "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. \u26a0\ufe0f Uses audio \u2014 conflicts with site direction (idea-014 removed audio). Consider visual-only implementation.",
+      "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. ⚠️ Uses audio — conflicts with site direction (idea-014 removed audio). Consider visual-only implementation.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "backlog",
@@ -448,24 +420,42 @@
     {
       "id": "idea-048",
       "title": "Scroll-Synced Ambient Lighting System",
-      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone \u2014 warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
+      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone — warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
       "category": "UI",
       "priority": "low",
       "status": "backlog",
       "prd": "PRD-idea-048-scroll-lighting.md"
     },
     {
-      "id": "idea-049",
-      "title": "Van Gogh Color Palette Explorer",
-      "description": "Interactive color palette widget showcasing dominant colors from 5 iconic Van Gogh paintings (Starry Night, Sunflowers, Sea at Saintes-Maries, Irises, Almond Blossom). Click swatches to reveal hex codes, pigment names, and artistic notes. Each palette connects to a site color scheme. Data-driven via paintings.json.",
+      "id": "idea-050",
+      "title": "Foreground moon — canvas painted artistic moon",
+      "description": "Replaced ASCII moon with canvas-drawn artistic moon: warm golden-white radial gradient base, ~180 brushstroke dabs, crater patches with highlight rims, impasto strokes, soft halo glow. No phase shadow — always fully lit. Retina-aware canvas.",
+      "category": "UI",
+      "priority": "high",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-051",
+      "title": "Tulip botanical rewrite",
+      "description": "Complete rewrite of tulip drawing with correct proportions: stem thinned (0.035→0.018), leaves reduced to 6% canvas (were 18%), cup enlarged (0.22×0.24→0.28×0.30), petals simplified to teardrop shapes with proper cup silhouette. 25% large variants.",
+      "category": "3D Elements",
+      "priority": "high",
+      "status": "done",
+      "prd": null
+    },
+    {
+      "id": "idea-052",
+      "title": "Remove artist-specific references from codebase",
+      "description": "Removed all artist name mentions from kanban, PRDs, AGENTS.md, scene-init.js, CSS, and content files. Deleted 4 Van Gogh-specific PRDs (gallery, timeline, letters, palette). Removed timeline.json and letters.json content. Updated 17+ idea descriptions, koans, changelog entries. Site is now artist-agnostic.",
       "category": "Content",
-      "priority": "low",
-      "status": "backlog",
-      "prd": "PRD-idea-049-color-palette-explorer.md"
+      "priority": "medium",
+      "status": "done",
+      "prd": null
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-01T02:00:00Z",
-  "lastReviewAt": "2026-06-01T06:00:00Z",
-  "lastReviewResult": "Implementation Review (2026-06-01): Verified idea-037 (seasonal), idea-043 (koan), idea-045 (letters) -- all done, tests pass. idea-032 (time-of-day) remains red (rolled back, placeholder tests). idea-009 (loading) stuck in refactor (11 failing tests). idea-020 (scroll-parallax) has 1 failing test. Build succeeds, site HTTP 200. 111/128 tests pass total."
+  "lastReviewAt": "2026-06-01T12:00:00Z",
+  "lastReviewResult": "Post-refactor review (2026-06-01): Removed Van Gogh references from all ideas/PRDs. Added idea-050 (foreground moon canvas), idea-051 (tulip rewrite), idea-052 (remove VG refs). Removed idea-021, idea-025, idea-031, idea-045, idea-049. Updated 17 idea descriptions. Build succeeds."
 }

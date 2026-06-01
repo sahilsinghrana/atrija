@@ -80,7 +80,7 @@ describe('Site Content Data', () => {
     expect(themeIds).toContain('art-beauty');
   });
 
-  it('no theme references Van Gogh by name in id or title', () => {
+  it('no theme references external artists by name in id or title', () => {
     siteData.themes.forEach(theme => {
       expect(theme.id.toLowerCase()).not.toContain('van');
       expect(theme.id.toLowerCase()).not.toContain('gogh');

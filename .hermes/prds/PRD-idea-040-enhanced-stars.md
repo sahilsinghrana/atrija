@@ -14,7 +14,7 @@
 
 **Problem:** The current star field uses uniform white or slightly yellowish stars, which lacks the color variety and visual interest that could make the night sky feel more alive and authentic. Real star fields show a variety of colors based on stellar temperatures, which would enhance the impressionist aesthetic.
 
-**Solution:** Assign stars colors based on a simplified temperature scale (red, orange, yellow, white, blue-white) to create a more natural and visually interesting star field that still maintains the dreamy, impressionist quality of the Van Gogh aesthetic.
+**Solution:** Assign stars colors based on a simplified temperature scale (red, orange, yellow, white, blue-white) to create a more natural and visually interesting star field that still maintains the dreamy, impressionist quality of the the artist aesthetic.
 
 ## 2. User Stories
 
@@ -63,7 +63,7 @@ This feature enhances the existing star particle system in `public/js/scene-init
   - Ensure colors work with the site's overall color schemes (starry-night, sunflower, etc.)
   - Consider weighting the distribution to favor warmer colors for a cozier night sky feel
   - Test that the enhanced star field maintains the impressionist, not photorealistic, quality
-- Expected outcome: Star field with pleasing color variation that enhances the Van Gogh aesthetic
+- Expected outcome: Star field with pleasing color variation that enhances the the artist aesthetic
 
 ### 3.3 Mobile Considerations
 

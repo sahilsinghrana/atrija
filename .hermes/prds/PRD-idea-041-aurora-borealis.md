@@ -13,7 +13,7 @@
 
 **One-liner:** A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night phases, adding a new atmospheric layer to the 3D scene.
 
-**Problem:** The current night sky, while beautiful with stars and moon, lacks the atmospheric depth that real night skies possess. Van Gogh painted in Provence where aurora sightings are rare, but the impressionist aesthetic calls for heightened natural phenomena — an aurora would add magical realism without breaking the painterly tone.
+**Problem:** The current night sky, while beautiful with stars and moon, lacks the atmospheric depth that real night skies possess. the artist painted in Provence where aurora sightings are rare, but the impressionist aesthetic calls for heightened natural phenomena — an aurora would add magical realism without breaking the painterly tone.
 
 **Solution:** A curved plane mesh positioned at the sky dome's upper region with a custom GLSL shader that animates flowing green/blue/purple bands using layered sine waves and noise. The aurora only activates during "night" time-of-day phases (controlled by the existing time-of-day system). Intensity subtly pulses. On mobile, the effect is simplified to reduce GPU cost.
 

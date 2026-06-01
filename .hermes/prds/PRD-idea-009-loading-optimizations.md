@@ -602,7 +602,7 @@ The core functionality (progressive loading, loader progress bar) is working - t
 
 ### 8.1 Scene Architecture
 - **Single file**: `public/js/scene-init.js` (~1066 lines) — all Three.js code in one file loaded from CDN (esm.sh)
-- **No post-processing**: EffectComposer, Van Gogh shader, Glitch shader all removed for performance
+- **No post-processing**: EffectComposer, the artist shader, Glitch shader all removed for performance
 - **Direct render**: `renderer.render(scene, camera)` — no composer pipeline
 - **IIFE init**: Runs immediately on script load — no DOMContentLoaded wrapper, no client:idle
 
@@ -644,7 +644,7 @@ public/css/
 
 **Status: DONE (with modifications).** This PRD was largely implemented but with key differences from the original spec:
 
-1. **Post-processing references are stale**: Sections 1-7 reference EffectComposer, ShaderPass, Van Gogh shader, and Glitch shader — all of which were removed in the code architecture refactoring. Section 8 (added 2026-05-22) documents the actual current state correctly.
+1. **Post-processing references are stale**: Sections 1-7 reference EffectComposer, ShaderPass, the artist shader, and Glitch shader — all of which were removed in the code architecture refactoring. Section 8 (added 2026-05-22) documents the actual current state correctly.
 
 2. **`client:idle` was NOT adopted**: The PRD recommended using `client:idle` for scene-init.js, but this was found to cause a loader race condition. The scene continues to use IIFE init (runs immediately on script load).
 

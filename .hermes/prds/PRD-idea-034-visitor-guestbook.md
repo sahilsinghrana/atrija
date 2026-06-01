@@ -13,7 +13,7 @@
 
 **One-liner:** A lightweight, localStorage-backed guestbook where visitors leave short impressions that appear as floating, brushstroke-styled text in the 3D scene — creating an ever-growing community canvas of reactions.
 
-**Problem:** The site is a solitary experience — visitors view, scroll, and leave. There's no sense of community or shared presence. Other visitors have been here, felt something, moved on. The site has no mechanism to capture or display the human response to Van Gogh's art, which is ironic for a site about emotional, impressionistic expression.
+**Problem:** The site is a solitary experience — visitors view, scroll, and leave. There's no sense of community or shared presence. Other visitors have been here, felt something, moved on. The site has no mechanism to capture or display the human response to the artist art, which is ironic for a site about emotional, impressionistic expression.
 
 **Solution:** Add a small, unobtrusive guestbook button (bottom-right, opposite the flute button). Clicking it opens a minimal input panel: a text field (max 140 characters) and a submit button. On submit, the text is stored in `localStorage` and simultaneously rendered as a floating text element in the 3D scene — styled like a brushstroke (slightly rotated, hand-drawn font, color from the current theme palette). The visitor's own entries persist across visits. A subtle counter shows how many impressions have been left. No backend, no server, no database — purely client-side.
 

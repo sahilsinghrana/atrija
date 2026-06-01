@@ -19,9 +19,9 @@
     {
       "time": "03:17:00",
       "type": "feature",
-      "description": "Van Gogh Letter Excerpts — daily rotating letter passages from Vincent to Theo",
+      "description": "the artist Letter Excerpts — daily rotating letter passages from the artist to Theo",
       "changes": [
-        "Added src/content/letters.json with 30 curated letter excerpts spanning Van Gogh's entire career",
+        "Added src/content/letters.json with 30 curated letter excerpts spanning the artist entire career",
         "Created src/components/LetterCard.astro with aged-paper card styling",
         "Daily rotation via dayOfYear modulo",
         "Aged-paper effect via CSS gradients — no images needed",

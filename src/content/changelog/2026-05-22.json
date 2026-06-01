@@ -24,7 +24,7 @@
         "Added time-of-day calculation system with dawn/morning/midday/sunset/evening/night phases",
         "Defined time-based presets for lighting, colors, and atmospheric properties",
         "Updated ambient, directional, and point lights to change based on time of day",
-        "Modified Van Gogh shader uniforms to respond to time-of-day",
+        "Modified the artist shader uniforms to respond to time-of-day",
         "Updated wave shader colors based on time of day",
         "Added time-based background color interpolation for desktop (mobile preserves original logic)",
         "Preserved all existing features and visual effects"

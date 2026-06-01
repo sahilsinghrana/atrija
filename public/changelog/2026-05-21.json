@@ -19,9 +19,9 @@
     {
       "time": "16:13:00",
       "type": "feature",
-      "description": "Van Gogh Biography Timeline — interactive scrollable timeline with 11 life milestones (1853–1890), category filtering (Life/Career/Art), and scroll-reveal animations",
+      "description": "the artist Biography Timeline — interactive scrollable timeline with 11 life milestones (1853–1890), category filtering (Life/Career/Art), and scroll-reveal animations",
       "changes": [
-        "Added src/content/timeline.json with 11 Van Gogh life milestones",
+        "Added src/content/timeline.json with 11 the artist life milestones",
         "Added src/components/Timeline.astro with filter UI and card layout",
         "Added timeline section to index.astro between painting-reveal and changelog",
         "Category filter buttons with color-coded dots and badges",

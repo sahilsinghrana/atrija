@@ -13,9 +13,9 @@
 
 **One-liner:** Add a watercolor-style post-processing shader with edge detection and color bleeding for a painterly look that enhances the impressionist aesthetic.
 
-**Problem:** The existing Van Gogh shader adds swirl and stroke effects, but lacks the soft, bleeding, watercolor-like quality that would make the scene feel more like a painting.
+**Problem:** The existing the artist shader adds swirl and stroke effects, but lacks the soft, bleeding, watercolor-like quality that would make the scene feel more like a painting.
 
-**Solution:** Add a second post-processing pass (after the existing Van Gogh pass) that applies: edge darkening (like ink outlines), color bleeding (neighborhood color averaging), and paper texture overlay. This creates a watercolor/painting effect on top of the existing scene. Desktop only — mobile uses the existing glitch shader.
+**Solution:** Add a second post-processing pass (after the existing the artist pass) that applies: edge darkening (like ink outlines), color bleeding (neighborhood color averaging), and paper texture overlay. This creates a watercolor/painting effect on top of the existing scene. Desktop only — mobile uses the existing glitch shader.
 
 ---
 
@@ -114,7 +114,7 @@ void main() {
 
 #### Step 2: Add pass to the composer
 
-In the `VanGoghScene` constructor, after the Van Gogh pass:
+In the `VanGoghScene` constructor, after the the artist pass:
 
 ```javascript
 // After the vgPass setup (~line 87):
@@ -239,4 +239,4 @@ Add shader, add pass to composer, update animation loop.
 
 ## Reviewer Notes (2026-05-19)
 
-**Status changed to CANCELLED.** The post-processing pipeline (EffectComposer, ShaderPass, Van Gogh/glitch shaders) was removed in a prior refactoring (see AGENTS.md: "No post-processing: Direct `renderer.render()`"). This PRD depends entirely on that removed infrastructure. To revisit this idea, a new approach would need to work with the current direct-render architecture — e.g., applying watercolor effects via CSS filters on the canvas element, or re-implementing post-processing with a lighter custom solution.
+**Status changed to CANCELLED.** The post-processing pipeline (EffectComposer, ShaderPass, the artist/glitch shaders) was removed in a prior refactoring (see AGENTS.md: "No post-processing: Direct `renderer.render()`"). This PRD depends entirely on that removed infrastructure. To revisit this idea, a new approach would need to work with the current direct-render architecture — e.g., applying watercolor effects via CSS filters on the canvas element, or re-implementing post-processing with a lighter custom solution.

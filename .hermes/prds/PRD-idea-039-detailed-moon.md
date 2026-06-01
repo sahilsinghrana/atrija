@@ -61,7 +61,7 @@ This feature enhances the existing moon object in `public/js/scene-init.js`:
   - Adjust normal map strength to avoid overly harsh details
   - Balance texture detail with the impressionist, slightly soft aesthetic
   - Ensure the moon remains recognizable as an artistic element
-- Expected outcome: Textured moon that fits the Van Gogh impressionist style
+- Expected outcome: Textured moon that fits the the artist impressionist style
 
 ### 3.3 Mobile Considerations
 

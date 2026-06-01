@@ -11,11 +11,11 @@
 
 ## 1. Overview
 
-**One-liner:** A zoomable, interactive deep-dive into The Starry Night where visitors click on painted elements — the cypress, village, stars, moon, and hills — to learn about Van Gogh's techniques, symbolism, and the story behind each brushstroke.
+**One-liner:** A zoomable, interactive deep-dive into The Starry Night where visitors click on painted elements — the cypress, village, stars, moon, and hills — to learn about the artist techniques, symbolism, and the story behind each brushstroke.
 
 **Problem:** The site has a scroll-driven painting reveal (idea-028) but visitors can't explore the painting in depth. The Starry Night is the most iconic painting associated with the site's aesthetic, yet visitors can't interact with it beyond passive viewing. There's an educational gap: people see the swirls and stars but don't know what they mean. (Note: idea-021 gallery was removed per user request.)
 
-**Solution:** Add a new "Explore the Painting" section after the painting reveal section. It displays a high-resolution image of The Starry Night (loaded progressively from Wikimedia Commons) with invisible clickable hotspot zones over key elements. Clicking a hotspot opens a side panel with: the element's name, a 2-3 sentence explanation of its significance, the technique Van Gogh used, and a relevant quote. The image supports pinch-to-zoom (mobile) and scroll-to-zoom (desktop). All content is driven by a JSON data file for easy updates.
+**Solution:** Add a new "Explore the Painting" section after the painting reveal section. It displays a high-resolution image of The Starry Night (loaded progressively from Wikimedia Commons) with invisible clickable hotspot zones over key elements. Clicking a hotspot opens a side panel with: the element's name, a 2-3 sentence explanation of its significance, the technique the artist used, and a relevant quote. The image supports pinch-to-zoom (mobile) and scroll-to-zoom (desktop). All content is driven by a JSON data file for easy updates.
 
 ---
 
@@ -52,7 +52,7 @@
     - `radius`: clickable radius in percentage of image width
     - `description`: 2-3 sentences about the element's significance
     - `technique`: the painting technique used (e.g., "Impasto with directional brushstrokes")
-    - `quote`: a relevant Van Gogh quote about this element
+    - `quote`: a relevant the artist quote about this element
   - Target 8-12 hotspots covering: the cypress, the moon, the largest star, the village, the rolling hills, the sky swirls, the church spire, the tree line
   - Example:
     ```json
@@ -62,7 +62,7 @@
           "id": "cypress",
           "label": "The Dark Cypress",
           "x": 15, "y": 55, "radius": 8,
-          "description": "The towering cypress tree dominates the foreground, reaching into the sky like a dark flame. Van Gogh painted cypresses repeatedly in Saint-Rémy, fascinated by their shape and what he called 'beautiful as an Egyptian obelisk.'",
+          "description": "The towering cypress tree dominates the foreground, reaching into the sky like a dark flame. the artist painted cypresses repeatedly in Saint-Rémy, fascinated by their shape and what he called 'beautiful as an Egyptian obelisk.'",
           "technique": "Thick impasto with upward-sweeping strokes, using viridian green mixed with black",
           "quote": "The cypresses are always occupying my thoughts. I should like to make something of them like the canvases of the sunflowers."
         }
@@ -243,7 +243,7 @@
 
 **Feasibility**: No scene-init.js changes needed — this is a pure Astro component + vanilla JS. Low risk, high value. The zoom/pan implementation should use CSS transforms (GPU-accelerated) rather than canvas manipulation.
 
-**Scope Note**: This PRD overlaps conceptually with idea-021 (Painting Gallery Carousel) and idea-028 (Scroll-Driven Painting Reveal). Consider implementing all three as a unified "Van Gogh Art" section to avoid content fragmentation.
+**Scope Note**: This PRD overlaps conceptually with idea-021 (Painting Gallery Carousel) and idea-028 (Scroll-Driven Painting Reveal). Consider implementing all three as a unified "the artist Art" section to avoid content fragmentation.
 
 ## Implementation Review (2026-05-20 06:00 UTC)
 

@@ -11,17 +11,17 @@
 
 ## 1. Overview
 
-**One-liner:** A large Van Gogh painting fades into view as the user scrolls, with the brushstroke texture appearing progressively from top to bottom, as if being painted in real-time.
+**One-liner:** A large the artist painting fades into view as the user scrolls, with the brushstroke texture appearing progressively from top to bottom, as if being painted in real-time.
 
-**Problem:** The site references Van Gogh's paintings in the content sections but doesn't showcase any actual artwork visually. The painting gallery (idea-021) is a backlog carousel concept, but a more dramatic approach would be to reveal a famous painting as part of the scroll experience itself.
+**Problem:** The site references the artist paintings in the content sections but doesn't showcase any actual artwork visually. The painting gallery (idea-021) is a backlog carousel concept, but a more dramatic approach would be to reveal a famous painting as part of the scroll experience itself.
 
-** Solution:** Add a full-viewport "painting reveal" section between two content sections. A high-resolution Van Gogh painting (loaded from Wikimedia Commons) is displayed with a custom Three.js shader mask that progressively reveals it based on scroll position. The reveal effect simulates brushstrokes appearing: the image is divided into horizontal bands that fade in sequentially, with slight randomization to avoid a mechanical look. The painting is displayed in a 3D plane within the scene, positioned behind the main content, creating a parallax depth effect.
+** Solution:** Add a full-viewport "painting reveal" section between two content sections. A high-resolution the artist painting (loaded from Wikimedia Commons) is displayed with a custom Three.js shader mask that progressively reveals it based on scroll position. The reveal effect simulates brushstrokes appearing: the image is divided into horizontal bands that fade in sequentially, with slight randomization to avoid a mechanical look. The painting is displayed in a 3D plane within the scene, positioned behind the main content, creating a parallax depth effect.
 
 ---
 
 ## 2. User Stories
 
-- As a visitor, I want to see a famous Van Gogh painting revealed as I scroll so I feel a sense of discovery.
+- As a visitor, I want to see a famous the artist painting revealed as I scroll so I feel a sense of discovery.
 - As a visitor, I want the reveal to feel organic and painterly (not a simple fade) so it matches the impressionist theme.
 - As a visitor, I want the painting to be visible through/behind the content sections so it adds depth to the scene.
 - As a visitor, I want the painting to load progressively so it doesn't block the initial page load.
@@ -178,7 +178,7 @@
 
 ## 5. Acceptance Criteria
 
-- [ ] A large Van Gogh painting appears in the 3D scene as the user scrolls
+- [ ] A large the artist painting appears in the 3D scene as the user scrolls
 - [ ] The painting reveals progressively from top to bottom in horizontal bands
 - [ ] The reveal is driven by scroll position (not time)
 - [ ] The reveal has slight horizontal variation (not a straight line)
@@ -212,7 +212,7 @@
 ```json
 {
   "type": "feature",
-  "description": "Scroll-driven painting reveal — Van Gogh artwork progressively unveiled in 3D scene as user scrolls",
+  "description": "Scroll-driven painting reveal — the artist artwork progressively unveiled in 3D scene as user scrolls",
   "changes": [
     "Added createPaintingReveal() with PlaneGeometry and custom reveal shader",
     "Band-based reveal effect with horizontal variation",

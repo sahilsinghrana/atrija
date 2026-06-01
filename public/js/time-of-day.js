@@ -1,4 +1,4 @@
-// Time-of-Day Atmosphere System for Van Gogh Website
+// Time-of-Day Atmosphere System
 // Dynamically shifts scene atmosphere based on visitor's local time
 
 (function() {

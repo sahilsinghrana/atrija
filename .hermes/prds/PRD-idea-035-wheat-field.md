@@ -11,9 +11,9 @@
 
 ## 1. Overview
 
-**One-liter:** A field of golden wheat stalks rendered as InstancedMesh in the lower portion of the 3D scene, swaying organically in a procedural wind pattern inspired by Van Gogh's famous wheat field paintings.
+**One-liter:** A field of golden wheat stalks rendered as InstancedMesh in the lower portion of the 3D scene, swaying organically in a procedural wind pattern inspired by the artist famous wheat field paintings.
 
-**Problem:** The current 3D scene has sunflowers, tulips, cypress trees, and waves — but lacks the iconic wheat fields that feature prominently in Van Gogh's oeuvre (Wheat Field with Cypresses, Wheat Field under Clouded Sky). The lower foreground feels empty between the water waves and the flower elements.
+**Problem:** The current 3D scene has sunflowers, tulips, cypress trees, and waves — but lacks the iconic wheat fields that feature prominently in the artist oeuvre (Wheat Field with Cypresses, Wheat Field under Clouded Sky). The lower foreground feels empty between the water waves and the flower elements.
 
 **Solution:** Add a dense field of wheat stalks using Three.js InstancedMesh for performance. Each stalk is a simple geometry (thin cylinder + ellipsoid head) with a per-instance phase offset. A vertex shader applies sinusoidal wind displacement that varies with time, creating a realistic sweeping effect. The field sits at the bottom of the scene, behind the flowers but in front of the waves.
 
@@ -21,7 +21,7 @@
 
 ## 2. User Stories
 
-- As a visitor, I want to see a living wheat field that sways in the wind so that the scene feels more immersive and true to Van Gogh's landscapes.
+- As a visitor, I want to see a living wheat field that sways in the wind so that the scene feels more immersive and true to the artist landscapes.
 - As a visitor on mobile, I want the wheat field to still be present but with fewer stalks so that performance stays smooth.
 - As a visitor, I want the wheat to react subtly to scroll position so that the wind feels connected to my journey through the page.
 
@@ -178,7 +178,7 @@ Create `public/js/wheat-field.js` with `initWheatField(scene, camera)` and `upda
 
 **Quality Check**: Solid PRD with good technical approach. The InstancedMesh + vertex shader pattern is the right call for performance. Clear mobile considerations with reduced instance count.
 
-**Design Alignment**: Wheat fields are quintessentially Van Gogh — this fills a genuine gap in the scene between the water waves and flowers. The scroll-driven wind intensity is a nice touch that connects the 3D world to the reading experience.
+**Design Alignment**: Wheat fields are quintessentially the artist — this fills a genuine gap in the scene between the water waves and flowers. The scroll-driven wind intensity is a nice touch that connects the 3D world to the reading experience.
 
 **Feasibility**: The `BufferGeometryUtils.mergeBufferGeometries()` dependency needs verification — this utility must be imported separately from Three.js examples. If it's not available, use separate stem + head meshes instanced together as the PRD suggests in the risks section.
 

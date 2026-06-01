@@ -11,7 +11,7 @@
 
 ## 1. Overview
 
-**One-liner:** A custom cursor that leaves painterly brushstroke trails as the visitor moves their mouse, creating an interactive Van Gogh-style painting effect on a canvas overlay.
+**One-liner:** A custom cursor that leaves painterly brushstroke trails as the visitor moves their mouse, creating an interactive the artist-style painting effect on a canvas overlay.
 
 **Problem:** The site has beautiful 3D elements but the cursor interaction is minimal (only the flute click spawns notes). There's an opportunity to make every mouse movement feel like painting.
 
@@ -22,7 +22,7 @@
 ## 2. User Stories
 
 - As a visitor, I want my cursor to leave painterly trails so that I feel like I'm painting the scene myself.
-- As a visitor, I want the brushstrokes to use Van Gogh's color palette so they match the site's aesthetic.
+- As a visitor, I want the brushstrokes to use the artist color palette so they match the site's aesthetic.
 - As a mobile user, I want touch movements to create the same effect so the experience is consistent.
 - As a visitor, I want the trails to fade naturally so the canvas doesn't become cluttered.
 
@@ -84,7 +84,7 @@ This feature adds a new canvas overlay and a self-contained JavaScript module fo
   - Read colors from canvas `data-colors` attribute: `canvas.dataset.colors.split(',')`
   - On each particle creation, pick a random color from the palette
   - Add slight random variation (±15% RGB) to each stroke for natural variation
-  - If no data-colors attribute, default to Van Gogh palette: `['#FFD700', '#4169E1', '#228B22', '#FF6347', '#9370DB', '#87CEEB']`
+  - If no data-colors attribute, default to the artist palette: `['#FFD700', '#4169E1', '#228B22', '#FF6347', '#9370DB', '#87CEEB']`
 - Expected outcome: Brushstroke colors match the current site theme
 
 #### Step 4: Performance Optimization

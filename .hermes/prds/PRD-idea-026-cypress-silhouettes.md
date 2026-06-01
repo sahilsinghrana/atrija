@@ -11,9 +11,9 @@
 
 ## 1. Overview
 
-**One-liner:** Tall, dark cypress tree silhouettes rendered as Three.js 3D geometry that sway gently in the background, evoking Van Gogh's iconic "The Starry Night" cypresses.
+**One-liner:** Tall, dark cypress tree silhouettes rendered as Three.js 3D geometry that sway gently in the background, evoking the artist iconic "The Starry Night" cypresses.
 
-**Problem:** The current 3D scene has stars, moon, sunflowers, lilies, waves, and a flute — but lacks the most iconic visual element from Van Gogh's most famous painting: the towering cypress trees. Their absence makes the scene feel incomplete as an impressionist homage.
+**Problem:** The current 3D scene has stars, moon, sunflowers, lilies, waves, and a flute — but lacks the most iconic visual element from the artist most famous painting: the towering cypress trees. Their absence makes the scene feel incomplete as an impressionist homage.
 
 **Solution:** Add 3-5 cypress tree silhouettes as Three.js `ExtrudeGeometry` meshes positioned at the edges of the scene. Each tree is a dark, organic shape built from a custom 2D path (tall, flame-like silhouette) extruded into 3D. They sway gently using vertex animation in the `animate` loop, with parallax response to scroll. Trees use `MeshBasicMaterial` (no lighting needed — they're dark silhouettes against the sky).
 
@@ -51,7 +51,7 @@
       - Right edge: mirror with slight variation (not perfectly symmetric)
       - Top: come to a soft point, not a sharp spike
     - Add 2-3 small "notches" along the edges to suggest branches/tufts (small triangular cutouts)
-  - The shape should evoke Van Gogh's swirling, organic cypress forms — not a geometric cone
+  - The shape should evoke the artist swirling, organic cypress forms — not a geometric cone
 - Expected outcome: A reusable `THREE.Shape` that looks like a cypress silhouette
 
 #### Step 2: Create the cypress mesh with extrusion
@@ -180,7 +180,7 @@
 ```json
 {
   "type": "feature",
-  "description": "3D cypress tree silhouettes — Van Gogh's iconic Starry Night trees as extruded 3D geometry with gentle sway animation",
+  "description": "3D cypress tree silhouettes — the artist iconic Starry Night trees as extruded 3D geometry with gentle sway animation",
   "changes": [
     "Added makeCypressShape() with organic bezier flame silhouette",
     "Added createCypressTrees() with ExtrudeGeometry and beveled edges",
