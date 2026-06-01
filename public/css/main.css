@@ -5,6 +5,14 @@
        DESIGN TOKENS
     ═══════════════════════════════════════ */
 :root {
+  /* ── Ambient Lighting (idea-048) ── */
+  --ambient-color: transparent;
+  --ambient-hue: 0;
+  --ambient-sat: 0%;
+  --ambient-opacity: 0;
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+
   /* Colors */
   --bg: #08080f;
   --bg-surface: rgba(255, 255, 255, 0.02);
@@ -1232,5 +1240,37 @@ footer .footer-sanskrit {
   #foregroundMoon {
     font-size: clamp(1.8px, 0.55vw, 3px);
     line-height: 1.35;
+  }
+}
+
+/* ═══════════════════════════════════════
+     SCROLL-SYNCED AMBIENT LIGHTING (idea-048)
+   ═══════════════════════════════════════ */
+
+#ambient-light-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  will-change: opacity, background;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(
+    ellipse at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    var(--ambient-color, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+}
+
+/* Vignette pulse — brief opacity bump on section entry */
+#ambient-light-overlay.vignette-pulse {
+  opacity: 1 !important;
+}
+
+/* Reduced motion: disable all overlay transitions */
+@media (prefers-reduced-motion: reduce) {
+  #ambient-light-overlay {
+    transition: none !important;
+    mix-blend-mode: normal;
   }
 }
