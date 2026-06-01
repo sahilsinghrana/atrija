@@ -297,8 +297,9 @@
       "description": "A zoomable, interactive deep-dive into a famous night painting with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
       "category": "Interactivity",
       "priority": "medium",
-      "status": "backlog",
-      "prd": "PRD-idea-033-painting-explorer.md"
+      "status": "cancelled",
+      "prd": "PRD-idea-033-painting-explorer.md",
+      "cancelledReason": "Violates site policy — painting gallery/showcase tasks are explicitly prohibited (AGENTS.md rule 6d2). The site is about the 3D experience, not showcasing external paintings."
     },
     {
       "id": "idea-034",
@@ -414,8 +415,9 @@
       "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. ⚠️ Uses audio — conflicts with site direction (idea-014 removed audio). Consider visual-only implementation.",
       "category": "Interactivity",
       "priority": "medium",
-      "status": "backlog",
-      "prd": "PRD-idea-047-flute-melody-composer.md"
+      "status": "cancelled",
+      "prd": "PRD-idea-047-flute-melody-composer.md",
+      "cancelledReason": "Conflicts with site direction — audio was deliberately removed (idea-014). Web Audio API for synthesized flute tones is an audio feature. Would need complete re-scope as visual-only to be viable."
     },
     {
       "id": "idea-048",
@@ -489,6 +491,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-01T14:53:00Z",
-  "lastReviewAt": "2026-06-01T19:00:00Z",
-  "lastReviewResult": "Implementation Review (2026-06-01 19:00): Reviewed idea-053 (accessibility) — ✅ verified complete. All 8 features present (skip-nav, focus-visible, ARIA labels, aria-live carousel, reduced-motion, section nav, footer/main landmarks). Build ✅, site ✅ HTTP 200. Tests: 52 pass, 76 fail. Test failures breakdown: 30 shooting-stars (stale — code moved to scene/ modules by idea-024), 18 scroll-parallax (stale — same reason), 9 letters (feature removed in idea-052, tests orphaned), 6 time-of-day (placeholder tests, idea-032 in red), 13 loading-optimizations (idea-009 in refactor). No kanban status changes needed. Flagged: scene-flowers.js (585 lines) and theme-switcher.js (414 lines) exceed 300-line guideline. Orphan files on disk: time-of-day.js, loader-boot.js, loader-progress.js (not loaded by any HTML)."
+  "lastReviewAt": "2026-06-02T03:00:00Z",
+  "lastReviewResult": "Kanban Review (2026-06-02 03:00): (1) Cancelled idea-033 (Painting Explorer) — violates AGENTS.md rule 6d2, painting gallery/showcase tasks are prohibited. (2) Cancelled idea-047 (Flute Melody Composer) — uses Web Audio API, conflicts with site direction (idea-014 removed audio). (3) No duplicates found. (4) All tulip/lily tasks preserved (idea-012, 013, 019, 051 all done). (5) idea-032 (time-of-day) remains red — needs fix or cancel decision. (6) idea-041 (aurora) blocked by idea-032. (7) 31 done, 3 cancelled, 1 red, 1 refactor, 17 backlog — board is healthy. (8) No artist-name references found in active tasks."
 }
