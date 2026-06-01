@@ -3,21 +3,34 @@
 // Changelog entries are written to date-based files: src/content/changelog/YYYY-MM-DD.json
 // Index metadata is maintained in: src/content/changelog/index.json
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync, readdirSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import {
+  readFileSync,
+  writeFileSync,
+  existsSync,
+  mkdirSync,
+  unlinkSync,
+  readdirSync,
+} from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SITE_DATA_PATH = join(__dirname, '../src/content/siteData.json');
-const CONTENT_PATH = join(__dirname, '../src/content/content.json');
-const SEASONS_PATH = join(__dirname, '../src/content/seasons.json');
-const CHANGELOG_DIR = join(__dirname, '../src/content/changelog');
-const CHANGELOG_INDEX = join(CHANGELOG_DIR, 'index.json');
-const PUBLIC_CHANGELOG_DIR = join(__dirname, '../public/changelog');
+const SITE_DATA_PATH = join(__dirname, "../src/content/siteData.json");
+const CONTENT_PATH = join(__dirname, "../src/content/content.json");
+const SEASONS_PATH = join(__dirname, "../src/content/seasons.json");
+const CHANGELOG_DIR = join(__dirname, "../src/content/changelog");
+const CHANGELOG_INDEX = join(CHANGELOG_DIR, "index.json");
+const PUBLIC_CHANGELOG_DIR = join(__dirname, "../public/changelog");
 
-function loadJSON(path) { return JSON.parse(readFileSync(path, 'utf-8')); }
-function saveJSON(path, data) { writeFileSync(path, JSON.stringify(data, null, 2)); }
-function ensureDir(dir) { if (!existsSync(dir)) mkdirSync(dir, { recursive: true }); }
+function loadJSON(path) {
+  return JSON.parse(readFileSync(path, "utf-8"));
+}
+function saveJSON(path, data) {
+  writeFileSync(path, JSON.stringify(data, null, 2));
+}
+function ensureDir(dir) {
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+}
 
 function getDayOfYear() {
   const now = new Date();
@@ -26,30 +39,30 @@ function getDayOfYear() {
 }
 
 function getTodayISO() {
-  return new Date().toISOString().split('T')[0];
+  return new Date().toISOString().split("T")[0];
 }
 
 function getTimeISO() {
-  return new Date().toISOString().split('T')[1].slice(0, 8);
+  return new Date().toISOString().split("T")[1].slice(0, 8);
 }
 
 // Returns the season name based on month (0-11)
 // Meteorological seasons: spring: 2-4 (Mar-May), summer: 5-7 (Jun-Aug), autumn: 8-10 (Sep-Nov), winter: 11,0,1 (Dec-Feb)
 function getCurrentSeason(month) {
-  if (month >= 2 && month <= 4) return 'spring';
-  if (month >= 5 && month <= 7) return 'summer';
-  if (month >= 8 && month <= 10) return 'autumn';
-  return 'winter'; // month 11, 0, 1
+  if (month >= 2 && month <= 4) return "spring";
+  if (month >= 5 && month <= 7) return "summer";
+  if (month >= 8 && month <= 10) return "autumn";
+  return "winter"; // month 11, 0, 1
 }
 
 function getSeasonEmoji(season) {
   const emojiMap = {
-    spring: '🌸',
-    summer: '☀️',
-    autumn: '🍂',
-    winter: '❄️'
+    spring: "🌸",
+    summer: "☀️",
+    autumn: "🍂",
+    winter: "❄️",
   };
-  return emojiMap[season] || '';
+  return emojiMap[season] || "";
 }
 
 // ── 1. Mutate colors in siteData.json with seasonal weighting ──
@@ -65,7 +78,7 @@ function mutateColors(siteData, dayOfYear) {
   const schemesWithWeights = siteData.colorSchemes.map((scheme, index) => ({
     scheme,
     index,
-    weight: weights[scheme.name] || 1 // default weight 1 if not specified
+    weight: weights[scheme.name] || 1, // default weight 1 if not specified
   }));
 
   // Weighted random selection
@@ -88,9 +101,12 @@ function mutateColors(siteData, dayOfYear) {
   const schemeIndex = selected.index;
   const variation = () => 0.9 + Math.random() * 0.2;
   scheme.shaderParams = {
-    strokeDensity: Math.round(scheme.shaderParams.strokeDensity * variation() * 10) / 10,
-    swirlFrequency: Math.round(scheme.shaderParams.swirlFrequency * variation() * 10) / 10,
-    colorIntensity: Math.round(scheme.shaderParams.colorIntensity * variation() * 100) / 100
+    strokeDensity:
+      Math.round(scheme.shaderParams.strokeDensity * variation() * 10) / 10,
+    swirlFrequency:
+      Math.round(scheme.shaderParams.swirlFrequency * variation() * 10) / 10,
+    colorIntensity:
+      Math.round(scheme.shaderParams.colorIntensity * variation() * 100) / 100,
   };
   return { scheme, schemeIndex, season };
 }
@@ -101,13 +117,13 @@ function mutateColors(siteData, dayOfYear) {
 function updateAllSections(content, siteData, dayOfYear) {
   // Fixed theme mapping: each section always uses the same theme
   const sectionThemeMap = {
-    moon: 0,        // Selene & The Moon
-    philosophy: 1,  // Ego & Arrogance
-    gita: 2,        // Bhagavad Gita
-    shiva: 3,       // Shiv Purana
-    art: 4          // Art & Beauty
+    moon: 0, // Selene & The Moon
+    philosophy: 1, // Ego & Arrogance
+    gita: 2, // Bhagavad Gita
+    shiva: 3, // Shiv Purana
+    art: 4, // Art & Beauty
   };
-  const sectionKeys = ['moon', 'philosophy', 'gita', 'shiva', 'art'];
+  const sectionKeys = ["moon", "philosophy", "gita", "shiva", "art"];
   const updatedSections = [];
 
   sectionKeys.forEach((sectionKey, i) => {
@@ -126,7 +142,9 @@ function updateAllSections(content, siteData, dayOfYear) {
     let imgFactIndex = factIndex;
     if (section.imageCard) {
       // Pick a different fact for the image card
-      imgFactIndex = (factIndex + 1 + Math.floor(Math.random() * (theme.facts.length - 1))) % theme.facts.length;
+      imgFactIndex =
+        (factIndex + 1 + Math.floor(Math.random() * (theme.facts.length - 1))) %
+        theme.facts.length;
       section.imageCard.factIndex = imgFactIndex;
       section.imageCard.themeIndex = themeIndex;
     }
@@ -142,9 +160,10 @@ function updateAllSections(content, siteData, dayOfYear) {
         attempts++;
       } while (
         attempts < 20 &&
-        (sliceStart === factIndex || sliceStart === imgFactIndex ||
-         (sliceStart + sliceSize - 1) % totalFacts === factIndex ||
-         (sliceStart + sliceSize - 1) % totalFacts === imgFactIndex)
+        (sliceStart === factIndex ||
+          sliceStart === imgFactIndex ||
+          (sliceStart + sliceSize - 1) % totalFacts === factIndex ||
+          (sliceStart + sliceSize - 1) % totalFacts === imgFactIndex)
       );
       section.facts.themeIndex = themeIndex;
       section.facts.slice = [sliceStart, sliceStart + sliceSize];
@@ -152,19 +171,42 @@ function updateAllSections(content, siteData, dayOfYear) {
 
     if (section.quote) {
       // Pick a random quote from this theme
-      section.quote.quoteIndex = Math.floor(Math.random() * theme.quotes.length);
+      section.quote.quoteIndex = Math.floor(
+        Math.random() * theme.quotes.length,
+      );
       section.quote.themeIndex = themeIndex;
     }
 
-    updatedSections.push({ sectionKey, themeIndex, factIndex, theme: theme.title });
+    updatedSections.push({
+      sectionKey,
+      themeIndex,
+      factIndex,
+      theme: theme.title,
+    });
   });
 
   // Today's heading: rotate emphasis word by day of year
-  const headingThemes = ['moon', 'philosophy', 'gita', 'shiva', 'art'];
-  const headingVerbs = ['reveals', 'conceals', 'teaches', 'dissolves', 'whispers'];
+  const headingThemes = [
+    "moon",
+    "philosophy",
+    "gita",
+    "shiva",
+    "ego",
+    "tulips",
+    "sunflowers",
+    "flute",
+  ];
+  const headingVerbs = [
+    "reveals",
+    "conceals",
+    "teaches",
+    "dissolves",
+    "whispers",
+  ];
   const headingThemeKey = headingThemes[dayOfYear % headingThemes.length];
   const headingVerb = headingVerbs[dayOfYear % headingVerbs.length];
-  const headingThemeTitle = siteData.themes[sectionThemeMap[headingThemeKey]].title.split(' ')[0];
+  const headingThemeTitle =
+    siteData.themes[sectionThemeMap[headingThemeKey]].title.split(" ")[0];
   content.sections.today.heading = `What the <em>${headingThemeTitle}</em> ${headingVerb} today`;
 
   return updatedSections;
@@ -182,28 +224,36 @@ function writeChangelogEntry(dayOfYear, updatedSections, scheme, season) {
   const changes = [
     `Color scheme: ${scheme.name} (${scheme.mood})`,
     `Season: ${season}`,
-    `Shader — strokeDensity: ${scheme.shaderParams.strokeDensity}, swirlFrequency: ${scheme.shaderParams.swirlFrequency}, colorIntensity: ${scheme.shaderParams.colorIntensity}`
+    `Shader — strokeDensity: ${scheme.shaderParams.strokeDensity}, swirlFrequency: ${scheme.shaderParams.swirlFrequency}, colorIntensity: ${scheme.shaderParams.colorIntensity}`,
   ];
-  updatedSections.forEach(s => {
-    changes.push(`Section \"${s.sectionKey}\": ${s.theme} theme, fact #${s.factIndex}`);
+  updatedSections.forEach((s) => {
+    changes.push(
+      `Section \"${s.sectionKey}\": ${s.theme} theme, fact #${s.factIndex}`,
+    );
   });
 
   // Entry with time field for same-date differentiation
   const entry = {
     time,
-    type: 'daily-mutation',
-    description: `Daily mutation #${dayOfYear}: ${scheme.name} colors (${season} season), ${updatedSections.map(s => s.theme).join(' → ')}`,
-    changes
+    type: "daily-mutation",
+    description: `Daily mutation #${dayOfYear}: ${scheme.name} colors (${season} season), ${updatedSections.map((s) => s.theme).join(" → ")}`,
+    changes,
   };
 
   // Load existing date file or create new
   let dateData = { date: today, entries: [] };
   if (existsSync(dateFile)) {
-    try { dateData = loadJSON(dateFile); } catch (e) { /* corrupted, start fresh */ }
+    try {
+      dateData = loadJSON(dateFile);
+    } catch (e) {
+      /* corrupted, start fresh */
+    }
   }
 
   // Replace same type+time entry, otherwise append
-  const existingIdx = dateData.entries.findIndex(e => e.type === entry.type && e.time === entry.time);
+  const existingIdx = dateData.entries.findIndex(
+    (e) => e.type === entry.type && e.time === entry.time,
+  );
   if (existingIdx >= 0) {
     dateData.entries[existingIdx] = entry;
   } else {
@@ -221,7 +271,7 @@ function writeChangelogEntry(dayOfYear, updatedSections, scheme, season) {
   // Sync to public/changelog/ for deployment
   ensureDir(PUBLIC_CHANGELOG_DIR);
   const publicDateFile = join(PUBLIC_CHANGELOG_DIR, `${today}.json`);
-  const publicIndexFile = join(PUBLIC_CHANGELOG_DIR, 'index.json');
+  const publicIndexFile = join(PUBLIC_CHANGELOG_DIR, "index.json");
   saveJSON(publicDateFile, dateData);
   // Re-read the index that updateChangelogIndex just wrote
   const currentIndex = loadJSON(CHANGELOG_INDEX);
@@ -232,9 +282,18 @@ function writeChangelogEntry(dayOfYear, updatedSections, scheme, season) {
 
 // ── 4. Update changelog/index.json metadata ──
 function updateChangelogIndex(today, dateData) {
-  let index = { version: '1.2.0', lastUpdated: new Date().toISOString(), totalEntries: 0, dates: [] };
+  let index = {
+    version: "1.2.0",
+    lastUpdated: new Date().toISOString(),
+    totalEntries: 0,
+    dates: [],
+  };
   if (existsSync(CHANGELOG_INDEX)) {
-    try { index = loadJSON(CHANGELOG_INDEX); } catch (e) { /* corrupted, start fresh */ }
+    try {
+      index = loadJSON(CHANGELOG_INDEX);
+    } catch (e) {
+      /* corrupted, start fresh */
+    }
   }
 
   // Build date entry metadata
@@ -242,12 +301,12 @@ function updateChangelogIndex(today, dateData) {
   const dateEntry = {
     date: today,
     entries: dateData.entries.length,
-    latestType: lastEntry?.type || 'daily-mutation',
-    description: lastEntry?.description || ''
+    latestType: lastEntry?.type || "daily-mutation",
+    description: lastEntry?.description || "",
   };
 
   // Upsert date entry in index
-  const existingIdx = index.dates.findIndex(d => d.date === today);
+  const existingIdx = index.dates.findIndex((d) => d.date === today);
   if (existingIdx >= 0) {
     index.dates[existingIdx] = dateEntry;
   } else {
@@ -264,10 +323,14 @@ function updateChangelogIndex(today, dateData) {
   // Keep only last 30 days — delete old date files
   if (index.dates.length > 30) {
     const removed = index.dates.splice(30);
-    removed.forEach(d => {
+    removed.forEach((d) => {
       const oldFile = join(CHANGELOG_DIR, `${d.date}.json`);
       if (existsSync(oldFile)) {
-        try { unlinkSync(oldFile); } catch (e) { /* ignore deletion errors */ }
+        try {
+          unlinkSync(oldFile);
+        } catch (e) {
+          /* ignore deletion errors */
+        }
       }
     });
     index.totalEntries = index.dates.reduce((sum, d) => sum + d.entries, 0);
@@ -283,7 +346,9 @@ function syncChangelogToContent(content, siteData) {
   // Read all date files from changelog dir
   let allEntries = [];
   try {
-    const files = readdirSync(CHANGELOG_DIR).filter(f => /^\\d{4}-\\d{2}-\\d{2}\\.json$/.test(f));
+    const files = readdirSync(CHANGELOG_DIR).filter((f) =>
+      /^\\d{4}-\\d{2}-\\d{2}\\.json$/.test(f),
+    );
     files.sort(); // chronological
     for (const file of files) {
       try {
@@ -291,9 +356,13 @@ function syncChangelogToContent(content, siteData) {
         for (const entry of dateData.entries) {
           allEntries.push({ ...entry, date: dateData.date });
         }
-      } catch (e) { /* skip corrupted */ }
+      } catch (e) {
+        /* skip corrupted */
+      }
     }
-  } catch (e) { /* dir might not exist */ }
+  } catch (e) {
+    /* dir might not exist */
+  }
 
   // Deduplicate: keep latest entry per (date, type) pair
   const seen = new Map();
@@ -307,16 +376,18 @@ function syncChangelogToContent(content, siteData) {
   deduped.sort((a, b) => {
     const cmp = a.date.localeCompare(b.date);
     if (cmp !== 0) return cmp;
-    return (a.time || '').localeCompare(b.time || '');
+    return (a.time || "").localeCompare(b.time || "");
   });
 
   // Keep max 15 entries (trim oldest)
-  const trimmed = deduped.length > 15 ? deduped.slice(deduped.length - 15) : deduped;
+  const trimmed =
+    deduped.length > 15 ? deduped.slice(deduped.length - 15) : deduped;
 
   // Update content.json changelog
   content.changelog = {
-    version: siteData.changelog?.version || content.changelog?.version || '1.2.0',
-    entries: trimmed
+    version:
+      siteData.changelog?.version || content.changelog?.version || "1.2.0",
+    entries: trimmed,
   };
 }
 
@@ -327,7 +398,12 @@ const day = getDayOfYear();
 
 const { scheme, schemeIndex, season } = mutateColors(siteData, day);
 const updatedSections = updateAllSections(content, siteData, day);
-const { entry, changes } = writeChangelogEntry(day, updatedSections, scheme, season);
+const { entry, changes } = writeChangelogEntry(
+  day,
+  updatedSections,
+  scheme,
+  season,
+);
 syncChangelogToContent(content, siteData);
 
 // Add season indicator to content.meta
@@ -336,10 +412,18 @@ content.meta.season = `${season} ${getSeasonEmoji(season)}`;
 saveJSON(SITE_DATA_PATH, siteData);
 saveJSON(CONTENT_PATH, content);
 
-console.log(`[daily-mutate] Day ${day}: Applied \"${scheme.name}\" scheme (${season} season)`);
+console.log(
+  `[daily-mutate] Day ${day}: Applied \"${scheme.name}\" scheme (${season} season)`,
+);
 console.log(`[daily-mutate] Updated ${updatedSections.length} sections:`);
-updatedSections.forEach(s => console.log(`  - ${s.sectionKey}: ${s.theme} (fact #${s.factIndex})`));
-console.log(`[daily-mutate] Changelog: ${getTodayISO()} ${getTimeISO()} — ${changes.length} changes`);
+updatedSections.forEach((s) =>
+  console.log(`  - ${s.sectionKey}: ${s.theme} (fact #${s.factIndex})`),
+);
+console.log(
+  `[daily-mutate] Changelog: ${getTodayISO()} ${getTimeISO()} — ${changes.length} changes`,
+);
 console.log(`[daily-mutate] Written to changelog/${getTodayISO()}.json`);
-console.log(`[daily-mutate] Synced ${content.changelog.entries.length} entries to content.json`);
+console.log(
+  `[daily-mutate] Synced ${content.changelog.entries.length} entries to content.json`,
+);
 process.exit(0);

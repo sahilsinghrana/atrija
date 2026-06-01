@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import siteData from '../content/siteData.json';
-import content from '../content/content.json';
-import LetterCard from '../components/LetterCard.astro';
-import KoanCard from '../components/KoanCard.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import siteData from "../content/siteData.json";
+import content from "../content/content.json";
+import LetterCard from "../components/LetterCard.astro";
+import KoanCard from "../components/KoanCard.astro";
 
 const now = new Date();
 const start = new Date(now.getFullYear(), 0, 0);
@@ -27,29 +27,36 @@ const colorData = JSON.stringify({
   accent: todayColor.accent,
   background: todayColor.background,
   text: todayColor.text,
-  shader: todayColor.shaderParams
+  shader: todayColor.shaderParams,
 });
 
 // Section configuration — data-driven generation
 const sections = [
-  { id: 'moon', key: 'moon', image: '/images/moon.svg', carousel: true },
-  { id: 'philosophy', key: 'philosophy', image: '/images/waves.svg', carousel: true },
-  { id: 'gita', key: 'gita', image: '/images/stars.svg', carousel: true },
-  { id: 'shiva', key: 'shiva', image: '/images/flute.svg', carousel: false },
-  { id: 'art', key: 'art', image: '/images/sunflowers.svg', carousel: false },
+  { id: "moon", key: "moon", image: "/images/moon.svg", carousel: true },
+  {
+    id: "philosophy",
+    key: "philosophy",
+    image: "/images/waves.svg",
+    carousel: true,
+  },
+  { id: "gita", key: "gita", image: "/images/stars.svg", carousel: true },
+  { id: "shiva", key: "shiva", image: "/images/flute.svg", carousel: false },
+  { id: "art", key: "art", image: "/images/sunflowers.svg", carousel: false },
 ];
 ---
 
 <BaseLayout>
-
   <!-- ═══════════════════════════════════════
        AI AGENT BANNER
   ═══════════════════════════════════════ -->
   <div class="ai-banner" role="note" aria-label="Site information">
     <span class="ai-banner-icon">⚡</span>
     <span class="ai-banner-text">
-      Content updates <strong>daily</strong> — this site is self-improved, built &amp; deployed by an
-      <strong>AI agent</strong>, served from an <strong>Android mobile phone</strong> server.
+      Content updates <strong>daily</strong> — this site is self-improved, built &amp;
+      deployed by an
+      <strong>AI agent</strong>, served from an <strong
+        >Android mobile phone</strong
+      > server.
     </span>
     <span class="ai-banner-pulse"></span>
   </div>
@@ -61,12 +68,16 @@ const sections = [
     <div id="moonContainer">
       <canvas id="foregroundMoon"></canvas>
     </div>
-    <div id="moon-phase-label" style="text-align:center;margin-top:0.5rem;font-size:0.85rem;color:var(--text-tertiary);font-family:var(--font-sans);"></div>
+    <div
+      id="moon-phase-label"
+      style="text-align:center;margin-top:0.5rem;font-size:0.85rem;color:var(--text-tertiary);font-family:var(--font-sans);"
+    >
+    </div>
     <div class="hero-title-wrap">
       <div class="logo-sanskrit">अत्रिज</div>
     </div>
     <div class="logo-subtitle reveal">Atrij</div>
-    <p class="logo-tagline reveal" set:html={sec.hero.tagline}></p>
+    <p class="logo-tagline reveal" set:html={sec.hero.tagline} />
     <span class="click-hint">Click anywhere to see flute magic</span>
     <span class="scroll-hint">Scroll to explore</span>
   </section>
@@ -77,7 +88,7 @@ const sections = [
   <section id="today" class="section">
     <div class="section-inner">
       <div class="section-label reveal-left">Today's Reflection</div>
-      <h2 class="reveal" set:html={sec.today.heading}></h2>
+      <h2 class="reveal" set:html={sec.today.heading} />
       <div class="today-fact reveal-scale">
         <div class="theme-tag">{todayTheme.title} · {todayColor.mood}</div>
         <p>{todayFact.text}</p>
@@ -92,53 +103,62 @@ const sections = [
   <!-- ═══════════════════════════════════════
        CONTENT SECTIONS (data-driven)
   ═══════════════════════════════════════ -->
-  {sections.map((s) => {
-    const data = sec[s.key];
-    const imgFact = siteData.themes[data.imageCard.themeIndex].facts[data.imageCard.factIndex];
-    const quoteTheme = siteData.themes[data.quote.themeIndex];
-    return (
-    <section id={s.id} class="section">
-      <div class="section-inner">
-        <div class="section-label reveal-left">{data.label}</div>
-        <h2 class="reveal" set:html={data.heading}></h2>
-        <p class="reveal">{data.intro}</p>
-        <div class="image-card reveal-scale" style={`--card-bg-image: url('${s.image}')`}>
-          <div class="card-bg"></div>
-          <div class="card-content">
-            <p>{imgFact.text}</p>
-            <div class="source">{imgFact.source}</div>
-          </div>
-        </div>
-        <div class="fact-card reveal">
-          <p>{imgFact.text}</p>
-          <div class="source">{imgFact.source}</div>
-        </div>
-        {s.carousel ? (
-        <div class="quote-carousel reveal" data-theme-index={data.quote.themeIndex}>
-          <div class="quote-carousel-inner">
-            {quoteTheme.quotes.map((q: any, i: number) => (
-              <div class="quote-card" data-index={i} style={i === 0 ? '' : 'display:none'}>
-                <div class="quote-block">
-                  <p>{q}</p>
+  {
+    sections.map((s) => {
+      const data = sec[s.key];
+      const imgFact =
+        siteData.themes[data.imageCard.themeIndex].facts[
+          data.imageCard.factIndex
+        ];
+      const quoteTheme = siteData.themes[data.quote.themeIndex];
+      return (
+        <section id={s.id} class="section">
+          <div class="section-inner">
+            <div class="section-label reveal-left">{data.label}</div>
+            <h2 class="reveal" set:html={data.heading} />
+            <p class="reveal">{data.intro}</p>
+            <div class="fact-card reveal">
+              <p>{imgFact.text}</p>
+              <div class="source">{imgFact.source}</div>
+            </div>
+            {s.carousel ? (
+              <div
+                class="quote-carousel reveal"
+                data-theme-index={data.quote.themeIndex}
+              >
+                <div class="quote-carousel-inner">
+                  {quoteTheme.quotes.map((q: any, i: number) => (
+                    <div
+                      class="quote-card"
+                      data-index={i}
+                      style={i === 0 ? "" : "display:none"}
+                    >
+                      <div class="quote-block">
+                        <p>{q}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div class="quote-dots">
+                  {quoteTheme.quotes.map((_q: any, i: number) => (
+                    <button
+                      class={"quote-dot" + (i === 0 ? " active" : "")}
+                      data-index={i}
+                      aria-label={"Quote " + (i + 1)}
+                    />
+                  ))}
                 </div>
               </div>
-            ))}
+            ) : (
+              <div class="quote-block reveal">
+                <p>{quoteTheme.quotes[data.quote.quoteIndex]}</p>
+              </div>
+            )}
           </div>
-          <div class="quote-dots">
-            {quoteTheme.quotes.map((_q: any, i: number) => (
-              <button class={'quote-dot' + (i === 0 ? ' active' : '')} data-index={i} aria-label={'Quote ' + (i + 1)} />
-            ))}
-          </div>
-        </div>
-        ) : (
-        <div class="quote-block reveal">
-          <p>{quoteTheme.quotes[data.quote.quoteIndex]}</p>
-        </div>
-        )}
-      </div>
-    </section>
-    );
-  })}
+        </section>
+      );
+    })
+  }
 
   <!-- ═══════════════════════════════════════
        LETTERS FROM VINCENT
@@ -149,7 +169,9 @@ const sections = [
        PAINTING REVEAL
   ═══════════════════════════════════════ -->
   <section id="painting-reveal" class="painting-reveal-section">
-    <div class="painting-reveal-caption">The Starry Night, 1889 — Oil on canvas</div>
+    <div class="painting-reveal-caption">
+      The Starry Night, 1889 — Oil on canvas
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════
@@ -180,15 +202,15 @@ const sections = [
   ═══════════════════════════════════════ -->
   <div id="vg-data" data-colors={colorData} hidden></div>
   <script>
-    (function() {
-      var el = document.getElementById('vg-data');
+    (function () {
+      var el = document.getElementById("vg-data");
       var c = JSON.parse(el.dataset.colors);
       var r = document.documentElement.style;
-      r.setProperty('--color-primary', c.primary);
-      r.setProperty('--color-secondary', c.secondary);
-      r.setProperty('--color-accent', c.accent);
-      r.setProperty('--color-bg', c.background);
-      r.setProperty('--color-text', c.text);
+      r.setProperty("--color-primary", c.primary);
+      r.setProperty("--color-secondary", c.secondary);
+      r.setProperty("--color-accent", c.accent);
+      r.setProperty("--color-bg", c.background);
+      r.setProperty("--color-text", c.text);
     })();
   </script>
   <script type="module" src="/js/scene-init.js?v=BUILD_VERSION"></script>
@@ -198,7 +220,11 @@ const sections = [
   <script is:inline src="/js/theme-switcher.js" defer></script>
 
   <!-- Brushstroke cursor canvas -->
-  <canvas id="brushstroke-canvas" data-colors="#FFD700,#4169E1,#228B22,#FF6347,#9370DB,#87CEEB" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;"></canvas>
+  <canvas
+    id="brushstroke-canvas"
+    data-colors="#FFD700,#4169E1,#228B22,#FF6347,#9370DB,#87CEEB"
+    style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;"
+  ></canvas>
 
   <style>
     .painting-reveal-section {
@@ -210,7 +236,9 @@ const sections = [
       padding-bottom: 4rem;
     }
     @media (max-width: 767px) {
-      .painting-reveal-section { height: 120vh; }
+      .painting-reveal-section {
+        height: 120vh;
+      }
     }
     .painting-reveal-caption {
       font-family: var(--font-serif);

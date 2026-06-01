@@ -31,12 +31,12 @@ export function bootScene() {
 
     if (window.__sceneLoadingStarted) window.__sceneLoadingStarted();
 
-    const starCount = isLowEnd ? 700 : 2500;
-    const noteCount = isLowEnd ? 10 : 15;
-    const sunflowerCount = isLowEnd ? 3 : 8;
-    const lilyCount = isLowEnd ? 1 : 3;
-    const tulipCount = isLowEnd ? 6 : 10;
-    const waveSegs = isLowEnd ? 16 : 32;
+    const starCount = isLowEnd ? 750 : 2500;
+    const noteCount = isLowEnd ? 15 : 18;
+    const sunflowerCount = isLowEnd ? 5 : 10;
+    const lilyCount = isLowEnd ? 2 : 4;
+    const tulipCount = isLowEnd ? 15 : 20;
+    const waveSegs = isLowEnd ? 18 : 32;
 
     if (window.__updateLoaderProgress) window.__updateLoaderProgress(30);
     createStars(scene.scene, starCount);

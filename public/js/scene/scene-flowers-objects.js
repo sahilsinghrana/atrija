@@ -8,11 +8,12 @@ import { isMobile } from "./scene-config.js";
 
 export function createTulips(scene, count) {
   const colors = [
+    "#cecece",
     "#c0392b",
     "#e74c3c",
     "#d63031",
-    "#b71540",
-    "#c23616",
+    "#b715b7",
+    "#10acf5",
     "#d81b60",
     "#e91e63",
     "#f06292",
@@ -21,13 +22,13 @@ export function createTulips(scene, count) {
     "#ff7043",
     "#ff5722",
     "#f4511e",
-    "#e64a19",
+    "#ee9836",
     "#ff8a65",
     "#8b0000",
-    "#6a1b4d",
+    "#9b3676",
     "#7b1fa2",
     "#9c27b0",
-    "#4a148c",
+    "#5e27a1",
     "#dc143c",
     "#c71585",
     "#b33939",
@@ -37,7 +38,7 @@ export function createTulips(scene, count) {
     "#e9967a",
     "#ff6347",
     "#ff4500",
-    "#cc3366",
+    "#33cc8c",
   ];
   let lastColorIdx = -1;
   for (let i = 0; i < count; i++) {
