@@ -55,16 +55,6 @@
       "prd": "PRD-idea-003-moon-phase.md"
     },
     {
-      "id": "idea-004",
-      "title": "Ambient music generator",
-      "description": "Procedural ambient music using Web Audio API. Flute-like tones that respond to scroll position and time of day.",
-      "category": "Audio",
-      "priority": "low",
-      "status": "cancelled",
-      "prd": "PRD-idea-004-ambient-music.md",
-      "cancelledReason": "Audio deliberately removed from site (see idea-014). Conflicts with site direction."
-    },
-    {
       "id": "idea-005",
       "title": "Sunflower field parallax",
       "description": "Multi-layer parallax for sunflower field. Foreground flowers sway more, background less. Depth-based blur.",
@@ -81,16 +71,6 @@
       "priority": "medium",
       "status": "done",
       "prd": "PRD-idea-006-quote-carousel.md"
-    },
-    {
-      "id": "idea-007",
-      "title": "GLSL watercolor post-processing",
-      "description": "Add watercolor-style post-processing shader. Edge detection + color bleeding for painterly look.",
-      "category": "Shaders",
-      "priority": "low",
-      "status": "cancelled",
-      "prd": "PRD-idea-007-watercolor-shader.md",
-      "cancelledReason": "Post-processing pipeline removed in code architecture refactoring (idea-024). Would need to re-implement EffectComposer first."
     },
     {
       "id": "idea-008",
@@ -273,16 +253,6 @@
       "prd": "PRD-idea-023-theme-switcher.md"
     },
     {
-      "id": "idea-030",
-      "title": "Scroll-Responsive Brushstroke Sound Effects",
-      "description": "Generative brushstroke sound effects that play in response to scroll velocity. NOTE: Audio was deliberately removed from the site (see idea-014). This idea conflicts with that direction \u2014 flagged for rethink.",
-      "category": "Audio",
-      "priority": "low",
-      "status": "cancelled",
-      "prd": "PRD-idea-024-brushstroke-audio.md",
-      "cancelledReason": "Conflicts with site direction \u2014 audio was deliberately removed (idea-014). Would need to be re-scoped as visual-only brushstroke feedback to be viable."
-    },
-    {
       "id": "idea-032",
       "title": "Dynamic Time-of-Day Atmosphere System",
       "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
@@ -290,16 +260,6 @@
       "priority": "medium",
       "status": "red",
       "prd": "PRD-idea-032-time-of-day-atmosphere.md"
-    },
-    {
-      "id": "idea-033",
-      "title": "Interactive Starry Night Painting Explorer",
-      "description": "A zoomable, interactive deep-dive into a famous night painting with clickable hotspot zones over key elements (cypress, moon, village, stars). Each hotspot reveals technique details, symbolism, and relevant quotes. Pinch-to-zoom on mobile, scroll-to-zoom on desktop.",
-      "category": "Interactivity",
-      "priority": "medium",
-      "status": "cancelled",
-      "prd": "PRD-idea-033-painting-explorer.md",
-      "cancelledReason": "Violates site policy \u2014 painting gallery/showcase tasks are explicitly prohibited (AGENTS.md rule 6d2). The site is about the 3D experience, not showcasing external paintings."
     },
     {
       "id": "idea-034",
@@ -410,16 +370,6 @@
       "prd": "PRD-idea-046-village-lights.md"
     },
     {
-      "id": "idea-047",
-      "title": "Interactive Flute Melody Composer",
-      "description": "A toggleable pixel-art treble clef staff at the bottom of the screen where visitors can click to place notes that play synthesized flute tones via Web Audio API. Pentatonic scale ensures any combination sounds pleasant. Notes visually connect to the 3D scene's floating music notes. \u26a0\ufe0f Uses audio \u2014 conflicts with site direction (idea-014 removed audio). Consider visual-only implementation.",
-      "category": "Interactivity",
-      "priority": "medium",
-      "status": "cancelled",
-      "prd": "PRD-idea-047-flute-melody-composer.md",
-      "cancelledReason": "Conflicts with site direction \u2014 audio was deliberately removed (idea-014). Web Audio API for synthesized flute tones is an audio feature. Would need complete re-scope as visual-only to be viable."
-    },
-    {
       "id": "idea-048",
       "title": "Scroll-Synced Ambient Lighting System",
       "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone \u2014 warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
@@ -509,5 +459,5 @@
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-01T14:53:00Z",
   "lastReviewAt": "2026-06-02T06:00:00Z",
-  "lastReviewResult": "Implementation Reviewer (2026-06-02 06:00): Reviewed idea-048 (scroll-lighting) and idea-053 (accessibility). Both implementations verified: code matches PRD specs, clean patterns, under 300 lines. Build ✅ succeeds. Site HTTP 200 ✅. Tests: 76 pre-existing failures from orphaned test files (refactored-away code), 52 passing. No new failures from recent implementations. idea-048 ✅ done, idea-053 ✅ done. Flagged: 5 orphaned test files need cleanup. idea-032 (red) confirmed fully rolled back — no time-of-day.js exists. idea-009 (refactor) partially implemented, files exist but some are orphaned loaders."
+  "lastReviewResult": "Implementation Reviewer (2026-06-02 06:00): Reviewed idea-048 (scroll-lighting) and idea-053 (accessibility). Both implementations verified: code matches PRD specs, clean patterns, under 300 lines. Build \u2705 succeeds. Site HTTP 200 \u2705. Tests: 76 pre-existing failures from orphaned test files (refactored-away code), 52 passing. No new failures from recent implementations. idea-048 \u2705 done, idea-053 \u2705 done. Flagged: 5 orphaned test files need cleanup. idea-032 (red) confirmed fully rolled back \u2014 no time-of-day.js exists. idea-009 (refactor) partially implemented, files exist but some are orphaned loaders."
 }
