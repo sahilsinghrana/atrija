@@ -1,8 +1,14 @@
 {
-  "version": "1.8.0",
-  "lastUpdated": "2026-06-01T00:32:43.271Z",
-  "totalEntries": 31,
+  "version": "1.8.1",
+  "lastUpdated": "2026-06-02T06:00:00Z",
+  "totalEntries": 32,
   "dates": [
+    {
+      "date": "2026-06-02",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana → Art & Beauty → Selene & The Moon → Ego & Arrogance → Bhagavad Gita"
+    },
     {
       "date": "2026-06-01",
       "entries": 1,

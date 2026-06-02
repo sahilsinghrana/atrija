@@ -310,10 +310,7 @@
         "swirlFrequency": 16.4,
         "colorIntensity": 1.62
       },
-      "seasons": [
-        "winter",
-        "summer"
-      ]
+      "seasons": ["winter", "summer"]
     },
     {
       "name": "sunflower",
@@ -328,10 +325,7 @@
         "swirlFrequency": 7.9,
         "colorIntensity": 1.63
       },
-      "seasons": [
-        "autumn",
-        "summer"
-      ]
+      "seasons": ["autumn", "summer"]
     },
     {
       "name": "midnight-wave",
@@ -346,10 +340,7 @@
         "swirlFrequency": 14.9,
         "colorIntensity": 1.12
       },
-      "seasons": [
-        "winter",
-        "autumn"
-      ]
+      "seasons": ["winter", "autumn"]
     },
     {
       "name": "lily-garden",
@@ -360,13 +351,11 @@
       "text": "#fce4ec",
       "mood": "passionate",
       "shaderParams": {
-        "strokeDensity": 9.3,
-        "swirlFrequency": 11.2,
-        "colorIntensity": 1.42
+        "strokeDensity": 9.5,
+        "swirlFrequency": 11.4,
+        "colorIntensity": 1.45
       },
-      "seasons": [
-        "spring"
-      ]
+      "seasons": ["spring"]
     },
     {
       "name": "moonlit-silver",
@@ -381,10 +370,7 @@
         "swirlFrequency": 13.8,
         "colorIntensity": 1.16
       },
-      "seasons": [
-        "winter",
-        "spring"
-      ]
+      "seasons": ["winter", "spring"]
     }
   ],
   "changelog": {

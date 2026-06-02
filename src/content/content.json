@@ -1,106 +1,77 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.5.0",
-    "lastUpdated": "2026-05-19",
+    "version": "1.5.1",
+    "lastUpdated": "2026-06-02",
     "updatedBy": "AI Agent (daily-mutate)",
     "season": "summer ☀️"
   },
   "sections": {
     "hero": {
-      "tagline": "An <em>impressionist</em> journey through light, philosophy &amp; the cosmos"
+      "tagline": "Beneath a sky of <em>swirling</em> dreams &amp; ancient verse"
     },
     "today": {
-      "heading": "The <em>ego</em> is loyal only to itself."
+      "heading": "Every wave returns to the <em>sea</em> from which it came."
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Selene's <em>silver</em> chariot",
-      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas — the emotional mind — and its phases mirror the cycles of human desire and detachment.",
-      "imageCard": {
-        "themeIndex": 0,
-        "factIndex": 2
-      },
-      "facts": {
-        "themeIndex": 0,
-        "slice": [3, 5]
-      },
-      "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 3
-      }
+      "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
+      "imageCard": {"themeIndex": 0, "factIndex": 0},
+      "facts": {"themeIndex": 0, "slice": [1, 3]},
+      "quote": {"themeIndex": 0, "quoteIndex": 3}
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "Nietzsche warned that 'whoever fights monsters should see to it that in the process he does not become a monster.' The ego, in its quest to prove its strength, often becomes the very thing it opposes.",
-      "imageCard": {
-        "themeIndex": 1,
-        "factIndex": 8
-      },
-      "facts": {
-        "themeIndex": 1,
-        "slice": [1, 3]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 0
-      }
+      "intro": "The Shiv Purana describes ego (ahamkara) as the first veil that separates the individual soul from Shiva — pure consciousness. To remove the ego is not to destroy the self but to discover its infinite nature.",
+      "imageCard": {"themeIndex": 1, "factIndex": 3},
+      "facts": {"themeIndex": 1, "slice": [2, 4]},
+      "quote": {"themeIndex": 1, "quoteIndex": 4}
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "Krishna describes three paths to liberation: Karma Yoga (selfless action), Jnana Yoga (knowledge), and Bhakti Yoga (devotion). The Gita does not prescribe one path — it honors all three as valid ways to the divine.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 4
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [7, 9]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 2
-      }
+      "intro": "The Bhagavad Gita begins not with wisdom but with despair. Arjuna, the greatest warrior, drops his bow and says, 'I will not fight.' The scripture teaches that the darkest moment precedes the greatest clarity.",
+      "imageCard": {"themeIndex": 2, "factIndex": 1},
+      "facts": {"themeIndex": 2, "slice": [3, 5]},
+      "quote": {"themeIndex": 2, "quoteIndex": 0}
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "Shiva is called Tryambaka — the three-eyed one. The third eye represents the eye of wisdom that sees beyond the duality of good and evil, self and other, creation and destruction. When it opens, the universe is consumed in flame — not as punishment, but as liberation.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 4
-      },
-      "facts": {
-        "themeIndex": 3,
-        "slice": [0, 2]
-      },
-      "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 3
-      }
+      "intro": "The Shiv Purana teaches that the universe is Shiva's dance — the Tandava. Every atom moves in rhythm. Destruction is not the opposite of creation; it is its partner in an eternal dance.",
+      "imageCard": {"themeIndex": 3, "factIndex": 2},
+      "facts": {"themeIndex": 3, "slice": [0, 2]},
+      "quote": {"themeIndex": 3, "quoteIndex": 1}
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream.",
-      "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 7
-      },
-      "facts": {
-        "themeIndex": 4,
-        "slice": [2, 4]
-      },
-      "quote": {
-        "themeIndex": 4,
-        "quoteIndex": 3
-      }
+      "intro": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
+      "imageCard": {"themeIndex": 4, "factIndex": 6},
+      "facts": {"themeIndex": 4, "slice": [2, 4]},
+      "quote": {"themeIndex": 4, "quoteIndex": 2}
     }
   },
   "changelog": {
-    "version": "1.0.0",
-    "entries": []
+    "version": "1.5.1",
+    "entries": [
+      {
+        "date": "2026-06-02",
+        "type": "daily-mutation",
+        "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana → Art & Beauty → Selene & The Moon → Ego & Arrogance → Bhagavad Gita",
+        "changes": [
+          "Rotated color scheme to lily-garden (summer season match)",
+          "Updated hero tagline to: 'Beneath a sky of swirling dreams & ancient verse'",
+          "Updated today heading to: 'Every wave returns to the sea from which it came.'",
+          "Moon section: new image card (Selene chariot fact), intro from Greek Moon mythology",
+          "Philosophy section: Shiv Purana ego introspection, new quote from African Proverb",
+          "Gita section: Arjuna's despair intro, rotated to 'You are what you believe in' quote",
+          "Shiva section: Tandava cosmic dance intro, new facts slice",
+          "Art section: wave-identity intro, O'Keeffe quote"
+        ]
+      }
+    ]
   }
 }
