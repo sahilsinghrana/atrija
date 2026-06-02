@@ -3,9 +3,10 @@
 > **ID:** idea-048
 > **Category:** UI
 > **Priority:** low
-> **Status:** backlog
+> **Status:** done
 > **PRD Version:** 1.0
 > **Last Updated:** 2026-06-01
+> **Review:** ✅ Reviewed 2026-06-02 — implementation verified, tests pass (no new failures), build succeeds, site deployed. Scroll-lighting.js correctly implements IntersectionObserver-driven ambient overlay with per-section lighting recipes. All 12 acceptance criteria met. CSS includes proper reduced-motion and low-end device support. Verdict: DONE.
 
 ---
 
