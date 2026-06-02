@@ -4,7 +4,6 @@ import siteData from "../content/siteData.json";
 import content from "../content/content.json";
 import LetterCard from "../components/LetterCard.astro";
 import KoanCard from "../components/KoanCard.astro";
-import Guestbook from "../components/Guestbook.astro";
 
 const now = new Date();
 const start = new Date(now.getFullYear(), 0, 0);
@@ -174,11 +173,6 @@ const sections = [
        DAILY CONTEMPLATION (ZEN KOAN)
   ═══════════════════════════════════════ -->
   <KoanCard />
-
-  <!-- ═══════════════════════════════════════
-       VISITOR GUESTBOOK
-  ═══════════════════════════════════════ -->
-  <Guestbook />
 
   <!-- ═══════════════════════════════════════
        CHANGELOG
