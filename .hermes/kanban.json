@@ -2,28 +2,76 @@
   "columns": [
     {
       "id": "backlog",
-      "name": "\ud83d\udca1 Idea Backlog",
-      "tasks": []
+      "name": "💡 Idea Backlog",
+      "tasks": [
+        { "id": "idea-035", "title": "Wind-Swept Wheat Field", "description": "A field of golden wheat stalks rendered as InstancedMesh in the lower 3D scene, swaying organically in a procedural wind vertex shader. 800 stalks desktop / 300 mobile. Scroll position modulates wind intensity.", "category": "3D Elements", "priority": "medium" },
+        { "id": "idea-036", "title": "Particle Poetry Scroll Effect", "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.", "category": "Interactivity", "priority": "low" },
+        { "id": "idea-038", "title": "Starry Night Swirling Sky Shader", "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns. Must be implemented as standalone module, not direct scene-init.js modification.", "category": "Shaders", "priority": "medium" },
+        { "id": "idea-040", "title": "Enhanced Star System with Temperature-Based Colors", "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.", "category": "3D Elements", "priority": "low" },
+        { "id": "idea-041", "title": "Aurora Borealis Sky Band", "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. Depends on idea-032 (time-of-day).", "category": "3D Elements", "priority": "low" },
+        { "id": "idea-042", "title": "Interactive Flower Pollination Effect", "description": "Click on any sunflower or tulip in the 3D scene to release a burst of golden pollen particles. Nearby flowers briefly glow in response. Raycasting click detection with physics-based particle system.", "category": "Interactivity", "priority": "medium" },
+        { "id": "idea-044", "title": "Comet with Particle Trail", "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare intervals. MUST be implemented as standalone public/js/comet.js module.", "category": "3D Elements", "priority": "low" },
+        { "id": "idea-046", "title": "Village Street Lamp Lights", "description": "Warm glowing orbs positioned along the horizon line, representing village lights. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees.", "category": "3D Elements", "priority": "low" },
+        { "id": "idea-054", "title": "Adaptive performance quality scaler", "description": "A lightweight FPS monitor that dynamically scales 3D scene quality to maintain smooth performance. Tracks rolling average FPS over 60 frames. Quality level persisted in sessionStorage. Standalone module — no scene-init.js modifications.", "category": "Performance", "priority": "medium" },
+        { "id": "idea-055", "title": "Client-side content search overlay", "description": "A keyboard-triggered search overlay (press '/' or click a search icon) that indexes all facts, quotes, koans, and section intros. Fuzzy-matches visitor queries against text content. Pure client-side with a small JSON index built at page load.", "category": "UX", "priority": "low" },
+        { "id": "idea-056", "title": "Offline PWA Shell — Service Worker Cache", "description": "A tiny service worker that caches the HTML shell, main CSS, all public/js/ modules, and JSON content. First visit caches assets; subsequent visits load instantly from cache with network-first fallback for JSON content.", "category": "Performance", "priority": "low" },
+        { "id": "idea-057", "title": "Section Progress Navigator — Dot/Bar Scroll Indicator", "description": "A minimal vertical dot navigation bar fixed to the right edge showing all major sections. Current section highlighted via IntersectionObserver. Keyboard-navigable. On mobile, collapses to a subtle thin progress bar.", "category": "UX", "priority": "medium" },
+        { "id": "idea-058", "title": "Reader Mode — 3D Canvas Dimmer Toggle", "description": "A floating eye-icon button that toggles Reader Mode: the Three.js canvas fades to opacity 0.05, all text content gets enhanced readability styling. State persists in sessionStorage. Auto-enters Reader Mode when reduced-motion is detected.", "category": "Accessibility", "priority": "medium" }
+      ]
     },
     {
       "id": "red",
-      "name": "\ud83d\udd34 Red (Failing Test)",
+      "name": "🔴 Red (Failing Test)",
       "tasks": []
     },
     {
       "id": "green",
-      "name": "\ud83d\udfe2 Green (Implement)",
+      "name": "🟢 Green (Implement)",
       "tasks": []
     },
     {
       "id": "refactor",
-      "name": "\ud83d\udfe3 Refactor (Optimize)",
+      "name": "🟣 Refactor (Optimize)",
       "tasks": []
     },
     {
       "id": "done",
-      "name": "\u2705 Done",
-      "tasks": []
+      "name": "✅ Done",
+      "tasks": [
+        { "id": "idea-001", "title": "Add shooting star particles", "completedAt": "2026-05-15" },
+        { "id": "idea-002", "title": "Interactive constellation drawing", "completedAt": "2026-05-15" },
+        { "id": "idea-003", "title": "Moon phase API integration", "completedAt": "2026-05-16" },
+        { "id": "idea-005", "title": "Sunflower field parallax", "completedAt": "2026-05-16" },
+        { "id": "idea-006", "title": "Philosophy quote carousel", "completedAt": "2026-05-16" },
+        { "id": "idea-008", "title": "Daily generated philosophy facts", "completedAt": "2026-05-17" },
+        { "id": "idea-009", "title": "Loading Optimizations", "completedAt": "2026-05-20" },
+        { "id": "idea-010", "title": "Flute click — SVG bansuri + music notes", "completedAt": "2026-05-17" },
+        { "id": "idea-011", "title": "White 3D moon + glow", "completedAt": "2026-05-17" },
+        { "id": "idea-012", "title": "Diverse colorful tulips", "completedAt": "2026-05-18" },
+        { "id": "idea-013", "title": "Mobile tulip visibility fix", "completedAt": "2026-05-18" },
+        { "id": "idea-014", "title": "Remove speaker/audio toggle", "completedAt": "2026-05-18" },
+        { "id": "idea-015", "title": "ASCII moon brightness + shadow", "completedAt": "2026-05-18" },
+        { "id": "idea-016", "title": "Glitch shader fix", "completedAt": "2026-05-19" },
+        { "id": "idea-017", "title": "Blue color cast removal", "completedAt": "2026-05-19" },
+        { "id": "idea-018", "title": "Single-layer flower rendering", "completedAt": "2026-05-19" },
+        { "id": "idea-019", "title": "Realistic randomized tulips", "completedAt": "2026-05-20" },
+        { "id": "idea-020", "title": "Scroll-driven starry night sky parallax", "completedAt": "2026-05-20" },
+        { "id": "idea-022", "title": "Impressionist brushstroke cursor trail", "completedAt": "2026-05-21" },
+        { "id": "idea-023", "title": "Three.js 3D geometry for all scene elements", "completedAt": "2026-05-21" },
+        { "id": "idea-024", "title": "Code architecture refactoring", "completedAt": "2026-05-20" },
+        { "id": "idea-026", "title": "3D Cypress Tree Silhouettes", "completedAt": "2026-05-22" },
+        { "id": "idea-027", "title": "Interactive Firefly Swarm", "completedAt": "2026-05-22" },
+        { "id": "idea-028", "title": "Scroll-Driven Painting Reveal", "completedAt": "2026-05-22" },
+        { "id": "idea-029", "title": "Theme Color Scheme Switcher", "completedAt": "2026-05-23" },
+        { "id": "idea-037", "title": "Seasonal Scene Transitions", "completedAt": "2026-05-23" },
+        { "id": "idea-039", "title": "Detailed Moon Surface with Craters and Texture", "completedAt": "2026-05-23" },
+        { "id": "idea-043", "title": "Daily Zen Koan Content Section", "completedAt": "2026-05-24" },
+        { "id": "idea-048", "title": "Scroll-Synced Ambient Lighting System", "completedAt": "2026-05-24" },
+        { "id": "idea-050", "title": "Foreground moon — canvas painted artistic moon", "completedAt": "2026-05-24" },
+        { "id": "idea-051", "title": "Tulip botanical rewrite", "completedAt": "2026-05-25" },
+        { "id": "idea-052", "title": "Remove artist-specific references from codebase", "completedAt": "2026-05-25" },
+        { "id": "idea-053", "title": "Accessibility audit & core fixes", "completedAt": "2026-05-25" }
+      ]
     }
   ],
   "ideas": [
@@ -87,13 +135,13 @@
       "description": "Astro-native loading optimizations: client:idle hydration, inline critical CSS, modulepreload, progressive 3D layers, content-visibility, SVG compression, Nginx caching+gzip, reduced geometry, loader progress bar. v2 PRD with Astro-compatible patterns.",
       "category": "Performance",
       "priority": "high",
-      "status": "refactor",
+      "status": "done",
       "prd": "PRD-idea-009-loading-optimizations.md"
     },
     {
       "id": "idea-010",
-      "title": "Flute click \u2014 SVG bansuri + music notes",
-      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (\u266a\u266b\u266c). Flute animates in/out with spring easing.",
+      "title": "Flute click — SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "done",
@@ -120,7 +168,7 @@
     {
       "id": "idea-013",
       "title": "Mobile tulip visibility fix",
-      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0\u00d71.6).",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -129,7 +177,7 @@
     {
       "id": "idea-014",
       "title": "Remove speaker/audio toggle",
-      "description": "Remove the audio toggle button (\ud83d\udd07) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
       "category": "Audio",
       "priority": "medium",
       "status": "done",
@@ -246,7 +294,7 @@
     {
       "id": "idea-029",
       "title": "Theme Color Scheme Switcher",
-      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation \u2014 needs review before implementation.",
+      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation — needs review before implementation.",
       "category": "UI",
       "priority": "low",
       "status": "done",
@@ -255,16 +303,16 @@
     {
       "id": "idea-032",
       "title": "Dynamic Time-of-Day Atmosphere System",
-      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
       "category": "3D Elements",
       "priority": "medium",
-      "status": "red",
+      "status": "backlog",
       "prd": "PRD-idea-032-time-of-day-atmosphere.md"
     },
     {
       "id": "idea-034",
       "title": "Impressionist Visitor Guestbook",
-      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend \u2014 purely client-side.",
+      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend — purely client-side.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "deferred",
@@ -283,7 +331,7 @@
     {
       "id": "idea-036",
       "title": "Particle Poetry Scroll Effect",
-      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual \u2014 no audio.",
+      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual — no audio.",
       "category": "Interactivity",
       "priority": "low",
       "status": "backlog",
@@ -292,7 +340,7 @@
     {
       "id": "idea-037",
       "title": "Seasonal Scene Transitions",
-      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer \u2014 daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
+      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer — daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
       "category": "Content",
       "priority": "low",
       "status": "done",
@@ -310,7 +358,7 @@
     {
       "id": "idea-039",
       "title": "Detailed Moon Surface with Craters and Texture",
-      "description": "Enhance the foreground moon with artistic painted canvas rendering \u2014 brushstroke texture, crater details, impasto highlights, and warm halo glow. Background 3D moon unchanged.",
+      "description": "Enhance the foreground moon with artistic painted canvas rendering — brushstroke texture, crater details, impasto highlights, and warm halo glow. Background 3D moon unchanged.",
       "category": "3D Elements",
       "priority": "low",
       "status": "done",
@@ -373,7 +421,7 @@
     {
       "id": "idea-048",
       "title": "Scroll-Synced Ambient Lighting System",
-      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone \u2014 warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
+      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone — warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
       "category": "UI",
       "priority": "low",
       "status": "done",
@@ -381,8 +429,8 @@
     },
     {
       "id": "idea-050",
-      "title": "Foreground moon \u2014 canvas painted artistic moon",
-      "description": "Replaced ASCII moon with canvas-drawn artistic moon: warm golden-white radial gradient base, ~180 brushstroke dabs, crater patches with highlight rims, impasto strokes, soft halo glow. No phase shadow \u2014 always fully lit. Retina-aware canvas.",
+      "title": "Foreground moon — canvas painted artistic moon",
+      "description": "Replaced ASCII moon with canvas-drawn artistic moon: warm golden-white radial gradient base, ~180 brushstroke dabs, crater patches with highlight rims, impasto strokes, soft halo glow. No phase shadow — always fully lit. Retina-aware canvas.",
       "category": "UI",
       "priority": "high",
       "status": "done",
@@ -391,7 +439,7 @@
     {
       "id": "idea-051",
       "title": "Tulip botanical rewrite",
-      "description": "Complete rewrite of tulip drawing with correct proportions: stem thinned (0.035\u21920.018), leaves reduced to 6% canvas (were 18%), cup enlarged (0.22\u00d70.24\u21920.28\u00d70.30), petals simplified to teardrop shapes with proper cup silhouette. 25% large variants.",
+      "description": "Complete rewrite of tulip drawing with correct proportions: stem thinned (0.035→0.018), leaves reduced to 6% canvas (were 18%), cup enlarged (0.22×0.24→0.28×0.30), petals simplified to teardrop shapes with proper cup silhouette. 25% large variants.",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -413,52 +461,68 @@
       "category": "Accessibility",
       "priority": "high",
       "status": "done",
-      "tags": [
-        "a11y",
-        "keyboard",
-        "screen-reader",
-        "reduced-motion",
-        "ARIA"
-      ],
+      "tags": ["a11y", "keyboard", "screen-reader", "reduced-motion", "ARIA"],
       "effort": "2 sessions",
       "prd": null
     },
     {
       "id": "idea-054",
       "title": "Adaptive performance quality scaler",
-      "description": "A lightweight FPS monitor that dynamically scales 3D scene quality to maintain smooth performance. Tracks rolling average FPS over 60 frames. If FPS drops below 30: reduces star count by 40%, halves flower/wave segments, and disables firefly swarm. If FPS recovers above 50 for 5 seconds, restores quality tiers. Quality level persisted in sessionStorage so returning visitors with known-slow devices skip the measurement phase. Implemented as a standalone public/js/performance-scaler.js module that reads sceneConfig flags \u2014 no scene-init.js modifications.",
+      "description": "A lightweight FPS monitor that dynamically scales 3D scene quality to maintain smooth performance. Tracks rolling average FPS over 60 frames. If FPS drops below 30: reduces star count by 40%, halves flower/wave segments, and disables firefly swarm. If FPS recovers above 50 for 5 seconds, restores quality tiers. Quality level persisted in sessionStorage so returning visitors with known-slow devices skip the measurement phase. Implemented as a standalone public/js/performance-scaler.js module that reads sceneConfig flags — no scene-init.js modifications.",
       "category": "Performance",
       "priority": "medium",
       "status": "backlog",
-      "tags": [
-        "performance",
-        "FPS",
-        "mobile",
-        "adaptive",
-        "3D"
-      ],
+      "tags": ["performance", "FPS", "mobile", "adaptive", "3D"],
       "effort": "2-3 sessions",
       "prd": null
     },
     {
       "id": "idea-055",
       "title": "Client-side content search overlay",
-      "description": "A keyboard-triggered search overlay (press '/' or click a search icon) that indexes all facts, quotes, koans, and section intros from siteData.json and content.json. Fuzzy-matches visitor queries against text content and returns results grouped by theme (Moon, Philosophy, Gita, Shiva, Art). Each result shows the text snippet with highlighted match and a 'jump to section' link. Pure client-side with a small JSON index built at page load. No backend, no Three.js \u2014 a standalone public/js/content-search.js module with a floating search bar UI that respects the dark impressionist theme.",
+      "description": "A keyboard-triggered search overlay (press '/' or click a search icon) that indexes all facts, quotes, koans, and section intros from siteData.json and content.json. Fuzzy-matches visitor queries against text content and returns results grouped by theme (Moon, Philosophy, Gita, Shiva, Art). Each result shows the text snippet with highlighted match and a 'jump to section' link. Pure client-side with a small JSON index built at page load. No backend, no Three.js — a standalone public/js/content-search.js module with a floating search bar UI that respects the dark impressionist theme.",
       "category": "UX",
       "priority": "low",
       "status": "backlog",
-      "tags": [
-        "search",
-        "content",
-        "navigation",
-        "keyboard"
-      ],
+      "tags": ["search", "content", "navigation", "keyboard"],
+      "effort": "1-2 sessions",
+      "prd": null
+    },
+    {
+      "id": "idea-056",
+      "title": "Offline PWA Shell — Service Worker Cache",
+      "description": "A tiny service worker (public/sw.js) that caches the HTML shell, main CSS, loader CSS, all public/js/ modules, fonts.googleapis.com CSS responses, and siteData.json/content.json. First visit caches assets; subsequent visits load instantly from cache with a network-first fallback for JSON content. Registration code in BaseLayout.astro is:inline block. No backend changes. The sw.js uses a versioned cache name (atrija-vX) so future deploys bust the cache. Shows a subtle 'offline-ready' toast on first successful cache. Total added code: ~60 lines SW + ~15 lines registration.",
+      "category": "Performance",
+      "priority": "low",
+      "status": "backlog",
+      "tags": ["PWA", "offline", "caching", "service-worker", "performance"],
+      "effort": "1 session",
+      "prd": null
+    },
+    {
+      "id": "idea-057",
+      "title": "Section Progress Navigator — Dot/Bar Scroll Indicator",
+      "description": "A minimal vertical dot navigation bar fixed to the right edge of the viewport showing all major sections (Hero, Today, Moon, Philosophy, Gita, Shiva, Art, Footer). Current section is highlighted via IntersectionObserver. Dots are keyboard-navigable (Tab + Enter scrolls to section). On mobile, collapses to a subtle thin progress bar. Respects prefers-reduced-motion — disables smooth scroll on reduced motion. Pure CSS + standalone public/js/section-nav.js module. Zero Three.js impact. Fills a clear UX gap: the site has 7+ scroll sections with no way to know where you are or jump between sections.",
+      "category": "UX",
+      "priority": "medium",
+      "status": "backlog",
+      "tags": ["navigation", "accessibility", "scroll", "keyboard", "mobile"],
+      "effort": "1-2 sessions",
+      "prd": null
+    },
+    {
+      "id": "idea-058",
+      "title": "Reader Mode — 3D Canvas Dimmer Toggle",
+      "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute — automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
+      "category": "Accessibility",
+      "priority": "medium",
+      "status": "backlog",
+      "tags": ["accessibility", "reduced-motion", "battery", "UX", "toggle"],
       "effort": "1-2 sessions",
       "prd": null
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-01T14:53:00Z",
-  "lastReviewAt": "2026-06-02T19:00:00Z",
-  "lastReviewResult": "Implementation Reviewer (2026-06-02 19:00): Reviewed idea-034 (visitor guestbook). Implementation verified: code is clean, uses existing CSS vars, mobile-responsive, ARIA-compliant. Build \u2705 succeeds (1.88s). Site HTTP 200 \u2705. Tests: 52 passing, 76 failing (all pre-existing orphaned tests \u2014 time-of-day, scroll-parallax, loading, letters, shooting-stars). No new failures from guestbook. Minor bug: saveEntries() keeps oldest entries on storage-full (should keep newest). Verdict: \u2705 done. Idea-032 (red) confirmed: time-of-day.js exists on disk but is NOT loaded by any page \u2014 properly red. Idea-009 (refactor): loading optimization tests are orphaned (reference old scene-init.js patterns). Backlog: 10 ideas waiting. Flagged: 11 orphaned test files need cleanup."
+  "generatedAt": "2026-06-03T02:00:00Z",
+  "lastReviewAt": "2026-06-03T03:00:00Z",
+  "lastReviewResult": "Kanban Review (2026-06-03 03:00): Archived 33 done ideas to Done column. Moved 13 backlog ideas to Backlog column. Fixed idea-009 status from 'refactor'→'done' (refactoring plan confirms completion). Fixed idea-032 status from 'red'→'backlog' (was rolled back, not actively failing). Kept idea-034 as deferred. No duplicates found. No tulip/lily tasks were modified or deprioritized."
 }
