@@ -1274,3 +1274,70 @@ footer .footer-sanskrit {
     mix-blend-mode: normal;
   }
 }
+
+/* ═══════════════════════════════════════
+     SECTION PROGRESS NAVIGATOR (idea-057)
+   ═══════════════════════════════════════ */
+
+/* ── Dot Navigation (desktop) ── */
+#section-nav {
+  opacity: 0;
+  animation: sectionNavFadeIn 0.6s ease 1s forwards;
+}
+
+@keyframes sectionNavFadeIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(10px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+#section-nav:hover {
+  opacity: 1 !important;
+}
+
+/* Individual dot hover enhancement */
+#section-nav button:hover {
+  background: rgba(255, 213, 79, 0.3) !important;
+  border-color: var(--accent-gold) !important;
+  transform: scale(1.4) !important;
+}
+
+#section-nav button[aria-current="true"] {
+  box-shadow: 0 0 8px rgba(255, 213, 79, 0.4);
+}
+
+/* Focus-visible for keyboard navigation */
+#section-nav button:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+/* ── Progress Bar (mobile) ── */
+#section-progress-bar {
+  display: none;
+}
+
+#section-progress-fill {
+  border-radius: 0 2px 2px 0;
+}
+
+/* Print: hide nav */
+@media print {
+  #section-nav,
+  #section-progress-bar {
+    display: none !important;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #section-nav {
+    animation: none;
+    opacity: 1;
+  }
+  #section-nav button {
+    transition: none !important;
+  }
+  #section-progress-fill {
+    transition: none !important;
+  }
+}

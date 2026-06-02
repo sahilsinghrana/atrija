@@ -70,7 +70,8 @@
         { "id": "idea-050", "title": "Foreground moon — canvas painted artistic moon", "completedAt": "2026-05-24" },
         { "id": "idea-051", "title": "Tulip botanical rewrite", "completedAt": "2026-05-25" },
         { "id": "idea-052", "title": "Remove artist-specific references from codebase", "completedAt": "2026-05-25" },
-        { "id": "idea-053", "title": "Accessibility audit & core fixes", "completedAt": "2026-05-25" }
+        { "id": "idea-053", "title": "Accessibility audit & core fixes", "completedAt": "2026-05-25" },
+        { "id": "idea-057", "title": "Section Progress Navigator — Dot/Bar Scroll Indicator", "completedAt": "2026-06-03" }
       ]
     }
   ],
@@ -504,9 +505,10 @@
       "description": "A minimal vertical dot navigation bar fixed to the right edge of the viewport showing all major sections (Hero, Today, Moon, Philosophy, Gita, Shiva, Art, Footer). Current section is highlighted via IntersectionObserver. Dots are keyboard-navigable (Tab + Enter scrolls to section). On mobile, collapses to a subtle thin progress bar. Respects prefers-reduced-motion — disables smooth scroll on reduced motion. Pure CSS + standalone public/js/section-nav.js module. Zero Three.js impact. Fills a clear UX gap: the site has 7+ scroll sections with no way to know where you are or jump between sections.",
       "category": "UX",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "tags": ["navigation", "accessibility", "scroll", "keyboard", "mobile"],
       "effort": "1-2 sessions",
+      "completedAt": "2026-06-03",
       "prd": null
     },
     {
