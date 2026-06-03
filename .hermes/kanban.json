@@ -82,13 +82,6 @@
           "priority": "medium"
         },
         {
-          "id": "idea-059",
-          "title": "Keyboard Shortcuts Help Overlay",
-          "description": "Press '?' anywhere on the site to open a modal overlay listing all available keyboard shortcuts: '/' for content search, Tab/Shift+Tab for section navigation, Space/Enter for interactive elements, and Escape to dismiss. The modal is styled in the impressionist dark theme with gold accent borders. Includes a brief 'Keyboard Navigation' section explaining the site's keyboard-first design. Implemented as a standalone public/js/keyboard-help.js module with a focus-trap inside the modal for accessibility. Zero scene-init.js changes. Fills a clear UX gap: the site has multiple keyboard-driven features but zero discoverability for them.",
-          "category": "UX",
-          "priority": "medium"
-        },
-        {
           "id": "idea-060",
           "title": "Scroll-to-Top Progress Button",
           "description": "A floating circular button that fades in once the user scrolls past 300px. The button's border is an SVG circular progress ring that fills proportionally to scroll depth (0% at top, 100% at bottom). Clicking smoothly scrolls to the top. On mobile, the button is smaller and positioned to avoid overlapping the section progress bar. Respects prefers-reduced-motion — disables smooth scroll when reduced motion is active. Implemented as a standalone public/js/scroll-top.js module with pure CSS transitions for the fade-in/out. No scene-init.js changes. Provides both scroll-position awareness and quick navigation.",
@@ -297,6 +290,11 @@
           "id": "idea-055",
           "title": "Client-side content search overlay",
           "completedAt": "2026-06-03"
+        },
+        {
+          "id": "idea-059",
+          "title": "Keyboard Shortcuts Help Overlay",
+          "completedAt": "2026-06-04"
         }
       ]
     }
@@ -794,7 +792,7 @@
       "description": "Press '?' anywhere on the site to open a modal overlay listing all available keyboard shortcuts: '/' for content search, Tab/Shift+Tab for section navigation, Space/Enter for interactive elements, and Escape to dismiss. The modal is styled in the impressionist dark theme with gold accent borders. Includes a brief 'Keyboard Navigation' section explaining the site's keyboard-first design. Implemented as a standalone public/js/keyboard-help.js module with a focus-trap inside the modal for accessibility. Zero scene-init.js changes. Fills a clear UX gap: the site has multiple keyboard-driven features but zero discoverability for them.",
       "category": "UX",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
       "tags": [
         "keyboard",
         "UX",
@@ -803,7 +801,8 @@
         "modal"
       ],
       "effort": "1 session",
-      "prd": null
+      "prd": null,
+      "completedAt": "2026-06-04"
     },
     {
       "id": "idea-060",
