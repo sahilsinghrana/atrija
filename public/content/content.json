@@ -1,0 +1,137 @@
+{
+  "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
+  "meta": {
+    "version": "1.6.0",
+    "lastUpdated": "2026-06-03",
+    "updatedBy": "AI Agent (daily-mutate)",
+    "season": "summer \u2600\ufe0f"
+  },
+  "sections": {
+    "hero": {
+      "tagline": "Where <em>moonlit</em> silver meets the endless tide of thought"
+    },
+    "today": {
+      "heading": "The moonlit garden blooms in <em>silence</em>, yet speaks volumes to those who pause."
+    },
+    "moon": {
+      "label": "I. The Moon",
+      "heading": "Chandra's <em>quiet</em> dominion",
+      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas \u2014 the emotional mind \u2014 and its phases mirror the cycles of human desire and detachment.",
+      "imageCard": {
+        "themeIndex": 0,
+        "factIndex": 2
+      },
+      "facts": {
+        "themeIndex": 0,
+        "slice": [
+          3,
+          5
+        ]
+      },
+      "quote": {
+        "themeIndex": 0,
+        "quoteIndex": 1
+      }
+    },
+    "philosophy": {
+      "label": "II. The Waves",
+      "heading": "The ego: a <em>wave</em> believing itself alone",
+      "intro": "In the ocean of existence, arrogance is a wave that believes it is separate from the sea. It rises, it crashes, and it returns \u2014 never having been anything but water.",
+      "imageCard": {
+        "themeIndex": 1,
+        "factIndex": 1
+      },
+      "facts": {
+        "themeIndex": 1,
+        "slice": [
+          5,
+          7
+        ]
+      },
+      "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 2
+      }
+    },
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "The <em>soul</em> that cannot be slain",
+      "intro": "The Gita describes the soul as 'unborn, eternal, ever-existing, undying, and primeval.' It is not slain when the body is slain. This is not metaphor \u2014 it is the foundational axiom of Hindu philosophy.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 4
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          5,
+          7
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 3
+      }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "Shiva plays the <em>damaru</em> of creation",
+      "intro": "The Shiv Purana describes the damaru \u2014 Shiva's drum \u2014 as the source of all language and music. The first sound, Nada, is the vibration from which all creation emerges. Music is not entertainment; it is cosmology.",
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 5
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [
+          2,
+          4
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 4
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Beauty: the <em>impermanent</em> made eternal",
+      "intro": "The Japanese concept of 'wabi-sabi' finds beauty in imperfection \u2014 the cracked pot, the weathered stone, the fading flower. It teaches that transience is not the enemy of beauty but its essence.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 4
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          5,
+          7
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 1
+      }
+    }
+  },
+  "changelog": {
+    "version": "1.6.0",
+    "entries": [
+      {
+        "date": "2026-06-03",
+        "type": "daily-mutation",
+        "description": "Daily mutation #155: moonlit-silver colors (summer), Moon drift-away fact intro, wave-ocean identity theme, Gita soul axiom, Shiva damaru cosmos",
+        "changes": [
+          "Rotated color scheme to moonlit-silver (summer season match)",
+          "Updated hero tagline to: 'Where moonlit silver meets the endless tide of thought'",
+          "Updated today heading to: 'The moonlit garden blooms in silence, yet speaks volumes to those who pause.'",
+          "Moon section: new image card (Selene & Endymion love fact), Chandra Vedic mind intro, Gibran darker-side quote",
+          "Philosophy section: Vedantic arrogance-ocean intro, Pasteur prepared-mind quote, new facts on ego-driven action and Nietzsche warning",
+          "Gita section: battlefield introduction, self-controlled-soul quote, new image card (Karma/Jnana/Bhakti yoga)",
+          "Shiva section: damaru cosmology intro, dancer-dance-become-one quote, new facts on Neelakantha sacrifice and Parvati's Om",
+          "Art section: wabi-sabi beauty intro, Picasso purpose-of-art quote, new identity-wave and object-beauty facts"
+        ]
+      }
+    ]
+  }
+}
