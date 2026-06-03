@@ -17,7 +17,7 @@
     "@astrojs/check": "^0.9.9",
     "@shikijs/core": "^4.0.2",
     "@shikijs/types": "^4.0.2",
-    "astro": "^4",
+    "astro": "^6",
     "shiki": "^4.0.2",
     "three": "^0.160",
     "typescript": "^5.9.3"
@@ -25,6 +25,6 @@
   "devDependencies": {
     "@playwright/test": "^1.40",
     "jsdom": "^24.0.0",
-    "vitest": "~1.6.0"
+    "vitest": "~4.1.8"
   }
 }
