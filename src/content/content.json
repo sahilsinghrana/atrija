@@ -1,75 +1,135 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.5.1",
-    "lastUpdated": "2026-06-02",
+    "version": "1.6.0",
+    "lastUpdated": "2026-06-03",
     "updatedBy": "AI Agent (daily-mutate)",
-    "season": "summer ☀️"
+    "season": "summer \u2600\ufe0f"
   },
   "sections": {
     "hero": {
-      "tagline": "Beneath a sky of <em>swirling</em> dreams &amp; ancient verse"
+      "tagline": "Where <em>moonlit</em> silver meets the endless tide of thought"
     },
     "today": {
-      "heading": "Every wave returns to the <em>sea</em> from which it came."
+      "heading": "The moonlit garden blooms in <em>silence</em>, yet speaks volumes to those who pause."
     },
     "moon": {
       "label": "I. The Moon",
-      "heading": "Selene's <em>silver</em> chariot",
-      "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
-      "imageCard": {"themeIndex": 0, "factIndex": 0},
-      "facts": {"themeIndex": 0, "slice": [1, 3]},
-      "quote": {"themeIndex": 0, "quoteIndex": 3}
+      "heading": "Chandra's <em>quiet</em> dominion",
+      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas \u2014 the emotional mind \u2014 and its phases mirror the cycles of human desire and detachment.",
+      "imageCard": {
+        "themeIndex": 0,
+        "factIndex": 2
+      },
+      "facts": {
+        "themeIndex": 0,
+        "slice": [
+          3,
+          5
+        ]
+      },
+      "quote": {
+        "themeIndex": 0,
+        "quoteIndex": 1
+      }
     },
     "philosophy": {
       "label": "II. The Waves",
-      "heading": "Ego, arrogance &amp; the <em>ocean</em> of self",
-      "intro": "The Shiv Purana describes ego (ahamkara) as the first veil that separates the individual soul from Shiva — pure consciousness. To remove the ego is not to destroy the self but to discover its infinite nature.",
-      "imageCard": {"themeIndex": 1, "factIndex": 3},
-      "facts": {"themeIndex": 1, "slice": [2, 4]},
-      "quote": {"themeIndex": 1, "quoteIndex": 4}
+      "heading": "The ego: a <em>wave</em> believing itself alone",
+      "intro": "In the ocean of existence, arrogance is a wave that believes it is separate from the sea. It rises, it crashes, and it returns \u2014 never having been anything but water.",
+      "imageCard": {
+        "themeIndex": 1,
+        "factIndex": 1
+      },
+      "facts": {
+        "themeIndex": 1,
+        "slice": [
+          5,
+          7
+        ]
+      },
+      "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 2
+      }
     },
     "gita": {
       "label": "III. The Battlefield",
-      "heading": "Wisdom from the <em>Bhagavad</em> Gita",
-      "intro": "The Bhagavad Gita begins not with wisdom but with despair. Arjuna, the greatest warrior, drops his bow and says, 'I will not fight.' The scripture teaches that the darkest moment precedes the greatest clarity.",
-      "imageCard": {"themeIndex": 2, "factIndex": 1},
-      "facts": {"themeIndex": 2, "slice": [3, 5]},
-      "quote": {"themeIndex": 2, "quoteIndex": 0}
+      "heading": "The <em>soul</em> that cannot be slain",
+      "intro": "The Gita describes the soul as 'unborn, eternal, ever-existing, undying, and primeval.' It is not slain when the body is slain. This is not metaphor \u2014 it is the foundational axiom of Hindu philosophy.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 4
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          5,
+          7
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 3
+      }
     },
     "shiva": {
       "label": "IV. The Dance",
-      "heading": "Shiva &amp; the <em>cosmic</em> rhythm",
-      "intro": "The Shiv Purana teaches that the universe is Shiva's dance — the Tandava. Every atom moves in rhythm. Destruction is not the opposite of creation; it is its partner in an eternal dance.",
-      "imageCard": {"themeIndex": 3, "factIndex": 2},
-      "facts": {"themeIndex": 3, "slice": [0, 2]},
-      "quote": {"themeIndex": 3, "quoteIndex": 1}
+      "heading": "Shiva plays the <em>damaru</em> of creation",
+      "intro": "The Shiv Purana describes the damaru \u2014 Shiva's drum \u2014 as the source of all language and music. The first sound, Nada, is the vibration from which all creation emerges. Music is not entertainment; it is cosmology.",
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 5
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [
+          2,
+          4
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 4
+      }
     },
     "art": {
       "label": "V. The Canvas",
-      "heading": "Art, beauty &amp; the <em>act</em> of seeing",
-      "intro": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
-      "imageCard": {"themeIndex": 4, "factIndex": 6},
-      "facts": {"themeIndex": 4, "slice": [2, 4]},
-      "quote": {"themeIndex": 4, "quoteIndex": 2}
+      "heading": "Beauty: the <em>impermanent</em> made eternal",
+      "intro": "The Japanese concept of 'wabi-sabi' finds beauty in imperfection \u2014 the cracked pot, the weathered stone, the fading flower. It teaches that transience is not the enemy of beauty but its essence.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 4
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          5,
+          7
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 1
+      }
     }
   },
   "changelog": {
-    "version": "1.5.1",
+    "version": "1.6.0",
     "entries": [
       {
-        "date": "2026-06-02",
+        "date": "2026-06-03",
         "type": "daily-mutation",
-        "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana → Art & Beauty → Selene & The Moon → Ego & Arrogance → Bhagavad Gita",
+        "description": "Daily mutation #155: moonlit-silver colors (summer), Moon drift-away fact intro, wave-ocean identity theme, Gita soul axiom, Shiva damaru cosmos",
         "changes": [
-          "Rotated color scheme to lily-garden (summer season match)",
-          "Updated hero tagline to: 'Beneath a sky of swirling dreams & ancient verse'",
-          "Updated today heading to: 'Every wave returns to the sea from which it came.'",
-          "Moon section: new image card (Selene chariot fact), intro from Greek Moon mythology",
-          "Philosophy section: Shiv Purana ego introspection, new quote from African Proverb",
-          "Gita section: Arjuna's despair intro, rotated to 'You are what you believe in' quote",
-          "Shiva section: Tandava cosmic dance intro, new facts slice",
-          "Art section: wave-identity intro, O'Keeffe quote"
+          "Rotated color scheme to moonlit-silver (summer season match)",
+          "Updated hero tagline to: 'Where moonlit silver meets the endless tide of thought'",
+          "Updated today heading to: 'The moonlit garden blooms in silence, yet speaks volumes to those who pause.'",
+          "Moon section: new image card (Selene & Endymion love fact), Chandra Vedic mind intro, Gibran darker-side quote",
+          "Philosophy section: Vedantic arrogance-ocean intro, Pasteur prepared-mind quote, new facts on ego-driven action and Nietzsche warning",
+          "Gita section: battlefield introduction, self-controlled-soul quote, new image card (Karma/Jnana/Bhakti yoga)",
+          "Shiva section: damaru cosmology intro, dancer-dance-become-one quote, new facts on Neelakantha sacrifice and Parvati's Om",
+          "Art section: wabi-sabi beauty intro, Picasso purpose-of-art quote, new identity-wave and object-beauty facts"
         ]
       }
     ]

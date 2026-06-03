@@ -364,13 +364,13 @@
       "accent": "#80deea",
       "background": "#0d1117",
       "text": "#eceff1",
-      "mood": "serene",
+      "mood": "luminous",
       "shaderParams": {
-        "strokeDensity": 5.3,
-        "swirlFrequency": 13.8,
-        "colorIntensity": 1.16
+        "strokeDensity": 5.7,
+        "swirlFrequency": 14.2,
+        "colorIntensity": 1.21
       },
-      "seasons": ["winter", "spring"]
+      "seasons": ["winter", "spring", "summer"]
     }
   ],
   "changelog": {
