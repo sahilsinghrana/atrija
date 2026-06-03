@@ -75,18 +75,32 @@
           "priority": "low"
         },
         {
-          "id": "idea-057",
-          "title": "Section Progress Navigator — Dot/Bar Scroll Indicator",
-          "description": "A minimal vertical dot navigation bar fixed to the right edge showing all major sections. Current section highlighted via IntersectionObserver. Keyboard-navigable. On mobile, collapses to a subtle thin progress bar.",
+          "id": "idea-058",
+          "title": "Reader Mode — 3D Canvas Dimmer Toggle",
+          "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute — automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
+          "category": "Accessibility",
+          "priority": "medium"
+        },
+        {
+          "id": "idea-059",
+          "title": "Keyboard Shortcuts Help Overlay",
+          "description": "Press '?' anywhere on the site to open a modal overlay listing all available keyboard shortcuts: '/' for content search, Tab/Shift+Tab for section navigation, Space/Enter for interactive elements, and Escape to dismiss. The modal is styled in the impressionist dark theme with gold accent borders. Includes a brief 'Keyboard Navigation' section explaining the site's keyboard-first design. Implemented as a standalone public/js/keyboard-help.js module with a focus-trap inside the modal for accessibility. Zero scene-init.js changes. Fills a clear UX gap: the site has multiple keyboard-driven features but zero discoverability for them.",
           "category": "UX",
           "priority": "medium"
         },
         {
-          "id": "idea-058",
-          "title": "Reader Mode — 3D Canvas Dimmer Toggle",
-          "description": "A floating eye-icon button that toggles Reader Mode: the Three.js canvas fades to opacity 0.05, all text content gets enhanced readability styling. State persists in sessionStorage. Auto-enters Reader Mode when reduced-motion is detected.",
+          "id": "idea-060",
+          "title": "Scroll-to-Top Progress Button",
+          "description": "A floating circular button that fades in once the user scrolls past 300px. The button's border is an SVG circular progress ring that fills proportionally to scroll depth (0% at top, 100% at bottom). Clicking smoothly scrolls to the top. On mobile, the button is smaller and positioned to avoid overlapping the section progress bar. Respects prefers-reduced-motion — disables smooth scroll when reduced motion is active. Implemented as a standalone public/js/scroll-top.js module with pure CSS transitions for the fade-in/out. No scene-init.js changes. Provides both scroll-position awareness and quick navigation.",
+          "category": "UX",
+          "priority": "low"
+        },
+        {
+          "id": "idea-061",
+          "title": "Light Mode — prefers-color-scheme Support",
+          "description": "Respect the user's OS-level color scheme preference by providing a light/cream impressionist palette activated via @media (prefers-color-scheme: light). The light mode uses warm cream (#faf6f0) backgrounds, dark brown (#2a1f14) text, and softened gold accents — evoking sunlit canvas rather than night sky. All color values are CSS custom property overrides under the media query, so zero JS is required. The existing 3D scene remains unchanged (it's a dark sky scene). Text content, cards, navigation, and the loader all adapt. Enhances accessibility for users who experience eye strain in dark environments or simply prefer light themes.",
           "category": "Accessibility",
-          "priority": "medium"
+          "priority": "low"
         }
       ]
     },
@@ -773,10 +787,61 @@
       ],
       "effort": "1-2 sessions",
       "prd": null
+    },
+    {
+      "id": "idea-059",
+      "title": "Keyboard Shortcuts Help Overlay",
+      "description": "Press '?' anywhere on the site to open a modal overlay listing all available keyboard shortcuts: '/' for content search, Tab/Shift+Tab for section navigation, Space/Enter for interactive elements, and Escape to dismiss. The modal is styled in the impressionist dark theme with gold accent borders. Includes a brief 'Keyboard Navigation' section explaining the site's keyboard-first design. Implemented as a standalone public/js/keyboard-help.js module with a focus-trap inside the modal for accessibility. Zero scene-init.js changes. Fills a clear UX gap: the site has multiple keyboard-driven features but zero discoverability for them.",
+      "category": "UX",
+      "priority": "medium",
+      "status": "backlog",
+      "tags": [
+        "keyboard",
+        "UX",
+        "discoverability",
+        "accessibility",
+        "modal"
+      ],
+      "effort": "1 session",
+      "prd": null
+    },
+    {
+      "id": "idea-060",
+      "title": "Scroll-to-Top Progress Button",
+      "description": "A floating circular button that fades in once the user scrolls past 300px. The button's border is an SVG circular progress ring that fills proportionally to scroll depth (0% at top, 100% at bottom). Clicking smoothly scrolls to the top. On mobile, the button is smaller and positioned to avoid overlapping the section progress bar. Respects prefers-reduced-motion — disables smooth scroll when reduced motion is active. Implemented as a standalone public/js/scroll-top.js module with pure CSS transitions for the fade-in/out. No scene-init.js changes. Provides both scroll-position awareness and quick navigation.",
+      "category": "UX",
+      "priority": "low",
+      "status": "backlog",
+      "tags": [
+        "navigation",
+        "scroll",
+        "UX",
+        "mobile",
+        "progress"
+      ],
+      "effort": "1 session",
+      "prd": null
+    },
+    {
+      "id": "idea-061",
+      "title": "Light Mode — prefers-color-scheme Support",
+      "description": "Respect the user's OS-level color scheme preference by providing a light/cream impressionist palette activated via @media (prefers-color-scheme: light). The light mode uses warm cream (#faf6f0) backgrounds, dark brown (#2a1f14) text, and softened gold accents — evoking sunlit canvas rather than night sky. All color values are CSS custom property overrides under the media query, so zero JS is required. The existing 3D scene remains unchanged (it's a dark sky scene). Text content, cards, navigation, and the loader all adapt. Enhances accessibility for users who experience eye strain in dark environments or simply prefer light themes.",
+      "category": "Accessibility",
+      "priority": "low",
+      "status": "backlog",
+      "tags": [
+        "accessibility",
+        "color-scheme",
+        "CSS",
+        "light-mode",
+        "a11y"
+      ],
+      "effort": "1 session",
+      "prd": null
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-03T02:00:00Z",
-  "lastReviewAt": "2026-06-03T19:00:00Z",
-  "lastReviewResult": "Implementation Review (2026-06-03 19:00): Reviewed 1 new implementation \u2014 idea-055 Client-side Content Search Overlay (PASS). Code quality: clean 515-line standalone module, fuzzy search with scoring/dedup, ARIA attributes, keyboard nav, mobile CSS, reduced-motion support. Build succeeds (exit 0). 76 pre-existing test failures (unchanged, none related to idea-055). No new tests added (search is client-side DOM). Site deployed and live (HTTP 200). content-search.js correctly hashed and deployed as content-search-487ae0b2.js. No stuck ideas. No red/green/refactor items. Minor note: requestIdleCallback used without polyfill (pre-existing pattern in project). scene-init.js untouched."
+  "generatedAt": "2026-06-04T02:00:00Z",
+  "lastReviewAt": "2026-06-04T03:00:00Z",
+  "lastReviewResult": "Kanban Review (2026-06-04 03:00): Removed duplicate idea-057 (Section Progress Navigator) from backlog — already completed on 2026-06-03 and present in Done column. All other tasks verified: no duplicates, priorities correct, deferred items untouched, no tulip/lily tasks deprioritized, no Van Gogh references in any active task. Backlog: 14 ideas. Done: 28 ideas. Deferred: 1 idea. Red/Green/Refactor: empty. Board clean and aligned with impressionist aesthetic, 3D scene enhancement, performance, and UX goals."
 }
