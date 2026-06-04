@@ -1,8 +1,14 @@
 {
   "version": "1.8.1",
-  "lastUpdated": "2026-06-03T06:00:00Z",
-  "totalEntries": 33,
+  "lastUpdated": "2026-06-04T00:33:57.140049Z",
+  "totalEntries": 34,
   "dates": [
+    {
+      "date": "2026-06-04",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #155: sunflower colors (summer), Ptolemy moon-madness intro, Nietzsche monster-fighting warning, Gita Vishvarupa universal form, Shiva Kailash meditation, flute oldest instrument"
+    },
     {
       "date": "2026-06-03",
       "entries": 1,
@@ -13,13 +19,13 @@
       "date": "2026-06-02",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana → Art & Beauty → Selene & The Moon → Ego & Arrogance → Bhagavad Gita"
+      "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana \u2192 Art & Beauty \u2192 Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita"
     },
     {
       "date": "2026-06-01",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #152: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #152: sunflower colors (summer season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-31",
@@ -31,67 +37,67 @@
       "date": "2026-05-24",
       "entries": 2,
       "latestType": "feature",
-      "description": "the artist Letter Excerpts — daily rotating letter passages from the artist to Theo"
+      "description": "the artist Letter Excerpts \u2014 daily rotating letter passages from the artist to Theo"
     },
     {
       "date": "2026-05-23",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #143: lily-garden colors (spring season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #143: lily-garden colors (spring season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-22",
       "entries": 2,
       "latestType": "feature",
-      "description": "Dynamic Time-of-Day Atmosphere System — the 3D scene subtly shifts its ambient atmosphere based on visitor's local time with warm golden dawn, bright midday, rich sunset tones, or deep night. Background, lights, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases."
+      "description": "Dynamic Time-of-Day Atmosphere System \u2014 the 3D scene subtly shifts its ambient atmosphere based on visitor's local time with warm golden dawn, bright midday, rich sunset tones, or deep night. Background, lights, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases."
     },
     {
       "date": "2026-05-21",
       "entries": 2,
       "latestType": "feature",
-      "description": "the artist Biography Timeline — interactive scrollable timeline with 11 life milestones (1853–1890), category filtering (Life/Career/Art), and scroll-reveal animations"
+      "description": "the artist Biography Timeline \u2014 interactive scrollable timeline with 11 life milestones (1853\u20131890), category filtering (Life/Career/Art), and scroll-reveal animations"
     },
     {
       "date": "2026-05-20",
       "entries": 4,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #141: moonlit-silver colors (spring season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #141: moonlit-silver colors (spring season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-19",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #139: moonlit-silver colors, Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #139: moonlit-silver colors, Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-18",
       "entries": 3,
       "latestType": "feature",
-      "description": "Shooting stars — random celestial streaks with fading trails, every 3-7 seconds"
+      "description": "Shooting stars \u2014 random celestial streaks with fading trails, every 3-7 seconds"
     },
     {
       "date": "2026-05-17",
       "entries": 1,
       "latestType": "feature",
-      "description": "Scroll-driven starry night sky parallax — sky rotates and shifts as you scroll"
+      "description": "Scroll-driven starry night sky parallax \u2014 sky rotates and shifts as you scroll"
     },
     {
       "date": "2026-05-16",
       "entries": 2,
       "latestType": "feature",
-      "description": "Sunflower field parallax — 3 depth layers with scale/sway/opacity opacity variation"
+      "description": "Sunflower field parallax \u2014 3 depth layers with scale/sway/opacity opacity variation"
     },
     {
       "date": "2026-05-15",
       "entries": 9,
       "latestType": "feature",
-      "description": "Ambient music generator — procedural flute-like soundscape with Web Audio API"
+      "description": "Ambient music generator \u2014 procedural flute-like soundscape with Web Audio API"
     },
     {
       "date": "2026-05-14",
       "entries": 2,
       "latestType": "daily-mutation",
-      "description": "First daily mutation — Selene and the Moon theme with starry-night colors."
+      "description": "First daily mutation \u2014 Selene and the Moon theme with starry-night colors."
     }
   ]
 }
