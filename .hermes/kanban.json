@@ -75,13 +75,6 @@
           "priority": "low"
         },
         {
-          "id": "idea-060",
-          "title": "Scroll-to-Top Progress Button",
-          "description": "A floating circular button that fades in once the user scrolls past 300px. The button's border is an SVG circular progress ring that fills proportionally to scroll depth (0% at top, 100% at bottom). Clicking smoothly scrolls to the top. On mobile, the button is smaller and positioned to avoid overlapping the section progress bar. Respects prefers-reduced-motion — disables smooth scroll when reduced motion is active. Implemented as a standalone public/js/scroll-top.js module with pure CSS transitions for the fade-in/out. No scene-init.js changes. Provides both scroll-position awareness and quick navigation.",
-          "category": "UX",
-          "priority": "low"
-        },
-        {
           "id": "idea-061",
           "title": "Light Mode — prefers-color-scheme Support",
           "description": "Respect the user's OS-level color scheme preference by providing a light/cream impressionist palette activated via @media (prefers-color-scheme: light). The light mode uses warm cream (#faf6f0) backgrounds, dark brown (#2a1f14) text, and softened gold accents — evoking sunlit canvas rather than night sky. All color values are CSS custom property overrides under the media query, so zero JS is required. The existing 3D scene remains unchanged (it's a dark sky scene). Text content, cards, navigation, and the loader all adapt. Enhances accessibility for users who experience eye strain in dark environments or simply prefer light themes.",
