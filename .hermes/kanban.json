@@ -769,8 +769,8 @@
     },
     {
       "id": "idea-058",
-      "title": "Reader Mode — 3D Canvas Dimmer Toggle",
-      "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute — automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
+      "title": "Reader Mode \u2014 3D Canvas Dimmer Toggle",
+      "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute \u2014 automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
       "category": "Accessibility",
       "priority": "medium",
       "status": "done",
@@ -783,7 +783,10 @@
         "toggle"
       ],
       "effort": "1-2 sessions",
-      "prd": null
+      "prd": null,
+      "reviewedAt": "2026-06-04T19:00:00Z",
+      "reviewResult": "PASS",
+      "reviewNotes": "Reviewed 2026-06-04 19:00 — PASS. 320-line standalone module. Zero scene-init.js changes. sessionStorage persistence, reduced motion auto-enter, ARIA (aria-pressed, aria-label updates), focus-visible, mobile responsive, print hide, reduced motion disable all correctly implemented. CSS uses existing custom properties (--accent-gold, --text-base, etc.). Minor: duplicate CSS selector for html[data-reader-mode='true'] .section (lines 169 and 200) — works due to cascade but could be merged. Build succeeds. Site live (HTTP 200). No functional issues found."
     },
     {
       "id": "idea-059",
@@ -804,7 +807,7 @@
       "completedAt": "2026-06-04",
       "reviewedAt": "2026-06-04T06:00:00Z",
       "reviewResult": "PASS",
-      "reviewNotes": "Reviewed 2026-06-04 06:00 — PASS. 493-line standalone module. Zero scene-init.js changes. Focus trap, ARIA, reduced motion, mobile responsive all correctly implemented. CSS uses existing custom properties. Build succeeds. Site live (HTTP 200). Keyboard handler correctly skips input/textarea/select/contentEditable. No issues found."
+      "reviewNotes": "Reviewed 2026-06-04 19:00 (2nd pass) — PASS. Confirmed from earlier 06:00 review. 493-line standalone module. Zero scene-init.js changes. Focus trap, ARIA, reduced motion, mobile responsive all correctly implemented. CSS uses existing custom properties. Build succeeds. Site live (HTTP 200). No issues found."
     },
     {
       "id": "idea-060",
