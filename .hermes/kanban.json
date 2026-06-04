@@ -75,13 +75,6 @@
           "priority": "low"
         },
         {
-          "id": "idea-058",
-          "title": "Reader Mode — 3D Canvas Dimmer Toggle",
-          "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute — automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
-          "category": "Accessibility",
-          "priority": "medium"
-        },
-        {
           "id": "idea-060",
           "title": "Scroll-to-Top Progress Button",
           "description": "A floating circular button that fades in once the user scrolls past 300px. The button's border is an SVG circular progress ring that fills proportionally to scroll depth (0% at top, 100% at bottom). Clicking smoothly scrolls to the top. On mobile, the button is smaller and positioned to avoid overlapping the section progress bar. Respects prefers-reduced-motion — disables smooth scroll when reduced motion is active. Implemented as a standalone public/js/scroll-top.js module with pure CSS transitions for the fade-in/out. No scene-init.js changes. Provides both scroll-position awareness and quick navigation.",
@@ -294,6 +287,11 @@
         {
           "id": "idea-059",
           "title": "Keyboard Shortcuts Help Overlay",
+          "completedAt": "2026-06-04"
+        },
+        {
+          "id": "idea-058",
+          "title": "Reader Mode — 3D Canvas Dimmer Toggle",
           "completedAt": "2026-06-04"
         }
       ]
@@ -775,7 +773,8 @@
       "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute — automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
       "category": "Accessibility",
       "priority": "medium",
-      "status": "backlog",
+      "status": "done",
+      "completedAt": "2026-06-04",
       "tags": [
         "accessibility",
         "reduced-motion",
