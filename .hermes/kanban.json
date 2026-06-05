@@ -75,10 +75,10 @@
           "priority": "low"
         },
         {
-          "id": "idea-061",
-          "title": "Light Mode — prefers-color-scheme Support",
-          "description": "Respect the user's OS-level color scheme preference by providing a light/cream impressionist palette activated via @media (prefers-color-scheme: light). The light mode uses warm cream (#faf6f0) backgrounds, dark brown (#2a1f14) text, and softened gold accents — evoking sunlit canvas rather than night sky. All color values are CSS custom property overrides under the media query, so zero JS is required. The existing 3D scene remains unchanged (it's a dark sky scene). Text content, cards, navigation, and the loader all adapt. Enhances accessibility for users who experience eye strain in dark environments or simply prefer light themes.",
-          "category": "Accessibility",
+          "id": "idea-056",
+          "title": "Offline PWA Shell — Service Worker Cache",
+          "description": "A tiny service worker that caches the HTML shell, main CSS, all public/js/ modules, and JSON content. First visit caches assets; subsequent visits load instantly from cache with network-first fallback for JSON content.",
+          "category": "Performance",
           "priority": "low"
         }
       ]
@@ -300,6 +300,11 @@
           "id": "idea-058",
           "title": "Reader Mode — 3D Canvas Dimmer Toggle",
           "completedAt": "2026-06-04"
+        },
+        {
+          "id": "idea-061",
+          "title": "Light Mode — prefers-color-scheme Support",
+          "completedAt": "2026-06-05"
         }
       ]
     }
@@ -822,7 +827,8 @@
       "description": "Respect the user's OS-level color scheme preference by providing a light/cream impressionist palette activated via @media (prefers-color-scheme: light). The light mode uses warm cream (#faf6f0) backgrounds, dark brown (#2a1f14) text, and softened gold accents — evoking sunlit canvas rather than night sky. All color values are CSS custom property overrides under the media query, so zero JS is required. The existing 3D scene remains unchanged (it's a dark sky scene). Text content, cards, navigation, and the loader all adapt. Enhances accessibility for users who experience eye strain in dark environments or simply prefer light themes.",
       "category": "Accessibility",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
+      "completedAt": "2026-06-05",
       "tags": [
         "accessibility",
         "color-scheme",
