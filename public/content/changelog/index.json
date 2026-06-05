@@ -1,8 +1,14 @@
 {
-  "version": "1.8.1",
-  "lastUpdated": "2026-06-04T00:33:57.140049Z",
-  "totalEntries": 34,
+  "version": "1.8.2",
+  "lastUpdated": "2026-06-05T06:00:00Z",
+  "totalEntries": 35,
   "dates": [
+    {
+      "date": "2026-06-05",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #156: starry-night colors (summer), lunar-tulip meditation, lily non-competition, Gita impermanence, Shiva silence-dance, lily-sky mirror"
+    },
     {
       "date": "2026-06-04",
       "entries": 1,
@@ -37,67 +43,55 @@
       "date": "2026-05-24",
       "entries": 2,
       "latestType": "feature",
-      "description": "the artist Letter Excerpts \u2014 daily rotating letter passages from the artist to Theo"
+      "description": "Letter Excerpts \u2014 daily rotating letter passages"
     },
     {
       "date": "2026-05-23",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #143: lily-garden colors (spring season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
+      "description": "Daily mutation #143: lily-garden colors (spring season)"
     },
     {
       "date": "2026-05-22",
       "entries": 2,
       "latestType": "feature",
-      "description": "Dynamic Time-of-Day Atmosphere System \u2014 the 3D scene subtly shifts its ambient atmosphere based on visitor's local time with warm golden dawn, bright midday, rich sunset tones, or deep night. Background, lights, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases."
+      "description": "Dynamic Time-of-Day Atmosphere System"
     },
     {
       "date": "2026-05-21",
       "entries": 2,
       "latestType": "feature",
-      "description": "the artist Biography Timeline \u2014 interactive scrollable timeline with 11 life milestones (1853\u20131890), category filtering (Life/Career/Art), and scroll-reveal animations"
+      "description": "Biography Timeline \u2014 interactive scrollable timeline"
     },
     {
       "date": "2026-05-20",
       "entries": 4,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #141: moonlit-silver colors (spring season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
+      "description": "Daily mutation #141: moonlit-silver colors (spring season)"
     },
     {
       "date": "2026-05-19",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #139: moonlit-silver colors, Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
+      "description": "Daily mutation #139: moonlit-silver colors"
     },
     {
       "date": "2026-05-18",
       "entries": 3,
       "latestType": "feature",
-      "description": "Shooting stars \u2014 random celestial streaks with fading trails, every 3-7 seconds"
+      "description": "Shooting stars \u2014 random celestial streaks with fading trails"
     },
     {
       "date": "2026-05-17",
       "entries": 1,
       "latestType": "feature",
-      "description": "Scroll-driven starry night sky parallax \u2014 sky rotates and shifts as you scroll"
+      "description": "Scroll-driven starry night sky parallax"
     },
     {
       "date": "2026-05-16",
       "entries": 2,
       "latestType": "feature",
-      "description": "Sunflower field parallax \u2014 3 depth layers with scale/sway/opacity opacity variation"
-    },
-    {
-      "date": "2026-05-15",
-      "entries": 9,
-      "latestType": "feature",
-      "description": "Ambient music generator \u2014 procedural flute-like soundscape with Web Audio API"
-    },
-    {
-      "date": "2026-05-14",
-      "entries": 2,
-      "latestType": "daily-mutation",
-      "description": "First daily mutation \u2014 Selene and the Moon theme with starry-night colors."
+      "description": "Sunflower field parallax \u2014 3 depth layers"
     }
   ]
 }
