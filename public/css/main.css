@@ -1673,3 +1673,321 @@ footer .footer-sanskrit {
     transition: none;
   }
 }
+
+/* ═══════════════════════════════════════
+   LIGHT MODE — prefers-color-scheme: light
+   Warm cream impressionist palette.
+   3D scene remains dark (canvas overlay).
+   ═══════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Surfaces: warm cream palette */
+    --bg: #faf6f0;
+    --bg-surface: rgba(42, 31, 20, 0.03);
+    --bg-card: rgba(42, 31, 20, 0.04);
+    --bg-card-hover: rgba(42, 31, 20, 0.07);
+    --border: rgba(42, 31, 20, 0.1);
+    --border-accent: rgba(180, 140, 40, 0.3);
+
+    /* Text: dark brown tones */
+    --text-primary: #2a1f14;
+    --text-secondary: #5a4e40;
+    --text-tertiary: #8a7e70;
+    --text-quote: #3a2f24;
+
+    /* Accents: softened gold/earth tones */
+    --accent-gold: #b48c28;
+    --accent-gold-dim: rgba(180, 140, 40, 0.08);
+    --accent-blue: #3a8ab5;
+    --accent-coral: #c4603a;
+    --accent-violet: #8a5ab0;
+    --sage: #4a9a90;
+  }
+
+  /* Frosted section backdrop → warm cream tint */
+  .section {
+    background: rgba(250, 246, 240, 0.7);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Hero radial backdrop: cream instead of dark */
+  .hero-title-wrap::before {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(250, 246, 240, 0.8) 25%,
+      transparent 72%
+    );
+  }
+
+  /* Title gradient: deeper gold on light bg */
+  .logo-sanskrit {
+    background: linear-gradient(
+      160deg,
+      #9a7400 0%,
+      #b48c28 25%,
+      #d4a840 50%,
+      #b48c28 75%,
+      #9a7400 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 1px 6px rgba(180, 140, 40, 0.4));
+  }
+
+  .logo-subtitle {
+    color: rgba(180, 140, 40, 0.7);
+  }
+
+  .logo-tagline {
+    color: #4a3e30;
+    text-shadow: none;
+  }
+
+  .logo-tagline em {
+    color: var(--accent-gold);
+  }
+
+  /* Section heading overrides keep accent colors — they adapt via vars */
+
+  /* Body text: dark brown */
+  .section > .section-inner > p {
+    color: #5a4e40;
+  }
+
+  /* Scroll + click hints */
+  .hero .scroll-hint,
+  .hero .click-hint {
+    color: #5a4e40;
+    text-shadow: none;
+  }
+
+  /* Divider gradient in hero */
+  .hero::after {
+    background: linear-gradient(to bottom, var(--accent-gold), transparent);
+    opacity: 0.2;
+  }
+
+  /* Image card overlay → light gradient */
+  .image-card .card-bg::after {
+    background: linear-gradient(
+      180deg,
+      rgba(250, 246, 240, 0.55) 0%,
+      rgba(250, 246, 240, 0.82) 35%,
+      rgba(250, 246, 240, 0.96) 70%,
+      rgba(250, 246, 240, 0.99) 100%
+    );
+  }
+
+  .image-card .card-content p {
+    color: #2a1f14;
+    text-shadow: none;
+  }
+
+  .image-card .card-content .source {
+    color: rgba(42, 31, 20, 0.65);
+    text-shadow: none;
+  }
+
+  /* Fact cards: warm tinted bg */
+  .fact-card {
+    background: rgba(42, 31, 20, 0.04);
+    border-color: rgba(42, 31, 20, 0.09);
+  }
+
+  .fact-card:hover {
+    background: rgba(42, 31, 20, 0.07);
+    border-color: rgba(42, 31, 20, 0.14);
+  }
+
+  .fact-card p {
+    color: #3a2f24;
+  }
+
+  .fact-card .source {
+    color: rgba(42, 31, 20, 0.5);
+  }
+
+  /* Quote block */
+  .quote-block::before {
+    color: var(--accent-gold);
+    opacity: 0.18;
+  }
+
+  /* Section label line */
+  .section-label {
+    color: var(--accent-gold);
+  }
+
+  /* Changelog heading */
+  #changelog h2 {
+    color: #4a3e30;
+  }
+
+  /* AI banner: warm tint */
+  .ai-banner {
+    background: linear-gradient(
+      90deg,
+      rgba(180, 140, 40, 0.1) 0%,
+      rgba(58, 138, 181, 0.06) 50%,
+      rgba(138, 90, 176, 0.08) 100%
+    );
+    border-bottom-color: rgba(180, 140, 40, 0.25);
+    color: #4a3e30;
+  }
+
+  .ai-banner-text strong {
+    color: #9a7400;
+  }
+
+  .ai-banner-pulse {
+    background: var(--accent-gold);
+    box-shadow: 0 0 6px rgba(180, 140, 40, 0.6);
+  }
+
+  /* Footer text inherits --text-primary via vars */
+
+  /* Search overlay (light mode) */
+  #search-overlay {
+    background: rgba(250, 246, 240, 0.95);
+  }
+
+  .search-input-wrap {
+    background: rgba(42, 31, 20, 0.06);
+    border-color: rgba(42, 31, 20, 0.14);
+  }
+
+  .search-input-wrap:focus-within {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 3px rgba(180, 140, 40, 0.15);
+  }
+
+  #search-input {
+    color: #2a1f14;
+  }
+
+  #search-input::placeholder {
+    color: #9a8e80;
+  }
+
+  .search-input-icon,
+  .search-input-clear {
+    filter: none;
+  }
+
+  .search-results-count {
+    color: #8a7e70;
+  }
+
+  .search-result-item:hover {
+    background: rgba(42, 31, 20, 0.05);
+  }
+
+  .search-result-section {
+    color: #8a7e70;
+  }
+
+  .search-result-text {
+    color: #4a3e30;
+  }
+
+  .search-result-jump {
+    color: #8a7e70;
+  }
+
+  .search-empty {
+    color: #8a7e70;
+  }
+
+  /* Reader mode dimmer text inherits via vars */
+
+  /* Keyboard help overlay (light mode) */
+  #keyboard-help-overlay {
+    background: rgba(250, 246, 240, 0.95);
+  }
+
+  .kh-table td {
+    color: #4a3e30;
+    border-bottom-color: rgba(42, 31, 20, 0.08);
+  }
+
+  .kh-close-row {
+    border-top-color: rgba(42, 31, 20, 0.08);
+  }
+
+  /* Progress nav dots on light bg */
+  .progress-dot {
+    background: rgba(42, 31, 20, 0.2);
+  }
+
+  .progress-dot.active {
+    background: var(--accent-gold);
+  }
+
+  /* Theme switcher on light bg */
+  .theme-switcher-panel {
+    background: rgba(250, 246, 240, 0.96);
+    border-color: rgba(42, 31, 20, 0.1);
+  }
+
+  .theme-switcher-label {
+    color: #8a7e70;
+  }
+
+  .theme-switcher-pill {
+    border-color: rgba(42, 31, 20, 0.12);
+  }
+
+  .theme-switcher-pill:hover {
+    background: rgba(42, 31, 20, 0.06);
+    border-color: rgba(42, 31, 20, 0.2);
+  }
+
+  .theme-emoji {
+    filter: none;
+  }
+
+  .theme-label {
+    color: #4a3e30;
+  }
+
+  .theme-swatch {
+    border-color: rgba(42, 31, 20, 0.15);
+  }
+
+  /* Changelog section on light bg */
+  .changelog-date-header {
+    color: #8a7e70;
+    border-bottom-color: rgba(42, 31, 20, 0.08);
+  }
+
+  .changelog-date-header:hover {
+    background: rgba(42, 31, 20, 0.03);
+    color: #5a4e40;
+  }
+
+  .changelog-entry-time {
+    color: #9a8e80;
+  }
+
+  .changelog-entry-description {
+    color: #4a3e30;
+  }
+
+  .changelog-change {
+    color: #5a4e40;
+  }
+
+  .changelog-change::before {
+    color: var(--accent-gold);
+  }
+
+  .changelog-load-more {
+    color: var(--accent-gold);
+    border-color: rgba(180, 140, 40, 0.2);
+  }
+
+  .changelog-load-more:hover {
+    background: rgba(180, 140, 40, 0.08);
+  }
+}

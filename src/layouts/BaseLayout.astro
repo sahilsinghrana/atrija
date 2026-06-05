@@ -66,6 +66,13 @@ const { title = "अत्रिज", description = "An impressionist journey th
       background: linear-gradient(180deg, #0a0a1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0a1a 100%);
     }
 
+    /* Light mode: warm cream background for body/canvas container */
+    @media (prefers-color-scheme: light) {
+      body, #canvas-container {
+        background: linear-gradient(180deg, #faf6f0 0%, #f5f0e8 30%, #f0ebe0 60%, #faf6f0 100%);
+      }
+    }
+
     /* ── Accessibility: Skip Navigation ── */
     .skip-nav-link {
       position: absolute;

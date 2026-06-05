@@ -60,3 +60,23 @@
   75%  { content: '...'; }
   100% { content: ''; }
 }
+
+/* ── Light mode loader ── */
+@media (prefers-color-scheme: light) {
+  #loader {
+    background: #faf6f0;
+  }
+  #loader .loader-ring {
+    border-color: rgba(180, 140, 40, 0.2);
+    border-top-color: #b48c28;
+  }
+  #loader .loader-text {
+    color: rgba(90, 78, 64, 0.6);
+  }
+  #loader .loader-progress {
+    background: rgba(180, 140, 40, 0.12);
+  }
+  #loader .loader-progress-bar {
+    background: linear-gradient(90deg, rgba(180, 140, 40, 0.4), #b48c28);
+  }
+}
