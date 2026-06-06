@@ -1,0 +1,57 @@
+{
+  "themes": [
+    {
+      "id": "test-theme",
+      "title": "Test Theme",
+      "category": "test",
+      "facts": [
+        { "text": "A valid fact.", "source": "Test", "element": "stars" },
+        { "text": "Another fact.", "source": "Test", "element": "moon" },
+        { "text": "Third fact.", "source": "Test", "element": "waves" }
+      ],
+      "quotes": [
+        "Quote one.",
+        "Quote two."
+      ]
+    },
+    {
+      "id": "second-theme",
+      "title": "Second Theme",
+      "category": "philosophy",
+      "facts": [
+        { "text": "Fact from second theme.", "source": "Source", "element": "flute" }
+      ],
+      "quotes": [
+        "Quote from second."
+      ]
+    }
+  ],
+  "colorSchemes": [
+    {
+      "name": "test-scheme",
+      "primary": "#1a237e",
+      "secondary": "#ffd54f",
+      "accent": "#4fc3f7",
+      "background": "#0a0a1a",
+      "text": "#e8e8f0",
+      "mood": "contemplative",
+      "shaderParams": {
+        "strokeDensity": 6.6,
+        "swirlFrequency": 15.7,
+        "colorIntensity": 1.51
+      },
+      "seasons": ["winter"]
+    }
+  ],
+  "changelog": {
+    "version": "1.0.0",
+    "entries": [
+      {
+        "date": "2026-01-01",
+        "type": "initial",
+        "description": "Initial creation.",
+        "changes": ["Created site."]
+      }
+    ]
+  }
+}

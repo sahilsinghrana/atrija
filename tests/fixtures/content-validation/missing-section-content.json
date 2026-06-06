@@ -1,0 +1,16 @@
+{
+  "meta": { "version": "1.0.0" },
+  "sections": {
+    "hero": { "tagline": "Test" },
+    "today": { "heading": "Today" },
+    "moon": {
+      "label": "I. The Moon",
+      "heading": "Test",
+      "intro": "Test.",
+      "imageCard": { "themeIndex": 0, "factIndex": 0 },
+      "facts": { "themeIndex": 0, "slice": [0, 2] },
+      "quote": { "themeIndex": 0, "quoteIndex": 0 }
+    }
+  },
+  "changelog": { "version": "1.0.0", "entries": [] }
+}

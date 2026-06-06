@@ -1,0 +1,25 @@
+{
+  "themes": [
+    {
+      "id": "test-theme",
+      "title": "Test Theme",
+      "category": "test",
+      "facts": [
+        { "text": "A valid fact.", "source": "Test", "element": "stars" }
+      ],
+      "quotes": ["Quote one."]
+    }
+  ],
+  "colorSchemes": [
+    {
+      "name": "bad-scheme",
+      "primary": "not-a-color",
+      "secondary": "#ffd54f",
+      "accent": "#4fc3f7",
+      "background": "#0a0a1a",
+      "text": "#e8e8f0",
+      "mood": "test",
+      "seasons": ["winter"]
+    }
+  ]
+}

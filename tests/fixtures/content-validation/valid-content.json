@@ -1,0 +1,48 @@
+{
+  "meta": { "version": "1.0.0", "lastUpdated": "2026-01-01", "updatedBy": "test", "season": "winter" },
+  "sections": {
+    "hero": { "tagline": "Test <em>tagline</em>" },
+    "today": { "heading": "Today's <em>heading</em>" },
+    "moon": {
+      "label": "I. The Moon",
+      "heading": "Test <em>heading</em>",
+      "intro": "Test intro.",
+      "imageCard": { "themeIndex": 0, "factIndex": 1 },
+      "facts": { "themeIndex": 0, "slice": [0, 2] },
+      "quote": { "themeIndex": 0, "quoteIndex": 0 }
+    },
+    "philosophy": {
+      "label": "II. The Waves",
+      "heading": "Test <em>heading</em>",
+      "intro": "Test intro.",
+      "imageCard": { "themeIndex": 1, "factIndex": 0 },
+      "facts": { "themeIndex": 0, "slice": [1, 3] },
+      "quote": { "themeIndex": 1, "quoteIndex": 0 }
+    },
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "Test <em>heading</em>",
+      "intro": "Test intro.",
+      "imageCard": { "themeIndex": 0, "factIndex": 0 },
+      "facts": { "themeIndex": 1, "slice": [0, 1] },
+      "quote": { "themeIndex": 0, "quoteIndex": 1 }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "Test <em>heading</em>",
+      "intro": "Test intro.",
+      "imageCard": { "themeIndex": 0, "factIndex": 2 },
+      "facts": { "themeIndex": 0, "slice": [0, 3] },
+      "quote": { "themeIndex": 0, "quoteIndex": 0 }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Test <em>heading</em>",
+      "intro": "Test intro.",
+      "imageCard": { "themeIndex": 1, "factIndex": 0 },
+      "facts": { "themeIndex": 1, "slice": [0, 1] },
+      "quote": { "themeIndex": 1, "quoteIndex": 0 }
+    }
+  },
+  "changelog": { "version": "1.0.0", "entries": [] }
+}

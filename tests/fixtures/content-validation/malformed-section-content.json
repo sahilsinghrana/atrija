@@ -1,0 +1,14 @@
+{
+  "themes": [
+    {
+      "id": "test-theme",
+      "title": "Test Theme",
+      "category": "test",
+      "facts": [
+        { "text": "A valid fact.", "source": "Test", "element": "stars" }
+      ],
+      "quotes": ["Quote one."]
+    }
+  ],
+  "colorSchemes": []
+}
