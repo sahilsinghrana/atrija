@@ -191,10 +191,7 @@ function updateAllSections(content, siteData, dayOfYear) {
     "philosophy",
     "gita",
     "shiva",
-    "ego",
-    "tulips",
-    "sunflowers",
-    "flute",
+    "art",
   ];
   const headingVerbs = [
     "reveals",
