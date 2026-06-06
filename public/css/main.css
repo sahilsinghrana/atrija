@@ -1991,3 +1991,55 @@ footer .footer-sanskrit {
     background: rgba(180, 140, 40, 0.08);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Adaptive Performance Quality Scaler (idea-054)
+   ─ data-quality="high|medium|low" on <html>
+   ─ Scales visual complexity based on real-time FPS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Medium Quality: Reduce decorative effects ── */
+html[data-quality="medium"] .quote-card {
+  box-shadow: none;
+}
+
+html[data-quality="medium"] .image-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+html[data-quality="medium"] .fact-card {
+  box-shadow: none;
+}
+
+html[data-quality="medium"] .section {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* ── Low Quality: Minimal effects for best performance ── */
+html[data-quality="low"] .quote-card,
+html[data-quality="low"] .fact-card,
+html[data-quality="low"] .image-card {
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html[data-quality="low"] .section {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgba(8, 8, 15, 0.95);
+}
+
+html[data-quality="low"] .reveal,
+html[data-quality="low"] .reveal-left,
+html[data-quality="low"] .reveal-scale {
+  transition-duration: 0.01ms !important;
+}
+
+/* ── Low Quality: Simplify light mode ── */
+@media (prefers-color-scheme: light) {
+  html[data-quality="low"] .section {
+    background: rgba(250, 246, 240, 0.97);
+  }
+}
