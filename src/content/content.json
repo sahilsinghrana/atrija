@@ -1,8 +1,8 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.2",
-    "lastUpdated": "2026-06-05",
+    "version": "1.8.3",
+    "lastUpdated": "2026-06-07",
     "updatedBy": "AI Agent (daily-mutate)",
     "season": "summer ☀️"
   },
@@ -11,102 +11,87 @@
       "tagline": "Where starlight whispers through the <em>swirling</em> firmament"
     },
     "today": {
-      "heading": "What the <em>Bhagavad</em> teaches today"
+      "heading": "The <em>summer</em> of the soul — June's golden invitation"
     },
     "moon": {
       "label": "I. The Moon",
-      "heading": "Chandra's <em>ancient</em> light upon the tide",
-      "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
+      "heading": "The dark side <em>no one</em> sees",
+      "intro": "The Moon rotates synchronously with its orbit — we always see the same face. There is a side of us the world never sees, a dark side that holds its own quiet truths. What hidden face do you turn away from the light?",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 3
+        "factIndex": 10
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [
-          1,
-          3
-        ]
+        "slice": [5, 7]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 0
+        "quoteIndex": 2
       }
     },
     "philosophy": {
       "label": "II. The Waves",
-      "heading": "The ego: <em>dust</em> that thinks itself a mountain",
-      "intro": "True art requires the death of the ego. The painter who paints for fame paints nothing true. The musician who plays for applause hears nothing real. Creation begins where the self ends.",
+      "heading": "The river does not <em>boast</em> of the ocean",
+      "intro": "Humility is not the denial of one's abilities but the quiet recognition that all gifts flow through us, not from us. The ego builds castles on sand — impressive in structure, unable to withstand the tide of truth.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 3
+        "factIndex": 11
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [
-          0,
-          2
-        ]
+        "slice": [2, 4]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 4
+        "quoteIndex": 3
       }
     },
     "gita": {
       "label": "III. The Battlefield",
-      "heading": "The <em>garment</em> worn for a season, then cast off",
-      "intro": "The Bhagavad Gita begins not with wisdom but with despair. Arjuna, the greatest warrior, drops his bow and says, 'I will not fight.' The scripture teaches that the darkest moment precedes the greatest clarity.",
+      "heading": "The war within — <em>dharma</em> versus desire",
+      "intro": "Arjuna's crisis on the battlefield is not about war — it is about identity. Krishna's answer transcends the personal: you are the eternal witness, not the actor. The battle is dharma itself, fought in every human heart.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 5
+        "factIndex": 10
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [
-          3,
-          5
-        ]
+        "slice": [5, 7]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 1
+        "quoteIndex": 4
       }
     },
     "shiva": {
       "label": "IV. The Dance",
-      "heading": "Between two eternities of <em>stillness</em>, the dance",
-      "intro": "The Shiv Purana describes the damaru — Shiva's drum — as the source of all language and music. The first sound, Nada, is the vibration from which all creation emerges. Music is not entertainment; it is cosmology.",
+      "heading": "Time as <em>jewel</em> in matted locks",
+      "intro": "The crescent moon adorning Shiva's head is not mere ornament — it is the measure of time itself, waxing and waning. He wears time as a jewel, showing that for the awakened mind, time is not a prison but an adornment.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 4
+        "factIndex": 11
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [
-          0,
-          2
-        ]
+        "slice": [5, 7]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 4
+        "quoteIndex": 5
       }
     },
     "art": {
       "label": "V. The Canvas",
-      "heading": "The alchemy of <em>perception</em>: making the invisible seen",
-      "intro": "Waves are the ocean's way of communicating with the shore. Each one is unique, yet all are the same water. Identity is like a wave — real in its moment, eternal in its substance.",
+      "heading": "Bridges across the <em>abyss</em> of silence",
+      "intro": "Color is not a property of objects but a conversation between light and perception. The same tulip is red, orange, and gold depending on the hour. Reality is a collaboration between the world and the eye.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 7
+        "factIndex": 10
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [
-          2,
-          4
-        ]
+        "slice": [2, 4]
       },
       "quote": {
         "themeIndex": 4,
@@ -115,7 +100,24 @@
     }
   },
   "changelog": {
-    "version": "1.0.0",
-    "entries": []
+    "version": "1.8.3",
+    "entries": [
+      {
+        "date": "2026-06-07",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #158: sunflower colors (summer season), new facts/quotes across all themes, section intros refreshed, content rotated",
+        "changes": [
+          "Added 2 new facts to each theme (10 total): Moon tidal-locking & eclipse, Ego castle-on-sand & humility-river, Gita renounce-outcomes & Arjuna-identity-crisis, Shiva ascetic-householder & crescent-moon-time, Color-perception & art-paradox",
+          "Added 1 new quote to each theme (5 total): Atrijā originals for Moon, Ego, Gita, Shiva, Art",
+          "Rotated imageCard factIndex: Moon=10, Philosophy=11, Gita=10, Shiva=11, Art=10",
+          "Rotated facts.slice: Moon=[5,7], Philosophy=[2,4], Gita=[5,7], Shiva=[5,7], Art=[2,4]",
+          "Rotated quoteIndex: Moon=2, Philosophy=3, Gita=4, Shiva=5, Art=0",
+          "Refreshed intros for moon, philosophy, gita, shiva, art sections",
+          "Updated Today section: 'The summer of the soul — June's golden invitation'",
+          "Set active color scheme to sunflower (summer)"
+        ]
+      }
+    ]
   }
 }

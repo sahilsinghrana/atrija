@@ -1,8 +1,14 @@
 {
-  "version": "1.8.2",
-  "lastUpdated": "2026-06-06T00:41:51.971Z",
-  "totalEntries": 25,
+  "version": "1.8.3",
+  "lastUpdated": "2026-06-07T06:00:00.000Z",
+  "totalEntries": 26,
   "dates": [
+    {
+      "date": "2026-06-07",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #158: sunflower colors (summer season), new facts/quotes across all themes, section intros refreshed, content rotated"
+    },
     {
       "date": "2026-06-06",
       "entries": 1,

@@ -51,8 +51,18 @@
           "element": "moon"
         },
         {
-          "text": "Tulips close their petals at night under the Moon’s gaze, folding inward like a meditation. Yet at dawn they open again — a daily resurrection that mirrors the lunar cycle of death and rebirth.",
+          "text": "Tulips close their petals at night under the Moon's gaze, folding inward like a meditation. Yet at dawn they open again — a daily resurrection that mirrors the lunar cycle of death and rebirth.",
           "source": "Natural Philosophy",
+          "element": "moon"
+        },
+        {
+          "text": "The Moon rotates synchronously with its orbit — we always see the same face. This tidal locking is a cosmic metaphor: there is a side of us the world never sees, a dark side that holds its own quiet truths.",
+          "source": "Astronomy",
+          "element": "moon"
+        },
+        {
+          "text": "During a total lunar eclipse, the Moon turns copper-red — Earth's shadow painted by every sunrise and sunset happening simultaneously. The Moon becomes a mirror of the entire world's light at once.",
+          "source": "Astronomy",
           "element": "moon"
         }
       ],
@@ -62,7 +72,8 @@
         "The Moon, like a flower in heaven's high bower, with silent delight sits and smiles on the night. — William Blake",
         "Do not swear by the moon, for she changes constantly, so your love would also change. — Shakespeare",
         "The Moon is the first milestone on the road to the stars. — Arthur C. Clarke",
-        "The moon does not fight. It attacks no one. It does not worry. It just shines. — Thich Nhat Hanh"
+        "The moon does not fight. It attacks no one. It does not worry. It just shines. — Thich Nhat Hanh",
+        "The Moon is the queen of the night, and her court is the stars. She rules not by force but by the gentle gravity of presence. — Atrijā"
       ]
     },
     {
@@ -119,6 +130,16 @@
           "text": "A lily does not compete with the lily beside it. It simply blooms. Nature offers no hierarchy of flowers — each opens to the light in its own time, in its own way. The ego cannot comprehend this peace.",
           "source": "Philosophical Reflection",
           "element": "sunflowers"
+        },
+        {
+          "text": "The ego is like a castle built on sand — impressive in structure, but unable to withstand the tide. Every wave of truth erodes its walls, yet the ego rebuilds, again and again, afraid of the openness that remains.",
+          "source": "Philosophical Reflection",
+          "element": "waves"
+        },
+        {
+          "text": "Humility is not the denial of one's abilities but the quiet recognition that all gifts flow through us, not from us. The river does not boast of the ocean it feeds.",
+          "source": "Philosophical Reflection",
+          "element": "waves"
         }
       ],
       "quotes": [
@@ -127,7 +148,8 @@
         "The more I learn, the more I realize how much I don't know. — Albert Einstein",
         "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge. — Daniel Boorstin",
         "Pride is a kind of wolf that lives in a man's heart and never dies. — African Proverb",
-        "The only true wisdom is in knowing you know nothing. — Socrates"
+        "The only true wisdom is in knowing you know nothing. — Socrates",
+        "The self that it clings to as 'I' is a story told by the mind. Beneath the story, there is only the telling — and beneath that, silence. — Atrijā"
       ]
     },
     {
@@ -181,9 +203,19 @@
           "element": "constellations"
         },
         {
-          "text": "The Gita teaches that the body is like a garment — worn for a season, then cast off. Tulips bloom for mere days, yet their brief radiance is no less real than the oak’s centuries. Duration does not determine significance.",
+          "text": "The Gita teaches that the body is like a garment — worn for a season, then cast off. Tulips bloom for mere days, yet their brief radiance is no less real than the oak's centuries. Duration does not determine significance.",
           "source": "Bhagavad Gita, Philosophical Extension",
           "element": "sunflowers"
+        },
+        {
+          "text": "The Gita does not ask us to renounce the world but to renounce our attachment to outcomes. One can live fully — love, fight, create — while holding results lightly, like a tulip holds its petals open to the rain.",
+          "source": "Bhagavad Gita, Philosophical Reflection",
+          "element": "sunflowers"
+        },
+        {
+          "text": "Arjuna's crisis on the battlefield is not about war — it is about identity. 'Who am I to kill my own kin?' he asks. Krishna's answer transcends the personal: you are the eternal witness, not the actor. The battle is dharma itself.",
+          "source": "Bhagavad Gita, Chapter 1-2",
+          "element": "stars"
         }
       ],
       "quotes": [
@@ -192,7 +224,8 @@
         "When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place. — Bhagavad Gita 6.19",
         "The self-controlled soul, who moves amongst sense objects, free from either attachment or repulsion, he wins eternal peace. — Bhagavad Gita 2.64",
         "You have the right to work, but never to the fruit of work. You should never engage in action for the sake of reward, nor should you long for inaction. — Bhagavad Gita 2.47",
-        "Set thy heart upon thy work, but never on its reward. — Bhagavad Gita 2.47"
+        "Set thy heart upon thy work, but never on its reward. — Bhagavad Gita 2.47",
+        "In the Gita, the battlefield is not Kurukshetra — it is the human heart, where desire and duty wage their eternal war. — Atrijā"
       ]
     },
     {
@@ -249,6 +282,16 @@
           "text": "Before Shiva dances, there is silence. After Shiva dances, there is silence. The dance itself is the universe — a brief, brilliant interval between two eternities of stillness. The lily floats on still water, between two eternities of flow.",
           "source": "Shiv Purana, Philosophical Extension",
           "element": "music"
+        },
+        {
+          "text": "Shiva is both the ascetic and the householder — the renunciant on Kailash and the loving partner of Parvati. The Shiv Purana teaches that spiritual life is not the rejection of the world but the embrace of it all: joy and sorrow, creation and dissolution.",
+          "source": "Shiv Purana",
+          "element": "music"
+        },
+        {
+          "text": "The crescent moon adorning Shiva's head is not mere ornament — it is the measure of time itself, waxing and waning in his matted locks. He wears time as a jewel, showing that for the awakened mind, time is not a prison but an adornment.",
+          "source": "Shiv Purana, Symbolic Interpretation",
+          "element": "moon"
         }
       ],
       "quotes": [
@@ -257,7 +300,8 @@
         "He who sees the Supreme Lord dwelling equally in all beings, undestroyed in the destroying, truly sees. — Inspired by Shiv Purana",
         "Silence is the language of the divine. All else is a poor translation. — Inspired by Shiv Purana",
         "In the embrace of the divine, the dancer and the dance become one. — Inspired by Shiv Purana",
-        "The destroyer creates. The creator destroys. These are not opposites — they are the two hands of the same cosmic dancer. — Inspired by Nataraja"
+        "The destroyer creates. The creator destroys. These are not opposites — they are the two hands of the same cosmic dancer. — Inspired by Nataraja",
+        "Shiva's stillness is not the absence of movement but the stillness at the center of all movement — the eye of the storm, the silence at the heart of the drum. — Atrijā"
       ]
     },
     {
@@ -314,6 +358,16 @@
           "text": "Lilies transform still water into a mirror of sky. The artist does the same — taking the mundane and, through the alchemy of perception, revealing the extraordinary that was always there.",
           "source": "Art Philosophy",
           "element": "sunflowers"
+        },
+        {
+          "text": "Color is not a property of objects but a conversation between light and perception. The same tulip is red, orange, and gold depending on the hour. Art teaches us that reality is a collaboration between the world and the eye.",
+          "source": "Philosophy of Perception",
+          "element": "sunflowers"
+        },
+        {
+          "text": "Every great work of art contains a paradox: it is both deeply personal and universally resonant. A single lily painted with honesty can move a stranger to tears across centuries and cultures.",
+          "source": "Art Philosophy",
+          "element": "sunflowers"
         }
       ],
       "quotes": [
@@ -322,7 +376,8 @@
         "I dream my painting and I paint my dream. — Attributed to many artists",
         "Art is not what you see, but what you make others see. — Edgar Degas",
         "I found I could say things with color and shapes that I couldn't say any other way — things I had no words for. — Georgia O'Keeffe",
-        "The Earth has music for those who listen. — George Santayana"
+        "The Earth has music for those who listen. — George Santayana",
+        "To create is to destroy the distance between the inner world and the outer. The brush, the pen, the note — these are bridges across the abyss of silence. — Atrijā"
       ]
     }
   ],
@@ -418,6 +473,7 @@
       ]
     }
   ],
+  "activeColorScheme": "sunflower",
   "changelog": {
     "version": "1.0.0",
     "entries": [

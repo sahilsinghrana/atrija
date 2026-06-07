@@ -1,0 +1,20 @@
+{
+  "date": "2026-06-07",
+  "entries": [
+    {
+      "time": "06:00:00",
+      "type": "daily-mutation",
+      "description": "Daily mutation #158: sunflower colors (summer season), new facts/quotes across all themes, section intros refreshed, content rotated",
+      "changes": [
+        "Added 2 new facts to each theme (10 total): Moon tidal-locking & eclipse, Ego castle-on-sand & humility-river, Gita renounce-outcomes & Arjuna-identity-crisis, Shiva ascetic-householder & crescent-moon-time, Color-perception & art-paradox",
+        "Added 1 new quote to each theme (5 total): Atrijā originals for Moon, Ego, Gita, Shiva, Art",
+        "Rotated imageCard factIndex: Moon=10, Philosophy=11, Gita=10, Shiva=11, Art=10",
+        "Rotated facts.slice: Moon=[5,7], Philosophy=[2,4], Gita=[5,7], Shiva=[5,7], Art=[2,4]",
+        "Rotated quoteIndex: Moon=2, Philosophy=3, Gita=4, Shiva=5, Art=0",
+        "Refreshed intros for moon, philosophy, gita, shiva, art sections",
+        "Updated Today section: 'The summer of the soul — June's golden invitation'",
+        "Set active color scheme to sunflower (summer)"
+      ]
+    }
+  ]
+}
