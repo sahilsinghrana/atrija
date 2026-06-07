@@ -409,7 +409,10 @@
         {
           "id": "idea-056",
           "title": "Offline PWA Shell — Service Worker Cache",
-          "completedAt": "2026-06-07"
+          "completedAt": "2026-06-07",
+          "reviewedAt": "2026-06-07T19:00:00Z",
+          "reviewResult": "PASS",
+          "reviewNotes": "Reviewed 2026-06-07 19:00 — PASS. 152-line sw.js with cache-first for static assets, network-first for JSON content, graceful precache failures via Promise.allSettled, skipWaiting/clients.claim for immediate activation, opaque response check. 16-line sw-register.js IIFE with feature detection and silent failure. Registered in BaseLayout.astro line 341. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). No functional issues found."
         }
       ]
     }
@@ -965,6 +968,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-06T02:00:00Z",
-  "lastReviewAt": "2026-06-07T06:00:00Z",
-  "lastReviewResult": "Implementation Reviewer (2026-06-07 06:00): Verified idea-062 (2nd pass) — PASS. No new implementations since last review. All systems nominal."
+  "lastReviewAt": "2026-06-07T19:00:00Z",
+  "lastReviewResult": "Implementation Reviewer (2026-06-07 19:00): Reviewed idea-056 (PWA Service Worker) — PASS. Build succeeds. Site live (HTTP 200). No stuck ideas. All columns nominal."
 }
