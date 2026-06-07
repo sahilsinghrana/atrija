@@ -3,7 +3,7 @@
   "meta": {
     "version": "1.8.3",
     "lastUpdated": "2026-06-07",
-    "updatedBy": "AI Agent (daily-mutate)",
+    "updatedBy": "AI Agent (content-refresh)",
     "season": "summer ☀️"
   },
   "sections": {
@@ -11,91 +11,91 @@
       "tagline": "Where starlight whispers through the <em>swirling</em> firmament"
     },
     "today": {
-      "heading": "The <em>summer</em> of the soul — June's golden invitation"
+      "heading": "The <em>longest</em> light — midsummer's quiet revelation"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "The dark side <em>no one</em> sees",
-      "intro": "The Moon rotates synchronously with its orbit — we always see the same face. There is a side of us the world never sees, a dark side that holds its own quiet truths. What hidden face do you turn away from the light?",
+      "intro": "Every face has a hidden hemisphere — thoughts unspoken, feelings folded inward like petals at dusk. The Moon knows this secret well: it keeps one side forever veiled, yet its pull shapes the tides of every ocean and every heart. What truths do you cradle in your own dark side?",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 10
+        "factIndex": 5
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [5, 7]
+        "slice": [8, 10]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 2
+        "quoteIndex": 5
       }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "The river does not <em>boast</em> of the ocean",
-      "intro": "Humility is not the denial of one's abilities but the quiet recognition that all gifts flow through us, not from us. The ego builds castles on sand — impressive in structure, unable to withstand the tide of truth.",
+      "intro": "The ego mistakes itself for the whole sea — a wave convinced of its own separateness. But arrogance is heavy armor; it slows the warrior and muffles the music of the depths. True strength arrives not through self-assertion but through the surrender to something vast and unnamed.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 11
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [2, 4]
+        "slice": [4, 6]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 3
+        "quoteIndex": 6
       }
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "The war within — <em>dharma</em> versus desire",
-      "intro": "Arjuna's crisis on the battlefield is not about war — it is about identity. Krishna's answer transcends the personal: you are the eternal witness, not the actor. The battle is dharma itself, fought in every human heart.",
+      "intro": "Before the first arrow flew, Krishna offered Arjuna something rarer than victory: a new way of seeing. The battlefield is not Kurukshetra but the cusp of every choice — where duty calls and desire answers back. To act without clinging to results is not indifference; it is the deepest form of freedom.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 10
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [5, 7]
+        "slice": [7, 9]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 4
+        "quoteIndex": 0
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "Time as <em>jewel</em> in matted locks",
-      "intro": "The crescent moon adorning Shiva's head is not mere ornament — it is the measure of time itself, waxing and waning. He wears time as a jewel, showing that for the awakened mind, time is not a prison but an adornment.",
+      "intro": "In the silence before the drum speaks, in the pause between one breath and the next — there is Shiva. Not the destroyer of old stories but the dancer who makes destruction and creation a single gesture. His stillness is not absence; it is the eye at the center of every storm.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 11
+        "factIndex": 6
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [5, 7]
+        "slice": [8, 10]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 5
+        "quoteIndex": 1
       }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Bridges across the <em>abyss</em> of silence",
-      "intro": "Color is not a property of objects but a conversation between light and perception. The same tulip is red, orange, and gold depending on the hour. Reality is a collaboration between the world and the eye.",
+      "intro": "A lily does not ask whether its reflection in the water is worthy of being seen. It simply opens. So too with creation — the brushstroke, the note, the written word — each is a bridge thrown across the gap between inner silence and outer form. Art begins where self-consciousness ends.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 10
+        "factIndex": 8
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [2, 4]
+        "slice": [5, 7]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 0
+        "quoteIndex": 2
       }
     }
   },
@@ -104,18 +104,16 @@
     "entries": [
       {
         "date": "2026-06-07",
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #158: sunflower colors (summer season), new facts/quotes across all themes, section intros refreshed, content rotated",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Content layout refresh: section intros rewritten, fact cards rotated, quotes rotated, today section updated for midsummer",
         "changes": [
-          "Added 2 new facts to each theme (10 total): Moon tidal-locking & eclipse, Ego castle-on-sand & humility-river, Gita renounce-outcomes & Arjuna-identity-crisis, Shiva ascetic-householder & crescent-moon-time, Color-perception & art-paradox",
-          "Added 1 new quote to each theme (5 total): Atrijā originals for Moon, Ego, Gita, Shiva, Art",
-          "Rotated imageCard factIndex: Moon=10, Philosophy=11, Gita=10, Shiva=11, Art=10",
-          "Rotated facts.slice: Moon=[5,7], Philosophy=[2,4], Gita=[5,7], Shiva=[5,7], Art=[2,4]",
-          "Rotated quoteIndex: Moon=2, Philosophy=3, Gita=4, Shiva=5, Art=0",
-          "Refreshed intros for moon, philosophy, gita, shiva, art sections",
-          "Updated Today section: 'The summer of the soul — June's golden invitation'",
-          "Set active color scheme to sunflower (summer)"
+          "Rewrote intros for all 5 sections (moon, philosophy, gita, shiva, art) with fresh phrasing and varied sentence structure",
+          "Rotated imageCard factIndex: Moon=5 (new moon seeds), Philosophy=7 (Nietzsche monster), Gita=4 (battlefield wisdom), Shiva=6 (Om essence), Art=8 (golden ratio)",
+          "Rotated facts.slice: Moon=[8,10], Philosophy=[4,6], Gita=[7,9], Shiva=[8,10], Art=[5,7]",
+          "Rotated quoteIndex: Moon=5 (Thich Nhat Hanh), Philosophy=6 (Atrijā original), Gita=0 (believe in), Shiva=1 (root of joy), Art=2 (dream painting)",
+          "Updated Today heading: 'The longest light — midsummer's quiet revelation'",
+          "Color scheme remains sunflower (summer-appropriate warm tones)"
         ]
       }
     ]
