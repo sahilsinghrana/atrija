@@ -5,6 +5,22 @@
       "name": "💡 Idea Backlog",
       "tasks": [
         {
+          "id": "idea-006",
+          "title": "Geometry Instancing for Tulip and Sunflower Fields",
+          "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
+          "category": "Performance Optimizations",
+          "priority": "high",
+          "tags": [
+            "performance",
+            "instancing",
+            "3D",
+            "render-optimization",
+            "mobile"
+          ],
+          "effort": "3 sessions",
+          "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
+        },
+        {
           "id": "idea-035",
           "title": "Wind-Swept Wheat Field",
           "description": "A field of golden wheat stalks rendered as InstancedMesh in the lower 3D scene, swaying organically in a procedural wind vertex shader. 800 stalks desktop / 300 mobile. Scroll position modulates wind intensity.",
@@ -12,11 +28,11 @@
           "priority": "medium"
         },
         {
-          "id": "idea-036",
-          "title": "Particle Poetry Scroll Effect",
-          "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.",
-          "category": "Interactivity",
-          "priority": "low"
+          "id": "idea-032",
+          "title": "Dynamic Time-of-Day Atmosphere System",
+          "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+          "category": "3D Elements",
+          "priority": "medium"
         },
         {
           "id": "idea-038",
@@ -26,39 +42,11 @@
           "priority": "medium"
         },
         {
-          "id": "idea-040",
-          "title": "Enhanced Star System with Temperature-Based Colors",
-          "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
-          "category": "3D Elements",
-          "priority": "low"
-        },
-        {
-          "id": "idea-041",
-          "title": "Aurora Borealis Sky Band",
-          "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. Depends on idea-032 (time-of-day).",
-          "category": "3D Elements",
-          "priority": "low"
-        },
-        {
           "id": "idea-042",
           "title": "Interactive Flower Pollination Effect",
           "description": "Click on any sunflower or tulip in the 3D scene to release a burst of golden pollen particles. Nearby flowers briefly glow in response. Raycasting click detection with physics-based particle system.",
           "category": "Interactivity",
           "priority": "medium"
-        },
-        {
-          "id": "idea-044",
-          "title": "Comet with Particle Trail",
-          "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare intervals. MUST be implemented as standalone public/js/comet.js module.",
-          "category": "3D Elements",
-          "priority": "low"
-        },
-        {
-          "id": "idea-046",
-          "title": "Village Street Lamp Lights",
-          "description": "Warm glowing orbs positioned along the horizon line, representing village lights. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees.",
-          "category": "3D Elements",
-          "priority": "low"
         },
         {
           "id": "idea-004",
@@ -91,73 +79,84 @@
           "testingStrategy": "- Unit tests: Create test files in tests/unit/ for each utility module, covering edge cases and normal operation\n- Integration tests: Verify that utilities work correctly when integrated into scene-init.js or other modules\n- Visual regression tests: Not applicable for pure utilities\n- Acceptance criteria: New test files achieve >80% coverage for target utilities; all new tests pass; existing test suite continues to pass; utilities are verified to work correctly in both unit and integration contexts"
         },
         {
-          "id": "idea-006",
-          "title": "Geometry Instancing for Tulip and Sunflower Fields",
-          "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
-          "category": "Performance Optimizations",
-          "priority": "high",
-          "tags": [
-            "performance",
-            "instancing",
-            "3D",
-            "render-optimization",
-            "mobile"
-          ],
-          "effort": "3 sessions",
-          "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
-        },
-        {
-          "id": "idea-007",
-          "title": "Orphaned Test File Cleanup and Consolidation",
-          "description": "Identify and remove orphaned test files that correspond to removed/refactored features (like letters.test.js, koans.test.js, time-of-day.test.js when their source is missing). Consolidate duplicate test logic and ensure all remaining tests have clear purpose and pass. This reduces test suite noise and improves reliability.",
-          "category": "Technical Debt & Code Quality",
-          "priority": "medium",
-          "tags": [
-            "testing",
-            "cleanup",
-            "maintenance",
-            "technical-debt"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Verify that test file removal doesn't break existing functionality by running the test suite before and after\n- Integration tests: Ensure that legitimate tests still pass and cover their intended functionality\n- Acceptance criteria: Test suite runs with zero orphaned/misnamed test files; all remaining tests have clear, descriptive names matching their purpose; test failure rate decreases by removing false positives"
-        },
-        {
-          "id": "idea-008",
-          "title": "Unit Tests for Scene Utility Functions",
-          "description": "Create comprehensive unit tests for utility functions in src/ directory (if any exist) or public/js/ utilities like scene-config.js, math helpers, or color conversion functions. Focus on pure functions that can be tested in isolation without DOM or Three.js dependencies. This improves code reliability and prevents regressions.",
+          "id": "idea-063",
+          "title": "Unit Tests for Scene Utility Functions (scene-utils.js)",
+          "description": "The scene-utils.js module exports pure functions (getMoonPhase, getMoonPhaseName, getMoonEmoji, getMoonIllumination, lerp, clamp, etc.) that are completely untested. These are ideal unit-test candidates: they have no DOM/Three.js dependencies and can be validated with precise expected values including known astronomical new moon dates and phase boundary conditions.\n\nScope:\n- Create tests/unit/scene-utils.test.js\n- Test getMoonPhase() against known historical new moon dates (e.g., 2026-01-19, 2026-02-17)\n- Test getMoonPhaseName() boundary values (exact 0.0625, 0.1875, etc.)\n- Test getMoonEmoji() returns correct Unicode for each phase\n- Test lerp/clamp utility math functions",
           "category": "Testing & Reliability",
           "priority": "medium",
           "tags": [
             "unit-tests",
-            "utilities",
-            "reliability",
+            "scene-utils",
+            "pure-functions",
             "test-coverage"
           ],
-          "effort": "2-3 sessions",
-          "testingStrategy": "- Unit tests: Create test files in tests/unit/ for each utility module, covering edge cases and normal operation\n- Integration tests: Verify that utilities work correctly when integrated into scene-init.js or other modules\n- Visual regression tests: Not applicable for pure utilities\n- Acceptance criteria: New test files achieve >80% coverage for target utilities; all new tests pass; existing test suite continues to pass; utilities are verified to work correctly in both unit and integration contexts"
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Create tests/unit/scene-utils.test.js with known-value tests for getMoonPhase() using fixed dates (not 'new Date()'). Test phase name boundaries with exact fraction values. Test helper math functions (lerp, clamp, etc.) with edge cases.\n- Integration tests: Verify that scene-utils functions produce values consistent with what scene-init.js expects (phase fraction 0-1 range, emoji string format).\n- Acceptance criteria: All new tests pass; getMoonPhase accuracy within 1 day of known astronomical data; 100% branch coverage for getMoonPhaseName(); no regressions in existing validate-content test suite."
         },
         {
-          "id": "idea-009",
-          "title": "Geometry Instancing for Tulip and Sunflower Fields",
-          "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
-          "category": "Performance Optimizations",
-          "priority": "high",
+          "id": "idea-065",
+          "title": "Seasons.json Schema Validation in validate-content.js",
+          "description": "The seasons.json data file (consumed by the seasonal transitions feature, idea-037) currently has no validation in validate-content.js — the 560-line validator covers siteData.json and content.json structure but completely misses seasons.json. A malformed seasons entry (wrong month range, invalid color scheme key, missing required fields) would cause silent runtime failures in the seasonal theme rotation.\n\nScope:\n- Add validateSeasons() function to validate-content.js\n- Validate: 4 season keys (spring, summer, autumn, winter), each with months array (numbers 1-12), colorSchemeWeights (all 5 scheme keys present, values >= 1), flowerEmphasis enum, skyToneShift RGB ranges, particleEffect string, factThemeWeights (all theme keys present, values >= 1)\n- Add 6+ test fixtures in tests/fixtures/content-validation/ (valid + various malformed)\n- Wire into the validate-content.sh script pipeline",
+          "category": "Testing & Reliability",
+          "priority": "medium",
           "tags": [
-            "performance",
-            "instancing",
-            "3D",
-            "render-optimization",
-            "mobile"
+            "validation",
+            "seasons",
+            "data-integrity",
+            "content-pipeline"
           ],
-          "effort": "3 sessions",
-          "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Add tests/unit/validate-seasons.test.js with fixtures for valid seasons.json, invalid month values (0, 13), missing color scheme keys, negative weights, unknown season key. Each fixture tests a specific validation rule.\n- Integration tests: Run the full validate-content.sh script against both valid and malformed seasons fixtures; verify correct exit codes (0 for valid, 1 for invalid).\n- Acceptance criteria: All existing 38 validate-content tests still pass; new season validation catches all defined error types; validate-content.sh exits non-zero on malformed seasons.json; error messages are actionable (specify which season/field failed)."
         },
         {
-          "id": "idea-032",
-          "title": "Dynamic Time-of-Day Atmosphere System",
-          "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+          "id": "idea-036",
+          "title": "Particle Poetry Scroll Effect",
+          "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.",
+          "category": "Interactivity",
+          "priority": "low"
+        },
+        {
+          "id": "idea-040",
+          "title": "Enhanced Star System with Temperature-Based Colors",
+          "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
           "category": "3D Elements",
-          "priority": "medium"
+          "priority": "low"
+        },
+        {
+          "id": "idea-041",
+          "title": "Aurora Borealis Sky Band",
+          "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. Depends on idea-032 (time-of-day).",
+          "category": "3D Elements",
+          "priority": "low"
+        },
+        {
+          "id": "idea-044",
+          "title": "Comet with Particle Trail",
+          "description": "A majestic comet with glowing particle trail that slowly crosses the 3D sky every 3-5 minutes. Distinct from shooting stars: larger, slower (30-60s crossing), rare intervals. MUST be implemented as standalone public/js/comet.js module.",
+          "category": "3D Elements",
+          "priority": "low"
+        },
+        {
+          "id": "idea-046",
+          "title": "Village Street Lamp Lights",
+          "description": "Warm glowing orbs positioned along the horizon line, representing village lights. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees.",
+          "category": "3D Elements",
+          "priority": "low"
+        },
+        {
+          "id": "idea-064",
+          "title": "Dead Shader Code Cleanup in scene-shaders.js",
+          "description": "The scene-shaders.js module still exports four shader strings (vgVS, vgFS, glitchVS, glitchFS) that were part of the post-processing pipeline removed in the 2026-05-20 refactoring. These exports are no longer imported by scene-manager.js or any other module — they are dead code consuming ~2.5KB. This cleanup removes the unused exports, consolidates the remaining active shaders (starVS, starFS, wave uniforms) with JSDoc annotations, and adds a brief comment documenting why the removed shaders existed historically.\n\nAlso audit: verify no other public/js/scene/ modules import the removed exports.",
+          "category": "Technical Debt & Code Quality",
+          "priority": "low",
+          "tags": [
+            "cleanup",
+            "dead-code",
+            "shaders",
+            "code-quality"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: After removal, verify no module in public/js/ imports vgVS, vgFS, glitchVS, or glitchFS (AST/grep check).\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: scene-shaders.js exports only active shader strings; build succeeds; bundle size reduced by ~2.5KB; no import errors in any scene module; remaining shader exports unchanged and functional."
         }
       ]
     },
@@ -967,7 +966,7 @@
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-06T02:00:00Z",
-  "lastReviewAt": "2026-06-07T19:00:00Z",
-  "lastReviewResult": "Implementation Reviewer (2026-06-07 19:00): Reviewed idea-056 (PWA Service Worker) — PASS. Build succeeds. Site live (HTTP 200). No stuck ideas. All columns nominal."
+  "generatedAt": "2026-06-08T02:00:00Z",
+  "lastReviewAt": "2026-06-08T03:00:00Z",
+  "lastReviewResult": "Kanban Reviewer (2026-06-08 03:00): Removed 3 duplicate tasks from backlog (idea-007 = dup of idea-004, idea-008 = dup of idea-005, idea-009 = dup of idea-006). Reordered backlog by priority: high (1), medium (7), low (6). Added idea-063, idea-064, idea-065 to backlog column (were in ideas array but missing from column). Deferred column unchanged. All done/active columns unchanged. 14 backlog tasks total."
 }
