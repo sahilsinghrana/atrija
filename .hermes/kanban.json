@@ -79,21 +79,6 @@
           "testingStrategy": "- Unit tests: Create test files in tests/unit/ for each utility module, covering edge cases and normal operation\n- Integration tests: Verify that utilities work correctly when integrated into scene-init.js or other modules\n- Visual regression tests: Not applicable for pure utilities\n- Acceptance criteria: New test files achieve >80% coverage for target utilities; all new tests pass; existing test suite continues to pass; utilities are verified to work correctly in both unit and integration contexts"
         },
         {
-          "id": "idea-063",
-          "title": "Unit Tests for Scene Utility Functions (scene-utils.js)",
-          "description": "The scene-utils.js module exports pure functions (getMoonPhase, getMoonPhaseName, getMoonEmoji, getMoonIllumination, lerp, clamp, etc.) that are completely untested. These are ideal unit-test candidates: they have no DOM/Three.js dependencies and can be validated with precise expected values including known astronomical new moon dates and phase boundary conditions.\n\nScope:\n- Create tests/unit/scene-utils.test.js\n- Test getMoonPhase() against known historical new moon dates (e.g., 2026-01-19, 2026-02-17)\n- Test getMoonPhaseName() boundary values (exact 0.0625, 0.1875, etc.)\n- Test getMoonEmoji() returns correct Unicode for each phase\n- Test lerp/clamp utility math functions",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "scene-utils",
-            "pure-functions",
-            "test-coverage"
-          ],
-          "effort": "1 session",
-          "testingStrategy": "- Unit tests: Create tests/unit/scene-utils.test.js with known-value tests for getMoonPhase() using fixed dates (not 'new Date()'). Test phase name boundaries with exact fraction values. Test helper math functions (lerp, clamp, etc.) with edge cases.\n- Integration tests: Verify that scene-utils functions produce values consistent with what scene-init.js expects (phase fraction 0-1 range, emoji string format).\n- Acceptance criteria: All new tests pass; getMoonPhase accuracy within 1 day of known astronomical data; 100% branch coverage for getMoonPhaseName(); no regressions in existing validate-content test suite."
-        },
-        {
           "id": "idea-065",
           "title": "Seasons.json Schema Validation in validate-content.js",
           "description": "The seasons.json data file (consumed by the seasonal transitions feature, idea-037) currently has no validation in validate-content.js — the 560-line validator covers siteData.json and content.json structure but completely misses seasons.json. A malformed seasons entry (wrong month range, invalid color scheme key, missing required fields) would cause silent runtime failures in the seasonal theme rotation.\n\nScope:\n- Add validateSeasons() function to validate-content.js\n- Validate: 4 season keys (spring, summer, autumn, winter), each with months array (numbers 1-12), colorSchemeWeights (all 5 scheme keys present, values >= 1), flowerEmphasis enum, skyToneShift RGB ranges, particleEffect string, factThemeWeights (all theme keys present, values >= 1)\n- Add 6+ test fixtures in tests/fixtures/content-validation/ (valid + various malformed)\n- Wire into the validate-content.sh script pipeline",
@@ -412,6 +397,25 @@
           "reviewedAt": "2026-06-07T19:00:00Z",
           "reviewResult": "PASS",
           "reviewNotes": "Reviewed 2026-06-07 19:00 — PASS. 152-line sw.js with cache-first for static assets, network-first for JSON content, graceful precache failures via Promise.allSettled, skipWaiting/clients.claim for immediate activation, opaque response check. 16-line sw-register.js IIFE with feature detection and silent failure. Registered in BaseLayout.astro line 341. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). No functional issues found."
+        },
+        {
+          "id": "idea-063",
+          "title": "Unit Tests for Scene Utility Functions (scene-utils.js)",
+          "description": "The scene-utils.js module exports pure functions (getMoonPhase, getMoonPhaseName, getMoonEmoji, getMoonIllumination, lerp, clamp, etc.) that are completely untested. These are ideal unit-test candidates: they have no DOM/Three.js dependencies and can be validated with precise expected values including known astronomical new moon dates and phase boundary conditions.\n\nScope:\n- Create tests/unit/scene-utils.test.js\n- Test getMoonPhase() against known historical new moon dates (e.g., 2026-01-19, 2026-02-17)\n- Test getMoonPhaseName() boundary values (exact 0.0625, 0.1875, etc.)\n- Test getMoonEmoji() returns correct Unicode for each phase\n- Test lerp/clamp utility math functions",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "scene-utils",
+            "pure-functions",
+            "test-coverage"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Create tests/unit/scene-utils.test.js with known-value tests for getMoonPhase() using fixed dates (not 'new Date()'). Test phase name boundaries with exact fraction values. Test helper math functions (lerp, clamp, etc.) with edge cases.\n- Integration tests: Verify that scene-utils functions produce values consistent with what scene-init.js expects (phase fraction 0-1 range, emoji string format).\n- Acceptance criteria: All new tests pass; getMoonPhase accuracy within 1 day of known astronomical data; 100% branch coverage for getMoonPhaseName(); no regressions in existing validate-content test suite.",
+          "completedAt": "2026-06-08",
+          "reviewedAt": "2026-06-08T03:00:00Z",
+          "reviewResult": "PASS",
+          "reviewNotes": "Reviewed 2026-06-08 03:00 — PASS. 52 unit tests for scene-utils.js covering getMoonPhase (known astronomical dates, range validation, leap years, year boundaries), getMoonPhaseName (all 8 boundary values, 100% branch coverage), getMoonEmoji (8 distinct emojis, boundary alignment), _seededRand (determinism, range, seed divergence), and integration tests. All 52 tests pass. Build succeeds. Site live (HTTP 200). Zero scene-init.js changes. Clean JSDoc comments."
         }
       ]
     }
