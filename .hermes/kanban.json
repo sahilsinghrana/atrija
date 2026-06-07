@@ -61,13 +61,6 @@
           "priority": "low"
         },
         {
-          "id": "idea-056",
-          "title": "Offline PWA Shell — Service Worker Cache",
-          "description": "A tiny service worker that caches the HTML shell, main CSS, all public/js/ modules, and JSON content. First visit caches assets; subsequent visits load instantly from cache with network-first fallback for JSON content.",
-          "category": "Performance",
-          "priority": "low"
-        },
-        {
           "id": "idea-004",
           "title": "Orphaned Test File Cleanup and Consolidation",
           "description": "Identify and remove orphaned test files that correspond to removed/refactored features (like letters.test.js, koans.test.js, time-of-day.test.js when their source is missing). Consolidate duplicate test logic and ensure all remaining tests have clear purpose and pass. This reduces test suite noise and improves reliability.",
@@ -412,6 +405,11 @@
           "reviewedAt": "2026-06-07T06:00:00Z",
           "reviewResult": "PASS",
           "reviewNotes": "Reviewed 2026-06-07 06:00 (2nd pass) — PASS. Confirmed from earlier 03:00 review. All 38 validate-content tests pass. Build succeeds. Site live (HTTP 200). No new issues since last review."
+        },
+        {
+          "id": "idea-056",
+          "title": "Offline PWA Shell — Service Worker Cache",
+          "completedAt": "2026-06-07"
         }
       ]
     }
@@ -854,7 +852,7 @@
       "description": "A tiny service worker (public/sw.js) that caches the HTML shell, main CSS, loader CSS, all public/js/ modules, fonts.googleapis.com CSS responses, and siteData.json/content.json. First visit caches assets; subsequent visits load instantly from cache with a network-first fallback for JSON content. Registration code in BaseLayout.astro is:inline block. No backend changes. The sw.js uses a versioned cache name (atrija-vX) so future deploys bust the cache. Shows a subtle 'offline-ready' toast on first successful cache. Total added code: ~60 lines SW + ~15 lines registration.",
       "category": "Performance",
       "priority": "low",
-      "status": "backlog",
+      "status": "done",
       "tags": [
         "PWA",
         "offline",
