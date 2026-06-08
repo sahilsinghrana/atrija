@@ -1,107 +1,141 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.4",
+    "version": "1.8.5",
     "lastUpdated": "2026-06-08",
-    "updatedBy": "AI Agent (daily-mutate)",
+    "updatedBy": "AI Agent (content-layout-refresh)",
     "season": "summer ☀️"
   },
   "sections": {
     "hero": {
-      "tagline": "Where starlight whispers through the <em>swirling</em> firmament"
+      "tagline": "Where <em>starlight</em> weaves through swirling dreams"
     },
     "today": {
-      "heading": "The <em>deepening</em> light — early summer's contemplative turn"
+      "heading": "The <em>unfolding</em> warmth — midsummer's luminous pause"
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Borrowed <em>brilliance</em> in a silver sky",
-      "intro": "The Moon has never produced its own light — it simply reflects what it receives, faithfully, without shame. In a world that demands originality, there is a quiet courage in being a mirror. What if your purpose is not to shine but to redirect the light toward those who cannot see the source?",
+      "intro": "To shine by reflected light is not a lesser act — it is an act of trust. The Moon receives and returns, asks nothing, keeps nothing. Its glow is not theft but devotion: a daily proof that receiving fully and giving completely can be the same gesture.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 3
+        "factIndex": 12
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [5, 7]
+        "slice": [
+          1,
+          3
+        ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 5
+        "quoteIndex": 2
       }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "The wave forgets <em>it is</em> the sea",
-      "intro": "Arrogance is a wave that believes itself separate from the ocean — rising with pride, crashing with certainty, dissolving back into what it always was. The Gita calls this confusion the root of suffering: the failure to recognize that the self is not the actor but the stage upon which all action plays.",
+      "intro": "The wave rises, certain of its shape, proud of its height — then falls, astonished to find itself indistinguishable from the sea. The ego is this brief assertion of form over substance, a ripple that mistakes itself for the ocean. To dissolve is not to disappear but to return to what one always was.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 4
+        "factIndex": 2
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [6, 8]
+        "slice": [
+          5,
+          7
+        ]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 6
+        "quoteIndex": 4
       }
     },
     "gita": {
       "label": "III. The Battlefield",
       "heading": "Freedom beyond <em>the fruit</em> of action",
-      "intro": "Krishna did not ask Arjuna to win. He asked him to act — fully, completely — while holding the outcome like water in open hands. This is not detachment from life but a deeper kind of participation: to give everything to the moment and nothing to the reward.",
+      "intro": "The Gita was not spoken in a garden or a palace but on a field of war — where the stakes were absolute and every choice carried the weight of worlds. This is its radical claim: that the deepest wisdom does not require withdrawal from life but full immersion in it, with hands open and heart unguarded.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 5
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [7, 9]
+        "slice": [
+          7,
+          9
+        ]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 0
+        "quoteIndex": 1
       }
     },
     "shiva": {
       "label": "IV. The Dance",
       "heading": "The drum that <em>speaks</em> the universe",
-      "intro": "Before the first note, there is silence. After the last note, there is silence. Between them — the damaru's beat, the Tandava's fire, the brief and blazing interval we call existence. Shiva does not dance to celebrate creation; the dance is creation, and creation is the dance.",
+      "intro": "Shiva does not dance for applause. The Tandava needs no audience because the audience is the dance — every atom, every star, every breath a movement in the choreography of becoming. Stillness and motion are not opposites here; they are the same gesture, seen from inside and outside the drum's resonance.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 6
+        "factIndex": 10
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [8, 10]
+        "slice": [
+          11,
+          13
+        ]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 1
+        "quoteIndex": 6
       }
     },
     "art": {
       "label": "V. The Canvas",
       "heading": "Light as <em>the only</em> subject",
-      "intro": "The impressionists understood what philosophers took millennia to articulate: that the object is an illusion, and only the light is real. A lily is not a fixed thing — it is a conversation between pigment and perception, between the eye that sees and the sun that reveals. To paint is to participate in that conversation.",
+      "intro": "A sunflower does not paint itself golden — it conspires with the sun, translating photons into pigment, light into living color. The impressionist knew this secret: that beauty is never static, never owned. It exists only in the meeting — between eye and object, between hand and canvas, between one fleeting moment and the next.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 7
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [9, 11]
+        "slice": [
+          3,
+          5
+        ]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 2
+        "quoteIndex": 0
       }
     }
   },
   "changelog": {
-    "version": "1.8.4",
+    "version": "1.8.5",
     "entries": [
+      {
+        "date": "2026-06-08",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Content layout refresh: rotated all fact/quote indices, rewrote 5 section intros with fresh phrasing, rotated color scheme to sunflower for summer warmth",
+        "changes": [
+          "Rewrote Moon intro: reframed reflection as devotion and trust",
+          "Rewrote Philosophy intro: wave metaphor with dissolve-as-return theme",
+          "Rewrote Gita intro: emphasized battlefield context as radical wisdom",
+          "Rewrote Shiva intro: audience-as-dance reframing of Tandava",
+          "Rewrote Art intro: sunflower conspiracy metaphor for impressionist truth",
+          "Rotated imageCard factIndex: Moon=12, Philosophy=2, Gita=4, Shiva=10, Art=0",
+          "Rotated facts.slice: Moon=[1,3], Philosophy=[5,7], Gita=[7,9], Shiva=[11,13], Art=[3,5]",
+          "Rotated quoteIndex: Moon=2 (Blake), Philosophy=4 (Boorstin), Gita=1 (2.20), Shiva=6 (Atrijā), Art=0 (Beecher)",
+          "Color scheme: starry-night → sunflower (summer warm tone rotation)",
+          "Updated Today heading: 'The unfolding warmth — midsummer's luminous pause'",
+          "Updated Hero tagline: 'Where starlight weaves through swirling dreams'"
+        ]
+      },
       {
         "date": "2026-06-08",
         "time": "06:00:00",
