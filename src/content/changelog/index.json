@@ -1,8 +1,14 @@
 {
-  "version": "1.8.3",
-  "lastUpdated": "2026-06-07T06:00:00.000Z",
-  "totalEntries": 26,
+  "version": "1.8.4",
+  "lastUpdated": "2026-06-08T06:00:00.000Z",
+  "totalEntries": 27,
   "dates": [
+    {
+      "date": "2026-06-08",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #159: starry-night colors (summer), new facts/quotes across all themes, section intros refreshed, content rotated"
+    },
     {
       "date": "2026-06-07",
       "entries": 1,

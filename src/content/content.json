@@ -1,9 +1,9 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.3",
-    "lastUpdated": "2026-06-07",
-    "updatedBy": "AI Agent (content-refresh)",
+    "version": "1.8.4",
+    "lastUpdated": "2026-06-08",
+    "updatedBy": "AI Agent (daily-mutate)",
     "season": "summer ☀️"
   },
   "sections": {
@@ -11,19 +11,19 @@
       "tagline": "Where starlight whispers through the <em>swirling</em> firmament"
     },
     "today": {
-      "heading": "The <em>longest</em> light — midsummer's quiet revelation"
+      "heading": "The <em>deepening</em> light — early summer's contemplative turn"
     },
     "moon": {
       "label": "I. The Moon",
-      "heading": "The dark side <em>no one</em> sees",
-      "intro": "Every face has a hidden hemisphere — thoughts unspoken, feelings folded inward like petals at dusk. The Moon knows this secret well: it keeps one side forever veiled, yet its pull shapes the tides of every ocean and every heart. What truths do you cradle in your own dark side?",
+      "heading": "Borrowed <em>brilliance</em> in a silver sky",
+      "intro": "The Moon has never produced its own light — it simply reflects what it receives, faithfully, without shame. In a world that demands originality, there is a quiet courage in being a mirror. What if your purpose is not to shine but to redirect the light toward those who cannot see the source?",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 5
+        "factIndex": 3
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [8, 10]
+        "slice": [5, 7]
       },
       "quote": {
         "themeIndex": 0,
@@ -32,15 +32,15 @@
     },
     "philosophy": {
       "label": "II. The Waves",
-      "heading": "The river does not <em>boast</em> of the ocean",
-      "intro": "The ego mistakes itself for the whole sea — a wave convinced of its own separateness. But arrogance is heavy armor; it slows the warrior and muffles the music of the depths. True strength arrives not through self-assertion but through the surrender to something vast and unnamed.",
+      "heading": "The wave forgets <em>it is</em> the sea",
+      "intro": "Arrogance is a wave that believes itself separate from the ocean — rising with pride, crashing with certainty, dissolving back into what it always was. The Gita calls this confusion the root of suffering: the failure to recognize that the self is not the actor but the stage upon which all action plays.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 7
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [4, 6]
+        "slice": [6, 8]
       },
       "quote": {
         "themeIndex": 1,
@@ -49,11 +49,11 @@
     },
     "gita": {
       "label": "III. The Battlefield",
-      "heading": "The war within — <em>dharma</em> versus desire",
-      "intro": "Before the first arrow flew, Krishna offered Arjuna something rarer than victory: a new way of seeing. The battlefield is not Kurukshetra but the cusp of every choice — where duty calls and desire answers back. To act without clinging to results is not indifference; it is the deepest form of freedom.",
+      "heading": "Freedom beyond <em>the fruit</em> of action",
+      "intro": "Krishna did not ask Arjuna to win. He asked him to act — fully, completely — while holding the outcome like water in open hands. This is not detachment from life but a deeper kind of participation: to give everything to the moment and nothing to the reward.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 4
+        "factIndex": 5
       },
       "facts": {
         "themeIndex": 2,
@@ -66,8 +66,8 @@
     },
     "shiva": {
       "label": "IV. The Dance",
-      "heading": "Time as <em>jewel</em> in matted locks",
-      "intro": "In the silence before the drum speaks, in the pause between one breath and the next — there is Shiva. Not the destroyer of old stories but the dancer who makes destruction and creation a single gesture. His stillness is not absence; it is the eye at the center of every storm.",
+      "heading": "The drum that <em>speaks</em> the universe",
+      "intro": "Before the first note, there is silence. After the last note, there is silence. Between them — the damaru's beat, the Tandava's fire, the brief and blazing interval we call existence. Shiva does not dance to celebrate creation; the dance is creation, and creation is the dance.",
       "imageCard": {
         "themeIndex": 3,
         "factIndex": 6
@@ -83,15 +83,15 @@
     },
     "art": {
       "label": "V. The Canvas",
-      "heading": "Bridges across the <em>abyss</em> of silence",
-      "intro": "A lily does not ask whether its reflection in the water is worthy of being seen. It simply opens. So too with creation — the brushstroke, the note, the written word — each is a bridge thrown across the gap between inner silence and outer form. Art begins where self-consciousness ends.",
+      "heading": "Light as <em>the only</em> subject",
+      "intro": "The impressionists understood what philosophers took millennia to articulate: that the object is an illusion, and only the light is real. A lily is not a fixed thing — it is a conversation between pigment and perception, between the eye that sees and the sun that reveals. To paint is to participate in that conversation.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 8
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [5, 7]
+        "slice": [9, 11]
       },
       "quote": {
         "themeIndex": 4,
@@ -100,20 +100,26 @@
     }
   },
   "changelog": {
-    "version": "1.8.3",
+    "version": "1.8.4",
     "entries": [
       {
-        "date": "2026-06-07",
-        "time": "12:00:00",
-        "type": "content",
-        "description": "Content layout refresh: section intros rewritten, fact cards rotated, quotes rotated, today section updated for midsummer",
+        "date": "2026-06-08",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #159: New facts and quotes added to all 5 themes, content rotated, intros refreshed, color scheme set to starry-night for summer",
         "changes": [
-          "Rewrote intros for all 5 sections (moon, philosophy, gita, shiva, art) with fresh phrasing and varied sentence structure",
-          "Rotated imageCard factIndex: Moon=5 (new moon seeds), Philosophy=7 (Nietzsche monster), Gita=4 (battlefield wisdom), Shiva=6 (Om essence), Art=8 (golden ratio)",
-          "Rotated facts.slice: Moon=[8,10], Philosophy=[4,6], Gita=[7,9], Shiva=[8,10], Art=[5,7]",
-          "Rotated quoteIndex: Moon=5 (Thich Nhat Hanh), Philosophy=6 (Atrijā original), Gita=0 (believe in), Shiva=1 (root of joy), Art=2 (dream painting)",
-          "Updated Today heading: 'The longest light — midsummer's quiet revelation'",
-          "Color scheme remains sunflower (summer-appropriate warm tones)"
+          "Added 2 new facts to Moon theme (cosmic coincidence of eclipses, Babylonian lunar calendars)",
+          "Added 2 new facts to Ego theme (Stoic suffering in imagination, ego vs soul in meetings)",
+          "Added 2 new facts to Gita theme (equanimity as highest yoga, Oppenheimer atomic echo)",
+          "Added 2 new facts to Shiva theme (lingam as formless symbol, CERN Nataraja statue)",
+          "Added 2 new facts to Art theme (Impressionism and light, beauty as state not possession)",
+          "Added 1 new quote to each theme (8 total new quotes across all themes)",
+          "Rotated imageCard factIndex: Moon=3, Philosophy=4, Gita=5, Shiva=6, Art=7",
+          "Rotated facts.slice: Moon=[5,7], Philosophy=[6,8], Gita=[7,9], Shiva=[8,10], Art=[9,11]",
+          "Rotated quoteIndex: Moon=5, Philosophy=6, Gita=0, Shiva=1, Art=2",
+          "Rewrote intros for Moon, Philosophy, Gita, Shiva, and Art sections with fresh phrasing",
+          "Updated Today heading: 'The deepening light — early summer's contemplative turn'",
+          "Color scheme changed: sunflower → starry-night (summer rotation)"
         ]
       }
     ]
