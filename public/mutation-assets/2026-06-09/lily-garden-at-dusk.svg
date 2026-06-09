@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <!-- Impressionist brushstroke filter -->
+    <filter id="brush" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="2"/>
+      <feDisplacementMap in="SourceGraphic" scale="3"/>
+    </filter>
+    <!-- Sky gradient: dusk fading from gold to deep red -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d1b2e"/>
+      <stop offset="35%" stop-color="#5c1a2e"/>
+      <stop offset="65%" stop-color="#c62828"/>
+      <stop offset="100%" stop-color="#ff6f00" stop-opacity="0.7"/>
+    </linearGradient>
+    <!-- Ground gradient -->
+    <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d2b0d"/>
+      <stop offset="100%" stop-color="#1a0a0a"/>
+    </linearGradient>
+    <!-- Water reflection -->
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0-stop-color="#c62828" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1a0a0a"/>
+    </linearGradient>
+    <!-- Lily glow -->
+    <radialGradient id="lilyGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ff80ab" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#ff80ab" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ff80ab" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Tulip gradient -->
+    <linearGradient id="tulipGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e91e63"/>
+      <stop offset="100%" stop-color="#ad1457"/>
+    </linearGradient>
+    <!-- Sun glow -->
+    <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#fff8e1"/>
+      <stop offset="30%" stop-color="#ffd740" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff6f00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="800" height="500" fill="url(#skyGrad)"/>
+
+  <!-- Impressionist sky brushstrokes -->
+  <g filter="url(#brush)" opacity="0.3">
+    <rect x="0" y="0" width="800" height="200" fill="#c62828" opacity="0.2"/>
+    <rect x="0" y="80" width="800" height="120" fill="#ff80ab" opacity="0.1"/>
+    <rect x="100" y="0" width="600" height="150" fill="#ffd740" opacity="0.08"/>
+  </g>
+
+  <!-- Setting sun glow -->
+  <ellipse cx="400" cy="320" rx="180" ry="100" fill="url(#sunGlow)" opacity="0.5"/>
+  <ellipse cx="400" cy="320" rx="60" ry="60" fill="#fff8e1" opacity="0.9"/>
+  <ellipse cx="400" cy="320" rx="40" ry="40" fill="#ffffff"/>
+
+  <!-- Distant treeline silhouette -->
+  <path d="M0,350 Q50,320 100,345 Q150,310 200,335 Q250,300 300,330 Q350,305 400,325 Q450,295 500,320 Q550,300 600,330 Q650,310 700,340 Q750,315 800,345 L800,400 L0,400 Z" fill="#0a1a0a" opacity="0.7"/>
+  <path d="M0,360 Q80,340 160,355 Q240,330 320,350 Q400,325 480,345 Q560,320 640,345 Q720,330 800,355 L800,400 L0,400 Z" fill="#0d2b0d" opacity="0.8"/>
+
+  <!-- Water / pond reflection -->
+  <ellipse cx="400" cy="400" rx="250" ry="60" fill="url(#waterGrad)" opacity="0.6"/>
+  <rect x="150" y="380" width="500" height="80" fill="#1a0a0a" opacity="0.3" filter="url(#brush)"/>
+
+  <!-- === LILIES === -->
+
+  <!-- Lily 1: Large foreground left -->
+  <g transform="translate(150, 360)">
+    <!-- Stem -->
+    <path d="M0,0 Q5,-40 -5,-80" stroke="#00c853" stroke-width="3" fill="none" opacity="0.8"/>
+    <!-- Lily petals (open wide) -->
+    <ellipse cx="-12" cy="-85" rx="18" ry="30" fill="#ff80ab" opacity="0.9" transform="rotate(-15)"/>
+    <ellipse cx="12" cy="-85" rx="18" ry="30" fill="#ff80ab" opacity="0.85" transform="rotate(15)"/>
+    <ellipse cx="0" cy="-95" rx="14" ry="28" fill="#fce4ec" opacity="0.7" transform="rotate(0)"/>
+    <ellipse cx="-8" cy="-90" rx="10" ry="22" fill="#e91e63" opacity="0.6" transform="rotate(-8)"/>
+    <ellipse cx="8" cy="-90" rx="10" ry="22" fill="#e91e63" opacity="0.55" transform="rotate(8)"/>
+    <!-- Center pistil -->
+    <ellipse cx="0" cy="-92" rx="4" ry="14" fill="#ffd740" opacity="0.8"/>
+    <!-- Glow -->
+    <circle cx="0" cy="-90" r="35" fill="url(#lilyGlow)" opacity="0.4"/>
+    <!-- Leaf -->
+    <ellipse cx="15" cy="-50" rx="25" ry="8" fill="#00c853" opacity="0.5" transform="rotate(20)"/>
+  </g>
+
+  <!-- Lily 2: Center, slightly back -->
+  <g transform="translate(380, 370) scale(0.85)">
+    <path d="M0,0 Q-3,-35 3,-70" stroke="#00c853" stroke-width="3" fill="none" opacity="0.7"/>
+    <ellipse cx="-10" cy="-75" rx="16" ry="26" fill="#ff80ab" opacity="0.85" transform="rotate(-12)"/>
+    <ellipse cx="10" cy="-75" rx="16" ry="26" fill="#ff80ab" opacity="0.8" transform="rotate(12)"/>
+    <ellipse cx="0" cy="-85" rx="12" ry="24" fill="#fce4ec" opacity="0.65"/>
+    <ellipse cx="0" cy="-82" rx="4" ry="12" fill="#ffd740" opacity="0.7"/>
+    <circle cx="0" cy="-80" r="30" fill="url(#lilyGlow)" opacity="0.3"/>
+  </g>
+
+  <!-- Lily 3: Right side -->
+  <g transform="translate(580, 365) scale(0.9)">
+    <path d="M0,0 Q8,-38 0,-75" stroke="#00c853" stroke-width="3" fill="none" opacity="0.75"/>
+    <ellipse cx="-11" cy="-80" rx="17" ry="28" fill="#ff80ab" opacity="0.88" transform="rotate(-18)"/>
+    <ellipse cx="11" cy="-80" rx="17" ry="28" fill="#ff80ab" opacity="0.82" transform="rotate(18)"/>
+    <ellipse cx="0" cy="-90" rx="13" ry="25" fill="#fce4ec" opacity="0.68"/>
+    <ellipse cx="-6" cy="-85" rx="9" ry="18" fill="#e91e63" opacity="0.5" transform="rotate(-6)"/>
+    <ellipse cx="6" cy="-85" rx="9" ry="18" fill="#e91e63" opacity="0.45" transform="rotate(6)"/>
+    <ellipse cx="0" cy="-87" rx="4" ry="13" fill="#ffd740" opacity="0.75"/>
+    <circle cx="0" cy="-85" r="32" fill="url(#lilyGlow)" opacity="0.35"/>
+  </g>
+
+  <!-- Lily 4: Small bud, far right -->
+  <g transform="translate(700, 375) scale(0.6)">
+    <path d="M0,0 Q-2,-25 0,-50" stroke="#00c853" stroke-width="3" fill="none" opacity="0.6"/>
+    <ellipse cx="0" cy="-58" rx="10" ry="20" fill="#ad1457" opacity="0.7" transform="rotate(5)"/>
+    <ellipse cx="0" cy="-60" rx="8" ry="18" fill="#e91e63" opacity="0.6"/>
+    <path d="M-8,-55 Q0,-70 8,-55" stroke="#00c853" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- === TULIPS === -->
+
+  <!-- Tulip 1: Left foreground -->
+  <g transform="translate(80, 340)">
+    <path d="M0,0 Q3,-30 -2,-55" stroke="#00c853" stroke-width="3.5" fill="none" opacity="0.8"/>
+    <!-- Tulip cup shape -->
+    <path d="M-14,-80 Q-16,-60 -12,-50 Q0,-58 12,-50 Q16,-60 14,-80 Q0,-90 -14,-80Z" fill="#c62828" opacity="0.9"/>
+    <path d="M-10,-78 Q-12,-62 -8,-54 Q0,-60 8,-54 Q12,-62 10,-78 Q0,-86 -10,-78Z" fill="#e91e63" opacity="0.6"/>
+    <!-- Leaf -->
+    <path d="M5,-30 Q30,-25 40,-45 Q25,-35 5,-35" fill="#00c853" opacity="0.65"/>
+  </g>
+
+  <!-- Tulip 2: Center-left -->
+  <g transform="translate(250, 350) scale(0.8)">
+    <path d="M0,0 Q-2,-25 2,-48" stroke="#00c853" stroke-width="3" fill="none" opacity="0.75"/>
+    <path d="M-12,-70 Q-14,-52 -10,-44 Q0,-50 10,-44 Q14,-52 12,-70 Q0,-78 -12,-70Z" fill="#e91e63" opacity="0.85"/>
+    <path d="M-8,-68 Q-10,-54 -6,-48 Q0,-52 6,-48 Q10,-54 8,-68 Q0,-74 -8,-68Z" fill="#ff80ab" opacity="0.5"/>
+    <path d="M3,-25 Q25,-20 35,-38 Q22,-28 3,-28" fill="#00c853" opacity="0.6"/>
+  </g>
+
+  <!-- Tulip 3: Center-right -->
+  <g transform="translate(480, 355) scale(0.75)">
+    <path d="M0,0 Q2,-22 -1,-45" stroke="#00c853" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M-12,-65 Q-14,-48 -10,-40 Q0,-46 10,-40 Q14,-48 12,-65 Q0,-72 -12,-65Z" fill="#c62828" opacity="0.88"/>
+    <path d="M-8,-63 Q-10,-50 -6,-44 Q0,-48 6,-44 Q10,-50 8,-63 Q0,-68 -8,-63Z" fill="#ffd740" opacity="0.35"/>
+    <path d="M-3,-22 Q-22,-17 -32,-33 Q-20,-25 -3,-25" fill="#00c853" opacity="0.55"/>
+  </g>
+
+  <!-- Tulip 4: Far right -->
+  <g transform="translate(660, 350) scale(0.7)">
+    <path d="M0,0 Q-1,-20 1,-42" stroke="#00c853" stroke-width="2.5" fill="none" opacity="0.65"/>
+    <path d="M-11,-58 Q-13,-42 -9,-35 Q0,-40 9,-35 Q13,-42 11,-58 Q0,-64 -11,-58Z" fill="#ad1457" opacity="0.82"/>
+    <path d="M-7,-56 Q-9,-44 -5,-38 Q0,-42 5,-38 Q9,-44 7,-56 Q0,-60 -7,-56Z" fill="#ff80ab" opacity="0.45"/>
+  </g>
+
+  <!-- === WATER LILY PADS === -->
+  <ellipse cx="300" cy="410" rx="22" ry="6" fill="#00c853" opacity="0.4"/>
+  <ellipse cx="500" cy="420" rx="18" ry="5" fill="#00c853" opacity="0.35"/>
+  <ellipse cx="420" cy="430" rx="20" ry="5" fill="#00c853" opacity="0.3"/>
+
+  <!-- === FIREFLIES / LIGHT PARTICLES === -->
+  <g opacity="0.7">
+    <circle cx="120" cy="280" r="2" fill="#ffd740" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="250" r="1.5" fill="#fce4ec" opacity="0.5">
+      <animate attributeName="opacity" values="0.2;0.7;0.2" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="290" r="2" fill="#ffd740" opacity="0.55">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="680" cy="260" r="1.5" fill="#ff80ab" opacity="0.4">
+      <animate attributeName="opacity" values="0.1;0.6;0.1" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="310" r="1.8" fill="#ffd740" opacity="0.5">
+      <animate attributeName="opacity" values="0.2;0.75;0.2" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="270" r="1.5" fill="#fce4ec" opacity="0.45">
+      <animate attributeName="opacity" values="0.15;0.65;0.15" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- === ATMOSPHERIC HAZE === -->
+  <rect x="0" y="200" width="800" height="150" fill="#c62828" opacity="0.05"/>
+  <rect x="0" y="300" width="800" height="100" fill="#ff6f00" opacity="0.04"/>
+
+  <!-- === IMPRESSIONIST TEXTURE OVERLAY === -->
+  <rect width="800" height="500" fill="none" filter="url(#brush)" opacity="0.03"/>
+
+</svg>
