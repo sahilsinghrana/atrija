@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "time": "03:00:00",
+      "type": "feature",
+      "description": "Missing date field",
+      "changes": ["A change"]
+    }
+  ]
+}

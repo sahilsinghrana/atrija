@@ -1,0 +1,11 @@
+{
+  "date": "2026-06-10",
+  "entries": [
+    {
+      "time": "03:00:00",
+      "type": "invalid-type",
+      "description": "Invalid entry type",
+      "changes": ["A change"]
+    }
+  ]
+}

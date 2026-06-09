@@ -1,14 +1,15 @@
 /**
- * validate-content.js — Runtime validation for siteData.json and content.json
+ * validate-content.js — Runtime validation for siteData.json, content.json,
+ * seasons.json, and per-date changelog files.
  *
  * Catches malformed content before it breaks the build or renders broken sections.
  * Validates theme indices, fact/quote indices, section keys, color scheme format,
- * and changelog entry structure.
+ * changelog entry structure, and per-date changelog file schemas.
  *
  * @module validate-content
  */
 
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -568,19 +569,22 @@ function validateSeasons(data) {
 
 /**
  * Validate all content files and return combined results.
- * Runs siteData.json validation first, then content.json with cross-references, then seasons.json.
+ * Runs siteData.json validation first, then content.json with cross-references,
+ * seasons.json, and optionally all per-date changelog files.
  *
  * @param {Object} [options]
  * @param {string} [options.siteDataPath] - Override path to siteData.json.
  * @param {string} [options.contentPath] - Override path to content.json.
  * @param {string} [options.seasonsPath] - Override path to seasons.json.
+ * @param {string} [options.changelogDirPath] - Path to changelog directory for date-file validation.
  * @param {boolean} [options.throwOnError=false] - If true, throw an Error when validation fails.
- * @returns {{ siteData: ValidationResult, content: ValidationResult, seasons: ValidationResult, valid: boolean }}
+ * @returns {{ siteData: ValidationResult, content: ValidationResult, seasons: ValidationResult, changelog: { valid: boolean, errors: ValidationError[], filesChecked: number }|null, valid: boolean }}
  */
 function validateAll(options = {}) {
   const siteDataPath = options.siteDataPath || join(PROJECT_ROOT, 'src', 'content', 'siteData.json');
   const contentPath = options.contentPath || join(PROJECT_ROOT, 'src', 'content', 'content.json');
   const seasonsPath = options.seasonsPath || join(PROJECT_ROOT, 'src', 'content', 'seasons.json');
+  const changelogDirPath = options.changelogDirPath || null;
   const throwOnError = options.throwOnError || false;
 
   // Validate siteData.json
@@ -637,15 +641,23 @@ function validateAll(options = {}) {
     }
   }
 
-  const valid = siteDataResult.valid && contentResult.valid && seasonsResult.valid;
+  // Validate changelog date files if directory provided
+  let changelogResult = null;
+  if (changelogDirPath) {
+    const dirResult = validateChangelogDir(changelogDirPath);
+    changelogResult = dirResult.changelog;
+  }
+
+  const valid = siteDataResult.valid && contentResult.valid && seasonsResult.valid && (changelogResult ? changelogResult.valid : true);
 
   if (throwOnError && !valid) {
     const allErrors = [...siteDataResult.errors, ...contentResult.errors, ...seasonsResult.errors];
+    if (changelogResult) allErrors.push(...changelogResult.errors);
     const msg = allErrors.map(e => `[${e.file}] ${e.field}: ${e.message}`).join('\n');
     throw new Error(`Content validation failed with ${allErrors.length} error(s):\n${msg}`);
   }
 
-  return { siteData: siteDataResult, content: contentResult, seasons: seasonsResult, valid };
+  return { siteData: siteDataResult, content: contentResult, seasons: seasonsResult, changelog: changelogResult, valid };
 }
 
 /**
@@ -663,6 +675,151 @@ function formatErrors(result) {
   return lines.join('\n');
 }
 
+// ─── Changelog Date-File Validation ────────────────────────────────────
+
+/** Allowed entry types for changelog date files. */
+const CHANGELOG_ENTRY_TYPES = [
+  'daily-mutation', 'feature', 'fix', 'content',
+  'design', 'refactor', 'perf', 'chore'
+];
+
+/** Regex for HH:MM:SS time format. */
+const TIME_RE = /^\d{2}:\d{2}:\d{2}$/;
+
+/** Regex for YYYY-MM-DD date format. */
+const DATE_RE = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+
+/**
+ * Validate a single per-date changelog file (e.g. 2026-06-09.json).
+ * Checks: date field (YYYY-MM-DD), entries array (non-empty), each entry
+ * has time (HH:MM:SS), type (valid enum), description (string, max 200),
+ * changes (array of non-empty strings).
+ *
+ * @param {Object} data - Parsed changelog date file content.
+ * @param {string} [filePath] - File path for error messages.
+ * @returns {ValidationError[]} Array of validation errors (empty if valid).
+ */
+function validateChangelogDateFile(data, filePath = 'changelog/date-file.json') {
+  const errors = [];
+  const file = filePath;
+
+  if (!data || typeof data !== 'object') {
+    errors.push({ file, field: '<root>', message: 'Changelog date file must be a JSON object' });
+    return errors;
+  }
+
+  // Validate date field
+  if (!isNonEmptyString(data.date)) {
+    errors.push({ file, field: 'date', message: '"date" must be a non-empty string', expected: 'YYYY-MM-DD', actual: data.date });
+  } else if (!DATE_RE.test(data.date)) {
+    errors.push({ file, field: 'date', message: `"date" must match YYYY-MM-DD format, got: ${data.date}`, expected: 'YYYY-MM-DD', actual: data.date });
+  }
+
+  // Validate entries array
+  if (!Array.isArray(data.entries)) {
+    errors.push({ file, field: 'entries', message: '"entries" must be an array', expected: 'array', actual: typeof data.entries });
+  } else if (data.entries.length === 0) {
+    errors.push({ file, field: 'entries', message: '"entries" array must not be empty' });
+  } else {
+    data.entries.forEach((entry, i) => {
+      const ePrefix = `entries[${i}]`;
+
+      if (!entry || typeof entry !== 'object') {
+        errors.push({ file, field: ePrefix, message: `Entry ${i} must be an object`, expected: 'object', actual: typeof entry });
+        return;
+      }
+
+      // Validate time
+      if (!isNonEmptyString(entry.time)) {
+        errors.push({ file, field: `${ePrefix}.time`, message: `Entry ${i} must have a non-empty string "time"`, expected: 'HH:MM:SS', actual: entry.time });
+      } else if (!TIME_RE.test(entry.time)) {
+        errors.push({ file, field: `${ePrefix}.time`, message: `Entry ${i} "time" must match HH:MM:SS format, got: ${entry.time}`, expected: 'HH:MM:SS', actual: entry.time });
+      }
+
+      // Validate type
+      if (!isNonEmptyString(entry.type)) {
+        errors.push({ file, field: `${ePrefix}.type`, message: `Entry ${i} must have a non-empty string "type"`, expected: CHANGELOG_ENTRY_TYPES.join(' | '), actual: entry.type });
+      } else if (!CHANGELOG_ENTRY_TYPES.includes(entry.type)) {
+        errors.push({ file, field: `${ePrefix}.type`, message: `Entry ${i} "type" must be one of: ${CHANGELOG_ENTRY_TYPES.join(', ')}, got: "${entry.type}"`, expected: CHANGELOG_ENTRY_TYPES.join(' | '), actual: entry.type });
+      }
+
+      // Validate description
+      if (!isNonEmptyString(entry.description)) {
+        errors.push({ file, field: `${ePrefix}.description`, message: `Entry ${i} must have a non-empty string "description"`, expected: 'non-empty string (max 200 chars)', actual: entry.description });
+      } else if (entry.description.length > 200) {
+        errors.push({ file, field: `${ePrefix}.description`, message: `Entry ${i} "description" must be at most 200 characters, got: ${entry.description.length}`, expected: '<= 200 chars', actual: `${entry.description.length} chars` });
+      }
+
+      // Validate changes
+      if (!Array.isArray(entry.changes)) {
+        errors.push({ file, field: `${ePrefix}.changes`, message: `Entry ${i} must have a "changes" array`, expected: 'array', actual: typeof entry.changes });
+      } else {
+        entry.changes.forEach((change, j) => {
+          if (!isNonEmptyString(change)) {
+            errors.push({ file, field: `${ePrefix}.changes[${j}]`, message: `Entry ${i} change ${j} must be a non-empty string`, expected: 'non-empty string', actual: change });
+          }
+        });
+      }
+    });
+  }
+
+  return errors;
+}
+
+/**
+ * Validate all changelog date files (YYYY-MM-DD.json) in a directory.
+ * Skips index.json — only validates per-date entry files.
+ *
+ * @param {string} dirPath - Path to changelog directory.
+ * @returns {{ changelog: { valid: boolean, errors: ValidationError[], filesChecked: number }, fileResults: Array<{ file: string, errors: ValidationError[], valid: boolean }> }}
+ */
+function validateChangelogDir(dirPath) {
+  const fileResults = [];
+  let totalErrors = [];
+
+  if (!existsSync(dirPath)) {
+    return {
+      changelog: { valid: false, errors: [{ file: dirPath, field: '<dir>', message: 'Changelog directory not found' }], filesChecked: 0 },
+      fileResults: []
+    };
+  }
+
+  let filesChecked = 0;
+  let dir;
+  try {
+    dir = readdirSync(dirPath, { withFileTypes: true });
+  } catch {
+    return {
+      changelog: { valid: false, errors: [{ file: dirPath, field: '<dir>', message: 'Cannot read changelog directory' }], filesChecked: 0 },
+      fileResults: []
+    };
+  }
+
+  for (const dirent of dir) {
+    if (!dirent.isFile()) continue;
+    const name = dirent.name;
+    if (!DATE_RE.test(name.replace('.json', ''))) continue; // Only YYYY-MM-DD.json
+    if (name === 'index.json') continue;
+
+    const filePath = join(dirPath, name);
+    filesChecked++;
+    const { data, error } = readJson(filePath);
+    if (error) {
+      fileResults.push({ file: name, errors: [{ file: filePath, field: '<parse>', message: error }], valid: false });
+      totalErrors.push({ file: filePath, field: '<parse>', message: error });
+    } else {
+      const entryErrors = validateChangelogDateFile(data, `src/content/changelog/${name}`);
+      fileResults.push({ file: name, errors: entryErrors, valid: entryErrors.length === 0 });
+      totalErrors.push(...entryErrors);
+    }
+  }
+
+  return {
+    changelog: { valid: totalErrors.length === 0, errors: totalErrors, filesChecked },
+    fileResults
+  };
+}
+
 // CLI execution
 if (import.meta.url === `file://${process.argv[1]}`) {
   const start = Date.now();
@@ -672,6 +829,16 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(formatErrors(result.siteData));
   console.log(formatErrors(result.content));
   console.log(formatErrors(result.seasons));
+  if (result.changelog) {
+    console.log(result.changelog.valid
+      ? `✓ changelog/ — ${result.changelog.filesChecked} date file(s) valid`
+      : `✗ changelog/ — ${result.changelog.errors.length} error(s) across ${result.changelog.filesChecked} file(s):`);
+    if (!result.changelog.valid) {
+      for (const err of result.changelog.errors) {
+        console.log(`  • ${err.file}: ${err.message}`);
+      }
+    }
+  }
   console.log(`\nValidation completed in ${elapsed}ms — ${result.valid ? 'PASS' : 'FAIL'}`);
 
   if (!result.valid) {
@@ -683,6 +850,8 @@ export {
   validateSiteData,
   validateContent,
   validateSeasons,
+  validateChangelogDateFile,
+  validateChangelogDir,
   validateAll,
   formatErrors,
   readJson,

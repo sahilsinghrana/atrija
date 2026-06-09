@@ -1,0 +1,17 @@
+{
+  "date": "2026-06-10",
+  "entries": [
+    {
+      "time": "03:00:00",
+      "type": "feature",
+      "description": "Changelog date-file validation in validate-content.js (idea-071)",
+      "changes": [
+        "Added validateChangelogDateFile() function to validate-content.js",
+        "Added validateChangelogDir() for bulk directory validation",
+        "Wired changelog validation into validateAll() via changelogDirPath option",
+        "Updated validate-content.sh to validate all per-date changelog files",
+        "Created 6 test fixtures and 20+ unit tests"
+      ]
+    }
+  ]
+}
