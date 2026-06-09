@@ -6,10 +6,9 @@
     ═══════════════════════════════════════ */
 :root {
   /* ── Ambient Lighting (idea-048) ── */
+  /* Only --ambient-color, --spotlight-x, --spotlight-y are consumed by CSS.
+     --ambient-hue/sat/opacity are set by scroll-lighting.js but never read by any CSS rule. */
   --ambient-color: transparent;
-  --ambient-hue: 0;
-  --ambient-sat: 0%;
-  --ambient-opacity: 0;
   --spotlight-x: 50%;
   --spotlight-y: 50%;
 
