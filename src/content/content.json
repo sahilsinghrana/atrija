@@ -30,7 +30,10 @@
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [3, 5]
+        "slice": [
+          3,
+          5
+        ]
       },
       "quote": {
         "themeIndex": 0,
@@ -47,7 +50,10 @@
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [8, 10]
+        "slice": [
+          8,
+          10
+        ]
       },
       "quote": {
         "themeIndex": 1,
@@ -64,7 +70,10 @@
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [4, 6]
+        "slice": [
+          4,
+          6
+        ]
       },
       "quote": {
         "themeIndex": 2,
@@ -81,7 +90,10 @@
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [2, 4]
+        "slice": [
+          2,
+          4
+        ]
       },
       "quote": {
         "themeIndex": 3,
@@ -98,7 +110,10 @@
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [3, 5]
+        "slice": [
+          3,
+          5
+        ]
       },
       "quote": {
         "themeIndex": 4,

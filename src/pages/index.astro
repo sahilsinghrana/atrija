@@ -85,7 +85,7 @@ const sections = [
       <div class="section-label reveal-left">Today's Reflection</div>
       <h2 class="reveal" set:html={sec.today.heading} />
       {sec.today.visualAsset && (sec.today.visualAsset.path || sec.today.visualAsset.svgPath) && (
-        <div class="today-visual-asset reveal">
+        <div class="today-visual-asset">
           <img src={sec.today.visualAsset.path || sec.today.visualAsset.svgPath} alt={sec.today.visualAsset.description || "Daily visual"} loading="lazy" />
           <div class="today-visual-caption">{sec.today.visualAsset.description}</div>
         </div>
