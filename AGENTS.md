@@ -245,13 +245,18 @@ scripts/
 
 ## Three.js Scene (scene-init.js)
 - Stars: 2500 desktop / 1500 mobile, custom twinkling shader with size + brightness oscillation
-- Moon: Slow orbit + self-rotation, glow effect
-- Sunflowers & Lilies: Billboard sprites with canvas textures
-- Flute: Click spawns music notes globally (no audio)
-- Music notes: 30 desktop / 25 mobile, floating sprites
-- Waves: GLSL shader, 32×32 segments desktop / 16×16 mobile
-- **No post-processing**: Direct `renderer.render()` — no EffectComposer, no glitch shaders
+- Moon: MeshBasicMaterial (no shadow), 7 procedural craters, 4-layer glow (inner/outer/haze), PointLight at moon position
+- Sunflowers: Canvas texture sprites (multi-layer petals, seed disk, stems, leaves)
+- Tulips: Canvas texture sprites (6 individual petals in 2 layers, seeded PRNG, 30 natural warm colors)
+- Lilies: Canvas texture sprites (6 trumpet petals, stamens, pistil, spots, 12 non-yellow colors)
+- Flute: Click anywhere spawns SVG bansuri + floating music notes (no audio)
+- Music notes: 15 desktop / 10 mobile, floating sprites
+- Waves: 32 segments desktop / 16 mobile
+- Cypress trees: 5 desktop / 2 mobile, sway animation
+- Fireflies: 40 desktop / 20 mobile, damped random walk
+- Post-processing: Van Gogh painted-style shader + glitch shader (EffectComposer)
 - Init runs as IIFE — no DOMContentLoaded wrapper, no client:idle directive
+- scene-init.js is SACRED — never modify without explicit user instruction
 
 ## Section Architecture (index.astro)
 - 5 content sections generated from data-driven loop (`sections` array in frontmatter)
@@ -261,11 +266,13 @@ scripts/
 - All section content comes from `content.json` via `sec[key]`
 - All facts/quotes come from `siteData.json` via theme/quote indices
 
+## Changelog System
+
 Changelog entries are stored as **date-based files** in `src/content/changelog/` (copied to `public/changelog/` for static serving):
 
 ```
 src/content/changelog/
-  index.json           — Master index: dates metadata, entry counts
+  index.json           — Master index: version, dates metadata, entry counts
   2026-05-14.json      — All entries for May 14
   2026-05-15.json      — All entries for May 15
 ```
@@ -273,13 +280,20 @@ src/content/changelog/
 ### Entry Format (per date file)
 ```json
 {
-  "date": "2026-05-15",
+  "date": "2026-06-09",
   "entries": [
     {
       "time": "06:00:00",
       "type": "daily-mutation",
-      "description": "Daily mutation #135: ...",
-      "changes": ["change 1", "change 2"]
+      "description": "Daily mutation #161: lily-garden colors, new tagline, headings rewritten, SVG asset",
+      "changes": [
+        "Color scheme: lily-garden (passionate summer)",
+        "Hero tagline: 'Where twilight gathers the day's last glow'",
+        "All 5 section headings rewritten",
+        "Fact/quote indices rotated across all sections",
+        "Today section fully rewritten",
+        "Visual asset: midsummer-meadow.svg (224KB)"
+      ]
     }
   ]
 }
@@ -288,25 +302,36 @@ src/content/changelog/
 ### Index Format
 ```json
 {
-  "version": "1.2.0",
-  "lastUpdated": "2026-05-15T13:00:00Z",
-  "totalEntries": 6,
+  "version": "1.8.5",
+  "lastUpdated": "2026-06-09T12:12:00.000Z",
+  "totalEntries": 29,
   "dates": [
-    { "date": "2026-05-15", "entries": 3, "latestType": "daily-mutation", "description": "..." }
+    { "date": "2026-06-09", "entries": 1, "latestType": "daily-mutation", "description": "..." }
   ]
 }
 ```
+
+### Entry Types
+- `daily-mutation` — content changes (tagline, colors, headings, facts, quotes, visual assets)
+- `feature` — new features from kanban implementation
+- `fix` — bug fixes
+- `content` — content-only changes (intros, rotations)
+- `design` — visual/layout changes
+- `refactor` — code refactoring
+- `perf` — performance improvements
+- `chore` — maintenance tasks
 
 ### Rules
 - Each date file contains all entries for that date, sorted by time
 - Index keeps only last 30 dates (oldest auto-pruned)
 - Same-day entries are differentiated by `time` field
-- UI loads index first, then lazy-loads date files on demand
-- "Load More" button fetches older dates in batches of 5
+- UI loads index first, then lazy-loads date files on click-to-expand
+- Changelog UI supports click/keyboard to expand individual date cards
 
 ### Updating
-- `daily-mutate.js` writes to `src/content/changelog/YYYY-MM-DD.json`, updates `index.json`, syncs to `public/changelog/`, AND syncs consolidated entries back to `content.json`'s changelog field (for website display at build time)
-- Other cron jobs (background-implement, git-pull-build) write to the same date-based files and sync to `content.json`
+- `van-gogh-daily-mutate` writes to `src/content/changelog/YYYY-MM-DD.json`, updates `index.json`, syncs to `public/changelog/`, AND syncs to `content.json`'s changelog field
+- `van-gogh-background-implement` writes implementation entries to the same date files
+- `van-gogh-git-pull-build` writes build/deploy entries
 - `content.json`'s changelog is auto-synced: deduplicated by (date+type), max 15 entries, sorted chronologically
 - The website reads changelog from `content.json` at build time (imported by index.astro)
 | Job | Schedule | Purpose |

@@ -493,6 +493,42 @@
   ],
   "colorSchemes": [
     {
+      "name": "sunflower",
+      "primary": "#f5c800",
+      "secondary": "#ff6f00",
+      "accent": "#2e7d32",
+      "background": "#1a1200",
+      "text": "#fff8e1",
+      "mood": "warm",
+      "shaderParams": {
+        "strokeDensity": 10.6,
+        "swirlFrequency": 7.8,
+        "colorIntensity": 1.57
+      },
+      "seasons": [
+        "autumn",
+        "summer"
+      ]
+    },
+    {
+      "name": "midnight-wave",
+      "primary": "#0d47a1",
+      "secondary": "#00bcd4",
+      "accent": "#7c4dff",
+      "background": "#000a12",
+      "text": "#b3e5fc",
+      "mood": "mysterious",
+      "shaderParams": {
+        "strokeDensity": 5.9,
+        "swirlFrequency": 14.9,
+        "colorIntensity": 1.12
+      },
+      "seasons": [
+        "winter",
+        "autumn"
+      ]
+    },
+    {
       "name": "lily-garden",
       "primary": "#c62828",
       "secondary": "#ff80ab",
@@ -546,45 +582,9 @@
         "winter",
         "summer"
       ]
-    },
-    {
-      "name": "sunflower",
-      "primary": "#f5c800",
-      "secondary": "#ff6f00",
-      "accent": "#2e7d32",
-      "background": "#1a1200",
-      "text": "#fff8e1",
-      "mood": "warm",
-      "shaderParams": {
-        "strokeDensity": 10.6,
-        "swirlFrequency": 7.8,
-        "colorIntensity": 1.57
-      },
-      "seasons": [
-        "autumn",
-        "summer"
-      ]
-    },
-    {
-      "name": "midnight-wave",
-      "primary": "#0d47a1",
-      "secondary": "#00bcd4",
-      "accent": "#7c4dff",
-      "background": "#000a12",
-      "text": "#b3e5fc",
-      "mood": "mysterious",
-      "shaderParams": {
-        "strokeDensity": 5.9,
-        "swirlFrequency": 14.9,
-        "colorIntensity": 1.12
-      },
-      "seasons": [
-        "winter",
-        "autumn"
-      ]
     }
   ],
-  "activeColorScheme": "lily-garden",
+  "activeColorScheme": "sunflower",
   "changelog": {
     "version": "1.0.0",
     "entries": [
