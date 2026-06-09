@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # scripts/validate-content.sh — CI-like check for content JSON files
-# Runs the validate-content.js module against siteData.json and content.json
+# Runs the validate-content.js module against siteData.json, content.json, and seasons.json
 # Exits 0 if valid, 1 if any errors found
 
 set -euo pipefail
@@ -16,14 +16,16 @@ import { validateAll, formatErrors } from '${PROJECT_DIR}/src/content/validate-c
 
 const result = validateAll({
   siteDataPath: '${PROJECT_DIR}/src/content/siteData.json',
-  contentPath: '${PROJECT_DIR}/src/content/content.json'
+  contentPath: '${PROJECT_DIR}/src/content/content.json',
+  seasonsPath: '${PROJECT_DIR}/src/content/seasons.json'
 });
 
 console.log(formatErrors(result.siteData));
 console.log(formatErrors(result.content));
+console.log(formatErrors(result.seasons));
 
 if (!result.valid) {
-  const total = result.siteData.errors.length + result.content.errors.length;
+  const total = result.siteData.errors.length + result.content.errors.length + result.seasons.errors.length;
   console.log('\nFAIL: ' + total + ' validation error(s) found');
   process.exit(1);
 } else {

@@ -445,17 +445,20 @@ describe('validateAll', () => {
   it('validates real content files and passes', () => {
     const result = validateAll({
       siteDataPath: join(FIXTURES, 'valid-siteData.json'),
-      contentPath: join(FIXTURES, 'valid-content.json')
+      contentPath: join(FIXTURES, 'valid-content.json'),
+      seasonsPath: join(FIXTURES, 'valid-seasons.json')
     });
     expect(result.valid).toBe(true);
     expect(result.siteData.valid).toBe(true);
     expect(result.content.valid).toBe(true);
+    expect(result.seasons.valid).toBe(true);
   });
 
   it('detects errors in malformed content', () => {
     const result = validateAll({
       siteDataPath: join(FIXTURES, 'out-of-bounds-content.json'),
-      contentPath: join(FIXTURES, 'out-of-bounds-content.json')
+      contentPath: join(FIXTURES, 'out-of-bounds-content.json'),
+      seasonsPath: join(FIXTURES, 'valid-seasons.json')
     });
     expect(result.valid).toBe(false);
   });
@@ -464,7 +467,8 @@ describe('validateAll', () => {
     const start = Date.now();
     validateAll({
       siteDataPath: join(FIXTURES, 'valid-siteData.json'),
-      contentPath: join(FIXTURES, 'valid-content.json')
+      contentPath: join(FIXTURES, 'valid-content.json'),
+      seasonsPath: join(FIXTURES, 'valid-seasons.json')
     });
     const elapsed = Date.now() - start;
     expect(elapsed).toBeLessThan(50);
@@ -475,6 +479,7 @@ describe('validateAll', () => {
       validateAll({
         siteDataPath: join(FIXTURES, 'bad-colors-siteData.json'),
         contentPath: join(FIXTURES, 'valid-content.json'),
+        seasonsPath: join(FIXTURES, 'valid-seasons.json'),
         throwOnError: true
       });
     }).toThrow(/Content validation failed/);

@@ -1,0 +1,70 @@
+{
+  "seasons": {
+    "spring": {
+      "months": [0, 4, 13],
+      "colorSchemeWeights": {
+        "starry-night": -1,
+        "sunflower": 0,
+        "midnight-wave": 1,
+        "tulip-garden": 3
+      },
+      "flowerEmphasis": "invalid-emphasis",
+      "skyToneShift": { "r": "not-a-number", "g": 0.01 },
+      "particleEffect": "",
+      "factThemeWeights": {
+        "moon": -2,
+        "ego": 0,
+        "gita": 2,
+        "shiva": -1
+      }
+    },
+    "summer": {
+      "months": [6, 7, 8],
+      "colorSchemeWeights": {
+        "starry-night": 2,
+        "sunflower": 3,
+        "midnight-wave": 1,
+        "tulip-garden": 1,
+        "moonlit-silver": 1
+      },
+      "flowerEmphasis": "balanced",
+      "skyToneShift": { "r": 0.03, "g": 0.02, "b": 0.01 },
+      "particleEffect": "fireflies",
+      "factThemeWeights": {
+        "moon": 2, "ego": 1, "gita": 1, "shiva": 1, "art": 2
+      }
+    },
+    "autumn": {
+      "months": [9, 10, 11],
+      "colorSchemeWeights": {
+        "starry-night": 2,
+        "sunflower": 3,
+        "midnight-wave": 2,
+        "tulip-garden": 1,
+        "moonlit-silver": 1
+      },
+      "flowerEmphasis": "sunflowers",
+      "skyToneShift": { "r": 0.02, "g": 0.0, "b": -0.02 },
+      "particleEffect": "leaves",
+      "factThemeWeights": {
+        "moon": 1, "ego": 2, "gita": 1, "shiva": 2, "art": 1
+      }
+    },
+    "winter": {
+      "months": [12, 1, 2],
+      "colorSchemeWeights": {
+        "starry-night": 3,
+        "sunflower": 1,
+        "midnight-wave": 2,
+        "tulip-garden": 1,
+        "moonlit-silver": 3
+      },
+      "flowerEmphasis": "balanced",
+      "skyToneShift": { "r": -0.01, "g": 0.0, "b": 0.03 },
+      "particleEffect": "snow",
+      "factThemeWeights": {
+        "moon": 2, "ego": 1, "gita": 2, "shiva": 2, "art": 1
+      }
+    }
+  }
+}

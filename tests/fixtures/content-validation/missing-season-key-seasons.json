@@ -1,0 +1,20 @@
+{
+  "seasons": {
+    "spring": {
+      "months": [3, 4, 5],
+      "colorSchemeWeights": {
+        "starry-night": 1,
+        "sunflower": 1,
+        "midnight-wave": 1,
+        "tulip-garden": 3,
+        "moonlit-silver": 2
+      },
+      "flowerEmphasis": "tulips",
+      "skyToneShift": { "r": 0.02, "g": 0.01, "b": -0.01 },
+      "particleEffect": "pollen",
+      "factThemeWeights": {
+        "moon": 1, "ego": 1, "gita": 2, "shiva": 1, "art": 2
+      }
+    }
+  }
+}

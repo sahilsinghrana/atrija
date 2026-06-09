@@ -455,18 +455,132 @@ function validateContent(data, siteData = null) {
 }
 
 /**
- * Validate both content files and return combined results.
- * Runs siteData.json validation first, then content.json with cross-references.
+ * Validate seasons.json structure and content.
+ * Checks: 4 season keys (spring, summer, autumn, winter), months array (numbers 1-12),
+ * colorSchemeWeights (all 5 scheme keys present, values >= 1), flowerEmphasis enum,
+ * skyToneShift RGB ranges, particleEffect string, factThemeWeights (all theme keys present, values >= 1).
+ *
+ * @param {Object} data - Parsed seasons.json content.
+ * @returns {ValidationError[]} Array of validation errors (empty if valid).
+ */
+function validateSeasons(data) {
+  const errors = [];
+  const file = 'src/content/seasons.json';
+
+  if (!data || typeof data !== 'object') {
+    errors.push({ file, field: '<root>', message: 'seasons.json must be a JSON object' });
+    return errors;
+  }
+
+  const seasons = data.seasons;
+  if (!seasons || typeof seasons !== 'object') {
+    errors.push({ file, field: 'seasons', message: '\"seasons\" must be a non-null object', expected: 'object', actual: typeof seasons });
+    return errors;
+  }
+
+  // Required season keys
+  const requiredSeasons = ['spring', 'summer', 'autumn', 'winter'];
+  for (const seasonKey of requiredSeasons) {
+    if (!seasons[seasonKey] || typeof seasons[seasonKey] !== 'object') {
+      errors.push({ file, field: `seasons.${seasonKey}`, message: `Season \"${seasonKey}\" is missing or not an object`, expected: 'object', actual: seasons[seasonKey] });
+    }
+  }
+
+  // Validate each season that exists
+  const COLOR_SCHEME_KEYS = ['starry-night', 'sunflower', 'midnight-wave', 'tulip-garden', 'moonlit-silver'];
+  const FACT_THEME_KEYS = ['moon', 'ego', 'gita', 'shiva', 'art'];
+  const FLOWER_EMPHASIS_VALUES = ['tulips', 'sunflowers', 'balanced', 'lilies', 'wildflowers'];
+
+  for (const seasonKey of requiredSeasons) {
+    const season = seasons[seasonKey];
+    if (!season || typeof season !== 'object') continue;
+    const prefix = `seasons.${seasonKey}`;
+
+    // Validate months array
+    if (!Array.isArray(season.months)) {
+      errors.push({ file, field: `${prefix}.months`, message: `\"months\" must be an array of month numbers (1-12)`, expected: 'array', actual: typeof season.months });
+    } else {
+      season.months.forEach((m, i) => {
+        if (typeof m !== 'number' || !Number.isInteger(m) || m < 1 || m > 12) {
+          errors.push({ file, field: `${prefix}.months[${i}]`, message: `Month value must be an integer 1-12, got: ${m}`, expected: '1-12', actual: m });
+        }
+      });
+    }
+
+    // Validate colorSchemeWeights
+    if (!season.colorSchemeWeights || typeof season.colorSchemeWeights !== 'object') {
+      errors.push({ file, field: `${prefix}.colorSchemeWeights`, message: `\"colorSchemeWeights\" must be an object`, expected: 'object', actual: typeof season.colorSchemeWeights });
+    } else {
+      for (const schemeKey of COLOR_SCHEME_KEYS) {
+        if (!(schemeKey in season.colorSchemeWeights)) {
+          errors.push({ file, field: `${prefix}.colorSchemeWeights.${schemeKey}`, message: `Missing required color scheme key \"${schemeKey}\"`, expected: 'present', actual: 'missing' });
+        } else {
+          const val = season.colorSchemeWeights[schemeKey];
+          if (typeof val !== 'number' || !Number.isInteger(val) || val < 1) {
+            errors.push({ file, field: `${prefix}.colorSchemeWeights.${schemeKey}`, message: `Weight must be a positive integer (>= 1), got: ${val}`, expected: '>= 1', actual: val });
+          }
+        }
+      }
+    }
+
+    // Validate flowerEmphasis enum
+    if (!season.flowerEmphasis) {
+      errors.push({ file, field: `${prefix}.flowerEmphasis`, message: `\"flowerEmphasis\" is required`, expected: FLOWER_EMPHASIS_VALUES.join(' | '), actual: season.flowerEmphasis });
+    } else if (!FLOWER_EMPHASIS_VALUES.includes(season.flowerEmphasis)) {
+      errors.push({ file, field: `${prefix}.flowerEmphasis`, message: `\"flowerEmphasis\" must be one of: ${FLOWER_EMPHASIS_VALUES.join(', ')}, got: \"${season.flowerEmphasis}\"`, expected: FLOWER_EMPHASIS_VALUES.join(' | '), actual: season.flowerEmphasis });
+    }
+
+    // Validate skyToneShift RGB
+    if (!season.skyToneShift || typeof season.skyToneShift !== 'object') {
+      errors.push({ file, field: `${prefix}.skyToneShift`, message: `\"skyToneShift\" must be an object with r, g, b number fields`, expected: '{r, g, b}', actual: typeof season.skyToneShift });
+    } else {
+      for (const channel of ['r', 'g', 'b']) {
+        if (typeof season.skyToneShift[channel] !== 'number') {
+          errors.push({ file, field: `${prefix}.skyToneShift.${channel}`, message: `\"${channel}\" must be a number`, expected: 'number', actual: season.skyToneShift[channel] });
+        }
+      }
+    }
+
+    // Validate particleEffect string
+    if (!isNonEmptyString(season.particleEffect)) {
+      errors.push({ file, field: `${prefix}.particleEffect`, message: `\"particleEffect\" must be a non-empty string`, expected: 'non-empty string', actual: season.particleEffect });
+    }
+
+    // Validate factThemeWeights
+    if (!season.factThemeWeights || typeof season.factThemeWeights !== 'object') {
+      errors.push({ file, field: `${prefix}.factThemeWeights`, message: `\"factThemeWeights\" must be an object`, expected: 'object', actual: typeof season.factThemeWeights });
+    } else {
+      for (const themeKey of FACT_THEME_KEYS) {
+        if (!(themeKey in season.factThemeWeights)) {
+          errors.push({ file, field: `${prefix}.factThemeWeights.${themeKey}`, message: `Missing required fact theme key \"${themeKey}\"`, expected: 'present', actual: 'missing' });
+        } else {
+          const val = season.factThemeWeights[themeKey];
+          if (typeof val !== 'number' || !Number.isInteger(val) || val < 1) {
+            errors.push({ file, field: `${prefix}.factThemeWeights.${themeKey}`, message: `Weight must be a positive integer (>= 1), got: ${val}`, expected: '>= 1', actual: val });
+          }
+        }
+      }
+    }
+  }
+
+  return errors;
+}
+
+/**
+ * Validate all content files and return combined results.
+ * Runs siteData.json validation first, then content.json with cross-references, then seasons.json.
  *
  * @param {Object} [options]
  * @param {string} [options.siteDataPath] - Override path to siteData.json.
  * @param {string} [options.contentPath] - Override path to content.json.
+ * @param {string} [options.seasonsPath] - Override path to seasons.json.
  * @param {boolean} [options.throwOnError=false] - If true, throw an Error when validation fails.
- * @returns {{ siteData: ValidationResult, content: ValidationResult, valid: boolean }}
+ * @returns {{ siteData: ValidationResult, content: ValidationResult, seasons: ValidationResult, valid: boolean }}
  */
 function validateAll(options = {}) {
   const siteDataPath = options.siteDataPath || join(PROJECT_ROOT, 'src', 'content', 'siteData.json');
   const contentPath = options.contentPath || join(PROJECT_ROOT, 'src', 'content', 'content.json');
+  const seasonsPath = options.seasonsPath || join(PROJECT_ROOT, 'src', 'content', 'seasons.json');
   const throwOnError = options.throwOnError || false;
 
   // Validate siteData.json
@@ -507,15 +621,31 @@ function validateAll(options = {}) {
     }
   }
 
-  const valid = siteDataResult.valid && contentResult.valid;
+  // Validate seasons.json
+  const seasonsResult = { valid: true, errors: [], file: seasonsPath };
+  if (!existsSync(seasonsPath)) {
+    seasonsResult.errors.push({ file: seasonsPath, field: '<file>', message: 'File not found' });
+    seasonsResult.valid = false;
+  } else {
+    const { data: seasonsData, error: seasonsError } = readJson(seasonsPath);
+    if (seasonsError) {
+      seasonsResult.errors.push({ file: seasonsPath, field: '<parse>', message: seasonsError });
+      seasonsResult.valid = false;
+    } else {
+      seasonsResult.errors = validateSeasons(seasonsData);
+      seasonsResult.valid = seasonsResult.errors.length === 0;
+    }
+  }
+
+  const valid = siteDataResult.valid && contentResult.valid && seasonsResult.valid;
 
   if (throwOnError && !valid) {
-    const allErrors = [...siteDataResult.errors, ...contentResult.errors];
+    const allErrors = [...siteDataResult.errors, ...contentResult.errors, ...seasonsResult.errors];
     const msg = allErrors.map(e => `[${e.file}] ${e.field}: ${e.message}`).join('\n');
     throw new Error(`Content validation failed with ${allErrors.length} error(s):\n${msg}`);
   }
 
-  return { siteData: siteDataResult, content: contentResult, valid };
+  return { siteData: siteDataResult, content: contentResult, seasons: seasonsResult, valid };
 }
 
 /**
@@ -541,6 +671,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
   console.log(formatErrors(result.siteData));
   console.log(formatErrors(result.content));
+  console.log(formatErrors(result.seasons));
   console.log(`\nValidation completed in ${elapsed}ms — ${result.valid ? 'PASS' : 'FAIL'}`);
 
   if (!result.valid) {
@@ -551,6 +682,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 export {
   validateSiteData,
   validateContent,
+  validateSeasons,
   validateAll,
   formatErrors,
   readJson,
