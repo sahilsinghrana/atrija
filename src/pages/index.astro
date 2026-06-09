@@ -84,6 +84,12 @@ const sections = [
     <div class="section-inner">
       <div class="section-label reveal-left">Today's Reflection</div>
       <h2 class="reveal" set:html={sec.today.heading} />
+      {sec.today.visualAsset && (
+        <div class="today-visual-asset reveal">
+          <img src={sec.today.visualAsset.path || sec.today.visualAsset.svgPath} alt={sec.today.visualAsset.description || "Daily visual"} loading="lazy" />
+          <div class="today-visual-caption">{sec.today.visualAsset.description}</div>
+        </div>
+      )}
       <div class="today-fact reveal-scale">
         <div class="theme-tag">{todayTheme.title} · {todayColor.mood}</div>
         <p>{todayFact.text}</p>
@@ -241,6 +247,33 @@ const sections = [
       color: var(--text-tertiary);
       text-align: center;
       letter-spacing: 0.05em;
+    }
+
+    /* Daily visual asset in Today section */
+    .today-visual-asset {
+      margin: var(--space-lg) 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .today-visual-asset img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+    .today-visual-asset img:hover {
+      opacity: 1;
+    }
+    .today-visual-caption {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+      text-align: center;
+      padding: var(--space-sm) var(--space-md);
+      font-style: italic;
     }
   </style>
 </BaseLayout>

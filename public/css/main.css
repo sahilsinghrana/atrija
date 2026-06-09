@@ -41,8 +41,6 @@
   --text-lg: clamp(1.3rem, 2vw, 1.6rem);
   --text-xl: clamp(1.6rem, 2.8vw, 2.2rem);
   --text-2xl: clamp(2rem, 4vw, 3rem);
-  --text-3xl: clamp(2.8rem, 6vw, 4.5rem);
-  --text-hero: clamp(3.5rem, 12vw, 7rem);
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -60,7 +58,6 @@
 
   /* Layout */
   --max-w: 680px;
-  --max-w-wide: 820px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
