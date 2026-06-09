@@ -110,12 +110,30 @@ git push origin master
 - The site is about the 3D experience, not showcasing external paintings
 - This applies to ALL cron jobs and autonomous agents
 
-#### 6e. Content-Only Mutations for Daily Cron
-- The `van-gogh-daily-mutate` job should ONLY modify:
-  - `src/content/siteData.json` (facts, quotes, color schemes)
-  - `src/content/content.json` (section text, imageCard refs, fact refs)
-  - `src/content/changelog/` (changelog entries)
-- **NEVER modify `scene-init.js`, `BaseLayout.astro`, `index.astro`, or any JS/CSS files** from the daily-mutate cron
+#### 6e. Content Mutation Rules for Daily Cron
+The `van-gogh-daily-mutate` job makes VISIBLE, IMPACTFUL daily changes. Allowed modifications:
+- `src/content/siteData.json` — facts, quotes, color schemes, themes
+- `src/content/content.json` — section text, imageCard refs, fact refs, changelog
+- `public/mutation-assets/YYYY-MM-DD/` — temporary visual assets (SVG, images, video)
+
+**MUST make dramatic visible changes daily:**
+- Rewrite hero tagline completely (most visible element)
+- Rotate/reorder color schemes (recolors entire site)
+- Rewrite all 5 section headings with fresh poetic language
+- Rotate facts/quotes to different parts of arrays (not just +1)
+- Fully rewrite Today section (heading + intro)
+- Generate one temporary visual asset per day (SVG preferred)
+
+**Visual Assets:**
+- Generated in `public/mutation-assets/YYYY-MM-DD/` (one folder per day)
+- Types: SVG illustration (preferred), image/graphic, video/animation, ASCII art
+- Must match impressionist aesthetic and current color palette
+- Max 100KB per asset
+- Self-cleaning: next day's mutation replaces old assets
+- Referenced in `content.json` via `sections.today.visualAsset`
+- Do NOT modify core theme, CSS, JS, or templates to display assets
+
+**NEVER modify:** `scene-init.js`, `scene/` modules, `BaseLayout.astro`, `index.astro`, `main.css`, or any JS/CSS files
 
 #### 6f. Background Implementer Constraints
 - The `van-gogh-background-implement` job should ONLY implement tasks from the kanban backlog
@@ -160,16 +178,18 @@ git push origin master
    - Daily rotation via `dayOfYear % length`
 
 2. **`src/content/content.json`** — **Text content updated by cron jobs**
-   - `sections.hero.tagline` — Hero tagline HTML
+   - `sections.hero.tagline` — Hero tagline HTML (rewritten daily)
    - `sections.today.heading` — Today section heading
+   - `sections.today.visualAsset` — Daily visual asset: `{ type, path, description }`
    - `sections.{moon,philosophy,gita,shiva,art}` — Each section's:
      - `label` — Roman numeral label (e.g., "I. The Moon")
-     - `heading` — Section heading with `<em>` emphasis
+     - `heading` — Section heading with `<em>` emphasis (rewritten daily)
      - `intro` — Intro paragraph text
      - `imageCard` — `{themeIndex, factIndex}` for the image card
      - `facts` — `{themeIndex, slice: [start, end]}` for fact cards
      - `quote` — `{themeIndex, quoteIndex}` for the quote
    - `changelog` — Version + entries (updated by daily cron)
+   - `meta` — `{ version, lastUpdated, updatedBy, season }`
 
 ### How index.astro Uses Content
 ```astro
@@ -202,10 +222,13 @@ public/
     loader.css       — Loading screen styles
   js/
     scene-init.js    — Three.js scene (stars, moon, sunflowers, lilies, flute, waves, notes)
-    changelog-app.js — Changelog UI (lazy-loaded date cards)
+    changelog-app.js — Changelog UI (lazy-loaded date cards, click-to-expand)
     moon-phase.js    — ASCII moon art + shadow phase animation
     quote-carousel.js— Quote carousel auto-rotation
     loader-progress.js — Loader progress bar
+  mutation-assets/   — Daily visual assets (auto-generated, self-cleaning)
+    YYYY-MM-DD/      — One folder per day (SVG, images, video)
+      *.svg          — Impressionist brushstroke illustrations
 .hermes/
   kanban.json        — Idea board for TDD workflow
   refactoring-plan.md — Refactoring audit and plan
@@ -290,10 +313,11 @@ src/content/changelog/
 |-----|----------|---------|
 | `van-gogh-kanban-generate` | 2 AM daily | Generate ideas + PRDs (full code review first) |
 | `van-gogh-kanban-review` | 3 AM daily | Review all PRDs for quality, feasibility, design alignment |
-| `van-gogh-background-implement` | 3AM + 4PM daily | Implement kanban tasks via TDD |
-| `van-gogh-implementation-review` | 6AM + 7PM daily | Verify completed implementations (3h after implement) |
-| `van-gogh-daily-mutate` | 6 AM daily | Content mutation → build → deploy |
+| `van-gogh-background-implement` | 3AM + 4PM daily | Implement kanban tasks via TDD (with full testing protocol) |
+| `van-gogh-daily-mutate` | 6 AM daily | Content mutation — dramatic visible changes + visual assets → build → deploy |
 | `van-gogh-daily-deploy` | 6 AM daily | Backup deploy (only if mutate hasn't deployed in 1h) |
+| `van-gogh-implementation-review` | 6AM + 7PM daily | Verify completed implementations (3h after implement) |
+| `van-gogh-content-layout-refresh` | 12 PM daily | Midday content refresh — rotate intros/quotes, clean old assets |
 | `van-gogh-git-pull-build` | Every 3h | Git pull + conditional build + changelog |
 
 **IMPORTANT**: All cron jobs are pure Hermes agent prompts. Do NOT call `hermes agent` subprocesses or shell scripts from within cron jobs — this causes libuv assertion crashes on Cybertron Linux. Do all work directly using file tools.
