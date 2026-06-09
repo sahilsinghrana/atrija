@@ -1,122 +1,153 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.5",
-    "lastUpdated": "2026-06-08",
-    "updatedBy": "AI Agent (content-layout-refresh)",
-    "season": "summer ☀️"
+    "version": "1.8.6",
+    "lastUpdated": "2026-06-09",
+    "updatedBy": "AI Agent (daily-mutation)",
+    "season": "summer \u2600\ufe0f"
   },
   "sections": {
     "hero": {
-      "tagline": "Where <em>starlight</em> weaves through swirling dreams"
+      "tagline": "Where <em>twilight</em> gathers the day's last glow"
     },
     "today": {
-      "heading": "The <em>unfolding</em> warmth — midsummer's luminous pause"
+      "heading": "The <em>deepening</em> gold \u2014 midsummer's quiet zenith",
+      "intro": "June deepens. The solstice approaches and the days stretch long, each evening lingering like a held breath. In this pause between planting and harvest, the garden is at its fullest \u2014 tulips standing tall beside lilies, sunflowers tracking the arc of light. There is a particular clarity to this season: the world reveals itself without apology, and we are invited to meet it with equal honesty.",
+      "visualAsset": {
+        "type": "svg",
+        "path": "/mutation-assets/2026-06-09/midsummer-meadow.svg",
+        "description": "Impressionist meadow at midsummer peak \u2014 tulips and lilies swaying in golden light, brushstroke sky",
+        "credit": "Generated for Atrij\u0101 daily mutation"
+      }
     },
     "moon": {
       "label": "I. The Moon",
       "heading": "Borrowed <em>brilliance</em> in a silver sky",
-      "intro": "To shine by reflected light is not a lesser act — it is an act of trust. The Moon receives and returns, asks nothing, keeps nothing. Its glow is not theft but devotion: a daily proof that receiving fully and giving completely can be the same gesture.",
+      "intro": "To shine by reflected light is not a lesser act \u2014 it is an act of trust. The Moon receives and returns, asks nothing, keeps nothing. Its glow is not theft but devotion: a daily proof that receiving fully and giving completely can be the same gesture.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 12
+        "factIndex": 0
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          1,
-          3
+          8,
+          10
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 2
+        "quoteIndex": 7
       }
     },
     "philosophy": {
       "label": "II. The Waves",
       "heading": "The wave forgets <em>it is</em> the sea",
-      "intro": "The wave rises, certain of its shape, proud of its height — then falls, astonished to find itself indistinguishable from the sea. The ego is this brief assertion of form over substance, a ripple that mistakes itself for the ocean. To dissolve is not to disappear but to return to what one always was.",
+      "intro": "The wave rises, certain of its separate crown, proud of its momentary height \u2014 then breaks, discovering it was never anything but the sea wearing a different shape. The ego is this fleeting insistence on form: a ripple that mistakes its curve for its substance. To dissolve is not loss but homecoming, a return to the depth that was never left.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 2
+        "factIndex": 1
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [
-          5,
-          7
-        ]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 4
-      }
-    },
-    "gita": {
-      "label": "III. The Battlefield",
-      "heading": "Freedom beyond <em>the fruit</em> of action",
-      "intro": "The Gita was not spoken in a garden or a palace but on a field of war — where the stakes were absolute and every choice carried the weight of worlds. This is its radical claim: that the deepest wisdom does not require withdrawal from life but full immersion in it, with hands open and heart unguarded.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 4
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [
-          7,
-          9
-        ]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 1
-      }
-    },
-    "shiva": {
-      "label": "IV. The Dance",
-      "heading": "The drum that <em>speaks</em> the universe",
-      "intro": "Shiva does not dance for applause. The Tandava needs no audience because the audience is the dance — every atom, every star, every breath a movement in the choreography of becoming. Stillness and motion are not opposites here; they are the same gesture, seen from inside and outside the drum's resonance.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 10
-      },
-      "facts": {
-        "themeIndex": 3,
         "slice": [
           11,
           13
         ]
       },
       "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 6
+        "themeIndex": 1,
+        "quoteIndex": 8
       }
     },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "Light as <em>the only</em> subject",
-      "intro": "A sunflower does not paint itself golden — it conspires with the sun, translating photons into pigment, light into living color. The impressionist knew this secret: that beauty is never static, never owned. It exists only in the meeting — between eye and object, between hand and canvas, between one fleeting moment and the next.",
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "Freedom beyond <em>the fruit</em> of action",
+      "intro": "The Gita was not spoken in a garden or a palace but on a field of war \u2014 where the stakes were absolute and every choice carried the weight of worlds. This is its radical claim: that the deepest wisdom does not require withdrawal from life but full immersion in it, with hands open and heart unguarded.",
       "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 0
+        "themeIndex": 2,
+        "factIndex": 2
       },
       "facts": {
-        "themeIndex": 4,
+        "themeIndex": 2,
         "slice": [
           3,
           5
         ]
       },
       "quote": {
-        "themeIndex": 4,
+        "themeIndex": 2,
         "quoteIndex": 0
+      }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "The drum that <em>speaks</em> the universe",
+      "intro": "Shiva does not dance for applause. The Tandava needs no audience because the audience is the dance \u2014 every atom, every star, every breath a movement in the choreography of becoming. Stillness and motion are not opposites here; they are the same gesture, seen from inside and outside the drum's resonance.",
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 3
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [
+          6,
+          8
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 1
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Light as <em>the only</em> subject",
+      "intro": "A sunflower does not manufacture its gold \u2014 it conspires with the dawn, translating photons into living pigment, light into color that breathes. The impressionist understood: beauty is never owned, never static. It exists only in the meeting \u2014 between eye and world, between hand and canvas, between one vanishing moment and the next that follows it.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 4
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          6,
+          8
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 2
       }
     }
   },
   "changelog": {
-    "version": "1.8.5",
+    "version": "1.8.6",
     "entries": [
+      {
+        "date": "2026-06-09",
+        "time": "06:22:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #160: Added 2 new facts + 1 quote per theme (10 facts, 5 quotes total), rotated all indices, refreshed 2 intros, updated Today reflection, generated SVG visual asset, color scheme: sunflower \u2192 starry-night",
+        "changes": [
+          "Added 2 new facts to Moon theme (lunar footprints, lunar day cycle)",
+          "Added 2 new facts to Ego theme (ego as story, wave knowing water)",
+          "Added 2 new facts to Gita theme (liberation as bondage, equal vision of all beings)",
+          "Added 2 new facts to Shiva theme (trident/gunas, Rudraksha tears)",
+          "Added 2 new facts to Art theme (brushstroke contains unpainted choices, mastery as transparency)",
+          "Added 1 new quote to each theme (5 Atrij\u0101 originals)",
+          "Rotated imageCard factIndex: Moon=0, Philosophy=1, Gita=2, Shiva=3, Art=4",
+          "Rotated facts.slice: Moon=[8,10], Philosophy=[11,13], Gita=[3,5], Shiva=[6,8], Art=[6,8]",
+          "Rotated quoteIndex: Moon=7, Philosophy=8, Gita=0, Shiva=1, Art=2",
+          "Refreshed Philosophy intro: wave metaphor with homecoming framing",
+          "Refreshed Art intro: sunflower conspiracy metaphor with meeting emphasis",
+          "Updated Today heading: 'The deepening gold \u2014 midsummer's quiet zenith'",
+          "Updated Today intro: solstice approach, garden fullness, clarity of season",
+          "Updated Hero tagline: 'Where twilight gathers the day's last glow'",
+          "Color scheme rotated: sunflower \u2192 starry-night (summer contemplative tone)",
+          "Generated SVG visual asset: midsummer-meadow.svg in mutation-assets/2026-06-09/"
+        ]
+      },
       {
         "date": "2026-06-08",
         "time": "12:00:00",
@@ -130,9 +161,9 @@
           "Rewrote Art intro: sunflower conspiracy metaphor for impressionist truth",
           "Rotated imageCard factIndex: Moon=12, Philosophy=2, Gita=4, Shiva=10, Art=0",
           "Rotated facts.slice: Moon=[1,3], Philosophy=[5,7], Gita=[7,9], Shiva=[11,13], Art=[3,5]",
-          "Rotated quoteIndex: Moon=2 (Blake), Philosophy=4 (Boorstin), Gita=1 (2.20), Shiva=6 (Atrijā), Art=0 (Beecher)",
-          "Color scheme: starry-night → sunflower (summer warm tone rotation)",
-          "Updated Today heading: 'The unfolding warmth — midsummer's luminous pause'",
+          "Rotated quoteIndex: Moon=2 (Blake), Philosophy=4 (Boorstin), Gita=1 (2.20), Shiva=6 (Atrij\u0101), Art=0 (Beecher)",
+          "Color scheme: starry-night \u2192 sunflower (summer warm tone rotation)",
+          "Updated Today heading: 'The unfolding warmth \u2014 midsummer's luminous pause'",
           "Updated Hero tagline: 'Where starlight weaves through swirling dreams'"
         ]
       },
@@ -152,8 +183,8 @@
           "Rotated facts.slice: Moon=[5,7], Philosophy=[6,8], Gita=[7,9], Shiva=[8,10], Art=[9,11]",
           "Rotated quoteIndex: Moon=5, Philosophy=6, Gita=0, Shiva=1, Art=2",
           "Rewrote intros for Moon, Philosophy, Gita, Shiva, and Art sections with fresh phrasing",
-          "Updated Today heading: 'The deepening light — early summer's contemplative turn'",
-          "Color scheme changed: sunflower → starry-night (summer rotation)"
+          "Updated Today heading: 'The deepening light \u2014 early summer's contemplative turn'",
+          "Color scheme changed: sunflower \u2192 starry-night (summer rotation)"
         ]
       }
     ]
