@@ -18,6 +18,17 @@
         "Generated new SVG visual asset: lily-garden-at-dusk.svg (9.7 KB) in mutation-assets/2026-06-09/",
         "Added 'summer' season to lily-garden color scheme"
       ]
+    },
+    {
+      "time": "16:47:00",
+      "type": "feature",
+      "description": "Unit tests for scene-config and scene-bootstrap modules (idea-067 partial)",
+      "changes": [
+        "Added scene-config.test.js: 20 tests for parallaxConfig values, scrollState defaults, device detection types, config immutability",
+        "Added scene-bootstrap.test.js: 13 tests for module structure, exports, imports, error handling, performance-aware initialization",
+        "Total unit test count increased from 121 to 154 (33 new tests)",
+        "Verified all 154 unit tests pass"
+      ]
     }
   ]
 }

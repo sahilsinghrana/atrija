@@ -1,13 +1,13 @@
 {
-  "version": "1.8.5",
-  "lastUpdated": "2026-06-09T12:12:00.000Z",
-  "totalEntries": 29,
+  "version": "1.8.8",
+  "lastUpdated": "2026-06-09T16:47:00.000Z",
+  "totalEntries": 31,
   "dates": [
     {
       "date": "2026-06-09",
-      "entries": 1,
-      "latestType": "daily-mutation",
-      "description": "Daily mutation #161: lily-garden colors (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
+      "entries": 2,
+      "latestType": "feature",
+      "description": "Daily mutation #161: lily-garden colors (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset. Unit tests for scene-config and scene-bootstrap modules (idea-067 partial)."
     },
     {
       "date": "2026-06-08",
