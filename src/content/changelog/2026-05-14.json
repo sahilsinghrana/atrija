@@ -3,7 +3,7 @@
   "entries": [
     {
       "time": "06:00:00",
-      "type": "initial",
+      "type": "feature",
       "description": "Site launched — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
       "changes": [
         "Built Three.js scene: stars, moon, sunflowers, tulips, flute, waves, constellations, music notes",

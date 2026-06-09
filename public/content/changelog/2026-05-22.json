@@ -19,7 +19,7 @@
     {
       "time": "04:06:53",
       "type": "feature",
-      "description": "Dynamic Time-of-Day Atmosphere System — the 3D scene subtly shifts its ambient atmosphere based on visitor's local time with warm golden dawn, bright midday, rich sunset tones, or deep night. Background, lights, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+      "description": "Dynamic Time-of-Day Atmosphere System — 3D scene shifts ambient atmosphere based on visitor's local time: warm golden dawn, bright midday, rich sunset tones, or deep night.",
       "changes": [
         "Added time-of-day calculation system with dawn/morning/midday/sunset/evening/night phases",
         "Defined time-based presets for lighting, colors, and atmospheric properties",
