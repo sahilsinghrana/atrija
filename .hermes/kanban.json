@@ -435,6 +435,11 @@
           "completedAt": "2026-06-09"
         },
         {
+          "id": "idea-073",
+          "title": "Content Validation for koans.json Schema",
+          "completedAt": "2026-06-11"
+        },
+        {
           "id": "idea-038",
           "title": "Starry Night Swirling Sky Shader",
           "completedAt": "2026-06-10"
