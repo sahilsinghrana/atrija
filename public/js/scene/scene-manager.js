@@ -4,6 +4,7 @@ import { RenderPass } from "https://esm.sh/three@0.160.0/examples/jsm/postproces
 import { ShaderPass } from "https://esm.sh/three@0.160.0/examples/jsm/postprocessing/ShaderPass.js";
 import { vgVS, vgFS, glitchVS, glitchFS } from "./scene-shaders.js";
 import { updatePaintingReveal } from "./scene-objects.js";
+import { createSwirlSky } from "./scene-swirl-sky.js";
 import {
   isMobile,
   isLowEnd,
@@ -66,6 +67,8 @@ export class VanGoghScene {
       fragmentShader: glitchFS,
     });
     this.composer.addPass(this.glitchPass);
+
+    this.swirlSky = createSwirlSky(this.scene);
 
     this.scene.add(new THREE.AmbientLight(0xfff5e0, 0.7));
     const directionalLight = new THREE.DirectionalLight(0xfff8e7, 1.4);
