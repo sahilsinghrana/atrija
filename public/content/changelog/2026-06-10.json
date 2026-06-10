@@ -32,6 +32,21 @@
         "Rewrote Today intro: aurora as conversation, geometry of wonder, solar wind and magnetic field ceremony",
         "Generated new SVG visual asset: visual.svg — aurora borealis with vivid green, purple, pink, gold, teal on starlit sky"
       ]
+    },
+    {
+      "time": "16:30:00",
+      "type": "feature",
+      "description": "Implemented idea-038: Starry Night Swirling Sky Shader — standalone procedural vertex-displacement sky dome with multi-octave noise and rotational swirl for impressionist brushstroke patterns",
+      "changes": [
+        "Created public/js/scene/scene-swirl-sky.js (196 lines) — standalone GLSL shader module",
+        "Vertex shader: 3-octave noise displacement + rotational swirl + banded elevation factor",
+        "Fragment shader: deep impressionist blue gradient with warm noise variation and slow pulse",
+        "Exported createSwirlSky(scene) and setSwirlSkyColors(material, colors) functions",
+        "Integrated into scene-manager.js: 1 import line + 1 init call (minimal footprint)",
+        "Zero scene-init.js changes — scene-init.js completely untouched",
+        "Build succeeds with zero errors. All core elements verified intact.",
+        "HTTP 200 on all key assets including new scene-swirl-sky.js"
+      ]
     }
   ]
 }
