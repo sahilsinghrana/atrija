@@ -1,8 +1,14 @@
 {
-  "version": "1.8.8",
-  "lastUpdated": "2026-06-09T16:47:00.000Z",
-  "totalEntries": 31,
+  "version": "1.8.9",
+  "lastUpdated": "2026-06-10T06:00:00.000Z",
+  "totalEntries": 32,
   "dates": [
+    {
+      "date": "2026-06-10",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #163: starry-night colors (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
+    },
     {
       "date": "2026-06-09",
       "entries": 2,
