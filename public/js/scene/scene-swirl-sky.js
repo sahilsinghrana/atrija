@@ -18,6 +18,8 @@
  * @module scene-swirl-sky
  */
 
+import * as THREE from "https://esm.sh/three@0.160.0";
+
 /**
  * Generate a pseudo-random hash for noise generation
  * @param {number} n - seed value
