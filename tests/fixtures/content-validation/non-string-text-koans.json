@@ -1,0 +1,9 @@
+{
+  "koans": [
+    {
+      "text": 123,
+      "source": "Some source",
+      "interpretation": "Some interpretation"
+    }
+  ]
+}

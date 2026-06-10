@@ -1,0 +1,10 @@
+{
+  "koans": [
+    {
+      "text": "Some text",
+      "source": "Some source",
+      "interpretation": "Some interpretation"
+    },
+    "not an object"
+  ]
+}

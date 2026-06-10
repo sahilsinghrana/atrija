@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # scripts/validate-content.sh — CI-like check for content JSON files
 # Runs the validate-content.js module against siteData.json, content.json, seasons.json,
-# and all per-date changelog files in src/content/changelog/
+# koans.json, and all per-date changelog files in src/content/changelog/
 # Exits 0 if valid, 1 if any errors found
 
 set -euo pipefail
@@ -19,12 +19,14 @@ const result = validateAll({
   siteDataPath: '${PROJECT_DIR}/src/content/siteData.json',
   contentPath: '${PROJECT_DIR}/src/content/content.json',
   seasonsPath: '${PROJECT_DIR}/src/content/seasons.json',
+  koansPath: '${PROJECT_DIR}/src/content/koans.json',
   changelogDirPath: '${PROJECT_DIR}/src/content/changelog'
 });
 
 console.log(formatErrors(result.siteData));
 console.log(formatErrors(result.content));
 console.log(formatErrors(result.seasons));
+console.log(formatErrors(result.koans));
 if (result.changelog) {
   console.log(result.changelog.valid
     ? '✓ changelog/ — ' + result.changelog.filesChecked + ' date file(s) valid'
@@ -37,7 +39,7 @@ if (result.changelog) {
 }
 
 if (!result.valid) {
-  const total = result.siteData.errors.length + result.content.errors.length + result.seasons.errors.length + (result.changelog ? result.changelog.errors.length : 0);
+  const total = result.siteData.errors.length + result.content.errors.length + result.seasons.errors.length + result.koans.errors.length + (result.changelog ? result.changelog.errors.length : 0);
   console.log('\nFAIL: ' + total + ' validation error(s) found');
   process.exit(1);
 } else {

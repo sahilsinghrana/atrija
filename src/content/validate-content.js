@@ -1,6 +1,6 @@
 /**
  * validate-content.js — Runtime validation for siteData.json, content.json,
- * seasons.json, and per-date changelog files.
+ * seasons.json, koans.json, and per-date changelog files.
  *
  * Catches malformed content before it breaks the build or renders broken sections.
  * Validates theme indices, fact/quote indices, section keys, color scheme format,
@@ -568,6 +568,56 @@ function validateSeasons(data) {
 }
 
 /**
+ * Validate koans.json structure and content.
+ * Checks: root object with "koans" array, each entry has non-empty text/source/interpretation strings.
+ *
+ * @param {Object} data - Parsed koans.json content.
+ * @returns {ValidationError[]} Array of validation errors (empty if valid).
+ */
+function validateKoans(data) {
+  const errors = [];
+  const file = 'src/content/koans.json';
+
+  if (!data || typeof data !== 'object') {
+    errors.push({ file, field: '<root>', message: 'koans.json must be a JSON object' });
+    return errors;
+  }
+
+  if (!Array.isArray(data.koans)) {
+    errors.push({ file, field: 'koans', message: '"koans" must be an array', expected: 'array', actual: typeof data.koans });
+    return errors;
+  }
+
+  if (data.koans.length === 0) {
+    errors.push({ file, field: 'koans', message: '"koans" array must not be empty' });
+    return errors;
+  }
+
+  data.koans.forEach((koan, i) => {
+    const prefix = `koans[${i}]`;
+
+    if (!koan || typeof koan !== 'object') {
+      errors.push({ file, field: prefix, message: `Koan at index ${i} must be an object`, expected: 'object', actual: typeof koan });
+      return;
+    }
+
+    if (!isNonEmptyString(koan.text)) {
+      errors.push({ file, field: `${prefix}.text`, message: `Koan at index ${i} must have a non-empty string "text"`, expected: 'non-empty string', actual: koan.text });
+    }
+
+    if (!isNonEmptyString(koan.source)) {
+      errors.push({ file, field: `${prefix}.source`, message: `Koan at index ${i} must have a non-empty string "source"`, expected: 'non-empty string', actual: koan.source });
+    }
+
+    if (!isNonEmptyString(koan.interpretation)) {
+      errors.push({ file, field: `${prefix}.interpretation`, message: `Koan at index ${i} must have a non-empty string "interpretation"`, expected: 'non-empty string', actual: koan.interpretation });
+    }
+  });
+
+  return errors;
+}
+
+/**
  * Validate all content files and return combined results.
  * Runs siteData.json validation first, then content.json with cross-references,
  * seasons.json, and optionally all per-date changelog files.
@@ -576,14 +626,16 @@ function validateSeasons(data) {
  * @param {string} [options.siteDataPath] - Override path to siteData.json.
  * @param {string} [options.contentPath] - Override path to content.json.
  * @param {string} [options.seasonsPath] - Override path to seasons.json.
+ * @param {string} [options.koansPath] - Override path to koans.json.
  * @param {string} [options.changelogDirPath] - Path to changelog directory for date-file validation.
  * @param {boolean} [options.throwOnError=false] - If true, throw an Error when validation fails.
- * @returns {{ siteData: ValidationResult, content: ValidationResult, seasons: ValidationResult, changelog: { valid: boolean, errors: ValidationError[], filesChecked: number }|null, valid: boolean }}
+ * @returns {{ siteData: ValidationResult, content: ValidationResult, seasons: ValidationResult, koans: ValidationResult, changelog: { valid: boolean, errors: ValidationError[], filesChecked: number }|null, valid: boolean }}
  */
 function validateAll(options = {}) {
   const siteDataPath = options.siteDataPath || join(PROJECT_ROOT, 'src', 'content', 'siteData.json');
   const contentPath = options.contentPath || join(PROJECT_ROOT, 'src', 'content', 'content.json');
   const seasonsPath = options.seasonsPath || join(PROJECT_ROOT, 'src', 'content', 'seasons.json');
+  const koansPath = options.koansPath || join(PROJECT_ROOT, 'src', 'content', 'koans.json');
   const changelogDirPath = options.changelogDirPath || null;
   const throwOnError = options.throwOnError || false;
 
@@ -641,6 +693,22 @@ function validateAll(options = {}) {
     }
   }
 
+  // Validate koans.json
+  const koansResult = { valid: true, errors: [], file: koansPath };
+  if (!existsSync(koansPath)) {
+    koansResult.errors.push({ file: koansPath, field: '<file>', message: 'File not found' });
+    koansResult.valid = false;
+  } else {
+    const { data: koansData, error: koansError } = readJson(koansPath);
+    if (koansError) {
+      koansResult.errors.push({ file: koansPath, field: '<parse>', message: koansError });
+      koansResult.valid = false;
+    } else {
+      koansResult.errors = validateKoans(koansData);
+      koansResult.valid = koansResult.errors.length === 0;
+    }
+  }
+
   // Validate changelog date files if directory provided
   let changelogResult = null;
   if (changelogDirPath) {
@@ -648,16 +716,16 @@ function validateAll(options = {}) {
     changelogResult = dirResult.changelog;
   }
 
-  const valid = siteDataResult.valid && contentResult.valid && seasonsResult.valid && (changelogResult ? changelogResult.valid : true);
+  const valid = siteDataResult.valid && contentResult.valid && seasonsResult.valid && koansResult.valid && (changelogResult ? changelogResult.valid : true);
 
   if (throwOnError && !valid) {
-    const allErrors = [...siteDataResult.errors, ...contentResult.errors, ...seasonsResult.errors];
+    const allErrors = [...siteDataResult.errors, ...contentResult.errors, ...seasonsResult.errors, ...koansResult.errors];
     if (changelogResult) allErrors.push(...changelogResult.errors);
     const msg = allErrors.map(e => `[${e.file}] ${e.field}: ${e.message}`).join('\n');
     throw new Error(`Content validation failed with ${allErrors.length} error(s):\n${msg}`);
   }
 
-  return { siteData: siteDataResult, content: contentResult, seasons: seasonsResult, changelog: changelogResult, valid };
+  return { siteData: siteDataResult, content: contentResult, seasons: seasonsResult, koans: koansResult, changelog: changelogResult, valid };
 }
 
 /**
@@ -829,6 +897,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(formatErrors(result.siteData));
   console.log(formatErrors(result.content));
   console.log(formatErrors(result.seasons));
+  console.log(formatErrors(result.koans));
   if (result.changelog) {
     console.log(result.changelog.valid
       ? `✓ changelog/ — ${result.changelog.filesChecked} date file(s) valid`
@@ -850,6 +919,7 @@ export {
   validateSiteData,
   validateContent,
   validateSeasons,
+  validateKoans,
   validateChangelogDateFile,
   validateChangelogDir,
   validateAll,

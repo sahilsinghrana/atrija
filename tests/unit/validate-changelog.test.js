@@ -370,6 +370,7 @@ describe('validateAll with changelog', () => {
       siteDataPath: join(FIXTURES, 'valid-siteData.json'),
       contentPath: join(FIXTURES, 'valid-content.json'),
       seasonsPath: join(FIXTURES, 'valid-seasons.json'),
+      koansPath: join(FIXTURES, 'valid-koans.json'),
       changelogDirPath: join(FIXTURES, '..', '..', '..', 'src', 'content', 'changelog')
     });
     expect(result.changelog).toBeDefined();
@@ -381,7 +382,8 @@ describe('validateAll with changelog', () => {
     const result = validateAll({
       siteDataPath: join(FIXTURES, 'valid-siteData.json'),
       contentPath: join(FIXTURES, 'valid-content.json'),
-      seasonsPath: join(FIXTURES, 'valid-seasons.json')
+      seasonsPath: join(FIXTURES, 'valid-seasons.json'),
+      koansPath: join(FIXTURES, 'valid-koans.json')
     });
     expect(result.changelog).toBeNull();
   });
@@ -395,6 +397,7 @@ describe('validateAll with changelog', () => {
         siteDataPath: join(FIXTURES, 'valid-siteData.json'),
         contentPath: join(FIXTURES, 'valid-content.json'),
         seasonsPath: join(FIXTURES, 'valid-seasons.json'),
+        koansPath: join(FIXTURES, 'valid-koans.json'),
         changelogDirPath: tmpDir
       });
       expect(result.changelog.valid).toBe(false);

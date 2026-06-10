@@ -35,13 +35,6 @@
           "priority": "medium"
         },
         {
-          "id": "idea-038",
-          "title": "Starry Night Swirling Sky Shader",
-          "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns. Must be implemented as standalone module, not direct scene-init.js modification.",
-          "category": "Shaders",
-          "priority": "medium"
-        },
-        {
           "id": "idea-042",
           "title": "Interactive Flower Pollination Effect",
           "description": "Click on any sunflower or tulip in the 3D scene to release a burst of golden pollen particles. Nearby flowers briefly glow in response. Raycasting click detection with physics-based particle system.",
@@ -426,22 +419,6 @@
           "completedAt": "2026-06-09"
         },
         {
-          "id": "idea-070",
-          "title": "Unit Tests for Scene Utility Functions",
-          "description": "Create comprehensive unit tests for utility functions in src/ directory (if any exist) or public/js/ utilities like scene-config.js, math helpers, or color conversion functions. Focus on pure functions that can be tested in isolation without DOM or Three.js dependencies. This improves code reliability and prevents regressions.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "utilities",
-            "reliability",
-            "test-coverage"
-          ],
-          "effort": "2-3 sessions",
-          "testingStrategy": "- Unit tests: Create test files in tests/unit/ for each utility module, covering edge cases and normal operation\n- Integration tests: Verify that utilities work correctly when integrated into scene-init.js or other modules\n- Visual regression tests: Not applicable for pure utilities\n- Acceptance criteria: New test files achieve >80% coverage for target utilities; all new tests pass; existing test suite continues to pass; utilities are verified to work correctly in both unit and integration contexts",
-          "completedAt": "2026-06-08"
-        },
-        {
           "id": "idea-065",
           "title": "Seasons.json Schema Validation in validate-content.js",
           "description": "The seasons.json data file (consumed by the seasonal transitions feature, idea-037) currently has no validation in validate-content.js \u2014 the 560-line validator covers siteData.json and content.json structure but completely misses seasons.json. A malformed seasons entry (wrong month range, invalid color scheme key, missing required fields) would cause silent runtime failures in the seasonal theme rotation.\n\nScope:\n- Add validateSeasons() function to validate-content.js\n- Validate: 4 season keys (spring, summer, autumn, winter), each with months array (numbers 1-12), colorSchemeWeights (all 5 scheme keys present, values >= 1), flowerEmphasis enum, skyToneShift RGB ranges, particleEffect string, factThemeWeights (all theme keys present, values >= 1)\n- Add 6+ test fixtures in tests/fixtures/content-validation/ (valid + various malformed)\n- Wire into the validate-content.sh script pipeline",
@@ -456,6 +433,11 @@
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Add tests/unit/validate-seasons.test.js with fixtures for valid seasons.json, invalid month values (0, 13), missing color scheme keys, negative weights, unknown season key. Each fixture tests a specific validation rule.\n- Integration tests: Run the full validate-content.sh script against both valid and malformed seasons fixtures; verify correct exit codes (0 for valid, 1 for invalid).\n- Acceptance criteria: All existing 38 validate-content tests still pass; new season validation catches all defined error types; validate-content.sh exits non-zero on malformed seasons.json; error messages are actionable (specify which season/field failed).",
           "completedAt": "2026-06-09"
+        },
+        {
+          "id": "idea-038",
+          "title": "Starry Night Swirling Sky Shader",
+          "completedAt": "2026-06-10"
         }
       ]
     }
@@ -1010,6 +992,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-08T02:00:00Z",
-  "lastReviewAt": "2026-06-09T21:35:44Z",
-  "lastReviewResult": "Background Implementer (2026-06-10 16:30): Implemented idea-038 (Starry Night Swirling Sky Shader). Created standalone scene-swirl-sky.js module with procedural vertex-displacement shader. Added minimal 1-line import + 1-line init to scene-manager.js. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). All core elements verified."
+  "lastReviewAt": "2026-06-11T03:00:00Z",
+  "lastReviewResult": "Kanban Review (2026-06-11 03:00): Moved idea-038 from backlog to done (completed 2026-06-10). Removed duplicate idea-070 from done (same scope as idea-063, scene-utils.js tests). Board clean: 45 done, 13 backlog, 1 deferred, 0 in active columns."
 }

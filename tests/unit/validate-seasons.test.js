@@ -220,7 +220,8 @@ describe('validateAll with seasons', () => {
     const result = validateAll({
       siteDataPath: join(FIXTURES, 'valid-siteData.json'),
       contentPath: join(FIXTURES, 'valid-content.json'),
-      seasonsPath: join(FIXTURES, 'valid-seasons.json')
+      seasonsPath: join(FIXTURES, 'valid-seasons.json'),
+      koansPath: join(FIXTURES, 'valid-koans.json')
     });
     expect(result.seasons).toBeDefined();
     expect(result.seasons.valid).toBe(true);
@@ -231,7 +232,8 @@ describe('validateAll with seasons', () => {
     const result = validateAll({
       siteDataPath: join(FIXTURES, 'valid-siteData.json'),
       contentPath: join(FIXTURES, 'valid-content.json'),
-      seasonsPath: join(FIXTURES, 'malformed-seasons.json')
+      seasonsPath: join(FIXTURES, 'malformed-seasons.json'),
+      koansPath: join(FIXTURES, 'valid-koans.json')
     });
     expect(result.seasons.valid).toBe(false);
     expect(result.seasons.errors.length).toBeGreaterThan(0);

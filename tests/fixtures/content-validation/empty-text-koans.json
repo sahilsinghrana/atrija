@@ -1,0 +1,14 @@
+{
+  "koans": [
+    {
+      "text": "Valid koan text",
+      "source": "Valid source",
+      "interpretation": "Valid interpretation"
+    },
+    {
+      "text": "",
+      "source": "Some source",
+      "interpretation": "Some interpretation"
+    }
+  ]
+}
