@@ -738,12 +738,11 @@
       "description": "Add noise-based vertex displacement to the sky dome to create authentic swirling brushstroke patterns. NOTE: Must be implemented as standalone module, not direct scene-init.js modification.",
       "category": "Shaders",
       "priority": "medium",
-      "status": "backlog",
-      "prd": "PRD-idea-038-swirling-sky.md"
+      "status": "done",
+      "completedAt": "2026-06-10"
     },
     {
       "id": "idea-039",
-      "title": "Detailed Moon Surface with Craters and Texture",
       "description": "Enhance the foreground moon with artistic painted canvas rendering \u2014 brushstroke texture, crater details, impasto highlights, and warm halo glow. Background 3D moon unchanged.",
       "category": "3D Elements",
       "priority": "low",
@@ -1012,5 +1011,5 @@
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-08T02:00:00Z",
   "lastReviewAt": "2026-06-09T21:35:44Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-09 21:35): Moved 2 completed tasks from backlog to done (idea-070, idea-065). Updated ideas status. No duplicates found. No deferred tasks moved. All core elements preserved."
+  "lastReviewResult": "Background Implementer (2026-06-10 16:30): Implemented idea-038 (Starry Night Swirling Sky Shader). Created standalone scene-swirl-sky.js module with procedural vertex-displacement shader. Added minimal 1-line import + 1-line init to scene-manager.js. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). All core elements verified."
 }
