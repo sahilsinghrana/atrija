@@ -1,9 +1,9 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.9",
+    "version": "1.8.10",
     "lastUpdated": "2026-06-10",
-    "updatedBy": "AI Agent (daily-mutation)",
+    "updatedBy": "AI Agent (content-layout-refresh)",
     "season": "summer ☀️"
   },
   "sections": {
@@ -11,8 +11,8 @@
       "tagline": "Every <em>darkness</em> is a canvas waiting for its stars"
     },
     "today": {
-      "heading": "The <em>listening</em> sky — where light bends into color",
-      "intro": "June tenth. The aurora descends not as spectacle but as conversation — green tendrils reaching across the violet dark, asking the horizon to answer. This is the geometry of wonder: arcs and curtains of charged light, painting the upper atmosphere with the sun's own breath. The night has never been empty. It has only been waiting for eyes willing to see what darkness holds. Below, the hills are still. Above, the sky performs its oldest ceremony — the marriage of solar wind and magnetic field, celebrated in ribbons of emerald and amethyst.",
+      "heading": "The <em>weight</em> of light on water",
+      "intro": "Midday. The sun stands at its highest point, and the world below holds its breath. Ponds become mirrors. Leaves turn their edges to catch what falls. This is the hour when light is not gentle — it presses down with full authority, flattening shadows, bleaching stone, turning every surface into a small sun. And yet the water lily opens widest now, as if to say: the more fiercely the light arrives, the more completely I will receive it. There is a lesson here about grace under pressure — that the fullest bloom often comes not in shade but under the most unforgiving glare.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-10/visual.svg",
@@ -23,21 +23,21 @@
     "moon": {
       "label": "I. The Moon",
       "heading": "What the <em>night</em> keeps in trust",
-      "intro": "The Moon does not produce its own radiance — it receives, transforms, and gives back without depletion. Every night it rises as proof that one can shine brilliantly without possessing the source. In the Vedic understanding, the Moon governs not the calculating mind but the feeling heart — the part of us that responds to beauty before language can name it.",
+      "intro": "There is a side of the Moon that never turns toward Earth — a hidden face locked in perpetual darkness, known only to the stars. In this, the Moon teaches a quiet lesson: not everything needs to be seen to be real. The Vedic sages called the Moon Chandra, the luminous one, and placed it at the center of the emotional mind — the part that feels before it thinks, that knows beauty before language can frame it.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 2
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          7,
-          9
+          10,
+          12
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 1
+        "quoteIndex": 5
       }
     },
     "philosophy": {
@@ -46,18 +46,18 @@
       "intro": "Arrogance is the wave forgetting it is the sea. For one bright instant the ego believes its own mythology — that it is the author of every crest and the owner of every trough. But the water knows what the wave refuses to: there is no separate self, only currents within currents, patterns within the patternless. To release the fiction of separateness is to discover an ocean where a puddle stood.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 11
+        "factIndex": 3
       },
       "facts": {
         "themeIndex": 1,
         "slice": [
-          1,
-          3
+          5,
+          7
         ]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 7
+        "quoteIndex": 4
       }
     },
     "gita": {
@@ -66,18 +66,18 @@
       "intro": "Krishna does not ask Arjuna to put down his bow. He asks something far more difficult: to release his grip on why he holds it. The battlefield of Kurukshetra is not a place — it is the condition of being human, caught between duty and desire, action and consequence. The Gita's genius is its refusal to simplify: fight, yes — but fight as the wind fights the sail, without ownership of the destination.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 5
+        "factIndex": 8
       },
       "facts": {
         "themeIndex": 2,
         "slice": [
-          10,
-          12
+          2,
+          4
         ]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 0
+        "quoteIndex": 6
       }
     },
     "shiva": {
@@ -86,44 +86,60 @@
       "intro": "Before the universe had form, it had rhythm. Shiva's damaru — two beats bound together as one drum — is the first oscillation, the original disturbance in silence from which all matter emerges. The Tandava is not performance but physics: every particle vibrates, every wave propagates, every heartbeat echoes that primordial couplet of sound. To still the mind is to hear it still.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 4
+        "factIndex": 10
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [
-          11,
-          13
-        ]
-      },
-      "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 2
-      }
-    },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "The <em>alchemy</em> of seeing truly",
-      "intro": "A brushstroke is a decision made visible — and every decision carries the ghost of every alternative. The impressionists understood that painting is not the reproduction of light but the revelation of attention. When color is laid down with honesty, the canvas stops being linen and linen-oil-pigment. It becomes a window into the act of perception itself, where the viewer completes what the painter began.",
-      "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 14
-      },
-      "facts": {
-        "themeIndex": 4,
         "slice": [
           6,
           8
         ]
       },
       "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 8
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "The <em>alchemy</em> of seeing truly",
+      "intro": "Color is not a property of things but a conversation between light and the eye that receives it. The impressionists knew this — that a sunflower at noon is not yellow but a chorus of amber, violet, and burning white. To paint truthfully is to paint the light itself, not the object it touches. In this way the canvas becomes a record of attention, a map of what the artist's gaze found worthy of remaining.",
+      "imageCard": {
         "themeIndex": 4,
-        "quoteIndex": 3
+        "factIndex": 2
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          12,
+          14
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 7
       }
     }
   },
   "changelog": {
-    "version": "1.8.9",
+    "version": "1.8.10",
     "entries": [
+      {
+        "date": "2026-06-10",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros with fresh phrasing, updated Today heading/intro for midday theme",
+        "changes": [
+          "Moon section: new intro (hidden face of the Moon, Chandra, emotional mind), imageCard→factIndex 4 (night sky canvas), facts.slice→[10,12] (tulips close at night, tidal locking dark side), quoteIndex→5 (Thich Nhat Hanh: moon does not fight)",
+          "Philosophy section: imageCard→factIndex 3 (Shiv Purana ahamkara), facts.slice→[5,7] (ego comparison, Gita right to work), quoteIndex→4 (Pasteur: prepared mind)",
+          "Gita section: imageCard→factIndex 8 (Einstein Gita bedside), facts.slice→[2,4] (soul unborn eternal, Vishvarupa universal form), quoteIndex→6 (Atrijā: battlefield is human heart)",
+          "Shiva section: imageCard→factIndex 10 (silence before/after dance), facts.slice→[6,8] (Mahakala great time, Tryambaka third eye), quoteIndex→8 (Atrijā: Shiva dances because world is his dance)",
+          "Art section: new intro (color as conversation, painting light not objects), imageCard→factIndex 2 (star field scale), facts.slice→[12,14] (impressionism light subject, art dismantles wall), quoteIndex→7 (Atrijā: create to destroy distance)",
+          "Today heading: 'The weight of light on water' (was 'The listening sky — where light bends into color')",
+          "Today intro: midday sun theme — light at its highest, lily opens widest under unforgiving glare, grace under pressure",
+          "Color scheme: starry-night (unchanged, appropriate for summer)"
+        ]
+      },
       {
         "date": "2026-06-10",
         "time": "06:00:00",
