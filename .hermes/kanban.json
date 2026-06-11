@@ -122,6 +122,56 @@
           ],
           "effort": "2 sessions",
           "testingStrategy": "- Unit tests: Test pixelmatch comparison logic with known-different images\n- Integration tests: Run full visual test suite against current build to establish baselines\n- Performance tests: Measure visual test execution time (target <60s for full suite)\n- Acceptance criteria: playwright.config.ts created with 3 device profiles; baseline screenshots captured for 5+ key states; visual test script added to package.json (test:visual); test suite runs and passes on current build; thresholds documented (0 pixel diff for layout, 0.1% for color); integration with existing npm test workflow"
+        },
+        {
+          "id": "idea-071",
+          "title": "Remove Dead Shader Imports from scene-manager.js",
+          "description": "scene-manager.js line 5 imports vgVS, vgFS, glitchVS, glitchFS from scene-shaders.js \u2014 these are the same dead shader exports targeted by idea-064. Once the exports are removed, these imports will cause a build failure. This task removes the dead import statement from scene-manager.js and verifies the module still initializes correctly. Also audit scene-objects.js re-exports to ensure no transitive dead imports exist.",
+          "category": "Technical Debt & Code Quality",
+          "priority": "high",
+          "tags": [
+            "cleanup",
+            "dead-code",
+            "imports",
+            "scene-manager",
+            "build-fix"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Static analysis: After removal, grep confirms no references to vgVS, vgFS, glitchVS, glitchFS remain in any public/js/ file.\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Unit tests: Run existing test suite (vitest) to confirm no regressions \u2014 particularly scene-bootstrap.test.js which tests module structure.\n- Acceptance criteria: scene-manager.js no longer imports any shader strings from scene-shaders.js; build succeeds; all existing tests pass; bundle size reduced by ~0.5KB; no runtime errors in scene initialization."
+        },
+        {
+          "id": "idea-072",
+          "title": "Unit Tests for Untested Scene Modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky)",
+          "description": "Four scene modules have zero unit tests: scene-interaction.js (151 lines, constellation interaction logic), scene-notes.js (177 lines, flute + music note creation), scene-painting.js (49 lines, painting reveal progress), and scene-swirl-sky.js (198 lines, hash/noise functions, swirl dome creation). These modules contain testable pure functions and factory logic that can be validated without a full Three.js rendering context. Focus on: _hash() and noise functions in scene-swirl-sky.js, constellation line geometry math in scene-interaction.js, flute/note geometry parameters in scene-notes.js, and reveal progress calculation in scene-painting.js. Tests run in vitest with Three.js mocked where needed.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "unit-tests",
+            "scene-modules",
+            "test-coverage",
+            "interaction",
+            "notes",
+            "painting",
+            "swirl-sky"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/scene-interaction.test.js, tests/unit/scene-notes.test.js, tests/unit/scene-painting.test.js, tests/unit/scene-swirl-sky.test.js\n- Test pure functions: _hash() determinism, noise() range/bounds, reveal progress math, geometry parameter validation\n- Mock Three.js for factory function tests (flute group structure, note sprite properties)\n- Integration tests: Verify modules can be imported without errors in vitest environment\n- Acceptance criteria: >60% branch coverage for each target module; all new tests pass; existing test suite unaffected; scene-swirl-sky _hash() verified deterministic across 1000 inputs"
+        },
+        {
+          "id": "idea-073",
+          "title": "Content Validation for koans.json Schema",
+          "description": "The koans.json file (consumed by the KoanCard component, idea-043) currently has no validation in validate-content.js \u2014 the 861-line validator covers siteData.json, content.json, seasons.json, and changelog files but completely misses koans.json. A malformed koan entry (missing text/source/interpretation fields, empty strings, wrong types) would cause silent runtime failures in the daily koan display. Add validateKoans() function to validate-content.js with fixtures for valid and malformed koan entries, and wire it into the validate-content.sh script pipeline.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "validation",
+            "koans",
+            "data-integrity",
+            "content-pipeline",
+            "schema"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Add tests/unit/validate-koans.test.js with fixtures for valid koans.json, missing text field, empty source, non-string interpretation, empty koans array, non-object entry. Each fixture tests a specific validation rule.\n- Integration tests: Run the full validate-content.sh script against both valid and malformed koan fixtures; verify correct exit codes (0 for valid, 1 for invalid).\n- Acceptance criteria: All existing validate-content tests still pass; new koan validation catches all defined error types; validate-content.sh exits non-zero on malformed koans.json; error messages specify which koan index and field failed; 6+ test fixtures created."
         }
       ]
     },
@@ -433,11 +483,6 @@
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Add tests/unit/validate-seasons.test.js with fixtures for valid seasons.json, invalid month values (0, 13), missing color scheme keys, negative weights, unknown season key. Each fixture tests a specific validation rule.\n- Integration tests: Run the full validate-content.sh script against both valid and malformed seasons fixtures; verify correct exit codes (0 for valid, 1 for invalid).\n- Acceptance criteria: All existing 38 validate-content tests still pass; new season validation catches all defined error types; validate-content.sh exits non-zero on malformed seasons.json; error messages are actionable (specify which season/field failed).",
           "completedAt": "2026-06-09"
-        },
-        {
-          "id": "idea-073",
-          "title": "Content Validation for koans.json Schema",
-          "completedAt": "2026-06-11"
         },
         {
           "id": "idea-038",
@@ -993,10 +1038,34 @@
       ],
       "effort": "2 sessions",
       "prd": null
+    },
+    {
+      "id": "idea-071",
+      "title": "Remove Dead Shader Imports from scene-manager.js",
+      "description": "Remove the dead import of vgVS, vgFS, glitchVS, glitchFS from scene-manager.js that will break once idea-064 removes the exports from scene-shaders.js. Also audit scene-objects.js re-exports for transitive dead imports.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "high",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-072",
+      "title": "Unit Tests for Untested Scene Modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky)",
+      "description": "Create unit tests for four scene modules with zero coverage: scene-interaction.js (constellation logic), scene-notes.js (flute + notes), scene-painting.js (reveal progress), scene-swirl-sky.js (hash/noise functions). Tests run in vitest with Three.js mocked where needed.",
+      "category": "Testing & Reliability",
+      "priority": "high",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-073",
+      "title": "Content Validation for koans.json Schema",
+      "description": "Add validateKoans() function to validate-content.js to catch malformed koan entries (missing text/source/interpretation, empty strings, wrong types) that would cause silent runtime failures in the daily koan display. Wire into validate-content.sh pipeline.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-08T02:00:00Z",
+  "generatedAt": "2026-06-11T02:00:00Z",
   "lastReviewAt": "2026-06-11T03:00:00Z",
-  "lastReviewResult": "Kanban Review (2026-06-11 03:00): Moved idea-038 from backlog to done (completed 2026-06-10). Removed duplicate idea-070 from done (same scope as idea-063, scene-utils.js tests). Board clean: 45 done, 13 backlog, 1 deferred, 0 in active columns."
+  "lastReviewResult": "Kanban Review (2026-06-11 03:00): Moved idea-038 to done (completed 2026-06-10). Removed duplicate idea-070 (same scope as idea-063). Marked idea-004, idea-065, idea-066 as done in ideas array. All core elements preserved."
 }
