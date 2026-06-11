@@ -1,0 +1,34 @@
+{
+  "date": "2026-06-09",
+  "entries": [
+    {
+      "time": "12:12:00",
+      "type": "daily-mutation",
+      "description": "Daily mutation #161: Color scheme → lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset",
+      "changes": [
+        "Color scheme rotated: starry-night → lily-garden (passionate red/pink summer palette)",
+        "Hero tagline: 'The unseen architecture of light' (was 'Where twilight gathers the day's last glow')",
+        "Rewrote all 5 section headings with fresh poetic language and <em> emphasis",
+        "Moon heading: 'The weight of borrowed light' | Philosophy: 'What the wave forgets it is' | Gita: 'The geometry of surrender' | Shiva: 'Where silence becomes sound' | Art: 'The unseen architecture of beauty'",
+        "Rotated imageCard factIndex: Moon=2 (Endymion), Philosophy=7 (Dunning-Kruger), Gita=8 (Einstein), Shiva=5 (Om/Vedas), Art=1 (sunflower heliotropism)",
+        "Rotated facts.slice: Moon=[10,12], Philosophy=[2,4], Gita=[10,12], Shiva=[12,14], Art=[10,12]",
+        "Rotated quoteIndex: Moon=4 (Shakespeare), Philosophy=5 (Socrates), Gita=6 (Atrijā), Shiva=7 (Atrijā), Art=8 (Atrijā)",
+        "Rewrote Today heading: 'The deepening gold — midsummer's quiet zenith'",
+        "Rewrote Today intro: garden fullness, solstice approach, light thickening like honey",
+        "Generated new SVG visual asset: lily-garden-at-dusk.svg (9.7 KB) in mutation-assets/2026-06-09/",
+        "Added 'summer' season to lily-garden color scheme"
+      ]
+    },
+    {
+      "time": "16:47:00",
+      "type": "feature",
+      "description": "Unit tests for scene-config and scene-bootstrap modules (idea-067 partial)",
+      "changes": [
+        "Added scene-config.test.js: 20 tests for parallaxConfig values, scrollState defaults, device detection types, config immutability",
+        "Added scene-bootstrap.test.js: 13 tests for module structure, exports, imports, error handling, performance-aware initialization",
+        "Total unit test count increased from 121 to 154 (33 new tests)",
+        "Verified all 154 unit tests pass"
+      ]
+    }
+  ]
+}

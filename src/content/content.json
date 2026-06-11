@@ -1,162 +1,158 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.10",
-    "lastUpdated": "2026-06-10",
-    "updatedBy": "AI Agent (content-layout-refresh)",
+    "version": "1.8.11",
+    "lastUpdated": "2026-06-11",
+    "updatedBy": "AI Agent (daily-mutate)",
     "season": "summer ☀️"
   },
   "sections": {
     "hero": {
-      "tagline": "Every <em>darkness</em> is a canvas waiting for its stars"
+      "tagline": "Beneath the <em>golden hush</em> of a summer sky, the soul remembers how to bloom"
     },
     "today": {
-      "heading": "The <em>weight</em> of light on water",
-      "intro": "Midday. The sun stands at its highest point, and the world below holds its breath. Ponds become mirrors. Leaves turn their edges to catch what falls. This is the hour when light is not gentle — it presses down with full authority, flattening shadows, bleaching stone, turning every surface into a small sun. And yet the water lily opens widest now, as if to say: the more fiercely the light arrives, the more completely I will receive it. There is a lesson here about grace under pressure — that the fullest bloom often comes not in shade but under the most unforgiving glare.",
+      "heading": "The <em>language</em> of light at its fullest",
+      "intro": "Morning unfurls slowly, like a sunflower turning its face to greet the day. The light arrives not in whispers but in waves — warm, insistent, generous. This is the hour when shadows retreat and every petal, every leaf, every blade of grass stands illuminated without apology. The world does not wait for permission to shine. Neither should you. Today, let the light find you open.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-10/visual.svg",
-        "description": "Impressionist aurora borealis — vivid green and purple curtains of light sweeping across a starlit sky, with warm amber accents, silhouetted cypress trees, and impressionist brushstroke texture",
+        "path": "/mutation-assets/2026-06-11/visual.svg",
+        "description": "Impressionist sunflower field at golden hour — vivid golden sunflowers with bright green stems under a luminous amber and turquoise sky, with impressionist brushstroke texture and warm light rays",
         "credit": "Generated for Atrijā daily mutation"
       }
     },
     "moon": {
       "label": "I. The Moon",
-      "heading": "What the <em>night</em> keeps in trust",
-      "intro": "There is a side of the Moon that never turns toward Earth — a hidden face locked in perpetual darkness, known only to the stars. In this, the Moon teaches a quiet lesson: not everything needs to be seen to be real. The Vedic sages called the Moon Chandra, the luminous one, and placed it at the center of the emotional mind — the part that feels before it thinks, that knows beauty before language can frame it.",
+      "heading": "The <em>silence</em> between two heartbeats of light",
+      "intro": "The Moon does not compete with the Sun. It arrives when the world softens, offering a gentler illumination — one that reveals rather than exposes. In Vedic thought, the Moon governs the Manas, the emotional mind, the part of us that feels the weight of beauty before reason can name it. To sit beneath the Moon is to remember that not all light needs to burn to be true.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 4
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          10,
-          12
+          0,
+          2
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 5
+        "quoteIndex": 2
       }
     },
     "philosophy": {
       "label": "II. The Waves",
-      "heading": "Dissolving the <em>outline</em> of the self",
-      "intro": "Arrogance is the wave forgetting it is the sea. For one bright instant the ego believes its own mythology — that it is the author of every crest and the owner of every trough. But the water knows what the wave refuses to: there is no separate self, only currents within currents, patterns within the patternless. To release the fiction of separateness is to discover an ocean where a puddle stood.",
+      "heading": "Where the <em>self</em> dissolves into the sea",
+      "intro": "The wave does not mourn its dissolution into the shore. It was never separate from the ocean — only briefly shaped by wind and current into something that believed itself singular. Arrogance is this belief made solid, this temporary form convinced of its own permanence. But the water remembers what the wave forgets: there is no shore that is not also the sea.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 3
+        "factIndex": 9
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [
-          5,
-          7
-        ]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 4
-      }
-    },
-    "gita": {
-      "label": "III. The Battlefield",
-      "heading": "The <em>surrender</em> that is harder than war",
-      "intro": "Krishna does not ask Arjuna to put down his bow. He asks something far more difficult: to release his grip on why he holds it. The battlefield of Kurukshetra is not a place — it is the condition of being human, caught between duty and desire, action and consequence. The Gita's genius is its refusal to simplify: fight, yes — but fight as the wind fights the sail, without ownership of the destination.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 8
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [
-          2,
-          4
-        ]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 6
-      }
-    },
-    "shiva": {
-      "label": "IV. The Dance",
-      "heading": "The <em>sound</em> that precedes creation",
-      "intro": "Before the universe had form, it had rhythm. Shiva's damaru — two beats bound together as one drum — is the first oscillation, the original disturbance in silence from which all matter emerges. The Tandava is not performance but physics: every particle vibrates, every wave propagates, every heartbeat echoes that primordial couplet of sound. To still the mind is to hear it still.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 10
-      },
-      "facts": {
-        "themeIndex": 3,
-        "slice": [
-          6,
-          8
-        ]
-      },
-      "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 8
-      }
-    },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "The <em>alchemy</em> of seeing truly",
-      "intro": "Color is not a property of things but a conversation between light and the eye that receives it. The impressionists knew this — that a sunflower at noon is not yellow but a chorus of amber, violet, and burning white. To paint truthfully is to paint the light itself, not the object it touches. In this way the canvas becomes a record of attention, a map of what the artist's gaze found worthy of remaining.",
-      "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 2
-      },
-      "facts": {
-        "themeIndex": 4,
         "slice": [
           12,
           14
         ]
       },
       "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 8
+      }
+    },
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "The <em>courage</em> to act without claiming the fruit",
+      "intro": "Arjuna's paralysis on the battlefield was not cowardice — it was the most human of crises: the collision of love and duty, of attachment and purpose. Krishna's answer was not to resolve the tension but to transcend it. Act, yes — but act as the river acts, flowing toward the ocean not because it chooses to, but because flowing is its nature. The Gita does not ask us to stop fighting. It asks us to stop believing the fight belongs to us.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 11
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          6,
+          8
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 3
+      }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "The <em>flame</em> at the center of the whirl",
+      "intro": "Shiva dances within a ring of fire — not because he must, but because stillness and motion are the same truth seen from different angles. The Tandava is the universe breathing: expansion and contraction, creation and dissolution, the eternal rhythm that holds every atom in its step. To witness the dance is to remember that you, too, are made of this fire.",
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 2
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [
+          14,
+          16
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 5
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "The <em>brushstroke</em> that outlives the hand",
+      "intro": "A single brushstroke holds the weight of every choice the artist did not make — every color rejected, every line abandoned, every vision that dissolved before it reached the canvas. What remains is not a picture but a record of attention: this is what the artist's gaze found worthy of permanence. In this way, every painting is a self-portrait of seeing itself.",
+      "imageCard": {
         "themeIndex": 4,
-        "quoteIndex": 7
+        "factIndex": 10
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          3,
+          5
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 5
       }
     }
   },
   "changelog": {
-    "version": "1.8.10",
+    "version": "1.8.11",
     "entries": [
+      {
+        "date": "2026-06-11",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset",
+        "changes": [
+          "Color scheme rotated: starry-night → sunflower (warm gold #f5c800 + orange #ff6f00 + green #2e7d32), reordered array so dayOfYear%5=2 selects sunflower",
+          "Hero tagline: 'Beneath the golden hush of a summer sky, the soul remembers how to bloom' (was 'Every darkness is a canvas waiting for its stars')",
+          "Rewrote all 5 section headings with fresh poetic language and <em> emphasis:",
+          "Moon: 'The silence between two heartbeats of light' | Philosophy: 'Where the self dissolves into the sea' | Gita: 'The courage to act without claiming the fruit' | Shiva: 'The flame at the center of the whirl' | Art: 'The brushstroke that outlives the hand'",
+          "Rotated imageCard factIndex: Moon=7 (Moon drifting away 3.8cm/yr), Philosophy=9 (Dunning-Kruger effect), Gita=11 (Gita renounce attachment to outcomes), Shiva=2 (Shiva drank poison Halahala), Art=10 (color as conversation between light and perception)",
+          "Rotated facts.slice: Moon=[0,2] (Selene chariot, Moon controls tides), Philosophy=[12,14] (ego castle on sand, humility river/ocean), Gita=[6,8] (divine returns to restore balance, 700 verses in 90 min), Shiva=[14,16] (Shiva both ascetic/householder, crescent moon as time), Art=[3,5] (flute oldest instrument, waves ocean-shore communication)",
+          "Rotated quoteIndex: Moon=2 (Blake: Moon like a flower in heaven's bower), Philosophy=8 (Atrijā: ego tight fist/soul open hand), Gita=3 (Gita 2.64: self-controlled soul wins eternal peace), Shiva=5 (Inspired: dancer and dance become one), Art=5 (Santayana: Earth has music for those who listen)",
+          "Rewrote Today heading: 'The language of light at its fullest'",
+          "Rewrote Today intro: morning unfurling, sunflower greeting the day, light arriving in waves, world shining without apology",
+          "Generated new SVG visual asset: visual.svg — impressionist sunflower field at golden hour with vivid golds (#f5c800, #fbbf24), bright greens (#22c55e), warm oranges (#f97316), luminous sky (#4a90d9, #6bb5ff), impressionist brushstroke texture"
+        ]
+      },
       {
         "date": "2026-06-10",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros with fresh phrasing, updated Today heading/intro for midday theme",
-        "changes": [
-          "Moon section: new intro (hidden face of the Moon, Chandra, emotional mind), imageCard→factIndex 4 (night sky canvas), facts.slice→[10,12] (tulips close at night, tidal locking dark side), quoteIndex→5 (Thich Nhat Hanh: moon does not fight)",
-          "Philosophy section: imageCard→factIndex 3 (Shiv Purana ahamkara), facts.slice→[5,7] (ego comparison, Gita right to work), quoteIndex→4 (Pasteur: prepared mind)",
-          "Gita section: imageCard→factIndex 8 (Einstein Gita bedside), facts.slice→[2,4] (soul unborn eternal, Vishvarupa universal form), quoteIndex→6 (Atrijā: battlefield is human heart)",
-          "Shiva section: imageCard→factIndex 10 (silence before/after dance), facts.slice→[6,8] (Mahakala great time, Tryambaka third eye), quoteIndex→8 (Atrijā: Shiva dances because world is his dance)",
-          "Art section: new intro (color as conversation, painting light not objects), imageCard→factIndex 2 (star field scale), facts.slice→[12,14] (impressionism light subject, art dismantles wall), quoteIndex→7 (Atrijā: create to destroy distance)",
-          "Today heading: 'The weight of light on water' (was 'The listening sky — where light bends into color')",
-          "Today intro: midday sun theme — light at its highest, lily opens widest under unforgiving glare, grace under pressure",
-          "Color scheme: starry-night (unchanged, appropriate for summer)"
-        ]
+        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros with fresh phrasing, updated Today heading/intro for midday theme"
       },
       {
         "date": "2026-06-10",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset",
-        "changes": [
-          "Color scheme rotated: sunflower (warm gold) → starry-night (contemplative deep blue #1a237e + gold #ffd54f accents + cyan #4fc3f7), reordered array so dayOfYear%5=1 selects starry-night",
-          "Hero tagline: 'Every darkness is a canvas waiting for its stars' (was 'Where gold light learns to breathe')",
-          "Rewrote all 5 section headings with fresh poetic language and <em> emphasis:",
-          "Moon: 'What the night keeps in trust' | Philosophy: 'Dissolving the outline of the self' | Gita: 'The surrender that is harder than war' | Shiva: 'The sound that precedes creation' | Art: 'The alchemy of seeing truly'",
-          "Rotated imageCard factIndex: Moon=2 (Selene/Endymion), Philosophy=11 (ego castle on sand), Gita=5 (Gita spoken on battlefield), Shiva=4 (Shiva's drum/language), Art=14 (brushstroke as decision)",
-          "Rotated facts.slice: Moon=[7,9], Philosophy=[1,3], Gita=[10,12], Shiva=[11,13], Art=[6,8]",
-          "Rotated quoteIndex: Moon=1 (Gibran: darker side), Philosophy=7 (Atrijā: ego walls/soul bridges), Gita=0 (Gita: believe in), Shiva=2 (Inspired: Supreme Lord in all beings), Art=3 (Degas: make others see)",
-          "Rewrote Today heading: 'The listening sky — where light bends into color'",
-          "Rewrote Today intro: aurora as conversation, geometry of wonder, solar wind and magnetic field ceremony",
-          "Generated new SVG visual asset: visual.svg — aurora borealis with vivid green (#22c55e), purple (#a855f7), pink (#ec4899), gold (#fde68a), teal (#14b8a6) on starlit dark sky with impressionist brushstrokes"
-        ]
+        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
       },
       {
         "date": "2026-06-09",
