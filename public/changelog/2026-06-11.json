@@ -2,6 +2,22 @@
   "date": "2026-06-11",
   "entries": [
     {
+      "time": "12:00:00",
+      "type": "content",
+      "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon/Philosophy/Shiva intros, updated Today for zenith hour, cleaned old assets",
+      "changes": [
+        "Rotated imageCard factIndex: Moon=10 (tulips close at night under Moon), Philosophy=5 (ego thrives on comparison), Gita=4 (Gita spoken on battlefield not in temple), Shiva=8 (Nataraja statue recognized worldwide), Art=1 (sunflower turns face to light)",
+        "Rotated facts.slice: Moon=[3,5] (Moon no light of own, night sky canvas for projection), Philosophy=[6,8] (Krishna right to work never fruit, Nietzsche monster-fighting), Gita=[9,11] (Einstein kept Gita, body like garment), Shiva=[3,5] (Shiva drank poison Halahala, damaru source of language), Art=[11,13] (art paradox personal/universal, Impressionism light as subject)",
+        "Rotated quoteIndex: Moon=6 (Thich Nhat Hanh: Moon just shines), Philosophy=3 (Boorstin: greatest enemy of knowledge), Gita=7 (Atrijā: struggle becomes path to peace), Shiva=2 (Inspired: sees Supreme Lord equally), Art=8 (Atrijā: beauty state to be entered)",
+        "Refreshed Moon intro: hush when Sun retreats, Moon as quiet guest, softness as courage",
+        "Refreshed Philosophy intro: wave rising without consulting mirror, ego building monuments, sea remembering rhythm",
+        "Refreshed Shiva intro: stillness at heart of storm, paradox of destroyer-creator, Tandava as universe expressing through motion",
+        "Updated Today heading: 'The zenith hour — when shadows shrink to nothing'",
+        "Updated Today intro: sun overhead, absolute clarity, afternoon testing morning's intentions",
+        "Cleaned up mutation-assets/2026-06-09/ (3 old SVG files removed)"
+      ]
+    },
+    {
       "time": "06:00:00",
       "type": "daily-mutation",
       "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset",

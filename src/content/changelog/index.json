@@ -1,13 +1,13 @@
 {
-  "version": "1.8.11",
-  "lastUpdated": "2026-06-11T06:00:00.000Z",
-  "totalEntries": 34,
+  "version": "1.8.12",
+  "lastUpdated": "2026-06-11T12:00:00.000Z",
+  "totalEntries": 35,
   "dates": [
     {
       "date": "2026-06-11",
-      "entries": 1,
-      "latestType": "daily-mutation",
-      "description": "Daily mutation #164: sunflower colors (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new sunflower field SVG visual asset"
+      "entries": 2,
+      "latestType": "content",
+      "description": "Midday content layout refresh: rotated all fact/quote indices, refreshed Moon/Philosophy/Shiva intros, updated Today for zenith hour, cleaned old assets"
     },
     {
       "date": "2026-06-10",
