@@ -1,4 +1,4 @@
-import * as THREE from "https://esm.sh/three@0.160.0";
+import * as THREE from "three";
 import { isMobile } from "./scene-config.js";
 
 export function createFlute(scene) {

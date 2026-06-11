@@ -4,6 +4,8 @@ export const isLowEnd = isMobile || navigator.hardwareConcurrency <= 4;
 export const scrollState = { current: 0, target: 0, smooth: 0.05 };
 export let scrollMax = document.body.scrollHeight - window.innerHeight;
 
+export function setScrollMax(val) { scrollMax = val; }
+
 export const parallaxConfig = Object.freeze({
   cameraRotationZ: 0.03,
   starsNearRotationY: 0.02,

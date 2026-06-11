@@ -1,7 +1,7 @@
-import * as THREE from "https://esm.sh/three@0.160.0";
-import { EffectComposer } from "https://esm.sh/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js";
-import { RenderPass } from "https://esm.sh/three@0.160.0/examples/jsm/postprocessing/RenderPass.js";
-import { ShaderPass } from "https://esm.sh/three@0.160.0/examples/jsm/postprocessing/ShaderPass.js";
+import * as THREE from "three";
+import {  EffectComposer  } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import {  RenderPass  } from "three/examples/jsm/postprocessing/RenderPass.js";
+import {  ShaderPass  } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { vgVS, vgFS, glitchVS, glitchFS } from "./scene-shaders.js";
 import { updatePaintingReveal } from "./scene-objects.js";
 import { createSwirlSky } from "./scene-swirl-sky.js";
@@ -10,6 +10,7 @@ import {
   isLowEnd,
   scrollState,
   scrollMax,
+  setScrollMax,
   parallaxConfig,
   _parallaxEnabled,
 } from "./scene-config.js";
@@ -106,7 +107,7 @@ export class VanGoghScene {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
     this.composer.setSize(width, height);
-    scrollMax = document.body.scrollHeight - window.innerHeight;
+    setScrollMax(document.body.scrollHeight - window.innerHeight);
   }
 
   animate() {
