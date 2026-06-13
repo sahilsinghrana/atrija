@@ -493,39 +493,38 @@
   ],
   "colorSchemes": [
     {
-      "name": "moonlit-silver",
-      "primary": "#90a4ae",
-      "secondary": "#ffd740",
-      "accent": "#80deea",
-      "background": "#0d1117",
-      "text": "#eceff1",
-      "mood": "luminous",
+      "name": "midnight-wave",
+      "primary": "#0d47a1",
+      "secondary": "#00bcd4",
+      "accent": "#7c4dff",
+      "background": "#000a12",
+      "text": "#b3e5fc",
+      "mood": "mysterious",
       "shaderParams": {
-        "strokeDensity": 5.7,
-        "swirlFrequency": 14.2,
-        "colorIntensity": 1.21
+        "strokeDensity": 5.9,
+        "swirlFrequency": 14.9,
+        "colorIntensity": 1.12
       },
       "seasons": [
         "winter",
-        "spring",
-        "summer"
+        "autumn"
       ]
     },
     {
-      "name": "lily-garden",
-      "primary": "#c62828",
-      "secondary": "#ff80ab",
-      "accent": "#00c853",
-      "background": "#1a0a0a",
-      "text": "#fce4ec",
-      "mood": "passionate",
+      "name": "starry-night",
+      "primary": "#1a237e",
+      "secondary": "#ffd54f",
+      "accent": "#4fc3f7",
+      "background": "#0a0a1a",
+      "text": "#e8e8f0",
+      "mood": "contemplative",
       "shaderParams": {
-        "strokeDensity": 9.5,
-        "swirlFrequency": 11.4,
-        "colorIntensity": 1.45
+        "strokeDensity": 6.6,
+        "swirlFrequency": 15.7,
+        "colorIntensity": 1.51
       },
       "seasons": [
-        "spring",
+        "winter",
         "summer"
       ]
     },
@@ -548,43 +547,44 @@
       ]
     },
     {
-      "name": "starry-night",
-      "primary": "#1a237e",
-      "secondary": "#ffd54f",
-      "accent": "#4fc3f7",
-      "background": "#0a0a1a",
-      "text": "#e8e8f0",
-      "mood": "contemplative",
+      "name": "lily-garden",
+      "primary": "#c62828",
+      "secondary": "#ff80ab",
+      "accent": "#00c853",
+      "background": "#1a0a0a",
+      "text": "#fce4ec",
+      "mood": "passionate",
       "shaderParams": {
-        "strokeDensity": 6.6,
-        "swirlFrequency": 15.7,
-        "colorIntensity": 1.51
+        "strokeDensity": 9.5,
+        "swirlFrequency": 11.4,
+        "colorIntensity": 1.45
       },
       "seasons": [
-        "winter",
+        "spring",
         "summer"
       ]
     },
     {
-      "name": "midnight-wave",
-      "primary": "#0d47a1",
-      "secondary": "#00bcd4",
-      "accent": "#7c4dff",
-      "background": "#000a12",
-      "text": "#b3e5fc",
-      "mood": "mysterious",
+      "name": "moonlit-silver",
+      "primary": "#90a4ae",
+      "secondary": "#ffd740",
+      "accent": "#80deea",
+      "background": "#0d1117",
+      "text": "#eceff1",
+      "mood": "luminous",
       "shaderParams": {
-        "strokeDensity": 5.9,
-        "swirlFrequency": 14.9,
-        "colorIntensity": 1.12
+        "strokeDensity": 5.7,
+        "swirlFrequency": 14.2,
+        "colorIntensity": 1.21
       },
       "seasons": [
         "winter",
-        "autumn"
+        "spring",
+        "summer"
       ]
     }
   ],
-  "activeColorScheme": "sunflower",
+  "activeColorScheme": "midnight-wave",
   "changelog": {
     "version": "1.0.0",
     "entries": [
