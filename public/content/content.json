@@ -9,11 +9,11 @@
   },
   "sections": {
     "hero": {
-      "tagline": "Every <em>star</em> was once a darkness that learned to burn on its own terms"
+      "tagline": "The <em>night</em> is not empty \u2014 it is full of listening"
     },
     "today": {
-      "heading": "The <em>evening</em> descends \u2014 not as an ending, but as a deepening",
-      "intro": "There is a moment, just before the light surrenders, when the world seems to hold its breath. The sky becomes a bruise of purple and gold, and every shadow stretches toward something it cannot name. This is the hour when the day's certainties dissolve \u2014 when the sharp edges of afternoon soften into something more honest. The evening does not erase the day; it interprets it. What seemed urgent now appears small. What seemed insignificant now glows with quiet meaning. Let the dusk find you not rushing toward the night, but standing still within it, watching the first stars emerge like questions you are finally ready to ask.",
+      "heading": "The <em>evening</em> arrives not as thief, but as gifts",
+      "intro": "What we call endings are often just transformations in disguise \u2014 the day folding its light into the night's keeping.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-13/visual.svg",
@@ -22,103 +22,118 @@
       }
     },
     "moon": {
-      "label": "I. The Moon",
-      "heading": "She <em>borrows</em> light the way the heart borrows hope \u2014 freely, without apology",
+      "label": "I. The Lunar Whisper",
+      "heading": "She <em>borrows</em> light not as theft, but as sacred exchange",
       "intro": "The Moon does not apologize for her reflected glow. She does not dim herself to make the Sun seem brighter. In her quiet orbit, she teaches a radical lesson: that to receive light and pass it on unchanged is not weakness but a kind of grace. The tides know this. The sleepless know this. The lovers who write letters to the absent know this. To be lunar is to be a mirror that moves \u2014 reflecting not what you are, but what illuminates you. And in that reflection, the world sees not the source, but the beauty of transmission itself.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 11
+        "factIndex": 11,
+        "0": 0
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
           2,
           4
-        ]
+        ],
+        "0": 0
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 7
+        "quoteIndex": 7,
+        "0": 0
       }
     },
     "philosophy": {
-      "label": "II. The Waves",
-      "heading": "The <em>self</em> is a shore the ocean uses to define its own restlessness",
+      "label": "II. The Ocean's Restless Edge",
+      "heading": "The <em>self</em> is where the waves come to kiss the shore and leave",
       "intro": "What if the ego is not the enemy but the wave \u2014 a temporary shape the ocean takes to feel its own movement? The water does not suffer when the wave collapses. It does not mourn the shape it briefly wore. And yet, without the wave, the ocean would never know the joy of reaching shore. Perhaps the self is not something to be destroyed but something to be surfed \u2014 ridden with skill and wonder until you realize you were never separate from the sea that carried you.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 14
+        "factIndex": 14,
+        "0": 1
       },
       "facts": {
         "themeIndex": 1,
         "slice": [
           6,
           8
-        ]
+        ],
+        "0": 1
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 2
+        "quoteIndex": 2,
+        "0": 1
       }
     },
     "gita": {
-      "label": "III. The Battlefield",
-      "heading": "Courage is not the <em>absence</em> of trembling \u2014 it is the decision to act while trembling",
+      "label": "III. The Field of Inner Battles",
+      "heading": "Courage is not the <em>absence</em> of fear \u2014 it is love in motion",
       "intro": "Arjuna did not become brave before picking up his bow. He picked up his bow while still afraid, still grieving, still uncertain. The Gita's revolution is this: it does not ask you to feel ready. It asks you to act \u2014 not from the illusion of certainty, but from the deeper ground of duty and love. Krishna's voice on the battlefield is not a command; it is an invitation to trust that the universe holds you even when your hands shake. The warrior's path is not for the fearless. It is for the frightened who move anyway.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 4
+        "factIndex": 4,
+        "0": 2
       },
       "facts": {
         "themeIndex": 2,
         "slice": [
           9,
           11
-        ]
+        ],
+        "0": 2
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 8
+        "quoteIndex": 8,
+        "0": 2
       }
     },
     "shiva": {
-      "label": "IV. The Dance",
-      "heading": "The <em>cosmos</em> does not move to a rhythm \u2014 it is the rhythm, pretending to be things that move",
+      "label": "IV. The Dance of Stillness",
+      "heading": "The <em>cosmos</em> does not move to rhythm \u2014 it <em>is</em> the rhythm",
       "intro": "Watch the dancer's foot strike the ground. In that instant, the universe contracts to a single point of contact \u2014 and then expands outward in ripples that will never fully cease. This is not poetry. This is physics wearing the mask of mythology. Every particle vibrates. Every atom dances. The spaces between atoms are not empty; they are the pauses between notes that make the music possible. Shiva's dance is the universe's way of reminding itself that stillness and motion are not opposites \u2014 they are partners in the oldest collaboration.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 12
+        "factIndex": 12,
+        "0": 4
       },
       "facts": {
         "themeIndex": 3,
         "slice": [
           1,
           3
-        ]
+        ],
+        "0": 4
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 6
+        "quoteIndex": 6,
+        "0": 4
       }
     },
     "art": {
-      "label": "V. The Canvas",
-      "heading": "A <em>painting</em> is not a window \u2014 it is a door that opens only from the inside",
+      "label": "V. The Canvas of Becoming",
+      "heading": "A <em>painting</em> is not what you see \u2014 it is what you <em>feel</em>",
       "intro": "The canvas does not show you the world. It shows you the artist's willingness to be undone by the world \u2014 to stand before a field of sunflowers and feel something so large that only color can hold it. Every brushstroke is a confession: I was here, I saw this, it changed me, and I am leaving this trace in case you need to know that someone else was changed too. Art is not decoration. It is evidence that a human being once stood in the presence of beauty and refused to walk away unchanged.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 13
+        "factIndex": 13,
+        "0": 3
       },
       "facts": {
         "themeIndex": 4,
         "slice": [
           0,
           2
-        ]
+        ],
+        "0": 3
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 5
+        "quoteIndex": 5,
+        "0": 3
       }
     }
   },
