@@ -2,7 +2,7 @@
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
     "version": "1.8.12",
-    "lastUpdated": "2026-06-11",
+    "lastUpdated": "2026-06-13",
     "updatedBy": "AI Agent (content-layout-refresh)",
     "season": "summer ☀️"
   },
@@ -11,8 +11,8 @@
       "tagline": "Beneath the <em>golden hush</em> of a summer sky, the soul remembers how to bloom"
     },
     "today": {
-      "heading": "The <em>zenith</em> hour — when shadows shrink to nothing",
-      "intro": "The sun stands directly overhead, and for a brief moment, even the smallest object casts no shadow. This is the hour of absolute clarity — when nothing is hidden, when every color burns at its most saturated, when the world holds its breath in the fullness of light. The afternoon stretches ahead like an open field. The morning's intentions are tested now, not in the gentle dawn but in the relentless noon. What you chose when the day was new, you must now sustain when the day is demanding. Let the light find you still open, still turning, still blooming.",
+      "heading": "The <em>afternoon</em> unfurls — a canvas of amber and longing",
+      "intro": "The afternoon has its own peculiar magic — the light grows thick and golden, time seems to stretch like honey dripping from a spoon. The world slows, not from exhaustion, but from a kind of satisfaction. The morning's urgency has burned away; what remains is the deep, unhurried rhythm of a day that knows it will end. This is the hour of reflection — when the sun, having climbed to its throne, begins the slow descent toward the horizon. Shadows lengthen, and with them, our thoughts grow longer too. Let this be the moment you pause, turn your face to the light one more time, and let the golden hour find you still open, still reaching, still turning toward what illuminates.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-11/visual.svg",
@@ -23,21 +23,21 @@
     "moon": {
       "label": "I. The Moon",
       "heading": "The <em>silence</em> between two heartbeats of light",
-      "intro": "There is a hush that falls when the Sun retreats — not an absence of light, but a different kind of illumination. The Moon enters like a quiet guest who needs no introduction, casting silver across the landscape of the mind. In Vedic thought, the Moon is not merely a celestial body but the ruler of the heart's tides, the part of us that feels before thinking begins. To sit beneath its glow is to remember that softness is not weakness — it is the courage to reflect a greater light without claiming it as your own.",
+      "intro": "As the last warmth of day lingers on the skin, the sky deepens into indigo and the first star appears — not with fanfare, but with the quiet certainty of something that was always there. The Moon rises like an old memory surfacing uninvited, pulling at the hidden tides of the heart. In the Vedic vision, the Moon is the mirror of the mind — reflecting light it did not create, yet making beauty from the borrowing. To be still beneath it is to practice the art of receiving without grasping.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 10
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          3,
-          5
+          11,
+          13
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 6
+        "quoteIndex": 8
       }
     },
     "philosophy": {
@@ -46,18 +46,18 @@
       "intro": "Consider the wave: it rises from the ocean, takes shape, crests, and returns — never once consulting a mirror to confirm its identity. It does not cling to its form, nor does it fear the dissolution that awaits it on the shore. The ego, by contrast, builds monuments to its own existence and calls them permanence. But the sea does not remember individual waves. It only remembers the rhythm of returning — the endless, patient rhythm that asks nothing and receives everything.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 5
+        "factIndex": 11
       },
       "facts": {
         "themeIndex": 1,
         "slice": [
-          6,
-          8
+          12,
+          14
         ]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 3
+        "quoteIndex": 5
       }
     },
     "gita": {
@@ -66,18 +66,18 @@
       "intro": "Arjuna's paralysis on the battlefield was not cowardice — it was the most human of crises: the collision of love and duty, of attachment and purpose. Krishna's answer was not to resolve the tension but to transcend it. Act, yes — but act as the river acts, flowing toward the ocean not because it chooses to, but because flowing is its nature. The Gita does not ask us to stop fighting. It asks us to stop believing the fight belongs to us.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 4
+        "factIndex": 13
       },
       "facts": {
         "themeIndex": 2,
         "slice": [
-          9,
-          11
+          5,
+          7
         ]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 7
+        "quoteIndex": 4
       }
     },
     "shiva": {
@@ -86,44 +86,50 @@
       "intro": "At the heart of every storm, there is a point of absolute stillness. Shiva embodies this paradox — the destroyer who is also the creator, the ascetic who dances, the silence that contains all sound. His Tandava is not performance but the universe expressing itself through motion: galaxies spinning, atoms vibrating, hearts beating. To understand the dance is to realize that destruction and creation are not opposites but partners, holding hands in the ring of fire that is existence itself.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 8
+        "factIndex": 14
       },
       "facts": {
         "themeIndex": 3,
+        "slice": [
+          10,
+          12
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 8
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "The <em>brushstroke</em> that outlives the hand",
+      "intro": "Before the first mark is made, the canvas already holds every possibility — every color that could bloom, every line that could sing. The artist's task is not to impose vision but to listen for what the silence wants to become. A sunflower in a field does not know it is beautiful; it simply turns toward the light. The painter who captures this does not copy the flower — they copy the turning, the reaching, the quiet devotion of a living thing toward warmth. In this way, every true painting is a portrait of attention itself.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 8
+      },
+      "facts": {
+        "themeIndex": 4,
         "slice": [
           3,
           5
         ]
       },
       "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 2
-      }
-    },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "The <em>brushstroke</em> that outlives the hand",
-      "intro": "A single brushstroke holds the weight of every choice the artist did not make — every color rejected, every line abandoned, every vision that dissolved before it reached the canvas. What remains is not a picture but a record of attention: this is what the artist's gaze found worthy of permanence. In this way, every painting is a self-portrait of seeing itself.",
-      "imageCard": {
         "themeIndex": 4,
-        "factIndex": 1
-      },
-      "facts": {
-        "themeIndex": 4,
-        "slice": [
-          11,
-          13
-        ]
-      },
-      "quote": {
-        "themeIndex": 4,
-        "quoteIndex": 8
+        "quoteIndex": 6
       }
     }
   },
   "changelog": {
     "version": "1.8.12",
     "entries": [
+      {
+        "date": "2026-06-13",
+        "time": "16:50:00",
+        "type": "content",
+        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros, updated Today heading/intro for afternoon theme, cleaned 2-day-old mutation assets (2026-06-10)"
+      },
       {
         "date": "2026-06-11",
         "time": "12:00:00",
