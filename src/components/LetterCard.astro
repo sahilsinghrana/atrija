@@ -1,13 +1,5 @@
 ---
-// Letters section — placeholder data (feature removed from kanban)
-const lettersData = { letters: [] };
-
-const now = new Date();
-const start = new Date(now.getFullYear(), 0, 0);
-const diff = now.getTime() - start.getTime();
-const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-const letter = lettersData.letters[dayOfYear % Math.max(lettersData.letters.length, 1)];
+// Letters section — placeholder (feature removed from kanban)
 ---
 
 <section id="letters" class="section" style="display:none">

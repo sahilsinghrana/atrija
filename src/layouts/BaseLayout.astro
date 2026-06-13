@@ -166,6 +166,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
       transition-duration: 0.01ms !important;
     }
   </style>
+  <!-- eslint-disable-next-line astro/no-unused-define-vars-in-style -->
 </head>
 <body>
   <div id="loader">
@@ -312,7 +313,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
         document.documentElement.style.setProperty('--vh', vh + 'px');
       }
       setVH();
-      var resizeTimer;
+      var resizeTimer: ReturnType<typeof setTimeout>;
       window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(setVH, 100);
@@ -325,7 +326,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
   <!-- Accessibility Enhancements -->
   <script is:inline src="/js/accessibility.js"></script>
   <!-- Scroll-Synced Ambient Lighting (idea-048) -->
-  <script type="module" src="/js/scroll-lighting.js"></script>
+  <script is:inline type="module" src="/js/scroll-lighting.js"></script>
   <!-- Section Progress Navigator (idea-057) -->
   <script is:inline src="/js/section-nav.js"></script>
   <!-- Content Search Overlay (idea-055) -->

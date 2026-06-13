@@ -84,9 +84,9 @@ const sections = [
     <div class="section-inner">
       <div class="section-label reveal-left">Today's Reflection</div>
       <h2 class="reveal" set:html={sec.today.heading} />
-      {sec.today.visualAsset && (sec.today.visualAsset.path || sec.today.visualAsset.svgPath) && (
+      {sec.today.visualAsset && sec.today.visualAsset.path && (
         <div class="today-visual-asset">
-          <img src={sec.today.visualAsset.path || sec.today.visualAsset.svgPath} alt={sec.today.visualAsset.description || "Daily visual"} loading="lazy" />
+          <img src={sec.today.visualAsset.path} alt={sec.today.visualAsset.description || "Daily visual"} loading="lazy" />
           <div class="today-visual-caption">{sec.today.visualAsset.description}</div>
         </div>
       )}
@@ -128,7 +128,7 @@ const sections = [
                 data-theme-index={data.quote.themeIndex}
               >
                 <div class="quote-carousel-inner">
-                  {quoteTheme.quotes.map((q: any, i: number) => (
+                  {quoteTheme.quotes.map((q, i) => (
                     <div
                       class="quote-card"
                       data-index={i}
@@ -141,7 +141,7 @@ const sections = [
                   ))}
                 </div>
                 <div class="quote-dots">
-                  {quoteTheme.quotes.map((_q: any, i: number) => (
+                  {quoteTheme.quotes.map((_q, i) => (
                     <button
                       class={"quote-dot" + (i === 0 ? " active" : "")}
                       data-index={i}
@@ -196,7 +196,7 @@ const sections = [
     </div>
   </section>
 
-  <script type="module" src="/js/changelog-app.js"></script>
+  <script is:inline type="module" src="/js/changelog-app.js"></script>
 
   <!-- ═══════════════════════════════════════
        THREE.JS SCENE INIT
@@ -204,9 +204,9 @@ const sections = [
   <div id="vg-data" data-colors={colorData} hidden></div>
   <script>
     (function () {
-      var el = document.getElementById("vg-data");
-      var c = JSON.parse(el.dataset.colors);
-      var r = document.documentElement.style;
+      const el = document.getElementById("vg-data");
+      const c = JSON.parse(el.dataset.colors);
+      const r = document.documentElement.style;
       r.setProperty("--color-primary", c.primary);
       r.setProperty("--color-secondary", c.secondary);
       r.setProperty("--color-accent", c.accent);
@@ -214,11 +214,11 @@ const sections = [
       r.setProperty("--color-text", c.text);
     })();
   </script>
-  <script type="module" hoist>
+  <script type="module">
     import { bootScene } from "../js/scene/scene-bootstrap.js";
     bootScene();
   </script>
-  <script type="module" src="/js/moon-phase.js"></script>
+  <script is:inline type="module" src="/js/moon-phase.js"></script>
   <script is:inline src="/js/quote-carousel.js"></script>
   <script is:inline src="/js/brushstroke-cursor.js" defer></script>
   <script is:inline src="/js/theme-switcher.js" defer></script>

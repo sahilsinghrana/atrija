@@ -169,30 +169,29 @@ const koan = koansData.koans[dayOfYear % koansData.koans.length];
   (function() {
     const btn = document.getElementById('koanReflectBtn');
     const interpretation = document.getElementById('koanInterpretation');
-    const progressFill = btn?.querySelector('.koan-progress-fill');
+    const progressFill = btn?.querySelector('.koan-progress-fill') as SVGElement | null;
     if (!btn || !interpretation || !progressFill) return;
 
     const HOLD_DURATION = 3000;
     const CIRCUMFERENCE = 125.66;
-    let timer = null;
-    let startTimestamp = null;
+    let startTimestamp: number | null = null;
     let revealed = false;
-    let rafId = null;
+    let rafId: number | null = null;
 
-    function updateProgress(elapsed) {
+    function updateProgress(elapsed: number) {
       const pct = Math.min(elapsed / HOLD_DURATION, 1);
       const offset = CIRCUMFERENCE * (1 - pct);
       progressFill.style.strokeDashoffset = String(offset);
     }
 
-    function onStart(e) {
-      if (e.type === 'mousedown' && e.button !== 0) return;
+    function onStart(e: Event) {
+      if (e.type === 'mousedown' && (e as MouseEvent).button !== 0) return;
       if (revealed) return;
       e.preventDefault();
       btn.classList.add('holding');
       startTimestamp = null;
 
-      function frame(ts) {
+      function frame(ts: number) {
         if (startTimestamp === null) startTimestamp = ts;
         const elapsed = ts - startTimestamp;
         updateProgress(elapsed);
@@ -204,7 +203,7 @@ const koan = koansData.koans[dayOfYear % koansData.koans.length];
       }
       rafId = requestAnimationFrame(frame);
 
-      function onEnd(e) {
+      function onEnd(_e: Event) {
         cleanup();
       }
 
