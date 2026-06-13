@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <!-- Volcanic ember gradient sky -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0606"/>
+      <stop offset="30%" stop-color="#2a0a08"/>
+      <stop offset="60%" stop-color="#3a1010"/>
+      <stop offset="85%" stop-color="#5a1a10"/>
+      <stop offset="100%" stop-color="#8a2a10"/>
+    </linearGradient>
+    <!-- Ember glow -->
+    <radialGradient id="emberGlow" cx="50%" cy="85%" r="40%">
+      <stop offset="0%" stop-color="#ff4500" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#ff1493" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#1a0606" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Sun glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="78%" r="25%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#ff6347" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#ff4500" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ff4500" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Cypress silhouette -->
+    <linearGradient id="cypressGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0204"/>
+      <stop offset="100%" stop-color="#1a0606"/>
+    </linearGradient>
+    <!-- Swirl filter for impressionist effect -->
+    <filter id="swirl">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015 0.003" numOctaves="3" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="brushStroke">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" seed="12"/>
+      <feDisplacementMap in="SourceGraphic" scale="6"/>
+    </filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="800" height="500" fill="url(#sky)"/>
+
+  <!-- Swirling ember clouds (impressionist brushstrokes) -->
+  <g filter="url(#swirl)" opacity="0.5">
+    <ellipse cx="200" cy="120" rx="180" ry="60" fill="#ff4500" opacity="0.15"/>
+    <ellipse cx="600" cy="100" rx="200" ry="50" fill="#ff1493" opacity="0.1"/>
+    <ellipse cx="400" cy="80" rx="250" ry="40" fill="#ff6347" opacity="0.08"/>
+    <ellipse cx="150" cy="180" rx="120" ry="35" fill="#ff4500" opacity="0.12"/>
+    <ellipse cx="650" cy="160" rx="140" ry="40" fill="#ff69b4" opacity="0.08"/>
+  </g>
+
+  <!-- Horizontal ember bands (brushstroke texture) -->
+  <g opacity="0.3">
+    <rect x="0" y="200" width="800" height="8" rx="4" fill="#ff4500" opacity="0.2"/>
+    <rect x="50" y="215" width="700" height="5" rx="3" fill="#ff6347" opacity="0.15"/>
+    <rect x="100" y="228" width="600" height="6" rx="3" fill="#ff1493" opacity="0.12"/>
+    <rect x="0" y="245" width="800" height="4" rx="2" fill="#ff4500" opacity="0.18"/>
+    <rect x="80" y="258" width="640" height="7" rx="4" fill="#ff7f50" opacity="0.1"/>
+    <rect x="30" y="272" width="740" height="5" rx="3" fill="#ff6347" opacity="0.14"/>
+  </g>
+
+  <!-- Ember glow at horizon -->
+  <rect x="0" y="280" width="800" height="220" fill="url(#emberGlow)"/>
+
+  <!-- Rising sun (partially hidden) -->
+  <circle cx="400" cy="390" r="80" fill="url(#sunGlow)"/>
+  <circle cx="400" cy="390" r="35" fill="#ffd700" opacity="0.7" filter="url(#softGlow)"/>
+  <circle cx="400" cy="390" r="25" fill="#fff0e0" opacity="0.5"/>
+
+  <!-- Impressionist sun rays -->
+  <g opacity="0.2" filter="url(#brushStroke)">
+    <line x1="400" y1="390" x2="200" y2="300" stroke="#ffd700" stroke-width="3"/>
+    <line x1="400" y1="390" x2="600" y2="300" stroke="#ffd700" stroke-width="3"/>
+    <line x1="400" y1="390" x2="300" y2="280" stroke="#ff6347" stroke-width="2"/>
+    <line x1="400" y1="390" x2="500" y2="280" stroke="#ff6347" stroke-width="2"/>
+    <line x1="400" y1="390" x2="150" y2="340" stroke="#ff4500" stroke-width="2"/>
+    <line x1="400" y1="390" x2="650" y2="340" stroke="#ff4500" stroke-width="2"/>
+  </g>
+
+  <!-- Scattered ember particles rising -->
+  <g filter="url(#softGlow)">
+    <circle cx="320" cy="340" r="3" fill="#ff4500" opacity="0.6"/>
+    <circle cx="480" cy="320" r="2.5" fill="#ff6347" opacity="0.5"/>
+    <circle cx="350" cy="360" r="2" fill="#ffd700" opacity="0.7"/>
+    <circle cx="450" cy="350" r="3.5" fill="#ff1493" opacity="0.4"/>
+    <circle cx="280" cy="310" r="2" fill="#ff4500" opacity="0.5"/>
+    <circle cx="520" cy="330" r="2.5" fill="#ff6347" opacity="0.6"/>
+    <circle cx="380" cy="370" r="1.5" fill="#ffd700" opacity="0.8"/>
+    <circle cx="420" cy="355" r="2" fill="#ff7f50" opacity="0.5"/>
+    <circle cx="340" cy="300" r="1.8" fill="#ff4500" opacity="0.4"/>
+    <circle cx="460" cy="290" r="2.2" fill="#ff1493" opacity="0.3"/>
+    <circle cx="300" cy="280" r="1.5" fill="#ffd700" opacity="0.5"/>
+    <circle cx="500" cy="275" r="2" fill="#ff6347" opacity="0.4"/>
+    <circle cx="360" cy="260" r="1.3" fill="#ff4500" opacity="0.35"/>
+    <circle cx="440" cy="255" r="1.7" fill="#ff7f50" opacity="0.3"/>
+    <circle cx="390" cy="240" r="1.2" fill="#ffd700" opacity="0.4"/>
+    <circle cx="410" cy="230" r="1.5" fill="#ff4500" opacity="0.25"/>
+  </g>
+
+  <!-- Cypress tree silhouettes (left) -->
+  <g fill="url(#cypressGrad)">
+    <path d="M60,500 L65,380 Q68,340 62,300 Q58,270 64,240 Q68,220 63,200 Q58,180 62,160 Q66,140 61,120 Q58,100 63,80 Q66,60 60,40 L70,40 Q74,60 72,80 Q76,100 73,120 Q78,140 74,160 Q78,180 73,200 Q78,220 74,240 Q78,270 74,300 Q78,340 76,380 L80,500 Z"/>
+    <path d="M110,500 L115,400 Q118,360 112,320 Q108,290 114,260 Q118,240 113,220 Q108,200 112,180 Q116,160 111,140 Q108,120 113,100 Q116,80 110,60 L120,60 Q124,80 122,100 Q126,120 123,140 Q128,160 124,180 Q128,200 123,220 Q128,240 124,260 Q128,290 124,320 Q128,360 126,400 L130,500 Z"/>
+    <path d="M30,500 L35,420 Q38,380 32,340 Q28,310 34,280 Q38,260 33,240 Q28,220 32,200 Q36,180 31,160 Q28,140 33,120 Q36,100 30,80 L40,80 Q44,100 42,120 Q46,140 43,160 Q48,180 44,200 Q48,220 43,240 Q48,260 44,280 Q48,310 44,340 Q48,380 46,420 L50,500 Z"/>
+  </g>
+
+  <!-- Cypress tree silhouettes (right) -->
+  <g fill="url(#cypressGrad)">
+    <path d="M700,500 L705,390 Q708,350 702,310 Q698,280 704,250 Q708,230 703,210 Q698,190 702,170 Q706,150 701,130 Q698,110 703,90 Q706,70 700,50 L710,50 Q714,70 712,90 Q716,110 713,130 Q718,150 714,170 Q718,190 713,210 Q718,230 714,250 Q718,280 714,310 Q718,350 716,390 L720,500 Z"/>
+    <path d="M750,500 L755,410 Q758,370 752,330 Q748,300 754,270 Q758,250 753,230 Q748,210 752,190 Q756,170 751,150 Q748,130 753,110 Q756,90 750,70 L760,70 Q764,90 762,110 Q766,130 763,150 Q768,170 764,190 Q768,210 763,230 Q768,250 764,270 Q768,300 764,330 Q768,370 766,410 L770,500 Z"/>
+    <path d="M660,500 L665,430 Q668,390 662,350 Q658,320 664,290 Q668,270 663,250 Q658,230 662,210 Q666,190 661,170 Q658,150 663,130 Q666,110 660,90 L670,90 Q674,110 672,130 Q676,150 673,170 Q678,190 674,210 Q678,230 674,250 Q678,270 674,290 Q678,320 674,350 Q678,390 676,430 L680,500 Z"/>
+  </g>
+
+  <!-- Ground/horizon line with texture -->
+  <rect x="0" y="420" width="800" height="80" fill="#0a0204" opacity="0.8"/>
+  <rect x="0" y="415" width="800" height="10" fill="#1a0606" opacity="0.9"/>
+
+  <!-- Impressionist brushstroke ground texture -->
+  <g opacity="0.4">
+    <ellipse cx="100" cy="460" rx="60" ry="8" fill="#ff4500" opacity="0.15"/>
+    <ellipse cx="300" cy="470" rx="80" ry="6" fill="#ff6347" opacity="0.1"/>
+    <ellipse cx="500" cy="465" rx="70" ry="7" fill="#ff1493" opacity="0.08"/>
+    <ellipse cx="700" cy="475" rx="90" ry="5" fill="#ff4500" opacity="0.12"/>
+    <ellipse cx="200" cy="485" rx="50" ry="4" fill="#ff7f50" opacity="0.1"/>
+    <ellipse cx="600" cy="488" rx="65" ry="5" fill="#ff6347" opacity="0.08"/>
+  </g>
+
+  <!-- Faint stars in upper sky -->
+  <g opacity="0.4">
+    <circle cx="100" cy="30" r="1" fill="#fff0e0"/>
+    <circle cx="250" cy="50" r="0.8" fill="#ffd700"/>
+    <circle cx="400" cy="20" r="1.2" fill="#fff0e0"/>
+    <circle cx="550" cy="40" r="0.9" fill="#ffd700"/>
+    <circle cx="700" cy="25" r="1" fill="#fff0e0"/>
+    <circle cx="180" cy="70" r="0.7" fill="#fff0e0"/>
+    <circle cx="620" cy="60" r="0.8" fill="#ffd700"/>
+    <circle cx="350" cy="45" r="0.6" fill="#fff0e0"/>
+    <circle cx="480" cy="35" r="0.9" fill="#fff0e0"/>
+    <circle cx="750" cy="55" r="0.7" fill="#ffd700"/>
+  </g>
+
+  <!-- Subtle vignette -->
+  <rect width="800" height="500" fill="none" stroke="#0a0204" stroke-width="60" opacity="0.3" rx="0"/>
+</svg>

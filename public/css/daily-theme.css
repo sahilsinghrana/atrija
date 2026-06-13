@@ -2,30 +2,30 @@
 /* This file is loaded AFTER main.css and overrides the default theme */
 
 :root {
-  /* ── Ember Dawn Palette ── */
-  --bg: #1a0808;
-  --bg-surface: rgba(255, 120, 80, 0.04);
-  --bg-card: rgba(255, 100, 60, 0.06);
-  --bg-card-hover: rgba(255, 120, 80, 0.1);
-  --border: rgba(255, 120, 80, 0.1);
-  --border-accent: rgba(255, 80, 60, 0.35);
+  /* ── Volcanic Ember Palette ── */
+  --bg: #1a0606;
+  --bg-surface: rgba(255, 80, 30, 0.04);
+  --bg-card: rgba(255, 70, 20, 0.07);
+  --bg-card-hover: rgba(255, 90, 40, 0.12);
+  --border: rgba(255, 100, 50, 0.12);
+  --border-accent: rgba(255, 60, 20, 0.4);
 
   --text-primary: #fff0e8;
-  --text-secondary: #e0b8a0;
-  --text-tertiary: #a07860;
-  --text-quote: #f8e0d0;
+  --text-secondary: #e0a890;
+  --text-tertiary: #a06850;
+  --text-quote: #f8d8c8;
 
-  --accent-gold: #ff6b35;
-  --accent-gold-dim: rgba(255, 107, 53, 0.12);
-  --accent-blue: #ff9a76;
-  --accent-coral: #ff4081;
-  --accent-violet: #ea80fc;
-  --sage: #ffab91;
+  --accent-gold: #ff4500;
+  --accent-gold-dim: rgba(255, 69, 0, 0.12);
+  --accent-blue: #ff6347;
+  --accent-coral: #ff1493;
+  --accent-violet: #ff69b4;
+  --sage: #ff7f50;
 
-  --color-primary: #ff6b35;
-  --color-secondary: #ff4081;
-  --color-accent: #ffd54f;
-  --color-bg: #1a0808;
+  --color-primary: #ff4500;
+  --color-secondary: #ff1493;
+  --color-accent: #ffd700;
+  --color-bg: #1a0606;
   --color-text: #fff0e8;
 }
 
@@ -185,7 +185,7 @@ body.layout-cards .quote-block {
   border-radius: 12px;
 }
 body.layout-cards #today .section-inner {
-  background: linear-gradient(135deg, var(--bg-card), rgba(255, 107, 53, 0.05));
+  background: linear-gradient(135deg, var(--bg-card), rgba(255, 69, 0, 0.05));
   border-color: var(--border-accent);
 }
 
@@ -263,58 +263,58 @@ body.layout-fullbleed #today .section-inner {
 }
 
 /* ═══════════════════════════════════════
-   SECTION HEADING COLORS — ember dawn
+   SECTION HEADING COLORS — volcanic ember
    ═══════════════════════════════════════ */
-#today h2 { color: #ff6b35; }
-#today h2 em { color: #ff4081; }
-#moon h2 { color: #ff9a76; }
-#moon h2 em { color: #ff6b35; }
-#philosophy h2 { color: #ff4081; }
-#philosophy h2 em { color: #ea80fc; }
-#gita h2 { color: #ea80fc; }
-#gita h2 em { color: #ff6b35; }
-#shiva h2 { color: #ffab91; }
-#shiva h2 em { color: #ff9a76; }
-#art h2 { color: #ff6b35; }
-#art h2 em { color: #ff4081; }
-#changelog h2 { color: #e0b8a0; }
-#changelog h2 em { color: #ff6b35; }
+#today h2 { color: #ff4500; }
+#today h2 em { color: #ff1493; }
+#moon h2 { color: #ff6347; }
+#moon h2 em { color: #ff4500; }
+#philosophy h2 { color: #ff1493; }
+#philosophy h2 em { color: #ff69b4; }
+#gita h2 { color: #ff69b4; }
+#gita h2 em { color: #ff4500; }
+#shiva h2 { color: #ff7f50; }
+#shiva h2 em { color: #ff6347; }
+#art h2 { color: #ff4500; }
+#art h2 em { color: #ff1493; }
+#changelog h2 { color: #e0a890; }
+#changelog h2 em { color: #ff4500; }
 
-.section-label { color: #ff6b35 !important; }
-.section-label::after { background: rgba(255, 80, 60, 0.35) !important; }
+.section-label { color: #ff4500 !important; }
+.section-label::after { background: rgba(255, 60, 20, 0.4) !important; }
 
 .ai-banner {
-  background: linear-gradient(90deg, rgba(255, 107, 53, 0.15), rgba(255, 64, 129, 0.1), rgba(234, 128, 252, 0.12)) !important;
-  border-bottom: 1px solid rgba(255, 107, 53, 0.35) !important;
+  background: linear-gradient(90deg, rgba(255, 69, 0, 0.15), rgba(255, 20, 147, 0.1), rgba(255, 105, 180, 0.12)) !important;
+  border-bottom: 1px solid rgba(255, 69, 0, 0.35) !important;
 }
-.ai-banner-text strong { color: #ff6b35 !important; }
-.ai-banner-pulse { background: #ff6b35 !important; box-shadow: 0 0 6px rgba(255, 107, 53, 0.8) !important; }
+.ai-banner-text strong { color: #ff4500 !important; }
+.ai-banner-pulse { background: #ff4500 !important; box-shadow: 0 0 6px rgba(255, 69, 0, 0.8) !important; }
 
 .logo-sanskrit {
-  background: linear-gradient(160deg, #ffab91, #ff6b35, #fff0e0, #ff6b35, #ff4081) !important;
+  background: linear-gradient(160deg, #ff7f50, #ff4500, #fff0e0, #ff4500, #ff1493) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  filter: drop-shadow(0 2px 14px rgba(255, 107, 53, 0.7)) drop-shadow(0 0 32px rgba(255, 64, 129, 0.4)) !important;
+  filter: drop-shadow(0 2px 14px rgba(255, 69, 0, 0.7)) drop-shadow(0 0 32px rgba(255, 20, 147, 0.4)) !important;
 }
 
-.logo-tagline em { color: #ff6b35 !important; }
-.hero::after { background: linear-gradient(to bottom, #ff6b35, transparent) !important; }
+.logo-tagline em { color: #ff4500 !important; }
+.hero::after { background: linear-gradient(to bottom, #ff4500, transparent) !important; }
 
 .today-visual-asset {
-  border: 2px solid rgba(255, 107, 53, 0.4) !important;
-  box-shadow: 0 0 30px rgba(255, 107, 53, 0.1), inset 0 0 30px rgba(255, 107, 53, 0.05) !important;
+  border: 2px solid rgba(255, 69, 0, 0.4) !important;
+  box-shadow: 0 0 30px rgba(255, 69, 0, 0.1), inset 0 0 30px rgba(255, 69, 0, 0.05) !important;
 }
 
 #flute-container {
-  background: rgba(255, 107, 53, 0.1) !important;
-  border: 1px solid rgba(255, 107, 53, 0.25) !important;
+  background: rgba(255, 69, 0, 0.1) !important;
+  border: 1px solid rgba(255, 69, 0, 0.25) !important;
 }
 #flute-container:hover {
-  background: rgba(255, 107, 53, 0.18) !important;
-  border-color: rgba(255, 107, 53, 0.45) !important;
+  background: rgba(255, 69, 0, 0.18) !important;
+  border-color: rgba(255, 69, 0, 0.45) !important;
 }
 
 body, #canvas-container {
-  background: linear-gradient(180deg, #1a0808, #2a0e10, #3a1518, #1a0808) !important;
+  background: linear-gradient(180deg, #1a0606, #2a0a08, #3a1010, #1a0606) !important;
 }
