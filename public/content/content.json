@@ -1,14 +1,14 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.12",
+    "version": "1.8.13",
     "lastUpdated": "2026-06-13",
     "updatedBy": "AI Agent (content-layout-refresh)",
     "season": "summer ☀️"
   },
   "sections": {
     "hero": {
-      "tagline": "Beneath the <em>golden hush</em> of a summer sky, the soul remembers how to bloom"
+      "tagline": "The <em>deep ocean</em> remembers every river that ever surrendered to its depths"
     },
     "today": {
       "heading": "The <em>afternoon</em> unfurls — a canvas of amber and longing",
@@ -16,119 +16,133 @@
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-13/visual.svg",
-        "description": "Impressionist summer meadow at afternoon golden hour — warm amber and turquoise sky with rolling hills, cypress silhouettes, and scattered wildflowers in thick brushstroke texture",
+        "description": "Impressionist comet trail arcing across a luminous night sky — brilliant gold and white comet with sparkling particles, purple and blue atmospheric wisps, tiny wildflowers in the foreground",
         "credit": "Generated for Atrijā daily mutation"
       }
     },
     "moon": {
       "label": "I. The Moon",
-      "heading": "The <em>silence</em> between two heartbeats of light",
-      "intro": "As the last warmth of day lingers on the skin, the sky deepens into indigo and the first star appears — not with fanfare, but with the quiet certainty of something that was always there. The Moon rises like an old memory surfacing uninvited, pulling at the hidden tides of the heart. In the Vedic vision, the Moon is the mirror of the mind — reflecting light it did not create, yet making beauty from the borrowing. To be still beneath it is to practice the art of receiving without grasping.",
+      "heading": "A <em>silver compass</em> for the adrift and the seeking",
+      "intro": "When the sky darkens into its deepest blue, the Moon rises not as a conqueror of night but as its gentlest guardian. She pulls the waters of the earth and the waters of the heart with equal tenderness, reminding us that the same force that moves the ocean also moves our tears, our longings, our quietest joys. To be lunar is to live by reflection — not as a lesser form of light, but as its most faithful interpreter. The Moon does not compete with the Sun. She waits, and in her waiting, she teaches us that patience is not passive — it is the deepest form of trust.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 7
+        "factIndex": 3
       },
       "facts": {
         "themeIndex": 0,
         "slice": [
-          11,
-          13
+          8,
+          10
         ]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 8
+        "quoteIndex": 5
       }
     },
     "philosophy": {
       "label": "II. The Waves",
-      "heading": "Where the <em>self</em> dissolves into the sea",
-      "intro": "Consider the wave: it rises from the ocean, takes shape, crests, and returns — never once consulting a mirror to confirm its identity. It does not cling to its form, nor does it fear the dissolution that awaits it on the shore. The ego, by contrast, builds monuments to its own existence and calls them permanence. But the sea does not remember individual waves. It only remembers the rhythm of returning — the endless, patient rhythm that asks nothing and receives everything.",
+      "heading": "<em>Drowning</em> is just the sea teaching you to breathe differently",
+      "intro": "The ego builds its castles with such care — each stone placed deliberately, each tower raised against the sky as if permanence could be willed into existence. But the tide does not negotiate with walls. It arrives with the patience of centuries, finding every crack, every seam, every place where the stone has forgotten it was once sand. And in the end, the ocean reclaims what was always its own. Not with violence, but with the quiet certainty that everything borrowed will be returned. The wave does not mourn its own dissolution — it celebrates the returning.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 11
-      },
-      "facts": {
-        "themeIndex": 1,
-        "slice": [
-          12,
-          14
-        ]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 5
-      }
-    },
-    "gita": {
-      "label": "III. The Battlefield",
-      "heading": "The <em>courage</em> to act without claiming the fruit",
-      "intro": "Arjuna's paralysis on the battlefield was not cowardice — it was the most human of crises: the collision of love and duty, of attachment and purpose. Krishna's answer was not to resolve the tension but to transcend it. Act, yes — but act as the river acts, flowing toward the ocean not because it chooses to, but because flowing is its nature. The Gita does not ask us to stop fighting. It asks us to stop believing the fight belongs to us.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 13
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [
-          5,
-          7
-        ]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 4
-      }
-    },
-    "shiva": {
-      "label": "IV. The Dance",
-      "heading": "The <em>flame</em> at the center of the whirl",
-      "intro": "At the heart of every storm, there is a point of absolute stillness. Shiva embodies this paradox — the destroyer who is also the creator, the ascetic who dances, the silence that contains all sound. His Tandava is not performance but the universe expressing itself through motion: galaxies spinning, atoms vibrating, hearts beating. To understand the dance is to realize that destruction and creation are not opposites but partners, holding hands in the ring of fire that is existence itself.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 14
-      },
-      "facts": {
-        "themeIndex": 3,
-        "slice": [
-          10,
-          12
-        ]
-      },
-      "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 8
-      }
-    },
-    "art": {
-      "label": "V. The Canvas",
-      "heading": "The <em>brushstroke</em> that outlives the hand",
-      "intro": "Before the first mark is made, the canvas already holds every possibility — every color that could bloom, every line that could sing. The artist's task is not to impose vision but to listen for what the silence wants to become. A sunflower in a field does not know it is beautiful; it simply turns toward the light. The painter who captures this does not copy the flower — they copy the turning, the reaching, the quiet devotion of a living thing toward warmth. In this way, every true painting is a portrait of attention itself.",
-      "imageCard": {
-        "themeIndex": 4,
         "factIndex": 8
       },
       "facts": {
-        "themeIndex": 4,
+        "themeIndex": 1,
         "slice": [
           3,
           5
         ]
       },
       "quote": {
-        "themeIndex": 4,
+        "themeIndex": 1,
+        "quoteIndex": 8
+      }
+    },
+    "gita": {
+      "label": "III. The Battlefield",
+      "heading": "The <em>only war</em> worth winning is the one against your own fear",
+      "intro": "Krishna did not hand Arjuna a map or a strategy. He handed him a mirror. 'You are not the doer,' he said — not to diminish him, but to liberate him from the crushing weight of believing that the universe's outcome rested on his shoulders alone. The battlefield of Kurukshetra was never just a place on earth — it is the ground you stand on every morning when you must choose between comfort and growth, between safety and truth. The Gita does not promise that the choice will be easy. It promises that the choosing, when done without clinging to results, is itself a kind of liberation.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 6
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          11,
+          13
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
         "quoteIndex": 6
+      }
+    },
+    "shiva": {
+      "label": "IV. The Dance",
+      "heading": "<em>Destruction</em> wears the face of a dancer, not a tyrant",
+      "intro": "Between one breath and the next, an entire universe is born and dies. This is not metaphor — it is the rhythm of existence itself, the pulse that drives galaxies apart and draws them back together in the great cosmic inhalation. Shiva's dance is this rhythm made visible: the foot that strikes the ground sends ripples through spacetime, the drum's vibration encodes the frequency of creation. To witness the dance is to feel your own atoms begin to move in sympathy, remembering a music they have always known but never heard with ears.",
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 5
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [
+          7,
+          9
+        ]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 4
+      }
+    },
+    "art": {
+      "label": "V. The Canvas",
+      "heading": "Every <em>masterpiece</em> is a confession the artist didn't plan to make",
+      "intro": "Stand before a canvas alive with color and motion, and you will notice something strange: the painting seems to know you are looking. It shifts under your gaze, revealing different truths depending on your distance, your mood, the hour. This is the magic of true art — it is not a fixed object but a living encounter. The artist poured their wondering onto the surface, and now the surface wonders back at each new viewer. In this exchange, the painting is never the same twice, and neither are you. Beauty is not what hangs on the wall. Beauty is what passes between the wall and your watching.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 10
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          5,
+          7
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 3
       }
     }
   },
   "changelog": {
-    "version": "1.8.12",
+    "version": "1.8.13",
     "entries": [
       {
         "date": "2026-06-13",
-        "time": "16:50:00",
+        "time": "16:55:00",
         "type": "content",
-        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros, updated Today heading/intro for afternoon theme, cleaned 2-day-old mutation assets (2026-06-10)"
+        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Philosophy and Shiva section intros, updated Today heading/intro for afternoon golden hour theme"
+      },
+      {
+        "date": "2026-06-13",
+        "time": "16:49:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset",
+        "changes": [
+          "Color scheme: midnight-wave (mysterious deep ocean)",
+          "Hero tagline: 'The deep ocean remembers every river that ever surrendered to its depths'",
+          "All 5 section headings rewritten — oceanic/depth/comet themes",
+          "Fact/quote indices rotated — cross-theme mixing applied (Gita gets Shiva quote, Moon gets Gita quote, Philosophy gets Atrijā quote)",
+          "Today section rewritten — dusk settling, comet, release theme",
+          "Visual asset: comet-trail.svg — bright gold/white comet across luminous sky (6.7KB)"
+        ]
       },
       {
         "date": "2026-06-11",
