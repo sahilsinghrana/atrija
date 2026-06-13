@@ -92,22 +92,6 @@
           "testingStrategy": "- Unit tests: After removal, verify no module in public/js/ imports vgVS, vgFS, glitchVS, or glitchFS (AST/grep check).\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: scene-shaders.js exports only active shader strings; build succeeds; bundle size reduced by ~2.5KB; no import errors in any scene module; remaining shader exports unchanged and functional."
         },
         {
-          "id": "idea-067",
-          "title": "Unit Tests for Core Scene Modules (scene-config, scene-objects, scene-moon, scene-stars, scene-flowers)",
-          "description": "The scene/ module architecture (scene-manager.js, scene-bootstrap.js, scene-config.js, scene-objects.js, scene-moon.js, scene-stars.js, scene-flowers.js, scene-flowers-objects.js, scene-environment.js, scene-interaction.js, scene-notes.js, scene-painting.js, scene-shaders.js, scene-utils.js) has zero unit tests except for scene-utils.js (idea-063). Create comprehensive unit tests for pure functions and testable logic in these modules. Focus on: scene-config.js (device detection, parallax config), scene-objects.js (factory functions, geometry creation), scene-moon.js (moon geometry, phase calculation), scene-stars.js (star field generation), scene-flowers.js (flower creation, positioning). Tests run in jsdom with Three.js mocked.",
-          "category": "Testing & Reliability",
-          "priority": "high",
-          "tags": [
-            "unit-tests",
-            "scene-modules",
-            "test-coverage",
-            "reliability",
-            "threejs"
-          ],
-          "effort": "3 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/scene-config.test.js, tests/unit/scene-objects.test.js, tests/unit/scene-moon.test.js, tests/unit/scene-stars.test.js, tests/unit/scene-flowers.test.js\n- Mock Three.js objects (Scene, Mesh, Geometry, Material) to isolate logic from rendering\n- Test pure functions: isMobile/isLowEnd detection, createStars parameter validation, moon phase math, flower position distribution\n- Integration tests: Verify scene-bootstrap.js successfully initializes all modules without errors\n- Acceptance criteria: >70% branch coverage for target modules; all new tests pass in vitest; existing test suite unaffected; scene-bootstrap.js integration test verifies full initialization"
-        },
-        {
           "id": "idea-068",
           "title": "Visual Regression Testing Infrastructure with Playwright",
           "description": "Playwright is installed but not configured. Set up visual regression testing using Playwright + pixelmatch (or @playwright/test built-in snapshot) to catch unintended visual changes in the 3D scene and UI. Configure: playwright.config.ts with device profiles (mobile 375px, tablet 768px, desktop 1280px), baseline screenshots for key states (initial load, scrolled to each section, theme switched, reader mode on/off), CI-friendly thresholds. Store baselines in tests/visual/baselines/. This enables safe refactoring of shaders, CSS, and 3D scene parameters.",
@@ -160,7 +144,32 @@
     {
       "id": "red",
       "name": "\ud83d\udd34 Red (Failing Test)",
-      "tasks": []
+      "tasks": [
+        {
+          "id": "idea-067",
+          "title": "Unit Tests for Core Scene Modules (scene-config, scene-objects, scene-moon, scene-stars, scene-flowers)",
+          "completedAt": "2026-06-09"
+        },
+        {
+          "id": "idea-072",
+          "title": "Unit Tests for Untested Scene Modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky)",
+          "description": "Four scene modules have zero unit tests: scene-interaction.js (151 lines, constellation interaction logic), scene-notes.js (177 lines, flute + music note creation), scene-painting.js (49 lines, painting reveal progress), and scene-swirl-sky.js (198 lines, hash/noise functions, swirl dome creation). These modules contain testable pure functions and factory logic that can be validated without a full Three.js rendering context. Focus on: _hash() and noise functions in scene-swirl-sky.js, constellation line geometry math in scene-interaction.js, flute/note geometry parameters in scene-notes.js, and reveal progress calculation in scene-painting.js. Tests run in vitest with Three.js mocked where needed.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "unit-tests",
+            "scene-modules",
+            "test-coverage",
+            "interaction",
+            "notes",
+            "painting",
+            "swirl-sky"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/scene-interaction.test.js, tests/unit/scene-notes.test.js, tests/unit/scene-painting.test.js, tests/unit/scene-swirl-sky.test.js\n- Test pure functions: _hash() determinism, noise() range/bounds, reveal progress math, geometry parameter validation\n- Mock Three.js for factory function tests (flute group structure, note sprite properties)\n- Integration tests: Verify modules can be imported without errors in vitest environment\n- Acceptance criteria: >60% branch coverage for each target module; all new tests pass; existing test suite unaffected; scene-swirl-sky _hash() verified deterministic across 1000 inputs",
+          "completedAt": "2026-06-13"
+        }
+      ]
     },
     {
       "id": "green",
@@ -472,11 +481,6 @@
           "completedAt": "2026-06-10"
         },
         {
-          "id": "idea-067",
-          "title": "Unit Tests for Core Scene Modules (scene-config, scene-objects, scene-moon, scene-stars, scene-flowers)",
-          "completedAt": "2026-06-09"
-        },
-        {
           "id": "idea-071",
           "title": "Remove Dead Shader Imports from scene-manager.js",
           "completedAt": "2026-06-10"
@@ -485,25 +489,6 @@
           "id": "idea-073",
           "title": "Content Validation for koans.json Schema",
           "completedAt": "2026-06-11"
-        },
-        {
-          "id": "idea-072",
-          "title": "Unit Tests for Untested Scene Modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky)",
-          "description": "Four scene modules have zero unit tests: scene-interaction.js (151 lines, constellation interaction logic), scene-notes.js (177 lines, flute + music note creation), scene-painting.js (49 lines, painting reveal progress), and scene-swirl-sky.js (198 lines, hash/noise functions, swirl dome creation). These modules contain testable pure functions and factory logic that can be validated without a full Three.js rendering context. Focus on: _hash() and noise functions in scene-swirl-sky.js, constellation line geometry math in scene-interaction.js, flute/note geometry parameters in scene-notes.js, and reveal progress calculation in scene-painting.js. Tests run in vitest with Three.js mocked where needed.",
-          "category": "Testing & Reliability",
-          "priority": "high",
-          "tags": [
-            "unit-tests",
-            "scene-modules",
-            "test-coverage",
-            "interaction",
-            "notes",
-            "painting",
-            "swirl-sky"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/scene-interaction.test.js, tests/unit/scene-notes.test.js, tests/unit/scene-painting.test.js, tests/unit/scene-swirl-sky.test.js\n- Test pure functions: _hash() determinism, noise() range/bounds, reveal progress math, geometry parameter validation\n- Mock Three.js for factory function tests (flute group structure, note sprite properties)\n- Integration tests: Verify modules can be imported without errors in vitest environment\n- Acceptance criteria: >60% branch coverage for each target module; all new tests pass; existing test suite unaffected; scene-swirl-sky _hash() verified deterministic across 1000 inputs",
-          "completedAt": "2026-06-13"
         }
       ]
     }
