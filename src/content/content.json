@@ -4,26 +4,27 @@
     "version": "1.8.14",
     "lastUpdated": "2026-06-13",
     "updatedBy": "AI Agent (content-layout-refresh)",
-    "season": "summer ☀️"
+    "season": "summer \u2600\ufe0f",
+    "layout": "magazine"
   },
   "sections": {
     "hero": {
       "tagline": "Every <em>star</em> was once a darkness that learned to burn on its own terms"
     },
     "today": {
-      "heading": "The <em>evening</em> descends — not as an ending, but as a deepening",
-      "intro": "There is a moment, just before the light surrenders, when the world seems to hold its breath. The sky becomes a bruise of purple and gold, and every shadow stretches toward something it cannot name. This is the hour when the day's certainties dissolve — when the sharp edges of afternoon soften into something more honest. The evening does not erase the day; it interprets it. What seemed urgent now appears small. What seemed insignificant now glows with quiet meaning. Let the dusk find you not rushing toward the night, but standing still within it, watching the first stars emerge like questions you are finally ready to ask.",
+      "heading": "The <em>evening</em> descends \u2014 not as an ending, but as a deepening",
+      "intro": "There is a moment, just before the light surrenders, when the world seems to hold its breath. The sky becomes a bruise of purple and gold, and every shadow stretches toward something it cannot name. This is the hour when the day's certainties dissolve \u2014 when the sharp edges of afternoon soften into something more honest. The evening does not erase the day; it interprets it. What seemed urgent now appears small. What seemed insignificant now glows with quiet meaning. Let the dusk find you not rushing toward the night, but standing still within it, watching the first stars emerge like questions you are finally ready to ask.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-13/visual.svg",
-        "description": "Impressionist fireflies rising through a twilight garden — scattered golden orbs of light ascending between deep indigo silhouettes of cypress trees, with a faint crescent moon above",
-        "credit": "Generated for Atrijā daily mutation"
+        "description": "Impressionist fireflies rising through a twilight garden \u2014 scattered golden orbs of light ascending between deep indigo silhouettes of cypress trees, with a faint crescent moon above",
+        "credit": "Generated for Atrij\u0101 daily mutation"
       }
     },
     "moon": {
       "label": "I. The Moon",
-      "heading": "She <em>borrows</em> light the way the heart borrows hope — freely, without apology",
-      "intro": "The Moon does not apologize for her reflected glow. She does not dim herself to make the Sun seem brighter. In her quiet orbit, she teaches a radical lesson: that to receive light and pass it on unchanged is not weakness but a kind of grace. The tides know this. The sleepless know this. The lovers who write letters to the absent know this. To be lunar is to be a mirror that moves — reflecting not what you are, but what illuminates you. And in that reflection, the world sees not the source, but the beauty of transmission itself.",
+      "heading": "She <em>borrows</em> light the way the heart borrows hope \u2014 freely, without apology",
+      "intro": "The Moon does not apologize for her reflected glow. She does not dim herself to make the Sun seem brighter. In her quiet orbit, she teaches a radical lesson: that to receive light and pass it on unchanged is not weakness but a kind of grace. The tides know this. The sleepless know this. The lovers who write letters to the absent know this. To be lunar is to be a mirror that moves \u2014 reflecting not what you are, but what illuminates you. And in that reflection, the world sees not the source, but the beauty of transmission itself.",
       "imageCard": {
         "themeIndex": 0,
         "factIndex": 11
@@ -43,7 +44,7 @@
     "philosophy": {
       "label": "II. The Waves",
       "heading": "The <em>self</em> is a shore the ocean uses to define its own restlessness",
-      "intro": "What if the ego is not the enemy but the wave — a temporary shape the ocean takes to feel its own movement? The water does not suffer when the wave collapses. It does not mourn the shape it briefly wore. And yet, without the wave, the ocean would never know the joy of reaching shore. Perhaps the self is not something to be destroyed but something to be surfed — ridden with skill and wonder until you realize you were never separate from the sea that carried you.",
+      "intro": "What if the ego is not the enemy but the wave \u2014 a temporary shape the ocean takes to feel its own movement? The water does not suffer when the wave collapses. It does not mourn the shape it briefly wore. And yet, without the wave, the ocean would never know the joy of reaching shore. Perhaps the self is not something to be destroyed but something to be surfed \u2014 ridden with skill and wonder until you realize you were never separate from the sea that carried you.",
       "imageCard": {
         "themeIndex": 1,
         "factIndex": 14
@@ -62,8 +63,8 @@
     },
     "gita": {
       "label": "III. The Battlefield",
-      "heading": "Courage is not the <em>absence</em> of trembling — it is the decision to act while trembling",
-      "intro": "Arjuna did not become brave before picking up his bow. He picked up his bow while still afraid, still grieving, still uncertain. The Gita's revolution is this: it does not ask you to feel ready. It asks you to act — not from the illusion of certainty, but from the deeper ground of duty and love. Krishna's voice on the battlefield is not a command; it is an invitation to trust that the universe holds you even when your hands shake. The warrior's path is not for the fearless. It is for the frightened who move anyway.",
+      "heading": "Courage is not the <em>absence</em> of trembling \u2014 it is the decision to act while trembling",
+      "intro": "Arjuna did not become brave before picking up his bow. He picked up his bow while still afraid, still grieving, still uncertain. The Gita's revolution is this: it does not ask you to feel ready. It asks you to act \u2014 not from the illusion of certainty, but from the deeper ground of duty and love. Krishna's voice on the battlefield is not a command; it is an invitation to trust that the universe holds you even when your hands shake. The warrior's path is not for the fearless. It is for the frightened who move anyway.",
       "imageCard": {
         "themeIndex": 2,
         "factIndex": 4
@@ -82,8 +83,8 @@
     },
     "shiva": {
       "label": "IV. The Dance",
-      "heading": "The <em>cosmos</em> does not move to a rhythm — it is the rhythm, pretending to be things that move",
-      "intro": "Watch the dancer's foot strike the ground. In that instant, the universe contracts to a single point of contact — and then expands outward in ripples that will never fully cease. This is not poetry. This is physics wearing the mask of mythology. Every particle vibrates. Every atom dances. The spaces between atoms are not empty; they are the pauses between notes that make the music possible. Shiva's dance is the universe's way of reminding itself that stillness and motion are not opposites — they are partners in the oldest collaboration.",
+      "heading": "The <em>cosmos</em> does not move to a rhythm \u2014 it is the rhythm, pretending to be things that move",
+      "intro": "Watch the dancer's foot strike the ground. In that instant, the universe contracts to a single point of contact \u2014 and then expands outward in ripples that will never fully cease. This is not poetry. This is physics wearing the mask of mythology. Every particle vibrates. Every atom dances. The spaces between atoms are not empty; they are the pauses between notes that make the music possible. Shiva's dance is the universe's way of reminding itself that stillness and motion are not opposites \u2014 they are partners in the oldest collaboration.",
       "imageCard": {
         "themeIndex": 3,
         "factIndex": 12
@@ -102,8 +103,8 @@
     },
     "art": {
       "label": "V. The Canvas",
-      "heading": "A <em>painting</em> is not a window — it is a door that opens only from the inside",
-      "intro": "The canvas does not show you the world. It shows you the artist's willingness to be undone by the world — to stand before a field of sunflowers and feel something so large that only color can hold it. Every brushstroke is a confession: I was here, I saw this, it changed me, and I am leaving this trace in case you need to know that someone else was changed too. Art is not decoration. It is evidence that a human being once stood in the presence of beauty and refused to walk away unchanged.",
+      "heading": "A <em>painting</em> is not a window \u2014 it is a door that opens only from the inside",
+      "intro": "The canvas does not show you the world. It shows you the artist's willingness to be undone by the world \u2014 to stand before a field of sunflowers and feel something so large that only color can hold it. Every brushstroke is a confession: I was here, I saw this, it changed me, and I am leaving this trace in case you need to know that someone else was changed too. Art is not decoration. It is evidence that a human being once stood in the presence of beauty and refused to walk away unchanged.",
       "imageCard": {
         "themeIndex": 4,
         "factIndex": 13
@@ -128,7 +129,7 @@
         "date": "2026-06-13",
         "time": "17:28:00",
         "type": "content",
-        "description": "Evening layout reshuffle: new section order (art→moon→shiva→philosophy→gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors (shore/ocean, trembling courage, cosmic rhythm, inward door), Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
+        "description": "Evening layout reshuffle: new section order (art\u2192moon\u2192shiva\u2192philosophy\u2192gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors (shore/ocean, trembling courage, cosmic rhythm, inward door), Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
       },
       {
         "date": "2026-06-13",
@@ -140,7 +141,7 @@
         "date": "2026-06-13",
         "time": "16:49:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
+        "description": "Daily mutation #165: Color scheme \u2192 midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
       },
       {
         "date": "2026-06-11",
@@ -152,7 +153,7 @@
         "date": "2026-06-11",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
+        "description": "Daily mutation #164: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
       },
       {
         "date": "2026-06-10",
@@ -164,25 +165,25 @@
         "date": "2026-06-10",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
+        "description": "Daily mutation #163: Color scheme \u2192 starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
       },
       {
         "date": "2026-06-09",
         "time": "12:35:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #162: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
+        "description": "Daily mutation #162: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
       },
       {
         "date": "2026-06-09",
         "time": "12:12:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #161: Color scheme → lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
+        "description": "Daily mutation #161: Color scheme \u2192 lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
       },
       {
         "date": "2026-06-09",
         "time": "06:22:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #160: Added 2 new facts + 1 quote per theme (10 facts, 5 quotes total), rotated all indices, refreshed 2 intros, updated Today reflection, generated SVG visual asset, color scheme: sunflower → starry-night"
+        "description": "Daily mutation #160: Added 2 new facts + 1 quote per theme (10 facts, 5 quotes total), rotated all indices, refreshed 2 intros, updated Today reflection, generated SVG visual asset, color scheme: sunflower \u2192 starry-night"
       }
     ]
   }
