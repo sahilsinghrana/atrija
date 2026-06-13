@@ -10,6 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:visual": "playwright test tests/visual/ --update",
+    "test:visual:ci": "playwright test tests/visual/",
     "deploy": "npm run build && cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/",
     "lint": "eslint src/"
   },
