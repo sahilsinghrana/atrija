@@ -493,6 +493,24 @@
   ],
   "colorSchemes": [
     {
+      "name": "ember-dawn",
+      "primary": "#ff6b35",
+      "secondary": "#ff4081",
+      "accent": "#ffd54f",
+      "background": "#1a0808",
+      "text": "#fff0e8",
+      "mood": "fiery",
+      "shaderParams": {
+        "strokeDensity": 8.2,
+        "swirlFrequency": 12.5,
+        "colorIntensity": 1.65
+      },
+      "seasons": [
+        "summer",
+        "autumn"
+      ]
+    },
+    {
       "name": "midnight-wave",
       "primary": "#0d47a1",
       "secondary": "#00bcd4",
@@ -584,7 +602,7 @@
       ]
     }
   ],
-  "activeColorScheme": "midnight-wave",
+  "activeColorScheme": "ember-dawn",
   "changelog": {
     "version": "1.0.0",
     "entries": [
