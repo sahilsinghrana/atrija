@@ -20,15 +20,7 @@
 
 import * as THREE from "three";
 
-/**
- * Generate a pseudo-random hash for noise generation
- * @param {number} n - seed value
- * @returns {number} pseudo-random value in [0, 1]
- */
-function _hash(n) {
-  var x = Math.sin(n) * 43758.5453;
-  return x - Math.floor(x);
-}
+// GLSL noise hash — see float _hash(vec3) in shader below
 
 /**
  * Create a swirling sky dome and attach it as a scene background object.

@@ -9,7 +9,6 @@ import {
   isMobile,
   isLowEnd,
   scrollState,
-  scrollMax,
   setScrollMax,
   parallaxConfig,
   _parallaxEnabled,

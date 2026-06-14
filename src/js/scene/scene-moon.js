@@ -123,7 +123,7 @@ export function createMoon(scene) {
   moonGroup.add(moonLight);
 }
 
-export function updatePaintingReveal(scene) {
+export function updatePaintingReveal(_scene) {
   // placeholder passthrough kept for backward compatibility when referenced from elsewhere
   // real implementation lives in scene-objects.js (unchanged)
 }

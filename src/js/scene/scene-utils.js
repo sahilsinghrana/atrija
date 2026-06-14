@@ -59,7 +59,7 @@ export function _seededRand(seed) {
   };
 }
 
-export function closePathAsImplicit(ctx) {
+export function closePathAsImplicit(_ctx) {
   // Placeholder utility kept for compatibility.
 }
 
@@ -78,13 +78,15 @@ export function saveConstellations(lines) {
       });
     }
     localStorage.setItem("atrija-constellations", JSON.stringify(data));
-  } catch (e) {}
+  } catch {
+    // localStorage may be unavailable (private browsing, quota exceeded)
+  }
 }
 
 export function loadConstellations() {
   try {
     return JSON.parse(localStorage.getItem("atrija-constellations") || "[]");
-  } catch (e) {
+  } catch {
     return [];
   }
 }
