@@ -129,3 +129,6 @@ export function bootScene() {
       window.__sceneFailed(error.message || String(error));
   }
 }
+
+// Expose globally so is:inline scripts can call it after Vite bundle loads
+if (typeof window !== 'undefined') window.bootScene = bootScene;

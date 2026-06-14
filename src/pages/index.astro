@@ -214,10 +214,7 @@ const sections = [
       r.setProperty("--color-text", c.text);
     })();
   </script>
-  <script type="module">
-    import { bootScene } from "../js/scene/scene-bootstrap.js";
-    bootScene();
-  </script>
+  <script is:inline type="module" src="/js/scene-init.js?v=BUILD_VERSION"></script>
   <script is:inline type="module" src="/js/moon-phase.js"></script>
   <script is:inline src="/js/quote-carousel.js"></script>
   <script is:inline src="/js/brushstroke-cursor.js" defer></script>

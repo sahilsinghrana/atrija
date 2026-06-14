@@ -49,7 +49,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
       var l = document.getElementById('loader');
       if (l) l.classList.add('hidden');
       // Only show error if scene didn't signal ready
-      if (!window.__sceneLoaded) {
+      if (!window.__sceneReady) {
         var s = document.getElementById('scene-error');
         if (s) s.style.display = 'block';
       }
