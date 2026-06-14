@@ -7,7 +7,7 @@
 (function () {
   if (!('serviceWorker' in navigator)) return;
 
-  navigator.serviceWorker.register('/sw.js', {
+  navigator.serviceWorker.register('/sw.js?v=2', {
     scope: '/',
     // Don't use 'type: module' — service workers are classic scripts
   }).catch(function () {
