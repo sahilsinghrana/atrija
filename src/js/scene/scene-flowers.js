@@ -48,13 +48,12 @@ export function makeSunflowerCanvas(size) {
   var petalCount = 18;
   ctx.fillStyle = "#c8920a";
   for (var i = 0; i < petalCount; i++) {
-    var a = (i / petalCount) * Math.PI * 2;
+    var aAngle = (i / petalCount) * Math.PI * 2;
     ctx.save();
     ctx.translate(cx, headCy);
-    ctx.rotate(a);
+    ctx.rotate(aAngle);
     ctx.beginPath();
     ctx.ellipse(0, -(r * 0.75), r * 0.13, r * 0.45, 0, 0, Math.PI * 2);
-    ctx.fill();
     ctx.restore();
   }
 
