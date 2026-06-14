@@ -1,0 +1,18 @@
+{
+  "date": "2026-06-15",
+  "entries": [
+    {
+      "time": "03:15:00",
+      "type": "feature",
+      "description": "Bundle size budget check (idea-078): added check-bundle-size.js guard rail to build pipeline",
+      "changes": [
+        "Added scripts/check-bundle-size.js — reads scene-bundle.js size, compares against configurable thresholds (warn 750KB, fail 900KB)",
+        "Integrated into npm run build between scene bundle and astro build steps",
+        "Thresholds configurable via BUNDLE_WARN_KB and BUNDLE_FAIL_KB environment variables",
+        "Build aborts before Astro step if bundle exceeds fail threshold",
+        "Added tests/unit/check-bundle-size.test.js with 14 unit tests (all pass)",
+        "Current bundle: 681.0KB — passes with margin under 750KB warn threshold"
+      ]
+    }
+  ]
+}

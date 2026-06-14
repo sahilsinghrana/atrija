@@ -5,19 +5,35 @@
       "name": "💡 Idea Backlog",
       "tasks": [
         {
-          "id": "idea-076",
-          "title": "Remove Stale Backup Files and Harden .gitignore",
-          "description": "The src/js/scene/ directory contains two stale backup files: scene-flowers-objects.js.backup (173 lines, old sprite-based flower system) and scene-flowers-objects.js.backup2 (earlier backup). These are dead code checked into the repo that confuse CodeGraph indexing, inflate the source tree, and risk accidental re-import. This task: (1) deletes both .backup and .backup2 files from src/js/scene/, (2) adds *.backup and *.backup2 patterns to .gitignore to prevent future backup commits, (3) verifies no imports reference the backup files via grep, and (4) runs npm run build to confirm nothing breaks. Effort: 1 session.",
-          "category": "Technical Debt & Code Quality",
-          "priority": "low",
+          "id": "idea-069",
+          "title": "Geometry Instancing for Tulip and Sunflower Fields",
+          "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
+          "category": "Performance Optimizations",
+          "priority": "high",
           "tags": [
-            "cleanup",
-            "dead-code",
-            "gitignore",
-            "source-tree"
+            "performance",
+            "instancing",
+            "3D",
+            "render-optimization",
+            "mobile"
           ],
-          "effort": "1 session",
-          "testingStrategy": "- Static analysis: grep confirms no imports reference .backup or .backup2 files anywhere in src/ or public/js/.\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: Both backup files deleted from src/js/scene/; .gitignore contains *.backup and *.backup2 patterns; build succeeds; CodeGraph index no longer shows backup files; git status shows clean deletion."
+          "effort": "3 sessions",
+          "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
+        },
+        {
+          "id": "idea-074",
+          "title": "Integrate Scene Health Check into Git-Pull-Build Job",
+          "description": "Enhance the van-gogh-git-pull-build cron job to run the scene health check (scripts/scene-health-check.cjs) after a successful build and before deployment. If the health check fails, abort the deployment and alert the user via the changelog. This ensures that only healthy builds are deployed, reducing the risk of broken scenes in production.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "health-check",
+            "scene-monitor",
+            "reliability",
+            "cron-job"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the health check integration logic by mocking the build and deployment steps\n- Integration tests: Verify that the git-pull-build job runs the health check and aborts deployment on failure\n- Acceptance criteria: Modified van-gogh-git-pull-build job runs health check; deployment proceeds only on healthy scene; unhealthy scenes trigger a failed changelog entry; no false positives on healthy scenes"
         },
         {
           "id": "idea-077",
@@ -33,37 +49,6 @@
           ],
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Create tests/unit/weekly-fact-generator.test.js with vi.mock('fs') to isolate file I/O. Test fixtures: valid siteData.json, siteData with missing facts array, siteData with empty themes array.\n- Test cases: script appends exactly 10 facts (2 per theme × 5 themes), no duplicate facts after repeated runs, all new facts have text and source fields, script throws on missing siteData.json.\n- Integration tests: Run the script against a temporary copy of the real siteData.json and verify output is valid JSON that passes validate-content.js.\n- Acceptance criteria: All new tests pass; >80% branch coverage for weekly-fact-generator.js; existing test suite unaffected; mock-based tests run in <5s."
-        },
-        {
-          "id": "idea-078",
-          "title": "Bundle Size Budget Check in Build Pipeline",
-          "description": "The scene-bundle.js (currently ~692KB, includes three.js + all scene modules) has no size guard. Unbounded growth from new 3D features could degrade load times, especially on mobile. This task adds a scripts/check-bundle-size.js script that: (1) reads the built scene-bundle.js file size, (2) compares against configurable thresholds (warn at 750KB, fail at 900KB), (3) outputs a clear PASS/FAIL message with the actual size, and (4) is integrated into the npm run build pipeline between the scene bundle step and the astro build step. The thresholds are configurable via environment variables (BUNDLE_WARN_KB, BUNDLE_FAIL_KB). On failure, the build aborts before the Astro step, saving time. Effort: 1 session.",
-          "category": "Performance Optimizations",
-          "priority": "medium",
-          "tags": [
-            "bundle-size",
-            "build-pipeline",
-            "performance-budget",
-            "guard-rail"
-          ],
-          "effort": "1 session",
-          "testingStrategy": "- Unit tests: Test check-bundle-size.js logic with mock file sizes (below warn, between warn and fail, above fail) using vi.mock('fs').\n- Integration tests: Run the script against the actual built scene-bundle.js; verify it outputs current size and exits 0 (assuming current size is under threshold).\n- Build integration: Modify package.json build script to include the size check between scene bundle and astro build. Verify build succeeds when under threshold.\n- Acceptance criteria: check-bundle-size.js exits 0 when bundle < warn threshold, exits 0 with warning when between warn and fail, exits 1 when above fail threshold; npm run build includes the check; thresholds configurable via env vars; build aborts before Astro step on failure."
-        },
-        {
-          "id": "idea-069",
-          "title": "Geometry Instancing for Tulip and Sunflower Fields",
-          "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
-          "category": "Performance Optimizations",
-          "priority": "high",
-          "tags": [
-            "performance",
-            "instancing",
-            "3D",
-            "render-optimization",
-            "mobile"
-          ],
-          "effort": "3 sessions",
-          "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
         },
         {
           "id": "idea-035",
@@ -85,6 +70,52 @@
           "description": "Click on any sunflower or tulip in the 3D scene to release a burst of golden pollen particles. Nearby flowers briefly glow in response. Raycasting click detection with physics-based particle system.",
           "category": "Interactivity",
           "priority": "medium"
+        },
+        {
+          "id": "idea-068",
+          "title": "Visual Regression Testing Infrastructure with Playwright",
+          "description": "Playwright is installed but not configured. Set up visual regression testing using Playwright + pixelmatch (or @playwright/test built-in snapshot) to catch unintended visual changes in the 3D scene and UI. Configure: playwright.config.ts with device profiles (mobile 375px, tablet 768px, desktop 1280px), baseline screenshots for key states (initial load, scrolled to each section, theme switched, reader mode on/off), CI-friendly thresholds. Store baselines in tests/visual/baselines/. This enables safe refactoring of shaders, CSS, and 3D scene parameters.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "visual-regression",
+            "playwright",
+            "testing-infrastructure",
+            "ci",
+            "quality-assurance"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Test pixelmatch comparison logic with known-different images\n- Integration tests: Run full visual test suite against current build to establish baselines\n- Performance tests: Measure visual test execution time (target <60s for full suite)\n- Acceptance criteria: playwright.config.ts created with 3 device profiles; baseline screenshots captured for 5+ key states; visual test script added to package.json (test:visual); test suite runs and passes on current build; thresholds documented (0 pixel diff for layout, 0.1% for color); integration with existing npm test workflow"
+        },
+        {
+          "id": "idea-075",
+          "title": "Add Unit Tests for Scene Health Check Script",
+          "description": "Create a comprehensive unit test suite for scripts/scene-health-check.cjs to ensure all health check functions work correctly. Use mocking for HTTP requests and file system operations to test various scenarios (healthy scene, missing elements, truncated JS, etc.). Tests should run in vitest with appropriate mocks.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "health-check",
+            "testing",
+            "scene-monitor"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/scene-health-check.test.js with mocks for http and child_process\n- Test all internal functions (fetch, check, main) with various scenarios\n- Mock HTTP responses to simulate healthy and unhealthy scenes\n- Mock file system operations for reading HTML and JS files\n- Integration tests: Run the script against a real test server to verify end-to-end functionality\n- Acceptance criteria: >80% branch coverage; all new tests pass; existing test suite unaffected; test suite runs successfully in CI"
+        },
+        {
+          "id": "idea-076",
+          "title": "Remove Stale Backup Files and Harden .gitignore",
+          "description": "The src/js/scene/ directory contains two stale backup files: scene-flowers-objects.js.backup (173 lines, old sprite-based flower system) and scene-flowers-objects.js.backup2 (earlier backup). These are dead code checked into the repo that confuse CodeGraph indexing, inflate the source tree, and risk accidental re-import. This task: (1) deletes both .backup and .backup2 files from src/js/scene/, (2) adds *.backup and *.backup2 patterns to .gitignore to prevent future backup commits, (3) verifies no imports reference the backup files via grep, and (4) runs npm run build to confirm nothing breaks. Effort: 1 session.",
+          "category": "Technical Debt & Code Quality",
+          "priority": "low",
+          "tags": [
+            "cleanup",
+            "dead-code",
+            "gitignore",
+            "source-tree"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Static analysis: grep confirms no imports reference .backup or .backup2 files anywhere in src/ or public/js/.\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: Both backup files deleted from src/js/scene/; .gitignore contains *.backup and *.backup2 patterns; build succeeds; CodeGraph index no longer shows backup files; git status shows clean deletion."
         },
         {
           "id": "idea-036",
@@ -128,116 +159,13 @@
           ],
           "effort": "1 session",
           "testingStrategy": "- Unit tests: After removal, verify no module in public/js/ imports vgVS, vgFS, glitchVS, or glitchFS (AST/grep check).\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: scene-shaders.js exports only active shader strings; build succeeds; bundle size reduced by ~2.5KB; no import errors in any scene module; remaining shader exports unchanged and functional."
-        },
-        {
-          "id": "idea-068",
-          "title": "Visual Regression Testing Infrastructure with Playwright",
-          "description": "Playwright is installed but not configured. Set up visual regression testing using Playwright + pixelmatch (or @playwright/test built-in snapshot) to catch unintended visual changes in the 3D scene and UI. Configure: playwright.config.ts with device profiles (mobile 375px, tablet 768px, desktop 1280px), baseline screenshots for key states (initial load, scrolled to each section, theme switched, reader mode on/off), CI-friendly thresholds. Store baselines in tests/visual/baselines/. This enables safe refactoring of shaders, CSS, and 3D scene parameters.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "visual-regression",
-            "playwright",
-            "testing-infrastructure",
-            "ci",
-            "quality-assurance"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Test pixelmatch comparison logic with known-different images\n- Integration tests: Run full visual test suite against current build to establish baselines\n- Performance tests: Measure visual test execution time (target <60s for full suite)\n- Acceptance criteria: playwright.config.ts created with 3 device profiles; baseline screenshots captured for 5+ key states; visual test script added to package.json (test:visual); test suite runs and passes on current build; thresholds documented (0 pixel diff for layout, 0.1% for color); integration with existing npm test workflow"
-        },
-        {
-          "id": "idea-071",
-          "title": "Remove Dead Shader Imports from scene-manager.js",
-          "description": "scene-manager.js line 5 imports vgVS, vgFS, glitchVS, glitchFS from scene-shaders.js — these are the same dead shader exports targeted by idea-064. Once the exports are removed, these imports will cause a build failure. This task removes the dead import statement from scene-manager.js and verifies the module still initializes correctly. Also audit scene-objects.js re-exports to ensure no transitive dead imports exist.",
-          "category": "Technical Debt & Code Quality",
-          "priority": "high",
-          "tags": [
-            "cleanup",
-            "dead-code",
-            "imports",
-            "scene-manager",
-            "build-fix"
-          ],
-          "effort": "1 session",
-          "testingStrategy": "- Static analysis: After removal, grep confirms no references to vgVS, vgFS, glitchVS, glitchFS remain in any public/js/ file.\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Unit tests: Run existing test suite (vitest) to confirm no regressions — particularly scene-bootstrap.test.js which tests module structure.\n- Acceptance criteria: scene-manager.js no longer imports any shader strings from scene-shaders.js; build succeeds; all existing tests pass; bundle size reduced by ~0.5KB; no runtime errors in scene initialization."
-        },
-        {
-          "id": "idea-073",
-          "title": "Content Validation for koans.json Schema",
-          "description": "The koans.json file (consumed by the KoanCard component, idea-043) currently has no validation in validate-content.js — the 861-line validator covers siteData.json, content.json, seasons.json, and changelog files but completely misses koans.json. A malformed koan entry (missing text/source/interpretation fields, empty strings, wrong types) would cause silent runtime failures in the daily koan display. Add validateKoans() function to validate-content.js with fixtures for valid and malformed koan entries, and wire it into the validate-content.sh script pipeline.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "validation",
-            "koans",
-            "data-integrity",
-            "content-pipeline",
-            "schema"
-          ],
-          "effort": "1 session",
-          "testingStrategy": "- Unit tests: Add tests/unit/validate-koans.test.js with fixtures for valid koans.json, missing text field, empty source, non-string interpretation, empty koans array, non-object entry. Each fixture tests a specific validation rule.\n- Integration tests: Run the full validate-content.sh script against both valid and malformed koan fixtures; verify correct exit codes (0 for valid, 1 for invalid).\n- Acceptance criteria: All existing validate-content tests still pass; new koan validation catches all defined error types; validate-content.sh exits non-zero on malformed koans.json; error messages specify which koan index and field failed; 6+ test fixtures created."
-        },
-        {
-          "id": "idea-074",
-          "title": "Integrate Scene Health Check into Git-Pull-Build Job",
-          "description": "Enhance the van-gogh-git-pull-build cron job to run the scene health check (scripts/scene-health-check.cjs) after a successful build and before deployment. If the health check fails, abort the deployment and alert the user via the changelog. This ensures that only healthy builds are deployed, reducing the risk of broken scenes in production.",
-          "category": "Testing & Reliability",
-          "priority": "high",
-          "tags": [
-            "health-check",
-            "scene-monitor",
-            "reliability",
-            "cron-job"
-          ],
-          "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Test the health check integration logic by mocking the build and deployment steps\n- Integration tests: Verify that the git-pull-build job runs the health check and aborts deployment on failure\n- Acceptance criteria: Modified van-gogh-git-pull-build job runs health check; deployment proceeds only on healthy scene; unhealthy scenes trigger a failed changelog entry; no false positives on healthy scenes"
-        },
-        {
-          "id": "idea-075",
-          "title": "Add Unit Tests for Scene Health Check Script",
-          "description": "Create a comprehensive unit test suite for scripts/scene-health-check.cjs to ensure all health check functions work correctly. Use mocking for HTTP requests and file system operations to test various scenarios (healthy scene, missing elements, truncated JS, etc.). Tests should run in vitest with appropriate mocks.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "health-check",
-            "testing",
-            "scene-monitor"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/scene-health-check.test.js with mocks for http and child_process\n- Test all internal functions (fetch, check, main) with various scenarios\n- Mock HTTP responses to simulate healthy and unhealthy scenes\n- Mock file system operations for reading HTML and JS files\n- Integration tests: Run the script against a real test server to verify end-to-end functionality\n- Acceptance criteria: >80% branch coverage; all new tests pass; existing test suite unaffected; test suite runs successfully in CI"
         }
       ]
     },
     {
       "id": "red",
       "name": "🔴 Red (Failing Test)",
-      "tasks": [
-        {
-          "id": "idea-067",
-          "title": "Unit Tests for Core Scene Modules (scene-config, scene-objects, scene-moon, scene-stars, scene-flowers)",
-          "completedAt": "2026-06-09"
-        },
-        {
-          "id": "idea-072",
-          "title": "Unit Tests for Untested Scene Modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky)",
-          "description": "Four scene modules have zero unit tests: scene-interaction.js (151 lines, constellation interaction logic), scene-notes.js (177 lines, flute + music note creation), scene-painting.js (49 lines, painting reveal progress), and scene-swirl-sky.js (198 lines, hash/noise functions, swirl dome creation). These modules contain testable pure functions and factory logic that can be validated without a full Three.js rendering context. Focus on: _hash() and noise functions in scene-swirl-sky.js, constellation line geometry math in scene-interaction.js, flute/note geometry parameters in scene-notes.js, and reveal progress calculation in scene-painting.js. Tests run in vitest with Three.js mocked where needed.",
-          "category": "Testing & Reliability",
-          "priority": "high",
-          "tags": [
-            "unit-tests",
-            "scene-modules",
-            "test-coverage",
-            "interaction",
-            "notes",
-            "painting",
-            "swirl-sky"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/scene-interaction.test.js, tests/unit/scene-notes.test.js, tests/unit/scene-painting.test.js, tests/unit/scene-swirl-sky.test.js\n- Test pure functions: _hash() determinism, noise() range/bounds, reveal progress math, geometry parameter validation\n- Mock Three.js for factory function tests (flute group structure, note sprite properties)\n- Integration tests: Verify modules can be imported without errors in vitest environment\n- Acceptance criteria: >60% branch coverage for each target module; all new tests pass; existing test suite unaffected; scene-swirl-sky _hash() verified deterministic across 1000 inputs",
-          "completedAt": "2026-06-13"
-        }
-      ]
+      "tasks": []
     },
     {
       "id": "green",
@@ -562,6 +490,35 @@
           "id": "idea-044",
           "title": "Comet with Particle Trail",
           "completedAt": "2026-06-14"
+        },
+        {
+          "id": "idea-067",
+          "title": "Unit Tests for Core Scene Modules (scene-config, scene-objects, scene-moon, scene-stars, scene-flowers)",
+          "completedAt": "2026-06-09"
+        },
+        {
+          "id": "idea-072",
+          "title": "Unit Tests for Untested Scene Modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky)",
+          "completedAt": "2026-06-13",
+          "reviewedAt": "2026-06-13T16:30:00Z",
+          "reviewResult": "PASS",
+          "reviewNotes": "Implemented 2026-06-13 — Added unit tests for 4 untested scene modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky). 192 new tests pass. Background Implementer confirmed implementation."
+        },
+        {
+          "id": "idea-078",
+          "title": "Bundle Size Budget Check in Build Pipeline",
+          "description": "The scene-bundle.js (currently ~692KB, includes three.js + all scene modules) has no size guard. Unbounded growth from new 3D features could degrade load times, especially on mobile. This task adds a scripts/check-bundle-size.js script that: (1) reads the built scene-bundle.js file size, (2) compares against configurable thresholds (warn at 750KB, fail at 900KB), (3) outputs a clear PASS/FAIL message with the actual size, and (4) is integrated into the npm run build pipeline between the scene bundle step and the astro build step. The thresholds are configurable via environment variables (BUNDLE_WARN_KB, BUNDLE_FAIL_KB). On failure, the build aborts before the Astro step, saving time. Effort: 1 session.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [
+            "bundle-size",
+            "build-pipeline",
+            "performance-budget",
+            "guard-rail"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Test check-bundle-size.js logic with mock file sizes (below warn, between warn and fail, above fail) using vi.mock('fs').\n- Integration tests: Run the script against the actual built scene-bundle.js; verify it outputs current size and exits 0 (assuming current size is under threshold).\n- Build integration: Modify package.json build script to include the size check between scene bundle and astro build. Verify build succeeds when under threshold.\n- Acceptance criteria: check-bundle-size.js exits 0 when bundle < warn threshold, exits 0 with warning when between warn and fail, exits 1 when above fail threshold; npm run build includes the check; thresholds configurable via env vars; build aborts before Astro step on failure.",
+          "completedAt": "2026-06-15"
         }
       ]
     }
@@ -1120,7 +1077,8 @@
       "description": "Remove the dead import of vgVS, vgFS, glitchVS, glitchFS from scene-manager.js that will break once idea-064 removes the exports from scene-shaders.js. Also audit scene-objects.js re-exports for transitive dead imports.",
       "category": "Technical Debt & Code Quality",
       "priority": "high",
-      "status": "backlog"
+      "status": "done",
+      "completedAt": "2026-06-10"
     },
     {
       "id": "idea-072",
@@ -1167,6 +1125,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-15T02:00:00Z",
-  "lastReviewAt": "2026-06-13T16:30:00Z",
-  "lastReviewResult": "Background Implementer (2026-06-13 16:30): Implemented idea-072 — Added unit tests for 4 untested scene modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky). 192 new tests pass. Moved idea-072 from backlog to done."
+  "lastReviewAt": "2026-06-15T03:12:00Z",
+  "lastReviewResult": "Kanban Reviewer (2026-06-15 03:12): Cleaned up duplicates, moved completed tasks out of Red column, reordered backlog by priority."
 }
