@@ -130,5 +130,13 @@ export function bootScene() {
   }
 }
 
-// Expose globally so is:inline scripts can call it after Vite bundle loads
-if (typeof window !== 'undefined') window.bootScene = bootScene;
+// Expose globally and auto-boot when loaded as <script type="module">
+if (typeof window !== 'undefined') {
+  window.bootScene = bootScene;
+  // Auto-boot: run after microtask so module exports are registered
+  if (document.readyState !== 'loading') {
+    Promise.resolve().then(() => bootScene());
+  } else {
+    document.addEventListener('DOMContentLoaded', () => bootScene());
+  }
+}

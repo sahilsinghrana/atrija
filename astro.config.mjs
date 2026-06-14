@@ -1,9 +1,4 @@
 import { defineConfig } from 'astro/config';
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 export default defineConfig({
   output: 'static',
@@ -15,13 +10,13 @@ export default defineConfig({
     build: {
       cssCodeSplit: false,
       rollupOptions: {
-        input: {
-          scene: resolve(__dirname, 'src/js/scene/scene-bootstrap.js')
-        },
         output: {
           manualChunks: undefined
         }
       }
+    },
+    optimizeDeps: {
+      include: ['three', 'three/examples/jsm/postprocessing/EffectComposer.js', 'three/examples/jsm/postprocessing/ShaderPass.js', 'three/examples/jsm/shaders/CopyShader.js', 'three/examples/jsm/shaders/VignetteShader.js']
     }
   }
 });

@@ -197,11 +197,15 @@ const sections = [
   </section>
 
   <script is:inline type="module" src="/js/changelog-app.js"></script>
-
   <!-- ═══════════════════════════════════════
-       THREE.JS SCENE INIT
+       THREE.JS SCENE — separate Vite bundle (vite-scene.config.js)
   ═══════════════════════════════════════ -->
   <div id="vg-data" data-colors={colorData} hidden></div>
+  <script type="module" src="/js/scene-bundle.js" defer></script>
+
+  <!-- ═══════════════════════════════════════
+       CSS VARIABLE INJECTION
+  ═══════════════════════════════════════ -->
   <script>
     (function () {
       const el = document.getElementById("vg-data");
@@ -214,7 +218,6 @@ const sections = [
       r.setProperty("--color-text", c.text);
     })();
   </script>
-  <script is:inline type="module" src="/js/scene-init.js?v=BUILD_VERSION"></script>
   <script is:inline type="module" src="/js/moon-phase.js"></script>
   <script is:inline src="/js/quote-carousel.js"></script>
   <script is:inline src="/js/brushstroke-cursor.js" defer></script>

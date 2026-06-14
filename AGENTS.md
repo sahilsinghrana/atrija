@@ -102,11 +102,23 @@ git push origin master
 
 **These rules apply to ALL cron jobs and autonomous agents working on this project.**
 
-#### 6a. scene-init.js is SACRED
-- **NEVER modify `public/js/scene-init.js`** unless explicitly instructed by the user
-- This file contains the entire Three.js scene: stars, moon, sunflowers, lilies, music notes, waves, fireflies, cypress trees, painting reveal, post-processing shaders
-- If you break this file, the entire 3D scene breaks
-- If you need to make changes: create a backup first (`cp public/js/scene-init.js public/js/scene-init.js.bak`), then make minimal targeted changes, then test with `npm run build`
+#### 6a. Scene Code is SACRED
+- **NEVER modify `src/js/scene/` modules** unless explicitly instructed by the user
+- The scene is built as a separate Vite bundle (`vite-scene.config.js`) that outputs `public/js/scene-bundle.js`
+- Source modules are in `src/js/scene/` — 14 ES modules using bare `three` imports (npm, not CDN)
+- Build pipeline: `npm run build` = copy-content → vite scene bundle → astro build
+- **If you break scene code, the entire 3D scene breaks**
+- **Before modifying any scene file**: understand ALL imports/callers via CodeGraph first
+- If you need to test scene changes: run `npm run build` (full build includes scene bundle)
+- `scene-bundle.js` in `public/js/` is a BUILD OUTPUT — never edit it directly
+
+#### 6a2. NO TEMP FIXES — Root Cause Only (CRITICAL)
+- **NEVER apply temporary workarounds** (CDN fallbacks, inline hacks, commented-out code, sed hacks)
+- If something is broken, find the ROOT CAUSE and fix it properly
+- If a fix requires architecture changes, make the architecture changes — don't paper over the problem
+- "Quick fixes" that don't address root causes WILL be reverted
+- If you're not confident in a proper fix, ASK first — don't deploy a workaround
+- This applies to ALL cron jobs and autonomous agents
 
 #### 6b. Never Revert to Old Commits
 - **NEVER run `git revert`, `git reset --hard`, or `git checkout <old-commit>`** unless explicitly instructed
@@ -179,7 +191,10 @@ The `van-gogh-daily-mutate` job makes VISIBLE, IMPACTFUL daily changes. Allowed 
 ## Project Overview
 - **Name**: Atrijā (अत्रिज) — impressionist philosophy website
 - **Framework**: Astro 4 (Static Site Generation)
-- **3D Engine**: Three.js loaded from CDN (esm.sh) in `public/js/scene-init.js`
+- **3D Engine**: Three.js (npm `three@0.160`), bundled separately via Vite into `public/js/scene-bundle.js`
+- **Scene Source**: `src/js/scene/` — 14 ES modules with bare `three` imports
+- **Build Pipeline**: `npm run build` = copy-content → `vite build --config vite-scene.config.js` → `astro build`
+- **Scene Loading**: `<script type="module" src="/js/scene-bundle.js" defer>` in index.astro body, auto-boots on load
 - **Design**: Dark theme (#08080f), impressionist aesthetic, GLSL post-processing
 - **Deploy**: Nginx on port 8080, root `/data/data/com.termux/files/usr/share/nginx/html`
 
@@ -239,14 +254,13 @@ public/
     main.css         — All design tokens, layout, components (cached 1yr immutable)
     loader.css       — Loading screen styles
   js/
-    scene-init.js    — Three.js scene (stars, moon, sunflowers, lilies, flute, waves, notes)
-    changelog-app.js — Changelog UI (lazy-loaded date cards, click-to-expand)
-    moon-phase.js    — ASCII moon art + shadow phase animation
-    quote-carousel.js— Quote carousel auto-rotation
+    scene-bundle.js  — BUILD OUTPUT (Vite self-contained bundle: three.js + all scene modules)
+    changelog-app.js — Changelog UI
+    moon-phase.js    — Moon phase display
+    quote-carousel.js— Quote carousel
     loader-progress.js — Loader progress bar
-  mutation-assets/   — Daily visual assets (auto-generated, self-cleaning)
-    YYYY-MM-DD/      — One folder per day (SVG, images, video)
-      *.svg          — Impressionist brushstroke illustrations
+  mutation-assets/   — Daily visual assets (auto-generated)
+    YYYY-MM-DD/      — One folder per day
 .hermes/
   kanban.json        — Idea board for TDD workflow
   refactoring-plan.md — Refactoring audit and plan
@@ -261,20 +275,32 @@ scripts/
 - **Loader stylesheet**: `public/css/loader.css` — loading screen
 - **Cache strategy**: main.css served with `Cache-Control: max-age=31536000, immutable` (filename hashed by Vite for bundled assets; main.css in public/ uses query string versioning)
 
-## Three.js Scene (scene-init.js)
-- Stars: 2500 desktop / 1500 mobile, custom twinkling shader with size + brightness oscillation
-- Moon: MeshBasicMaterial (no shadow), 7 procedural craters, 4-layer glow (inner/outer/haze), PointLight at moon position
-- Sunflowers: Canvas texture sprites (multi-layer petals, seed disk, stems, leaves)
-- Tulips: Canvas texture sprites (6 individual petals in 2 layers, seeded PRNG, 30 natural warm colors)
-- Lilies: Canvas texture sprites (6 trumpet petals, stamens, pistil, spots, 12 non-yellow colors)
-- Flute: Click anywhere spawns SVG bansuri + floating music notes (no audio)
-- Music notes: 15 desktop / 10 mobile, floating sprites
-- Waves: 32 segments desktop / 16 mobile
-- Cypress trees: 5 desktop / 2 mobile, sway animation
-- Fireflies: 40 desktop / 20 mobile, damped random walk
-- Post-processing: Van Gogh painted-style shader + glitch shader (EffectComposer)
-- Init runs as IIFE — no DOMContentLoaded wrapper, no client:idle directive
-- scene-init.js is SACRED — never modify without explicit user instruction
+## Three.js Scene Architecture
+
+### Build Pipeline
+1. Source modules: `src/js/scene/*.js` — 14 ES modules, bare `three` imports (npm)
+2. Bundle: `vite build --config vite-scene.config.js` → `public/js/scene-bundle.js` (692KB, includes three.js)
+3. Deploy: Astro copies `public/js/` to `dist/js/`
+4. Load: `<script type="module" src="/js/scene-bundle.js" defer>` in `index.astro`
+5. Auto-boot: `scene-bootstrap.js` detects browser and auto-calls `bootScene()` on DOMContentLoaded
+
+### Scene Modules (`src/js/scene/`)
+- `scene-bootstrap.js` — Entry point, bootScene() function, initializes all objects
+- `scene-manager.js` — VanGoghScene class (renderer, camera, animation loop)
+- `scene-config.js` — Config constants (SSR-safe: all browser APIs guarded)
+- `scene-objects.js` — All 3D objects (stars, sunflowers, lilies, flute, notes, fireflies, etc.)
+- `scene-moon.js` — Moon mesh with procedural craters and glow
+- `scene-flowers.js` — Canvas texture sprite generation (sunflowers, lilies)
+- `scene-painting.js` — Painting reveal effect
+- `scene-notes.js` — Music note sprites
+- `scene-interaction.js` — Mouse/touch interaction
+- `scene-utils.js` — Utility functions (moon phase, etc.)
+- `scene-swirl-sky.js` — Swirl sky shader
+- `scene-lighting.js` — Lighting setup
+
+### File Descriptions
+    scene-bootstrap.js — bootScene() entry point (auto-boots in browser)
+    scene-bundle.js    — Build output (Vite-bundled scene + three.js) — DO NOT EDIT
 
 ## Section Architecture (index.astro)
 - 5 content sections generated from data-driven loop (`sections` array in frontmatter)
