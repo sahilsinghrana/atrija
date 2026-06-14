@@ -5,7 +5,7 @@
  * @see idea-056
  */
 
-const CACHE_NAME = 'atrija-shell-v1';
+const CACHE_NAME = 'atrija-shell-v2';
 
 /** @type {string[]} — Pre-cache these at install time */
 const PRECACHE_URLS = [
@@ -97,7 +97,10 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
   if (request.method !== 'GET') return;
 
-  if (isNetworkFirst(url.pathname)) {
+  // HTML navigation requests — always go to network first (cache bust on every deploy)
+  if (request.mode === 'navigate') {
+    event.respondWith(networkFirst(request));
+  } else if (isNetworkFirst(url.pathname)) {
     event.respondWith(networkFirst(request));
   } else {
     event.respondWith(cacheFirst(request));

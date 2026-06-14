@@ -49,13 +49,20 @@ npm run build
 cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 ```
 
-**Cache strategy (handled by nginx config — do NOT add manual cache-busting):**
-- `index.html`: `no-cache` — always fresh (mutation cron changes daily)
+**Cache strategy (handled by nginx + service worker — do NOT add manual cache-busting):**
+- `index.html`: `no-cache, no-store, must-revalidate` + `Pragma: no-cache` — NEVER cached
 - `_astro/*` (Vite-bundled JS/CSS with content hashes): `max-age=31536000, immutable` — 1 year
 - `css/*`, `js/*` (public assets): `max-age=3600, must-revalidate` — 1 hour
 - `images/*` (SVG, PNG): `max-age=2592000` — 30 days
 - `content/*.json`: `max-age=300, must-revalidate` — 5 minutes
 - Fonts: `max-age=604800` — 7 days
+- Service Worker (`public/sw.js`): `networkFirst` for HTML navigation + JSON, `cache-first` for hashed assets. Bump `CACHE_NAME` version when PRECACHE_URLS changes.
+
+**User cache-busting strategy (for returning users with stale assets):**
+1. **Service Worker** — `networkFirst` for navigation requests means HTML shell is always fresh from network
+2. **Vite content hashing** — `_astro/*` filenames change when content changes (automatic bust)
+3. **Nginx `no-store` on HTML** — browsers never cache the entry point
+4. **SW cache version bump** — when `CACHE_NAME` changes (e.g., `v1` → `v2`), old caches are deleted on activate
 
 **No manual cache-busting needed** — Vite hashes bundled filenames automatically. Nginx serves correct headers per path. Do NOT run `hash-assets.sh` or `BUILD_VERSION` sed — these break the build.
 
