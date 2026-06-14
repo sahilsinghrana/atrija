@@ -5,6 +5,51 @@
       "name": "💡 Idea Backlog",
       "tasks": [
         {
+          "id": "idea-076",
+          "title": "Remove Stale Backup Files and Harden .gitignore",
+          "description": "The src/js/scene/ directory contains two stale backup files: scene-flowers-objects.js.backup (173 lines, old sprite-based flower system) and scene-flowers-objects.js.backup2 (earlier backup). These are dead code checked into the repo that confuse CodeGraph indexing, inflate the source tree, and risk accidental re-import. This task: (1) deletes both .backup and .backup2 files from src/js/scene/, (2) adds *.backup and *.backup2 patterns to .gitignore to prevent future backup commits, (3) verifies no imports reference the backup files via grep, and (4) runs npm run build to confirm nothing breaks. Effort: 1 session.",
+          "category": "Technical Debt & Code Quality",
+          "priority": "low",
+          "tags": [
+            "cleanup",
+            "dead-code",
+            "gitignore",
+            "source-tree"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Static analysis: grep confirms no imports reference .backup or .backup2 files anywhere in src/ or public/js/.\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: Both backup files deleted from src/js/scene/; .gitignore contains *.backup and *.backup2 patterns; build succeeds; CodeGraph index no longer shows backup files; git status shows clean deletion."
+        },
+        {
+          "id": "idea-077",
+          "title": "Unit Tests for weekly-fact-generator.js",
+          "description": "The scripts/weekly-fact-generator.js script (33 lines) is the only build-critical script with zero test coverage. It reads siteData.json, appends generated facts, and writes the file back — a malformed fact entry (missing source field, duplicate text, wrong type) could silently break the daily content rotation. This task creates tests/unit/weekly-fact-generator.test.js with: (1) a mock siteData.json fixture, (2) tests that the script appends exactly 10 new facts (2 per theme), (3) tests that existing facts are not duplicated, (4) tests that each new fact has non-empty text and source fields, (5) tests that the script handles a missing siteData.json gracefully. Uses vitest with fs mocking via vi.mock('fs'). Effort: 1-2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "weekly-facts",
+            "script-coverage",
+            "data-integrity"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/weekly-fact-generator.test.js with vi.mock('fs') to isolate file I/O. Test fixtures: valid siteData.json, siteData with missing facts array, siteData with empty themes array.\n- Test cases: script appends exactly 10 facts (2 per theme × 5 themes), no duplicate facts after repeated runs, all new facts have text and source fields, script throws on missing siteData.json.\n- Integration tests: Run the script against a temporary copy of the real siteData.json and verify output is valid JSON that passes validate-content.js.\n- Acceptance criteria: All new tests pass; >80% branch coverage for weekly-fact-generator.js; existing test suite unaffected; mock-based tests run in <5s."
+        },
+        {
+          "id": "idea-078",
+          "title": "Bundle Size Budget Check in Build Pipeline",
+          "description": "The scene-bundle.js (currently ~692KB, includes three.js + all scene modules) has no size guard. Unbounded growth from new 3D features could degrade load times, especially on mobile. This task adds a scripts/check-bundle-size.js script that: (1) reads the built scene-bundle.js file size, (2) compares against configurable thresholds (warn at 750KB, fail at 900KB), (3) outputs a clear PASS/FAIL message with the actual size, and (4) is integrated into the npm run build pipeline between the scene bundle step and the astro build step. The thresholds are configurable via environment variables (BUNDLE_WARN_KB, BUNDLE_FAIL_KB). On failure, the build aborts before the Astro step, saving time. Effort: 1 session.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [
+            "bundle-size",
+            "build-pipeline",
+            "performance-budget",
+            "guard-rail"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Test check-bundle-size.js logic with mock file sizes (below warn, between warn and fail, above fail) using vi.mock('fs').\n- Integration tests: Run the script against the actual built scene-bundle.js; verify it outputs current size and exits 0 (assuming current size is under threshold).\n- Build integration: Modify package.json build script to include the size check between scene bundle and astro build. Verify build succeeds when under threshold.\n- Acceptance criteria: check-bundle-size.js exits 0 when bundle < warn threshold, exits 0 with warning when between warn and fail, exits 1 when above fail threshold; npm run build includes the check; thresholds configurable via env vars; build aborts before Astro step on failure."
+        },
+        {
           "id": "idea-069",
           "title": "Geometry Instancing for Tulip and Sunflower Fields",
           "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
@@ -131,6 +176,36 @@
           ],
           "effort": "1 session",
           "testingStrategy": "- Unit tests: Add tests/unit/validate-koans.test.js with fixtures for valid koans.json, missing text field, empty source, non-string interpretation, empty koans array, non-object entry. Each fixture tests a specific validation rule.\n- Integration tests: Run the full validate-content.sh script against both valid and malformed koan fixtures; verify correct exit codes (0 for valid, 1 for invalid).\n- Acceptance criteria: All existing validate-content tests still pass; new koan validation catches all defined error types; validate-content.sh exits non-zero on malformed koans.json; error messages specify which koan index and field failed; 6+ test fixtures created."
+        },
+        {
+          "id": "idea-074",
+          "title": "Integrate Scene Health Check into Git-Pull-Build Job",
+          "description": "Enhance the van-gogh-git-pull-build cron job to run the scene health check (scripts/scene-health-check.cjs) after a successful build and before deployment. If the health check fails, abort the deployment and alert the user via the changelog. This ensures that only healthy builds are deployed, reducing the risk of broken scenes in production.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "health-check",
+            "scene-monitor",
+            "reliability",
+            "cron-job"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the health check integration logic by mocking the build and deployment steps\n- Integration tests: Verify that the git-pull-build job runs the health check and aborts deployment on failure\n- Acceptance criteria: Modified van-gogh-git-pull-build job runs health check; deployment proceeds only on healthy scene; unhealthy scenes trigger a failed changelog entry; no false positives on healthy scenes"
+        },
+        {
+          "id": "idea-075",
+          "title": "Add Unit Tests for Scene Health Check Script",
+          "description": "Create a comprehensive unit test suite for scripts/scene-health-check.cjs to ensure all health check functions work correctly. Use mocking for HTTP requests and file system operations to test various scenarios (healthy scene, missing elements, truncated JS, etc.). Tests should run in vitest with appropriate mocks.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "health-check",
+            "testing",
+            "scene-monitor"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/scene-health-check.test.js with mocks for http and child_process\n- Test all internal functions (fetch, check, main) with various scenarios\n- Mock HTTP responses to simulate healthy and unhealthy scenes\n- Mock file system operations for reading HTML and JS files\n- Integration tests: Run the script against a real test server to verify end-to-end functionality\n- Acceptance criteria: >80% branch coverage; all new tests pass; existing test suite unaffected; test suite runs successfully in CI"
         }
       ]
     },
@@ -1062,11 +1137,36 @@
       "description": "Add validateKoans() function to validate-content.js to catch malformed koan entries (missing text/source/interpretation, empty strings, wrong types) that would cause silent runtime failures in the daily koan display. Wire into validate-content.sh pipeline.",
       "category": "Testing & Reliability",
       "priority": "medium",
+      "status": "done",
+      "completedAt": "2026-06-11"
+    },
+    {
+      "id": "idea-076",
+      "title": "Remove Stale Backup Files and Harden .gitignore",
+      "description": "Delete stale .backup and .backup2 files from src/js/scene/ and add *.backup/*.backup2 to .gitignore to prevent future backup commits.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "low",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-077",
+      "title": "Unit Tests for weekly-fact-generator.js",
+      "description": "Add unit tests for the only build-critical script with zero coverage. Tests fact count, field presence, duplication avoidance, and graceful error handling using vi.mock('fs').",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-078",
+      "title": "Bundle Size Budget Check in Build Pipeline",
+      "description": "Add a check-bundle-size.js script that warns at 750KB and fails the build at 900KB for scene-bundle.js. Integrated into npm run build between scene bundle and astro build steps. Configurable thresholds via env vars.",
+      "category": "Performance Optimizations",
+      "priority": "medium",
       "status": "backlog"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-11T02:00:00Z",
+  "generatedAt": "2026-06-15T02:00:00Z",
   "lastReviewAt": "2026-06-13T16:30:00Z",
   "lastReviewResult": "Background Implementer (2026-06-13 16:30): Implemented idea-072 — Added unit tests for 4 untested scene modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky). 192 new tests pass. Moved idea-072 from backlog to done."
 }
