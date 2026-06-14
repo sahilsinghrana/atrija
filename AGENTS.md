@@ -46,22 +46,33 @@ git pull origin master
 ```bash
 cd /root/projects/van-gogh-site
 npm run build
-# Inject cache-busting version for scene-init.js
-BUILD_VERSION=$(date +%s)
-sed -i "s/BUILD_VERSION/$BUILD_VERSION/g" dist/index.html
-# Hash all static assets (JS, CSS, SVG) for cache-busting
-bash scripts/hash-assets.sh
 cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 ```
 
+**Cache strategy (handled by nginx config — do NOT add manual cache-busting):**
+- `index.html`: `no-cache` — always fresh (mutation cron changes daily)
+- `_astro/*` (Vite-bundled JS/CSS with content hashes): `max-age=31536000, immutable` — 1 year
+- `css/*`, `js/*` (public assets): `max-age=3600, must-revalidate` — 1 hour
+- `images/*` (SVG, PNG): `max-age=2592000` — 30 days
+- `content/*.json`: `max-age=300, must-revalidate` — 5 minutes
+- Fonts: `max-age=604800` — 7 days
+
+**No manual cache-busting needed** — Vite hashes bundled filenames automatically. Nginx serves correct headers per path. Do NOT run `hash-assets.sh` or `BUILD_VERSION` sed — these break the build.
+
 ### 2b. Cache Strategy
-- **HTML**: `no-cache` — always fresh, users see latest build immediately
-- **CSS/JS (bundled by Vite)**: 1 hour with must-revalidate — revalidates after 1hr
-- **scene-init.js (public/)**: cache-busted via `?v=TIMESTAMP` on each deploy (new URL = fresh fetch)
-- **Images/SVG**: 30 days
-- **JSON content**: 5 min (cron updates picked up quickly)
-- **Fonts**: 7 days
-- **Gzip**: enabled for HTML, CSS, JS, JSON, SVG
+Nginx handles all cache headers per file type/path (see `/etc/nginx/nginx.conf`). Vite handles content hashing for bundled assets (`_astro/*`). No manual cache-busting needed.
+
+| Asset type | Cache-Control |
+|---|---|
+| `index.html` | `no-cache, no-store, must-revalidate` |
+| `_astro/*` (Vite-bundled) | `public, max-age=31536000, immutable` |
+| `*.css` | `public, max-age=3600, must-revalidate` |
+| `*.js` | `public, max-age=3600, must-revalidate` |
+| `*.svg, *.png, etc` | `public, max-age=2592000` (30 days) |
+| `*.woff2, etc` | `public, max-age=604800` (7 days) |
+| `*.json` | `public, max-age=300, must-revalidate` (5 min) |
+
+**Do NOT run `hash-assets.sh` or `BUILD_VERSION` sed** — these break the build.
 
 ### 3. Git Commit Convention
 Use semantic commit messages: `feat:`, `fix:`, `refactor:`, `perf:`, `chore:`, `style:`, `docs:`
