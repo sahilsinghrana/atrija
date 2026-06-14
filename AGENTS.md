@@ -428,3 +428,6 @@ To update the website text content, edit **`src/content/content.json`**:
 - Port: 8080
 - Reload: `kill -HUP <master_pid>`
 - Verify: `curl http://127.0.0.1:8080/` (NOT localhost)
+- **Termux SELinux constraint**: nginx MUST run as `user root;` (not `nobody`). Android SELinux blocks the `nobody` worker from accessing `app_data_file` contexts in `/data/data/com.termux/`. Ifnginx stops responding, check: `ps aux | grep nginx` → restart with `nginx -c $PREFIX/etc/nginx/nginx.conf`.
+- **sendfile**: Must be `off` on Termux (known Android filesystem incompatibility).
+- **Duplicated public/js/ assets**: After deploying with `cp -r dist/*`, check that `public/js/` has NOT accumulated duplicate copies of `changelog/`, `content/`, `css/`, `images/`, `mutation-assets/`, or `sw.js` from the `public/` root. These are build artifacts that should only exist in `public/`, not `public/js/`. Remove them if present.
