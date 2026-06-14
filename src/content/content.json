@@ -1,37 +1,37 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.15",
+    "version": "1.8.16",
     "lastUpdated": "2026-06-14",
     "updatedBy": "AI Agent (daily-mutation)",
     "season": "summer ☀️",
-    "layout": "cards"
+    "layout": "default"
   },
   "sections": {
     "hero": {
-      "tagline": "We are <em>stardust</em> that learned to <em>wonder</em> about itself"
+      "tagline": "Between two <em>eternities</em> of silence, there is this — <em>us</em>"
     },
     "today": {
-      "heading": "Every <em>sunrise</em> is the universe <em>beginning again</em>",
-      "intro": "The first light is always the most honest. It does not pretend to know what the day will bring. It simply arrives, faithful and uncertain, like hope itself.",
+      "heading": "Every <em>constellation</em> was once a story someone <em>dared</em> to tell",
+      "intro": "The stars do not care whether anyone looks up. They burn their messages across the void for no audience but the darkness itself. And yet — here you are, reading light that left its source before you were born. This is the deepest kind of faith: to send your signal without knowing if anyone will ever receive it.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-14/visual.svg",
-        "description": "Impressionist volcanic landscape at dawn — molten ember tones rising through a dark sky, with swirling brushstrokes of orange, crimson, and gold forming an abstract horizon, faint silhouettes of cypress trees in the foreground",
+        "description": "Impressionist cosmic spiral — a deep purple and cyan nebula swirling with impressionist brushstrokes, scattered with luminous points of light like stars being born, framed by delicate tendrils of interstellar dust in magenta and gold",
         "credit": "Generated for Atrijā daily mutation"
       }
     },
     "moon": {
-      "label": "I. The Silver Threshold",
-      "heading": "She <em>wears</em> the dark not as absence, but as <em>adornment</em>",
+      "label": "I. The Astral Gate",
+      "heading": "Where <em>darkness</em> gathers, it becomes a <em>threshold</em>",
       "intro": "The Moon does not apologize for her reflected glow. She does not dim herself to make the Sun seem brighter. In her quiet orbit, she teaches a radical lesson: that to receive light and pass it on unchanged is not weakness but a kind of grace. The tides know this. The sleepless know this. The lovers who write letters to the absent know this. To be lunar is to be a mirror that moves — reflecting not what you are, but what illuminates you. And in that reflection, the world sees not the source, but the beauty of transmission itself.",
       "imageCard": {
-        "themeIndex": 4,
+        "themeIndex": 0,
         "factIndex": 3,
         "0": 0
       },
       "facts": {
-        "themeIndex": 4,
+        "themeIndex": 0,
         "slice": [
           7,
           9
@@ -39,22 +39,22 @@
         "0": 0
       },
       "quote": {
-        "themeIndex": 4,
-        "quoteIndex": 1,
+        "themeIndex": 0,
+        "quoteIndex": 2,
         "0": 0
       }
     },
     "philosophy": {
-      "label": "II. The Dissolving Shore",
-      "heading": "The <em>wave</em> does not mourn the shape it briefly <em>wore</em>",
+      "label": "II. The Mirror's Edge",
+      "heading": "The <em>self</em> is a door that opens only from the <em>inside</em>",
       "intro": "What if the ego is not the enemy but the wave — a temporary shape the ocean takes to feel its own movement? The water does not suffer when the wave collapses. It does not mourn the shape it briefly wore. And yet, without the wave, the ocean would never know the joy of reaching shore. Perhaps the self is not something to be destroyed but something to be surfed — ridden with skill and wonder until you realize you were never separate from the sea that carried you.",
       "imageCard": {
-        "themeIndex": 0,
+        "themeIndex": 2,
         "factIndex": 8,
         "0": 1
       },
       "facts": {
-        "themeIndex": 0,
+        "themeIndex": 2,
         "slice": [
           12,
           14
@@ -62,22 +62,22 @@
         "0": 1
       },
       "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 4,
+        "themeIndex": 2,
+        "quoteIndex": 7,
         "0": 1
       }
     },
     "gita": {
-      "label": "III. The Warrior's Surrender",
-      "heading": "The <em>bow</em> does not ask if the arrow will find its mark",
+      "label": "III. The Arrow's Resolve",
+      "heading": "Duty <em>asks</em> not your certainty, only your <em>presence</em>",
       "intro": "Arjuna did not become brave before picking up his bow. He picked up his bow while still afraid, still grieving, still uncertain. The Gita's revolution is this: it does not ask you to feel ready. It asks you to act — not from the illusion of certainty, but from the deeper ground of duty and love. Krishna's voice on the battlefield is not a command; it is an invitation to trust that the universe holds you even when your hands shake. The warrior's path is not for the fearless. It is for the frightened who move anyway.",
       "imageCard": {
-        "themeIndex": 2,
+        "themeIndex": 3,
         "factIndex": 1,
         "0": 2
       },
       "facts": {
-        "themeIndex": 2,
+        "themeIndex": 3,
         "slice": [
           5,
           7
@@ -85,22 +85,22 @@
         "0": 2
       },
       "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 0,
+        "themeIndex": 3,
+        "quoteIndex": 2,
         "0": 2
       }
     },
     "shiva": {
-      "label": "IV. The Drum Between Worlds",
-      "heading": "In the <em>silence</em> between drumbeats, the universe <em>breathes</em>",
+      "label": "IV. The Cosmic Rhythm",
+      "heading": "Creation and <em>destruction</em> are one hand <em>clapping</em>",
       "intro": "Watch the dancer's foot strike the ground. In that instant, the universe contracts to a single point of contact — and then expands outward in ripples that will never fully cease. This is not poetry. This is physics wearing the mask of mythology. Every particle vibrates. Every atom dances. The spaces between atoms are not empty; they are the pauses between notes that make the music possible. Shiva's dance is the universe's way of reminding itself that stillness and motion are not opposites — they are partners in the oldest collaboration.",
       "imageCard": {
-        "themeIndex": 3,
+        "themeIndex": 4,
         "factIndex": 6,
         "0": 4
       },
       "facts": {
-        "themeIndex": 3,
+        "themeIndex": 4,
         "slice": [
           10,
           12
@@ -108,14 +108,14 @@
         "0": 4
       },
       "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 8,
+        "themeIndex": 4,
+        "quoteIndex": 3,
         "0": 4
       }
     },
     "art": {
-      "label": "V. The Unpainted Canvas",
-      "heading": "Every <em>brushstroke</em> is a door that opens only <em>inward</em>",
+      "label": "V. The Witness's Burden",
+      "heading": "To <em>witness</em> beauty is to be <em>complicit</em> in it",
       "intro": "The canvas does not show you the world. It shows you the artist's willingness to be undone by the world — to stand before a field of sunflowers and feel something so large that only color can hold it. Every brushstroke is a confession: I was here, I saw this, it changed me, and I am leaving this trace in case you need to know that someone else was changed too. Art is not decoration. It is evidence that a human being once stood in the presence of beauty and refused to walk away unchanged.",
       "imageCard": {
         "themeIndex": 1,
@@ -132,14 +132,20 @@
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 6,
+        "quoteIndex": 8,
         "0": 3
       }
     }
   },
   "changelog": {
-    "version": "1.8.15",
+    "version": "1.8.16",
     "entries": [
+      {
+        "date": "2026-06-14",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #167: Color scheme → cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language (darkness as threshold, self as inward door, duty asks presence, creation/destruction one hand clapping, witness complicit in beauty), all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
+      },
       {
         "date": "2026-06-14",
         "time": "01:12:00",
