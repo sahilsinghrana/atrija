@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="nightGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#08080f"/>
+    </radialGradient>
+    <filter id="starGlow"><feGaussianBlur stdDeviation="1"/></filter>
+  </defs>
+  <rect width="800" height="400" fill="url(#nightGrad)"/>
+  <g fill="#b0bec5" opacity="0.4">
+    <circle cx="50" cy="40" r="1"/><circle cx="130" cy="80" r="1"/><circle cx="200" cy="30" r="0.8"/>
+    <circle cx="280" cy="100" r="1"/><circle cx="360" cy="50" r="0.8"/><circle cx="440" cy="120" r="1"/>
+    <circle cx="520" cy="60" r="0.8"/><circle cx="600" cy="90" r="1"/><circle cx="680" cy="40" r="0.8"/>
+    <circle cx="750" cy="110" r="1"/><circle cx="90" cy="160" r="0.8"/><circle cx="170" cy="200" r="1"/>
+    <circle cx="250" cy="170" r="0.8"/><circle cx="330" cy="210" r="1"/><circle cx="410" cy="180" r="0.8"/>
+    <circle cx="490" cy="220" r="1"/><circle cx="570" cy="160" r="0.8"/><circle cx="650" cy="190" r="1"/>
+    <circle cx="730" cy="170" r="0.8"/><circle cx="60" cy="250" r="1"/><circle cx="140" cy="290" r="0.8"/>
+    <circle cx="220" cy="260" r="1"/><circle cx="300" cy="300" r="0.8"/><circle cx="380" cy="270" r="1"/>
+    <circle cx="460" cy="310" r="0.8"/><circle cx="540" cy="250" r="1"/><circle cx="620" cy="280" r="0.8"/>
+    <circle cx="700" cy="260" r="1"/><circle cx="100" cy="350" r="0.8"/><circle cx="350" cy="370" r="1"/>
+    <circle cx="600" cy="360" r="0.8"/>
+  </g>
+  <g fill="#ffd54f" opacity="0.15" filter="url(#starGlow)">
+    <circle cx="300" cy="70" r="8"/><circle cx="600" cy="80" r="8"/><circle cx="720" cy="140" r="10"/>
+  </g>
+  <g fill="#ffd54f" opacity="0.9">
+    <circle cx="150" cy="100" r="2.5"/><circle cx="220" cy="130" r="2.5"/><circle cx="300" cy="110" r="2.5"/>
+    <circle cx="380" cy="140" r="2.5"/><circle cx="450" cy="120" r="2.5"/>
+    <circle cx="200" cy="200" r="2"/><circle cx="320" cy="190" r="2"/>
+  </g>
+</svg>

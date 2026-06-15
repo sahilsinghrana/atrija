@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-11",
+  "entries": [
+    {
+      "time": "12:00:00",
+      "type": "content",
+      "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon/Philosophy/Shiva intros, updated Today for zenith hour, cleaned old assets",
+      "changes": [
+        "Rotated imageCard factIndex: Moon=10 (tulips close at night under Moon), Philosophy=5 (ego thrives on comparison), Gita=4 (Gita spoken on battlefield not in temple), Shiva=8 (Nataraja statue recognized worldwide), Art=1 (sunflower turns face to light)",
+        "Rotated facts.slice: Moon=[3,5] (Moon no light of own, night sky canvas for projection), Philosophy=[6,8] (Krishna right to work never fruit, Nietzsche monster-fighting), Gita=[9,11] (Einstein kept Gita, body like garment), Shiva=[3,5] (Shiva drank poison Halahala, damaru source of language), Art=[11,13] (art paradox personal/universal, Impressionism light as subject)",
+        "Rotated quoteIndex: Moon=6 (Thich Nhat Hanh: Moon just shines), Philosophy=3 (Boorstin: greatest enemy of knowledge), Gita=7 (Atrijā: struggle becomes path to peace), Shiva=2 (Inspired: sees Supreme Lord equally), Art=8 (Atrijā: beauty state to be entered)",
+        "Refreshed Moon intro: hush when Sun retreats, Moon as quiet guest, softness as courage",
+        "Refreshed Philosophy intro: wave rising without consulting mirror, ego building monuments, sea remembering rhythm",
+        "Refreshed Shiva intro: stillness at heart of storm, paradox of destroyer-creator, Tandava as universe expressing through motion",
+        "Updated Today heading: 'The zenith hour — when shadows shrink to nothing'",
+        "Updated Today intro: sun overhead, absolute clarity, afternoon testing morning's intentions",
+        "Cleaned up mutation-assets/2026-06-09/ (3 old SVG files removed)"
+      ]
+    },
+    {
+      "time": "06:00:00",
+      "type": "daily-mutation",
+      "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset",
+      "changes": [
+        "Color scheme rotated: starry-night → sunflower (warm gold #f5c800 + orange #ff6f00 + green #2e7d32), reordered array so dayOfYear%5=2 selects sunflower",
+        "Hero tagline: 'Beneath the golden hush of a summer sky, the soul remembers how to bloom' (was 'Every darkness is a canvas waiting for its stars')",
+        "Rewrote all 5 section headings with fresh poetic language and <em> emphasis:",
+        "Moon: 'The silence between two heartbeats of light' | Philosophy: 'Where the self dissolves into the sea' | Gita: 'The courage to act without claiming the fruit' | Shiva: 'The flame at the center of the whirl' | Art: 'The brushstroke that outlives the hand'",
+        "Rotated imageCard factIndex: Moon=7 (Moon drifting away 3.8cm/yr), Philosophy=9 (Dunning-Kruger effect), Gita=11 (Gita renounce attachment to outcomes), Shiva=2 (Shiva drank poison Halahala), Art=10 (color as conversation between light and perception)",
+        "Rotated facts.slice: Moon=[0,2] (Selene chariot, Moon controls tides), Philosophy=[12,14] (ego castle on sand, humility river/ocean), Gita=[6,8] (divine returns to restore balance, 700 verses in 90 min), Shiva=[14,16] (Shiva both ascetic/householder, crescent moon as time), Art=[3,5] (flute oldest instrument, waves ocean-shore communication)",
+        "Rotated quoteIndex: Moon=2 (Blake: Moon like a flower in heaven's bower), Philosophy=8 (Atrijā: ego tight fist/soul open hand), Gita=3 (Gita 2.64: self-controlled soul wins eternal peace), Shiva=5 (Inspired: dancer and dance become one), Art=5 (Santayana: Earth has music for those who listen)",
+        "Rewrote Today heading: 'The language of light at its fullest'",
+        "Rewrote Today intro: morning unfurling, sunflower greeting the day, light arriving in waves, world shining without apology",
+        "Generated new SVG visual asset: visual.svg — impressionist sunflower field at golden hour with vivid golds (#f5c800, #fbbf24), bright greens (#22c55e), warm oranges (#f97316), luminous sky (#4a90d9, #6bb5ff), impressionist brushstroke texture"
+      ]
+    }
+  ]
+}

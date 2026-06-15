@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="skyGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1a1a3a"/>
+      <stop offset="100%" stop-color="#08080f"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e0" stop-opacity="1"/>
+      <stop offset="30%" stop-color="#ffe082" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#ffd54f" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffd54f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softBlur"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="moonBlur"><feGaussianBlur stdDeviation="1.5"/></filter>
+  </defs>
+  <ellipse cx="400" cy="200" rx="350" ry="180" fill="#4fc3f7" opacity="0.03"/>
+  <circle cx="400" cy="180" r="55" fill="#fdf6e3" filter="url(#moonBlur)"/>
+  <circle cx="400" cy="180" r="55" fill="#fff8e7" opacity="0.9"/>
+  <g fill="#fff" opacity="0.7">
+    <circle cx="120" cy="60" r="1.5"/><circle cx="220" cy="90" r="1"/><circle cx="310" cy="45" r="1.5"/>
+    <circle cx="500" cy="70" r="1"/><circle cx="580" cy="50" r="1.5"/><circle cx="670" cy="80" r="1"/>
+    <circle cx="160" cy="130" r="1"/><circle cx="640" cy="140" r="1.5"/><circle cx="80" cy="170" r="1"/>
+    <circle cx="720" cy="160" r="1"/><circle cx="250" cy="300" r="1"/><circle cx="550" cy="320" r="1.5"/>
+    <circle cx="100" cy="340" r="1"/><circle cx="700" cy="350" r="1"/><circle cx="400" cy="370" r="1"/>
+  </g>
+  <ellipse cx="400" cy="380" rx="500" ry="40" fill="#ffd54f" opacity="0.04"/>
+</svg>
