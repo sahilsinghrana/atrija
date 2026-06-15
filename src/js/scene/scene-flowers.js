@@ -11,6 +11,9 @@ export function makeSunflowerCanvas(size) {
   var headCy = size * 0.35;
   var r = size * 0.28;
 
+  // Clear to fully transparent
+  ctx.clearRect(0, 0, size, size);
+
   ctx.strokeStyle = "#2d5a1e";
   ctx.lineWidth = size * 0.04;
   ctx.lineCap = "round";
@@ -369,6 +372,9 @@ export function makeTulipCanvas(size, color, openness, seed) {
   c.height = size;
   var ctx = c.getContext("2d");
   var cx = size / 2;
+
+  // Clear to fully transparent
+  ctx.clearRect(0, 0, size, size);
 
   var cupH = size * 0.3;
   var cupW = size * 0.28;

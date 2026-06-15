@@ -35,12 +35,12 @@ export class VanGoghScene {
     container.appendChild(this.renderer.domElement);
 
     this.camera = new THREE.PerspectiveCamera(
-      60,
+      75,
       container.clientWidth / height,
       0.1,
       200,
     );
-    this.camera.position.set(0, 2, 8);
+    this.camera.position.set(0, 1.5, 10);
 
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));

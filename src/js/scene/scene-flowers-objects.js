@@ -71,22 +71,22 @@ export function createTulips(scene, count) {
     const texSeed = Math.floor(Math.random() * 10000);
     const spreadX = isMobile ? 12 : 16;
     const spreadZ = isMobile ? 8 : 10;
-    // Note: We're using the base texture and tinting with instanceColor
-    // so we don't need to create individual textures per tulip
     
-    const scale = isMobile ? 1.4 + Math.random() * 0.4 : 1.2 + Math.random() * 0.5;
+    const s = isMobile ? 1.4 + Math.random() * 0.4 : 1.2 + Math.random() * 0.5;
     const roll = Math.random();
-    let s;
+    let scale;
     if (roll < 0.25) {
-      s = isMobile ? 1.4 + Math.random() * 0.4 : 1.2 + Math.random() * 0.5;
+      scale = isMobile ? 1.4 + Math.random() * 0.4 : 1.2 + Math.random() * 0.5;
     } else {
-      s = isMobile ? 0.9 + Math.random() * 0.5 : 0.8 + Math.random() * 0.55;
+      scale = isMobile ? 0.9 + Math.random() * 0.5 : 0.8 + Math.random() * 0.55;
     }
     
+    // Position tulips in front of camera (camera at z=8, looking at z=0)
+    // Spread from z=-5 to z=8 so they're visible
     const position = new THREE.Vector3(
       (Math.random() - 0.5) * spreadX,
-      isMobile ? -0.05 + s * 0.2 : -0.15 + s * 0.18,
-      (Math.random() - 0.5) * spreadZ + 0.5
+      -0.3 + scale * 0.15,
+      -5 + Math.random() * 13
     );
     
     const phase = Math.random() * Math.PI * 2;
@@ -162,8 +162,20 @@ export function createTulips(scene, count) {
 }
 
 export function createSunflowers(scene, count) {
-  // Create a base sunflower texture (we'll use a yellow base and tint with instanceColor if needed)
-  const baseTex = new THREE.CanvasTexture(makeSunflowerCanvas(256, "#ffff00")); // Yellow base
+  const colors = [
+    "#c8920a",
+    "#e8a020",
+    "#d4a030",
+    "#f0b040",
+    "#c08020",
+    "#b8860b",
+    "#daa520",
+    "#cd853f",
+    "#d2691e",
+    "#e6be44",
+  ];
+  // Create a base sunflower texture with transparent background
+  const baseTex = new THREE.CanvasTexture(makeSunflowerCanvas(256));
   
   // Create InstancedMesh for sunflowers
   const sunflowerGeometry = new THREE.PlaneGeometry(1, 1);
@@ -181,14 +193,15 @@ export function createSunflowers(scene, count) {
   
   for (let i = 0; i < count; i++) {
     const color = colors[Math.floor(Math.random() * colors.length)];
-    const s = isMobile ? 0.8 + Math.random() * 0.6 : 0.6 + Math.random() * 0.7;
+    const s = isMobile ? 1.0 + Math.random() * 0.8 : 0.8 + Math.random() * 0.9;
     const spreadX = isMobile ? 14 : 18;
     const spreadZ = isMobile ? 10 : 12;
     
+    // Position sunflowers in front of camera, spread from z=-6 to z=10
     const position = new THREE.Vector3(
       (Math.random() - 0.5) * spreadX,
-      isMobile ? 0 + s * 0.25 : -0.2 + s * 0.2,
-      (Math.random() - 0.5) * spreadZ
+      -0.4 + s * 0.2,
+      -6 + Math.random() * 16
     );
     
     const phase = Math.random() * Math.PI * 2;
@@ -288,10 +301,11 @@ export function createLilies(scene, count) {
       })
     );
     sprite.scale.set(1.0 * s, 1.6 * s, 1);
+    // Position lilies in front of camera
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
-      (Math.random() - 0.5) * spreadZ + 1
+      -0.3 + s * 0.15,
+      -4 + Math.random() * 12
     );
     const phase = Math.random() * Math.PI * 2;
     const baseY = sprite.position.y;
