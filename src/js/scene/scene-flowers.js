@@ -57,6 +57,7 @@ export function makeSunflowerCanvas(size) {
     ctx.rotate(aAngle);
     ctx.beginPath();
     ctx.ellipse(0, -(r * 0.75), r * 0.13, r * 0.45, 0, 0, Math.PI * 2);
+    ctx.fill();
     ctx.restore();
   }
 
