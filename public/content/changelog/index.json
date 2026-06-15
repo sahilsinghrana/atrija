@@ -1,13 +1,13 @@
 {
-  "version": "1.8.18",
-  "lastUpdated": "2026-06-15T06:00:00.000Z",
-  "totalEntries": 37,
+  "version": "1.8.13",
+  "lastUpdated": "2026-06-14T21:57:05.175103+00:00",
+  "totalEntries": 36,
   "dates": [
     {
       "date": "2026-06-15",
       "entries": 1,
-      "latestType": "daily-mutation",
-      "description": "Daily mutation #168: moonlit-silver colors, new tagline about silver hush between heartbeats, all 5 headings rewritten, dramatic fact/quote rotation with cross-theme mixing, Today rewritten with moon theme, new lunar aurora SVG"
+      "latestType": "feature",
+      "description": "Bundle size budget check (idea-078): added check-bundle-size.js with configurable warn/fail thresholds (750KB/900KB), integrated into npm run build pipeline between scene bundle and astro build, 14 unit tests"
     },
     {
       "date": "2026-06-11",
