@@ -131,19 +131,51 @@
           "priority": "low"
         },
         {
-          "id": "idea-064",
-          "title": "Dead Shader Code Cleanup in scene-shaders.js",
-          "description": "The scene-shaders.js module still exports four shader strings (vgVS, vgFS, glitchVS, glitchFS) that were part of the post-processing pipeline removed in the 2026-05-20 refactoring. These exports are no longer imported by scene-manager.js or any other module \u2014 they are dead code consuming ~2.5KB. This cleanup removes the unused exports, consolidates the remaining active shaders (starVS, starFS, wave uniforms) with JSDoc annotations, and adds a brief comment documenting why the removed shaders existed historically.\n\nAlso audit: verify no other public/js/scene/ modules import the removed exports.",
+          "id": "idea-079",
+          "title": "Fix Stale Loading Tests Broken by Scene Architecture Migration",
+          "description": "The tests/loading/ directory contains 4 test files (04-progressive.test.js, 05-progress-bar.test.js, 06-fade-out.test.js, 07-svg-optimize.test.js) that reference the old scene architecture: they read public/js/scene-init.js directly, check for phased initialization markers, and test progressive 3D loading that no longer exists in the current Vite-bundled scene-bundle.js pipeline. Additionally, tests/unit/scene-environment.test.js reads from public/js/scene/scene-environment.js (an old CDN-based source path) instead of the current src/js/scene/ modules. These stale tests produce 185+ false failures that mask real regressions. This task: (1) audits each loading test to determine if the tested feature still exists in the current architecture, (2) rewrites valid tests to check the correct files (e.g., scene-bundle.js presence, loader HTML/CSS structure, BaseLayout inline critical CSS), (3) removes tests for features that no longer exist, (4) moves scene-environment.test.js to test src/js/scene/scene-objects.js instead of the old public path. Zero scene-init.js or scene/ module changes.",
           "category": "Technical Debt & Code Quality",
-          "priority": "low",
+          "priority": "high",
           "tags": [
+            "test-fixes",
             "cleanup",
-            "dead-code",
-            "shaders",
-            "code-quality"
+            "loading-tests",
+            "false-failures",
+            "technical-debt"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Audit: Run the existing loading tests and scene-environment.test.js to catalog all failures and their root causes (old paths vs removed features).\n- Unit tests: After fixes, all rewritten tests must pass against the current codebase without modifying any source files.\n- Integration tests: Run the full npm test suite and verify that false failures from loading tests are eliminated (target: zero failures from tests/loading/).\n- Acceptance criteria: tests/loading/ directory contains only tests that pass; tests referencing public/js/scene-init.js are updated to reference scene-bundle.js or removed; scene-environment.test.js references src/js/scene/ not public/js/scene/; total test suite failure count drops by 50+; no source code changes required (test-only fix)."
+        },
+        {
+          "id": "idea-080",
+          "title": "Unit Tests for copy-content.js Script",
+          "description": "The scripts/copy-content.js script (36 lines) copies JSON content files from src/content/ to public/content/ for client-side fetch. It is build-critical: a malformed copy (missing changelog subdirectory, missing JSON files, permission errors) would silently break client-side features (changelog-app, quote-carousel, content-search, moon-phase). Despite being part of the npm run build pipeline, it has zero test coverage. This task creates tests/unit/copy-content.test.js with: (1) a temporary src/content/ fixture directory with valid siteData.json, content.json, koans.json, and changelog/index.json, (2) tests that the script copies all top-level JSON files to public/content/, (3) tests that the changelog subdirectory is recursively copied, (4) tests that non-JSON files are skipped, (5) tests for graceful handling when src/content/ does not exist, (6) tests that the script creates the destination directory if missing. Uses vitest with fs mocking via vi.mock('fs') and tmp directories for integration tests. Effort: 1 session.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "copy-content",
+            "build-pipeline",
+            "test-coverage"
           ],
           "effort": "1 session",
-          "testingStrategy": "- Unit tests: After removal, verify no module in public/js/ imports vgVS, vgFS, glitchVS, or glitchFS (AST/grep check).\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: scene-shaders.js exports only active shader strings; build succeeds; bundle size reduced by ~2.5KB; no import errors in any scene module; remaining shader exports unchanged and functional."
+          "testingStrategy": "- Unit tests: Create tests/unit/copy-content.test.js using vi.mock('fs') to isolate file operations. Test fixtures: valid content dir with all JSON files, content dir with missing changelog/, content dir with non-JSON files mixed in, missing src/content/ directory.\n- Test cases: script copies all 3 top-level JSON files, changelog subdirectory is recursively copied, non-JSON files are skipped (not copied), missing src/content/ throws a clear error, destination directory is created if it doesn't exist.\n- Integration tests: Run the script against a temporary copy of the real src/content/ directory and verify output matches expected file listing.\n- Acceptance criteria: All new tests pass; >90% branch coverage for copy-content.js; existing test suite unaffected; mock-based tests run in <3s."
+        },
+        {
+          "id": "idea-081",
+          "title": "Content Prefetch — Preload Critical JSON on Idle",
+          "description": "After the 3D scene is ready, use requestIdleCallback (with a setTimeout fallback for Safari) to prefetch content.json, siteData.json, and changelog/index.json in the background. These JSON files power client-side features (changelog-app, quote-carousel, moon-phase, content-search) but are currently fetched on-demand, causing a visible delay when panels open. The prefetch module listens for the __sceneReady global event, then fetches and caches all 3 JSON files in a Map. Client-side modules check the cache before fetching. Zero scene-init.js changes — the module is loaded as a standalone public/js/content-prefetch.js script in index.astro. Respects Save-Data header (no prefetch when data saver is on) and respects prefers-reduced-data. Total added code: ~60 lines.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [
+            "prefetch",
+            "performance",
+            "content-loading",
+            "requestIdleCallback",
+            "cache"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the cache Map logic by mocking fetch and verifying cache hits/misses. Test requestIdleCallback fallback with setTimeout.\n- Integration tests: Verify that after __sceneReady fires, all 3 JSON files are fetched and stored in cache. Test that subsequent fetches hit cache (no duplicate network requests).\n- Acceptance criteria: content-prefetch.js is a standalone module with zero scene-init.js changes; JSON files are prefetched after scene ready; Save-Data header respected (no prefetch); prefers-reduced-data respected; modules can read from cache before fetching; total added code ~60 lines; build succeeds."
         }
       ]
     },
@@ -1092,6 +1124,83 @@
       "prd": null
     },
     {
+      "id": "idea-004",
+      "title": "Orphaned Test File Cleanup and Consolidation",
+      "description": "Identify and remove orphaned test files that correspond to removed/refactored features. Consolidate duplicate test logic and ensure all remaining tests have clear purpose and pass.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "medium",
+      "status": "done",
+      "completedAt": "2026-06-09",
+      "tags": [
+        "testing",
+        "cleanup",
+        "maintenance",
+        "technical-debt"
+      ],
+      "effort": "2 sessions",
+      "prd": null
+    },
+    {
+      "id": "idea-063",
+      "title": "Unit Tests for Scene Utility Functions (scene-utils.js)",
+      "description": "Unit tests for pure functions in scene-utils.js: getMoonPhase, getMoonPhaseName, getMoonEmoji, getMoonIllumination, lerp, clamp. Tests run in vitest with no DOM/Three.js dependencies.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "done",
+      "completedAt": "2026-06-08",
+      "tags": [
+        "unit-tests",
+        "scene-utils",
+        "pure-functions",
+        "test-coverage"
+      ],
+      "effort": "1 session",
+      "prd": null
+    },
+    {
+      "id": "idea-065",
+      "title": "Seasons.json Schema Validation in validate-content.js",
+      "description": "Add validateSeasons() function to validate-content.js to catch malformed seasons entries (wrong month range, invalid color scheme key, missing required fields) that would cause silent runtime failures in the seasonal theme rotation.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "done",
+      "completedAt": "2026-06-09",
+      "tags": [
+        "validation",
+        "seasons",
+        "data-integrity",
+        "content-pipeline"
+      ],
+      "effort": "1-2 sessions",
+      "prd": null
+    },
+    {
+      "id": "idea-066",
+      "title": "CSS Audit: Remove Unused Variables & Consolidate Design Tokens",
+      "description": "Audit and clean up CSS custom properties in main.css — remove unused variables, consolidate duplicate tokens, and ensure design token naming is consistent.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "medium",
+      "status": "done",
+      "completedAt": "2026-06-09",
+      "prd": null
+    },
+    {
+      "id": "idea-067",
+      "title": "Unit Tests for Core Scene Modules (scene-config, scene-objects, scene-moon, scene-stars, scene-flowers)",
+      "description": "Unit tests for 5 core scene modules testing pure functions (config values, object creation helpers, moon phase calculations, star generation math, flower canvas generation).",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "done",
+      "completedAt": "2026-06-09",
+      "tags": [
+        "unit-tests",
+        "scene-modules",
+        "test-coverage"
+      ],
+      "effort": "2 sessions",
+      "prd": null
+    },
+    {
       "id": "idea-071",
       "title": "Remove Dead Shader Imports from scene-manager.js",
       "description": "Remove the dead import of vgVS, vgFS, glitchVS, glitchFS from scene-manager.js that will break once idea-064 removes the exports from scene-shaders.js. Also audit scene-objects.js re-exports for transitive dead imports.",
@@ -1124,7 +1233,8 @@
       "description": "Delete stale .backup and .backup2 files from src/js/scene/ and add *.backup/*.backup2 to .gitignore to prevent future backup commits.",
       "category": "Technical Debt & Code Quality",
       "priority": "low",
-      "status": "backlog"
+      "status": "done",
+      "completedAt": "2026-06-15"
     },
     {
       "id": "idea-077",
@@ -1140,11 +1250,36 @@
       "description": "Add a check-bundle-size.js script that warns at 750KB and fails the build at 900KB for scene-bundle.js. Integrated into npm run build between scene bundle and astro build steps. Configurable thresholds via env vars.",
       "category": "Performance Optimizations",
       "priority": "medium",
+      "status": "done",
+      "completedAt": "2026-06-15"
+    },
+    {
+      "id": "idea-079",
+      "title": "Fix Stale Loading Tests Broken by Scene Architecture Migration",
+      "description": "Audit and fix 4 stale loading tests (04-07) and scene-environment.test.js that reference old scene-init.js and public/js/scene/ paths. Rewrite valid tests for current architecture, remove tests for removed features. Zero source code changes.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "high",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-080",
+      "title": "Unit Tests for copy-content.js Script",
+      "description": "Add unit tests for the build-critical copy-content.js script that copies JSON content files to public/content/. Tests file copying, changelog subdirectory recursion, non-JSON skipping, and error handling using vi.mock('fs').",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-081",
+      "title": "Content Prefetch — Preload Critical JSON on Idle",
+      "description": "After scene ready, use requestIdleCallback to prefetch content.json, siteData.json, and changelog/index.json in the background. Client-side modules read from cache before fetching. Standalone module, zero scene-init.js changes. Respects Save-Data and prefers-reduced-data.",
+      "category": "Performance Optimizations",
+      "priority": "medium",
       "status": "backlog"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-15T02:00:00Z",
-  "lastReviewAt": "2026-06-15T03:12:00Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-15 03:12): Cleaned up duplicates, moved completed tasks out of Red column, reordered backlog by priority."
+  "generatedAt": "2026-06-16T02:00:00Z",
+  "lastReviewAt": "2026-06-16T03:01:00Z",
+  "lastReviewResult": "Kanban Reviewer (2026-06-16 03:01): Fixed 2 status mismatches (idea-076, idea-078: backlog→done), added 5 missing done entries to ideas array (idea-004, idea-063, idea-065, idea-066, idea-067), removed idea-064 from backlog (false premise — shader imports verified active by idea-071 review). Backlog now has 14 tasks (down from 16)."
 }
