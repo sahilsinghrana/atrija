@@ -535,7 +535,10 @@
         {
           "id": "idea-076",
           "title": "Remove Stale Backup Files and Harden .gitignore",
-          "completedAt": "2026-06-15"
+          "completedAt": "2026-06-15",
+          "reviewedAt": "2026-06-15T19:00:00Z",
+          "reviewResult": "PASS",
+          "reviewNotes": "Reviewed 2026-06-15 19:00 — PASS. Stale backup files removed, .gitignore hardened. Build succeeds. Site live (HTTP 200). No functional issues."
         }
       ]
     }
