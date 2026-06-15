@@ -7,3 +7,11 @@ dist
 .astro
 *.backup
 *.backup2
+
+# Stray directories copied into public/js/ during deploy
+public/js/changelog/
+public/js/content/
+public/js/css/
+public/js/images/
+public/js/mutation-assets/
+public/js/sw.js
