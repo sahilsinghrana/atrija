@@ -2,7 +2,7 @@
   "columns": [
     {
       "id": "backlog",
-      "name": "💡 Idea Backlog",
+      "name": "\ud83d\udca1 Idea Backlog",
       "tasks": [
         {
           "id": "idea-069",
@@ -38,7 +38,7 @@
         {
           "id": "idea-077",
           "title": "Unit Tests for weekly-fact-generator.js",
-          "description": "The scripts/weekly-fact-generator.js script (33 lines) is the only build-critical script with zero test coverage. It reads siteData.json, appends generated facts, and writes the file back — a malformed fact entry (missing source field, duplicate text, wrong type) could silently break the daily content rotation. This task creates tests/unit/weekly-fact-generator.test.js with: (1) a mock siteData.json fixture, (2) tests that the script appends exactly 10 new facts (2 per theme), (3) tests that existing facts are not duplicated, (4) tests that each new fact has non-empty text and source fields, (5) tests that the script handles a missing siteData.json gracefully. Uses vitest with fs mocking via vi.mock('fs'). Effort: 1-2 sessions.",
+          "description": "The scripts/weekly-fact-generator.js script (33 lines) is the only build-critical script with zero test coverage. It reads siteData.json, appends generated facts, and writes the file back \u2014 a malformed fact entry (missing source field, duplicate text, wrong type) could silently break the daily content rotation. This task creates tests/unit/weekly-fact-generator.test.js with: (1) a mock siteData.json fixture, (2) tests that the script appends exactly 10 new facts (2 per theme), (3) tests that existing facts are not duplicated, (4) tests that each new fact has non-empty text and source fields, (5) tests that the script handles a missing siteData.json gracefully. Uses vitest with fs mocking via vi.mock('fs'). Effort: 1-2 sessions.",
           "category": "Testing & Reliability",
           "priority": "medium",
           "tags": [
@@ -48,7 +48,7 @@
             "data-integrity"
           ],
           "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/weekly-fact-generator.test.js with vi.mock('fs') to isolate file I/O. Test fixtures: valid siteData.json, siteData with missing facts array, siteData with empty themes array.\n- Test cases: script appends exactly 10 facts (2 per theme × 5 themes), no duplicate facts after repeated runs, all new facts have text and source fields, script throws on missing siteData.json.\n- Integration tests: Run the script against a temporary copy of the real siteData.json and verify output is valid JSON that passes validate-content.js.\n- Acceptance criteria: All new tests pass; >80% branch coverage for weekly-fact-generator.js; existing test suite unaffected; mock-based tests run in <5s."
+          "testingStrategy": "- Unit tests: Create tests/unit/weekly-fact-generator.test.js with vi.mock('fs') to isolate file I/O. Test fixtures: valid siteData.json, siteData with missing facts array, siteData with empty themes array.\n- Test cases: script appends exactly 10 facts (2 per theme \u00d7 5 themes), no duplicate facts after repeated runs, all new facts have text and source fields, script throws on missing siteData.json.\n- Integration tests: Run the script against a temporary copy of the real siteData.json and verify output is valid JSON that passes validate-content.js.\n- Acceptance criteria: All new tests pass; >80% branch coverage for weekly-fact-generator.js; existing test suite unaffected; mock-based tests run in <5s."
         },
         {
           "id": "idea-035",
@@ -60,7 +60,7 @@
         {
           "id": "idea-032",
           "title": "Dynamic Time-of-Day Atmosphere System",
-          "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+          "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
           "category": "3D Elements",
           "priority": "medium"
         },
@@ -103,21 +103,6 @@
           "testingStrategy": "- Unit tests: Create tests/unit/scene-health-check.test.js with mocks for http and child_process\n- Test all internal functions (fetch, check, main) with various scenarios\n- Mock HTTP responses to simulate healthy and unhealthy scenes\n- Mock file system operations for reading HTML and JS files\n- Integration tests: Run the script against a real test server to verify end-to-end functionality\n- Acceptance criteria: >80% branch coverage; all new tests pass; existing test suite unaffected; test suite runs successfully in CI"
         },
         {
-          "id": "idea-076",
-          "title": "Remove Stale Backup Files and Harden .gitignore",
-          "description": "The src/js/scene/ directory contains two stale backup files: scene-flowers-objects.js.backup (173 lines, old sprite-based flower system) and scene-flowers-objects.js.backup2 (earlier backup). These are dead code checked into the repo that confuse CodeGraph indexing, inflate the source tree, and risk accidental re-import. This task: (1) deletes both .backup and .backup2 files from src/js/scene/, (2) adds *.backup and *.backup2 patterns to .gitignore to prevent future backup commits, (3) verifies no imports reference the backup files via grep, and (4) runs npm run build to confirm nothing breaks. Effort: 1 session.",
-          "category": "Technical Debt & Code Quality",
-          "priority": "low",
-          "tags": [
-            "cleanup",
-            "dead-code",
-            "gitignore",
-            "source-tree"
-          ],
-          "effort": "1 session",
-          "testingStrategy": "- Static analysis: grep confirms no imports reference .backup or .backup2 files anywhere in src/ or public/js/.\n- Integration tests: Run npm run build and verify build succeeds with zero errors.\n- Acceptance criteria: Both backup files deleted from src/js/scene/; .gitignore contains *.backup and *.backup2 patterns; build succeeds; CodeGraph index no longer shows backup files; git status shows clean deletion."
-        },
-        {
           "id": "idea-036",
           "title": "Particle Poetry Scroll Effect",
           "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.",
@@ -148,7 +133,7 @@
         {
           "id": "idea-064",
           "title": "Dead Shader Code Cleanup in scene-shaders.js",
-          "description": "The scene-shaders.js module still exports four shader strings (vgVS, vgFS, glitchVS, glitchFS) that were part of the post-processing pipeline removed in the 2026-05-20 refactoring. These exports are no longer imported by scene-manager.js or any other module — they are dead code consuming ~2.5KB. This cleanup removes the unused exports, consolidates the remaining active shaders (starVS, starFS, wave uniforms) with JSDoc annotations, and adds a brief comment documenting why the removed shaders existed historically.\n\nAlso audit: verify no other public/js/scene/ modules import the removed exports.",
+          "description": "The scene-shaders.js module still exports four shader strings (vgVS, vgFS, glitchVS, glitchFS) that were part of the post-processing pipeline removed in the 2026-05-20 refactoring. These exports are no longer imported by scene-manager.js or any other module \u2014 they are dead code consuming ~2.5KB. This cleanup removes the unused exports, consolidates the remaining active shaders (starVS, starFS, wave uniforms) with JSDoc annotations, and adds a brief comment documenting why the removed shaders existed historically.\n\nAlso audit: verify no other public/js/scene/ modules import the removed exports.",
           "category": "Technical Debt & Code Quality",
           "priority": "low",
           "tags": [
@@ -164,27 +149,27 @@
     },
     {
       "id": "red",
-      "name": "🔴 Red (Failing Test)",
+      "name": "\ud83d\udd34 Red (Failing Test)",
       "tasks": []
     },
     {
       "id": "green",
-      "name": "🟢 Green (Implement)",
+      "name": "\ud83d\udfe2 Green (Implement)",
       "tasks": []
     },
     {
       "id": "refactor",
-      "name": "🟣 Refactor (Optimize)",
+      "name": "\ud83d\udfe3 Refactor (Optimize)",
       "tasks": []
     },
     {
       "id": "deferred",
-      "name": "⏸️ Deferred",
+      "name": "\u23f8\ufe0f Deferred",
       "tasks": [
         {
           "id": "idea-034",
           "title": "Impressionist Visitor Guestbook",
-          "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend — purely client-side.",
+          "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend \u2014 purely client-side.",
           "category": "Interactivity",
           "priority": "medium",
           "deferredReason": "localStorage-only impressions have no persistent value. Deferred until backend option exists."
@@ -193,7 +178,7 @@
     },
     {
       "id": "done",
-      "name": "✅ Done",
+      "name": "\u2705 Done",
       "tasks": [
         {
           "id": "idea-001",
@@ -232,7 +217,7 @@
         },
         {
           "id": "idea-010",
-          "title": "Flute click — SVG bansuri + music notes",
+          "title": "Flute click \u2014 SVG bansuri + music notes",
           "completedAt": "2026-05-17"
         },
         {
@@ -342,7 +327,7 @@
         },
         {
           "id": "idea-050",
-          "title": "Foreground moon — canvas painted artistic moon",
+          "title": "Foreground moon \u2014 canvas painted artistic moon",
           "completedAt": "2026-05-24"
         },
         {
@@ -362,7 +347,7 @@
         },
         {
           "id": "idea-057",
-          "title": "Section Progress Navigator — Dot/Bar Scroll Indicator",
+          "title": "Section Progress Navigator \u2014 Dot/Bar Scroll Indicator",
           "completedAt": "2026-06-03"
         },
         {
@@ -371,7 +356,7 @@
           "completedAt": "2026-06-03",
           "reviewedAt": "2026-06-06T00:50:03.622332+00:00",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-06 06:00 — implementation verified, build succeeds, site deployed (HTTP 200). Note: existing test suite has placeholder failures in time-of-day.test.js unrelated to this change."
+          "reviewNotes": "Reviewed 2026-06-06 06:00 \u2014 implementation verified, build succeeds, site deployed (HTTP 200). Note: existing test suite has placeholder failures in time-of-day.test.js unrelated to this change."
         },
         {
           "id": "idea-059",
@@ -380,16 +365,16 @@
         },
         {
           "id": "idea-058",
-          "title": "Reader Mode — 3D Canvas Dimmer Toggle",
+          "title": "Reader Mode \u2014 3D Canvas Dimmer Toggle",
           "completedAt": "2026-06-04"
         },
         {
           "id": "idea-061",
-          "title": "Light Mode — prefers-color-scheme Support",
+          "title": "Light Mode \u2014 prefers-color-scheme Support",
           "completedAt": "2026-06-05",
           "reviewedAt": "2026-06-06T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-06 06:00 — implementation verified, build succeeds, site deployed (HTTP 200). Note: existing test suite has placeholder failures in time-of-day.test.js unrelated to this change."
+          "reviewNotes": "Reviewed 2026-06-06 06:00 \u2014 implementation verified, build succeeds, site deployed (HTTP 200). Note: existing test suite has placeholder failures in time-of-day.test.js unrelated to this change."
         },
         {
           "id": "idea-054",
@@ -397,7 +382,7 @@
           "completedAt": "2026-06-06",
           "reviewedAt": "2026-06-06T19:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-06 19:00 — PASS. 302-line standalone IIFE module. Zero scene-init.js changes. sessionStorage persistence, visibility API pause/resume, RAF sampling, cooldown/hysteresis/device-capability heuristics all correctly implemented. CSS uses data-quality attribute for quality-driven style overrides. Build succeeds. Site live (HTTP 200). Clean code, good JSDoc. Minor: upgrade hysteresis only checks current quality rank, not target — cosmetic issue. No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-06 19:00 \u2014 PASS. 302-line standalone IIFE module. Zero scene-init.js changes. sessionStorage persistence, visibility API pause/resume, RAF sampling, cooldown/hysteresis/device-capability heuristics all correctly implemented. CSS uses data-quality attribute for quality-driven style overrides. Build succeeds. Site live (HTTP 200). Clean code, good JSDoc. Minor: upgrade hysteresis only checks current quality rank, not target \u2014 cosmetic issue. No functional issues found."
         },
         {
           "id": "idea-062",
@@ -405,15 +390,15 @@
           "completedAt": "2026-06-07",
           "reviewedAt": "2026-06-07T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-07 06:00 (2nd pass) — PASS. Confirmed from earlier 03:00 review. All 38 validate-content tests pass. Build succeeds. Site live (HTTP 200). No new issues since last review."
+          "reviewNotes": "Reviewed 2026-06-07 06:00 (2nd pass) \u2014 PASS. Confirmed from earlier 03:00 review. All 38 validate-content tests pass. Build succeeds. Site live (HTTP 200). No new issues since last review."
         },
         {
           "id": "idea-056",
-          "title": "Offline PWA Shell — Service Worker Cache",
+          "title": "Offline PWA Shell \u2014 Service Worker Cache",
           "completedAt": "2026-06-07",
           "reviewedAt": "2026-06-07T19:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-07 19:00 — PASS. 152-line sw.js with cache-first for static assets, network-first for JSON content, graceful precache failures via Promise.allSettled, skipWaiting/clients.claim for immediate activation, opaque response check. 16-line sw-register.js IIFE with feature detection and silent failure. Registered in BaseLayout.astro line 341. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-07 19:00 \u2014 PASS. 152-line sw.js with cache-first for static assets, network-first for JSON content, graceful precache failures via Promise.allSettled, skipWaiting/clients.claim for immediate activation, opaque response check. 16-line sw-register.js IIFE with feature detection and silent failure. Registered in BaseLayout.astro line 341. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). No functional issues found."
         },
         {
           "id": "idea-063",
@@ -432,7 +417,7 @@
           "completedAt": "2026-06-08",
           "reviewedAt": "2026-06-08T03:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-08 03:00 — PASS. 52 unit tests for scene-utils.js covering getMoonPhase (known astronomical dates, range validation, leap years, year boundaries), getMoonPhaseName (all 8 boundary values, 100% branch coverage), getMoonEmoji (8 distinct emojis, boundary alignment), _seededRand (determinism, range, seed divergence), and integration tests. All 52 tests pass. Build succeeds. Site live (HTTP 200). Zero scene-init.js changes. Clean JSDoc comments."
+          "reviewNotes": "Reviewed 2026-06-08 03:00 \u2014 PASS. 52 unit tests for scene-utils.js covering getMoonPhase (known astronomical dates, range validation, leap years, year boundaries), getMoonPhaseName (all 8 boundary values, 100% branch coverage), getMoonEmoji (8 distinct emojis, boundary alignment), _seededRand (determinism, range, seed divergence), and integration tests. All 52 tests pass. Build succeeds. Site live (HTTP 200). Zero scene-init.js changes. Clean JSDoc comments."
         },
         {
           "id": "idea-004",
@@ -451,7 +436,7 @@
           "completedAt": "2026-06-09",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS (with caveat). Orphaned test files removed. However, 185 test failures remain from stale tests referencing old file paths (public/js/scene/ vs src/js/scene/). These are pre-existing failures in loading optimization tests and unit tests that import from old paths. Build succeeds. Site live (HTTP 200). Remaining failures should be addressed in a future cleanup."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS (with caveat). Orphaned test files removed. However, 185 test failures remain from stale tests referencing old file paths (public/js/scene/ vs src/js/scene/). These are pre-existing failures in loading optimization tests and unit tests that import from old paths. Build succeeds. Site live (HTTP 200). Remaining failures should be addressed in a future cleanup."
         },
         {
           "id": "idea-066",
@@ -459,12 +444,12 @@
           "completedAt": "2026-06-09",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS. CSS design tokens consolidated. main.css loads correctly. All visual elements render properly. Build succeeds. Site live (HTTP 200). No visual regressions detected."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS. CSS design tokens consolidated. main.css loads correctly. All visual elements render properly. Build succeeds. Site live (HTTP 200). No visual regressions detected."
         },
         {
           "id": "idea-065",
           "title": "Seasons.json Schema Validation in validate-content.js",
-          "description": "The seasons.json data file (consumed by the seasonal transitions feature, idea-037) currently has no validation in validate-content.js — the 560-line validator covers siteData.json and content.json structure but completely misses seasons.json. A malformed seasons entry (wrong month range, invalid color scheme key, missing required fields) would cause silent runtime failures in the seasonal theme rotation.\n\nScope:\n- Add validateSeasons() function to validate-content.js\n- Validate: 4 season keys (spring, summer, autumn, winter), each with months array (numbers 1-12), colorSchemeWeights (all 5 scheme keys present, values >= 1), flowerEmphasis enum, skyToneShift RGB ranges, particleEffect string, factThemeWeights (all theme keys present, values >= 1)\n- Add 6+ test fixtures in tests/fixtures/content-validation/ (valid + various malformed)\n- Wire into the validate-content.sh script pipeline",
+          "description": "The seasons.json data file (consumed by the seasonal transitions feature, idea-037) currently has no validation in validate-content.js \u2014 the 560-line validator covers siteData.json and content.json structure but completely misses seasons.json. A malformed seasons entry (wrong month range, invalid color scheme key, missing required fields) would cause silent runtime failures in the seasonal theme rotation.\n\nScope:\n- Add validateSeasons() function to validate-content.js\n- Validate: 4 season keys (spring, summer, autumn, winter), each with months array (numbers 1-12), colorSchemeWeights (all 5 scheme keys present, values >= 1), flowerEmphasis enum, skyToneShift RGB ranges, particleEffect string, factThemeWeights (all theme keys present, values >= 1)\n- Add 6+ test fixtures in tests/fixtures/content-validation/ (valid + various malformed)\n- Wire into the validate-content.sh script pipeline",
           "category": "Testing & Reliability",
           "priority": "medium",
           "tags": [
@@ -478,7 +463,7 @@
           "completedAt": "2026-06-09",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS. validateSeasons() function added to src/content/validate-content.js (line 467). Validates 4 season keys, months arrays, colorSchemeWeights, flowerEmphasis enum, skyToneShift RGB, particleEffect, factThemeWeights. Wired into validateAll() pipeline. Build succeeds. Site live (HTTP 200). No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS. validateSeasons() function added to src/content/validate-content.js (line 467). Validates 4 season keys, months arrays, colorSchemeWeights, flowerEmphasis enum, skyToneShift RGB, particleEffect, factThemeWeights. Wired into validateAll() pipeline. Build succeeds. Site live (HTTP 200). No functional issues found."
         },
         {
           "id": "idea-038",
@@ -486,7 +471,7 @@
           "completedAt": "2026-06-10",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS. scene-swirl-sky.js module creates swirl sky dome with noise-based vertex displacement. Integrated into scene-manager.js via createSwirlSky(). Build succeeds. Site live (HTTP 200). No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS. scene-swirl-sky.js module creates swirl sky dome with noise-based vertex displacement. Integrated into scene-manager.js via createSwirlSky(). Build succeeds. Site live (HTTP 200). No functional issues found."
         },
         {
           "id": "idea-071",
@@ -494,7 +479,7 @@
           "completedAt": "2026-06-10",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS (verified active usage). The shader imports (vgVS, vgFS, glitchVS, glitchFS) from scene-shaders.js ARE actively used in scene-manager.js EffectComposer pipeline — vgPass (Van Gogh painted shader) and glitchPass are both added to the composer and render every frame. These are NOT dead code. The EffectComposer pipeline is intact and functional. Build succeeds. Site live (HTTP 200)."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS (verified active usage). The shader imports (vgVS, vgFS, glitchVS, glitchFS) from scene-shaders.js ARE actively used in scene-manager.js EffectComposer pipeline \u2014 vgPass (Van Gogh painted shader) and glitchPass are both added to the composer and render every frame. These are NOT dead code. The EffectComposer pipeline is intact and functional. Build succeeds. Site live (HTTP 200)."
         },
         {
           "id": "idea-073",
@@ -502,7 +487,7 @@
           "completedAt": "2026-06-11",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS. validateKoans() function added to src/content/validate-content.js (line 577). Validates koans.json structure: root object with koans array, each entry has non-empty text/source/interpretation strings. Wired into main validateAll() pipeline. Build succeeds. Site live (HTTP 200). No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS. validateKoans() function added to src/content/validate-content.js (line 577). Validates koans.json structure: root object with koans array, each entry has non-empty text/source/interpretation strings. Wired into main validateAll() pipeline. Build succeeds. Site live (HTTP 200). No functional issues found."
         },
         {
           "id": "idea-044",
@@ -510,7 +495,7 @@
           "completedAt": "2026-06-14",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS. 371-line standalone public/js/comet.js module. Zero scene-bootstrap.js modifications. Canvas overlay with 3-5 min intervals, 30-60s traversal, particle trail, random trajectories. Respects prefers-reduced-motion. Loaded via <script src='/js/comet.js'> in index.astro. Build succeeds. Site live (HTTP 200). No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS. 371-line standalone public/js/comet.js module. Zero scene-bootstrap.js modifications. Canvas overlay with 3-5 min intervals, 30-60s traversal, particle trail, random trajectories. Respects prefers-reduced-motion. Loaded via <script src='/js/comet.js'> in index.astro. Build succeeds. Site live (HTTP 200). No functional issues found."
         },
         {
           "id": "idea-067",
@@ -518,7 +503,7 @@
           "completedAt": "2026-06-09",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS. Unit tests for 5 core scene modules exist and test pure functions (config values, object creation helpers, moon phase calculations, star generation math, flower canvas generation). Build succeeds. Site live (HTTP 200). Note: some tests fail due to import path issues (public/js/scene/ vs src/js/scene/) — pre-existing issue from orphaned test cleanup."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS. Unit tests for 5 core scene modules exist and test pure functions (config values, object creation helpers, moon phase calculations, star generation math, flower canvas generation). Build succeeds. Site live (HTTP 200). Note: some tests fail due to import path issues (public/js/scene/ vs src/js/scene/) \u2014 pre-existing issue from orphaned test cleanup."
         },
         {
           "id": "idea-072",
@@ -526,7 +511,7 @@
           "completedAt": "2026-06-13",
           "reviewedAt": "2026-06-13T16:30:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Implemented 2026-06-13 — Added unit tests for 4 untested scene modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky). 192 new tests pass. Background Implementer confirmed implementation."
+          "reviewNotes": "Implemented 2026-06-13 \u2014 Added unit tests for 4 untested scene modules (scene-interaction, scene-notes, scene-painting, scene-swirl-sky). 192 new tests pass. Background Implementer confirmed implementation."
         },
         {
           "id": "idea-078",
@@ -545,7 +530,12 @@
           "completedAt": "2026-06-15",
           "reviewedAt": "2026-06-15T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 06:00 — PASS. 101-line scripts/check-bundle-size.js with getThresholds() and checkBundleSize() exports. Integrated into package.json build pipeline between scene bundle and astro build. Build output confirms: 'PASS: scene-bundle.js is 681.0KB (under 750KB warn threshold)'. Thresholds configurable via BUNDLE_WARN_KB and BUNDLE_FAIL_KB env vars. Build succeeds. Site live (HTTP 200). No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-15 06:00 \u2014 PASS. 101-line scripts/check-bundle-size.js with getThresholds() and checkBundleSize() exports. Integrated into package.json build pipeline between scene bundle and astro build. Build output confirms: 'PASS: scene-bundle.js is 681.0KB (under 750KB warn threshold)'. Thresholds configurable via BUNDLE_WARN_KB and BUNDLE_FAIL_KB env vars. Build succeeds. Site live (HTTP 200). No functional issues found."
+        },
+        {
+          "id": "idea-076",
+          "title": "Remove Stale Backup Files and Harden .gitignore",
+          "completedAt": "2026-06-15"
         }
       ]
     }
@@ -616,8 +606,8 @@
     },
     {
       "id": "idea-010",
-      "title": "Flute click — SVG bansuri + music notes",
-      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (♪♫♬). Flute animates in/out with spring easing.",
+      "title": "Flute click \u2014 SVG bansuri + music notes",
+      "description": "Click anywhere spawns an animated Krishna's bansuri (bamboo flute) SVG at cursor position with floating music note symbols (\u266a\u266b\u266c). Flute animates in/out with spring easing.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "done",
@@ -644,7 +634,7 @@
     {
       "id": "idea-013",
       "title": "Mobile tulip visibility fix",
-      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0×1.6).",
+      "description": "Tulips were invisible on mobile due to small scale (0.5-0.9), low Y position (-0.5), and narrow aspect ratio. Fixed with larger scale (0.8-1.4), higher Y (-0.1), wider aspect (1.0\u00d71.6).",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -653,7 +643,7 @@
     {
       "id": "idea-014",
       "title": "Remove speaker/audio toggle",
-      "description": "Remove the audio toggle button (🔇) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
+      "description": "Remove the audio toggle button (\ud83d\udd07) from BaseLayout and ambient-audio.js script tag. Flute click + notes remain intact.",
       "category": "Audio",
       "priority": "medium",
       "status": "done",
@@ -770,7 +760,7 @@
     {
       "id": "idea-029",
       "title": "Theme Color Scheme Switcher",
-      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation — needs review before implementation.",
+      "description": "A floating theme picker that lets visitors manually switch between the 5 impressionist color schemes (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver). Orphaned PRD from earlier generation \u2014 needs review before implementation.",
       "category": "UI",
       "priority": "low",
       "status": "done",
@@ -779,7 +769,7 @@
     {
       "id": "idea-032",
       "title": "Dynamic Time-of-Day Atmosphere System",
-      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time — warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+      "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
       "category": "3D Elements",
       "priority": "medium",
       "status": "backlog",
@@ -788,7 +778,7 @@
     {
       "id": "idea-034",
       "title": "Impressionist Visitor Guestbook",
-      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend — purely client-side.",
+      "description": "A lightweight, localStorage-backed guestbook where visitors leave short impressions (max 140 chars) that appear as floating, brushstroke-styled text sprites in the 3D scene. Entries persist across visits. No backend \u2014 purely client-side.",
       "category": "Interactivity",
       "priority": "medium",
       "status": "deferred",
@@ -807,7 +797,7 @@
     {
       "id": "idea-036",
       "title": "Particle Poetry Scroll Effect",
-      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual — no audio.",
+      "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile. Purely visual \u2014 no audio.",
       "category": "Interactivity",
       "priority": "low",
       "status": "backlog",
@@ -816,7 +806,7 @@
     {
       "id": "idea-037",
       "title": "Seasonal Scene Transitions",
-      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer — daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
+      "description": "The 3D scene's color palette, flower emphasis, and atmospheric tone shift based on the current calendar season (spring/summer/autumn/winter). Implemented as a content/data layer \u2014 daily-mutate.js uses weighted seasonal selection for color schemes and flower ratios. No scene-init.js changes.",
       "category": "Content",
       "priority": "low",
       "status": "done",
@@ -833,7 +823,7 @@
     },
     {
       "id": "idea-039",
-      "description": "Enhance the foreground moon with artistic painted canvas rendering — brushstroke texture, crater details, impasto highlights, and warm halo glow. Background 3D moon unchanged.",
+      "description": "Enhance the foreground moon with artistic painted canvas rendering \u2014 brushstroke texture, crater details, impasto highlights, and warm halo glow. Background 3D moon unchanged.",
       "category": "3D Elements",
       "priority": "low",
       "status": "done",
@@ -897,7 +887,7 @@
     {
       "id": "idea-048",
       "title": "Scroll-Synced Ambient Lighting System",
-      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone — warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
+      "description": "Smoothly shifting CSS ambient lighting overlays that reflect each content section's emotional tone \u2014 warm gold for Moon, violet for Philosophy, calm blue for Gita, deep red for Shiva, warm orange for Art. IntersectionObserver-driven with cinematic 1.2s transitions. Pure CSS + minimal JS, zero Three.js impact.",
       "category": "UI",
       "priority": "low",
       "status": "done",
@@ -905,8 +895,8 @@
     },
     {
       "id": "idea-050",
-      "title": "Foreground moon — canvas painted artistic moon",
-      "description": "Replaced ASCII moon with canvas-drawn artistic moon: warm golden-white radial gradient base, ~180 brushstroke dabs, crater patches with highlight rims, impasto strokes, soft halo glow. No phase shadow — always fully lit. Retina-aware canvas.",
+      "title": "Foreground moon \u2014 canvas painted artistic moon",
+      "description": "Replaced ASCII moon with canvas-drawn artistic moon: warm golden-white radial gradient base, ~180 brushstroke dabs, crater patches with highlight rims, impasto strokes, soft halo glow. No phase shadow \u2014 always fully lit. Retina-aware canvas.",
       "category": "UI",
       "priority": "high",
       "status": "done",
@@ -915,7 +905,7 @@
     {
       "id": "idea-051",
       "title": "Tulip botanical rewrite",
-      "description": "Complete rewrite of tulip drawing with correct proportions: stem thinned (0.035→0.018), leaves reduced to 6% canvas (were 18%), cup enlarged (0.22×0.24→0.28×0.30), petals simplified to teardrop shapes with proper cup silhouette. 25% large variants.",
+      "description": "Complete rewrite of tulip drawing with correct proportions: stem thinned (0.035\u21920.018), leaves reduced to 6% canvas (were 18%), cup enlarged (0.22\u00d70.24\u21920.28\u00d70.30), petals simplified to teardrop shapes with proper cup silhouette. 25% large variants.",
       "category": "3D Elements",
       "priority": "high",
       "status": "done",
@@ -950,7 +940,7 @@
     {
       "id": "idea-054",
       "title": "Adaptive performance quality scaler",
-      "description": "A lightweight FPS monitor that dynamically scales 3D scene quality to maintain smooth performance. Tracks rolling average FPS over 60 frames. If FPS drops below 30: reduces star count by 40%, halves flower/wave segments, and disables firefly swarm. If FPS recovers above 50 for 5 seconds, restores quality tiers. Quality level persisted in sessionStorage so returning visitors with known-slow devices skip the measurement phase. Implemented as a standalone public/js/performance-scaler.js module that reads sceneConfig flags — no scene-init.js modifications.",
+      "description": "A lightweight FPS monitor that dynamically scales 3D scene quality to maintain smooth performance. Tracks rolling average FPS over 60 frames. If FPS drops below 30: reduces star count by 40%, halves flower/wave segments, and disables firefly swarm. If FPS recovers above 50 for 5 seconds, restores quality tiers. Quality level persisted in sessionStorage so returning visitors with known-slow devices skip the measurement phase. Implemented as a standalone public/js/performance-scaler.js module that reads sceneConfig flags \u2014 no scene-init.js modifications.",
       "category": "Performance",
       "priority": "medium",
       "status": "done",
@@ -967,7 +957,7 @@
     {
       "id": "idea-055",
       "title": "Client-side content search overlay",
-      "description": "A keyboard-triggered search overlay (press '/' or click a search icon) that indexes all facts, quotes, koans, and section intros from siteData.json and content.json. Fuzzy-matches visitor queries against text content and returns results grouped by theme (Moon, Philosophy, Gita, Shiva, Art). Each result shows the text snippet with highlighted match and a 'jump to section' link. Pure client-side with a small JSON index built at page load. No backend, no Three.js — a standalone public/js/content-search.js module with a floating search bar UI that respects the dark impressionist theme.",
+      "description": "A keyboard-triggered search overlay (press '/' or click a search icon) that indexes all facts, quotes, koans, and section intros from siteData.json and content.json. Fuzzy-matches visitor queries against text content and returns results grouped by theme (Moon, Philosophy, Gita, Shiva, Art). Each result shows the text snippet with highlighted match and a 'jump to section' link. Pure client-side with a small JSON index built at page load. No backend, no Three.js \u2014 a standalone public/js/content-search.js module with a floating search bar UI that respects the dark impressionist theme.",
       "category": "UX",
       "priority": "low",
       "status": "done",
@@ -980,11 +970,11 @@
       ],
       "effort": "1-2 sessions",
       "prd": null,
-      "reviewNotes": "✅ Reviewed on 2026-06-03 — implementation verified, build succeeds, site deployed. 515-line standalone module. No scene-init.js changes."
+      "reviewNotes": "\u2705 Reviewed on 2026-06-03 \u2014 implementation verified, build succeeds, site deployed. 515-line standalone module. No scene-init.js changes."
     },
     {
       "id": "idea-056",
-      "title": "Offline PWA Shell — Service Worker Cache",
+      "title": "Offline PWA Shell \u2014 Service Worker Cache",
       "description": "A tiny service worker (public/sw.js) that caches the HTML shell, main CSS, loader CSS, all public/js/ modules, fonts.googleapis.com CSS responses, and siteData.json/content.json. First visit caches assets; subsequent visits load instantly from cache with a network-first fallback for JSON content. Registration code in BaseLayout.astro is:inline block. No backend changes. The sw.js uses a versioned cache name (atrija-vX) so future deploys bust the cache. Shows a subtle 'offline-ready' toast on first successful cache. Total added code: ~60 lines SW + ~15 lines registration.",
       "category": "Performance",
       "priority": "low",
@@ -1001,8 +991,8 @@
     },
     {
       "id": "idea-057",
-      "title": "Section Progress Navigator — Dot/Bar Scroll Indicator",
-      "description": "A minimal vertical dot navigation bar fixed to the right edge of the viewport showing all major sections (Hero, Today, Moon, Philosophy, Gita, Shiva, Art, Footer). Current section is highlighted via IntersectionObserver. Dots are keyboard-navigable (Tab + Enter scrolls to section). On mobile, collapses to a subtle thin progress bar. Respects prefers-reduced-motion — disables smooth scroll on reduced motion. Pure CSS + standalone public/js/section-nav.js module. Zero Three.js impact. Fills a clear UX gap: the site has 7+ scroll sections with no way to know where you are or jump between sections.",
+      "title": "Section Progress Navigator \u2014 Dot/Bar Scroll Indicator",
+      "description": "A minimal vertical dot navigation bar fixed to the right edge of the viewport showing all major sections (Hero, Today, Moon, Philosophy, Gita, Shiva, Art, Footer). Current section is highlighted via IntersectionObserver. Dots are keyboard-navigable (Tab + Enter scrolls to section). On mobile, collapses to a subtle thin progress bar. Respects prefers-reduced-motion \u2014 disables smooth scroll on reduced motion. Pure CSS + standalone public/js/section-nav.js module. Zero Three.js impact. Fills a clear UX gap: the site has 7+ scroll sections with no way to know where you are or jump between sections.",
       "category": "UX",
       "priority": "medium",
       "status": "done",
@@ -1018,12 +1008,12 @@
       "prd": null,
       "reviewedAt": "2026-06-03T06:00:00Z",
       "reviewResult": "PASS",
-      "reviewNotes": "Reviewed 2026-06-03 06:00 — PASS. All 9 section IDs exist in DOM. Standalone module (371 lines). CSS uses existing custom properties. Build succeeds. Zero scene-init.js changes. No test regressions. Site live (HTTP 200). Keyboard nav, ARIA, reduced-motion, mobile progress bar all correctly implemented."
+      "reviewNotes": "Reviewed 2026-06-03 06:00 \u2014 PASS. All 9 section IDs exist in DOM. Standalone module (371 lines). CSS uses existing custom properties. Build succeeds. Zero scene-init.js changes. No test regressions. Site live (HTTP 200). Keyboard nav, ARIA, reduced-motion, mobile progress bar all correctly implemented."
     },
     {
       "id": "idea-058",
-      "title": "Reader Mode — 3D Canvas Dimmer Toggle",
-      "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute — automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
+      "title": "Reader Mode \u2014 3D Canvas Dimmer Toggle",
+      "description": "A floating eye-icon button (bottom-left, above the footer) that toggles Reader Mode: the Three.js canvas fades to opacity 0.05 and pointer-events none, revealing only the dark gradient background. All text content sections get enhanced readability styling (slightly larger text, increased line-height, subtle text-shadow). Toggles back to full 3D on second click. State persists in sessionStorage so the preference survives within a session. Integrates with the existing data-reduced-motion attribute \u2014 automatically enters Reader Mode when reduced motion is detected. Pure CSS + minimal JS overlay module (public/js/reader-mode.js). No scene-init.js changes. Addresses both accessibility (users who are overwhelmed by motion) and practical needs (battery saving on mobile).",
       "category": "Accessibility",
       "priority": "medium",
       "status": "done",
@@ -1039,7 +1029,7 @@
       "prd": null,
       "reviewedAt": "2026-06-04T19:00:00Z",
       "reviewResult": "PASS",
-      "reviewNotes": "Reviewed 2026-06-04 19:00 — PASS. 320-line standalone module. Zero scene-init.js changes. sessionStorage persistence, reduced motion auto-enter, ARIA (aria-pressed, aria-label updates), focus-visible, mobile responsive, print hide, reduced motion disable all correctly implemented. CSS uses existing custom properties (--accent-gold, --text-base, etc.). Minor: duplicate CSS selector for html[data-reader-mode='true'] .section (lines 169 and 200) — works due to cascade but could be merged. Build succeeds. Site live (HTTP 200). No functional issues found."
+      "reviewNotes": "Reviewed 2026-06-04 19:00 \u2014 PASS. 320-line standalone module. Zero scene-init.js changes. sessionStorage persistence, reduced motion auto-enter, ARIA (aria-pressed, aria-label updates), focus-visible, mobile responsive, print hide, reduced motion disable all correctly implemented. CSS uses existing custom properties (--accent-gold, --text-base, etc.). Minor: duplicate CSS selector for html[data-reader-mode='true'] .section (lines 169 and 200) \u2014 works due to cascade but could be merged. Build succeeds. Site live (HTTP 200). No functional issues found."
     },
     {
       "id": "idea-059",
@@ -1060,12 +1050,12 @@
       "completedAt": "2026-06-04",
       "reviewedAt": "2026-06-04T06:00:00Z",
       "reviewResult": "PASS",
-      "reviewNotes": "Reviewed 2026-06-04 19:00 (2nd pass) — PASS. Confirmed from earlier 06:00 review. 493-line standalone module. Zero scene-init.js changes. Focus trap, ARIA, reduced motion, mobile responsive all correctly implemented. CSS uses existing custom properties. Build succeeds. Site live (HTTP 200). No issues found."
+      "reviewNotes": "Reviewed 2026-06-04 19:00 (2nd pass) \u2014 PASS. Confirmed from earlier 06:00 review. 493-line standalone module. Zero scene-init.js changes. Focus trap, ARIA, reduced motion, mobile responsive all correctly implemented. CSS uses existing custom properties. Build succeeds. Site live (HTTP 200). No issues found."
     },
     {
       "id": "idea-061",
-      "title": "Light Mode — prefers-color-scheme Support",
-      "description": "Respect the user's OS-level color scheme preference by providing a light/cream impressionist palette activated via @media (prefers-color-scheme: light). The light mode uses warm cream (#faf6f0) backgrounds, dark brown (#2a1f14) text, and softened gold accents — evoking sunlit canvas rather than night sky. All color values are CSS custom property overrides under the media query, so zero JS is required. The existing 3D scene remains unchanged (it's a dark sky scene). Text content, cards, navigation, and the loader all adapt. Enhances accessibility for users who experience eye strain in dark environments or simply prefer light themes.",
+      "title": "Light Mode \u2014 prefers-color-scheme Support",
+      "description": "Respect the user's OS-level color scheme preference by providing a light/cream impressionist palette activated via @media (prefers-color-scheme: light). The light mode uses warm cream (#faf6f0) backgrounds, dark brown (#2a1f14) text, and softened gold accents \u2014 evoking sunlit canvas rather than night sky. All color values are CSS custom property overrides under the media query, so zero JS is required. The existing 3D scene remains unchanged (it's a dark sky scene). Text content, cards, navigation, and the loader all adapt. Enhances accessibility for users who experience eye strain in dark environments or simply prefer light themes.",
       "category": "Accessibility",
       "priority": "low",
       "status": "done",
