@@ -147,24 +147,9 @@
           "testingStrategy": "- Audit: Run the existing loading tests and scene-environment.test.js to catalog all failures and their root causes (old paths vs removed features).\n- Unit tests: After fixes, all rewritten tests must pass against the current codebase without modifying any source files.\n- Integration tests: Run the full npm test suite and verify that false failures from loading tests are eliminated (target: zero failures from tests/loading/).\n- Acceptance criteria: tests/loading/ directory contains only tests that pass; tests referencing public/js/scene-init.js are updated to reference scene-bundle.js or removed; scene-environment.test.js references src/js/scene/ not public/js/scene/; total test suite failure count drops by 50+; no source code changes required (test-only fix)."
         },
         {
-          "id": "idea-080",
-          "title": "Unit Tests for copy-content.js Script",
-          "description": "The scripts/copy-content.js script (36 lines) copies JSON content files from src/content/ to public/content/ for client-side fetch. It is build-critical: a malformed copy (missing changelog subdirectory, missing JSON files, permission errors) would silently break client-side features (changelog-app, quote-carousel, content-search, moon-phase). Despite being part of the npm run build pipeline, it has zero test coverage. This task creates tests/unit/copy-content.test.js with: (1) a temporary src/content/ fixture directory with valid siteData.json, content.json, koans.json, and changelog/index.json, (2) tests that the script copies all top-level JSON files to public/content/, (3) tests that the changelog subdirectory is recursively copied, (4) tests that non-JSON files are skipped, (5) tests for graceful handling when src/content/ does not exist, (6) tests that the script creates the destination directory if missing. Uses vitest with fs mocking via vi.mock('fs') and tmp directories for integration tests. Effort: 1 session.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "copy-content",
-            "build-pipeline",
-            "test-coverage"
-          ],
-          "effort": "1 session",
-          "testingStrategy": "- Unit tests: Create tests/unit/copy-content.test.js using vi.mock('fs') to isolate file operations. Test fixtures: valid content dir with all JSON files, content dir with missing changelog/, content dir with non-JSON files mixed in, missing src/content/ directory.\n- Test cases: script copies all 3 top-level JSON files, changelog subdirectory is recursively copied, non-JSON files are skipped (not copied), missing src/content/ throws a clear error, destination directory is created if it doesn't exist.\n- Integration tests: Run the script against a temporary copy of the real src/content/ directory and verify output matches expected file listing.\n- Acceptance criteria: All new tests pass; >90% branch coverage for copy-content.js; existing test suite unaffected; mock-based tests run in <3s."
-        },
-        {
           "id": "idea-081",
-          "title": "Content Prefetch — Preload Critical JSON on Idle",
-          "description": "After the 3D scene is ready, use requestIdleCallback (with a setTimeout fallback for Safari) to prefetch content.json, siteData.json, and changelog/index.json in the background. These JSON files power client-side features (changelog-app, quote-carousel, moon-phase, content-search) but are currently fetched on-demand, causing a visible delay when panels open. The prefetch module listens for the __sceneReady global event, then fetches and caches all 3 JSON files in a Map. Client-side modules check the cache before fetching. Zero scene-init.js changes — the module is loaded as a standalone public/js/content-prefetch.js script in index.astro. Respects Save-Data header (no prefetch when data saver is on) and respects prefers-reduced-data. Total added code: ~60 lines.",
+          "title": "Content Prefetch \u2014 Preload Critical JSON on Idle",
+          "description": "After the 3D scene is ready, use requestIdleCallback (with a setTimeout fallback for Safari) to prefetch content.json, siteData.json, and changelog/index.json in the background. These JSON files power client-side features (changelog-app, quote-carousel, moon-phase, content-search) but are currently fetched on-demand, causing a visible delay when panels open. The prefetch module listens for the __sceneReady global event, then fetches and caches all 3 JSON files in a Map. Client-side modules check the cache before fetching. Zero scene-init.js changes \u2014 the module is loaded as a standalone public/js/content-prefetch.js script in index.astro. Respects Save-Data header (no prefetch when data saver is on) and respects prefers-reduced-data. Total added code: ~60 lines.",
           "category": "Performance Optimizations",
           "priority": "medium",
           "tags": [
@@ -570,7 +555,12 @@
           "completedAt": "2026-06-15",
           "reviewedAt": "2026-06-15T19:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-15 19:00 — PASS. Stale backup files removed, .gitignore hardened. Build succeeds. Site live (HTTP 200). No functional issues."
+          "reviewNotes": "Reviewed 2026-06-15 19:00 \u2014 PASS. Stale backup files removed, .gitignore hardened. Build succeeds. Site live (HTTP 200). No functional issues."
+        },
+        {
+          "id": "idea-080",
+          "title": "Unit Tests for copy-content.js Script",
+          "completedAt": "2026-06-16"
         }
       ]
     }
@@ -1177,7 +1167,7 @@
     {
       "id": "idea-066",
       "title": "CSS Audit: Remove Unused Variables & Consolidate Design Tokens",
-      "description": "Audit and clean up CSS custom properties in main.css — remove unused variables, consolidate duplicate tokens, and ensure design token naming is consistent.",
+      "description": "Audit and clean up CSS custom properties in main.css \u2014 remove unused variables, consolidate duplicate tokens, and ensure design token naming is consistent.",
       "category": "Technical Debt & Code Quality",
       "priority": "medium",
       "status": "done",
@@ -1271,7 +1261,7 @@
     },
     {
       "id": "idea-081",
-      "title": "Content Prefetch — Preload Critical JSON on Idle",
+      "title": "Content Prefetch \u2014 Preload Critical JSON on Idle",
       "description": "After scene ready, use requestIdleCallback to prefetch content.json, siteData.json, and changelog/index.json in the background. Client-side modules read from cache before fetching. Standalone module, zero scene-init.js changes. Respects Save-Data and prefers-reduced-data.",
       "category": "Performance Optimizations",
       "priority": "medium",
@@ -1281,5 +1271,5 @@
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-16T02:00:00Z",
   "lastReviewAt": "2026-06-16T03:01:00Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-16 03:01): Fixed 2 status mismatches (idea-076, idea-078: backlog→done), added 5 missing done entries to ideas array (idea-004, idea-063, idea-065, idea-066, idea-067), removed idea-064 from backlog (false premise — shader imports verified active by idea-071 review). Backlog now has 14 tasks (down from 16)."
+  "lastReviewResult": "Kanban Reviewer (2026-06-16 03:01): Fixed 2 status mismatches (idea-076, idea-078: backlog\u2192done), added 5 missing done entries to ideas array (idea-004, idea-063, idea-065, idea-066, idea-067), removed idea-064 from backlog (false premise \u2014 shader imports verified active by idea-071 review). Backlog now has 14 tasks (down from 16)."
 }
