@@ -131,22 +131,6 @@
           "priority": "low"
         },
         {
-          "id": "idea-079",
-          "title": "Fix Stale Loading Tests Broken by Scene Architecture Migration",
-          "description": "The tests/loading/ directory contains 4 test files (04-progressive.test.js, 05-progress-bar.test.js, 06-fade-out.test.js, 07-svg-optimize.test.js) that reference the old scene architecture: they read public/js/scene-init.js directly, check for phased initialization markers, and test progressive 3D loading that no longer exists in the current Vite-bundled scene-bundle.js pipeline. Additionally, tests/unit/scene-environment.test.js reads from public/js/scene/scene-environment.js (an old CDN-based source path) instead of the current src/js/scene/ modules. These stale tests produce 185+ false failures that mask real regressions. This task: (1) audits each loading test to determine if the tested feature still exists in the current architecture, (2) rewrites valid tests to check the correct files (e.g., scene-bundle.js presence, loader HTML/CSS structure, BaseLayout inline critical CSS), (3) removes tests for features that no longer exist, (4) moves scene-environment.test.js to test src/js/scene/scene-objects.js instead of the old public path. Zero scene-init.js or scene/ module changes.",
-          "category": "Technical Debt & Code Quality",
-          "priority": "high",
-          "tags": [
-            "test-fixes",
-            "cleanup",
-            "loading-tests",
-            "false-failures",
-            "technical-debt"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Audit: Run the existing loading tests and scene-environment.test.js to catalog all failures and their root causes (old paths vs removed features).\n- Unit tests: After fixes, all rewritten tests must pass against the current codebase without modifying any source files.\n- Integration tests: Run the full npm test suite and verify that false failures from loading tests are eliminated (target: zero failures from tests/loading/).\n- Acceptance criteria: tests/loading/ directory contains only tests that pass; tests referencing public/js/scene-init.js are updated to reference scene-bundle.js or removed; scene-environment.test.js references src/js/scene/ not public/js/scene/; total test suite failure count drops by 50+; no source code changes required (test-only fix)."
-        },
-        {
           "id": "idea-081",
           "title": "Content Prefetch \u2014 Preload Critical JSON on Idle",
           "description": "After the 3D scene is ready, use requestIdleCallback (with a setTimeout fallback for Safari) to prefetch content.json, siteData.json, and changelog/index.json in the background. These JSON files power client-side features (changelog-app, quote-carousel, moon-phase, content-search) but are currently fetched on-demand, causing a visible delay when panels open. The prefetch module listens for the __sceneReady global event, then fetches and caches all 3 JSON files in a Map. Client-side modules check the cache before fetching. Zero scene-init.js changes \u2014 the module is loaded as a standalone public/js/content-prefetch.js script in index.astro. Respects Save-Data header (no prefetch when data saver is on) and respects prefers-reduced-data. Total added code: ~60 lines.",
@@ -556,6 +540,14 @@
           "reviewedAt": "2026-06-15T19:00:00Z",
           "reviewResult": "PASS",
           "reviewNotes": "Reviewed 2026-06-15 19:00 \u2014 PASS. Stale backup files removed, .gitignore hardened. Build succeeds. Site live (HTTP 200). No functional issues."
+        },
+        {
+          "id": "idea-079",
+          "title": "Fix Stale Loading Tests Broken by Scene Architecture Migration",
+          "completedAt": "2026-06-16",
+          "reviewedAt": "2026-06-16T16:30:00Z",
+          "reviewResult": "PASS",
+          "reviewNotes": "Implemented 2026-06-16 — All 85 tests in tests/loading/ and tests/unit/scene-environment.test.js pass. Removed stale 09-geometry.test.js. Updated 01-static-bg, 02-preloads, 04-progressive, 06-fade-out, 08-nginx-cache, 10-defer, 11-content-visibility to match current architecture. Updated scene-environment.test.js to reference src/js/scene/ instead of public/js/scene/. Zero source code changes."
         },
         {
           "id": "idea-080",
@@ -1252,7 +1244,8 @@
       "description": "Audit and fix 4 stale loading tests (04-07) and scene-environment.test.js that reference old scene-init.js and public/js/scene/ paths. Rewrite valid tests for current architecture, remove tests for removed features. Zero source code changes.",
       "category": "Technical Debt & Code Quality",
       "priority": "high",
-      "status": "backlog"
+      "status": "done",
+      "completedAt": "2026-06-16"
     },
     {
       "id": "idea-080",
