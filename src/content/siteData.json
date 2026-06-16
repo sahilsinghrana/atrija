@@ -511,24 +511,6 @@
       ]
     },
     {
-      "name": "midnight-wave",
-      "primary": "#0d47a1",
-      "secondary": "#00bcd4",
-      "accent": "#7c4dff",
-      "background": "#000a12",
-      "text": "#b3e5fc",
-      "mood": "mysterious",
-      "shaderParams": {
-        "strokeDensity": 5.9,
-        "swirlFrequency": 14.9,
-        "colorIntensity": 1.12
-      },
-      "seasons": [
-        "winter",
-        "autumn"
-      ]
-    },
-    {
       "name": "starry-night",
       "primary": "#1a237e",
       "secondary": "#ffd54f",
@@ -583,6 +565,24 @@
       ]
     },
     {
+      "name": "midnight-wave",
+      "primary": "#0d47a1",
+      "secondary": "#00bcd4",
+      "accent": "#7c4dff",
+      "background": "#000a12",
+      "text": "#b3e5fc",
+      "mood": "mysterious",
+      "shaderParams": {
+        "strokeDensity": 5.9,
+        "swirlFrequency": 14.9,
+        "colorIntensity": 1.12
+      },
+      "seasons": [
+        "winter",
+        "autumn"
+      ]
+    },
+    {
       "name": "moonlit-silver",
       "primary": "#90a4ae",
       "secondary": "#ffd740",
@@ -602,7 +602,7 @@
       ]
     }
   ],
-  "activeColorScheme": "moonlit-silver",
+  "activeColorScheme": "ember-dawn",
   "changelog": {
     "version": "1.0.0",
     "entries": [

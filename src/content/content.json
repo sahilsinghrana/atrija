@@ -1,159 +1,165 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.18",
-    "lastUpdated": "2026-06-15",
-    "updatedBy": "AI Agent (content-layout-refresh)",
-    "season": "summer \u2600\ufe0f",
-    "layout": "variant-2"
+    "version": "1.8.19",
+    "lastUpdated": "2026-06-16",
+    "updatedBy": "AI Agent (daily-mutation)",
+    "season": "summer ☀️",
+    "layout": "default"
   },
   "sections": {
     "hero": {
-      "tagline": "In the <em>quiet</em> between <em>thoughts</em>, the universe <em>whispers</em> its <em>eternal</em> song"
+      "tagline": "From the <em>ashes</em> of <em>certainty</em>, the <em>phoenix</em> of <em>wonder</em> <em>rises</em>"
     },
     "today": {
-      "heading": "The <em>moment</em> holds <em>all</em> moments \u2014 <em>past</em>, <em>present</em>, <em>future</em> <em>unfold</em>",
-      "intro": "There is a sacredness in the ordinary \u2014 a teacup warming your hands, sunlight catching dust in the air, the quiet rhythm of breath. These are not mere distractions from the spiritual path; they are the path itself. When we wash dishes with full attention, when we listen to rain without trying to name it, when we feel the exact texture of our clothing against our skin \u2014 we are practicing presence. The moment is not a stepping stone to something better; it is the destination, the home, the complete expression of what it means to be alive. In this very now, all seeking ends and all finding begins.",
+      "heading": "The <em>flame</em> that <em>burns</em> <em>brightest</em> <em>knows</em> no <em>fear</em> of <em>dawn</em>",
+      "intro": "There is a moment just before sunrise when the world holds its breath — when darkness and light exist in perfect equilibrium, neither yielding, neither triumphant. This is the moment the mystics speak of: the threshold between what was and what will be. The ember does not mourn the log it once was; it does not fear the ash it will become. It simply burns, with a totality that makes the distinction between fuel and flame meaningless. To live in this moment — fully, without reservation — is to touch the sacred. Not in temples or texts, but in the raw, unmediated experience of being alive while the sky turns gold.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-15/lunar-aurora.svg",
-        "description": "Impressionist lunar aurora \u2014 a luminous full moon rendered in soft silver and pale gold, surrounded by sweeping curtains of aurora borealis in translucent blues, violets, and seafoam greens, with impressionist brushstroke textures and scattered starlight",
-        "credit": "Generated for Atrij\u0101 daily mutation"
+        "path": "/mutation-assets/2026-06-16/ember-dawn.svg",
+        "description": "Impressionist ember dawn — a fiery celestial body rises through turbulent orange and crimson skies, surrounded by impressionist brushstroke textures, scattered ember particles floating upward, silhouette hills and sunflower forms at the horizon, with golden dabs of light radiating outward",
+        "credit": "Generated for Atrijā daily mutation"
       }
     },
     "moon": {
-      "label": "II. The Beginner's Mind",
-      "heading": "To <em>see</em> clearly, first <em>admit</em> you <em>do not</em> know",
-      "intro": "The Moon never apologizes for her phases. She does not hide her dark side or rush to be full again. In her patient cycle, she teaches what the ego cannot grasp: that diminishment is not failure, that darkness is not the enemy of light but its necessary partner. The tide rises and falls. The lily opens and closes. The heart contracts and expands. To be alive is to move through phases \u2014 and to trust that the fullness will return, not because we demand it, but because it is the nature of things to turn.",
+      "label": "III. The Burning Mirror",
+      "heading": "The <em>moon</em> does not <em>shrink</em> from the <em>fire</em> of <em>day</em>",
+      "intro": "The Moon has watched ten thousand dawns ignite the horizon. She has seen empires rise like smoke and dissolve like mist. Yet she does not flee the Sun's advance — she waits, patient in her orbit, knowing that darkness always returns. There is a lesson here for every heart that has loved and lost: the light will come again, not because you demand it, but because the turning of the world guarantees it. The tulip knows this. The tide knows this. The moon, ancient and unburnable, knows this most of all.",
       "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 14
+        "themeIndex": 2,
+        "factIndex": 11
       },
       "facts": {
-        "themeIndex": 4,
+        "themeIndex": 2,
         "slice": [
-          4,
-          6
+          11,
+          13
         ]
       },
       "quote": {
-        "themeIndex": 4,
-        "quoteIndex": 3
+        "themeIndex": 2,
+        "quoteIndex": 5
       }
     },
     "philosophy": {
-      "label": "I. The Living Question",
-      "heading": "The <em>question</em> is more <em>alive</em> than the <em>answer</em>",
-      "intro": "Stand at the edge of the sea and watch the waves arrive. Each one believes itself unique \u2014 this particular crest, this specific crash of foam. And yet the ocean makes no distinction between its waves. It sends them all to shore with equal generosity, watches them dissolve without grief. What if the self is not a fortress to be defended but a wave to be surfed \u2014 a temporary form through which the vastness of being experiences the joy of reaching land?",
+      "label": "I. The First Ember",
+      "heading": "Before the <em>thought</em>, there was the <em>spark</em>",
+      "intro": "Consider the moment before a flame catches — that instant when the match head is friction and potential, when heat has gathered but light has not yet declared itself. Philosophy lives in this moment. It is the discipline of attending to the spark before the fire, the question before the answer, the breath before the word. The ego wants the blaze — the recognition, the conclusion, the victory. But wisdom knows that the spark is where the truth lives, fragile and flickering, demanding only that we be still enough to witness it.",
       "imageCard": {
-        "themeIndex": 0,
-        "factIndex": 3
+        "themeIndex": 1,
+        "factIndex": 7
       },
       "facts": {
-        "themeIndex": 0,
+        "themeIndex": 1,
         "slice": [
-          6,
-          8
+          7,
+          9
         ]
       },
       "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 6
+        "themeIndex": 1,
+        "quoteIndex": 2
       }
     },
     "gita": {
-      "label": "IV. The Free Action",
-      "heading": "Action <em>without</em> <em>attachment</em> is <em>freedom</em> <em>in</em> <em>motion</em>",
-      "intro": "Krishna did not ask Arjuna to stop feeling. He did not demand courage or demand certainty. He asked only this: do the work that is yours to do, and release your grip on what comes after. This is not detachment as coldness \u2014 it is detachment as the deepest form of trust. The tulip does not worry about whether its bloom will be admired. It opens because opening is its nature. The warrior fights because the fight is dharma. The rest is not his to carry.",
+      "label": "V. The Warrior's Flame",
+      "heading": "The <em>sword</em> is <em>honored</em> not by <em>victory</em> but by <em>purpose</em>",
+      "intro": "Arjuna stood at the edge of the greatest battle of his age, and his hands trembled. Not from cowardice — from the terrible clarity of understanding what war demands. Krishna did not shame him for shaking. He did not say 'be brave.' He said something far more radical: 'Act, but do not cling to the outcome.' This is the fire that forges the warrior — not the absence of fear, but the willingness to move through fear toward dharma. The flame does not ask if the darkness deserves to be dispelled. It simply burns.",
       "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 5
+        "themeIndex": 4,
+        "factIndex": 12
       },
       "facts": {
-        "themeIndex": 3,
+        "themeIndex": 4,
         "slice": [
-          8,
-          10
+          12,
+          14
         ]
       },
       "quote": {
-        "themeIndex": 3,
-        "quoteIndex": 8
+        "themeIndex": 4,
+        "quoteIndex": 7
       }
     },
     "shiva": {
-      "label": "V. The Endless Return",
-      "heading": "In the <em>ending</em>, the <em>beginning</em> <em>whispers</em> <em>its</em> <em>name</em>",
-      "intro": "Listen closely to any rhythm and you will find the secret: it is not the beats that make the music, but the silence between them. Shiva's damaru strikes, and from that vibration, all language, all melody, all creation pours forth. But the drum is nothing without the pause. The dancer is nothing without the breath between movements. To find the sacred, do not look for the spectacular \u2014 listen for the silence that holds the spectacular in place.",
+      "label": "II. The Cosmic Fire",
+      "heading": "Shiva <em>dances</em> in the <em>flames</em> that <em>unmake</em> and <em>remake</em> the <em>world</em>",
+      "intro": "The Tandava is not a gentle dance. It is the rhythm of entropy and creation locked in an embrace so intimate they cannot be told apart. When Shiva raises his foot, a universe is born. When he lowers it, a universe dissolves. And in the space between — that fraction of a heartbeat between up and down — there is everything we have ever known or loved. To understand this is to stop fearing endings. The fire that burns the forest also releases the seeds. The death that takes the beloved also opens the heart to depths it could not have reached in comfort.",
       "imageCard": {
-        "themeIndex": 1,
-        "factIndex": 13
+        "themeIndex": 3,
+        "factIndex": 10
       },
       "facts": {
-        "themeIndex": 1,
+        "themeIndex": 3,
         "slice": [
-          13,
-          15
+          10,
+          12
         ]
       },
       "quote": {
-        "themeIndex": 1,
+        "themeIndex": 3,
         "quoteIndex": 6
       }
     },
     "art": {
-      "label": "III. The Unseen Bloom",
-      "heading": "Beauty <em>appears</em> when you <em>stop</em> <em>looking</em> for it",
-      "intro": "Why do we make art? Not to decorate walls or fill silence, but because there are experiences so large they cannot be contained in the body \u2014 they must be externalized, given form, released into the world. A painting is a soul's overflow. A melody is the heart's excess. The artist does not create from abundance but from the desperate need to share what is too vast for one person to carry alone. Every brushstroke is an act of generosity: I felt this, and I am giving it to you.",
+      "label": "IV. The Painted Flame",
+      "heading": "The <em>canvas</em> <em>burns</em> with what the <em>artist</em> <em>cannot</em> <em>say</em>",
+      "intro": "Van Gogh painted sunflowers that seem to vibrate with an inner fire — petals that lean toward the light as if trying to merge with their source. He painted star fields that swirl like furnaces, like the universe itself was combusting with creative joy. His art was not decoration. It was conflagration — the burning away of everything false until only the essential remained. Every artist who has ever set brush to canvas has known this: the painting is not what you put on the surface. It is what you burn away to reveal what was always underneath.",
       "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 8
+        "themeIndex": 0,
+        "factIndex": 15
       },
       "facts": {
-        "themeIndex": 2,
+        "themeIndex": 0,
         "slice": [
-          13,
-          15
+          15,
+          17
         ]
       },
       "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 0
+        "themeIndex": 0,
+        "quoteIndex": 4
       }
     }
   },
   "changelog": {
-    "version": "1.8.18",
+    "version": "1.8.19",
     "entries": [
+      {
+        "date": "2026-06-16",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #169: Color scheme → ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
+      },
       {
         "date": "2026-06-15",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #168: Color scheme \u2192 moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
+        "description": "Daily mutation #168: Color scheme → moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
       },
       {
         "date": "2026-06-14",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: fullbleed layout, new section order (gita\u2192art\u2192shiva\u2192philosophy\u2192moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
+        "description": "Midday layout refresh: fullbleed layout, new section order (gita→art→shiva→philosophy→moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
       },
       {
         "date": "2026-06-14",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #167: Color scheme \u2192 cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
+        "description": "Daily mutation #167: Color scheme → cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
       },
       {
         "date": "2026-06-14",
         "time": "01:12:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #166: Color scheme \u2192 volcanic-ember (fiery orange/crimson), cards layout, new hero tagline about stardust and wonder, all 5 headings rewritten with fresh poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [4,0,2,3,1], Today section rewritten with sunrise/dawn theme, new volcanic dawn SVG visual asset"
+        "description": "Daily mutation #166: Color scheme → volcanic-ember (fiery orange/crimson), cards layout, new hero tagline about stardust and wonder, all 5 headings rewritten with fresh poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [4,0,2,3,1], Today section rewritten with sunrise/dawn theme, new volcanic dawn SVG visual asset"
       },
       {
         "date": "2026-06-13",
         "time": "17:28:00",
         "type": "content",
-        "description": "Evening layout reshuffle: new section order (art\u2192moon\u2192shiva\u2192philosophy\u2192gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
+        "description": "Evening layout reshuffle: new section order (art→moon→shiva→philosophy→gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
       },
       {
         "date": "2026-06-13",
@@ -165,7 +171,7 @@
         "date": "2026-06-13",
         "time": "16:49:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #165: Color scheme \u2192 midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
+        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
       },
       {
         "date": "2026-06-11",
@@ -177,7 +183,7 @@
         "date": "2026-06-11",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #164: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
+        "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
       },
       {
         "date": "2026-06-10",
@@ -189,25 +195,25 @@
         "date": "2026-06-10",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #163: Color scheme \u2192 starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
+        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
       },
       {
         "date": "2026-06-09",
         "time": "12:35:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #162: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
+        "description": "Daily mutation #162: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
       },
       {
         "date": "2026-06-09",
         "time": "12:12:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #161: Color scheme \u2192 lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
+        "description": "Daily mutation #161: Color scheme → lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
       },
       {
         "date": "2026-06-09",
         "time": "06:22:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #160: Added 2 new facts + 1 quote per theme (10 facts, 5 quotes total), rotated all indices, refreshed 2 intros, updated Today reflection, generated SVG visual asset, color scheme: sunflower \u2192 starry-night"
+        "description": "Daily mutation #160: Added 2 new facts + 1 quote per theme (10 facts, 5 quotes total), rotated all indices, refreshed 2 intros, updated Today reflection, generated SVG visual asset, color scheme: sunflower → starry-night"
       }
     ]
   }
