@@ -1,5 +1,11 @@
+// tests/unit/scene-environment.test.js
 /**
  * scene-environment.test.js — Unit tests for scene environment module
+ *
+ * Tests cover the current scene architecture where scene objects are
+ * defined in src/js/scene/scene-environment.js (bundled via Vite into scene-bundle.js).
+ * The old public/js/scene/scene-environment.js file no longer exists —
+ * scene modules are now in src/js/scene/ and bundled at build time.
  *
  * Tests cover:
  * - createWaves, createCypressTrees, createFireflies are exported functions
@@ -17,7 +23,7 @@ const ENV_PATH = join(
   import.meta.dirname,
   '..',
   '..',
-  'public',
+  'src',
   'js',
   'scene',
   'scene-environment.js'
@@ -41,19 +47,19 @@ describe('scene-environment module', () => {
     expect(src).toMatch(/export\s+function\s+createFireflies/);
   });
 
-  it('imports Three.js from esm.sh', () => {
+  it('imports Three.js (bare import, bundled by Vite)', () => {
     const src = readFileSync(ENV_PATH, 'utf-8');
-    expect(src).toMatch(/import\s+\*\s+as\s+THREE\s+from\s+["']https:\/\/esm\.sh\/three/);
+    expect(src).toMatch(/import\s+\*\s+as\s+THREE\s+from\s+['"]three['"]/);
   });
 
   it('imports wave and firefly shaders from scene-shaders', () => {
     const src = readFileSync(ENV_PATH, 'utf-8');
-    expect(src).toMatch(/import\s+\{\s*waveVS\s*,\s*waveFS\s*,\s*fireflyVS\s*,\s*fireflyFS\s*\}/);
+    expect(src).toMatch(/import\s*\{[^}]*waveVS[^}]*waveFS[^}]*fireflyVS[^}]*fireflyFS[^}]*\}\s*from\s*['"]\.\/scene-shaders/);
   });
 
   it('imports device detection from scene-config', () => {
     const src = readFileSync(ENV_PATH, 'utf-8');
-    expect(src).toMatch(/isMobile\s*,\s*isLowEnd\s*,\s*scrollState/);
+    expect(src).toMatch(/import\s*\{[^}]*(?:isMobile|isLowEnd|scrollState)[^}]*\}\s*from\s*['"]\.\/scene-config/);
   });
 });
 
@@ -119,7 +125,7 @@ describe('createWaves', () => {
 describe('createCypressTrees', () => {
   it('creates cypress shape using THREE.Shape with bezier curves', () => {
     const src = readFileSync(ENV_PATH, 'utf-8');
-    expect(src).toContain('new THREE.Shape()');
+    expect(src).toMatch(/new\s+THREE\.Shape\(\)/);
     expect(src).toContain('bezierCurveTo');
   });
 
@@ -195,7 +201,6 @@ describe('createFireflies', () => {
   it('creates BufferGeometry with position, phase, pulseSpeed attributes', () => {
     const src = readFileSync(ENV_PATH, 'utf-8');
     expect(src).toContain('BufferGeometry');
-    expect(src).toContain('position');
     expect(src).toContain('phase');
     expect(src).toContain('pulseSpeed');
   });

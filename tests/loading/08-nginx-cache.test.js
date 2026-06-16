@@ -13,15 +13,32 @@ describe("Loading Optimization: Nginx Caching", () => {
     expect(nginxConf).toMatch(/gzip_types[^;]*image\/svg\+xml/);
   });
 
-  it("has immutable cache for CSS/JS assets", () => {
-    expect(nginxConf).toMatch(/Cache-Control[^)]*immutable/);
+  it("CSS/JS have cache with must-revalidate", () => {
+    expect(nginxConf).toMatch(/css\|js\)[\s\S]*?max-age=3600[\s\S]*?must-revalidate/);
   });
 
-  it("has 1-year max-age for assets", () => {
-    expect(nginxConf).toMatch(/max-age=31536000/);
+  it("CSS/JS have 1-hour max-age", () => {
+    expect(nginxConf).toMatch(/css\|js\)[\s\S]*?max-age=3600/);
   });
 
-  it("HTML has no-cache or short revalidate", () => {
-    expect(nginxConf).toMatch(/html[^}]*no-cache|must-revalidate/);
+  it("images have 30-day cache", () => {
+    expect(nginxConf).toMatch(/svg\|png[\s\S]*?max-age=2592000/);
+  });
+
+  it("HTML has no-cache and no-store", () => {
+    expect(nginxConf).toMatch(/html\$[\s\S]*?no-cache[\s\S]*?no-store/);
+  });
+
+  it("fonts have 7-day cache", () => {
+    // Matches: location ~* \.(woff2?|ttf|otf|eot)$ { ... max-age=604800 }
+    expect(nginxConf).toMatch(/woff2\?\|ttf\|otf\|eot[\s\S]*?max-age=604800/);
+  });
+
+  it("JSON has 5-minute cache", () => {
+    expect(nginxConf).toMatch(/json\$[\s\S]*?max-age=300/);
+  });
+
+  it("sendfile is off (required for Termux/Android)", () => {
+    expect(nginxConf).toMatch(/sendfile\s+off\s*;/);
   });
 });
