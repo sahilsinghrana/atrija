@@ -1,130 +1,136 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.19",
+    "version": "1.8.20",
     "lastUpdated": "2026-06-16",
-    "updatedBy": "AI Agent (daily-mutation)",
+    "updatedBy": "AI Agent (content-layout-refresh)",
     "season": "summer ☀️",
-    "layout": "default"
+    "layout": "zenith"
   },
   "sections": {
     "hero": {
-      "tagline": "From the <em>ashes</em> of <em>certainty</em>, the <em>phoenix</em> of <em>wonder</em> <em>rises</em>"
+      "tagline": "At the <em>zenith</em> of <em>noon</em>, when <em>shadows</em> forget their <em>names</em>"
     },
     "today": {
-      "heading": "The <em>flame</em> that <em>burns</em> <em>brightest</em> <em>knows</em> no <em>fear</em> of <em>dawn</em>",
-      "intro": "There is a moment just before sunrise when the world holds its breath — when darkness and light exist in perfect equilibrium, neither yielding, neither triumphant. This is the moment the mystics speak of: the threshold between what was and what will be. The ember does not mourn the log it once was; it does not fear the ash it will become. It simply burns, with a totality that makes the distinction between fuel and flame meaningless. To live in this moment — fully, without reservation — is to touch the sacred. Not in temples or texts, but in the raw, unmediated experience of being alive while the sky turns gold.",
+      "heading": "The <em>sun</em> at its <em>throne</em> — <em>all</em> things <em>held</em> in <em>golden</em> <em>attention</em>",
+      "intro": "Noon is the moment the world stops negotiating with itself. The sun sits at the apex of its arc, and for one suspended breath, there is no shadow long enough to hide in, no darkness deep enough to offer escape. Everything is illuminated — not harshly, but completely. The mystics call this the hour of total presence: when the light is so full that even the dust motes become visible, each one a tiny sun caught in the act of falling. To stand in this light is to be seen as you truly are — not by judgment, but by clarity. The zenith does not ask if you are worthy. It simply shines, and in shining, reveals.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-16/ember-dawn.svg",
-        "description": "Impressionist ember dawn — a fiery celestial body rises through turbulent orange and crimson skies, surrounded by impressionist brushstroke textures, scattered ember particles floating upward, silhouette hills and sunflower forms at the horizon, with golden dabs of light radiating outward",
-        "credit": "Generated for Atrijā daily mutation"
+        "path": "/mutation-assets/2026-06-16/zenith-noon.svg",
+        "description": "Impressionist zenith noon — a blazing sun at its apex radiating golden-white light across a field of sunflowers, with heat shimmer waves rising from the earth, impressionist brushstrokes in amber and gold, scattered light particles, and a sky of deep cerulean bleeding to warm peach at the horizon",
+        "credit": "Generated for Atrijā midday layout refresh"
       }
     },
     "moon": {
-      "label": "III. The Burning Mirror",
-      "heading": "The <em>moon</em> does not <em>shrink</em> from the <em>fire</em> of <em>day</em>",
-      "intro": "The Moon has watched ten thousand dawns ignite the horizon. She has seen empires rise like smoke and dissolve like mist. Yet she does not flee the Sun's advance — she waits, patient in her orbit, knowing that darkness always returns. There is a lesson here for every heart that has loved and lost: the light will come again, not because you demand it, but because the turning of the world guarantees it. The tulip knows this. The tide knows this. The moon, ancient and unburnable, knows this most of all.",
+      "label": "V. The Hidden Sun",
+      "heading": "The <em>moon</em> <em>remembers</em> every <em>noon</em> she has <em>outlasted</em>",
+      "intro": "Even at the height of noon, the moon is there — pale, patient, a ghost of silver in the blue. She does not compete with the sun's brilliance. She simply waits, knowing that every zenith is followed by a descent. The tides she governs do not pause for daylight; the emotions she rules do not bow to logic. There is a quiet power in being present without being seen, in governing the world from behind a veil of blue sky. The moon at noon teaches that influence need not be visible to be absolute.",
       "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 11
+        "themeIndex": 4,
+        "factIndex": 3
       },
       "facts": {
-        "themeIndex": 2,
+        "themeIndex": 4,
         "slice": [
-          11,
-          13
+          3,
+          5
         ]
       },
       "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 5
+        "themeIndex": 4,
+        "quoteIndex": 8
       }
     },
     "philosophy": {
-      "label": "I. The First Ember",
-      "heading": "Before the <em>thought</em>, there was the <em>spark</em>",
-      "intro": "Consider the moment before a flame catches — that instant when the match head is friction and potential, when heat has gathered but light has not yet declared itself. Philosophy lives in this moment. It is the discipline of attending to the spark before the fire, the question before the answer, the breath before the word. The ego wants the blaze — the recognition, the conclusion, the victory. But wisdom knows that the spark is where the truth lives, fragile and flickering, demanding only that we be still enough to witness it.",
+      "label": "III. The Zenith Mind",
+      "heading": "At the <em>peak</em> of <em>thought</em>, <em>silence</em> becomes the <em>only</em> <em>answer</em>",
+      "intro": "Philosophy reaches its zenith not in the accumulation of answers, but in the dissolution of questions. There is a moment — rare, fleeting — when the mind climbs so high that the air grows thin and all concepts fall away. What remains is not emptiness but fullness: the direct experience of being, unmediated by language or logic. The Greeks called it aporia, the fertile confusion that precedes wisdom. The Vedas called it neti neti — not this, not this — a negation that opens onto infinity. At the summit of thought, the thinker and the thought become one, and the distinction between seeker and sought dissolves like mist in noon light.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 7
+        "factIndex": 14
       },
       "facts": {
         "themeIndex": 1,
         "slice": [
-          7,
-          9
+          14,
+          16
         ]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 2
+        "quoteIndex": 6
       }
     },
     "gita": {
-      "label": "V. The Warrior's Flame",
-      "heading": "The <em>sword</em> is <em>honored</em> not by <em>victory</em> but by <em>purpose</em>",
-      "intro": "Arjuna stood at the edge of the greatest battle of his age, and his hands trembled. Not from cowardice — from the terrible clarity of understanding what war demands. Krishna did not shame him for shaking. He did not say 'be brave.' He said something far more radical: 'Act, but do not cling to the outcome.' This is the fire that forges the warrior — not the absence of fear, but the willingness to move through fear toward dharma. The flame does not ask if the darkness deserves to be dispelled. It simply burns.",
+      "label": "I. The Noon Warrior",
+      "heading": "The <em>warrior</em> who <em>acts</em> at <em>zenith</em> <em>casts</em> no <em>shadow</em> of <em>doubt</em>",
+      "intro": "Krishna spoke to Arjuna in the full light of day — not in the secrecy of night, not in the ambiguity of dawn, but at the hour when everything is visible and nothing can hide. This was deliberate. The Gita's wisdom is not for the shadows; it is for the moment when you see clearly enough to act. The noon warrior does not hesitate because hesitation belongs to twilight, to the gray spaces between yes and no. At zenith, action is pure. The arrow flies because the target is visible. The sword rises because dharma is clear. This is the Gita's gift: not the elimination of conflict, but the clarity to act within it without being consumed.",
       "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 12
+        "themeIndex": 0,
+        "factIndex": 8
       },
       "facts": {
-        "themeIndex": 4,
+        "themeIndex": 0,
         "slice": [
-          12,
-          14
+          8,
+          10
         ]
       },
       "quote": {
-        "themeIndex": 4,
+        "themeIndex": 0,
         "quoteIndex": 7
       }
     },
     "shiva": {
-      "label": "II. The Cosmic Fire",
-      "heading": "Shiva <em>dances</em> in the <em>flames</em> that <em>unmake</em> and <em>remake</em> the <em>world</em>",
-      "intro": "The Tandava is not a gentle dance. It is the rhythm of entropy and creation locked in an embrace so intimate they cannot be told apart. When Shiva raises his foot, a universe is born. When he lowers it, a universe dissolves. And in the space between — that fraction of a heartbeat between up and down — there is everything we have ever known or loved. To understand this is to stop fearing endings. The fire that burns the forest also releases the seeds. The death that takes the beloved also opens the heart to depths it could not have reached in comfort.",
+      "label": "II. The Solar Dance",
+      "heading": "Shiva <em>dances</em> <em>brightest</em> when the <em>sun</em> is at its <em>throne</em>",
+      "intro": "The Tandava at noon is not the dance of destruction — it is the dance of absolute presence. When the sun reaches its apex, Shiva's rhythm is at its most intense, each gesture a universe blazing into existence. The ring of fire that surrounds him is not separate from the sun; it is the sun's energy made visible, made danceable. At this hour, creation and destruction are not opposites but partners in a single movement, like the inhale and exhale of a cosmic breath. To witness this dance at noon is to understand that the divine does not wait for darkness to reveal itself. It blazes most brilliantly in the full light.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 10
+        "factIndex": 1
       },
       "facts": {
         "themeIndex": 3,
         "slice": [
-          10,
-          12
+          1,
+          3
         ]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 6
+        "quoteIndex": 8
       }
     },
     "art": {
-      "label": "IV. The Painted Flame",
-      "heading": "The <em>canvas</em> <em>burns</em> with what the <em>artist</em> <em>cannot</em> <em>say</em>",
-      "intro": "Van Gogh painted sunflowers that seem to vibrate with an inner fire — petals that lean toward the light as if trying to merge with their source. He painted star fields that swirl like furnaces, like the universe itself was combusting with creative joy. His art was not decoration. It was conflagration — the burning away of everything false until only the essential remained. Every artist who has ever set brush to canvas has known this: the painting is not what you put on the surface. It is what you burn away to reveal what was always underneath.",
+      "label": "IV. The Golden Canvas",
+      "heading": "At <em>noon</em>, the <em>artist</em> <em>paints</em> with <em>light</em> itself as the <em>brush</em>",
+      "intro": "Van Gogh understood that noon is the hour of maximum revelation. His sunflowers are not flowers reaching for light — they are light made floral, energy given petal and stem. At zenith, every color is at its most saturated, every shadow at its shortest, every form at its most defined. Yet paradoxically, this is also the hour when form begins to dissolve. The heat shimmer blurs edges. The brilliance overwhelms detail. The world becomes impression — not because it is unclear, but because it is too clear, too full, too much for the eye to contain. This is the artist's noon: the moment when seeing becomes feeling, when observation becomes ecstasy.",
       "imageCard": {
-        "themeIndex": 0,
-        "factIndex": 15
+        "themeIndex": 2,
+        "factIndex": 5
       },
       "facts": {
-        "themeIndex": 0,
+        "themeIndex": 2,
         "slice": [
-          15,
-          17
+          5,
+          7
         ]
       },
       "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 4
+        "themeIndex": 2,
+        "quoteIndex": 3
       }
     }
   },
   "changelog": {
-    "version": "1.8.19",
+    "version": "1.8.20",
     "entries": [
+      {
+        "date": "2026-06-16",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Midday layout refresh: zenith layout, new section order (shiva→gita→philosophy→art→moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
+      },
       {
         "date": "2026-06-16",
         "time": "06:00:00",
