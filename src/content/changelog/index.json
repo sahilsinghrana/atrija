@@ -1,8 +1,14 @@
 {
-  "version": "1.8.19",
-  "lastUpdated": "2026-06-16T06:00:00.000Z",
-  "totalEntries": 38,
+  "version": "1.8.21",
+  "lastUpdated": "2026-06-21T06:00:00.000Z",
+  "totalEntries": 39,
   "dates": [
+    {
+      "date": "2026-06-21",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #170: midnight-wave colors, new tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide language, dramatic fact/quote rotation with cross-theme mixing, Today rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG"
+    },
     {
       "date": "2026-06-16",
       "entries": 1,
@@ -49,7 +55,7 @@
       "date": "2026-06-06",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #157: starry-night colors (summer season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #157: starry-night colors (summer season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-06-05",
@@ -73,13 +79,13 @@
       "date": "2026-06-02",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana → Art & Beauty → Selene & The Moon → Ego & Arrogance → Bhagavad Gita"
+      "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana \u2192 Art & Beauty \u2192 Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita"
     },
     {
       "date": "2026-06-01",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #152: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #152: sunflower colors (summer season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-31",
@@ -91,7 +97,7 @@
       "date": "2026-05-24",
       "entries": 2,
       "latestType": "feature",
-      "description": "Letter Excerpts — daily rotating letter passages"
+      "description": "Letter Excerpts \u2014 daily rotating letter passages"
     },
     {
       "date": "2026-05-23",
@@ -109,7 +115,7 @@
       "date": "2026-05-21",
       "entries": 2,
       "latestType": "feature",
-      "description": "Biography Timeline — interactive scrollable timeline"
+      "description": "Biography Timeline \u2014 interactive scrollable timeline"
     },
     {
       "date": "2026-05-20",
@@ -127,7 +133,7 @@
       "date": "2026-05-18",
       "entries": 3,
       "latestType": "feature",
-      "description": "Shooting stars — random celestial streaks with fading trails"
+      "description": "Shooting stars \u2014 random celestial streaks with fading trails"
     },
     {
       "date": "2026-05-17",
@@ -139,7 +145,7 @@
       "date": "2026-05-16",
       "entries": 2,
       "latestType": "feature",
-      "description": "Sunflower field parallax — 3 depth layers"
+      "description": "Sunflower field parallax \u2014 3 depth layers"
     }
   ]
 }
