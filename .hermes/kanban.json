@@ -7,7 +7,7 @@
         {
           "id": "idea-084",
           "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
-          "description": "The scripts/daily-mutate.js script (426 lines) is the most critical untested build script — it mutates siteData.json and content.json daily, rewrites taglines/headings, rotates color schemes, and generates visual assets. A bug could silently corrupt content or break the daily deploy pipeline. This task creates tests/unit/daily-mutate.test.js with: (1) mock siteData.json and content.json fixtures, (2) tests that mutate() preserves all required JSON schema fields, (3) tests that color scheme rotation stays within valid scheme names, (4) tests that fact/quote index rotations stay within array bounds, (5) tests that tagline and heading rewriting produces non-empty strings, (6) tests that the script handles missing content.json gracefully, (7) tests that changelog entries are appended (not duplicated) on repeated runs. Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 2 sessions.",
+          "description": "The scripts/daily-mutate.js script (426 lines) is the most critical untested build script \u2014 it mutates siteData.json and content.json daily, rewrites taglines/headings, rotates color schemes, and generates visual assets. A bug could silently corrupt content or break the daily deploy pipeline. This task creates tests/unit/daily-mutate.test.js with: (1) mock siteData.json and content.json fixtures, (2) tests that mutate() preserves all required JSON schema fields, (3) tests that color scheme rotation stays within valid scheme names, (4) tests that fact/quote index rotations stay within array bounds, (5) tests that tagline and heading rewriting produces non-empty strings, (6) tests that the script handles missing content.json gracefully, (7) tests that changelog entries are appended (not duplicated) on repeated runs. Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 2 sessions.",
           "category": "Testing & Reliability",
           "priority": "high",
           "tags": [
@@ -23,7 +23,7 @@
         {
           "id": "idea-083",
           "title": "Lazy-Load Non-Critical UI Modules (theme-switcher, section-nav, reader-mode)",
-          "description": "theme-switcher.js (414 lines), section-nav.js (371 lines), and reader-mode.js (320 lines) are standalone modules loaded via <script> tags in index.astro on every page load, but they are only needed when the user interacts with their respective UI controls. Combined: 1105 lines of JS parsed/evaluated upfront. This task creates a lazy-loader pattern: these modules are loaded as dynamic imports only when the user first clicks their trigger button (theme toggle, nav dot, reader mode toggle). The <script> tags are replaced with small (~20-line) proxy modules that attach click listeners to the trigger elements and dynamically import the full module on first interaction. The flute button, accessibility features, and scene-bundle.js are NOT affected — they load normally. Total added code: ~60 lines across 3 proxy modules. Zero scene-init.js changes.",
+          "description": "theme-switcher.js (414 lines), section-nav.js (371 lines), and reader-mode.js (320 lines) are standalone modules loaded via <script> tags in index.astro on every page load, but they are only needed when the user interacts with their respective UI controls. Combined: 1105 lines of JS parsed/evaluated upfront. This task creates a lazy-loader pattern: these modules are loaded as dynamic imports only when the user first clicks their trigger button (theme toggle, nav dot, reader mode toggle). The <script> tags are replaced with small (~20-line) proxy modules that attach click listeners to the trigger elements and dynamically import the full module on first interaction. The flute button, accessibility features, and scene-bundle.js are NOT affected \u2014 they load normally. Total added code: ~60 lines across 3 proxy modules. Zero scene-init.js changes.",
           "category": "Performance Optimizations",
           "priority": "medium",
           "tags": [
@@ -38,7 +38,7 @@
         },
         {
           "id": "idea-082",
-          "title": "Unit Tests for changelog-app.js — Date-File Loading and UI Interaction",
+          "title": "Unit Tests for changelog-app.js \u2014 Date-File Loading and UI Interaction",
           "description": "public/js/changelog-app.js (434 lines) is the largest untested client-side module. It loads changelog/index.json, lazy-loads date files on expand, handles click/keyboard expansion/collapse of date cards, and renders entry lists with type badges. All of this is testable with DOM mocking via jsdom. This task creates tests/unit/changelog-app.test.js with: (1) mock fetch responses for index.json and date files, (2) tests that the index is fetched and rendered as date cards, (3) tests that clicking a date card triggers lazy-loading of the corresponding date file, (4) tests that keyboard Enter/Space on a focused card triggers expansion, (5) tests that expanded cards show entry details with correct type badges, (6) tests that already-expanded cards do not re-fetch, (7) tests that fetch failures show a user-friendly error state. Uses vitest + jsdom environment. Effort: 2 sessions.",
           "category": "Testing & Reliability",
           "priority": "medium",
@@ -82,21 +82,6 @@
           ],
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Test the health check integration logic by mocking the build and deployment steps\n- Integration tests: Verify that the git-pull-build job runs the health check and aborts deployment on failure\n- Acceptance criteria: Modified van-gogh-git-pull-build job runs health check; deployment proceeds only on healthy scene; unhealthy scenes trigger a failed changelog entry; no false positives on healthy scenes"
-        },
-        {
-          "id": "idea-077",
-          "title": "Unit Tests for weekly-fact-generator.js",
-          "description": "The scripts/weekly-fact-generator.js script (33 lines) is the only build-critical script with zero test coverage. It reads siteData.json, appends generated facts, and writes the file back \u2014 a malformed fact entry (missing source field, duplicate text, wrong type) could silently break the daily content rotation. This task creates tests/unit/weekly-fact-generator.test.js with: (1) a mock siteData.json fixture, (2) tests that the script appends exactly 10 new facts (2 per theme), (3) tests that existing facts are not duplicated, (4) tests that each new fact has non-empty text and source fields, (5) tests that the script handles a missing siteData.json gracefully. Uses vitest with fs mocking via vi.mock('fs'). Effort: 1-2 sessions.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "weekly-facts",
-            "script-coverage",
-            "data-integrity"
-          ],
-          "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/weekly-fact-generator.test.js with vi.mock('fs') to isolate file I/O. Test fixtures: valid siteData.json, siteData with missing facts array, siteData with empty themes array.\n- Test cases: script appends exactly 10 facts (2 per theme \u00d7 5 themes), no duplicate facts after repeated runs, all new facts have text and source fields, script throws on missing siteData.json.\n- Integration tests: Run the script against a temporary copy of the real siteData.json and verify output is valid JSON that passes validate-content.js.\n- Acceptance criteria: All new tests pass; >80% branch coverage for weekly-fact-generator.js; existing test suite unaffected; mock-based tests run in <5s."
         },
         {
           "id": "idea-035",
@@ -595,7 +580,7 @@
           "completedAt": "2026-06-16",
           "reviewedAt": "2026-06-16T16:30:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Implemented 2026-06-16 — All 85 tests in tests/loading/ and tests/unit/scene-environment.test.js pass. Removed stale 09-geometry.test.js. Updated 01-static-bg, 02-preloads, 04-progressive, 06-fade-out, 08-nginx-cache, 10-defer, 11-content-visibility to match current architecture. Updated scene-environment.test.js to reference src/js/scene/ instead of public/js/scene/. Zero source code changes."
+          "reviewNotes": "Implemented 2026-06-16 \u2014 All 85 tests in tests/loading/ and tests/unit/scene-environment.test.js pass. Removed stale 09-geometry.test.js. Updated 01-static-bg, 02-preloads, 04-progressive, 06-fade-out, 08-nginx-cache, 10-defer, 11-content-visibility to match current architecture. Updated scene-environment.test.js to reference src/js/scene/ instead of public/js/scene/. Zero source code changes."
         },
         {
           "id": "idea-080",
@@ -603,7 +588,26 @@
           "completedAt": "2026-06-16",
           "reviewedAt": "2026-06-16T06:00:00Z",
           "reviewResult": "PASS",
-          "reviewNotes": "Reviewed 2026-06-16 06:00 — PASS. 15 unit tests for copy-content.js all pass. Tests cover: top-level JSON file copying (siteData.json, content.json, koans.json), changelog subdirectory recursive copying, non-JSON file skipping, hidden file skipping, destination directory creation, missing source error handling, overwrite behavior, and integration test against real src/content/ structure. 426-line test file with clean JSDoc comments. Build succeeds. Site live (HTTP 200). No functional issues found."
+          "reviewNotes": "Reviewed 2026-06-16 06:00 \u2014 PASS. 15 unit tests for copy-content.js all pass. Tests cover: top-level JSON file copying (siteData.json, content.json, koans.json), changelog subdirectory recursive copying, non-JSON file skipping, hidden file skipping, destination directory creation, missing source error handling, overwrite behavior, and integration test against real src/content/ structure. 426-line test file with clean JSDoc comments. Build succeeds. Site live (HTTP 200). No functional issues found."
+        },
+        {
+          "id": "idea-077",
+          "title": "Unit Tests for weekly-fact-generator.js",
+          "description": "The scripts/weekly-fact-generator.js script (33 lines) is the only build-critical script with zero test coverage. It reads siteData.json, appends generated facts, and writes the file back \u2014 a malformed fact entry (missing source field, duplicate text, wrong type) could silently break the daily content rotation. This task creates tests/unit/weekly-fact-generator.test.js with: (1) a mock siteData.json fixture, (2) tests that the script appends exactly 10 new facts (2 per theme), (3) tests that existing facts are not duplicated, (4) tests that each new fact has non-empty text and source fields, (5) tests that the script handles a missing siteData.json gracefully. Uses vitest with fs mocking via vi.mock('fs'). Effort: 1-2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "weekly-facts",
+            "script-coverage",
+            "data-integrity"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/weekly-fact-generator.test.js with vi.mock('fs') to isolate file I/O. Test fixtures: valid siteData.json, siteData with missing facts array, siteData with empty themes array.\n- Test cases: script appends exactly 10 facts (2 per theme \u00d7 5 themes), no duplicate facts after repeated runs, all new facts have text and source fields, script throws on missing siteData.json.\n- Integration tests: Run the script against a temporary copy of the real siteData.json and verify output is valid JSON that passes validate-content.js.\n- Acceptance criteria: All new tests pass; >80% branch coverage for weekly-fact-generator.js; existing test suite unaffected; mock-based tests run in <5s.",
+          "completedAt": "2026-06-21",
+          "reviewedAt": "2026-06-21T21:43:48.000000+00:00",
+          "reviewResult": "PASS",
+          "reviewNotes": "Implemented 2026-06-22 \u2014 Added 35 unit tests for weekly-fact-generator.js covering readJSON (valid JSON, malformed JSON, missing file, real siteData.json), writeJSON (2-space indentation, empty objects, siteData structure, unicode preservation), isDuplicate (case-insensitive matching, first-50-char comparison, empty arrays, short facts, unicode, exact-50-char boundary), path exports (absolute paths, correct file/directory targets), round-trip integration (data preservation through write\u2192read), and edge cases (nested arrays, single-fact arrays, whitespace sensitivity). All 35 tests pass. Zero scene-init.js changes."
         }
       ]
     }
@@ -1275,7 +1279,7 @@
       "description": "Add unit tests for the only build-critical script with zero coverage. Tests fact count, field presence, duplication avoidance, and graceful error handling using vi.mock('fs').",
       "category": "Testing & Reliability",
       "priority": "medium",
-      "status": "backlog"
+      "status": "done"
     },
     {
       "id": "idea-078",
@@ -1301,7 +1305,74 @@
       "description": "Add unit tests for the build-critical copy-content.js script that copies JSON content files to public/content/. Tests file copying, changelog subdirectory recursion, non-JSON skipping, and error handling using vi.mock('fs').",
       "category": "Testing & Reliability",
       "priority": "medium",
-      "status": "backlog"
+      "status": "done",
+      "completedAt": "2026-06-16",
+      "reviewedAt": "2026-06-16T06:00:00Z",
+      "reviewResult": "PASS",
+      "reviewNotes": "Reviewed 2026-06-16 06:00 \u2014 PASS. 15 unit tests for copy-content.js all pass. Build succeeds. Site live (HTTP 200). No functional issues found."
+    },
+    {
+      "id": "idea-068",
+      "title": "Visual Regression Testing Infrastructure with Playwright",
+      "description": "Set up visual regression testing using Playwright + pixelmatch to catch unintended visual changes in the 3D scene and UI. Configure playwright.config.ts with device profiles (mobile, tablet, desktop), baseline screenshots for key states, CI-friendly thresholds.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-068-visual-regression-testing.md"
+    },
+    {
+      "id": "idea-069",
+      "title": "Geometry Instancing for Tulip and Sunflower Fields",
+      "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. Maintain individual positioning and animation through instance matrix updates.",
+      "category": "Performance Optimizations",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-069-geometry-instancing.md"
+    },
+    {
+      "id": "idea-074",
+      "title": "Integrate Scene Health Check into Git-Pull-Build Job",
+      "description": "Enhance the van-gogh-git-pull-build cron job to run the scene health check after a successful build and before deployment. Abort deployment on failure and alert via changelog.",
+      "category": "Testing & Reliability",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-074-health-check-integration.md"
+    },
+    {
+      "id": "idea-075",
+      "title": "Add Unit Tests for Scene Health Check Script",
+      "description": "Create a comprehensive unit test suite for scripts/scene-health-check.cjs with mocking for HTTP requests and file system operations. Test various scenarios (healthy scene, missing elements, truncated JS).",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-075-health-check-tests.md"
+    },
+    {
+      "id": "idea-082",
+      "title": "Unit Tests for changelog-app.js \u2014 Date-File Loading and UI Interaction",
+      "description": "Create unit tests for changelog-app.js (434 lines) with mock fetch responses for index.json and date files. Tests: index rendering, click expansion, keyboard Enter/Space, type badges, no re-fetch on already-expanded, error state.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-082-changelog-app-tests.md"
+    },
+    {
+      "id": "idea-083",
+      "title": "Lazy-Load Non-Critical UI Modules (theme-switcher, section-nav, reader-mode)",
+      "description": "Replace eager script tags with ~20-line proxy modules that dynamically import full modules on first user interaction. theme-switcher, section-nav, reader-mode are loaded lazily.",
+      "category": "Performance Optimizations",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-083-lazy-ui-modules.md"
+    },
+    {
+      "id": "idea-084",
+      "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
+      "description": "Create unit tests for daily-mutate.js (426 lines) with vi.mock('fs'). Tests: JSON schema preservation, valid color scheme rotation, array bound safety, non-empty tagline/heading, changelog append semantics.",
+      "category": "Testing & Reliability",
+      "priority": "high",
+      "status": "backlog",
+      "prd": "PRD-idea-084-daily-mutate-tests.md"
     },
     {
       "id": "idea-081",
@@ -1314,6 +1385,6 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-16T02:00:00Z",
-  "lastReviewAt": "2026-06-16T03:01:00Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-16 03:01): Fixed 2 status mismatches (idea-076, idea-078: backlog\u2192done), added 5 missing done entries to ideas array (idea-004, idea-063, idea-065, idea-066, idea-067), removed idea-064 from backlog (false premise \u2014 shader imports verified active by idea-071 review). Backlog now has 14 tasks (down from 16)."
+  "lastReviewAt": "2026-06-22T03:00:00Z",
+  "lastReviewResult": "Kanban Reviewer (2026-06-22 03:00): Fixed 1 status mismatch (idea-080: backlog\u2192done). Added 7 missing backlog entries to ideas array (idea-068, 069, 074, 075, 082, 083, 084). Backlog: 10, Done: 55, Deferred: 1."
 }
