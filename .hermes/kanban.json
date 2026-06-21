@@ -5,6 +5,54 @@
       "name": "\ud83d\udca1 Idea Backlog",
       "tasks": [
         {
+          "id": "idea-084",
+          "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
+          "description": "The scripts/daily-mutate.js script (426 lines) is the most critical untested build script — it mutates siteData.json and content.json daily, rewrites taglines/headings, rotates color schemes, and generates visual assets. A bug could silently corrupt content or break the daily deploy pipeline. This task creates tests/unit/daily-mutate.test.js with: (1) mock siteData.json and content.json fixtures, (2) tests that mutate() preserves all required JSON schema fields, (3) tests that color scheme rotation stays within valid scheme names, (4) tests that fact/quote index rotations stay within array bounds, (5) tests that tagline and heading rewriting produces non-empty strings, (6) tests that the script handles missing content.json gracefully, (7) tests that changelog entries are appended (not duplicated) on repeated runs. Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "unit-tests",
+            "daily-mutate",
+            "content-pipeline",
+            "data-integrity",
+            "critical-script"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/daily-mutate.test.js with vi.mock('fs') to isolate all file I/O. Use fixture files in tests/fixtures/content/ (valid siteData.json, valid content.json, malformed content.json, missing files).\\n- Test cases: mutate() preserves all required JSON schema fields (themes array, sections object, changelog array); color scheme rotation only produces valid scheme names (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver); fact/quote index rotations stay within source array bounds; tagline rewriting produces non-empty string; heading rewriting produces string containing <em> tags; changelog entries are appended not duplicated on repeated runs; script throws actionable error on missing content.json.\\n- Integration tests: Run the script against temporary copies of the real siteData.json and content.json; verify output passes validate-content.js.\\n- Acceptance criteria: All new tests pass; >80% branch coverage for daily-mutate.js; existing test suite unaffected; mock-based tests run in <10s; no false positives on valid content."
+        },
+        {
+          "id": "idea-083",
+          "title": "Lazy-Load Non-Critical UI Modules (theme-switcher, section-nav, reader-mode)",
+          "description": "theme-switcher.js (414 lines), section-nav.js (371 lines), and reader-mode.js (320 lines) are standalone modules loaded via <script> tags in index.astro on every page load, but they are only needed when the user interacts with their respective UI controls. Combined: 1105 lines of JS parsed/evaluated upfront. This task creates a lazy-loader pattern: these modules are loaded as dynamic imports only when the user first clicks their trigger button (theme toggle, nav dot, reader mode toggle). The <script> tags are replaced with small (~20-line) proxy modules that attach click listeners to the trigger elements and dynamically import the full module on first interaction. The flute button, accessibility features, and scene-bundle.js are NOT affected — they load normally. Total added code: ~60 lines across 3 proxy modules. Zero scene-init.js changes.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [
+            "lazy-loading",
+            "performance",
+            "code-splitting",
+            "initial-load",
+            "standalone-modules"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the proxy module logic by mocking dynamic import() and verifying it is NOT called until the trigger element is clicked. Test that subsequent clicks do not re-import (single-load guarantee).\\n- Integration tests: Verify that the full module loads and initializes correctly after first click. Test that all existing functionality (theme switching, nav scrolling, reader mode toggle) works identically after lazy loading.\\n- Performance tests: Measure initial JS parse/evaluate time before and after lazy loading; target >100ms reduction on mid-range mobile devices.\\n- Acceptance criteria: theme-switcher.js, section-nav.js, reader-mode.js are NOT in initial <script> tags; each has a ~20-line proxy module that loads on first click; all existing functionality preserved; dynamic import fires at most once per module; build succeeds; zero scene-init.js changes; total added code ~60 lines."
+        },
+        {
+          "id": "idea-082",
+          "title": "Unit Tests for changelog-app.js — Date-File Loading and UI Interaction",
+          "description": "public/js/changelog-app.js (434 lines) is the largest untested client-side module. It loads changelog/index.json, lazy-loads date files on expand, handles click/keyboard expansion/collapse of date cards, and renders entry lists with type badges. All of this is testable with DOM mocking via jsdom. This task creates tests/unit/changelog-app.test.js with: (1) mock fetch responses for index.json and date files, (2) tests that the index is fetched and rendered as date cards, (3) tests that clicking a date card triggers lazy-loading of the corresponding date file, (4) tests that keyboard Enter/Space on a focused card triggers expansion, (5) tests that expanded cards show entry details with correct type badges, (6) tests that already-expanded cards do not re-fetch, (7) tests that fetch failures show a user-friendly error state. Uses vitest + jsdom environment. Effort: 2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "changelog",
+            "client-side",
+            "jsdom",
+            "lazy-loading"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/changelog-app.test.js using vitest jsdom environment. Mock global.fetch to return fixture JSON responses for index.json and date files (2026-06-22.json, etc.). Use tests/fixtures/changelog/ directory with mock data.\\n- Test cases: index.json is fetched on init and rendered as date cards; clicking a date card triggers fetch of the corresponding date file; keyboard Enter/Space on focused card triggers expansion; expanded cards show entry details with correct type badges (daily-mutation, feature, fix, etc.); already-expanded cards do not re-fetch on re-click; fetch failures show user-friendly error state (not raw error); multiple date cards can be expanded independently.\\n- Integration tests: Verify that the module works with the real changelog/index.json structure (dates array, entry counts, etc.).\\n- Acceptance criteria: All new tests pass; >80% branch coverage for changelog-app.js; existing test suite unaffected; tests run in <10s; mock-based tests use no real network calls."
+        },
+        {
           "id": "idea-069",
           "title": "Geometry Instancing for Tulip and Sunflower Fields",
           "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",

@@ -62,7 +62,7 @@ cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 1. **Service Worker** — `networkFirst` for navigation requests means HTML shell is always fresh from network
 2. **Vite content hashing** — `_astro/*` filenames change when content changes (automatic bust)
 3. **Nginx `no-store` on HTML** — browsers never cache the entry point
-4. **SW cache version bump** — when `CACHE_NAME` changes (e.g., `v1` → `v2`), old caches are deleted on activate
+4. **SW cache auto-bump** — Every `npm run build` runs `scripts/bump-sw-cache.js` which increments `CACHE_NAME` (e.g., `atrija-shell-v3` → `v4`). This invalidates the old SW cache on every deploy. Do NOT manually set the version — it's automatic.
 
 **No manual cache-busting needed** — Vite hashes bundled filenames automatically. Nginx serves correct headers per path. Do NOT run `hash-assets.sh` or `BUILD_VERSION` sed — these break the build.
 
