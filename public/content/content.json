@@ -1,171 +1,187 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.20",
-    "lastUpdated": "2026-06-16",
-    "updatedBy": "AI Agent (content-layout-refresh)",
-    "season": "summer ☀️",
-    "layout": "zenith"
+    "version": "1.8.21",
+    "lastUpdated": "2026-06-21",
+    "updatedBy": "AI Agent (daily-mutation)",
+    "season": "summer solstice \u2600\ufe0f\ud83c\udf0a",
+    "layout": "abyss"
   },
   "sections": {
     "hero": {
-      "tagline": "At the <em>zenith</em> of <em>noon</em>, when <em>shadows</em> forget their <em>names</em>"
+      "tagline": "Beneath the <em>longest</em> <em>day</em>, the <em>ocean</em> <em>holds</em> its <em>breath</em> \u2014 <em>waiting</em> for the <em>deep</em>"
     },
     "today": {
-      "heading": "The <em>sun</em> at its <em>throne</em> — <em>all</em> things <em>held</em> in <em>golden</em> <em>attention</em>",
-      "intro": "Noon is the moment the world stops negotiating with itself. The sun sits at the apex of its arc, and for one suspended breath, there is no shadow long enough to hide in, no darkness deep enough to offer escape. Everything is illuminated — not harshly, but completely. The mystics call this the hour of total presence: when the light is so full that even the dust motes become visible, each one a tiny sun caught in the act of falling. To stand in this light is to be seen as you truly are — not by judgment, but by clarity. The zenith does not ask if you are worthy. It simply shines, and in shining, reveals.",
+      "heading": "The <em>deepest</em> <em>water</em> \u2014 where <em>pressure</em> <em>forges</em> what <em>light</em> <em>cannot</em>",
+      "intro": "Today the sun hangs at its highest, yet we turn our gaze downward \u2014 to the ocean floor, where no sunlight reaches and life persists in impossible forms. The longest day is not about the light; it is about the depth of the shadow that light creates. For every inch of brilliance the sun adds to the sky, the ocean's abyss grows proportionally darker, proportionally more mysterious. This is the paradox of illumination: the brighter the surface, the deeper the unknown beneath. The creatures of the midnight zone do not mourn the absence of light. They have become light \u2014 bioluminescent, self-luminous, carrying their own sun in their bodies. This is the teaching of the deep: when the world above is blinding, go below. When the surface is too bright to see, descend into the dark where vision becomes inner sight, where the eye of the mind opens to perceive what the eye of the body never could.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-16/zenith-noon.svg",
-        "description": "Impressionist zenith noon — a blazing sun at its apex radiating golden-white light across a field of sunflowers, with heat shimmer waves rising from the earth, impressionist brushstrokes in amber and gold, scattered light particles, and a sky of deep cerulean bleeding to warm peach at the horizon",
-        "credit": "Generated for Atrijā midday layout refresh"
+        "path": "/mutation-assets/2026-06-21/abyssal-depth.svg",
+        "description": "Impressionist abyssal ocean depth \u2014 deep bioluminescent creatures glowing in midnight blue darkness, a lone jellyfish radiating soft cyan light, anglerfish with its lure like a distant star, pressure waves visualized as concentric ripples, the faintest suggestion of moonlight filtering from far above, impressionist brushstrokes in deep navy, teal, and phosphorescent cyan",
+        "credit": "Generated for Atrij\u0101 daily mutation #170 \u2014 the abyss mind"
       }
     },
     "moon": {
-      "label": "V. The Hidden Sun",
-      "heading": "The <em>moon</em> <em>remembers</em> every <em>noon</em> she has <em>outlasted</em>",
-      "intro": "Even at the height of noon, the moon is there — pale, patient, a ghost of silver in the blue. She does not compete with the sun's brilliance. She simply waits, knowing that every zenith is followed by a descent. The tides she governs do not pause for daylight; the emotions she rules do not bow to logic. There is a quiet power in being present without being seen, in governing the world from behind a veil of blue sky. The moon at noon teaches that influence need not be visible to be absolute.",
+      "label": "III. The Tidal Sovereign",
+      "heading": "The <em>moon</em> <em>commands</em> what the <em>sun</em> cannot \u2014 the <em>hidden</em> <em>waters</em> of the <em>deep</em>",
+      "intro": "The sun rules the surface \u2014 the glittering, visible, obvious world. But the moon rules the depths. Her gravity pulls not just the tides but the deep ocean currents, the slow massive movements of water that regulate the planet's climate. She is the unseen governor, the quiet power that moves what the eye cannot see. In the abyssal zones, where no sunlight penetrates, life still follows the lunar cycle. Deep-sea creatures spawn by the moon's command, their reproductive rhythms synchronized to a light they will never see. This is the moon's deepest teaching: true influence operates below the surface, in the hidden waters where the real currents flow.",
       "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 3
+        "themeIndex": 0,
+        "factIndex": 11
       },
       "facts": {
-        "themeIndex": 4,
+        "themeIndex": 0,
         "slice": [
-          3,
-          5
+          11,
+          13
         ]
       },
       "quote": {
-        "themeIndex": 4,
-        "quoteIndex": 8
+        "themeIndex": 0,
+        "quoteIndex": 5
       }
     },
     "philosophy": {
-      "label": "III. The Zenith Mind",
-      "heading": "At the <em>peak</em> of <em>thought</em>, <em>silence</em> becomes the <em>only</em> <em>answer</em>",
-      "intro": "Philosophy reaches its zenith not in the accumulation of answers, but in the dissolution of questions. There is a moment — rare, fleeting — when the mind climbs so high that the air grows thin and all concepts fall away. What remains is not emptiness but fullness: the direct experience of being, unmediated by language or logic. The Greeks called it aporia, the fertile confusion that precedes wisdom. The Vedas called it neti neti — not this, not this — a negation that opens onto infinity. At the summit of thought, the thinker and the thought become one, and the distinction between seeker and sought dissolves like mist in noon light.",
+      "label": "V. The Abyss Mind",
+      "heading": "Philosophy <em>begins</em> where the <em>light</em> <em>ends</em> \u2014 in the <em>unlit</em> <em>depths</em> of pure <em>inquiry</em>",
+      "intro": "Every philosopher eventually reaches the abyss \u2014 the point where answers dissolve and only the question remains. Socrates found it in his declaration of ignorance. The Upanishads found it in neti neti \u2014 not this, not this. The deep ocean is philosophy made tangible: a place where the familiar categories of surface life cease to apply, where new forms of existence emerge from the absence of what we thought was essential. Light is essential, we believe. But the abyss proves otherwise. Life thrives without it. Consciousness \u2014 if we can call it that \u2014 persists in forms we never imagined. Philosophy's deepest insight is not an answer but a depth: the willingness to descend below every comfortable certainty into the dark water where truth, like a bioluminescent creature, reveals itself only to those who can tolerate the pressure.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 14
-      },
-      "facts": {
-        "themeIndex": 1,
-        "slice": [
-          14,
-          16
-        ]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 6
-      }
-    },
-    "gita": {
-      "label": "I. The Noon Warrior",
-      "heading": "The <em>warrior</em> who <em>acts</em> at <em>zenith</em> <em>casts</em> no <em>shadow</em> of <em>doubt</em>",
-      "intro": "Krishna spoke to Arjuna in the full light of day — not in the secrecy of night, not in the ambiguity of dawn, but at the hour when everything is visible and nothing can hide. This was deliberate. The Gita's wisdom is not for the shadows; it is for the moment when you see clearly enough to act. The noon warrior does not hesitate because hesitation belongs to twilight, to the gray spaces between yes and no. At zenith, action is pure. The arrow flies because the target is visible. The sword rises because dharma is clear. This is the Gita's gift: not the elimination of conflict, but the clarity to act within it without being consumed.",
-      "imageCard": {
-        "themeIndex": 0,
         "factIndex": 8
       },
       "facts": {
-        "themeIndex": 0,
+        "themeIndex": 1,
         "slice": [
           8,
           10
         ]
       },
       "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 7
+        "themeIndex": 1,
+        "quoteIndex": 3
       }
     },
-    "shiva": {
-      "label": "II. The Solar Dance",
-      "heading": "Shiva <em>dances</em> <em>brightest</em> when the <em>sun</em> is at its <em>throne</em>",
-      "intro": "The Tandava at noon is not the dance of destruction — it is the dance of absolute presence. When the sun reaches its apex, Shiva's rhythm is at its most intense, each gesture a universe blazing into existence. The ring of fire that surrounds him is not separate from the sun; it is the sun's energy made visible, made danceable. At this hour, creation and destruction are not opposites but partners in a single movement, like the inhale and exhale of a cosmic breath. To witness this dance at noon is to understand that the divine does not wait for darkness to reveal itself. It blazes most brilliantly in the full light.",
+    "gita": {
+      "label": "IV. The Depth Warrior",
+      "heading": "The <em>warrior</em> who <em>dives</em> <em>deepest</em> <em>finds</em> the <em>pearl</em> of <em>action</em> without <em>attachment</em>",
+      "intro": "Krishna's teaching to Arjuna is a lesson in depth psychology. The surface mind clings \u2014 to outcomes, to identity, to the fear of failure. But the deep mind, the mind that has plunged below the waves of ego, acts with a different quality entirely. It acts because action is its nature, not because it seeks reward. The deep-sea diver who descends beyond the reach of surface light enters a world where different rules apply. Pressure increases, visibility decreases, and yet the diver continues \u2014 not because the conditions are comfortable but because the depth itself is the destination. The Gita's warrior is this diver: one who has gone so deep that the surface world's rewards and punishments lose their grip, leaving only pure, unattached action.",
       "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 1
+        "themeIndex": 2,
+        "factIndex": 13
       },
       "facts": {
-        "themeIndex": 3,
+        "themeIndex": 2,
         "slice": [
-          1,
-          3
+          13,
+          15
         ]
       },
       "quote": {
-        "themeIndex": 3,
+        "themeIndex": 2,
         "quoteIndex": 8
       }
     },
-    "art": {
-      "label": "IV. The Golden Canvas",
-      "heading": "At <em>noon</em>, the <em>artist</em> <em>paints</em> with <em>light</em> itself as the <em>brush</em>",
-      "intro": "Van Gogh understood that noon is the hour of maximum revelation. His sunflowers are not flowers reaching for light — they are light made floral, energy given petal and stem. At zenith, every color is at its most saturated, every shadow at its shortest, every form at its most defined. Yet paradoxically, this is also the hour when form begins to dissolve. The heat shimmer blurs edges. The brilliance overwhelms detail. The world becomes impression — not because it is unclear, but because it is too clear, too full, too much for the eye to contain. This is the artist's noon: the moment when seeing becomes feeling, when observation becomes ecstasy.",
+    "shiva": {
+      "label": "I. The Abyss Dance",
+      "heading": "In the <em>deepest</em> <em>water</em>, where <em>light</em> has <em>never</em> <em>touched</em>, Shiva <em>dances</em> still",
+      "intro": "Below the reach of sunlight, in the crushing black of the abyssal plain, life thrives in forms that defy imagination. Anglerfish carry their own stars. Jellyfish glow with borrowed moonlight. And here, in this lightless realm, Shiva's Tandava takes on its most profound meaning \u2014 the dance is not performed for an audience but for the sheer necessity of existence. In the deep, there is no separation between dancer and dance, between creation and destruction. Every movement displaces water, every gesture sends ripples through the eternal dark. The abyss does not fear the dance; it is the dance. And in this lightless world, the only illumination comes from within \u2014 a bioluminescence that mirrors the inner light of consciousness itself.",
       "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 5
+        "themeIndex": 3,
+        "factIndex": 11
       },
       "facts": {
-        "themeIndex": 2,
+        "themeIndex": 3,
         "slice": [
-          5,
-          7
+          11,
+          13
         ]
       },
       "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 3
+        "themeIndex": 3,
+        "quoteIndex": 4
+      }
+    },
+    "art": {
+      "label": "II. The Pressure of Beauty",
+      "heading": "Beauty <em>forged</em> under <em>pressure</em> <em>becomes</em> the <em>pearl</em> \u2014 <em>irritant</em> <em>transformed</em> to <em>gem</em>",
+      "intro": "The ocean's greatest treasures are born of irritation \u2014 a grain of sand becomes a pearl, a wound in the oyster becomes art. Van Gogh knew this alchemy. His sunflowers were not painted in sunlit ease but in the asylum's confined darkness, under the pressure of a mind at war with itself. The deepest waters create the most extraordinary life: creatures that glow, that survive crushing depths, that find nourishment where none should exist. Art, like the abyssal creature, does not wait for ideal conditions. It creates its own light, its own pressure, its own beauty from the raw material of suffering. The pearl and the painting share the same origin story: something unwanted enters, and something irreplaceable emerges.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 12
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [
+          12,
+          14
+        ]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 6
       }
     }
   },
   "changelog": {
-    "version": "1.8.20",
+    "version": "1.8.21",
     "entries": [
+      {
+        "date": "2026-06-21",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #170: Color scheme \u2192 midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset",
+        "changes": [
+          "Color scheme: midnight-wave (deep ocean blue primary, teal secondary, violet accent)",
+          "Hero tagline: 'Beneath the longest day, the ocean holds its breath \u2014 waiting for the deep'",
+          "All 5 section headings rewritten with oceanic/depth/tide poetic language",
+          "Section labels: Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind",
+          "Fact/quote indices dramatically rotated: shiva\u2192shiva[3], art\u2192art[4], moon\u2192moon[0], gita\u2192gita[2], philosophy\u2192ego[1]",
+          "Today section fully rewritten: deep ocean, bioluminescence, pressure-forged beauty theme",
+          "Visual asset: abyssal-depth.svg (impressionist bioluminescent deep ocean scene)",
+          "Color scheme order rotated: midnight-wave moved to first position"
+        ]
+      },
       {
         "date": "2026-06-16",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: zenith layout, new section order (shiva→gita→philosophy→art→moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
+        "description": "Midday layout refresh: zenith layout, new section order (shiva\u2192gita\u2192philosophy\u2192art\u2192moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
       },
       {
         "date": "2026-06-16",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #169: Color scheme → ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
+        "description": "Daily mutation #169: Color scheme \u2192 ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
       },
       {
         "date": "2026-06-15",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #168: Color scheme → moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
+        "description": "Daily mutation #168: Color scheme \u2192 moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
       },
       {
         "date": "2026-06-14",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: fullbleed layout, new section order (gita→art→shiva→philosophy→moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
+        "description": "Midday layout refresh: fullbleed layout, new section order (gita\u2192art\u2192shiva\u2192philosophy\u2192moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
       },
       {
         "date": "2026-06-14",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #167: Color scheme → cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
+        "description": "Daily mutation #167: Color scheme \u2192 cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
       },
       {
         "date": "2026-06-14",
         "time": "01:12:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #166: Color scheme → volcanic-ember (fiery orange/crimson), cards layout, new hero tagline about stardust and wonder, all 5 headings rewritten with fresh poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [4,0,2,3,1], Today section rewritten with sunrise/dawn theme, new volcanic dawn SVG visual asset"
+        "description": "Daily mutation #166: Color scheme \u2192 volcanic-ember (fiery orange/crimson), cards layout, new hero tagline about stardust and wonder, all 5 headings rewritten with fresh poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [4,0,2,3,1], Today section rewritten with sunrise/dawn theme, new volcanic dawn SVG visual asset"
       },
       {
         "date": "2026-06-13",
         "time": "17:28:00",
         "type": "content",
-        "description": "Evening layout reshuffle: new section order (art→moon→shiva→philosophy→gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
+        "description": "Evening layout reshuffle: new section order (art\u2192moon\u2192shiva\u2192philosophy\u2192gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
       },
       {
         "date": "2026-06-13",
@@ -177,7 +193,7 @@
         "date": "2026-06-13",
         "time": "16:49:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
+        "description": "Daily mutation #165: Color scheme \u2192 midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
       },
       {
         "date": "2026-06-11",
@@ -189,7 +205,7 @@
         "date": "2026-06-11",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
+        "description": "Daily mutation #164: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
       },
       {
         "date": "2026-06-10",
@@ -201,25 +217,13 @@
         "date": "2026-06-10",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
+        "description": "Daily mutation #163: Color scheme \u2192 starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
       },
       {
         "date": "2026-06-09",
         "time": "12:35:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #162: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
-      },
-      {
-        "date": "2026-06-09",
-        "time": "12:12:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #161: Color scheme → lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
-      },
-      {
-        "date": "2026-06-09",
-        "time": "06:22:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #160: Added 2 new facts + 1 quote per theme (10 facts, 5 quotes total), rotated all indices, refreshed 2 intros, updated Today reflection, generated SVG visual asset, color scheme: sunflower → starry-night"
+        "description": "Daily mutation #162: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
       }
     ]
   }

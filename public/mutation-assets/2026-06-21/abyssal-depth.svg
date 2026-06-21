@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <!-- Deep ocean gradient background -->
+    <linearGradient id="deepBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#001224"/>
+      <stop offset="40%" stop-color="#000a12"/>
+      <stop offset="100%" stop-color="#000408"/>
+    </linearGradient>
+    <!-- Bioluminescent glow -->
+    <radialGradient id="jellyGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#00bcd4" stop-opacity="0.5"/>
+      <stop offset="70%" stop-color="#0097a7" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#006064" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="anglerLure" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0f7fa" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#4dd0e1" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00838f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moonBeam" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#b3e5fc" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#01579b" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Pressure wave filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background: deep ocean -->
+  <rect width="800" height="600" fill="url(#deepBg)"/>
+
+  <!-- Faint moonlight from above -->
+  <rect width="800" height="600" fill="url(#moonBeam)"/>
+
+  <!-- Pressure waves (concentric ripples) -->
+  <g opacity="0.15" stroke="#00bcd4" fill="none" stroke-width="1">
+    <ellipse cx="400" cy="300" rx="350" ry="200"/>
+    <ellipse cx="400" cy="300" rx="280" ry="160"/>
+    <ellipse cx="400" cy="300" rx="210" ry="120"/>
+    <ellipse cx="400" cy="300" rx="140" ry="80"/>
+  </g>
+
+  <!-- Deep ocean particles / marine snow -->
+  <g fill="#4dd0e1" opacity="0.3">
+    <circle cx="120" cy="150" r="1.5"/>
+    <circle cx="300" cy="80" r="1"/>
+    <circle cx="500" cy="120" r="1.5"/>
+    <circle cx="680" cy="200" r="1"/>
+    <circle cx="200" cy="250" r="1"/>
+    <circle cx="600" cy="180" r="1.5"/>
+    <circle cx="450" cy="90" r="1"/>
+    <circle cx="150" cy="350" r="1"/>
+    <circle cx="700" cy="400" r="1.5"/>
+    <circle cx="350" cy="450" r="1"/>
+    <circle cx="550" cy="500" r="1"/>
+    <circle cx="100" cy="500" r="1.5"/>
+    <circle cx="750" cy="300" r="1"/>
+    <circle cx="250" cy="550" r="1"/>
+    <circle cx="650" cy="520" r="1.5"/>
+  </g>
+
+  <!-- Jellyfish (center-left) -->
+  <g filter="url(#softGlow)">
+    <!-- Bell -->
+    <ellipse cx="250" cy="220" rx="45" ry="35" fill="#00bcd4" opacity="0.4"/>
+    <ellipse cx="250" cy="220" rx="35" ry="25" fill="#4dd0e1" opacity="0.3"/>
+    <!-- Inner glow -->
+    <ellipse cx="250" cy="220" rx="20" ry="15" fill="#e0f7fa" opacity="0.5"/>
+    <!-- Tentacles -->
+    <path d="M220,250 Q210,290 215,330 Q220,360 210,390" stroke="#00bcd4" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M235,255 Q230,300 240,340 Q235,370 225,400" stroke="#4dd0e1" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M250,255 Q255,310 250,350 Q245,380 250,410" stroke="#00e5ff" stroke-width="2" fill="none" opacity="0.7"/>
+    <path d="M265,255 Q270,300 260,340 Q265,370 275,400" stroke="#4dd0e1" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M280,250 Q290,290 285,330 Q280,360 290,390" stroke="#00bcd4" stroke-width="2" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- Anglerfish (bottom right) -->
+  <g filter="url(#glow)">
+    <!-- Body -->
+    <ellipse cx="600" cy="450" rx="40" ry="25" fill="#1a237e" opacity="0.8"/>
+    <ellipse cx="600" cy="450" rx="30" ry="18" fill="#283593" opacity="0.6"/>
+    <!-- Eye -->
+    <circle cx="585" cy="445" r="5" fill="#e8eaf6" opacity="0.8"/>
+    <circle cx="585" cy="445" r="2.5" fill="#000" opacity="0.9"/>
+    <!-- Jaw -->
+    <path d="M620,455 Q640,460 635,470 Q625,468 620,460" fill="#1a237e" opacity="0.7"/>
+    <!-- Lure stalk -->
+    <line x1="570" y1="435" x2="555" y2="410" stroke="#3949ab" stroke-width="1.5" opacity="0.7"/>
+    <!-- Lure glow -->
+    <circle cx="555" cy="408" r="8" fill="url(#anglerLure)" opacity="0.9"/>
+    <circle cx="555" cy="408" r="3" fill="#e0f7fa" opacity="1"/>
+    <!-- Fins -->
+    <path d="M590,430 Q575,415 580,405" stroke="#283593" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <path d="M610,470 Q620,485 615,495" stroke="#283593" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <!-- Tail -->
+    <path d="M560,450 Q540,445 530,455 Q540,460 560,455" fill="#1a237e" opacity="0.6"/>
+  </g>
+
+  <!-- Small bioluminescent creatures (dots with glow) -->
+  <g filter="url(#glow)">
+    <circle cx="150" cy="180" r="3" fill="#00e5ff" opacity="0.7"/>
+    <circle cx="650" cy="150" r="2" fill="#4dd0e1" opacity="0.6"/>
+    <circle cx="400" cy="100" r="2.5" fill="#80deea" opacity="0.5"/>
+    <circle cx="100" cy="400" r="2" fill="#00bcd4" opacity="0.6"/>
+    <circle cx="700" cy="350" r="3" fill="#26c6da" opacity="0.5"/>
+    <circle cx="350" cy="520" r="2" fill="#00e5ff" opacity="0.7"/>
+    <circle cx="500" cy="300" r="2.5" fill="#4dd0e1" opacity="0.4"/>
+  </g>
+
+  <!-- Impressionist brushstroke texture overlay -->
+  <g opacity="0.06" stroke="#00bcd4" fill="none" stroke-width="3">
+    <path d="M50,100 Q150,80 250,120 Q350,160 450,100"/>
+    <path d="M300,200 Q400,180 500,220 Q600,260 700,200"/>
+    <path d="M100,400 Q200,380 300,420 Q400,460 500,400"/>
+    <path d="M400,500 Q500,480 600,520 Q700,560 750,500"/>
+  </g>
+
+  <!-- Subtle violet accent particles -->
+  <g fill="#7c4dff" opacity="0.2">
+    <circle cx="180" cy="300" r="2"/>
+    <circle cx="620" cy="250" r="1.5"/>
+    <circle cx="400" cy="350" r="2"/>
+    <circle cx="300" cy="200" r="1"/>
+    <circle cx="550" cy="380" r="1.5"/>
+  </g>
+
+  <!-- Title text -->
+  <text x="400" y="570" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4dd0e1" opacity="0.5" letter-spacing="3">THE ABYSS MIND</text>
+</svg>
