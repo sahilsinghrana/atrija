@@ -716,39 +716,87 @@ main {
 .changelog-section {
   padding-bottom: 0;
 }
+
+/* ── Filters ── */
 .changelog-filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
+  gap: calc(var(--space-xs) * 0.6);
   margin-bottom: var(--space-lg);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: var(--space-xs);
 }
+.changelog-filters::-webkit-scrollbar { display: none; }
+
 .changelog-filter-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.65rem;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  padding: 0.3rem 0.75rem;
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #9a9690;
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 .changelog-filter-btn:hover {
-  background: rgba(255,213,79,0.06);
-  border-color: rgba(255,213,79,0.15);
-  color: #ccc8c0;
+  background: rgba(255,213,79,0.05);
+  border-color: rgba(255,213,79,0.12);
+  color: #d0ccc4;
 }
 .changelog-filter-btn.active {
-  background: rgba(255,213,79,0.1);
-  border-color: rgba(255,213,79,0.25);
+  background: rgba(255,213,79,0.12);
+  border-color: rgba(255,213,79,0.3);
   color: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(255,213,79,0.06);
 }
+.changelog-filter-icon { font-size: 0.7rem; }
+.changelog-filter-label { line-height: 1; }
+.changelog-filter-count {
+  font-size: 0.55rem;
+  font-weight: 700;
+  opacity: 0.5;
+  background: rgba(255,255,255,0.05);
+  padding: 0.05rem 0.35rem;
+  border-radius: 100px;
+  min-width: 1.2rem;
+  text-align: center;
+}
+.changelog-filter-btn.active .changelog-filter-count {
+  opacity: 0.8;
+  background: rgba(255,213,79,0.15);
+}
+
+/* ── Summary ── */
+.changelog-summary {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: #7a766f;
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.02em;
+}
+.changelog-summary::before {
+  content: '';
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  opacity: 0.4;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+/* ── Version line ── */
 .changelog-version-line {
   color: #9a9690;
   font-size: var(--text-sm);
@@ -759,26 +807,42 @@ main {
   position: relative;
 }
 
-/* Date cards */
-.changelog-date-card {
-  margin-bottom: var(--space-md);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  transition: border-color 0.3s ease;
+/* ── Timeline ── */
+.changelog-timeline {
+  position: relative;
 }
-.changelog-date-card:hover {
-  border-color: rgba(255, 213, 79, 0.15);
+.changelog-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.55rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.06);
 }
 
-/* Date header button */
+/* ── Date cards ── */
+.changelog-date-card {
+  margin-bottom: var(--space-sm);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255,255,255,0.015);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  position: relative;
+}
+.changelog-date-card:hover {
+  border-color: rgba(255,213,79,0.12);
+  background: rgba(255,255,255,0.025);
+}
+
+/* ── Date header button ── */
 .changelog-date-header {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
   width: 100%;
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
   background: none;
   border: none;
   color: inherit;
@@ -786,10 +850,10 @@ main {
   cursor: pointer;
   text-align: left;
   font-family: var(--font-sans);
-  transition: background 0.2s ease;
+  transition: background 0.15s ease;
 }
 .changelog-date-header:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.02);
 }
 .changelog-date-header:focus-visible {
   outline: 1px solid var(--accent-gold);
@@ -797,73 +861,93 @@ main {
 }
 
 .changelog-date-arrow {
-  display: inline-block;
-  font-size: var(--text-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
   color: var(--accent-gold);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0.6;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
   flex-shrink: 0;
   width: 1.2rem;
-  text-align: center;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: rgba(255,213,79,0.06);
+}
+.changelog-date-header:hover .changelog-date-arrow {
+  opacity: 1;
 }
 .changelog-date-arrow.expanded {
   transform: rotate(90deg);
 }
 
-.changelog-date-label {
+.changelog-date-relative {
   font-size: var(--text-sm);
   font-weight: 600;
   color: #e8e4dc;
   flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.changelog-date-short {
+  font-size: var(--text-xs);
+  color: #7a766f;
+  font-family: "Courier New", monospace;
+  flex-shrink: 0;
+  display: none;
 }
 
 .changelog-entry-count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.15rem 0.5rem;
-  border-radius: 10px;
-  background: rgba(255, 213, 79, 0.1);
-  color: var(--accent-gold);
-  border: 1px solid rgba(255, 213, 79, 0.2);
+  letter-spacing: 0.04em;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.35rem;
+  border-radius: 100px;
+  background: rgba(255,213,79,0.08);
+  color: rgba(255,213,79,0.7);
+  border: 1px solid rgba(255,213,79,0.12);
   flex-shrink: 0;
 }
 
 .changelog-date-type {
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
-  font-size: 0.55rem;
+  gap: 0.15rem;
+  font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.1rem 0.4rem;
+  padding: 0.1rem 0.35rem;
   border-radius: 3px;
   line-height: 1.4;
   flex-shrink: 0;
 }
 
-/* Date body (collapsible) */
+/* ── Date body (collapsible) ── */
 .changelog-date-body {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
   transition:
-    max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.3s ease,
-    padding 0.3s ease;
-  padding: 0 var(--space-lg);
+    max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease,
+    padding 0.25s ease;
+  padding: 0 var(--space-md);
 }
 .changelog-date-body.open {
-  max-height: 2000px;
+  max-height: 3000px;
   opacity: 1;
-  padding: 0 var(--space-lg) var(--space-lg);
+  padding: 0 var(--space-md) var(--space-md);
 }
 
-/* Loading / placeholder / error */
+/* ── Loading / error / empty states ── */
 .changelog-loading,
 .changelog-placeholder,
 .changelog-error {
@@ -876,131 +960,211 @@ main {
 .changelog-error {
   color: var(--accent-coral);
 }
-
-/* Load more button */
-.changelog-load-more {
+.changelog-loading-entries {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  width: 100%;
-  padding: var(--space-md) var(--space-lg);
-  margin-top: var(--space-md);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius-md);
-  color: #ccc8c0;
+  padding: var(--space-md) 0;
   font-family: var(--font-sans);
   font-size: var(--text-sm);
-  font-weight: 500;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-.changelog-load-more:hover {
-  background: rgba(255, 213, 79, 0.05);
-  border-color: rgba(255, 213, 79, 0.2);
-  color: var(--accent-gold);
-}
-.changelog-remaining {
-  font-size: var(--text-xs);
   color: #9a9690;
 }
+.changelog-spinner {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid rgba(255,213,79,0.15);
+  border-top-color: var(--accent-gold);
+  border-radius: 50%;
+  animation: changelog-spin 0.6s linear infinite;
+}
+@keyframes changelog-spin {
+  to { transform: rotate(360deg); }
+}
+.changelog-retry {
+  background: none;
+  border: 1px solid rgba(255,138,101,0.3);
+  color: var(--accent-coral);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.changelog-retry:hover {
+  background: rgba(255,138,101,0.08);
+}
+.changelog-empty-entries {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: #7a766f;
+  padding: var(--space-sm) 0;
+  font-style: italic;
+}
 
-/* Entry inside date body */
+/* ── Skeleton loading ── */
+.changelog-skeleton {
+  padding: var(--space-md) 0;
+}
+.changelog-skeleton-bar {
+  height: 2.2rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: var(--space-md);
+}
+.changelog-skeleton-card {
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.02) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: var(--space-sm);
+}
+.changelog-skeleton-card:nth-child(3) { animation-delay: 0.15s; }
+.changelog-skeleton-card:nth-child(4) { animation-delay: 0.3s; }
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Empty / error states ── */
+.changelog-empty-state,
+.changelog-error-state {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+}
+.changelog-empty-icon,
+.changelog-error-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+.changelog-empty-text,
+.changelog-error-text {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: #ccc8c0;
+  margin-bottom: var(--space-xs);
+}
+.changelog-empty-sub {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: #7a766f;
+}
+.changelog-retry-btn {
+  margin-top: var(--space-md);
+  padding: 0.4rem 1rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--accent-gold);
+  background: rgba(255,213,79,0.08);
+  border: 1px solid rgba(255,213,79,0.2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.changelog-retry-btn:hover {
+  background: rgba(255,213,79,0.12);
+}
+
+/* ── Load more button ── */
+.changelog-load-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  margin-top: var(--space-sm);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  color: #9a9690;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.changelog-load-more:hover {
+  background: rgba(255,213,79,0.04);
+  border-color: rgba(255,213,79,0.12);
+  color: #ccc8c0;
+}
+.changelog-load-more-text {
+  font-weight: 500;
+}
+.changelog-load-more-count {
+  font-size: var(--text-xs);
+  color: #7a766f;
+  font-weight: 400;
+}
+
+/* ── Entry inside date body ── */
 .changelog-date-body .changelog-entry {
   position: relative;
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: var(--space-sm) 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
 }
 .changelog-date-body .changelog-entry:first-child {
   border-top: none;
-  margin-top: 0;
   padding-top: 0;
 }
+.changelog-date-body .changelog-entry:last-child {
+  padding-bottom: 0;
+}
+
 .changelog-entry-header {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-bottom: var(--space-xs);
+  margin-bottom: calc(var(--space-xs) * 0.5);
   flex-wrap: wrap;
 }
 .changelog-entry-time {
   font-family: "Courier New", monospace;
   font-size: var(--text-xs);
-  color: #9a9690;
+  color: #7a766f;
   letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
+.changelog-entry-desc {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: #ccc8c0;
+  line-height: 1.6;
+  margin-bottom: var(--space-xs);
+}
+
+/* ── Type badges ── */
 .changelog-type {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.1rem 0.4rem;
+  padding: 0.05rem 0.35rem;
   border-radius: 3px;
-  line-height: 1.4;
+  line-height: 1.5;
+  flex-shrink: 0;
 }
-.changelog-type.type-initial {
-  background: rgba(255, 213, 79, 0.12);
-  color: var(--accent-gold);
-  border: 1px solid rgba(255, 213, 79, 0.2);
-}
-.changelog-type.type-feature {
-  background: rgba(79, 195, 247, 0.12);
-  color: var(--accent-blue);
-  border: 1px solid rgba(79, 195, 247, 0.2);
-}
-.changelog-type.type-fix {
-  background: rgba(255, 138, 101, 0.12);
-  color: var(--accent-coral);
-  border: 1px solid rgba(255, 138, 101, 0.2);
-}
-.changelog-type.type-content {
-  background: rgba(179, 136, 255, 0.12);
-  color: var(--accent-violet);
-  border: 1px solid rgba(179, 136, 255, 0.2);
-}
-.changelog-type.type-design {
-  background: rgba(128, 203, 196, 0.12);
-  color: var(--sage);
-  border: 1px solid rgba(128, 203, 196, 0.2);
-}
-.changelog-type.type-daily-mutation {
-  background: rgba(255, 213, 79, 0.08);
-  color: #c9a84c;
-  border: 1px solid rgba(255, 213, 79, 0.15);
-}
-.changelog-type.type-refactor {
-  background: rgba(179, 136, 255, 0.1);
-  color: #b388ff;
-  border: 1px solid rgba(179, 136, 255, 0.15);
-}
-.changelog-type.type-perf {
-  background: rgba(255, 138, 101, 0.1);
-  color: #ff8a65;
-  border: 1px solid rgba(255, 138, 101, 0.15);
-}
-.changelog-type.type-chore {
-  background: rgba(158, 154, 148, 0.1);
-  color: #9a9690;
-  border: 1px solid rgba(158, 154, 148, 0.15);
-}
+.changelog-type.type-initial   { background: rgba(255,213,79,0.12); color: var(--accent-gold); border: 1px solid rgba(255,213,79,0.2); }
+.changelog-type.type-feature   { background: rgba(79,195,247,0.12); color: var(--accent-blue); border: 1px solid rgba(79,195,247,0.2); }
+.changelog-type.type-fix       { background: rgba(255,138,101,0.12); color: var(--accent-coral); border: 1px solid rgba(255,138,101,0.2); }
+.changelog-type.type-content   { background: rgba(179,136,255,0.12); color: var(--accent-violet); border: 1px solid rgba(179,136,255,0.2); }
+.changelog-type.type-design    { background: rgba(128,203,196,0.12); color: var(--sage); border: 1px solid rgba(128,203,196,0.2); }
+.changelog-type.type-daily-mutation { background: rgba(255,213,79,0.08); color: #c9a84c; border: 1px solid rgba(255,213,79,0.15); }
+.changelog-type.type-refactor  { background: rgba(179,136,255,0.1); color: #b388ff; border: 1px solid rgba(179,136,255,0.15); }
+.changelog-type.type-perf      { background: rgba(255,138,101,0.1); color: #ff8a65; border: 1px solid rgba(255,138,101,0.15); }
+.changelog-type.type-chore     { background: rgba(158,154,148,0.1); color: #9a9690; border: 1px solid rgba(158,154,148,0.15); }
 
-.changelog-desc {
-  font-family: var(--font-serif);
-  font-size: var(--text-base);
-  font-style: italic;
-  color: #f0ece4;
-  margin-bottom: var(--space-sm);
-  line-height: 1.55;
-}
+/* ── Changes list ── */
 .changelog-changes {
   list-style: none;
   padding: 0;
@@ -1009,44 +1173,68 @@ main {
 .changelog-changes li {
   font-family: var(--font-sans);
   font-size: var(--text-sm);
-  color: #ccc8c0;
-  padding: var(--space-xs) 0 var(--space-xs) 1.1rem;
+  color: #b0ada6;
+  padding: calc(var(--space-xs) * 0.5) 0 calc(var(--space-xs) * 0.5) 1rem;
   position: relative;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 .changelog-changes li::before {
-  content: "→";
+  content: '→';
   position: absolute;
   left: 0;
   color: var(--accent-gold);
-  opacity: 0.7;
+  opacity: 0.5;
   font-size: var(--text-xs);
 }
 .changelog-changes li + li {
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255,255,255,0.03);
 }
 
-/* Mobile changelog */
+/* ═══════════════════════════════════════
+       MOBILE — Changelog
+    ═══════════════════════════════════════ */
 @media (max-width: 767px) {
+  .changelog-filters {
+    margin-left: calc(-1 * var(--space-md));
+    margin-right: calc(-1 * var(--space-md));
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
   .changelog-date-header {
-    padding: var(--space-sm) var(--space-md);
-    flex-wrap: wrap;
-    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-sm);
+    gap: calc(var(--space-xs) * 0.75);
   }
   .changelog-date-type {
     display: none;
   }
-  .changelog-date-body.open {
-    padding: 0 var(--space-md) var(--space-md);
+  .changelog-date-short {
+    display: inline;
   }
-  .changelog-desc {
-    font-size: var(--text-sm);
+  .changelog-date-relative {
+    font-size: var(--text-xs);
+  }
+  .changelog-entry-count {
+    min-width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.5rem;
+  }
+  .changelog-date-body.open {
+    padding: 0 var(--space-sm) var(--space-sm);
+  }
+  .changelog-entry-desc {
+    font-size: var(--text-xs);
   }
   .changelog-changes li {
     font-size: var(--text-xs);
   }
   .changelog-version-line {
     font-size: var(--text-xs);
+  }
+  .changelog-load-more {
+    padding: var(--space-sm);
+  }
+  .changelog-timeline::before {
+    left: 0.45rem;
   }
 }
 
