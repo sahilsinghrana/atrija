@@ -396,7 +396,7 @@
     var controller = new AbortController();
     var timeout = setTimeout(function() { controller.abort(); }, 15000);
 
-    fetch('/content/changelog/index.json', { signal: controller.signal })
+    fetch('/content/changelog/index.json?_=' + Date.now(), { signal: controller.signal })
       .then(function(r) {
         clearTimeout(timeout);
         if (!r.ok) throw new Error('HTTP ' + r.status);
