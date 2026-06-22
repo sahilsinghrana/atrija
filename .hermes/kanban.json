@@ -162,6 +162,55 @@
           "description": "Warm glowing orbs positioned along the horizon line, representing village lights. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees.",
           "category": "3D Elements",
           "priority": "low"
+        },
+        {
+          "id": "idea-085",
+          "title": "Unit Tests for moon-phase.js — Phase Calculation and Display Logic",
+          "description": "public/js/moon-phase.js is a standalone client-side module with zero test coverage. It calculates the current moon phase fraction, maps it to a phase name (New Moon, Waxing Crescent, etc.), and renders the phase display in the UI. The core logic is pure and testable: given a specific date, it should return the correct phase fraction (0–1), the correct phase name string, and the correct emoji. This task creates tests/unit/moon-phase.test.js with: (1) tests against known astronomical new moon dates (e.g., 2026-01-19, 2026-02-17) to validate phase fraction accuracy, (2) tests for all 8 phase name boundaries (exact fraction values like 0.0625, 0.1875, etc.), (3) tests that the emoji mapping returns the correct Unicode character for each phase, (4) tests that the display rendering function produces the expected DOM structure, (5) tests for edge cases (leap years, year boundaries, epoch dates). Uses vitest with jsdom environment. Effort: 1-2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "moon-phase",
+            "client-side",
+            "jsdom",
+            "astronomical-calculation"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/moon-phase.test.js using vitest jsdom environment. Test pure calculation functions with fixed Date objects (not 'new Date()').\\n- Test cases: phase fraction accuracy against known new moon dates (within 1 day tolerance); all 8 phase name boundaries with exact fraction values; emoji mapping returns correct Unicode for each phase; display rendering produces expected DOM structure with phase name and emoji; edge cases (leap years, year boundaries, dates near epoch).\\n- Integration tests: Verify that the module works correctly when loaded in a real browser context by testing the DOM manipulation side.\\n- Acceptance criteria: All new tests pass; >85% branch coverage for moon-phase.js; existing test suite unaffected; tests run in <5s; no network calls (fully mocked)."
+        },
+        {
+          "id": "idea-086",
+          "title": "Automated SVG Optimization for Daily Mutation Assets",
+          "description": "The daily-mutate.js script generates SVG visual assets in public/mutation-assets/YYYY-MM-DD/ but never optimizes them. Unnecessary whitespace, comments, metadata, and imprecise path data can bloat SVGs by 30-60%. This task adds an SVG optimization step to the daily mutation pipeline: after an SVG asset is generated, it is passed through svgo (SVG Optimizer) via a scripts/optimize-svg.js wrapper script. The optimizer removes comments, metadata, hidden elements, collapses groups, rounds path coordinates to 2 decimal places, and converts styles to attributes. The optimized SVG replaces the original only if it is smaller (safe fallback). The script is integrated into daily-mutate.js after asset generation and into the daily-deploy.sh pipeline. svgo is added as a devDependency. A --dry-run mode reports savings without modifying files. Effort: 1 session.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [
+            "svg-optimization",
+            "build-pipeline",
+            "performance",
+            "daily-mutate",
+            "asset-pipeline"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Test optimize-svg.js logic with fixture SVGs (unoptimized, already-optimized, malformed) using vi.mock('fs') and vi.mock('child_process') to isolate svgo invocation.\\n- Test cases: optimized SVG is smaller than original; already-optimized SVG is not rewritten (idempotent); malformed SVG is skipped with a warning (no crash); --dry-run mode reports savings without writing; optimization preserves visual content (key path data retained).\\n- Integration tests: Run the script against a real unoptimized SVG fixture and verify the output is valid SVG (parsable by DOMParser) and smaller.\\n- Acceptance criteria: optimize-svg.js exits 0 on valid SVG; exits 0 with warning on malformed SVG; optimized SVGs are ≥20% smaller on average; daily-mutate.js calls optimization after asset generation; svgo added to devDependencies; build succeeds."
+        },
+        {
+          "id": "idea-087",
+          "title": "WebGL Context Loss Recovery with User Feedback",
+          "description": "The Three.js scene has no handling for WebGL context loss — a common occurrence on mobile devices, when switching tabs, or under memory pressure. When context is lost, the scene silently dies: the canvas goes blank, all 3D elements vanish, and the user sees only the dark background with no explanation. This task adds a context loss recovery module (public/js/scene-context-recovery.js) that: (1) listens for the 'webglcontextlost' event on the canvas and prevents the default browser behavior, (2) displays a subtle, themed overlay explaining that the scene is restoring (with the impressionist dark theme and gold accents), (3) listens for 'webglcontextrestored' and re-initializes the scene via the existing bootScene() function, (4) if context cannot be restored after 3 attempts, shows a graceful fallback message suggesting the user refresh the page. The module is a standalone IIFE loaded via a <script> tag in index.astro — zero scene-init.js changes. It only wraps the existing canvas element with event listeners. Total added code: ~80 lines.",
+          "category": "Technical Debt & Code Quality",
+          "priority": "high",
+          "tags": [
+            "webgl",
+            "context-loss",
+            "error-handling",
+            "mobile",
+            "resilience",
+            "user-feedback"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the recovery logic by mocking the canvas element and dispatching synthetic 'webglcontextlost' and 'webglcontextrestored' events. Verify that preventDefault() is called on context lost, the overlay is shown, and bootScene() is called on restore.\\n- Test cases: context lost event triggers overlay display; context restored event triggers bootScene() and hides overlay; repeated context loss (3+ attempts) shows fallback message; module gracefully handles missing canvas element; module does not interfere with normal scene operation when no context loss occurs.\\n- Integration tests: Verify that the module loads correctly alongside scene-bundle.js and that the canvas event listeners are registered.\\n- Acceptance criteria: scene-context-recovery.js is a standalone IIFE with zero scene-init.js changes; overlay uses existing CSS custom properties (--accent-gold, --bg, etc.); bootScene() is called on context restore; fallback message shown after 3 failed attempts; build succeeds; total added code ~80 lines."
         }
       ]
     },
@@ -609,8 +658,9 @@
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Test the cache Map logic by mocking fetch and verifying cache hits/misses. Test requestIdleCallback fallback with setTimeout.\n- Integration tests: Verify that after __sceneReady fires, all 3 JSON files are fetched and stored in cache. Test that subsequent fetches hit cache (no duplicate network requests).\n- Acceptance criteria: content-prefetch.js is a standalone module with zero scene-init.js changes; JSON files are prefetched after scene ready; Save-Data header respected (no prefetch); prefers-reduced-data respected; modules can read from cache before fetching; total added code ~60 lines; build succeeds.",
           "completedAt": "2026-06-22",
+          "reviewedAt": "2026-06-22T23:55:00.000000+00:00",
           "reviewResult": "PASS",
-          "reviewNotes": "Implemented 2026-06-22 — Added content-prefetch.js (87 lines, standalone IIFE). Wraps window.__sceneReady to trigger prefetch after 3D scene initializes. Uses requestIdleCallback with setTimeout fallback. Respects Save-Data and prefers-reduced-data. Caches 3 JSON files in window.__contentCache. Updated content-search.js and changelog-app.js to check cache before fetching. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200)."
+          "reviewNotes": "Reviewed 2026-06-22 23:55 — PASS. 87-line standalone IIFE. Wraps window.__sceneReady to trigger prefetch after 3D scene initializes. Uses requestIdleCallback with setTimeout fallback. Respects Save-Data and prefers-reduced-data. Caches 3 JSON files in window.__contentCache. Updated content-search.js and changelog-app.js to check cache before fetching. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). All core elements verified intact."
         }
       ]
     }
@@ -1385,10 +1435,34 @@
       "priority": "medium",
       "status": "done",
       "completedAt": "2026-06-22"
+    },
+    {
+      "id": "idea-085",
+      "title": "Unit Tests for moon-phase.js — Phase Calculation and Display Logic",
+      "description": "Create unit tests for the standalone moon-phase.js client-side module. Tests phase fraction accuracy against known astronomical dates, all 8 phase name boundaries, emoji mapping, DOM rendering, and edge cases. Uses vitest + jsdom.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-086",
+      "title": "Automated SVG Optimization for Daily Mutation Assets",
+      "description": "Add SVG optimization via svgo to the daily mutation pipeline. Optimizes generated SVGs by removing comments, metadata, hidden elements, and rounding path coordinates. Integrated into daily-mutate.js and daily-deploy.sh. Includes --dry-run mode.",
+      "category": "Performance Optimizations",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-087",
+      "title": "WebGL Context Loss Recovery with User Feedback",
+      "description": "Add a standalone scene-context-recovery.js module that handles WebGL context loss events, shows a themed overlay during recovery, re-initializes the scene via bootScene(), and provides a graceful fallback after 3 failed attempts. Zero scene-init.js changes.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "high",
+      "status": "backlog"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-16T02:00:00Z",
-  "lastReviewAt": "2026-06-22T03:00:00Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-22 03:00): Fixed 1 status mismatch (idea-080: backlog→done). Added 7 missing backlog entries to ideas array (idea-068, 069, 074, 075, 082, 083, 084). Backlog: 10, Done: 55, Deferred: 1."
+  "lastReviewAt": "2026-06-22T23:47:00Z",
+  "lastReviewResult": "Kanban Reviewer (2026-06-22 23:47): Board is clean. No changes needed. Verified 3 new ideas (idea-085, idea-086, idea-087) added by kanban-generate are correctly in both ideas array and backlog column. All statuses match. No duplicates. No completed tasks in backlog. Deferred untouched. Core elements protected. Backlog: 17 (4 high, 9 medium, 4 low), Done: 56, Deferred: 1, Red/Green/Refactor: empty."
 }
