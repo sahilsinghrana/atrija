@@ -1,19 +1,13 @@
 {
-  "version": "1.8.23",
-  "lastUpdated": "2026-06-23T06:00:00.000Z",
-  "totalEntries": 42,
+  "version": "1.8.24",
+  "lastUpdated": "2026-06-23T12:00:00.000Z",
+  "totalEntries": 40,
   "dates": [
     {
       "date": "2026-06-23",
-      "entries": 1,
-      "latestType": "daily-mutation",
-      "description": "Daily mutation #172: starry-night colors, new tagline about night painting with stars, all 5 headings rewritten with night/star/void language, dramatic fact/quote rotation, Today rewritten with after-solstice starry night theme, new starry-vesper SVG"
-    },
-    {
-      "date": "2026-06-22",
       "entries": 2,
       "latestType": "content",
-      "description": "Midday content layout refresh: horizon layout, new section order, all 5 headings rewritten with zenith/noon/horizon language, dramatic fact/quote rotation, Today rewritten with horizon/zenith theme"
+      "description": "Midday content layout refresh: twilight layout, all 5 headings rewritten with blue hour/twilight poetic language, dramatic fact/quote rotation with cross-theme mixing, all section intros rewritten with blue hour/transition themes"
     },
     {
       "date": "2026-06-21",

@@ -48,14 +48,14 @@ export function getTimeISO() {
 
 // Returns the season name based on month (0-11)
 // Meteorological seasons: spring: 2-4 (Mar-May), summer: 5-7 (Jun-Aug), autumn: 8-10 (Sep-Nov), winter: 11,0,1 (Dec-Feb)
-function getCurrentSeason(month) {
+export function getCurrentSeason(month) {
   if (month >= 2 && month <= 4) return "spring";
   if (month >= 5 && month <= 7) return "summer";
   if (month >= 8 && month <= 10) return "autumn";
   return "winter"; // month 11, 0, 1
 }
 
-function getSeasonEmoji(season) {
+export function getSeasonEmoji(season) {
   const emojiMap = {
     spring: "🌸",
     summer: "☀️",
@@ -66,7 +66,7 @@ function getSeasonEmoji(season) {
 }
 
 // ── 1. Mutate colors in siteData.json with seasonal weighting ──
-function mutateColors(siteData, dayOfYear) {
+export function mutateColors(siteData, dayOfYear) {
   const now = new Date();
   const month = now.getMonth(); // 0-11
   const season = getCurrentSeason(month);
@@ -114,7 +114,7 @@ function mutateColors(siteData, dayOfYear) {
 // ── 2. Update ALL section text content in content.json ──
 // Each section has a fixed theme — we never rotate themes.
 // Instead we pick a random fact/quote from the same theme for variety.
-function updateAllSections(content, siteData, dayOfYear) {
+export function updateAllSections(content, siteData, dayOfYear) {
   // Fixed theme mapping: each section always uses the same theme
   const sectionThemeMap = {
     moon: 0, // Selene & The Moon
@@ -210,7 +210,7 @@ function updateAllSections(content, siteData, dayOfYear) {
 }
 
 // ── 3. Write changelog entry to date-based file ──
-function writeChangelogEntry(dayOfYear, updatedSections, scheme, season) {
+export function writeChangelogEntry(dayOfYear, updatedSections, scheme, season) {
   ensureDir(CHANGELOG_DIR);
 
   const today = getTodayISO();
@@ -278,7 +278,7 @@ function writeChangelogEntry(dayOfYear, updatedSections, scheme, season) {
 }
 
 // ── 4. Update changelog/index.json metadata ──
-function updateChangelogIndex(today, dateData) {
+export function updateChangelogIndex(today, dateData) {
   let index = {
     version: "1.2.0",
     lastUpdated: new Date().toISOString(),
@@ -337,7 +337,7 @@ function updateChangelogIndex(today, dateData) {
 }
 
 // ── 4. Sync changelog entries back to content.json ──
-function syncChangelogToContent(content, siteData) {
+export function syncChangelogToContent(content, siteData) {
   ensureDir(CHANGELOG_DIR);
 
   // Read all date files from changelog dir

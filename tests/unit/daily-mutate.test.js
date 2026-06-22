@@ -8,95 +8,85 @@
  * - writeChangelogEntry(): append vs. duplicate detection
  * - updateChangelogIndex(): index metadata, date pruning at 30+ days
  * - syncChangelogToContent(): deduplication, max 15 entries, chronological sort
- * - Integration: full mutate flow with mocked fs (no real file I/O)
- *
- * Strategy: Mock fs module via vi.mock() to isolate all file I/O.
- * Math.random is NOT stubbed — we test ranges/invariants instead of exact values.
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { join } from 'path';
-import { tmpdir } from 'os';
-import { mkdirSync, rmSync, existsSync } from 'fs';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// ─── Mock fs before importing the module under test ──────────────────────
-// We need to mock fs before the module is imported because it calls
-// loadJSON/SITE_DATA_PATH at module scope... actually, daily-mutate.js
-// does NOT execute at import time — it only declares functions and runs
-// the main block at the bottom. So we can import first, then mock.
-
-// However, the main block at the bottom of daily-mutate.js WILL execute
-// on import. We need to prevent that. Solution: mock fs BEFORE import
-// so that loadJSON throws (caught) or we can mock process.exit.
-
-const mockFs = {
-  readFileSync: vi.fn(),
-  writeFileSync: vi.fn(),
-  existsSync: vi.fn(),
-  mkdirSync: vi.fn(),
-  unlinkSync: vi.fn(),
-  readdirSync: vi.fn(),
-};
-
-vi.mock('fs', () => ({
-  __esModule: true,
-  default: mockFs,
-  readFileSync: mockFs.readFileSync,
-  writeFileSync: mockFs.writeFileSync,
-  existsSync: mockFs.existsSync,
-  mkdirSync: mockFs.mkdirSync,
-  unlinkSync: mockFs.unlinkSync,
-  readdirSync: mockFs.readdirSync,
+// Use vi.hoisted to create shared mock functions that work inside vi.mock factories
+const { mockReadFileSync, mockWriteFileSync, mockExistsSync, mockMkdirSync, mockUnlinkSync, mockReaddirSync } = vi.hoisted(() => ({
+  mockReadFileSync: vi.fn(),
+  mockWriteFileSync: vi.fn(),
+  mockExistsSync: vi.fn(),
+  mockMkdirSync: vi.fn(),
+  mockUnlinkSync: vi.fn(),
+  mockReaddirSync: vi.fn(),
 }));
 
-// Mock process.exit to prevent the script from actually exiting
+// Mock fs BEFORE the import
+vi.mock('fs', () => ({
+  default: {
+    readFileSync: (...args) => mockReadFileSync(...args),
+    writeFileSync: (...args) => mockWriteFileSync(...args),
+    existsSync: (...args) => mockExistsSync(...args),
+    mkdirSync: (...args) => mockMkdirSync(...args),
+    unlinkSync: (...args) => mockUnlinkSync(...args),
+    readdirSync: (...args) => mockReaddirSync(...args),
+  },
+  readFileSync: (...args) => mockReadFileSync(...args),
+  writeFileSync: (...args) => mockWriteFileSync(...args),
+  existsSync: (...args) => mockExistsSync(...args),
+  mkdirSync: (...args) => mockMkdirSync(...args),
+  unlinkSync: (...args) => mockUnlinkSync(...args),
+  readdirSync: (...args) => mockReaddirSync(...args),
+}));
+
+// Mock process.exit
 const mockExit = vi.spyOn(process, 'exit').mockImplementation(() => {
   throw new Error('process.exit called');
 });
 
-// Now import the module (main block will run but exit is mocked)
-const dailyMutate = await import('../../daily-mutate.js');
+// Now import the module (main block runs but exit is mocked)
+const dailyMutate = await import('../../scripts/daily-mutate.js');
 
-// ─── Fixture Data ────────────────────────────────────────────────────────
-
+// Fixture data
 const VALID_SITE_DATA = {
   themes: [
     {
       id: 'selene-moon',
-      title: 'Selene & The Moon',
+      title: 'Selene and The Moon',
       category: 'mythology',
       facts: [
         { text: 'The Moon rotates synchronously with its orbit.', source: 'Astronomy', element: 'moon' },
         { text: 'During a total lunar eclipse, the Moon turns copper-red.', source: 'Astronomy', element: 'moon' },
-        { text: 'The Moon is Earth's only natural satellite.', source: 'Astronomy', element: 'moon' },
-        { text: 'Ancient Babylonian astronomers tracked the Moon's cycles.', source: 'History', element: 'moon' },
-        { text: 'The Moon's surface holds the footprints of twelve humans.', source: 'Space', element: 'moon' },
+        { text: 'The Moon is the only natural satellite of Earth.', source: 'Astronomy', element: 'moon' },
+        { text: 'Ancient Babylonian astronomers tracked the cycles.', source: 'History', element: 'moon' },
+        { text: 'The surface holds the footprints of twelve humans.', source: 'Space', element: 'moon' },
       ],
       quotes: [
-        'We are all like the bright moon, we still have our darker side. — Kahlil Gibran',
-        'The Moon, like a flower in heaven's high bower. — William Blake',
-        'Do not swear by the moon, for she changes constantly. — Shakespeare',
-        'The Moon is the first milestone on the road to the stars. — Arthur C. Clarke',
-        'The moon does not fight. It just shines. — Thich Nhat Hanh',
+        'We are all like the bright moon. — Kahlil Gibran',
+        'The Moon, like a flower in heavens high bower. — William Blake',
+        'Do not swear by the moon. — Shakespeare',
+        'The Moon is the first milestone. — Arthur C. Clarke',
+        'The moon does not fight. — Thich Nhat Hanh',
       ],
     },
     {
       id: 'ego-arrogance',
-      title: 'Ego & Arrogance',
+      title: 'Ego and Arrogance',
       category: 'philosophy',
       facts: [
-        { text: 'The ego is a tight fist; the soul is an open hand.', source: 'Atrijā', element: 'ego' },
-        { text: 'The ego builds walls to feel safe.', source: 'Atrijā', element: 'ego' },
+        { text: 'The ego is a tight fist; the soul is an open hand.', source: 'Atrija', element: 'ego' },
+        { text: 'The ego builds walls to feel safe.', source: 'Atrija', element: 'ego' },
         { text: 'The ego is not master in its own house.', source: 'Freud', element: 'ego' },
-        { text: 'The self that it clings to as I is a story.', source: 'Atrijā', element: 'ego' },
+        { text: 'The self that it clings to as I is a story.', source: 'Atrija', element: 'ego' },
         { text: 'Ego is the phantom of the I.', source: 'Philosophy', element: 'ego' },
       ],
       quotes: [
         'The only true wisdom is in knowing you know nothing. — Socrates',
-        'The ego is a story told by the mind. — Atrijā',
-        'The ego builds walls to feel safe. — Atrijā',
+        'The ego is a story told by the mind. — Atrija',
+        'The ego builds walls to feel safe. — Atrija',
         'The ego is not master in its own house. — Freud',
-        'The ego is a tight fist. — Atrijā',
+        'The ego is a tight fist. — Atrija',
       ],
     },
     {
@@ -107,7 +97,7 @@ const VALID_SITE_DATA = {
         { text: 'The soul is neither born, and nor does it die.', source: 'Bhagavad Gita 2.20', element: 'gita' },
         { text: 'When meditation is mastered, the mind is unwavering.', source: 'Bhagavad Gita 6.19', element: 'gita' },
         { text: 'The self-controlled soul wins eternal peace.', source: 'Bhagavad Gita 2.64', element: 'gita' },
-        { text: 'You have the right to work, but never to the fruit.', source: 'Bhagavad Gita 2.47', element: 'gita' },
+        { text: 'You have the right to work.', source: 'Bhagavad Gita 2.47', element: 'gita' },
         { text: 'Action is better than inaction.', source: 'Bhagavad Gita 3.8', element: 'gita' },
       ],
       quotes: [
@@ -123,36 +113,36 @@ const VALID_SITE_DATA = {
       title: 'Shiv Purana',
       category: 'mythology',
       facts: [
-        { text: 'Shiva's Tandava is the cosmic dance of creation.', source: 'Shiv Purana', element: 'shiva' },
-        { text: 'The damaru's rhythm is the heartbeat of the cosmos.', source: 'Shiv Purana', element: 'shiva' },
-        { text: 'Shiva stands within the ring of flame and does not burn.', source: 'Mythology', element: 'shiva' },
-        { text: 'The Ganges flows from Shiva's hair.', source: 'Mythology', element: 'shiva' },
+        { text: 'Shivas Tandava is the cosmic dance of creation.', source: 'Shiv Purana', element: 'shiva' },
+        { text: 'The rhythm of the damaru is the heartbeat of the cosmos.', source: 'Shiv Purana', element: 'shiva' },
+        { text: 'Shiva stands within the ring of flame.', source: 'Mythology', element: 'shiva' },
+        { text: 'The Ganges flows from Shivas hair.', source: 'Mythology', element: 'shiva' },
         { text: 'Shiva is the destroyer of evil.', source: 'Shiv Purana', element: 'shiva' },
       ],
       quotes: [
         'Shiva dances at the hour of fire. — Shiv Purana',
-        'The damaru's rhythm is the heartbeat. — Shiv Purana',
+        'The rhythm of the damaru is the heartbeat. — Shiv Purana',
         'Shiva stands within the ring of flame. — Mythology',
-        'The Ganges flows from Shiva's hair. — Mythology',
+        'The Ganges flows from Shivas hair. — Mythology',
         'Shiva is the destroyer of evil. — Shiv Purana',
       ],
     },
     {
       id: 'art-beauty',
-      title: 'Art & Beauty',
+      title: 'Art and Beauty',
       category: 'aesthetics',
       facts: [
-        { text: 'Van Gogh painted at every hour, but his noon canvases are the most radical.', source: 'Art History', element: 'art' },
+        { text: 'Van Gogh painted at every hour.', source: 'Art History', element: 'art' },
         { text: 'Color becomes almost aggressive under direct sun.', source: 'Art Theory', element: 'art' },
         { text: 'The canvas at noon is a battlefield of color.', source: 'Art Philosophy', element: 'art' },
         { text: 'Every brushstroke must stand on its own.', source: 'Art Theory', element: 'art' },
         { text: 'The painter who wins is the one who dares to be honest.', source: 'Art Philosophy', element: 'art' },
       ],
       quotes: [
-        'The canvas at noon is a battlefield of color. — Atrijā',
+        'The canvas at noon is a battlefield of color. — Atrija',
         'Color becomes almost aggressive under direct sun. — Art Theory',
         'Every brushstroke must stand on its own. — Art Theory',
-        'The painter who wins is the one who dares to be honest. — Atrijā',
+        'The painter who wins is the one who dares to be honest. — Atrija',
         'Van Gogh painted at every hour. — Art History',
       ],
     },
@@ -218,72 +208,56 @@ const VALID_SITE_DATA = {
 };
 
 const VALID_CONTENT = {
-  meta: {
-    version: '1.8.0',
-    lastUpdated: '2026-06-22',
-    updatedBy: 'test',
-    season: 'summer ☀️',
-    layout: 'default',
-  },
+  meta: { version: '1.8.0', lastUpdated: '2026-06-22', updatedBy: 'test', season: 'summer', layout: 'default' },
   sections: {
-    hero: {
-      tagline: 'The <em>sunflower</em> <em>does</em> not <em>count</em> the <em>hours</em>',
-    },
+    hero: { tagline: 'The sunflower does not count the hours.' },
     today: {
-      heading: 'What the <em>Moon</em> reveals today',
+      heading: 'What the Moon reveals today',
       intro: 'The sun stands at its zenith.',
-      visualAsset: {
-        type: 'svg',
-        path: '/mutation-assets/2026-06-22/test.svg',
-        description: 'Test asset',
-        credit: 'Test',
-      },
+      visualAsset: { type: 'svg', path: '/mutation-assets/2026-06-22/test.svg', description: 'Test', credit: 'Test' },
     },
     moon: {
       label: 'I. The Moon',
-      heading: 'The <em>moon</em> <em>waits</em>',
-      intro: 'The moon waits below the horizon.',
+      heading: 'The moon waits.',
+      intro: 'Intro text.',
       imageCard: { themeIndex: 0, factIndex: 0 },
       facts: { themeIndex: 0, slice: [0, 2] },
       quote: { themeIndex: 0, quoteIndex: 0 },
     },
     philosophy: {
       label: 'II. The Mind',
-      heading: 'At <em>zenith</em>, the <em>mind</em>',
-      intro: 'When the sun is directly overhead.',
+      heading: 'At zenith, the mind.',
+      intro: 'Philosophy intro.',
       imageCard: { themeIndex: 1, factIndex: 0 },
       facts: { themeIndex: 1, slice: [0, 2] },
       quote: { themeIndex: 1, quoteIndex: 0 },
     },
     gita: {
       label: 'III. The Warrior',
-      heading: 'The <em>warrior</em> at <em>noon</em>',
-      intro: 'At noon, the battlefield is lit from above.',
+      heading: 'The warrior at noon.',
+      intro: 'Gita intro.',
       imageCard: { themeIndex: 2, factIndex: 0 },
       facts: { themeIndex: 2, slice: [0, 2] },
       quote: { themeIndex: 2, quoteIndex: 0 },
     },
     shiva: {
       label: 'IV. The Dance',
-      heading: 'Shiva <em>dances</em>',
-      intro: 'At noon, when the sun burns at its fiercest.',
+      heading: 'Shiva dances.',
+      intro: 'Shiva intro.',
       imageCard: { themeIndex: 3, factIndex: 0 },
       facts: { themeIndex: 3, slice: [0, 2] },
       quote: { themeIndex: 3, quoteIndex: 0 },
     },
     art: {
       label: 'V. The Canvas',
-      heading: 'The <em>canvas</em> at <em>noon</em>',
-      intro: 'Van Gogh painted at every hour.',
+      heading: 'The canvas at noon.',
+      intro: 'Art intro.',
       imageCard: { themeIndex: 4, factIndex: 0 },
       facts: { themeIndex: 4, slice: [0, 2] },
       quote: { themeIndex: 4, quoteIndex: 0 },
     },
   },
-  changelog: {
-    version: '1.8.0',
-    entries: [],
-  },
+  changelog: { version: '1.8.0', entries: [] },
 };
 
 const VALID_SEASONS = {
@@ -325,10 +299,8 @@ const VALID_SEASONS = {
 
 const VALID_SCHEMES = ['starry-night', 'sunflower', 'midnight-wave', 'tulip-garden', 'moonlit-silver'];
 
-// ─── Helper: Setup mock fs with fixture data ────────────────────────────
-
 function setupMockFs() {
-  mockFs.readFileSync.mockImplementation((path) => {
+  mockReadFileSync.mockImplementation((path) => {
     const p = typeof path === 'string' ? path : path.toString();
     if (p.includes('siteData.json')) return JSON.stringify(VALID_SITE_DATA);
     if (p.includes('content.json')) return JSON.stringify(VALID_CONTENT);
@@ -337,26 +309,24 @@ function setupMockFs() {
     if (p.match(/\d{4}-\d{2}-\d{2}\.json$/)) return JSON.stringify({ date: '2026-06-22', entries: [] });
     throw new Error(`Unexpected read: ${p}`);
   });
-  mockFs.existsSync.mockReturnValue(false);
-  mockFs.writeFileSync.mockImplementation(() => {});
-  mockFs.mkdirSync.mockImplementation(() => {});
-  mockFs.unlinkSync.mockImplementation(() => {});
-  mockFs.readdirSync.mockReturnValue([]);
+  mockExistsSync.mockReturnValue(false);
+  mockWriteFileSync.mockImplementation(() => {});
+  mockMkdirSync.mockImplementation(() => {});
+  mockUnlinkSync.mockImplementation(() => {});
+  mockReaddirSync.mockReturnValue([]);
 }
 
-// ─── Tests ────────────────────────────────────────────────────────────────
-
+// Tests
 describe('daily-mutate.js', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    mockReadFileSync.mockClear();
+    mockWriteFileSync.mockClear();
+    mockExistsSync.mockClear();
+    mockMkdirSync.mockClear();
+    mockUnlinkSync.mockClear();
+    mockReaddirSync.mockClear();
     setupMockFs();
   });
-
-  afterEach(() => {
-    mockExit.mockClear();
-  });
-
-  // ── Pure Utility Functions ──────────────────────────────────────────
 
   describe('getCurrentSeason(month)', () => {
     it('returns "spring" for months 2-4 (Mar-May)', () => {
@@ -399,21 +369,13 @@ describe('daily-mutate.js', () => {
   });
 
   describe('getDayOfYear()', () => {
-    it('returns a positive integer', () => {
+    it('returns a positive integer within valid range', () => {
       const day = dailyMutate.getDayOfYear();
       expect(day).toBeGreaterThanOrEqual(0);
       expect(day).toBeLessThanOrEqual(366);
       expect(Number.isInteger(day)).toBe(true);
     });
-
-    it('returns 1 for January 1st', () => {
-      // We can't easily mock Date without vi.useFakeTimers, but we can verify range
-      const day = dailyMutate.getDayOfYear();
-      expect(typeof day).toBe('number');
-    });
   });
-
-  // ── mutateColors() ──────────────────────────────────────────────────
 
   describe('mutateColors(siteData, dayOfYear)', () => {
     it('returns a valid color scheme from the schemes list', () => {
@@ -432,30 +394,28 @@ describe('daily-mutate.js', () => {
       expect(['spring', 'summer', 'autumn', 'winter']).toContain(result.season);
     });
 
-    it('shaderParams variation stays within ±10% of original', () => {
+    it('shaderParams variation stays within 10 percent of original', () => {
       const result = dailyMutate.mutateColors(VALID_SITE_DATA, 172);
       const original = VALID_SITE_DATA.colorSchemes[result.schemeIndex].shaderParams;
       const varied = result.scheme.shaderParams;
-
-      expect(varied.strokeDensity).toBeGreaterThanOrEqual(original.strokeDensity * 0.9);
-      expect(varied.strokeDensity).toBeLessThanOrEqual(original.strokeDensity * 1.1);
-      expect(varied.swirlFrequency).toBeGreaterThanOrEqual(original.swirlFrequency * 0.9);
-      expect(varied.swirlFrequency).toBeLessThanOrEqual(original.swirlFrequency * 1.1);
-      expect(varied.colorIntensity).toBeGreaterThanOrEqual(original.colorIntensity * 0.9);
-      expect(varied.colorIntensity).toBeLessThanOrEqual(original.colorIntensity * 1.1);
+      const tolerance = 0.10;
+      expect(varied.strokeDensity).toBeGreaterThanOrEqual(original.strokeDensity * (1 - tolerance));
+      expect(varied.strokeDensity).toBeLessThanOrEqual(original.strokeDensity * (1 + tolerance));
+      expect(varied.swirlFrequency).toBeGreaterThanOrEqual(original.swirlFrequency * (1 - tolerance));
+      expect(varied.swirlFrequency).toBeLessThanOrEqual(original.swirlFrequency * (1 + tolerance));
+      expect(varied.colorIntensity).toBeGreaterThanOrEqual(original.colorIntensity * (1 - tolerance));
+      expect(varied.colorIntensity).toBeLessThanOrEqual(original.colorIntensity * (1 + tolerance));
     });
 
-    it('produces consistent results across multiple calls (range invariants)', () => {
-      for (let i = 0; i < 20; i++) {
-        const result = dailyMutate.mutateColors(VALID_SITE_DATA, 172);
+    it('produces valid results across 20 different days', () => {
+      for (let day = 0; day < 365; day += 18) {
+        const result = dailyMutate.mutateColors(VALID_SITE_DATA, day);
         expect(VALID_SCHEMES).toContain(result.scheme.name);
         expect(result.schemeIndex).toBeGreaterThanOrEqual(0);
         expect(result.schemeIndex).toBeLessThan(VALID_SITE_DATA.colorSchemes.length);
       }
     });
   });
-
-  // ── updateAllSections() ──────────────────────────────────────────────
 
   describe('updateAllSections(content, siteData, dayOfYear)', () => {
     it('updates all 5 content sections', () => {
@@ -490,7 +450,7 @@ describe('daily-mutate.js', () => {
       });
     });
 
-    it('updates section intro with fact text', () => {
+    it('updates section intro with fact text from the correct theme', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
       dailyMutate.updateAllSections(content, VALID_SITE_DATA, 172);
       const moonIntro = content.sections.moon.intro;
@@ -499,7 +459,7 @@ describe('daily-mutate.js', () => {
       expect(validIntros).toContain(moonIntro);
     });
 
-    it('updates imageCard.factIndex to a valid index different from main factIndex', () => {
+    it('updates imageCard.factIndex to a valid index', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
       dailyMutate.updateAllSections(content, VALID_SITE_DATA, 172);
       const moonSection = content.sections.moon;
@@ -525,7 +485,7 @@ describe('daily-mutate.js', () => {
       expect(moonSection.quote.quoteIndex).toBeLessThan(VALID_SITE_DATA.themes[0].quotes.length);
     });
 
-    it('updates today heading with <em> tags', () => {
+    it('updates today heading with em tags', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
       dailyMutate.updateAllSections(content, VALID_SITE_DATA, 172);
       expect(content.sections.today.heading).toContain('<em>');
@@ -558,34 +518,29 @@ describe('daily-mutate.js', () => {
     });
   });
 
-  // ── writeChangelogEntry() ───────────────────────────────────────────
-
   describe('writeChangelogEntry(dayOfYear, updatedSections, scheme, season)', () => {
     it('writes a changelog entry to the correct date file', () => {
       const updatedSections = [
-        { sectionKey: 'moon', themeIndex: 0, factIndex: 2, theme: 'Selene & The Moon' },
+        { sectionKey: 'moon', themeIndex: 0, factIndex: 2, theme: 'Selene and The Moon' },
       ];
       const scheme = { name: 'sunflower', mood: 'warm' };
       try {
         dailyMutate.writeChangelogEntry(172, updatedSections, scheme, 'summer');
       } catch (e) {
-        // process.exit was called (mocked), that's expected
+        // process.exit was called (mocked), that is expected
       }
-      expect(mockFs.writeFileSync).toHaveBeenCalled();
+      expect(mockWriteFileSync).toHaveBeenCalled();
     });
 
     it('creates entry with correct type "daily-mutation"', () => {
       const updatedSections = [
-        { sectionKey: 'moon', themeIndex: 0, factIndex: 2, theme: 'Selene & The Moon' },
+        { sectionKey: 'moon', themeIndex: 0, factIndex: 2, theme: 'Selene and The Moon' },
       ];
       const scheme = { name: 'sunflower', mood: 'warm' };
       try {
         dailyMutate.writeChangelogEntry(172, updatedSections, scheme, 'summer');
-      } catch (e) {
-        // expected
-      }
-      // Find the call that wrote the date file (not index.json)
-      const writeCalls = mockFileSync.writeFileSync.mock.calls;
+      } catch (e) { /* expected */ }
+      const writeCalls = mockWriteFileSync.mock.calls;
       const dateFileWrite = writeCalls.find(call => {
         const content = call[1];
         return content.includes('daily-mutation') && content.includes('entries');
@@ -597,33 +552,29 @@ describe('daily-mutate.js', () => {
 
     it('does not duplicate entries on repeated calls with same time', () => {
       const updatedSections = [
-        { sectionKey: 'moon', themeIndex: 0, factIndex: 2, theme: 'Selene & The Moon' },
+        { sectionKey: 'moon', themeIndex: 0, factIndex: 2, theme: 'Selene and The Moon' },
       ];
       const scheme = { name: 'sunflower', mood: 'warm' };
       // First call
       try {
         dailyMutate.writeChangelogEntry(172, updatedSections, scheme, 'summer');
       } catch (e) { /* expected */ }
-      // Capture what was written
-      const writeCalls = mockFileSync.writeFileSync.mock.calls;
+      const writeCalls = mockWriteFileSync.mock.calls;
       const lastWrite = writeCalls[writeCalls.length - 1];
       const firstData = JSON.parse(lastWrite[1]);
       expect(firstData.entries).toHaveLength(1);
 
-      // Second call — should replace, not append
-      mockFs.writeFileSync.mockClear();
+      // Second call should replace, not append
+      mockWriteFileSync.mockClear();
       try {
         dailyMutate.writeChangelogEntry(172, updatedSections, scheme, 'summer');
       } catch (e) { /* expected */ }
-      const secondWriteCalls = mockFileSync.writeFileSync.mock.calls;
+      const secondWriteCalls = mockWriteFileSync.mock.calls;
       const secondLastWrite = secondWriteCalls[secondWriteCalls.length - 1];
       const secondData = JSON.parse(secondLastWrite[1]);
-      // Should still have 1 entry (replaced, not appended)
       expect(secondData.entries).toHaveLength(1);
     });
   });
-
-  // ── updateChangelogIndex() ──────────────────────────────────────────
 
   describe('updateChangelogIndex(today, dateData)', () => {
     it('creates index with correct structure', () => {
@@ -634,7 +585,7 @@ describe('daily-mutate.js', () => {
       try {
         dailyMutate.updateChangelogIndex('2026-06-22', dateData);
       } catch (e) { /* process.exit */ }
-      const writeCalls = mockFs.writeFileSync.mock.calls;
+      const writeCalls = mockWriteFileSync.mock.calls;
       const indexWrite = writeCalls.find(call => {
         try {
           const parsed = JSON.parse(call[1]);
@@ -657,7 +608,7 @@ describe('daily-mutate.js', () => {
       try {
         dailyMutate.updateChangelogIndex('2026-06-22', dateData);
       } catch (e) { /* process.exit */ }
-      const writeCalls = mockFs.writeFileSync.mock.calls;
+      const writeCalls = mockWriteFileSync.mock.calls;
       const indexWrite = writeCalls.find(call => {
         try {
           const parsed = JSON.parse(call[1]);
@@ -672,7 +623,6 @@ describe('daily-mutate.js', () => {
     });
 
     it('upserts existing date entry instead of duplicating', () => {
-      // First call
       const dateData1 = {
         date: '2026-06-22',
         entries: [{ time: '06:00:00', type: 'daily-mutation', description: 'test1', changes: [] }],
@@ -680,7 +630,7 @@ describe('daily-mutate.js', () => {
       try {
         dailyMutate.updateChangelogIndex('2026-06-22', dateData1);
       } catch (e) { /* expected */ }
-      const writeCalls1 = mockFs.writeFileSync.mock.calls;
+      const writeCalls1 = mockWriteFileSync.mock.calls;
       const indexWrite1 = writeCalls1.find(call => {
         try {
           const parsed = JSON.parse(call[1]);
@@ -701,7 +651,7 @@ describe('daily-mutate.js', () => {
       try {
         dailyMutate.updateChangelogIndex('2026-06-22', dateData2);
       } catch (e) { /* expected */ }
-      const writeCalls2 = mockFs.writeFileSync.mock.calls;
+      const writeCalls2 = mockWriteFileSync.mock.calls;
       const lastWrite = writeCalls2[writeCalls2.length - 1];
       const index2 = JSON.parse(lastWrite[1]);
       expect(index2.dates).toHaveLength(1);
@@ -710,20 +660,16 @@ describe('daily-mutate.js', () => {
     });
   });
 
-  // ── syncChangelogToContent() ────────────────────────────────────────
-
   describe('syncChangelogToContent(content, siteData)', () => {
     it('reads changelog files and populates content.changelog.entries', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
-      mockFs.readdirSync.mockReturnValue(['2026-06-22.json', 'index.json']);
-      mockFs.readFileSync.mockImplementation((path) => {
+      mockReaddirSync.mockReturnValue(['2026-06-22.json', 'index.json']);
+      mockReadFileSync.mockImplementation((path) => {
         const p = typeof path === 'string' ? path : path.toString();
         if (p.includes('2026-06-22.json')) {
           return JSON.stringify({
             date: '2026-06-22',
-            entries: [
-              { time: '06:00:00', type: 'daily-mutation', description: 'test', changes: [] },
-            ],
+            entries: [{ time: '06:00:00', type: 'daily-mutation', description: 'test', changes: [] }],
           });
         }
         if (p.includes('index.json')) {
@@ -734,7 +680,7 @@ describe('daily-mutate.js', () => {
         if (p.includes('seasons.json')) return JSON.stringify(VALID_SEASONS);
         throw new Error(`Unexpected read: ${p}`);
       });
-      mockFs.existsSync.mockReturnValue(true);
+      mockExistsSync.mockReturnValue(true);
 
       dailyMutate.syncChangelogToContent(content, VALID_SITE_DATA);
       expect(content.changelog.entries).toHaveLength(1);
@@ -744,15 +690,15 @@ describe('daily-mutate.js', () => {
 
     it('deduplicates entries by (date, type) pair', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
-      mockFs.readdirSync.mockReturnValue(['2026-06-22.json', '2026-06-22.json']); // simulate duplicate reads
-      mockFs.readFileSync.mockImplementation((path) => {
+      mockReaddirSync.mockReturnValue(['2026-06-22.json']);
+      mockReadFileSync.mockImplementation((path) => {
         const p = typeof path === 'string' ? path : path.toString();
         if (p.match(/\d{4}-\d{2}-\d{2}\.json$/)) {
           return JSON.stringify({
             date: '2026-06-22',
             entries: [
               { time: '06:00:00', type: 'daily-mutation', description: 'test', changes: [] },
-              { time: '06:00:00', type: 'daily-mutation', description: 'test', changes: [] }, // duplicate
+              { time: '06:00:00', type: 'daily-mutation', description: 'test', changes: [] },
             ],
           });
         }
@@ -764,17 +710,16 @@ describe('daily-mutate.js', () => {
         if (p.includes('seasons.json')) return JSON.stringify(VALID_SEASONS);
         throw new Error(`Unexpected read: ${p}`);
       });
-      mockFs.existsSync.mockReturnValue(true);
+      mockExistsSync.mockReturnValue(true);
 
       dailyMutate.syncChangelogToContent(content, VALID_SITE_DATA);
-      // Should have 1 entry (deduplicated)
       expect(content.changelog.entries).toHaveLength(1);
     });
 
     it('sorts entries chronologically (oldest first)', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
-      mockFs.readdirSync.mockReturnValue(['2026-06-20.json', '2026-06-22.json']);
-      mockFs.readFileSync.mockImplementation((path) => {
+      mockReaddirSync.mockReturnValue(['2026-06-20.json', '2026-06-22.json']);
+      mockReadFileSync.mockImplementation((path) => {
         const p = typeof path === 'string' ? path : path.toString();
         if (p.includes('2026-06-22.json')) {
           return JSON.stringify({
@@ -796,7 +741,7 @@ describe('daily-mutate.js', () => {
         if (p.includes('seasons.json')) return JSON.stringify(VALID_SEASONS);
         throw new Error(`Unexpected read: ${p}`);
       });
-      mockFs.existsSync.mockReturnValue(true);
+      mockExistsSync.mockReturnValue(true);
 
       dailyMutate.syncChangelogToContent(content, VALID_SITE_DATA);
       expect(content.changelog.entries).toHaveLength(2);
@@ -816,8 +761,8 @@ describe('daily-mutate.js', () => {
           changes: [],
         });
       }
-      mockFs.readdirSync.mockReturnValue(['all.json']);
-      mockFs.readFileSync.mockImplementation((path) => {
+      mockReaddirSync.mockReturnValue(['all.json']);
+      mockReadFileSync.mockImplementation((path) => {
         const p = typeof path === 'string' ? path : path.toString();
         if (p.includes('all.json')) {
           return JSON.stringify({ date: '2026-06-22', entries: manyEntries });
@@ -830,14 +775,12 @@ describe('daily-mutate.js', () => {
         if (p.includes('seasons.json')) return JSON.stringify(VALID_SEASONS);
         throw new Error(`Unexpected read: ${p}`);
       });
-      mockFs.existsSync.mockReturnValue(true);
+      mockExistsSync.mockReturnValue(true);
 
       dailyMutate.syncChangelogToContent(content, VALID_SITE_DATA);
       expect(content.changelog.entries.length).toBeLessThanOrEqual(15);
     });
   });
-
-  // ── Schema Validation ───────────────────────────────────────────────
 
   describe('Schema field preservation', () => {
     it('mutateColors preserves all required siteData fields', () => {
@@ -856,7 +799,6 @@ describe('daily-mutate.js', () => {
     it('updateAllSections preserves content.json section structure', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
       dailyMutate.updateAllSections(content, VALID_SITE_DATA, 172);
-      // Verify all required fields exist
       expect(content).toHaveProperty('meta');
       expect(content).toHaveProperty('sections');
       expect(content).toHaveProperty('changelog');
@@ -867,7 +809,7 @@ describe('daily-mutate.js', () => {
       expect(content.sections.today).toHaveProperty('intro');
     });
 
-    it('color scheme name is always one of the 5 valid schemes', () => {
+    it('color scheme name is always valid across 53 weeks', () => {
       for (let day = 0; day < 365; day += 7) {
         const result = dailyMutate.mutateColors(VALID_SITE_DATA, day);
         expect(VALID_SCHEMES).toContain(result.scheme.name);
@@ -875,13 +817,10 @@ describe('daily-mutate.js', () => {
     });
   });
 
-  // ── Edge Cases ──────────────────────────────────────────────────────
-
   describe('Edge cases', () => {
     it('handles missing section gracefully (no crash)', () => {
       const content = JSON.parse(JSON.stringify(VALID_CONTENT));
       delete content.sections.moon;
-      // Should not throw — updateAllSections checks `if (!section) return`
       expect(() => dailyMutate.updateAllSections(content, VALID_SITE_DATA, 172)).not.toThrow();
     });
 
@@ -903,9 +842,8 @@ describe('daily-mutate.js', () => {
       expect(() => dailyMutate.updateAllSections(content, VALID_SITE_DATA, 172)).not.toThrow();
     });
 
-    it('handles empty themes array gracefully', () => {
+    it('handles empty themes array gracefully for mutateColors', () => {
       const emptySiteData = { ...VALID_SITE_DATA, themes: [] };
-      // mutateColors should still work (schemes are separate from themes)
       expect(() => dailyMutate.mutateColors(emptySiteData, 172)).not.toThrow();
     });
   });

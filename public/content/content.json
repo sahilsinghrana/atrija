@@ -56,60 +56,74 @@
       }
     },
     "gita": {
-      "label": "III. The Night Warrior",
-      "heading": "The <em>warrior</em> who <em>fights</em> in <em>darkness</em> — <em>guided</em> not by <em>sight</em> but by the <em>inner</em> <em>star</em>",
-      "intro": "Krishna spoke the Gita at dawn, but its deepest teachings belong to the night. When Arjuna could not see his enemies clearly — when the battlefield was shrouded in confusion and grief — that was when wisdom became most necessary. The night warrior does not fight by sight but by faith, not by the light of the sun but by the light of dharma that burns within. The Gita teaches that the soul is a light that no darkness can extinguish: 'The soul is never born and never dies. It is unborn, eternal, ever-existing.' After the solstice, as the nights lengthen, the warrior within us learns to fight by starlight — to act with clarity even when the path is not illuminated, to trust the inner compass when the outer sky is dark. The night is not the enemy of the warrior. The night is the warrior's truest teacher.",
+      "label": "III. The Sword at Rest",
+      "heading": "The <em>warrior</em> <em>rests</em> at <em>twilight</em> — <em>victory</em> and <em>defeat</em> <em>folded</em> into <em>one</em> <em>equal</em> <em>breath</em>",
+      "intro": "Krishna's teaching takes on a different color at twilight. The urgency of the battlefield fades with the light, and what remains is not the call to arms but the call to stillness. 'You have the right to work, but never to the fruit of work' — at noon, this sounds like discipline. At twilight, it sounds like mercy. The warrior who has fought all day — not on a battlefield, but in the ordinary wars of living — now sets down the sword. Not in defeat, but in the recognition that some battles resolve themselves when the light changes. Arjuna's crisis was born of attachment — to outcome, to identity, to the story of who he was supposed to be. Twilight dissolves these attachments the way the tide dissolves a sand castle: gently, inevitably, without malice. The Gita teaches that dharma is not a single battle but the whole war of a lifetime, and twilight is when the warrior tends the wounds, feeds the horse, and looks at the stars with the humility of one who knows that the universe does not revolve around any single victory or defeat. The soul, Krishna says, is neither born nor dies. At twilight, this is not philosophy. It is the feeling in the air.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 1
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [1, 3]
+        "slice": [4, 6]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 2
+        "quoteIndex": 0
       }
     },
     "shiva": {
-      "label": "IV. The Midnight Dance",
-      "heading": "Shiva <em>dances</em> in the <em>darkness</em> between <em>stars</em> — the <em>void</em> his <em>stage</em>, <em>eternity</em> his <em>audience</em>",
-      "intro": "The midnight sky is Shiva's kingdom. In the vast darkness between the stars, the Nataraja performs the Tandava — the dance that creates and destroys worlds. The stars are the sparks thrown off by his whirling hair; the dark spaces between them are the pauses between drumbeats, the silence in which creation gathers itself before the next explosion of form. Shiva does not fear the void — he is the void, the formless ground from which all forms arise and to which they return. After the solstice, as the nights grow longer, Shiva's dance becomes more visible. The darkness is not empty; it is full of potential, pregnant with the light that will emerge from it. The midnight garden, seen through Shiva's eyes, is not a place of absence but of infinite presence — every shadow a hidden form, every silence a hidden sound, every ending a concealed beginning.",
+      "label": "IV. The Blue Dance",
+      "heading": "Shiva <em>dances</em> in the <em>blue</em> <em>hour</em> — <em>fire</em> and <em>starlight</em> <em>married</em> in the <em>space</em> between <em>beats</em>",
+      "intro": "The damaru's rhythm changes at twilight. During the day, it is the drum of creation — bold, assertive, driving the universe forward into form. But in the blue hour, the drum becomes a heartbeat — slow, steady, intimate. Shiva's dance in the twilight is not the public spectacle of noon or the cosmic mystery of midnight. It is the quiet dance of transition — the moment when the dancer becomes aware of his own dancing, when the movement observes itself moving. The ring of fire that surrounds Nataraja in the sculptures glows differently in twilight — less like destruction, more like warmth. The garden at blue hour is Shiva's garden in its most tender mode: the flowers closing are not dying; they are being held. The darkness gathering is not emptiness; it is the womb. The Shiv Purana teaches that Shiva is both the destroyer and the creator, and twilight is the moment when one becomes the other — the pause between the out-breath and the in-beath, the silence between the drumbeats, the blue space between the flames where new creation is conceived.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 11
+        "factIndex": 6
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [11, 13]
+        "slice": [6, 8]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 6
+        "quoteIndex": 8
       }
     },
     "art": {
-      "label": "V. The Painted Night",
-      "heading": "Van Gogh <em>painted</em> the <em>night</em> — and <em>found</em> it <em>more</em> <em>alive</em> than the <em>day</em>",
-      "intro": "The Starry Night was painted from memory, from the window of an asylum, in the small hours when the world was asleep. It is not a realistic depiction of the night sky — it is the night sky as felt from within, the cosmos as experienced by a mind that could not separate seeing from feeling. The stars are not points of light but whirlpools of energy, spiraling outward in waves of color that seem to pulse with their own inner fire. The sky is not still — it moves, it breathes, it lives. Van Gogh understood what astronomers forget: that the night sky is not a map but a poem, not a diagram but a dream. After the solstice, as the nights slowly lengthen, the painter's eye returns to the darkness and finds there what the daylight hides: the deep structure of light itself, the way darkness is not the absence of color but its most concentrated form. The painted night is more honest than the photographed day.",
+      "label": "V. The Blue Canvas",
+      "heading": "The <em>canvas</em> in the <em>blue</em> <em>hour</em> — <em>color</em> <em>between</em> <em>memory</em> and <em>dream</em>, <em>beauty</em> <em>learning</em> to <em>see</em> in the <em>dark</em>",
+      "intro": "The blue hour is the painter's most honest hour. Not because it is beautiful — though it is — but because it reveals the truth that daylight conceals: that color is not a property of objects but a conversation between light and perception. In the blue hour, the sunflower is no longer yellow. It is blue, violet, silver, shadow. The sky is not blue but a gradient of amber to indigo that no pigment can fully capture. The painter who works in the blue hour paints not what is there but what is becoming — the world in the act of transforming from day into night, from the known into the unknown. Van Gogh's twilight paintings are his most emotionally complex: the wheat fields under a fading sky, the cypresses like dark flames against the last light, the café terraces where the first gas lamps compete with the dying sun. These are paintings of transition, and transition is the deepest subject of art. The blue canvas does not ask to be understood. It asks to be felt — in the body, in the breath, in the quiet recognition that beauty is not a thing but a passing, and that the passing is the beauty.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 13
+        "factIndex": 9
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [13, 15]
+        "slice": [9, 11]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 6
+        "quoteIndex": 3
       }
     }
   },
   "changelog": {
-    "version": "1.8.23",
+    "version": "1.8.24",
     "entries": [
+      {
+        "date": "2026-06-23",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Midday content layout refresh: twilight layout, all 5 headings rewritten with blue hour/twilight poetic language (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all labels rewritten (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all fact/quote indices dramatically rotated with cross-theme mixing [0→14,1→11,2→4,3→6,4→9], all section intros rewritten with blue hour/transition/dissolution themes, Today section rewritten with blue hour/day-night sharing theme",
+        "changes": [
+          "Layout: twilight (blue hour variant)",
+          "All 5 section headings rewritten with blue hour/twilight poetic language",
+          "Section labels: Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas",
+          "Fact/quote indices dramatically rotated: moon→moon[14], philosophy→ego[11], gita→gita[4], shiva→shiva[6], art→art[9]",
+          "All 5 section intros rewritten with blue hour/transition/dissolution themes",
+          "Today section rewritten: blue hour, day and night sharing the sky, Van Gogh twilight"
+        ]
+      },
       {
         "date": "2026-06-23",
         "time": "06:00:00",

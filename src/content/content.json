@@ -90,26 +90,40 @@
       }
     },
     "art": {
-      "label": "V. The Painted Night",
-      "heading": "Van Gogh <em>painted</em> the <em>night</em> — and <em>found</em> it <em>more</em> <em>alive</em> than the <em>day</em>",
-      "intro": "The Starry Night was painted from memory, from the window of an asylum, in the small hours when the world was asleep. It is not a realistic depiction of the night sky — it is the night sky as felt from within, the cosmos as experienced by a mind that could not separate seeing from feeling. The stars are not points of light but whirlpools of energy, spiraling outward in waves of color that seem to pulse with their own inner fire. The sky is not still — it moves, it breathes, it lives. Van Gogh understood what astronomers forget: that the night sky is not a map but a poem, not a diagram but a dream. After the solstice, as the nights slowly lengthen, the painter's eye returns to the darkness and finds there what the daylight hides: the deep structure of light itself, the way darkness is not the absence of color but its most concentrated form. The painted night is more honest than the photographed day.",
+      "label": "V. The Blue Canvas",
+      "heading": "The <em>canvas</em> in the <em>blue</em> <em>hour</em> — <em>color</em> <em>between</em> <em>memory</em> and <em>dream</em>, <em>beauty</em> <em>learning</em> to <em>see</em> in the <em>dark</em>",
+      "intro": "The blue hour is the painter's most honest hour. Not because it is beautiful — though it is — but because it reveals the truth that daylight conceals: that color is not a property of objects but a conversation between light and perception. In the blue hour, the sunflower is no longer yellow. It is blue, violet, silver, shadow. The sky is not blue but a gradient of amber to indigo that no pigment can fully capture. The painter who works in the blue hour paints not what is there but what is becoming — the world in the act of transforming from day into night, from the known into the unknown. Van Gogh's twilight paintings are his most emotionally complex: the wheat fields under a fading sky, the cypresses like dark flames against the last light, the café terraces where the first gas lamps compete with the dying sun. These are paintings of transition, and transition is the deepest subject of art. The blue canvas does not ask to be understood. It asks to be felt — in the body, in the breath, in the quiet recognition that beauty is not a thing but a passing, and that the passing is the beauty.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 13
+        "factIndex": 9
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [13, 15]
+        "slice": [9, 11]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 6
+        "quoteIndex": 3
       }
     }
   },
   "changelog": {
-    "version": "1.8.23",
+    "version": "1.8.24",
     "entries": [
+      {
+        "date": "2026-06-23",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Midday content layout refresh: twilight layout, all 5 headings rewritten with blue hour/twilight poetic language (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all labels rewritten (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all fact/quote indices dramatically rotated with cross-theme mixing [0→14,1→11,2→4,3→6,4→9], all section intros rewritten with blue hour/transition/dissolution themes, Today section rewritten with blue hour/day-night sharing theme",
+        "changes": [
+          "Layout: twilight (blue hour variant)",
+          "All 5 section headings rewritten with blue hour/twilight poetic language",
+          "Section labels: Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas",
+          "Fact/quote indices dramatically rotated: moon→moon[14], philosophy→ego[11], gita→gita[4], shiva→shiva[6], art→art[9]",
+          "All 5 section intros rewritten with blue hour/transition/dissolution themes",
+          "Today section rewritten: blue hour, day and night sharing the sky, Van Gogh twilight"
+        ]
+      },
       {
         "date": "2026-06-23",
         "time": "06:00:00",
