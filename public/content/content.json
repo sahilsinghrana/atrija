@@ -3,17 +3,17 @@
   "meta": {
     "version": "1.8.22",
     "lastUpdated": "2026-06-22",
-    "updatedBy": "AI Agent (daily-mutation)",
+    "updatedBy": "AI Agent (content-layout-refresh)",
     "season": "post-solstice bloom 🌻🌅",
-    "layout": "garden"
+    "layout": "horizon"
   },
   "sections": {
     "hero": {
       "tagline": "The <em>sunflower</em> <em>does</em> not <em>count</em> the <em>hours</em> — it <em>simply</em> <em>turns</em> toward the <em>light</em>"
     },
     "today": {
-      "heading": "After the <em>longest</em> <em>day</em> — the <em>garden</em> <em>remembers</em> how to <em>burn</em>",
-      "intro": "The solstice has passed. The light, having given its all, begins the slow surrender into autumn. But the garden does not mourn. The sunflower, golden crown unbowed, stands at its tallest on this first day of the sun's retreat. It has no concept of diminishment — only orientation. Face the light, always, even as it wanes. Today we celebrate not the absence of darkness but the presence of bloom. Every petal that opens after the solstice does so with the full knowledge that the days are shortening. This is not tragedy — it is defiance. The flower blooms not because the conditions are eternal but because the moment is now. Van Gogh understood this. He painted his sunflowers in August, when the light was already fading, and made them blaze with an intensity that summer's peak could never match. The greatest beauty is always painted at the edge of loss.",
+      "heading": "At the <em>horizon</em> — where <em>light</em> <em>learns</em> the <em>shape</em> of the <em>earth</em>",
+      "intro": "The sun stands at its zenith, casting no shadow, revealing the world in its most honest form. This is the hour of clarity — when the garden holds nothing back, when every petal is fully exposed, when the heat strips away pretense and only truth remains. The sunflower, now past its peak, begins to heavy its head with the weight of seeds — the future, already forming in the present. At the horizon, the sky meets the earth in a line that exists only in perception, a boundary that is not a wall but an invitation. What lies beyond is not hidden; it is merely waiting for the light to shift. Today we rest in the fullness of the moment — the garden at its most abundant, the light at its most direct, the world at its most real. There is no twilight softness here, no dawn's gentle promise. There is only now, blazing and undeniable, like a Van Gogh canvas that dares you to look directly at the sun.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-22/solstice-bloom.svg",
@@ -22,94 +22,109 @@
       }
     },
     "moon": {
-      "label": "IV. The Golden Hour",
-      "heading": "The <em>moon</em> <em>watches</em> the <em>garden</em> <em>sleep</em> — her <em>silver</em> <em>light</em> a <em>lullaby</b> for <em>closing</em> <em>petals</em>",
-      "intro": "As the sunflowers turn their faces to follow the sun across the sky, the moon governs the garden's other half — the hours of rest, of folding inward, of quiet respiration. Tulips close at dusk, their petals drawing together like hands in prayer. The moon's light is not weaker than the sun's — it is gentler, designed not for growth but for restoration. In the golden hour, that liminal space between day and night, both lights mingle. The garden exists in two worlds simultaneously — still warm from the sun's attention, already cool beneath the moon's gaze. This is the moon's gift to the garden: the permission to rest without dying, to close without ending.",
+      "label": "V. The Horizon Line",
+      "heading": "The <em>moon</em> <em>waits</em> <em>below</em> the <em>horizon</em> — her <em>absence</em> a <em>promise</em> of <em>return</em>",
+      "intro": "At midday, the moon is invisible — not gone, but waiting on the other side of the world. The tides still move to her rhythm even when she cannot be seen. This is the moon's deepest teaching: presence is not the same as visibility. The garden grows by her gravitational pull even under the sun's dominance. The tulips, long since closed for the night, will open again at dusk — not because the moon commands them, but because they carry her rhythm in their cells. The horizon line is where the moon hides during the day, where she keeps her own counsel, trusting that the earth's rotation will bring her back into view. There is a faith in this — the faith of cycles, the trust that what disappears will return.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 3
+        "factIndex": 11
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [3, 5]
+        "slice": [11, 13]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 2
+        "quoteIndex": 5
       }
     },
     "philosophy": {
-      "label": "II. The Bloom Mind",
-      "heading": "To <em>bloom</em> is the <em>mind's</em> <em>highest</em> <em>act</em> — <em>opening</em> <em>fully</em> to what <em>light</em> <em>remains</em>",
-      "intro": "The philosopher and the flower share a single imperative: open. The sunflower does not calculate whether the light will last, whether frost will come, whether the season will be kind. It opens because opening is its nature. The mind, too, has this nature — to open toward truth, toward beauty, toward the unknown. But the mind, unlike the flower, can choose to close. It can retreat into the bud of certainty, of dogma, of fear. Philosophy is the discipline of remaining open — of turning toward the light even when, especially when, the days are growing shorter. The bloom mind does not wait for perfect conditions. It blooms now, in this light, with whatever warmth remains.",
+      "label": "I. The Zenith Mind",
+      "heading": "At <em>zenith</em>, the <em>mind</em> <em>casts</em> no <em>shadow</em> — <em>thought</em> and <em>being</em> become <em>one</em>",
+      "intro": "When the sun is directly overhead, every shadow falls beneath the object that casts it. There is nowhere to hide. The mind at zenith is like this — fully present, fully exposed, without the long shadows of past and future. The philosopher seeks this state not by escaping the world but by standing directly in it. At noon, the light is merciless and honest. It reveals every vein in every leaf, every crack in every stone. And yet the garden does not suffer from this exposure. It thrives. The flower that opens fully to the noon sun opens without shame, without calculation. This is the zenith mind: to be so fully present that the distinction between observer and observed dissolves, and all that remains is the blazing fact of being alive.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 6
+        "factIndex": 2
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [6, 8]
+        "slice": [2, 4]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 7
+        "quoteIndex": 3
       }
     },
     "gita": {
-      "label": "V. The Garden Warrior",
-      "heading": "The <em>warrior</em> <em>tends</em> the <em>garden</em> — <em>action</em> as <em>devotion</em>, <em>work</em> as <em>worship</em>",
-      "intro": "Krishna's teaching to Arjuna is a gardening manual in disguise. 'You have the right to work, but never to the fruit of work.' The gardener who plants seeds and then digs them up each night to check if they've grown will never harvest anything. The gardener who plants, waters, and trusts — who tends without clutching — this is the warrior of the Gita. Action without attachment is not cold detachment; it is the warm, steady attention of one who loves the work itself more than the reward. The sunflower does not bloom to be admired. It blooms because blooming is its dharma. The warrior acts because action is the warrior's nature — not for victory, but because the battle is the path.",
+      "label": "III. The Noon Warrior",
+      "heading": "The <em>warrior</em> at <em>noon</em> — <em>action</em> <em>stripped</em> of <em>shadow</em>, <em>pure</em> as the <em>sword</em> that <em>reflects</em> the <em>sun</em>",
+      "intro": "At noon, the battlefield is lit from above. There are no hidden positions, no shadows to conceal ambush. The warrior who fights at noon fights with absolute clarity — every move visible, every intention bare. This is the Gita's highest teaching: to act without the shadow of desire, without the darkness of outcome. Krishna tells Arjuna that the soul is neither born nor dies — at noon, this truth is self-evident. The body stands in full light, and the soul within it is not hidden. The warrior who knows this fights not to win but because fighting is dharma. The sunflower that blooms at noon blooms without reservation, without the soft gradations of dawn or dusk. It simply is, fully, completely, without shadow.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 4
+        "factIndex": 8
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [4, 6]
+        "slice": [8, 10]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 1
-      }
-    },
-    "shiva": {
-      "label": "III. The Petal Dance",
-      "heading": "Each <em>falling</em> <em>petal</em> is a <em>step</em> in <em>Shiva's</em> <em>dance</em> — <em>beauty</em> <em>surrendered</em> to <em>become</em> <em>beauty</em> <em>renewed</em>",
-      "intro": "The garden is Shiva's temple, and every falling petal is a prayer. The cherry blossom's beauty is inseparable from its brevity — it is precious because it passes. Shiva's Tandava, the cosmic dance, is not a dance of permanence but of perpetual transformation. The petal falls, the seed forms, the new shoot rises — each phase a step in the eternal choreography. To watch a sunflower's petals curl and brown is not to witness death but to witness the dance. Nothing in the garden is lost; everything is transformed. The fallen petal feeds the soil that feeds the next bloom. Shiva dances in the space between the falling and the rising, and in that space, the garden finds its deepest truth: that beauty is not a state but a process, not a possession but a passage.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 7
-      },
-      "facts": {
-        "themeIndex": 3,
-        "slice": [7, 9]
-      },
-      "quote": {
-        "themeIndex": 3,
         "quoteIndex": 6
       }
     },
-    "art": {
-      "label": "I. The Painted Garden",
-      "heading": "Van Gogh's <em>sunflowers</em> <em>never</em> <em>withered</em> — they <em>burn</em> <em>eternally</em> in <em>cadmium</em> <em>yellow</em> <em>flame</em>",
-      "intro": "In August 1888, Van Gogh painted a series of sunflowers that would outlast every garden he ever depicted. The real flowers died within days. The painted ones have burned for nearly a century and a half, their yellows so intense they seem to generate their own light. This is art's deepest magic: not the preservation of beauty but its transmutation. The painter takes the fleeting — the petal, the light, the moment — and fixes it in a medium that outlasts the original. But the painting is not a copy of the flower. It is a new thing entirely — a sunflower made of pigment and intention, of brushstrokes and longing. The garden inspires the art, and the art, in turn, teaches us how to see the garden. Each transforms the other, endlessly, like Shiva's dance of creation and destruction.",
+    "shiva": {
+      "label": "IV. The Blazing Dance",
+      "heading": "Shiva <em>dances</em> at the <em>hour</em> of <em>fire</em> — the <em>damaru's</em> <em>rhythm</em> the <em>heartbeat</em> of the <em>noon</em> <em>sun</em>",
+      "intro": "At noon, when the sun burns at its fiercest, Shiva's dance is most alive. The Tandava is not a dance of the night — it is a dance of the cosmos, and the cosmos burns. Every star is a sun, every sun a note in the damaru's rhythm. The garden at noon is a temple of heat: the air shimmers, the petals curl slightly, the bees move faster. This is not suffering — it is intensity. Shiva's dance does not avoid the fire; it is the fire. The Nataraja stands within the ring of flame and does not burn, because he is the burning itself. The noon garden teaches the same lesson: that life at its most intense is not something to endure but something to become. The sunflower does not wilt in the noon heat — it turns its face to the fire and calls it home.",
       "imageCard": {
-        "themeIndex": 4,
+        "themeIndex": 3,
         "factIndex": 1
       },
       "facts": {
-        "themeIndex": 4,
+        "themeIndex": 3,
         "slice": [1, 3]
       },
       "quote": {
-        "themeIndex": 4,
+        "themeIndex": 3,
         "quoteIndex": 4
+      }
+    },
+    "art": {
+      "label": "II. The Noon Canvas",
+      "heading": "The <em>canvas</em> at <em>noon</em> — <em>light</em> so <em>honest</em> it <em>paints</em> <em>itself</em>, <em>truth</em> in <em>cadmium</em> and <em>chrome</em>",
+      "intro": "Van Gogh painted at every hour, but his noon canvases are the most radical. Under direct sun, color becomes almost aggressive — the yellows too yellow, the blues too blue, the greens almost electric. There is no atmospheric perspective to soften the world at noon. Everything is equally present, equally demanding of attention. The painter who works at noon must confront the world without the mercy of twilight. Every brushstroke must stand on its own, because the light will not forgive hesitation. This is why Van Gogh's sunflowers are so fierce — they were painted in the full light of southern France, where the noon sun is not gentle but absolute. The canvas at noon is a battlefield of color, and the painter who wins is the one who dares to be honest.",
+      "imageCard": {
+        "themeIndex": 4,
+        "factIndex": 12
+      },
+      "facts": {
+        "themeIndex": 4,
+        "slice": [12, 14]
+      },
+      "quote": {
+        "themeIndex": 4,
+        "quoteIndex": 2
       }
     }
   },
   "changelog": {
     "version": "1.8.22",
     "entries": [
+      {
+        "date": "2026-06-22",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Midday content layout refresh: horizon layout, new section order (moon→art→philosophy→shiva→gita), all 5 headings rewritten with zenith/noon/horizon poetic language (Horizon Line, Zenith Mind, Noon Canvas, Blazing Dance, Noon Warrior), all labels rewritten (Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with midday clarity/honesty/fire themes, Today section rewritten with horizon/zenith/blazing honesty theme",
+        "changes": [
+          "Layout: horizon (new midday variant)",
+          "Section order: moon→art→philosophy→shiva→gita",
+          "All 5 section headings rewritten with noon/horizon/zenith poetic language",
+          "Section labels: Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas",
+          "Fact/quote indices dramatically rotated: moon→moon[11], art→art[12], philosophy→ego[2], shiva→shiva[1], gita→gita[8]",
+          "All 5 section intros rewritten with midday clarity/honesty/intensity themes",
+          "Today section rewritten: horizon, zenith, blazing honesty, Van Gogh noon canvas"
+        ]
+      },
       {
         "date": "2026-06-22",
         "time": "06:00:00",
@@ -184,7 +199,7 @@
         "date": "2026-06-13",
         "time": "16:49:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
+        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section rewritten with dusk/evening theme, new comet trail SVG visual asset"
       },
       {
         "date": "2026-06-11",
