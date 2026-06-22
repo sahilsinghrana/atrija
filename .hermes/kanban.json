@@ -230,22 +230,6 @@
           "testingStrategy": "- Unit tests: Create tests/unit/content-search.test.js using vitest jsdom environment. Test pure logic functions (normalize, scoreMatch, highlightMatch, truncate) with fixed inputs. Test search() with a mock CONTENT_INDEX array. Test DOM rendering with jsdom (overlay creation, result rendering, show/hide).\\n- Test cases: normalize() strips HTML tags, lowercases, collapses whitespace, handles unicode; scoreMatch() returns 0 for no match, 1 per word, +2 bonus for exact phrase; highlightMatch() wraps matches in <mark> with proper regex escaping; truncate() clips at word boundary with ellipsis; search() sorts by score descending, deduplicates by normalized text, caps at 30 results; DOM rendering creates overlay with correct ARIA attributes; performSearch renders grouped results with type labels.\\n- Integration tests: Verify that the module works with the real content.json and siteData.json structure (index building, search across all content types).\\n- Acceptance criteria: All new tests pass; >85% branch coverage for content-search.js; existing test suite unaffected; tests run in <10s; no network calls (fully mocked)."
         },
         {
-          "id": "idea-089",
-          "title": "Remove hash-assets.sh and BUILD_VERSION sed from daily-deploy.sh",
-          "description": "scripts/daily-deploy.sh (line 28) calls hash-assets.sh and (line 25-26) runs sed to inject BUILD_VERSION into dist/index.html. AGENTS.md explicitly states: 'Do NOT run hash-assets.sh or BUILD_VERSION sed — these break the build.' The site already has proper cache-busting via Vite content hashing (_astro/* filenames change when content changes), nginx no-store headers on HTML, and auto-bumping service worker cache versions (bump-sw-cache.js). The hash-assets.sh script is a leftover from a previous architecture that rewrites filenames, which conflicts with Vite's built-in hashing. BUILD_VERSION sed is unnecessary because index.html is never cached (no-store). This task: (1) removes lines 25-28 from daily-deploy.sh (the BUILD_VERSION sed and hash-assets.sh call), (2) verifies the deploy pipeline works without them by running the full build→deploy→verify cycle, (3) confirms the site deploys correctly with cp -r dist/* only. Zero scene-init.js changes. Total removed code: 4 lines. Effort: 1 session.",
-          "category": "Technical Debt & Code Quality",
-          "priority": "medium",
-          "tags": [
-            "technical-debt",
-            "deploy-pipeline",
-            "build-pipeline",
-            "cache-busting",
-            "cleanup"
-          ],
-          "effort": "1 session",
-          "testingStrategy": "- Integration tests: Run the full daily-deploy.sh pipeline (without content mutation) and verify: build succeeds, dist/ is deployed to nginx root, curl returns HTTP 200, site renders correctly in browser.\\n- Cache verification: Confirm that _astro/* assets have content-hashed filenames (e.g., index.abc123.js), index.html has no-cache headers, and the service worker cache version auto-increments.\\n- Regression tests: Verify that all existing functionality (scene, content, changelog, search, theme switcher) works after the simplified deploy.\\n- Acceptance criteria: daily-deploy.sh no longer calls hash-assets.sh or BUILD_VERSION sed; deploy pipeline succeeds; site live at HTTP 200; Vite content hashing provides automatic cache busting; SW cache version auto-bumps on each build; zero scene-init.js changes."
-        },
-        {
           "id": "idea-090",
           "title": "Scene Boot Error Boundary — Themed Error Overlay with Recovery",
           "description": "If bootScene() throws during initialization (e.g., WebGL unsupported, shader compilation failure, out of memory), the 3D scene silently dies and the loader stays indefinitely (only an 8s safety timeout in loader-progress.js saves it). The user sees a blank dark screen with no explanation. This task creates a standalone public/js/scene-error-boundary.js module (~100 lines) that: (1) wraps the existing bootScene() call in a try/catch before the scene-bundle.js auto-boot executes, (2) on error, displays a themed error overlay (dark #08080f background, gold --accent-gold accents, serif font) with a clear message explaining the scene could not load, (3) provides a 'Retry' button that re-attempts bootScene() and a 'Continue without 3D' button that hides the loader and shows the content sections, (4) logs the error to the browser console for debugging, (5) respects prefers-reduced-motion for any overlay animations. The module is loaded as a <script> tag in index.astro BEFORE scene-bundle.js, so it can intercept the boot. Zero scene-init.js changes — it only wraps the existing window.__sceneReady/__sceneFailed hooks. Total added code: ~100 lines.",
@@ -712,6 +696,11 @@
           "reviewedAt": "2026-06-22T23:55:00.000000+00:00",
           "reviewResult": "PASS",
           "reviewNotes": "Reviewed 2026-06-22 23:55 — PASS. 87-line standalone IIFE. Wraps window.__sceneReady to trigger prefetch after 3D scene initializes. Uses requestIdleCallback with setTimeout fallback. Respects Save-Data and prefers-reduced-data. Caches 3 JSON files in window.__contentCache. Updated content-search.js and changelog-app.js to check cache before fetching. Zero scene-init.js changes. Build succeeds. Site live (HTTP 200). All core elements verified intact."
+        },
+        {
+          "id": "idea-089",
+          "title": "Remove hash-assets.sh and BUILD_VERSION sed from daily-deploy.sh",
+          "completedAt": "2026-06-23"
         }
       ]
     }
@@ -1017,7 +1006,7 @@
     {
       "id": "idea-041",
       "title": "Aurora Borealis Sky Band",
-      "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. NOTE: Depends on idea-032 (time-of-day) which is currently rolled back.",
+      "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. NOTE: Depends on idea-032 (time-of-day).",
       "category": "3D Elements",
       "priority": "low",
       "status": "backlog",
@@ -1510,10 +1499,42 @@
       "category": "Technical Debt & Code Quality",
       "priority": "high",
       "status": "backlog"
+    },
+    {
+      "id": "idea-088",
+      "title": "Unit Tests for content-search.js — Fuzzy Search Logic and UI Rendering",
+      "description": "Create unit tests for content-search.js (529 lines) covering normalize(), scoreMatch(), highlightMatch(), truncate(), search() pipeline, and DOM rendering functions. Uses vitest + jsdom.",
+      "category": "Testing & Reliability",
+      "priority": "high",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-089",
+      "title": "Remove hash-assets.sh and BUILD_VERSION sed from daily-deploy.sh",
+      "description": "Remove the hash-assets.sh call and BUILD_VERSION sed from daily-deploy.sh. AGENTS.md explicitly states these break the build. Vite content hashing + nginx no-store + auto-bumping SW cache already provide proper cache-busting.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-089",
+      "title": "Remove hash-assets.sh and BUILD_VERSION sed from daily-deploy.sh",
+      "description": "Removed BUILD_VERSION sed and hash-assets.sh call from daily-deploy.sh. The site already has proper cache-busting via Vite content hashing, nginx no-store headers on HTML, and auto-bumping service worker cache versions.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "medium",
+      "status": "done"
+    },
+    {
+      "id": "idea-090",
+      "title": "Scene Boot Error Boundary — Themed Error Overlay with Recovery",
+      "description": "Create a standalone scene-error-boundary.js module that wraps bootScene() in try/catch, displays a themed error overlay on failure, provides Retry and Continue without 3D buttons. Zero scene-init.js changes.",
+      "category": "Technical Debt & Code Quality",
+      "priority": "high",
+      "status": "backlog"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-16T02:00:00Z",
-  "lastReviewAt": "2026-06-22T23:47:00Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-22 23:47): Board is clean. No changes needed. Verified 3 new ideas (idea-085, idea-086, idea-087) added by kanban-generate are correctly in both ideas array and backlog column. All statuses match. No duplicates. No completed tasks in backlog. Deferred untouched. Core elements protected. Backlog: 17 (4 high, 9 medium, 4 low), Done: 56, Deferred: 1, Red/Green/Refactor: empty."
+  "lastReviewAt": "2026-06-23T03:00:00Z",
+  "lastReviewResult": "Kanban Reviewer (2026-06-23 03:00): Added 3 missing ideas array entries (idea-088, idea-089, idea-090) that were in backlog column but missing from ideas index. Updated idea-041 description to remove stale 'rolled back' reference (idea-032 is in backlog). Backlog now: 20 tasks (6 high, 10 medium, 4 low), Done: 56, Deferred: 1. No duplicates found. No completed tasks in backlog. Deferred untouched. Core elements protected."
 }

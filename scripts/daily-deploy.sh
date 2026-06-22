@@ -21,13 +21,8 @@ npm run build 2>&1 | tail -5
 
 # Step 3: Deploy to Nginx
 echo "[daily-deploy] Step 3: Deploying to Nginx..."
-# Inject cache-busting version into scene-init.js script tag
-BUILD_VERSION=$(date +%s)
-sed -i "s/BUILD_VERSION/$BUILD_VERSION/g" dist/index.html
-# Hash all static assets for cache-busting
-bash scripts/hash-assets.sh
 cp -r dist/* "$DEPLOY_DIR/"
-echo "[daily-deploy] Deployed to $DEPLOY_DIR (v$BUILD_VERSION)"
+echo "[daily-deploy] Deployed to $DEPLOY_DIR"
 
 # Step 4: Verify deployment
 HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8080/)
