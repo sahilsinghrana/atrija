@@ -393,6 +393,28 @@
       '<div class="changelog-skeleton-card"></div>' +
       '</div>';
 
+    // Check prefetch cache first (populated by content-prefetch.js after scene ready)
+    var CACHE = (window && window.__contentCache) || {};
+    var cachedChangelog = CACHE['changelog'];
+    if (cachedChangelog) {
+      // Use cached data directly, skip fetch
+      state.dates = cachedChangelog.dates || [];
+      state.totalEntries = cachedChangelog.totalEntries || 0;
+      computeFilterCounts();
+      if (!state.dates.length) {
+        app.innerHTML = '<div class="changelog-empty-state">' +
+          '<div class="changelog-empty-icon">📋</div>' +
+          '<div class="changelog-empty-text">No changelog entries yet.</div>' +
+          '<div class="changelog-empty-sub">Updates will appear here as the project evolves.</div>' +
+          '</div>';
+        return;
+      }
+      app.innerHTML = '';
+      app.appendChild(renderFilterBar());
+      renderDates();
+      return;
+    }
+
     var controller = new AbortController();
     var timeout = setTimeout(function() { controller.abort(); }, 15000);
 

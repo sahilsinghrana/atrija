@@ -84,6 +84,8 @@
     CONTENT_INDEX = [];
 
     // We fetch JSON content files to build the index
+    // Check prefetch cache first (populated by content-prefetch.js after scene ready)
+    var CACHE = (window && window.__contentCache) || {};
     var pending = 2;
     var siteData = null;
     var contentData = null;
@@ -97,17 +99,29 @@
       }
     }
 
-    // Fetch siteData.json
-    fetch('/content/siteData.json')
-      .then(function (r) { return r.json(); })
-      .then(function (d) { siteData = d; checkDone(); })
-      .catch(function () { checkDone(); });
+    // Fetch siteData.json (use cache if available)
+    var cachedSiteData = CACHE['siteData'];
+    if (cachedSiteData) {
+      siteData = cachedSiteData;
+      checkDone();
+    } else {
+      fetch('/content/siteData.json')
+        .then(function (r) { return r.json(); })
+        .then(function (d) { siteData = d; checkDone(); })
+        .catch(function () { checkDone(); });
+    }
 
-    // Fetch content.json
-    fetch('/content/content.json')
-      .then(function (r) { return r.json(); })
-      .then(function (d) { contentData = d; checkDone(); })
-      .catch(function () { checkDone(); });
+    // Fetch content.json (use cache if available)
+    var cachedContent = CACHE['content'];
+    if (cachedContent) {
+      contentData = cachedContent;
+      checkDone();
+    } else {
+      fetch('/content/content.json')
+        .then(function (r) { return r.json(); })
+        .then(function (d) { contentData = d; checkDone(); })
+        .catch(function () { checkDone(); });
+    }
 
     // Fetch koans.json (optional)
     fetch('/content/koans.json')
