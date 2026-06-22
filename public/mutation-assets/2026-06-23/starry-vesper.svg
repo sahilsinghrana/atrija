@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <radialGradient id="skyGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="40%" stop-color="#0d1b3e"/>
+      <stop offset="100%" stop-color="#050a18"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8e1" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#ffd54f" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1a237e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="800" height="500" fill="url(#skyGrad)"/>
+
+  <!-- Swirling brushstroke sky texture -->
+  <g opacity="0.15">
+    <path d="M0,200 Q200,150 400,220 Q600,290 800,240" stroke="#4fc3f7" stroke-width="30" fill="none" filter="url(#softGlow)"/>
+    <path d="M0,280 Q200,230 400,300 Q600,370 800,320" stroke="#1a237e" stroke-width="25" fill="none" filter="url(#softGlow)"/>
+    <path d="M0,150 Q200,180 400,130 Q600,80 800,160" stroke="#ffd54f" stroke-width="15" fill="none" filter="url(#softGlow)"/>
+    <path d="M0,350 Q200,300 400,370 Q600,440 800,380" stroke="#4fc3f7" stroke-width="20" fill="none" filter="url(#softGlow)"/>
+  </g>
+
+  <!-- Stars - scattered with varying sizes -->
+  <g filter="url(#starGlow)">
+    <!-- Bright stars -->
+    <circle cx="120" cy="80" r="3" fill="#fff8e1"/>
+    <circle cx="250" cy="45" r="2.5" fill="#ffd54f"/>
+    <circle cx="380" cy="95" r="2" fill="#e8e8f0"/>
+    <circle cx="520" cy="60" r="3.5" fill="#fff8e1"/>
+    <circle cx="650" cy="100" r="2" fill="#4fc3f7"/>
+    <circle cx="750" cy="50" r="2.5" fill="#ffd54f"/>
+    <circle cx="90" cy="150" r="2" fill="#e8e8f0"/>
+    <circle cx="310" cy="130" r="1.5" fill="#fff8e1"/>
+    <circle cx="450" cy="70" r="2" fill="#ffd54f"/>
+    <circle cx="580" cy="140" r="3" fill="#fff8e1"/>
+    <circle cx="700" cy="170" r="1.5" fill="#4fc3f7"/>
+    <circle cx="160" cy="200" r="2" fill="#e8e8f0"/>
+    <circle cx="420" cy="160" r="1.5" fill="#ffd54f"/>
+    <circle cx="620" cy="85" r="2" fill="#fff8e1"/>
+    <circle cx="770" cy="130" r="1.5" fill="#e8e8f0"/>
+    <!-- Small dim stars -->
+    <circle cx="50" cy="100" r="1" fill="#e8e8f0" opacity="0.6"/>
+    <circle cx="180" cy="120" r="1" fill="#fff8e1" opacity="0.5"/>
+    <circle cx="340" cy="55" r="1" fill="#ffd54f" opacity="0.7"/>
+    <circle cx="480" cy="110" r="1" fill="#e8e8f0" opacity="0.6"/>
+    <circle cx="560" cy="40" r="1" fill="#4fc3f7" opacity="0.5"/>
+    <circle cx="690" cy="65" r="1" fill="#fff8e1" opacity="0.6"/>
+    <circle cx="210" cy="170" r="1" fill="#e8e8f0" opacity="0.4"/>
+    <circle cx="370" cy="145" r="1" fill="#ffd54f" opacity="0.5"/>
+    <circle cx="530" cy="175" r="1" fill="#fff8e1" opacity="0.6"/>
+    <circle cx="730" cy="200" r="1" fill="#4fc3f7" opacity="0.4"/>
+    <circle cx="140" cy="250" r="1" fill="#e8e8f0" opacity="0.5"/>
+    <circle cx="290" cy="190" r="1" fill="#fff8e1" opacity="0.4"/>
+    <circle cx="460" cy="200" r="1" fill="#ffd54f" opacity="0.6"/>
+    <circle cx="640" cy="210" r="1" fill="#e8e8f0" opacity="0.5"/>
+    <circle cx="60" cy="180" r="1" fill="#fff8e1" opacity="0.3"/>
+    <circle cx="350" cy="180" r="1" fill="#4fc3f7" opacity="0.4"/>
+    <circle cx="710" cy="90" r="1" fill="#ffd54f" opacity="0.5"/>
+  </g>
+
+  <!-- Moon with glow -->
+  <circle cx="600" cy="120" r="80" fill="url(#moonGlow)" opacity="0.6"/>
+  <circle cx="600" cy="120" r="45" fill="#fff8e1" opacity="0.9"/>
+  <circle cx="585" cy="105" r="8" fill="#e8e8f0" opacity="0.3"/>
+  <circle cx="615" cy="130" r="12" fill="#e8e8f0" opacity="0.25"/>
+  <circle cx="595" cy="140" r="6" fill="#e8e8f0" opacity="0.2"/>
+  <circle cx="620" cy="108" r="5" fill="#e8e8f0" opacity="0.3"/>
+
+  <!-- Swirling brushstroke around moon (Van Gogh style) -->
+  <g opacity="0.3">
+    <path d="M555,75 Q570,60 600,55 Q630,50 650,70 Q665,90 660,120 Q655,150 635,165 Q610,180 580,170 Q555,155 550,130 Q545,105 555,75" stroke="#ffd54f" stroke-width="3" fill="none"/>
+    <path d="M545,70 Q560,50 600,42 Q640,35 665,58 Q685,82 678,120 Q670,158 645,175 Q615,192 578,180 Q548,165 542,135 Q535,100 545,70" stroke="#4fc3f7" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Horizon line - dark treeline silhouette -->
+  <path d="M0,380 Q50,365 100,375 Q150,385 200,370 Q250,355 300,365 Q350,375 400,360 Q450,345 500,355 Q550,365 600,350 Q650,335 700,345 Q750,355 800,340 L800,500 L0,500 Z" fill="#0a0a1a" opacity="0.8"/>
+
+  <!-- Tree silhouettes -->
+  <g fill="#080812" opacity="0.9">
+    <!-- Cypress-like trees (Van Gogh style) -->
+    <path d="M80,380 Q75,340 85,300 Q90,260 80,220 Q75,260 70,300 Q65,340 80,380"/>
+    <path d="M150,375 Q145,330 155,280 Q160,230 150,180 Q145,230 140,280 Q135,330 150,375"/>
+    <path d="M700,350 Q695,310 705,270 Q710,230 700,190 Q695,230 690,270 Q685,310 700,350"/>
+    <path d="M750,355 Q745,320 755,285 Q760,250 750,215 Q745,250 740,285 Q735,320 750,355"/>
+    <!-- Smaller trees -->
+    <path d="M250,370 Q247,345 252,320 Q255,295 250,270 Q247,295 245,320 Q243,345 250,370"/>
+    <path d="M500,360 Q497,335 502,310 Q505,285 500,260 Q497,285 495,310 Q493,335 500,360"/>
+    <path d="M350,368 Q347,348 352,328 Q355,308 350,288 Q347,308 345,328 Q343,348 350,368"/>
+  </g>
+
+  <!-- Ground with subtle brushstroke texture -->
+  <rect x="0" y="380" width="800" height="120" fill="#0a0a1a"/>
+  <g opacity="0.1">
+    <path d="M0,400 Q200,390 400,405 Q600,420 800,400" stroke="#1a237e" stroke-width="8" fill="none"/>
+    <path d="M0,430 Q200,420 400,435 Q600,450 800,430" stroke="#4fc3f7" stroke-width="5" fill="none"/>
+    <path d="M0,460 Q200,450 400,465 Q600,480 800,460" stroke="#ffd54f" stroke-width="3" fill="none"/>
+  </g>
+
+  <!-- Fireflies / distant lights -->
+  <g opacity="0.7">
+    <circle cx="200" cy="360" r="2" fill="#ffd54f" filter="url(#starGlow)"/>
+    <circle cx="350" cy="355" r="1.5" fill="#ffd54f" filter="url(#starGlow)"/>
+    <circle cx="500" cy="350" r="2" fill="#4fc3f7" filter="url(#starGlow)"/>
+    <circle cx="650" cy="358" r="1.5" fill="#ffd54f" filter="url(#starGlow)"/>
+    <circle cx="130" cy="365" r="1" fill="#ffd54f" filter="url(#starGlow)"/>
+    <circle cx="430" cy="362" r="1.5" fill="#4fc3f7" filter="url(#starGlow)"/>
+  </g>
+
+  <!-- Subtle constellation lines -->
+  <g stroke="#4fc3f7" stroke-width="0.5" opacity="0.3">
+    <line x1="120" y1="80" x2="250" y2="45"/>
+    <line x1="250" y1="45" x2="380" y2="95"/>
+    <line x1="380" y1="95" x2="520" y2="60"/>
+    <line x1="520" y1="60" x2="650" y2="100"/>
+    <line x1="310" y1="130" x2="450" y2="70"/>
+    <line x1="450" y1="70" x2="580" y2="140"/>
+  </g>
+</svg>

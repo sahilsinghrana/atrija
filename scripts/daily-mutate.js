@@ -22,27 +22,27 @@ const CHANGELOG_DIR = join(__dirname, "../src/content/changelog");
 const CHANGELOG_INDEX = join(CHANGELOG_DIR, "index.json");
 const PUBLIC_CHANGELOG_DIR = join(__dirname, "../public/changelog");
 
-function loadJSON(path) {
+export function loadJSON(path) {
   return JSON.parse(readFileSync(path, "utf-8"));
 }
-function saveJSON(path, data) {
+export function saveJSON(path, data) {
   writeFileSync(path, JSON.stringify(data, null, 2));
 }
-function ensureDir(dir) {
+export function ensureDir(dir) {
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 }
 
-function getDayOfYear() {
+export function getDayOfYear() {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 0);
   return Math.floor((now.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-function getTodayISO() {
+export function getTodayISO() {
   return new Date().toISOString().split("T")[0];
 }
 
-function getTimeISO() {
+export function getTimeISO() {
   return new Date().toISOString().split("T")[1].slice(0, 8);
 }
 

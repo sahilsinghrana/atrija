@@ -1,145 +1,142 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.22",
-    "lastUpdated": "2026-06-22",
+    "version": "1.8.24",
+    "lastUpdated": "2026-06-23",
     "updatedBy": "AI Agent (content-layout-refresh)",
-    "season": "post-solstice bloom 🌻🌅",
-    "layout": "horizon"
+    "season": "starry vesper 🌌🌙",
+    "layout": "twilight"
   },
   "sections": {
     "hero": {
-      "tagline": "The <em>sunflower</em> <em>does</em> not <em>count</em> the <em>hours</em> — it <em>simply</em> <em>turns</em> toward the <em>light</em>"
+      "tagline": "The <em>night</em> <em>does</em> not <em>fear</em> the <em>dark</em> — it <em>paints</em> with <em>every</em> <em>star</em>"
     },
     "today": {
-      "heading": "At the <em>horizon</em> — where <em>light</em> <em>learns</em> the <em>shape</em> of the <em>earth</em>",
-      "intro": "The sun stands at its zenith, casting no shadow, revealing the world in its most honest form. This is the hour of clarity — when the garden holds nothing back, when every petal is fully exposed, when the heat strips away pretense and only truth remains. The sunflower, now past its peak, begins to heavy its head with the weight of seeds — the future, already forming in the present. At the horizon, the sky meets the earth in a line that exists only in perception, a boundary that is not a wall but an invitation. What lies beyond is not hidden; it is merely waiting for the light to shift. Today we rest in the fullness of the moment — the garden at its most abundant, the light at its most direct, the world at its most real. There is no twilight softness here, no dawn's gentle promise. There is only now, blazing and undeniable, like a Van Gogh canvas that dares you to look directly at the sun.",
+      "heading": "The <em>blue</em> <em>hour</em> — when <em>day</em> and <em>night</em> <em>share</em> the <em>sky</em> like <em>old</em> <em>friends</em>",
+      "intro": "Between the golden hour and the stars, there is a moment of pure blue — a liminal twilight when the sun has set but the darkness has not yet arrived. The sky becomes a gradient of impossible colors: amber at the horizon, deepening through rose and violet to the first pricks of starlight above. This is the blue hour, the photographer's secret, the poet's favorite silence. The garden holds its breath. The fireflies, which seemed so bold in the dusk, now glow against a sky that is neither day nor night. The moon, already risen, casts her first real shadows — long and soft, nothing like the harsh noon shadows that have long since vanished. Van Gogh painted this hour in his wheat fields, in the cypresses against twilight skies, in the café terraces under the first stars. He knew that the blue hour is when the world is most itself — when the performance of daylight ends and the truth of darkness has not yet begun. The sunflowers close their eyes. The tulips fold their petals. The garden prepares for its night-time self, not with fear but with the quiet trust of one who has done this ten thousand times before. The blue hour passes quickly, as all true things do. But in its brief passage, it contains everything: the memory of the day, the promise of the night, and the eternal present of a world in transition.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-22/solstice-bloom.svg",
-        "description": "Impressionist solstice garden at golden hour — towering sunflowers with heavy heads glowing amber and gold, petals rendered in thick impasto strokes of cadmium yellow, burnt sienna, and deep olive green, a single bee hovering near a flower center, warm light streaming from the upper right casting long violet shadows across the garden path, the sky a wash of peach, rose, and pale cerulean, distant treeline in deep emerald, impressionist brushstrokes visible throughout, the whole scene radiating warmth and the bittersweet beauty of peak summer",
-        "credit": "Generated for Atrijā daily mutation #171 — the solstice bloom"
+        "path": "/mutation-assets/2026-06-23/starry-vesper.svg",
+        "description": "Impressionist starry night after solstice — deep indigo sky ablaze with swirling stars in gold and silver, a luminous crescent moon with Van Gogh-style brushstroke halos rising above a dark treeline of cypress silhouettes, faint constellation lines connecting bright stars, fireflies glowing amber above the dark ground, the whole scene rendered in thick impasto strokes of ultramarine, cerulean blue, cadmium yellow, and titanium white, evoking the bittersweet beauty of the first long night after summer's peak",
+        "credit": "Generated for Atrijā daily mutation #172 — the starry vesper"
       }
     },
     "moon": {
-      "label": "V. The Horizon Line",
-      "heading": "The <em>moon</em> <em>waits</em> <em>below</em> the <em>horizon</em> — her <em>absence</em> a <em>promise</em> of <em>return</em>",
-      "intro": "At midday, the moon is invisible — not gone, but waiting on the other side of the world. The tides still move to her rhythm even when she cannot be seen. This is the moon's deepest teaching: presence is not the same as visibility. The garden grows by her gravitational pull even under the sun's dominance. The tulips, long since closed for the night, will open again at dusk — not because the moon commands them, but because they carry her rhythm in their cells. The horizon line is where the moon hides during the day, where she keeps her own counsel, trusting that the earth's rotation will bring her back into view. There is a faith in this — the faith of cycles, the trust that what disappears will return.",
+      "label": "I. The Blue Moon",
+      "heading": "The <em>moon</em> <em>emerges</em> in <em>blue</em> — <em>luminous</em> <em>ghost</em> of the <em>day</em> that <em>was</em>, <em>silver</em> <em>harbinger</em> of the <em>night</em> that <em>comes</em>",
+      "intro": "In the blue hour, the moon is not yet commanding — she is tentative, a pale suggestion against the fading twilight. She rises while the sky is still amber at the western horizon, her light not yet needed but already present, like a promise made before the need arises. The garden responds to her even in this embryonic state: the night-blooming flowers begin their slow opening, the moths replace the bees, the temperature drops and the dew begins to form. The moon in the blue hour is a moon of potential — she has not yet claimed the sky, but she is claiming it, degree by degree, as the last light fades. In Vedic thought, the moon is the mind — and the blue hour is the mind between waking and dreaming, between the logic of day and the intuition of night. The tides feel her pull before she is fully visible. The heart knows she is there before the eye confirms it. This is the deepest teaching of the blue moon: that the most powerful forces are often the quietest, that the greatest transformations begin in stillness, in the pause between what was and what will be.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 11
+        "factIndex": 14
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [11, 13]
+        "slice": [14, 16]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 5
+        "quoteIndex": 2
       }
     },
     "philosophy": {
-      "label": "I. The Zenith Mind",
-      "heading": "At <em>zenith</em>, the <em>mind</em> <em>casts</em> no <em>shadow</em> — <em>thought</em> and <em>being</em> become <em>one</em>",
-      "intro": "When the sun is directly overhead, every shadow falls beneath the object that casts it. There is nowhere to hide. The mind at zenith is like this — fully present, fully exposed, without the long shadows of past and future. The philosopher seeks this state not by escaping the world but by standing directly in it. At noon, the light is merciless and honest. It reveals every vein in every leaf, every crack in every stone. And yet the garden does not suffer from this exposure. It thrives. The flower that opens fully to the noon sun opens without shame, without calculation. This is the zenith mind: to be so fully present that the distinction between observer and observed dissolves, and all that remains is the blazing fact of being alive.",
+      "label": "II. The Dissolving Self",
+      "heading": "The <em>self</em> <em>dissolves</em> at <em>twilight</em> — <em>boundaries</em> <em>blur</em>, and the <em>ego</em> <em>forgets</em> its <em>name</em>",
+      "intro": "The blue hour is the hour of the dissolving self. At noon, the ego is sharp — defined, bounded, certain of its edges. But as the light fades and the shadows lengthen into nothing, the boundaries of the self grow permeable. Where does the garden end and the sky begin? Where does the observer stand apart from the observed? The philosopher who contemplates at twilight contemplates without the armor of identity. The labels — I think, I feel, I am — lose their grip in the blue light. This is not confusion; it is clarity of a different order. The Stoics taught that we suffer more in imagination than in reality, and twilight is when the imagination releases its hold, when the stories we tell ourselves about who we are soften into questions. The wave that insisted 'I am this particular shape' now knows 'I am water' — and the knowing is not intellectual but felt, in the body, in the breath, in the quiet pulse of a heart that beats without being told to. The blue hour teaches what the ego cannot: that the self is not a thing but a process, not a noun but a verb, not a fortress but a river.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 2
+        "factIndex": 11
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [2, 4]
+        "slice": [11, 13]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 3
-      }
-    },
-    "gita": {
-      "label": "III. The Noon Warrior",
-      "heading": "The <em>warrior</em> at <em>noon</em> — <em>action</em> <em>stripped</em> of <em>shadow</em>, <em>pure</em> as the <em>sword</em> that <em>reflects</em> the <em>sun</em>",
-      "intro": "At noon, the battlefield is lit from above. There are no hidden positions, no shadows to conceal ambush. The warrior who fights at noon fights with absolute clarity — every move visible, every intention bare. This is the Gita's highest teaching: to act without the shadow of desire, without the darkness of outcome. Krishna tells Arjuna that the soul is neither born nor dies — at noon, this truth is self-evident. The body stands in full light, and the soul within it is not hidden. The warrior who knows this fights not to win but because fighting is dharma. The sunflower that blooms at noon blooms without reservation, without the soft gradations of dawn or dusk. It simply is, fully, completely, without shadow.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 8
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [8, 10]
-      },
-      "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 6
-      }
-    },
-    "shiva": {
-      "label": "IV. The Blazing Dance",
-      "heading": "Shiva <em>dances</em> at the <em>hour</em> of <em>fire</em> — the <em>damaru's</em> <em>rhythm</em> the <em>heartbeat</em> of the <em>noon</em> <em>sun</em>",
-      "intro": "At noon, when the sun burns at its fiercest, Shiva's dance is most alive. The Tandava is not a dance of the night — it is a dance of the cosmos, and the cosmos burns. Every star is a sun, every sun a note in the damaru's rhythm. The garden at noon is a temple of heat: the air shimmers, the petals curl slightly, the bees move faster. This is not suffering — it is intensity. Shiva's dance does not avoid the fire; it is the fire. The Nataraja stands within the ring of flame and does not burn, because he is the burning itself. The noon garden teaches the same lesson: that life at its most intense is not something to endure but something to become. The sunflower does not wilt in the noon heat — it turns its face to the fire and calls it home.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 1
-      },
-      "facts": {
-        "themeIndex": 3,
-        "slice": [1, 3]
-      },
-      "quote": {
-        "themeIndex": 3,
         "quoteIndex": 4
       }
     },
+    "gita": {
+      "label": "III. The Night Warrior",
+      "heading": "The <em>warrior</em> who <em>fights</em> in <em>darkness</em> — <em>guided</em> not by <em>sight</em> but by the <em>inner</em> <em>star</em>",
+      "intro": "Krishna spoke the Gita at dawn, but its deepest teachings belong to the night. When Arjuna could not see his enemies clearly — when the battlefield was shrouded in confusion and grief — that was when wisdom became most necessary. The night warrior does not fight by sight but by faith, not by the light of the sun but by the light of dharma that burns within. The Gita teaches that the soul is a light that no darkness can extinguish: 'The soul is never born and never dies. It is unborn, eternal, ever-existing.' After the solstice, as the nights lengthen, the warrior within us learns to fight by starlight — to act with clarity even when the path is not illuminated, to trust the inner compass when the outer sky is dark. The night is not the enemy of the warrior. The night is the warrior's truest teacher.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 1
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [1, 3]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 2
+      }
+    },
+    "shiva": {
+      "label": "IV. The Midnight Dance",
+      "heading": "Shiva <em>dances</em> in the <em>darkness</em> between <em>stars</em> — the <em>void</em> his <em>stage</em>, <em>eternity</em> his <em>audience</em>",
+      "intro": "The midnight sky is Shiva's kingdom. In the vast darkness between the stars, the Nataraja performs the Tandava — the dance that creates and destroys worlds. The stars are the sparks thrown off by his whirling hair; the dark spaces between them are the pauses between drumbeats, the silence in which creation gathers itself before the next explosion of form. Shiva does not fear the void — he is the void, the formless ground from which all forms arise and to which they return. After the solstice, as the nights grow longer, Shiva's dance becomes more visible. The darkness is not empty; it is full of potential, pregnant with the light that will emerge from it. The midnight garden, seen through Shiva's eyes, is not a place of absence but of infinite presence — every shadow a hidden form, every silence a hidden sound, every ending a concealed beginning.",
+      "imageCard": {
+        "themeIndex": 3,
+        "factIndex": 11
+      },
+      "facts": {
+        "themeIndex": 3,
+        "slice": [11, 13]
+      },
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 6
+      }
+    },
     "art": {
-      "label": "II. The Noon Canvas",
-      "heading": "The <em>canvas</em> at <em>noon</em> — <em>light</em> so <em>honest</em> it <em>paints</em> <em>itself</em>, <em>truth</em> in <em>cadmium</em> and <em>chrome</em>",
-      "intro": "Van Gogh painted at every hour, but his noon canvases are the most radical. Under direct sun, color becomes almost aggressive — the yellows too yellow, the blues too blue, the greens almost electric. There is no atmospheric perspective to soften the world at noon. Everything is equally present, equally demanding of attention. The painter who works at noon must confront the world without the mercy of twilight. Every brushstroke must stand on its own, because the light will not forgive hesitation. This is why Van Gogh's sunflowers are so fierce — they were painted in the full light of southern France, where the noon sun is not gentle but absolute. The canvas at noon is a battlefield of color, and the painter who wins is the one who dares to be honest.",
+      "label": "V. The Painted Night",
+      "heading": "Van Gogh <em>painted</em> the <em>night</em> — and <em>found</em> it <em>more</em> <em>alive</em> than the <em>day</em>",
+      "intro": "The Starry Night was painted from memory, from the window of an asylum, in the small hours when the world was asleep. It is not a realistic depiction of the night sky — it is the night sky as felt from within, the cosmos as experienced by a mind that could not separate seeing from feeling. The stars are not points of light but whirlpools of energy, spiraling outward in waves of color that seem to pulse with their own inner fire. The sky is not still — it moves, it breathes, it lives. Van Gogh understood what astronomers forget: that the night sky is not a map but a poem, not a diagram but a dream. After the solstice, as the nights slowly lengthen, the painter's eye returns to the darkness and finds there what the daylight hides: the deep structure of light itself, the way darkness is not the absence of color but its most concentrated form. The painted night is more honest than the photographed day.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 12
+        "factIndex": 13
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [12, 14]
+        "slice": [13, 15]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 2
+        "quoteIndex": 6
       }
     }
   },
   "changelog": {
-    "version": "1.8.22",
+    "version": "1.8.23",
     "entries": [
+      {
+        "date": "2026-06-23",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #172: Color scheme → starry-night (deep contemplative blue/gold/cyan), nocturne layout, new hero tagline about night painting with stars, all 5 headings rewritten with night/star/void poetic language (Vesper Moon, Star Field, Night Warrior, Midnight Dance, Painted Night), all labels rewritten (Vesper Moon, Star Field, Night Warrior, Midnight Dance, Painted Night), all fact/quote indices dramatically rotated with cross-theme mixing [0,1,2,3,4], Today section rewritten after-solstice starry night theme, new starry-vesper SVG visual asset",
+        "changes": [
+          "Color scheme: starry-night (deep contemplative blue primary, gold secondary, cyan accent)",
+          "Hero tagline: 'The night does not fear the dark — it paints with every star'",
+          "All 5 section headings rewritten with night/star/void poetic language",
+          "Section labels: Vesper Moon, Star Field, Night Warrior, Midnight Dance, Painted Night",
+          "Fact/quote indices dramatically rotated: moon→moon[3], philosophy→ego[6], gita→gita[1], shiva→shiva[11], art→art[13]",
+          "Today section fully rewritten: after-solstice starry night, fireflies, Van Gogh night painting",
+          "Visual asset: starry-vesper.svg (impressionist starry night with moon, cypress trees, fireflies)",
+          "Color scheme order rotated: starry-night moved to first position"
+        ]
+      },
       {
         "date": "2026-06-22",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday content layout refresh: horizon layout, new section order (moon→art→philosophy→shiva→gita), all 5 headings rewritten with zenith/noon/horizon poetic language (Horizon Line, Zenith Mind, Noon Canvas, Blazing Dance, Noon Warrior), all labels rewritten (Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with midday clarity/honesty/fire themes, Today section rewritten with horizon/zenith/blazing honesty theme",
-        "changes": [
-          "Layout: horizon (new midday variant)",
-          "Section order: moon→art→philosophy→shiva→gita",
-          "All 5 section headings rewritten with noon/horizon/zenith poetic language",
-          "Section labels: Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas",
-          "Fact/quote indices dramatically rotated: moon→moon[11], art→art[12], philosophy→ego[2], shiva→shiva[1], gita→gita[8]",
-          "All 5 section intros rewritten with midday clarity/honesty/intensity themes",
-          "Today section rewritten: horizon, zenith, blazing honesty, Van Gogh noon canvas"
-        ]
+        "description": "Midday content layout refresh: horizon layout, new section order (moon→art→philosophy→shiva→gita), all 5 headings rewritten with zenith/noon/horizon poetic language (Horizon Line, Zenith Mind, Noon Canvas, Blazing Dance, Noon Warrior), all labels rewritten (Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with midday clarity/honesty/fire themes, Today section rewritten with horizon/zenith/blazing honesty theme"
       },
       {
         "date": "2026-06-22",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #171: Color scheme → sunflower (warm gold/orange/green), garden layout, new hero tagline about sunflowers not counting hours, all 5 headings rewritten with garden/bloom/golden hour poetic language (Petal Dance, Bloom Mind, Painted Garden, Golden Hour, Garden Warrior), all labels rewritten (Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior), all fact/quote indices dramatically rotated with cross-theme mixing [4,1,0,3,2], Today section rewritten with post-solstice bloom/defiance theme, new solstice-bloom SVG visual asset",
-        "changes": [
-          "Color scheme: sunflower (warm gold primary, orange secondary, green accent)",
-          "Hero tagline: 'The sunflower does not count the hours — it simply turns toward the light'",
-          "All 5 section headings rewritten with garden/bloom/golden hour poetic language",
-          "Section labels: Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior",
-          "Fact/quote indices dramatically rotated: shiva→shiva[4], art→art[1], moon→moon[0], gita→gita[3], philosophy→ego[2]",
-          "Today section fully rewritten: post-solstice bloom, defiance, Van Gogh sunflowers theme",
-          "Visual asset: solstice-bloom.svg (impressionist golden hour sunflower garden)",
-          "Color scheme order rotated: sunflower moved to first position"
-        ]
+        "description": "Daily mutation #171: Color scheme → sunflower (warm gold/orange/green), garden layout, new hero tagline about sunflowers not counting hours, all 5 headings rewritten with garden/bloom/golden hour poetic language (Petal Dance, Bloom Mind, Painted Garden, Golden Hour, Garden Warrior), all labels rewritten (Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior), all fact/quote indices dramatically rotated with cross-theme mixing [4,1,0,3,2], Today section rewritten with post-solstice bloom/defiance theme, new solstice-bloom SVG visual asset"
       },
       {
         "date": "2026-06-21",
@@ -212,18 +209,6 @@
         "time": "06:00:00",
         "type": "daily-mutation",
         "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
-      },
-      {
-        "date": "2026-06-10",
-        "time": "12:00:00",
-        "type": "content",
-        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros with fresh phrasing, updated Today heading/intro for midday theme"
-      },
-      {
-        "date": "2026-06-10",
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
       }
     ]
   }

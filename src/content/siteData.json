@@ -493,6 +493,24 @@
   ],
   "colorSchemes": [
     {
+      "name": "starry-night",
+      "primary": "#1a237e",
+      "secondary": "#ffd54f",
+      "accent": "#4fc3f7",
+      "background": "#0a0a1a",
+      "text": "#e8e8f0",
+      "mood": "contemplative",
+      "shaderParams": {
+        "strokeDensity": 6.6,
+        "swirlFrequency": 15.7,
+        "colorIntensity": 1.51
+      },
+      "seasons": [
+        "winter",
+        "summer"
+      ]
+    },
+    {
       "name": "sunflower",
       "primary": "#f5c800",
       "secondary": "#ff6f00",
@@ -547,24 +565,6 @@
       ]
     },
     {
-      "name": "starry-night",
-      "primary": "#1a237e",
-      "secondary": "#ffd54f",
-      "accent": "#4fc3f7",
-      "background": "#0a0a1a",
-      "text": "#e8e8f0",
-      "mood": "contemplative",
-      "shaderParams": {
-        "strokeDensity": 6.6,
-        "swirlFrequency": 15.7,
-        "colorIntensity": 1.51
-      },
-      "seasons": [
-        "winter",
-        "summer"
-      ]
-    },
-    {
       "name": "moonlit-silver",
       "primary": "#90a4ae",
       "secondary": "#ffd740",
@@ -602,7 +602,7 @@
       ]
     }
   ],
-  "activeColorScheme": "sunflower",
+  "activeColorScheme": "starry-night",
   "changelog": {
     "version": "1.0.0",
     "entries": [
