@@ -211,6 +211,57 @@
           ],
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Test the recovery logic by mocking the canvas element and dispatching synthetic 'webglcontextlost' and 'webglcontextrestored' events. Verify that preventDefault() is called on context lost, the overlay is shown, and bootScene() is called on restore.\\n- Test cases: context lost event triggers overlay display; context restored event triggers bootScene() and hides overlay; repeated context loss (3+ attempts) shows fallback message; module gracefully handles missing canvas element; module does not interfere with normal scene operation when no context loss occurs.\\n- Integration tests: Verify that the module loads correctly alongside scene-bundle.js and that the canvas event listeners are registered.\\n- Acceptance criteria: scene-context-recovery.js is a standalone IIFE with zero scene-init.js changes; overlay uses existing CSS custom properties (--accent-gold, --bg, etc.); bootScene() is called on context restore; fallback message shown after 3 failed attempts; build succeeds; total added code ~80 lines."
+        },
+        {
+          "id": "idea-088",
+          "title": "Unit Tests for content-search.js — Fuzzy Search Logic and UI Rendering",
+          "description": "public/js/content-search.js (529 lines) is the largest untested client-side module. It powers the keyboard-triggered search overlay (press '/') that indexes all facts, quotes, koans, and section intros. The core logic is pure and testable: normalize() strips HTML and lowercases, scoreMatch() counts query word matches with phrase bonuses, highlightMatch() wraps matches in <mark> tags, truncate() clips text cleanly, and search() orchestrates scoring, sorting, and deduplication. This task creates tests/unit/content-search.test.js with: (1) tests for normalize() with HTML tags, special characters, unicode, and edge cases, (2) tests for scoreMatch() with single words, multi-word phrases, partial matches, and no matches, (3) tests for highlightMatch() verifying correct <mark> wrapping and regex escaping, (4) tests for truncate() at boundary lengths, (5) tests for the full search() pipeline with a mock CONTENT_INDEX, verifying scoring, sorting, deduplication, and the 30-result cap, (6) tests for the DOM rendering functions (createOverlay, performSearch, showOverlay/hideOverlay) using jsdom. Uses vitest + jsdom environment. Effort: 2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "unit-tests",
+            "content-search",
+            "client-side",
+            "jsdom",
+            "fuzzy-search",
+            "accessibility"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/content-search.test.js using vitest jsdom environment. Test pure logic functions (normalize, scoreMatch, highlightMatch, truncate) with fixed inputs. Test search() with a mock CONTENT_INDEX array. Test DOM rendering with jsdom (overlay creation, result rendering, show/hide).\\n- Test cases: normalize() strips HTML tags, lowercases, collapses whitespace, handles unicode; scoreMatch() returns 0 for no match, 1 per word, +2 bonus for exact phrase; highlightMatch() wraps matches in <mark> with proper regex escaping; truncate() clips at word boundary with ellipsis; search() sorts by score descending, deduplicates by normalized text, caps at 30 results; DOM rendering creates overlay with correct ARIA attributes; performSearch renders grouped results with type labels.\\n- Integration tests: Verify that the module works with the real content.json and siteData.json structure (index building, search across all content types).\\n- Acceptance criteria: All new tests pass; >85% branch coverage for content-search.js; existing test suite unaffected; tests run in <10s; no network calls (fully mocked)."
+        },
+        {
+          "id": "idea-089",
+          "title": "Remove hash-assets.sh and BUILD_VERSION sed from daily-deploy.sh",
+          "description": "scripts/daily-deploy.sh (line 28) calls hash-assets.sh and (line 25-26) runs sed to inject BUILD_VERSION into dist/index.html. AGENTS.md explicitly states: 'Do NOT run hash-assets.sh or BUILD_VERSION sed — these break the build.' The site already has proper cache-busting via Vite content hashing (_astro/* filenames change when content changes), nginx no-store headers on HTML, and auto-bumping service worker cache versions (bump-sw-cache.js). The hash-assets.sh script is a leftover from a previous architecture that rewrites filenames, which conflicts with Vite's built-in hashing. BUILD_VERSION sed is unnecessary because index.html is never cached (no-store). This task: (1) removes lines 25-28 from daily-deploy.sh (the BUILD_VERSION sed and hash-assets.sh call), (2) verifies the deploy pipeline works without them by running the full build→deploy→verify cycle, (3) confirms the site deploys correctly with cp -r dist/* only. Zero scene-init.js changes. Total removed code: 4 lines. Effort: 1 session.",
+          "category": "Technical Debt & Code Quality",
+          "priority": "medium",
+          "tags": [
+            "technical-debt",
+            "deploy-pipeline",
+            "build-pipeline",
+            "cache-busting",
+            "cleanup"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Integration tests: Run the full daily-deploy.sh pipeline (without content mutation) and verify: build succeeds, dist/ is deployed to nginx root, curl returns HTTP 200, site renders correctly in browser.\\n- Cache verification: Confirm that _astro/* assets have content-hashed filenames (e.g., index.abc123.js), index.html has no-cache headers, and the service worker cache version auto-increments.\\n- Regression tests: Verify that all existing functionality (scene, content, changelog, search, theme switcher) works after the simplified deploy.\\n- Acceptance criteria: daily-deploy.sh no longer calls hash-assets.sh or BUILD_VERSION sed; deploy pipeline succeeds; site live at HTTP 200; Vite content hashing provides automatic cache busting; SW cache version auto-bumps on each build; zero scene-init.js changes."
+        },
+        {
+          "id": "idea-090",
+          "title": "Scene Boot Error Boundary — Themed Error Overlay with Recovery",
+          "description": "If bootScene() throws during initialization (e.g., WebGL unsupported, shader compilation failure, out of memory), the 3D scene silently dies and the loader stays indefinitely (only an 8s safety timeout in loader-progress.js saves it). The user sees a blank dark screen with no explanation. This task creates a standalone public/js/scene-error-boundary.js module (~100 lines) that: (1) wraps the existing bootScene() call in a try/catch before the scene-bundle.js auto-boot executes, (2) on error, displays a themed error overlay (dark #08080f background, gold --accent-gold accents, serif font) with a clear message explaining the scene could not load, (3) provides a 'Retry' button that re-attempts bootScene() and a 'Continue without 3D' button that hides the loader and shows the content sections, (4) logs the error to the browser console for debugging, (5) respects prefers-reduced-motion for any overlay animations. The module is loaded as a <script> tag in index.astro BEFORE scene-bundle.js, so it can intercept the boot. Zero scene-init.js changes — it only wraps the existing window.__sceneReady/__sceneFailed hooks. Total added code: ~100 lines.",
+          "category": "Technical Debt & Code Quality",
+          "priority": "high",
+          "tags": [
+            "error-handling",
+            "scene-boot",
+            "resilience",
+            "user-feedback",
+            "webgl",
+            "mobile",
+            "standalone-module"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the error boundary logic by mocking window.bootScene to throw, verifying the overlay is displayed with correct message and buttons. Test that 'Retry' calls bootScene again. Test that 'Continue without 3D' hides the loader and shows content sections.\\n- Test cases: bootScene() throwing triggers overlay display; bootScene() succeeding does not show overlay; Retry button re-calls bootScene; Continue button hides loader and shows content; prefers-reduced-motion disables overlay animations; module handles missing bootScene gracefully; module does not interfere with normal boot when no error occurs.\\n- Integration tests: Verify that the module loads correctly before scene-bundle.js and that the error overlay uses existing CSS custom properties (--accent-gold, --bg, --font-serif, etc.).\\n- Acceptance criteria: scene-error-boundary.js is a standalone IIFE with zero scene-init.js changes; overlay uses existing CSS custom properties; Retry and Continue buttons work; build succeeds; total added code ~100 lines; module loaded via <script> tag before scene-bundle.js."
         }
       ]
     },
