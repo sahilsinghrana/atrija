@@ -1,187 +1,178 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.21",
-    "lastUpdated": "2026-06-21",
+    "version": "1.8.22",
+    "lastUpdated": "2026-06-22",
     "updatedBy": "AI Agent (daily-mutation)",
-    "season": "summer solstice \u2600\ufe0f\ud83c\udf0a",
-    "layout": "abyss"
+    "season": "post-solstice bloom 🌻🌅",
+    "layout": "garden"
   },
   "sections": {
     "hero": {
-      "tagline": "Beneath the <em>longest</em> <em>day</em>, the <em>ocean</em> <em>holds</em> its <em>breath</em> \u2014 <em>waiting</em> for the <em>deep</em>"
+      "tagline": "The <em>sunflower</em> <em>does</em> not <em>count</em> the <em>hours</em> — it <em>simply</em> <em>turns</em> toward the <em>light</em>"
     },
     "today": {
-      "heading": "The <em>deepest</em> <em>water</em> \u2014 where <em>pressure</em> <em>forges</em> what <em>light</em> <em>cannot</em>",
-      "intro": "Today the sun hangs at its highest, yet we turn our gaze downward \u2014 to the ocean floor, where no sunlight reaches and life persists in impossible forms. The longest day is not about the light; it is about the depth of the shadow that light creates. For every inch of brilliance the sun adds to the sky, the ocean's abyss grows proportionally darker, proportionally more mysterious. This is the paradox of illumination: the brighter the surface, the deeper the unknown beneath. The creatures of the midnight zone do not mourn the absence of light. They have become light \u2014 bioluminescent, self-luminous, carrying their own sun in their bodies. This is the teaching of the deep: when the world above is blinding, go below. When the surface is too bright to see, descend into the dark where vision becomes inner sight, where the eye of the mind opens to perceive what the eye of the body never could.",
+      "heading": "After the <em>longest</em> <em>day</em> — the <em>garden</em> <em>remembers</em> how to <em>burn</em>",
+      "intro": "The solstice has passed. The light, having given its all, begins the slow surrender into autumn. But the garden does not mourn. The sunflower, golden crown unbowed, stands at its tallest on this first day of the sun's retreat. It has no concept of diminishment — only orientation. Face the light, always, even as it wanes. Today we celebrate not the absence of darkness but the presence of bloom. Every petal that opens after the solstice does so with the full knowledge that the days are shortening. This is not tragedy — it is defiance. The flower blooms not because the conditions are eternal but because the moment is now. Van Gogh understood this. He painted his sunflowers in August, when the light was already fading, and made them blaze with an intensity that summer's peak could never match. The greatest beauty is always painted at the edge of loss.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-21/abyssal-depth.svg",
-        "description": "Impressionist abyssal ocean depth \u2014 deep bioluminescent creatures glowing in midnight blue darkness, a lone jellyfish radiating soft cyan light, anglerfish with its lure like a distant star, pressure waves visualized as concentric ripples, the faintest suggestion of moonlight filtering from far above, impressionist brushstrokes in deep navy, teal, and phosphorescent cyan",
-        "credit": "Generated for Atrij\u0101 daily mutation #170 \u2014 the abyss mind"
+        "path": "/mutation-assets/2026-06-22/solstice-bloom.svg",
+        "description": "Impressionist solstice garden at golden hour — towering sunflowers with heavy heads glowing amber and gold, petals rendered in thick impasto strokes of cadmium yellow, burnt sienna, and deep olive green, a single bee hovering near a flower center, warm light streaming from the upper right casting long violet shadows across the garden path, the sky a wash of peach, rose, and pale cerulean, distant treeline in deep emerald, impressionist brushstrokes visible throughout, the whole scene radiating warmth and the bittersweet beauty of peak summer",
+        "credit": "Generated for Atrijā daily mutation #171 — the solstice bloom"
       }
     },
     "moon": {
-      "label": "III. The Tidal Sovereign",
-      "heading": "The <em>moon</em> <em>commands</em> what the <em>sun</em> cannot \u2014 the <em>hidden</em> <em>waters</em> of the <em>deep</em>",
-      "intro": "The sun rules the surface \u2014 the glittering, visible, obvious world. But the moon rules the depths. Her gravity pulls not just the tides but the deep ocean currents, the slow massive movements of water that regulate the planet's climate. She is the unseen governor, the quiet power that moves what the eye cannot see. In the abyssal zones, where no sunlight penetrates, life still follows the lunar cycle. Deep-sea creatures spawn by the moon's command, their reproductive rhythms synchronized to a light they will never see. This is the moon's deepest teaching: true influence operates below the surface, in the hidden waters where the real currents flow.",
+      "label": "IV. The Golden Hour",
+      "heading": "The <em>moon</em> <em>watches</em> the <em>garden</em> <em>sleep</em> — her <em>silver</em> <em>light</em> a <em>lullaby</b> for <em>closing</em> <em>petals</em>",
+      "intro": "As the sunflowers turn their faces to follow the sun across the sky, the moon governs the garden's other half — the hours of rest, of folding inward, of quiet respiration. Tulips close at dusk, their petals drawing together like hands in prayer. The moon's light is not weaker than the sun's — it is gentler, designed not for growth but for restoration. In the golden hour, that liminal space between day and night, both lights mingle. The garden exists in two worlds simultaneously — still warm from the sun's attention, already cool beneath the moon's gaze. This is the moon's gift to the garden: the permission to rest without dying, to close without ending.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 11
+        "factIndex": 3
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [
-          11,
-          13
-        ]
+        "slice": [3, 5]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 5
+        "quoteIndex": 2
       }
     },
     "philosophy": {
-      "label": "V. The Abyss Mind",
-      "heading": "Philosophy <em>begins</em> where the <em>light</em> <em>ends</em> \u2014 in the <em>unlit</em> <em>depths</em> of pure <em>inquiry</em>",
-      "intro": "Every philosopher eventually reaches the abyss \u2014 the point where answers dissolve and only the question remains. Socrates found it in his declaration of ignorance. The Upanishads found it in neti neti \u2014 not this, not this. The deep ocean is philosophy made tangible: a place where the familiar categories of surface life cease to apply, where new forms of existence emerge from the absence of what we thought was essential. Light is essential, we believe. But the abyss proves otherwise. Life thrives without it. Consciousness \u2014 if we can call it that \u2014 persists in forms we never imagined. Philosophy's deepest insight is not an answer but a depth: the willingness to descend below every comfortable certainty into the dark water where truth, like a bioluminescent creature, reveals itself only to those who can tolerate the pressure.",
+      "label": "II. The Bloom Mind",
+      "heading": "To <em>bloom</em> is the <em>mind's</em> <em>highest</em> <em>act</em> — <em>opening</em> <em>fully</em> to what <em>light</em> <em>remains</em>",
+      "intro": "The philosopher and the flower share a single imperative: open. The sunflower does not calculate whether the light will last, whether frost will come, whether the season will be kind. It opens because opening is its nature. The mind, too, has this nature — to open toward truth, toward beauty, toward the unknown. But the mind, unlike the flower, can choose to close. It can retreat into the bud of certainty, of dogma, of fear. Philosophy is the discipline of remaining open — of turning toward the light even when, especially when, the days are growing shorter. The bloom mind does not wait for perfect conditions. It blooms now, in this light, with whatever warmth remains.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 8
+        "factIndex": 6
       },
       "facts": {
         "themeIndex": 1,
-        "slice": [
-          8,
-          10
-        ]
+        "slice": [6, 8]
       },
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 3
+        "quoteIndex": 7
       }
     },
     "gita": {
-      "label": "IV. The Depth Warrior",
-      "heading": "The <em>warrior</em> who <em>dives</em> <em>deepest</em> <em>finds</em> the <em>pearl</em> of <em>action</em> without <em>attachment</em>",
-      "intro": "Krishna's teaching to Arjuna is a lesson in depth psychology. The surface mind clings \u2014 to outcomes, to identity, to the fear of failure. But the deep mind, the mind that has plunged below the waves of ego, acts with a different quality entirely. It acts because action is its nature, not because it seeks reward. The deep-sea diver who descends beyond the reach of surface light enters a world where different rules apply. Pressure increases, visibility decreases, and yet the diver continues \u2014 not because the conditions are comfortable but because the depth itself is the destination. The Gita's warrior is this diver: one who has gone so deep that the surface world's rewards and punishments lose their grip, leaving only pure, unattached action.",
+      "label": "V. The Garden Warrior",
+      "heading": "The <em>warrior</em> <em>tends</em> the <em>garden</em> — <em>action</em> as <em>devotion</em>, <em>work</em> as <em>worship</em>",
+      "intro": "Krishna's teaching to Arjuna is a gardening manual in disguise. 'You have the right to work, but never to the fruit of work.' The gardener who plants seeds and then digs them up each night to check if they've grown will never harvest anything. The gardener who plants, waters, and trusts — who tends without clutching — this is the warrior of the Gita. Action without attachment is not cold detachment; it is the warm, steady attention of one who loves the work itself more than the reward. The sunflower does not bloom to be admired. It blooms because blooming is its dharma. The warrior acts because action is the warrior's nature — not for victory, but because the battle is the path.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 13
+        "factIndex": 4
       },
       "facts": {
         "themeIndex": 2,
-        "slice": [
-          13,
-          15
-        ]
+        "slice": [4, 6]
       },
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 8
+        "quoteIndex": 1
       }
     },
     "shiva": {
-      "label": "I. The Abyss Dance",
-      "heading": "In the <em>deepest</em> <em>water</em>, where <em>light</em> has <em>never</em> <em>touched</em>, Shiva <em>dances</em> still",
-      "intro": "Below the reach of sunlight, in the crushing black of the abyssal plain, life thrives in forms that defy imagination. Anglerfish carry their own stars. Jellyfish glow with borrowed moonlight. And here, in this lightless realm, Shiva's Tandava takes on its most profound meaning \u2014 the dance is not performed for an audience but for the sheer necessity of existence. In the deep, there is no separation between dancer and dance, between creation and destruction. Every movement displaces water, every gesture sends ripples through the eternal dark. The abyss does not fear the dance; it is the dance. And in this lightless world, the only illumination comes from within \u2014 a bioluminescence that mirrors the inner light of consciousness itself.",
+      "label": "III. The Petal Dance",
+      "heading": "Each <em>falling</em> <em>petal</em> is a <em>step</em> in <em>Shiva's</em> <em>dance</em> — <em>beauty</em> <em>surrendered</em> to <em>become</em> <em>beauty</em> <em>renewed</em>",
+      "intro": "The garden is Shiva's temple, and every falling petal is a prayer. The cherry blossom's beauty is inseparable from its brevity — it is precious because it passes. Shiva's Tandava, the cosmic dance, is not a dance of permanence but of perpetual transformation. The petal falls, the seed forms, the new shoot rises — each phase a step in the eternal choreography. To watch a sunflower's petals curl and brown is not to witness death but to witness the dance. Nothing in the garden is lost; everything is transformed. The fallen petal feeds the soil that feeds the next bloom. Shiva dances in the space between the falling and the rising, and in that space, the garden finds its deepest truth: that beauty is not a state but a process, not a possession but a passage.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 11
+        "factIndex": 7
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [
-          11,
-          13
-        ]
+        "slice": [7, 9]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 4
+        "quoteIndex": 6
       }
     },
     "art": {
-      "label": "II. The Pressure of Beauty",
-      "heading": "Beauty <em>forged</em> under <em>pressure</em> <em>becomes</em> the <em>pearl</em> \u2014 <em>irritant</em> <em>transformed</em> to <em>gem</em>",
-      "intro": "The ocean's greatest treasures are born of irritation \u2014 a grain of sand becomes a pearl, a wound in the oyster becomes art. Van Gogh knew this alchemy. His sunflowers were not painted in sunlit ease but in the asylum's confined darkness, under the pressure of a mind at war with itself. The deepest waters create the most extraordinary life: creatures that glow, that survive crushing depths, that find nourishment where none should exist. Art, like the abyssal creature, does not wait for ideal conditions. It creates its own light, its own pressure, its own beauty from the raw material of suffering. The pearl and the painting share the same origin story: something unwanted enters, and something irreplaceable emerges.",
+      "label": "I. The Painted Garden",
+      "heading": "Van Gogh's <em>sunflowers</em> <em>never</em> <em>withered</em> — they <em>burn</em> <em>eternally</em> in <em>cadmium</em> <em>yellow</em> <em>flame</em>",
+      "intro": "In August 1888, Van Gogh painted a series of sunflowers that would outlast every garden he ever depicted. The real flowers died within days. The painted ones have burned for nearly a century and a half, their yellows so intense they seem to generate their own light. This is art's deepest magic: not the preservation of beauty but its transmutation. The painter takes the fleeting — the petal, the light, the moment — and fixes it in a medium that outlasts the original. But the painting is not a copy of the flower. It is a new thing entirely — a sunflower made of pigment and intention, of brushstrokes and longing. The garden inspires the art, and the art, in turn, teaches us how to see the garden. Each transforms the other, endlessly, like Shiva's dance of creation and destruction.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 12
+        "factIndex": 1
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [
-          12,
-          14
-        ]
+        "slice": [1, 3]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 6
+        "quoteIndex": 4
       }
     }
   },
   "changelog": {
-    "version": "1.8.21",
+    "version": "1.8.22",
     "entries": [
+      {
+        "date": "2026-06-22",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #171: Color scheme → sunflower (warm gold/orange/green), garden layout, new hero tagline about sunflowers not counting hours, all 5 headings rewritten with garden/bloom/golden hour poetic language (Petal Dance, Bloom Mind, Painted Garden, Golden Hour, Garden Warrior), all labels rewritten (Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior), all fact/quote indices dramatically rotated with cross-theme mixing [4,1,0,3,2], Today section rewritten with post-solstice bloom/defiance theme, new solstice-bloom SVG visual asset",
+        "changes": [
+          "Color scheme: sunflower (warm gold primary, orange secondary, green accent)",
+          "Hero tagline: 'The sunflower does not count the hours — it simply turns toward the light'",
+          "All 5 section headings rewritten with garden/bloom/golden hour poetic language",
+          "Section labels: Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior",
+          "Fact/quote indices dramatically rotated: shiva→shiva[4], art→art[1], moon→moon[0], gita→gita[3], philosophy→ego[2]",
+          "Today section fully rewritten: post-solstice bloom, defiance, Van Gogh sunflowers theme",
+          "Visual asset: solstice-bloom.svg (impressionist golden hour sunflower garden)",
+          "Color scheme order rotated: sunflower moved to first position"
+        ]
+      },
       {
         "date": "2026-06-21",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #170: Color scheme \u2192 midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset",
-        "changes": [
-          "Color scheme: midnight-wave (deep ocean blue primary, teal secondary, violet accent)",
-          "Hero tagline: 'Beneath the longest day, the ocean holds its breath \u2014 waiting for the deep'",
-          "All 5 section headings rewritten with oceanic/depth/tide poetic language",
-          "Section labels: Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind",
-          "Fact/quote indices dramatically rotated: shiva\u2192shiva[3], art\u2192art[4], moon\u2192moon[0], gita\u2192gita[2], philosophy\u2192ego[1]",
-          "Today section fully rewritten: deep ocean, bioluminescence, pressure-forged beauty theme",
-          "Visual asset: abyssal-depth.svg (impressionist bioluminescent deep ocean scene)",
-          "Color scheme order rotated: midnight-wave moved to first position"
-        ]
+        "description": "Daily mutation #170: Color scheme → midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset"
       },
       {
         "date": "2026-06-16",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: zenith layout, new section order (shiva\u2192gita\u2192philosophy\u2192art\u2192moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
+        "description": "Midday layout refresh: zenith layout, new section order (shiva→gita→philosophy→art→moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
       },
       {
         "date": "2026-06-16",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #169: Color scheme \u2192 ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
+        "description": "Daily mutation #169: Color scheme → ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
       },
       {
         "date": "2026-06-15",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #168: Color scheme \u2192 moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
+        "description": "Daily mutation #168: Color scheme → moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
       },
       {
         "date": "2026-06-14",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: fullbleed layout, new section order (gita\u2192art\u2192shiva\u2192philosophy\u2192moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
+        "description": "Midday layout refresh: fullbleed layout, new section order (gita→art→shiva→philosophy→moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
       },
       {
         "date": "2026-06-14",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #167: Color scheme \u2192 cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
+        "description": "Daily mutation #167: Color scheme → cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
       },
       {
         "date": "2026-06-14",
         "time": "01:12:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #166: Color scheme \u2192 volcanic-ember (fiery orange/crimson), cards layout, new hero tagline about stardust and wonder, all 5 headings rewritten with fresh poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [4,0,2,3,1], Today section rewritten with sunrise/dawn theme, new volcanic dawn SVG visual asset"
+        "description": "Daily mutation #166: Color scheme → volcanic-ember (fiery orange/crimson), cards layout, new hero tagline about stardust and wonder, all 5 headings rewritten with fresh poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [4,0,2,3,1], Today section rewritten with sunrise/dawn theme, new volcanic dawn SVG visual asset"
       },
       {
         "date": "2026-06-13",
         "time": "17:28:00",
         "type": "content",
-        "description": "Evening layout reshuffle: new section order (art\u2192moon\u2192shiva\u2192philosophy\u2192gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
+        "description": "Evening layout reshuffle: new section order (art→moon→shiva→philosophy→gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
       },
       {
         "date": "2026-06-13",
@@ -193,7 +184,7 @@
         "date": "2026-06-13",
         "time": "16:49:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #165: Color scheme \u2192 midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
+        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section fully rewritten with dusk/evening theme, new comet trail SVG visual asset"
       },
       {
         "date": "2026-06-11",
@@ -205,7 +196,7 @@
         "date": "2026-06-11",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #164: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
+        "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
       },
       {
         "date": "2026-06-10",
@@ -217,13 +208,7 @@
         "date": "2026-06-10",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #163: Color scheme \u2192 starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
-      },
-      {
-        "date": "2026-06-09",
-        "time": "12:35:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #162: Color scheme \u2192 sunflower (warm summer gold), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset"
+        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset"
       }
     ]
   }
