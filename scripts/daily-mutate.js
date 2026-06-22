@@ -344,7 +344,7 @@ export function syncChangelogToContent(content, siteData) {
   let allEntries = [];
   try {
     const files = readdirSync(CHANGELOG_DIR).filter((f) =>
-      /^\\d{4}-\\d{2}-\\d{2}\\.json$/.test(f),
+      /^\d{4}-\d{2}-\d{2}\.json$/.test(f),
     );
     files.sort(); // chronological
     for (const file of files) {
