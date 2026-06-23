@@ -1,0 +1,27 @@
+{
+  "date": "2026-05-14",
+  "entries": [
+    {
+      "time": "06:00:00",
+      "type": "feature",
+      "description": "Site launched — impressionist 3D experience with Three.js, Astro, and GLSL post-processing shaders.",
+      "changes": [
+        "Built Three.js scene: stars, moon, sunflowers, tulips, flute, waves, constellations, music notes",
+        "Created GLSL post-processing, star twinkling, and wave shaders",
+        "Set up Astro 4 static site with Vitest and Playwright tests",
+        "Configured Nginx deployment on port 8080"
+      ]
+    },
+    {
+      "time": "12:00:00",
+      "type": "daily-mutation",
+      "description": "First daily mutation — Selene & the Moon theme with starry-night colors.",
+      "changes": [
+        "Applied starry-night color scheme (contemplative mood)",
+        "Featured theme: Selene & the Moon — Greek Titaness of the Moon",
+        "Adjusted shader: strokeDensity 8.9, swirlFrequency 12, colorIntensity 1.47",
+        "Updated Moon section intro text and image card"
+      ]
+    }
+  ]
+}

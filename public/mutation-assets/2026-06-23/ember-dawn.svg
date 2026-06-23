@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <radialGradient id="skyGrad" cx="50%" cy="70%" r="70%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#ff4081" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#4a1942" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#1a0808" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd54f" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#ff8f00" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="impasto">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="800" height="500" fill="url(#skyGrad)"/>
+
+  <!-- Swirling sky strokes (Van Gogh style) -->
+  <g filter="url(#impasto)" opacity="0.6">
+    <path d="M0,200 Q100,180 200,210 Q300,240 400,200 Q500,160 600,190 Q700,220 800,180" stroke="#ff6b35" stroke-width="8" fill="none" opacity="0.5"/>
+    <path d="M0,230 Q150,200 300,240 Q450,280 600,230 Q700,190 800,220" stroke="#ff4081" stroke-width="6" fill="none" opacity="0.4"/>
+    <path d="M0,260 Q120,240 250,270 Q380,300 500,260 Q650,220 800,250" stroke="#ffd54f" stroke-width="5" fill="none" opacity="0.3"/>
+    <path d="M0,180 Q200,150 400,190 Q600,230 800,170" stroke="#ff8f00" stroke-width="7" fill="none" opacity="0.35"/>
+    <path d="M0,300 Q180,280 350,310 Q500,340 650,290 Q750,260 800,280" stroke="#4a1942" stroke-width="9" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- Rising sun / ember orb -->
+  <circle cx="400" cy="320" r="60" fill="url(#sunGlow)" filter="url(#glow)"/>
+  <circle cx="400" cy="320" r="35" fill="#ffd54f" opacity="0.9"/>
+  <circle cx="400" cy="320" r="25" fill="#fff8e1" opacity="0.7"/>
+
+  <!-- Sun rays -->
+  <g opacity="0.3">
+    <line x1="400" y1="320" x2="300" y2="100" stroke="#ffd54f" stroke-width="3"/>
+    <line x1="400" y1="320" x2="500" y2="100" stroke="#ffd54f" stroke-width="3"/>
+    <line x1="400" y1="320" x2="200" y2="180" stroke="#ff8f00" stroke-width="2"/>
+    <line x1="400" y1="320" x2="600" y2="180" stroke="#ff8f00" stroke-width="2"/>
+    <line x1="400" y1="320" x2="150" y2="280" stroke="#ff6b35" stroke-width="2"/>
+    <line x1="400" y1="320" x2="650" y2="280" stroke="#ff6b35" stroke-width="2"/>
+  </g>
+
+  <!-- Stars fading in the dawn -->
+  <g fill="#fff8e1" opacity="0.6">
+    <circle cx="120" cy="80" r="2"/>
+    <circle cx="250" cy="50" r="1.5"/>
+    <circle cx="550" cy="60" r="2"/>
+    <circle cx="680" cy="90" r="1.5"/>
+    <circle cx="720" cy="40" r="1"/>
+    <circle cx="80" cy="120" r="1"/>
+    <circle cx="750" cy="130" r="1.5"/>
+  </g>
+
+  <!-- Cypress silhouettes (dark, Van Gogh style) -->
+  <g fill="#1a0808">
+    <path d="M50,500 Q55,380 60,320 Q65,260 70,200 Q75,260 80,320 Q85,380 90,500 Z"/>
+    <path d="M90,500 Q95,400 100,350 Q105,300 110,250 Q115,300 120,350 Q125,400 130,500 Z"/>
+    <path d="M680,500 Q685,390 690,330 Q695,270 700,210 Q705,270 710,330 Q715,390 720,500 Z"/>
+    <path d="M720,500 Q725,410 730,360 Q735,310 740,260 Q745,310 750,360 Q755,410 760,500 Z"/>
+  </g>
+
+  <!-- Rolling hills / horizon -->
+  <path d="M0,400 Q100,370 200,390 Q300,410 400,380 Q500,350 600,380 Q700,410 800,390 L800,500 L0,500 Z" fill="#2a1510" opacity="0.8"/>
+  <path d="M0,430 Q150,410 300,430 Q450,450 600,420 Q700,400 800,430 L800,500 L0,500 Z" fill="#1a0808" opacity="0.9"/>
+
+  <!-- Ember particles floating -->
+  <g filter="url(#glow)">
+    <circle cx="350" cy="280" r="2" fill="#ffd54f" opacity="0.8">
+      <animate attributeName="cy" values="280;240;200" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="300" r="1.5" fill="#ff8f00" opacity="0.7">
+      <animate attributeName="cy" values="300;250;180" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.3;0" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="380" cy="310" r="1" fill="#ff4081" opacity="0.6">
+      <animate attributeName="cy" values="310;260;200" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.2;0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="420" cy="290" r="1.8" fill="#ffd54f" opacity="0.75">
+      <animate attributeName="cy" values="290;230;170" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.75;0.3;0" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="320" r="1.2" fill="#ff6b35" opacity="0.65">
+      <animate attributeName="cy" values="320;270;210" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.65;0.25;0" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="315" r="1.3" fill="#ffd54f" opacity="0.7">
+      <animate attributeName="cy" values="315;265;195" dur="4.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.3;0" dur="4.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Brushstroke texture overlay -->
+  <g opacity="0.08" filter="url(#impasto)">
+    <rect width="800" height="500" fill="#ff6b35"/>
+  </g>
+
+  <!-- Subtle vignette -->
+  <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+    <stop offset="0%" stop-color="transparent"/>
+    <stop offset="100%" stop-color="#1a0808" stop-opacity="0.4"/>
+  </radialGradient>
+  <rect width="800" height="500" fill="url(#vignette)"/>
+</svg>

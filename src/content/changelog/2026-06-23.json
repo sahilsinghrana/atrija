@@ -2,6 +2,20 @@
   "date": "2026-06-23",
   "entries": [
     {
+      "time": "06:00:00",
+      "type": "daily-mutation",
+      "description": "Daily mutation #173: Color scheme → ember-dawn (fiery orange/crimson/gold), nocturne layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all labels rewritten (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all fact/quote indices dramatically rotated with cross-theme mixing [0→7,1→3,2→11,3→0,4→12], Today section rewritten with ember threshold/dawn negotiation theme, new ember-dawn SVG visual asset",
+      "changes": [
+        "Color scheme: ember-dawn (fiery orange primary, crimson secondary, gold accent)",
+        "Hero tagline: 'From ashes of the old day, a phoenix of wonder rises — burning with questions'",
+        "All 5 section headings rewritten with fire/ember/dawn poetic language",
+        "Section labels: Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame",
+        "Fact/quote indices dramatically rotated: moon→moon[7], philosophy→ego[3], gita→gita[11], shiva→shiva[0], art→art[12]",
+        "Today section fully rewritten: ember threshold, darkness and light negotiating, Van Gogh pre-dawn",
+        "Visual asset: ember-dawn.svg (impressionist ember-dawn with rising orb, cypress silhouettes, floating embers)"
+      ]
+    },
+    {
       "time": "12:00:00",
       "type": "content",
       "description": "Midday content layout refresh: twilight layout, all 5 headings rewritten with blue hour/twilight poetic language (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all labels rewritten (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with blue hour/transition/dissolution themes, Today section rewritten with blue hour/day-night sharing theme",
@@ -12,21 +26,6 @@
         "Fact/quote indices dramatically rotated: moon→moon[14], philosophy→ego[11], gita→gita[4], shiva→shiva[6], art→art[9]",
         "All 5 section intros rewritten with blue hour/transition/dissolution themes",
         "Today section rewritten: blue hour, day and night sharing the sky, Van Gogh twilight"
-      ]
-    },
-    {
-      "time": "06:00:00",
-      "type": "daily-mutation",
-      "description": "Daily mutation #172: Color scheme → starry-night (deep contemplative blue/gold/cyan), nocturne layout, new hero tagline about night painting with stars, all 5 headings rewritten with night/star/void poetic language (Vesper Moon, Star Field, Night Warrior, Midnight Dance, Painted Night), all labels rewritten (Vesper Moon, Star Field, Night Warrior, Midnight Dance, Painted Night), all fact/quote indices dramatically rotated with cross-theme mixing [0,1,2,3,4], Today section rewritten after-solstice starry night theme, new starry-vesper SVG visual asset",
-      "changes": [
-        "Color scheme: starry-night (deep contemplative blue primary, gold secondary, cyan accent)",
-        "Hero tagline: 'The night does not fear the dark — it paints with every star'",
-        "All 5 section headings rewritten with night/star/void poetic language",
-        "Section labels: Vesper Moon, Star Field, Night Warrior, Midnight Dance, Painted Night",
-        "Fact/quote indices dramatically rotated: moon→moon[3], philosophy→ego[6], gita→gita[1], shiva→shiva[11], art→art[13]",
-        "Today section fully rewritten: after-solstice starry night, fireflies, Van Gogh night painting",
-        "Visual asset: starry-vesper.svg (impressionist starry night with moon, cypress trees, fireflies)",
-        "Color scheme order rotated: starry-night moved to first position"
       ]
     }
   ]

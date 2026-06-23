@@ -1,13 +1,13 @@
 {
-  "version": "1.8.24",
-  "lastUpdated": "2026-06-23T12:00:00.000Z",
-  "totalEntries": 40,
+  "version": "1.8.25",
+  "lastUpdated": "2026-06-23T06:00:00.000Z",
+  "totalEntries": 41,
   "dates": [
     {
       "date": "2026-06-23",
       "entries": 2,
-      "latestType": "content",
-      "description": "Midday content layout refresh: twilight layout, all 5 headings rewritten with blue hour/twilight poetic language, dramatic fact/quote rotation with cross-theme mixing, all section intros rewritten with blue hour/transition themes"
+      "latestType": "daily-mutation",
+      "description": "Daily mutation #173: ember-dawn colors (fiery orange/crimson/gold), new tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn language, dramatic fact/quote rotation with cross-theme mixing, Today rewritten with ember threshold theme, new ember-dawn SVG"
     },
     {
       "date": "2026-06-21",
