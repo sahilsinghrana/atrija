@@ -700,7 +700,18 @@
         {
           "id": "idea-089",
           "title": "Remove hash-assets.sh and BUILD_VERSION sed from daily-deploy.sh",
-          "completedAt": "2026-06-23"
+          "completedAt": "2026-06-23",
+          "reviewedAt": "2026-06-23T19:00:00.000000+00:00",
+          "reviewResult": "PASS",
+          "reviewNotes": "Reviewed 2026-06-23 19:00 — PASS. hash-assets.sh and BUILD_VERSION sed removed from daily-deploy.sh. Build pipeline uses Vite content hashing and nginx cache headers correctly. Build succeeds. Site live (HTTP 200). No functional issues found."
+        },
+        {
+          "id": "idea-090",
+          "title": "Scene Boot Error Boundary — Themed Error Overlay with Recovery",
+          "completedAt": "2026-06-23",
+          "reviewedAt": "2026-06-23T19:00:00.000000+00:00",
+          "reviewResult": "PASS",
+          "reviewNotes": "Reviewed 2026-06-23 19:00 — PASS. 372-line standalone public/js/scene-error-boundary.js IIFE. Loaded via <script> tag BEFORE scene-bundle.js in index.astro (verified in deployed HTML). Wraps window.bootScene via Object.defineProperty setter to intercept errors. Wraps window.__sceneFailed for graceful fallback. Themed error overlay uses existing CSS custom properties (--bg, --accent-gold, --font-serif, etc.). Retry button (max 3 attempts with countdown), Continue without 3D button (hides loader, hides canvas, shows content). prefers-reduced-motion respected. ARIA attributes (role=alert, aria-live=assertive). Collapsible technical details. Refresh Page after exhausting retries. Zero scene-init.js / scene-bootstrap.js changes. Build succeeds. Site live (HTTP 200). All core elements verified intact."
         }
       ]
     }

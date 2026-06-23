@@ -5,7 +5,7 @@
  * @see idea-056
  */
 
-const CACHE_NAME = 'atrija-shell-v31';
+const CACHE_NAME = 'atrija-shell-v32';
 
 /** @type {string[]} — Pre-cache these at install time */
 const PRECACHE_URLS = [
