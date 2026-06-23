@@ -246,6 +246,57 @@
           ],
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Test the error boundary logic by mocking window.bootScene to throw, verifying the overlay is displayed with correct message and buttons. Test that 'Retry' calls bootScene again. Test that 'Continue without 3D' hides the loader and shows content sections.\\n- Test cases: bootScene() throwing triggers overlay display; bootScene() succeeding does not show overlay; Retry button re-calls bootScene; Continue button hides loader and shows content; prefers-reduced-motion disables overlay animations; module handles missing bootScene gracefully; module does not interfere with normal boot when no error occurs.\\n- Integration tests: Verify that the module loads correctly before scene-bundle.js and that the error overlay uses existing CSS custom properties (--accent-gold, --bg, --font-serif, etc.).\\n- Acceptance criteria: scene-error-boundary.js is a standalone IIFE with zero scene-init.js changes; overlay uses existing CSS custom properties; Retry and Continue buttons work; build succeeds; total added code ~100 lines; module loaded via <script> tag before scene-bundle.js."
+        },
+        {
+          "id": "idea-091",
+          "title": "Unit Tests for performance-scaler.js — FPS Sampling and Quality Tier Logic",
+          "description": "public/js/performance-scaler.js (302 lines) is a standalone module with zero test coverage. It monitors FPS over a rolling window of 60 frames, calculates average FPS, and switches between quality tiers (high/medium/low) with cooldown and hysteresis heuristics. The core logic is pure and testable: given a sequence of frame times, it should compute the correct average FPS, apply the correct quality tier transition, respect cooldown periods, and persist state via sessionStorage. This task creates tests/unit/performance-scaler.test.js with: (1) tests for the FPS calculation logic with synthetic frame time sequences (steady 60fps, steady 20fps, mixed), (2) tests for quality tier threshold detection (below 30fps triggers downgrade, above 50fps for 5s triggers upgrade), (3) tests for cooldown enforcement (no rapid tier flipping), (4) tests for hysteresis (upgrade threshold differs from downgrade threshold), (5) tests for sessionStorage persistence and restoration, (6) tests for the device capability detection (low-end mobile caps at medium quality). Uses vitest with jsdom environment. Effort: 1-2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "performance-scaler",
+            "client-side",
+            "jsdom",
+            "fps",
+            "quality-tiers"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/performance-scaler.test.js using vitest jsdom environment. Test pure calculation functions (FPS averaging, tier selection, cooldown timing) with synthetic frame time arrays. Mock sessionStorage via jsdom.\\n- Test cases: FPS calculation returns correct average for steady and variable frame times; quality tier drops to 'low' when avg FPS < 30; quality tier upgrades to 'high' when avg FPS > 50 for 5+ seconds; cooldown prevents tier changes within the cooldown window; hysteresis prevents oscillation (upgrade threshold > downgrade threshold); sessionStorage persists quality tier across page reloads; device capability detection caps low-end devices at medium tier; module gracefully handles missing sessionStorage.\\n- Integration tests: Verify that the module works correctly when loaded alongside scene-bundle.js by testing the quality tier application.\\n- Acceptance criteria: All new tests pass; >85% branch coverage for performance-scaler.js; existing test suite unaffected; tests run in <5s; no network calls (fully mocked)."
+        },
+        {
+          "id": "idea-092",
+          "title": "Unit Tests for quote-carousel.js — Auto-Rotation and Navigation Logic",
+          "description": "public/js/quote-carousel.js (45 lines) is the smallest standalone client-side module but has zero test coverage. It manages auto-rotating quote cards with fade transitions, keyboard navigation (arrow keys), dot indicator clicks, and pause-on-hover behavior. The module is tiny enough to fully cover in one session. This task creates tests/unit/quote-carousel.test.js with: (1) tests for the rotation timer logic (auto-advance interval, pause/resume), (2) tests for keyboard navigation (ArrowLeft/ArrowRight advance/back, Home/End jump), (3) tests for dot indicator click handling, (4) tests for pause-on-hover and resume-on-leave, (5) tests for the fade transition class toggling, (6) tests for edge cases (single quote, empty carousel). Uses vitest + jsdom environment. Effort: 1 session.",
+          "category": "Testing & Reliability",
+          "priority": "low",
+          "tags": [
+            "unit-tests",
+            "quote-carousel",
+            "client-side",
+            "jsdom",
+            "carousel",
+            "auto-rotation"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Create tests/unit/quote-carousel.test.js using vitest jsdom environment. Build a mock DOM structure with quote cards, dot indicators, and the carousel container. Test timer logic with vi.useFakeTimers().\\n- Test cases: auto-advance fires at the correct interval; ArrowLeft/ArrowRight navigate to previous/next quote; Home/End jump to first/last quote; dot click jumps to the corresponding quote; pause-on-hover stops auto-advance; resume-on-leave restarts it; fade transition classes are applied and removed correctly; single-quote carousel does not crash; empty carousel is handled gracefully.\\n- Integration tests: Verify that the module works with the real DOM structure generated by index.astro (quote carousel sections with data-carousel attribute).\\n- Acceptance criteria: All new tests pass; >90% branch coverage for quote-carousel.js; existing test suite unaffected; tests run in <5s; no network calls."
+        },
+        {
+          "id": "idea-093",
+          "title": "Unit Tests for bump-sw-cache.js — Build-Critical Cache Version Increment",
+          "description": "scripts/bump-sw-cache.js is a build-critical script that runs on every npm run build. It reads public/sw.js, increments the CACHE_NAME version (e.g., atrija-shell-v3 → v4), and writes the file back. If this script fails silently, the service worker cache never busts, and returning users receive stale HTML/CSS/JS indefinitely. Despite being essential to the cache invalidation strategy, it has zero test coverage. This task creates tests/unit/bump-sw-cache.test.js with: (1) tests that the script correctly increments the version number in CACHE_NAME, (2) tests that it handles the first-run case (no existing version number → defaults to v1), (3) tests that it preserves all other content in sw.js, (4) tests that it handles malformed CACHE_NAME gracefully, (5) tests that the script is idempotent when run twice (v3 → v4 on first run, v4 → v5 on second, no corruption). Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 1 session.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "unit-tests",
+            "bump-sw-cache",
+            "build-pipeline",
+            "service-worker",
+            "cache-invalidation",
+            "critical-script"
+          ],
+          "effort": "1 session",
+          "testingStrategy": "- Unit tests: Create tests/unit/bump-sw-cache.test.js with vi.mock('fs') to isolate all file I/O. Use fixture files in tests/fixtures/sw/ (valid sw.js with CACHE_NAME, sw.js with no version, malformed sw.js).\\n- Test cases: version increments correctly (v3 → v4, v9 → v10, v99 → v100); first-run case creates v1 from no version; all non-CACHE_NAME content is preserved exactly; malformed CACHE_NAME logs warning and exits gracefully; double-run produces v3 → v4 → v5 (no corruption); script exits 0 on success.\\n- Integration tests: Run the script against a temporary copy of the real public/sw.js and verify the output is valid JavaScript and the version incremented.\\n- Acceptance criteria: All new tests pass; >85% branch coverage for bump-sw-cache.js; existing test suite unaffected; mock-based tests run in <5s; no real file system modifications during tests."
         }
       ]
     },
@@ -1542,10 +1593,34 @@
       "category": "Technical Debt & Code Quality",
       "priority": "high",
       "status": "backlog"
+    },
+    {
+      "id": "idea-091",
+      "title": "Unit Tests for performance-scaler.js — FPS Sampling and Quality Tier Logic",
+      "description": "Create unit tests for performance-scaler.js (302 lines) covering FPS calculation, quality tier thresholds, cooldown enforcement, hysteresis, sessionStorage persistence, and device capability detection. Uses vitest + jsdom.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-092",
+      "title": "Unit Tests for quote-carousel.js — Auto-Rotation and Navigation Logic",
+      "description": "Create unit tests for quote-carousel.js (45 lines) covering auto-rotation timer, keyboard navigation, dot indicator clicks, pause-on-hover, fade transitions, and edge cases. Uses vitest + jsdom with vi.useFakeTimers().",
+      "category": "Testing & Reliability",
+      "priority": "low",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-093",
+      "title": "Unit Tests for bump-sw-cache.js — Build-Critical Cache Version Increment",
+      "description": "Create unit tests for the build-critical bump-sw-cache.js script that increments CACHE_NAME version in sw.js on every build. Tests version increment, first-run handling, content preservation, malformed input, and idempotency. Uses vitest with vi.mock('fs').",
+      "category": "Testing & Reliability",
+      "priority": "high",
+      "status": "backlog"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-06-16T02:00:00Z",
-  "lastReviewAt": "2026-06-23T03:00:00Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-23 03:00): Added 3 missing ideas array entries (idea-088, idea-089, idea-090) that were in backlog column but missing from ideas index. Updated idea-041 description to remove stale 'rolled back' reference (idea-032 is in backlog). Backlog now: 20 tasks (6 high, 10 medium, 4 low), Done: 56, Deferred: 1. No duplicates found. No completed tasks in backlog. Deferred untouched. Core elements protected."
+  "generatedAt": "2026-06-24T02:00:00Z",
+  "lastReviewAt": "2026-06-24T02:00:00Z",
+  "lastReviewResult": "Kanban Generator (2026-06-24 02:00): Added 3 new testing ideas (idea-091, idea-092, idea-093) covering untested standalone modules and build scripts. Backlog now: 23 tasks (7 high, 11 medium, 5 low), Done: 56, Deferred: 1. No duplicates found. No completed tasks in backlog. Deferred untouched. Core elements protected."
 }
