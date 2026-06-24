@@ -75,7 +75,7 @@ describe('Site Content Data', () => {
     const themeIds = siteData.themes.map(t => t.id);
     expect(themeIds).toContain('selene-moon');
     expect(themeIds).toContain('ego-arrogance');
-    expect(themeIds).toContain('bhagavad-gita');
+    expect(themeIds).not.toContain('bhagavad-gita');
     expect(themeIds).toContain('shiv-purana');
     expect(themeIds).toContain('art-beauty');
   });

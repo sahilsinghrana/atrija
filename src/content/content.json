@@ -1,9 +1,9 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.27",
+    "version": "1.9.0",
     "lastUpdated": "2026-06-24",
-    "updatedBy": "AI Agent (content-layout-refresh)",
+    "updatedBy": "Human + AI (section removal)",
     "season": "ember-dawn 🔥🌅",
     "layout": "ember-dawn"
   },
@@ -13,7 +13,7 @@
     },
     "today": {
       "heading": "The threshold hour",
-      "intro": "Where yesterday releases its grip and tomorrow has not yet arrived. A moment of pure presence between what was and what will be.",
+      "intro": "Between what was and what will be — pure presence in the threshold.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-24/abyss-bloom.svg",
@@ -21,27 +21,10 @@
         "credit": "Generated for Atrijā daily mutation #852 — bioluminescent garden"
       }
     },
-    "gita": {
-      "label": "III. The Paused Blade",
-      "heading": "Equanimity",
-      "intro": "The Gita teaches that samatva — equal composure in pleasure and pain — is the highest form of yoga. Not indifference, but the deepest engagement with life as it is.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 3
-      },
-      "facts": [
-        "Samatva is not detachment — it is full participation without being controlled by outcomes.",
-        "Action driven by outcome creates bondage. Action performed as duty liberates."
-      ],
-      "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 0
-      }
-    },
     "moon": {
       "label": "I. The Remembering Tide",
       "heading": "Waning Crescent",
-      "intro": "The moon wanes toward darkness — a reminder that endings are necessary before new beginnings. In the void, potential gathers.",
+      "intro": "The moon wanes — endings before beginnings. In the void, potential gathers.",
       "imageCard": {
         "themeIndex": 0,
         "factIndex": 7
@@ -58,9 +41,9 @@
     "shiva": {
       "label": "IV. The Sleeping Dance",
       "heading": "Destruction as Creation",
-      "intro": "Shiva dissolves so that new forms can emerge. Every ending carries the seed of beginning. The dance of destruction is the dance of renewal.",
+      "intro": "Dissolution precedes renewal. Every ending seeds a new beginning.",
       "imageCard": {
-        "themeIndex": 4,
+        "themeIndex": 3,
         "factIndex": 2
       },
       "facts": [
@@ -75,7 +58,7 @@
     "art": {
       "label": "V. The Dreaming Brush",
       "heading": "Seeing Beyond Form",
-      "intro": "Art is not decoration — it is the practice of seeing what others overlook. A single brushstroke can hold more truth than a thousand words.",
+      "intro": "Seeing what others overlook. One stroke holds more than a thousand words.",
       "imageCard": {
         "themeIndex": 1,
         "factIndex": 0
@@ -92,9 +75,9 @@
     "philosophy": {
       "label": "II. The Unraveling",
       "heading": "The Examined Life",
-      "intro": "Socrates was right: the unexamined life is not worth living. But examination without action is paralysis. The goal is not to think about life — it is to live what you discover.",
+      "intro": "Wonder leads to clarity. Live what you discover, don't just think on it.",
       "imageCard": {
-        "themeIndex": 2,
+        "themeIndex": 1,
         "factIndex": 0
       },
       "facts": [
@@ -112,17 +95,14 @@
     "entries": [
       {
         "date": "2026-06-24",
-        "time": "12:00:00",
-        "type": "content",
-        "description": "Midday content layout refresh: ember-dawn layout, new section order (gita→moon→shiva→art→philosophy), all 5 headings rewritten with stillness/potential/dream poetic language, all labels rewritten (Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with stillness/potential/dream themes, Today section rewritten with threshold hour/ember-dawn theme",
+        "time": "19:00:00",
+        "type": "design",
+        "description": "Removed Bhagavad Gita section — streamlined to 4 content sections (Moon, Shiva, Art, Philosophy) for visual breathing room. Reduced all section intros to <60 chars. Removed stars.svg image asset.",
         "changes": [
-          "Layout: ember-dawn (threshold hour variant)",
-          "Section order: gita, moon, shiva, art, philosophy",
-          "All 5 section headings rewritten with stillness/potential/dream poetic language",
-          "Section labels: Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush",
-          "Fact/quote indices dramatically rotated: gita→shiva[3], moon→moon[7], shiva→art[2], art→ego[0], philosophy→gita[0]",
-          "All 5 section intros rewritten with stillness/potential/dream themes",
-          "Today section rewritten: threshold hour, ember-dawn, breath between worlds"
+          "Removed Bhagavad Gita section from template, content.json, and all theme data",
+          "All section intros condensed to <60 chars for scannability",
+          "Section count: 5 → 4 (Moon, Shiva, Art, Philosophy)",
+          "Removed imageCard references to stars.svg"
         ]
       },
       {

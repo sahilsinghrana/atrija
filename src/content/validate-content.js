@@ -277,8 +277,8 @@ function validateContent(data, siteData = null) {
   }
 
   // Required section keys
-  const requiredSections = ['moon', 'philosophy', 'gita', 'shiva', 'art'];
-  const sectionLabels = { moon: 'I. The Moon', philosophy: 'II. The Waves', gita: 'III. The Battlefield', shiva: 'IV. The Dance', art: 'V. The Canvas' };
+  const requiredSections = ['moon', 'philosophy', 'shiva', 'art'];
+  const sectionLabels = { moon: 'I. The Moon', philosophy: 'II. The Waves', shiva: 'III. The Dance', art: 'IV. The Canvas' };
 
   for (const key of requiredSections) {
     if (!sec[key] || typeof sec[key] !== 'object') {
@@ -489,7 +489,7 @@ function validateSeasons(data) {
 
   // Validate each season that exists
   const COLOR_SCHEME_KEYS = ['starry-night', 'sunflower', 'midnight-wave', 'tulip-garden', 'moonlit-silver'];
-  const FACT_THEME_KEYS = ['moon', 'ego', 'gita', 'shiva', 'art'];
+  const FACT_THEME_KEYS = ['moon', 'ego', 'shiva', 'art'];
   const FLOWER_EMPHASIS_VALUES = ['tulips', 'sunflowers', 'balanced', 'lilies', 'wildflowers'];
 
   for (const seasonKey of requiredSeasons) {

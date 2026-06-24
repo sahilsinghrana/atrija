@@ -1,7 +1,11 @@
 {
   "seasons": {
     "spring": {
-      "months": [3, 4, 5],
+      "months": [
+        3,
+        4,
+        5
+      ],
       "colorSchemeWeights": {
         "starry-night": 1,
         "sunflower": 1,
@@ -19,13 +23,16 @@
       "factThemeWeights": {
         "moon": 1,
         "ego": 1,
-        "gita": 2,
         "shiva": 1,
         "art": 2
       }
     },
     "summer": {
-      "months": [6, 7, 8],
+      "months": [
+        6,
+        7,
+        8
+      ],
       "colorSchemeWeights": {
         "starry-night": 2,
         "sunflower": 3,
@@ -43,13 +50,16 @@
       "factThemeWeights": {
         "moon": 2,
         "ego": 1,
-        "gita": 1,
         "shiva": 1,
         "art": 2
       }
     },
     "autumn": {
-      "months": [9, 10, 11],
+      "months": [
+        9,
+        10,
+        11
+      ],
       "colorSchemeWeights": {
         "starry-night": 2,
         "sunflower": 3,
@@ -67,13 +77,16 @@
       "factThemeWeights": {
         "moon": 1,
         "ego": 2,
-        "gita": 1,
         "shiva": 2,
         "art": 1
       }
     },
     "winter": {
-      "months": [12, 1, 2],
+      "months": [
+        12,
+        1,
+        2
+      ],
       "colorSchemeWeights": {
         "starry-night": 3,
         "sunflower": 1,
@@ -91,7 +104,6 @@
       "factThemeWeights": {
         "moon": 2,
         "ego": 1,
-        "gita": 2,
         "shiva": 2,
         "art": 1
       }
