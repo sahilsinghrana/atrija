@@ -5,10 +5,11 @@
 ## Project Overview
 - **Name**: Atrijā (अत्रिज) — impressionist philosophy website
 - **Stack**: Astro 4 + Three.js (npm `three@0.160`), GLSL post-processing
-- **Scene**: `src/js/scene/` (14 ES modules) → `public/js/scene-bundle.js` (692KB, includes three.js)
-- **Build**: `npm run build` = copy-content → vite scene bundle → astro build
+- **Scene**: `src/js/scene/` (27+ ES modules) → bundled by Vite → `dist/_astro/scene-*.js`
+- **Build**: `npm run build` = copy-content → vite scene bundle → astro build → css cache-bust
 - **Deploy**: Nginx port 8080, root `/data/data/com.termux/files/usr/share/nginx/html`
 - **Design**: Dark theme (#08080f), impressionist aesthetic
+- **Domain**: rexx.sahilrana.in (Cloudflare proxied)
 
 ## Critical Rules
 
@@ -35,11 +36,12 @@ cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 **Cache (nginx handles all headers — do NOT add manual busting):**
 - `index.html`: no-cache/no-store — NEVER cached
 - `_astro/*`: max-age=31536000, immutable (1yr, Vite content-hashed)
-- `*.css, *.js`: max-age=3600 (1hr)
+- `*.css, *.js` (public): max-age=3600 (1hr) — cache-busted via build timestamp query string
 - `*.svg, *.png`: max-age=2592000 (30d)
 - `*.woff2`: max-age=604800 (7d)
 - `*.json`: max-age=300 (5min)
 - SW auto-bump: `scripts/bump-sw-cache.js` runs every build → increments CACHE_NAME
+- CSS cache-bust: `scripts/css-cache-bust.js` runs at end of build → injects `?v=timestamp` into CSS links
 - **Do NOT run `hash-assets.sh` or `BUILD_VERSION` sed** — breaks build
 
 ### 3. Git
@@ -59,11 +61,16 @@ DISPLAY=:99 agent-browser snapshot 2>&1 | head -20
 agent-browser close
 ```
 
+Or use the test script:
+```bash
+python3 test-visual.py http://127.0.0.1:8080
+```
+
 ---
 
 ## Cron Job Safety Rules (CRITICAL)
 
-**6a. Scene Code SACRED** — NEVER modify `src/js/scene/` modules unless user instructs. Use CodeGraph for callers first. `scene-bundle.js` is BUILD OUTPUT — never edit.
+**6a. Scene Code SACRED** — NEVER modify `src/js/scene/` modules unless user instructs. Use CodeGraph for callers first. Scene JS in `_astro/` is BUILD OUTPUT — never edit.
 
 **6a2. NO TEMP FIXES** — Root cause only. No CDN fallbacks, inline hacks, commented-out code. "Quick fixes" WILL be reverted. ASK if unsure.
 
@@ -108,37 +115,41 @@ import content from '../content/content.json';
 ### Changelog (`src/content/changelog/`)
 - Date files: `YYYY-MM-DD.json` → `index.json`
 - Entry types: daily-mutation, feature, fix, content, design, refactor, perf, chore
-- `van-gogh-daily-mutate` writes entries; auto-synced to `content.json`
+- `van-gogh-daily-mutate-deploy` writes entries; auto-synced to `content.json`
 
 ---
 
 ## File Structure
 ```
 src/content/       siteData.json, content.json, changelog/
-src/js/scene/      14 ES modules (DO NOT MODIFY without approval)
+src/js/scene/      27+ ES modules (DO NOT MODIFY without approval)
 src/layouts/       BaseLayout.astro
 src/pages/         index.astro
-public/css/        main.css, loader.css
-public/js/         scene-bundle.js (BUILD OUTPUT), changelog-app.js, moon-phase.js, quote-carousel.js
+public/css/        main.css, loader.css, daily-theme.css
+public/js/         changelog-app.js, moon-phase.js, quote-carousel.js, performance-scaler.js,
+                   content-prefetch.js, scene-error-boundary.js, scene-context-recovery.js,
+                   comet.js, content-search.js, section-nav.js, reader-mode.js,
+                   keyboard-help.js, theme-switcher.js
 public/mutation-assets/YYYY-MM-DD/  — Daily visual assets
 .hermes/           kanban.json
-scripts/           daily-mutate.js, daily-deploy.sh, bump-sw-cache.js, inject-body.js
+scripts/           daily-mutate.js, bump-sw-cache.js, inject-body.js, css-cache-bust.js,
+                   check-bundle-size.js, scene-health-check.cjs
 ```
 
 ---
 
-## Cron Schedule
+## Cron Schedule (9 jobs)
 | Job | Schedule | Purpose |
 |-----|----------|---------|
 | van-gogh-kanban-generate | 2 AM | Generate ideas + PRDs |
 | van-gogh-kanban-review | 3 AM | Review PRDs quality/feasibility |
 | van-gogh-background-implement | 3AM + 4PM | Implement kanban tasks + browser verify |
-| van-gogh-daily-mutate | 6 AM | Dramatic visible changes + visual assets |
-| van-gogh-daily-deploy | 6 AM | Backup deploy (dedup vs mutate) |
+| van-gogh-daily-mutate-deploy | 6 AM | Dramatic visible changes + visual assets + deploy |
 | van-gogh-implementation-review | 6AM + 7PM | Visual review via browser |
 | van-gogh-content-layout-refresh | 12 PM | Midday refresh — rotate intros/quotes |
 | van-gogh-git-pull-build | Every 3h | Pull + conditional build + browser verify |
 | van-gogh-ui-test-fix | 10AM + 10PM | Full browser UI testing + fixes |
+| battery-thermal-guard | Every 5m | Battery thermal protection |
 
 **IMPORTANT**: All cron jobs are pure agent prompts — do NOT spawn `hermes agent` subprocesses (causes libuv assertion crashes).
 
@@ -151,3 +162,13 @@ scripts/           daily-mutate.js, daily-deploy.sh, bump-sw-cache.js, inject-bo
 - `sendfile off` required on Termux
 - Verify with `127.0.0.1:8080` NOT `localhost`
 - Check for duplicated `public/js/` assets after deploy (remove if present)
+
+---
+
+## Current Architecture (2026-06)
+- **Scene modules**: All Three.js code in `src/js/scene/` as ES modules with bare `three` imports (no CDN/esm.sh)
+- **Vite bundling**: Scene modules bundled by Vite into hashed chunks in `dist/_astro/`
+- **CSS**: main.css + daily-theme.css + loader.css — cache-busted via build timestamp
+- **Service Worker**: `public/sw.js` with versioned cache (auto-bumped every build)
+- **Testing**: vitest + jsdom, tests in `tests/unit/` and `tests/loading/`
+- **ESLint**: Flat config with @eslint/js + typescript-eslint + eslint-plugin-astro
