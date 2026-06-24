@@ -384,155 +384,142 @@ export function makeTulipCanvas(size, color, openness, seed) {
   var gg = parseInt(hex.substring(2, 4), 16);
   var bb = parseInt(hex.substring(4, 6), 16);
 
-  // --- Stem (long, elegant) ---
-  var stemTop = size * 0.28;
-  var stemBottom = size * 0.92;
-  var stemW = size * 0.022;
+  // --- Stem ---
+  var stemTop = size * 0.22;
+  var stemBottom = size * 0.93;
+  var stemW = size * 0.018;
 
   ctx.strokeStyle = "#2d6a1e";
   ctx.lineWidth = stemW;
   ctx.lineCap = "round";
   ctx.beginPath();
   ctx.moveTo(cx, stemBottom);
-  ctx.bezierCurveTo(
-    cx + size * 0.015, stemBottom - size * 0.15,
-    cx - size * 0.01, stemBottom - size * 0.35,
-    cx, stemTop,
-  );
+  ctx.quadraticCurveTo(cx + size * 0.008, stemBottom * 0.55, cx, stemTop);
   ctx.stroke();
 
-  // Highlight on stem
-  ctx.strokeStyle = "rgba(100,170,60,0.3)";
-  ctx.lineWidth = stemW * 0.4;
-  ctx.beginPath();
-  ctx.moveTo(cx - stemW * 0.3, stemBottom);
-  ctx.bezierCurveTo(
-    cx - stemW * 0.1, stemBottom - size * 0.15,
-    cx + size * 0.005, stemBottom - size * 0.35,
-    cx - stemW * 0.2, stemTop,
-  );
-  ctx.stroke();
-
-  // --- Leaf (one large leaf wrapping around stem) ---
+  // --- Leaf (long, narrow, curves down) ---
   ctx.fillStyle = "#3a7a28";
+  ctx.beginPath();
+  ctx.moveTo(cx, stemTop + size * 0.08);
+  ctx.bezierCurveTo(
+    cx + size * 0.08, stemTop + size * 0.02,
+    cx + size * 0.14, stemTop + size * 0.18,
+    cx + size * 0.04, stemTop + size * 0.35,
+  );
+  ctx.quadraticCurveTo(cx - size * 0.02, stemTop + size * 0.25, cx, stemTop + size * 0.08);
+  ctx.fill();
+
+  // Second leaf (other side)
+  ctx.fillStyle = "#2d6a1e";
   ctx.beginPath();
   ctx.moveTo(cx, stemTop + size * 0.12);
   ctx.bezierCurveTo(
-    cx + size * 0.12, stemTop + size * 0.05,
-    cx + size * 0.16, stemTop + size * 0.22,
-    cx + size * 0.06, stemTop + size * 0.32,
+    cx - size * 0.07, stemTop + size * 0.06,
+    cx - size * 0.13, stemTop + size * 0.22,
+    cx - size * 0.04, stemTop + size * 0.38,
   );
-  ctx.bezierCurveTo(
-    cx - size * 0.02, stemTop + size * 0.28,
-    cx - size * 0.03, stemTop + size * 0.15,
-    cx, stemTop + size * 0.12,
-  );
+  ctx.quadraticCurveTo(cx + size * 0.02, stemTop + size * 0.28, cx, stemTop + size * 0.12);
   ctx.fill();
 
-  // --- Tulip cup (classic tulip silhouette) ---
-  // Tulip shape: tall cup that flares slightly at top, with 3 outer petals
-  var cupBaseY = stemTop;
-  var cupTopY = stemTop - size * 0.32;
-  var cupMidY = (cupBaseY + cupTopY) * 0.5;
-  var cupW = size * 0.13; // half-width at widest point
+  // --- Tulip Flower (classic goblet shape) ---
+  // Key tulip features: tall goblet, 3 petal tips at top, slight flare
+  var cupBaseY = stemTop + size * 0.02;
+  var cupTopY = stemTop - size * 0.30;
+  var cupW = size * 0.10;       // half-width at widest (middle)
+  var cupTopW = size * 0.11;    // half-width at top (slightly flared)
+  var cupNeckY = cupBaseY - size * 0.06; // narrow point near base
 
-  // Outer petal color (slightly darker)
-  var oR = Math.max(0, rr - 30);
-  var oG = Math.max(0, gg - 25);
-  var oB = Math.max(0, bb - 20);
-  var outerColor = "rgb(" + oR + "," + oG + "," + oB + ")";
+  // Draw 3 petals (the defining tulip feature)
+  // Each petal: curves from base up to a rounded tip at top
+  var petalTips = [
+    { x: cx, y: cupTopY },                    // center petal (tallest)
+    { x: cx - cupTopW * 0.85, y: cupTopY + size * 0.03 }, // left petal
+    { x: cx + cupTopW * 0.85, y: cupTopY + size * 0.03 }, // right petal
+  ];
 
-  // Draw 3 outer petals forming the tulip cup
+  // Petal color (slightly darker for outer)
+  var pR = Math.max(0, rr - 25);
+  var pG = Math.max(0, gg - 20);
+  var pB = Math.max(0, bb - 15);
+
+  // Draw each petal
   for (var p = 0; p < 3; p++) {
-    var angle = (p / 3) * Math.PI * 2 - Math.PI / 2;
-    var spread = cupW * (0.9 + rand() * 0.2);
-    var petalTipX = cx + Math.cos(angle) * spread * 0.7;
-    var petalTipY = cupTopY - size * 0.02 + Math.sin(angle) * size * 0.02;
+    var tip = petalTips[p];
+    var side = p === 0 ? 0 : (p === 1 ? -1 : 1);
+    var topW = p === 0 ? cupTopW * 0.35 : cupTopW * 0.7;
 
-    ctx.save();
-    ctx.fillStyle = outerColor;
+    // Petal body
+    ctx.fillStyle = "rgb(" + rr + "," + gg + "," + bb + ")";
     ctx.beginPath();
+    ctx.moveTo(cx - cupW * 0.35, cupBaseY);
     // Left edge of petal
-    ctx.moveTo(cx - cupW * 0.3, cupBaseY);
-    // Curve up to petal tip
     ctx.bezierCurveTo(
-      cx - cupW * 0.5, cupMidY,
-      petalTipX - cupW * 0.15, cupTopY - size * 0.05,
-      petalTipX, petalTipY,
+      cx - cupW * 0.5, cupNeckY,
+      tip.x - topW * 0.6, tip.y + size * 0.04,
+      tip.x, tip.y,
     );
-    // Right edge of petal back down
+    // Right edge of petal
     ctx.bezierCurveTo(
-      petalTipX + cupW * 0.15, cupTopY - size * 0.05,
-      cx + cupW * 0.5, cupMidY,
-      cx + cupW * 0.3, cupBaseY,
+      tip.x + topW * 0.6, tip.y + size * 0.04,
+      cx + cupW * 0.5, cupNeckY,
+      cx + cupW * 0.35, cupBaseY,
     );
     ctx.closePath();
     ctx.fill();
 
-    // Petal highlight (lighter stripe)
-    var hR = Math.min(255, rr + 30);
-    var hG = Math.min(255, gg + 20);
-    var hB = Math.min(255, bb + 15);
-    ctx.fillStyle = "rgba(" + hR + "," + hG + "," + hB + ",0.35)";
+    // Petal center line (vein)
+    ctx.strokeStyle = "rgba(" + pR + "," + pG + "," + pB + ",0.4)";
+    ctx.lineWidth = size * 0.004;
     ctx.beginPath();
-    ctx.moveTo(cx - cupW * 0.1, cupBaseY - size * 0.02);
-    ctx.bezierCurveTo(
-      cx - cupW * 0.15, cupMidY,
-      petalTipX - cupW * 0.05, cupTopY,
-      petalTipX, petalTipY - size * 0.01,
+    ctx.moveTo(cx + side * cupW * 0.1, cupBaseY - size * 0.02);
+    ctx.quadraticCurveTo(
+      cx + side * cupW * 0.15, cupNeckY,
+      tip.x, tip.y + size * 0.02,
     );
-    ctx.bezierCurveTo(
-      petalTipX + cupW * 0.05, cupTopY,
-      cx + cupW * 0.15, cupMidY,
-      cx + cupW * 0.1, cupBaseY - size * 0.02,
+    ctx.stroke();
+  }
+
+  // --- Petal edge highlights (light catching the petal edges) ---
+  ctx.strokeStyle = "rgba(255,255,255,0.2)";
+  ctx.lineWidth = size * 0.003;
+  for (var e = 0; e < 3; e++) {
+    var tip = petalTips[e];
+    var side = e === 0 ? 0 : (e === 1 ? -1 : 1);
+    ctx.beginPath();
+    ctx.moveTo(cx + side * cupW * 0.15, cupBaseY - size * 0.01);
+    ctx.quadraticCurveTo(
+      tip.x - side * cupTopW * 0.2, tip.y + size * 0.03,
+      tip.x, tip.y + size * 0.01,
     );
-    ctx.closePath();
-    ctx.fill();
-    ctx.restore();
+    ctx.stroke();
   }
 
   // --- Inner petals (visible when open) ---
-  if (openness > 0.3) {
+  if (openness > 0.4) {
+    var innerR = Math.min(255, rr + 20);
+    var innerG = Math.min(255, gg + 15);
+    var innerB = Math.min(255, bb + 10);
     for (var ip = 0; ip < 3; ip++) {
-      var iAngle = (ip / 3) * Math.PI * 2 - Math.PI / 2 + Math.PI / 3;
-      var iSpread = cupW * (0.5 + openness * 0.3);
-      var iTipX = cx + Math.cos(iAngle) * iSpread * 0.6;
-      var iTipY = cupTopY - size * 0.08 + Math.sin(iAngle) * size * 0.03;
+      var iSide = ip === 0 ? 0 : (ip === 1 ? -1 : 1);
+      var iTipX = cx + iSide * cupTopW * 0.35;
+      var iTipY = cupTopY + size * 0.06;
 
-      ctx.fillStyle = "rgba(" + rr + "," + gg + "," + bb + ",0.9)";
+      ctx.fillStyle = "rgba(" + innerR + "," + innerG + "," + innerB + ",0.85)";
       ctx.beginPath();
-      ctx.moveTo(cx - cupW * 0.15, cupBaseY - size * 0.05);
+      ctx.moveTo(cx - cupW * 0.12, cupBaseY - size * 0.04);
       ctx.bezierCurveTo(
-        cx - cupW * 0.2, cupMidY - size * 0.02,
-        iTipX - cupW * 0.08, cupTopY - size * 0.04,
+        cx - cupW * 0.15, cupNeckY,
+        iTipX - cupTopW * 0.2, iTipY + size * 0.02,
         iTipX, iTipY,
       );
       ctx.bezierCurveTo(
-        iTipX + cupW * 0.08, cupTopY - size * 0.04,
-        cx + cupW * 0.2, cupMidY - size * 0.02,
-        cx + cupW * 0.15, cupBaseY - size * 0.05,
+        iTipX + cupTopW * 0.2, iTipY + size * 0.02,
+        cx + cupW * 0.15, cupNeckY,
+        cx + cupW * 0.12, cupBaseY - size * 0.04,
       );
       ctx.closePath();
       ctx.fill();
     }
-  }
-
-  // --- Petal edge highlights ---
-  ctx.strokeStyle = "rgba(255,255,255,0.15)";
-  ctx.lineWidth = size * 0.005;
-  for (var e = 0; e < 3; e++) {
-    var eAngle = (e / 3) * Math.PI * 2 - Math.PI / 2;
-    var eSpread = cupW * 0.8;
-    var eTipX = cx + Math.cos(eAngle) * eSpread * 0.65;
-    var eTipY = cupTopY;
-    ctx.beginPath();
-    ctx.moveTo(cx, cupBaseY - size * 0.02);
-    ctx.bezierCurveTo(
-      cx + Math.cos(eAngle) * cupW * 0.3, cupMidY,
-      eTipX - cupW * 0.08, cupTopY - size * 0.03,
-      eTipX, eTipY,
-    );
-    ctx.stroke();
   }
 
   return c;
