@@ -60,7 +60,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
     ⚠️ 3D scene failed to load: <span id="scene-error-msg" style="font-family:monospace;font-size:0.75rem;"></span>
     <button onclick="location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.2rem 0.5rem;border-radius:4px;cursor:pointer;margin-left:0.5rem;">Reload</button>
   </div>
-  <style>
+  <style is:inline>
     /* Canvas container: fixed full-viewport behind all content */
     #canvas-container {
       position: fixed;
@@ -78,15 +78,13 @@ const { title = "अत्रिज", description = "An impressionist journey th
     body {
       background: linear-gradient(180deg, #0a0a1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0a1a 100%);
     }
-
-    /* Light mode: warm cream background */
     @media (prefers-color-scheme: light) {
       body {
         background: linear-gradient(180deg, #faf6f0 0%, #f5f0e8 30%, #f0ebe0 60%, #faf6f0 100%);
       }
     }
-
-    /* ── Accessibility: Skip Navigation ── */
+  </style>
+  <style>
     .skip-nav-link {
       position: absolute;
       top: -100%;
