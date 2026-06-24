@@ -364,6 +364,22 @@ const sections = [
       });
     })();
   </script>
+  <script is:inline>
+    /* Scroll reveal — add .visible to .reveal elements when they enter viewport */
+    requestIdleCallback(function() {
+      var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+      if (!els.length) return;
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { io.observe(el); });
+    });
+  </script>
   <script is:inline src="/js/accessibility.js"></script>
   <script is:inline type="module" src="/js/scroll-lighting.js"></script>
   <script is:inline src="/js/section-nav.js"></script>
