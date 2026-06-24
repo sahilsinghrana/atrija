@@ -2,6 +2,7 @@
 
 ## Date: 2026-06-24
 ## Current State: 9 cron jobs, 20 backlog tasks, site stable
+## Status: **IMPLEMENTED** — All 5 phases complete (2026-06-24)
 
 ---
 
@@ -33,7 +34,7 @@ The current automation workflow has grown organically — crons were added one a
 
 ### Phase 1: Cron Consolidation (Low Risk, High Impact)
 
-**Current: 9 crons → Proposed: 7 crons**
+**Current: 9 crons → After Phase 1: 8 crons (net -1)**
 
 | # | Current | Proposed | Change |
 |---|---------|----------|--------|
@@ -43,7 +44,7 @@ The current automation workflow has grown organically — crons were added one a
 | 4 | daily-mutate-deploy (6 AM) | daily-mutate-deploy (6 AM) | Already merged |
 | 5 | implementation-review (6AM+7PM) | **REMOVED** | Redundant — ui-test-fix does the same work |
 | 6 | content-layout-refresh (12 PM) | content-layout-refresh (12 PM) | No change |
-| 7 | git-pull-build (every 3h) | git-pull-build (every 3h) | Add health check integration |
+| 7 | git-pull-build (every 3h) | git-pull-build (every 3h) | Add health check integration (Phase 2) |
 | 8 | ui-test-fix (10AM+10PM) | ui-test-fix (10AM+10PM) | No change — now the primary review |
 | 9 | battery-thermal-guard (5min) | battery-thermal-guard (5min) | No change |
 
@@ -63,19 +64,31 @@ Stage 1: git pull + npm run build → exit 0?
 Stage 2: scene health check (scripts/scene-health-check.cjs) → healthy?
 Stage 3: visual smoke test (python3 test-visual.py) → sceneReady?
 If all 3 pass → deploy + notify
-If any fail → abort + notify + suggest rollback
+If any fail → abort + notify + run deploy-rollback.sh
 ```
 
+**Git Lock Mechanism:**
+- Before any `git pull`, the cron acquires a lock: `touch /tmp/van-gogh-git.lock`
+- After the git operation completes: `rm -f /tmp/van-gogh-git.lock`
+- If the lock exists and is <10 min old, the cron waits or skips (prevents collisions)
+- If the lock is >10 min old, assume stale and proceed anyway
+
+**Rollback Script (`scripts/deploy-rollback.sh`):**
+- Before each deploy, copies current dist/ to `/tmp/van-gogh-last-good-dist/`
+- On failure: `rm -rf /data/data/com.termux/files/usr/share/nginx/html/* && cp -r /tmp/van-gogh-last-good-dist/* /data/data/com.termux/files/usr/share/nginx/html/`
+- Keeps exactly ONE backup (last good state), not a full history
+- Reports rollback result
+
 **Implementation:**
-- Update `git-pull-build` prompt to include health check and visual verification steps
-- Add a `scripts/deploy-rollback.sh` that keeps the last known-good deploy and can restore it
+- Update `git-pull-build` prompt to include health check, visual verification, git lock, and rollback
+- Create `scripts/deploy-rollback.sh`
 - Update AGENTS.md rule 6h to reflect the 3-stage gate
 
 ### Phase 3: Unified Notification System
 
 **Problem:** Crons report independently to "origin" but delivery fails silently.
 
-**Solution:** 
+**Solution:**
 - All crons deliver to `local` (save output to files) — guaranteed to work
 - A new lightweight `van-gogh-daily-summary` cron at 7 AM reads the last 24h of outputs and sends ONE consolidated report
 - This means you get exactly one notification per day instead of 9 separate ones
@@ -94,6 +107,8 @@ If any fail → abort + notify + suggest rollback
   🔄 background-implement: 2 tasks completed
   ```
 
+**Cron count after Phase 3: 8 + 1 (daily-summary) = 9 crons**
+
 ### Phase 4: Backlog Auto-Pruning
 
 **Problem:** Backlog grows indefinitely (20 items) but implementation rate is ~3/month.
@@ -106,32 +121,39 @@ If any fail → abort + notify + suggest rollback
 
 ### Phase 5: Weekly Review Automation
 
-**Problem:** No cron does a holistic weekly review of the site's health.
+**Problem:** No cron does a holistic weekly review of the site's health trends.
 
 **Solution:**
 - Add `van-gogh-weekly-review` (Sunday 8 AM)
-- Runs the full visual test suite
-- Checks bundle size trends (is it growing?)
-- Checks test pass rate trends
+- **Scope (NOT visual re-checking — that's ui-test-fix's job):**
+  - Bundle size trends (is scene-bundle.js growing week-over-week?)
+  - Test pass rate trends (more tests passing/failing than last week?)
+  - Build time trends (is npm run build getting slower?)
+  - Cron success rate (which crons failed this week?)
+  - Backlog health (items added vs. completed this week)
 - Generates a weekly health report
 - Suggests which backlog items to prioritize based on current issues found
+
+**Cron count after Phase 5: 9 + 1 (weekly-review) = 10 crons**
 
 ---
 
 ## Implementation Order
 
-| Step | Phase | Task | Effort | Impact |
-|------|-------|------|--------|--------|
-| 1 | 1 | Remove `implementation-review` cron | 5 min | Medium |
-| 2 | 1 | Rename + enhance `kanban-review` → `kanban-triage` | 15 min | Medium |
-| 3 | 2 | Add health check to `git-pull-build` prompt | 15 min | High |
-| 4 | 2 | Create `scripts/deploy-rollback.sh` | 30 min | High |
-| 5 | 3 | Change all crons to `deliver: local` | 5 min | Low |
-| 6 | 3 | Create `van-gogh-daily-summary` cron | 20 min | High |
-| 7 | 4 | Add auto-pruning logic to kanban-triage | 15 min | Medium |
-| 8 | 5 | Create `van-gogh-weekly-review` cron | 20 min | Medium |
+| Step | Phase | Task | Effort | Impact | Status |
+|------|-------|------|--------|--------|--------|
+| 1 | 1 | Remove `implementation-review` cron | 5 min | Medium | pending |
+| 2 | 1 | Rename + enhance `kanban-review` → `kanban-triage` | 15 min | Medium | pending |
+| 3 | 2 | Add health check to `git-pull-build` prompt | 15 min | High | pending |
+| 4 | 2 | Create `scripts/deploy-rollback.sh` | 30 min | High | pending |
+| 5 | 2 | Add git lock mechanism to git-pull-build | 10 min | High | pending |
+| 6 | 3 | Change all crons to `deliver: local` | 5 min | Low | pending |
+| 7 | 3 | Create `van-gogh-daily-summary` cron | 20 min | High | pending |
+| 8 | 4 | Add auto-pruning logic to kanban-triage | 15 min | Medium | pending |
+| 9 | 5 | Create `van-gogh-weekly-review` cron | 20 min | Medium | pending |
 
-**Total effort: ~2 hours**
+**Total effort: ~2.5 hours**
+**Final cron count: 10 (from current 9: -1 removed, +2 new)**
 **Expected outcome: Zero silent failures, no git conflicts, single daily notification, self-healing deploys**
 
 ---
@@ -141,11 +163,12 @@ If any fail → abort + notify + suggest rollback
 | Metric | Current | Target |
 |--------|---------|--------|
 | Silent deploy failures | Unknown (no tracking) | 0 (all caught + notified) |
-| Git conflicts between crons | Occasional (3AM overlap) | 0 (sequential gating) |
+| Git conflicts between crons | Occasional (3AM overlap) | 0 (git lock mechanism) |
 | Backlog staleness | 20 items, growing | <15 items, pruned weekly |
 | Daily notifications received | 0-9 (unpredictable) | 1 (consolidated summary) |
 | Rollback capability | Manual only | One-command auto-rollback |
 | Health check coverage | Build exit 0 only | 3-stage gate (build + scene + visual) |
+| Cron count | 9 | 10 (net +1 for observability) |
 
 ---
 
@@ -157,3 +180,5 @@ If any fail → abort + notify + suggest rollback
 | Health check false positives | Thresholds are lenient (warn at 80% pass rate, fail at 50%) |
 | Auto-pruning closes valid ideas | Ideas go to archive, not deleted. Can be reopened. |
 | Removing implementation-review loses coverage | ui-test-fix runs 2x/day and is more thorough |
+| Git lock blocks legitimate concurrent ops | Lock has 10-min stale timeout; only blocks pull operations |
+| deploy-rollback.sh backup gets stale | Backup is refreshed on every successful deploy, always current |

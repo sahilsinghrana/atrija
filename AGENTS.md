@@ -138,23 +138,25 @@ scripts/           daily-mutate.js, bump-sw-cache.js, inject-body.js, css-cache-
 
 ---
 
-## Cron Schedule (7 jobs — proposed)
-| Job | Schedule | Purpose |
-|-----|----------|---------|
-| van-gogh-kanban-generate | 2 AM | Generate ideas + PRDs |
-| van-gogh-kanban-triage | 3 AM | Review, prioritize, prune stale ideas |
-| van-gogh-background-implement | 3AM + 4PM | Implement kanban tasks + browser verify |
-| van-gogh-daily-mutate-deploy | 6 AM | Dramatic visible changes + visual assets + deploy |
-| van-gogh-daily-summary | 7 AM | Consolidated daily health report |
-| van-gogh-content-layout-refresh | 12 PM | Midday refresh — rotate intros/quotes |
-| van-gogh-git-pull-build | Every 3h | Pull + health-gated build + deploy |
-| van-gogh-ui-test-fix | 10AM + 10PM | Full browser UI testing + fixes |
-| van-gogh-weekly-review | Sunday 8AM | Weekly health + bundle size + test trends |
-| battery-thermal-guard | Every 5m | Battery thermal protection |
+## Cron Schedule (10 jobs — implemented 2026-06-24)
+| Job | Schedule | Purpose | Delivery |
+|-----|----------|---------|----------|
+| van-gogh-kanban-generate | 2 AM | Generate ideas + PRDs | local |
+| van-gogh-kanban-triage | 3 AM | Review, prioritize, prune stale ideas | local |
+| van-gogh-background-implement | 3AM + 4PM | Implement kanban tasks + browser verify | local |
+| van-gogh-daily-mutate-deploy | 6 AM | Dramatic visible changes + visual assets + deploy | local |
+| van-gogh-git-pull-build | Every 3h | Pull + health-gated 3-stage deploy | local |
+| van-gogh-daily-summary | 7 AM | Consolidated daily health report | **origin** |
+| van-gogh-content-layout-refresh | 12 PM | Midday refresh — rotate intros/quotes | local |
+| van-gogh-ui-test-fix | 10AM + 10PM | Full browser UI testing + fixes | local |
+| van-gogh-weekly-review | Sunday 8AM | Weekly trends: bundle size, tests, cron success | **origin** |
+| battery-thermal-guard | Every 5m | Battery thermal protection | local |
 
 **IMPORTANT**: All cron jobs are pure agent prompts — do NOT spawn `hermes agent` subprocesses (causes libuv assertion crashes).
 
-**Deployment Safety:** `git-pull-build` uses a 3-stage gate: (1) build exit 0, (2) scene health check, (3) visual smoke test. All must pass before deploy.
+**Deployment Safety:** `git-pull-build` uses a 3-stage gate: (1) build exit 0, (2) scene health check, (3) visual smoke test. All must pass before deploy. Git lock at `/tmp/van-gogh-git.lock` prevents pull collisions. Rollback: `scripts/deploy-rollback.sh restore`.
+
+**Notification Pattern:** 8 crons save output locally. 2 crons (daily-summary, weekly-review) deliver to origin with consolidated reports.
 
 ---
 
