@@ -366,19 +366,47 @@ const sections = [
   </script>
   <script is:inline>
     /* Scroll reveal — add .visible to .reveal elements when they enter viewport */
-    requestIdleCallback(function() {
+    (function() {
       var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
       if (!els.length) return;
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
+
+      var revealed = 0;
+      var total = els.length;
+
+      function showEl(el) {
+        if (el.classList.contains('visible')) return;
+        el.classList.add('visible');
+        revealed++;
+      }
+
+      // Primary: IntersectionObserver for scroll-triggered reveal
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              showEl(e.target);
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+        els.forEach(function(el) { io.observe(el); });
+      }
+
+      // Fallback 1: show all after 2s (ensures visibility even if observer fails)
+      setTimeout(function() {
+        els.forEach(function(el) { showEl(el); });
+      }, 2000);
+
+      // Fallback 2: show elements immediately if they're in initial viewport
+      requestAnimationFrame(function() {
+        els.forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            showEl(el);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      els.forEach(function(el) { io.observe(el); });
-    });
+      });
+    })();
   </script>
   <script is:inline src="/js/accessibility.js"></script>
   <script is:inline type="module" src="/js/scroll-lighting.js"></script>
