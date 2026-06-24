@@ -317,7 +317,7 @@ body.layout-fullbleed #today .section-inner {
 
 /* ── Nocturne Layout — deep cosmic night ── */
 body.layout-nocturne .section {
-  background: rgba(8, 4, 24, 0.85) !important;
+  background: rgba(8, 4, 24, 0.45) !important;
   border: 1px solid rgba(123, 47, 247, 0.12) !important;
   border-radius: 12px !important;
   margin: 1rem auto !important;

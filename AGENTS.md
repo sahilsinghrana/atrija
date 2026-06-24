@@ -120,6 +120,14 @@ git push origin master
 - If you're not confident in a proper fix, ASK first — don't deploy a workaround
 - This applies to ALL cron jobs and autonomous agents
 
+#### 6a3. ASTRO 4.16.19 BODY TAG BUG (KNOWN ISSUE)
+Astro 4.16.19 strips `<body>` tags from ALL components during static generation (`output: 'static'`). This is a known bug in this version.
+- **Symptom**: Built HTML has no `<body>` or `</body>` tags — CSS doesn't apply, JS referencing `document.body` fails
+- **Fix**: `scripts/inject-body.js` runs as the LAST step in the build pipeline, injecting `<body>` after `</head>` and `</body>` before `</html>`
+- **DO NOT try to fix this by removing `<body>` from components** — Astro strips it regardless of where it's placed
+- **DO NOT downgrade Astro** — newer versions break other features we rely on
+- When upgrading Astro (if ever), test if this bug is fixed and remove `inject-body.js`
+
 #### 6b. Never Revert to Old Commits
 - **NEVER run `git revert`, `git reset --hard`, or `git checkout <old-commit>`** unless explicitly instructed
 - Previous sessions have broken things by reverting to old commits that removed features

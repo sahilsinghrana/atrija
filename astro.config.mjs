@@ -8,7 +8,7 @@ export default defineConfig({
   },
   vite: {
     build: {
-      cssCodeSplit: false,
+      cssCodeSplit: true,
       rollupOptions: {
         output: {
           manualChunks: undefined
