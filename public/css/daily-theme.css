@@ -15,8 +15,8 @@
   --text-tertiary: #7060a0;
   --text-quote: #d0c8f0;
 
-  --accent-gold: #7b2ff7;
-  --accent-gold-dim: rgba(123, 47, 247, 0.12);
+  --accent-gold: #ffd54f;
+  --accent-gold-dim: rgba(255, 213, 79, 0.12);
   --accent-blue: #00f0ff;
   --accent-coral: #ff2d95;
   --accent-violet: #b44aff;
@@ -314,6 +314,64 @@ body.layout-fullbleed #today .section-inner {
   background: rgba(0, 240, 255, 0.12) !important;
   border-color: rgba(0, 240, 255, 0.4) !important;
 }
+
+/* ── Nocturne Layout — deep cosmic night ── */
+body.layout-nocturne .section {
+  background: rgba(8, 4, 24, 0.85) !important;
+  border: 1px solid rgba(123, 47, 247, 0.12) !important;
+  border-radius: 12px !important;
+  margin: 1rem auto !important;
+  max-width: 900px !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+body.layout-nocturne .section-inner {
+  padding: 2.5rem 2rem !important;
+}
+
+body.layout-nocturne .section-label {
+  color: #b44aff !important;
+  letter-spacing: 0.15em !important;
+}
+
+body.layout-nocturne .section-label::after {
+  background: rgba(180, 74, 255, 0.5) !important;
+}
+
+body.layout-nocturne .fact-card {
+  background: rgba(123, 47, 247, 0.06) !important;
+  border-left: 3px solid rgba(180, 74, 255, 0.5) !important;
+}
+
+body.layout-nocturne .quote-block {
+  border-left: 3px solid rgba(0, 240, 255, 0.5) !important;
+}
+
+body.layout-nocturne .quote-carousel {
+  border: 1px solid rgba(123, 47, 247, 0.15) !important;
+  background: rgba(8, 4, 24, 0.6) !important;
+}
+
+body.layout-nocturne #today .section-inner {
+  border-color: rgba(180, 74, 255, 0.2) !important;
+}
+
+body.layout-nocturne .today-visual-asset {
+  border: 2px solid rgba(180, 74, 255, 0.4) !important;
+  box-shadow: 0 0 30px rgba(123, 47, 247, 0.15), inset 0 0 30px rgba(0, 240, 255, 0.05) !important;
+}
+
+body.layout-nocturne #flute-container {
+  background: rgba(123, 47, 247, 0.1) !important;
+  border: 1px solid rgba(123, 47, 247, 0.25) !important;
+}
+body.layout-nocturne #flute-container:hover {
+  background: rgba(0, 240, 255, 0.12) !important;
+  border-color: rgba(0, 240, 255, 0.4) !important;
+}
+
+body.layout-nocturne .logo-tagline em { color: #00f0ff !important; }
+body.layout-nocturne .hero::after { background: linear-gradient(to bottom, #7b2ff7, transparent) !important; }
 
 body, #canvas-container {
   background: linear-gradient(180deg, #05020f, #0a0520, #100830, #05020f) !important;

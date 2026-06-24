@@ -61,13 +61,27 @@ const { title = "अत्रिज", description = "An impressionist journey th
     <button onclick="location.reload()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:0.2rem 0.5rem;border-radius:4px;cursor:pointer;margin-left:0.5rem;">Reload</button>
   </div>
   <style>
-    body, #canvas-container {
+    /* Canvas container: fixed full-viewport behind all content */
+    #canvas-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #canvas-container canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* Body background — dark gradient behind the 3D scene */
+    body {
       background: linear-gradient(180deg, #0a0a1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0a1a 100%);
     }
 
-    /* Light mode: warm cream background for body/canvas container */
+    /* Light mode: warm cream background */
     @media (prefers-color-scheme: light) {
-      body, #canvas-container {
+      body {
         background: linear-gradient(180deg, #faf6f0 0%, #f5f0e8 30%, #f0ebe0 60%, #faf6f0 100%);
       }
     }
@@ -218,7 +232,7 @@ const { title = "अत्रिज", description = "An impressionist journey th
     </svg>
   </div>
 
-  <main>
+  <main style="position: relative; z-index: 1">
     <slot />
   </main>
 
