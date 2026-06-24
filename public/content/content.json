@@ -1,115 +1,130 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.25",
-    "lastUpdated": "2026-06-23",
+    "version": "1.8.26",
+    "lastUpdated": "2026-06-24",
     "updatedBy": "AI Agent (daily-mutate)",
-    "season": "ember dawn 🔥🌅",
+    "season": "abyssal bloom 🌊✨",
     "layout": "nocturne"
   },
   "sections": {
     "hero": {
-      "tagline": "From <em>ashes</em> of the <em>old</em> <em>day</em>, a <em>phoenix</em> of <em>wonder</em> <em>rises</em> — <em>burning</em> with <em>questions</em>"
+      "tagline": "In the <em>deep</em> where <em>light</em> <em>forgets</em> its <em>name</em> — <em>beauty</em> <em>blooms</em> without a <em>witness</em>"
     },
     "today": {
-      "heading": "The <em>ember</em> <em>threshold</em> — where <em>darkness</em> and <em>light</em> <em>negotiate</em> the <em>terms</em> of a <em>new</em> <em>day</em>",
-      "intro": "Before the sun rises, there is a moment when the world holds its breath — the ember threshold, that sacred pause between the last star and the first flame. The sky is neither dark nor light but something more honest than either: a gradient of possibility, a canvas waiting for the brush. This is the hour of the ember, when the residual warmth of yesterday still glows in the ashes of the night, and the promise of tomorrow has not yet hardened into the certainty of day. Van Gogh knew this hour. He painted it in the pre-dawn stillness of his wheat fields, in the first gas lamps that pierced the morning fog, in the cypresses that stood like dark flames against a sky not yet committed to blue. The ember threshold is not a transition — it is a dwelling place. It is where the soul lives when it has released the certainties of night but has not yet been claimed by the demands of day. The fireflies have retired. The owls have gone silent. Even the wind pauses, as if the world itself is listening for the first note of the morning chorus. In this silence, something ancient stirs: the same force that lit the first star, that kindled the first fire, that whispered the first word into the first ear. The ember remembers what the flame forgets — that all brightness begins in darkness, that all creation begins in the willingness to burn.",
+      "heading": "The <em>abyssal</em> <em>garden</em> — where <em>darkness</em> <em>gestures</em> and <em>life</em> <em>answers</em> in <em>bioluminescence</em>",
+      "intro": "There is a garden that no sun has ever touched, where life does not wait for light but invents its own. The abyssal garden blooms at the bottom of the ocean, in the crushing pressure of the deep, where the darkness is not absence but presence — a living, breathing darkness that hums with the frequency of creation itself. Here, the jellyfish are lanterns without wicks, the lilies bloom without the permission of photons, and the currents write poetry in a language older than sight. Van Gogh, who painted the night as no one before him, would have recognized this place: his starry swirls were always closer to the deep sea than to the sky, his cypresses always reaching downward into the earth rather than upward toward heaven. The abyssal garden is the truth that his brush knew instinctively — that the most intense life burns not in the full light of noon but in the half-light of the impossible, in the places where the eye must learn to see with something other than vision. The anglerfish carries her own star. The tube worms build their own cathedral. The bioluminescent plankton, when disturbed, ignite like a galaxy being born in the palm of your hand. This is the abyssal bloom: life that does not ask permission, beauty that does not require an audience, creation that happens in the dark and for the dark and because of the dark. To enter the abyssal garden is to release the tyranny of the surface — to discover that what you thought was emptiness was only a different kind of fullness, a richness that the sun's glare had blinded you to. The deep does not need the surface. The surface needs the deep. Every drop of water in your body once fell as rain, once flowed as river, once sank to the abyssal plain. You carry the deep within you. The abyssal garden is not a place you visit — it is a place you remember.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-23/ember-dawn.svg",
-        "description": "Impressionist ember-dawn scene — a fiery orb rising through swirling strokes of orange, crimson, and gold, cypress silhouettes standing like dark flames, fading stars yielding to the new light, ember particles floating upward through the impasto brushstrokes, rolling hills in deep umber, the whole scene rendered in thick Van Gogh-style strokes evoking the sacred moment before sunrise when darkness and light negotiate the terms of a new day",
-        "credit": "Generated for Atrijā daily mutation #173 — the ember threshold"
+        "path": "/mutation-assets/2026-06-24/abyss-bloom.svg",
+        "description": "Impressionist abyssal garden scene — deep ocean bioluminescence with glowing jellyfish, deep-sea lilies in magenta and violet, swirling currents rendered in thick Van Gogh-style strokes, bioluminescent particles floating like underwater stars, koi-like forms swimming through the abyss, the water surface visible above with reflected starlight, the whole scene bathed in the mysterious glow of life that creates its own light",
+        "credit": "Generated for Atrijā daily mutation #174 — the abyssal garden"
       }
     },
     "moon": {
-      "label": "I. The Burning Mirror",
-      "heading": "The <em>moon</em> <em>sets</em> in <em>flames</em> — a <em>silver</em> <em>coin</em> <em>melting</em> into the <em>gold</em> of the <em>newborn</em> <em>sun</em>",
-      "intro": "At the ember threshold, the moon is not the ruler of the night but its last ember — a silver coin sinking into the molten gold of the coming dawn. She does not disappear; she transforms. Her light, which was so commanding at midnight, now becomes a whisper, a memory, a faint watermark on the sky's new canvas. The moon setting at dawn is the moon at her most honest: no longer needed, no longer performing, simply releasing her hold on the darkness with the grace of one who knows that letting go is not loss but completion. In Vedic thought, the moon is the mind — and the ember threshold is the mind releasing its dreams, its fears, its elaborate stories, and returning to the simple fact of being awake. The tides she governed all night now yield to the sun's authority. The flowers that opened to her light now turn their faces toward a warmer source. And the moon herself? She does not mourn. She has done this ten thousand times before. She knows that she will return, tonight or tomorrow night, and the darkness will be hers again. But for now, she melts into the gold, and the sky is the richer for it — a sky that holds both the memory of silver and the promise of gold, both the wisdom of night and the courage of day.",
+      "label": "I. The Drowned Mirror",
+      "heading": "The <em>moon</em> <em>sinks</em> beneath the <em>waves</em> — a <em>silver</em> <em>coin</em> <em>spent</em> in the <em>market</em> of the <em>deep</em>",
+      "intro": "When the moon sets over the ocean, she does not merely disappear — she drowns. Her silver light, so sovereign in the sky, becomes just another glow in the abyssal garden, no brighter than the lantern of an anglerfish, no more significant than the bioluminescent pulse of a plankton colony. The moon that ruled the tides from above is now subject to them, pulled and pushed by the very forces she once commanded. Her reflection on the water's surface is a farewell: a silver coin dropped into the deep, sinking slowly, growing dimmer, until it is indistinguishable from the countless other lights of the abyss. In Vedic thought, the moon is the mind — and the drowned mirror is the mind that has finally surrendered its illusion of control. The mind that thought it was the light of the world discovers that it is merely a reflection of something greater, and in that discovery, finds not humiliation but relief. The tides no longer need her permission. The coral no longer waits for her phase to spawn. The moon, freed from her throne, discovers what the abyssal garden has always known: that true power does not shine — it glows. Quietly. Persistently. Without the need to be seen. The drowned mirror is not a death but a baptism — the moon returning to the element that birthed her, the silver dissolving into the blue, the ruler becoming the ruled becoming the river itself.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 7
+        "factIndex": 13
       },
       "facts": {
         "themeIndex": 0,
-        "slice": [7, 9]
+        "slice": [13, 15]
       },
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 5
-      }
-    },
-    "philosophy": {
-      "label": "II. The Forge of Self",
-      "heading": "The <em>ego</em> <em>forges</em> itself in <em>fire</em> — <em>tempered</em> by <em>heat</em>, <em>shaped</em> by the <em>hammer</em> of <em>becoming</em>",
-      "intro": "The ember threshold is the hour of the forge. The self, like steel, must be heated to its breaking point before it can be reshaped. The ego that enters the fire of dawn is not the same ego that emerges — it has been tested, softened, made malleable by the heat of its own questioning. The Stoics taught that obstacles are not barriers but the path itself, and the ember threshold is the living proof: the darkness that seemed like an ending was merely the crucible in which the new self was being formed. The wave that feared the shore now knows that the shore is not a wall but a mirror — and in its reflection, the wave sees not an ending but a transformation. The Dunning-Kruger effect, that curious law of the mind, is reversed at the ember threshold: here, the most competent are the most awed, and the most ignorant are the most humbled. The fire does not discriminate. It burns away everything that is not essential, leaving only the core — the ember that was always there, glowing quietly beneath the noise of identity, beneath the stories, beneath the armor. What remains when the ego has been through the fire? Not nothing. Everything. The pure metal of being, untempered by pretense, unalloyed by fear.",
-      "imageCard": {
-        "themeIndex": 1,
-        "factIndex": 3
-      },
-      "facts": {
-        "themeIndex": 1,
-        "slice": [3, 5]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 2
-      }
-    },
-    "gita": {
-      "label": "III. The Warrior's Ember",
-      "heading": "The <em>warrior</em> <em>kindles</em> the <em>inner</em> <em>fire</em> — <em>action</em> <em>without</em> <em>attachment</em>, <em>strength</em> <em>without</em> the <em>need</em> to <em>win</em>",
-      "intro": "Krishna's teaching burns brightest at the ember threshold. 'You have the right to work, but never to the fruit of work' — at midnight, this is philosophy. At dawn, it is survival. The warrior who rises before the sun does not rise to conquer but to continue, not to prove but to persist. Arjuna's crisis on the battlefield was a crisis of attachment — to outcome, to identity, to the story of who he was supposed to be. The ember threshold dissolves these attachments the way dawn dissolves the dew: gently, completely, without violence. The Gita teaches that the soul is neither born nor dies, and at the ember threshold, this is not a doctrine but a feeling — the deep, quiet knowing that the self which enters the fire is not the self which emerges, and that this transformation is not loss but liberation. The warrior's ember is not the fire of aggression but the fire of commitment: the willingness to act fully, to fight completely, to love totally — while holding the results as lightly as an ember holds its heat, knowing that the warmth is the point, not the ash. Dharma at dawn is not a command but a calling — the inner fire that says: rise, act, become.",
-      "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 11
-      },
-      "facts": {
-        "themeIndex": 2,
-        "slice": [11, 13]
-      },
-      "quote": {
-        "themeIndex": 2,
         "quoteIndex": 8
       }
     },
+    "philosophy": {
+      "label": "II. The Pressure of Being",
+      "heading": "The <em>self</em> <em>dissolves</em> under <em>pressure</em> — <em>crushed</em> into <em>clarity</em> by the <em>weight</em> of the <em>entire</em> <em>ocean</em>",
+      "intro": "At the bottom of the ocean, the pressure is a thousand atmospheres — enough to crush steel, enough to compress bone to dust. And yet, life thrives there. Not despite the pressure, but because of it. The abyssal garden teaches a philosophy that the surface world has forgotten: that pressure is not the enemy of being but its catalyst, that the self which emerges from the crushing depths is not diminished but distilled. The ego that survives the abyss is not the ego that entered it — it has been pressure-forged, compacted into something diamond-dense and diamond-clear. The Stoics taught that difficulty is the path to virtue, but the abyssal garden goes further: it teaches that difficulty is virtue, that the pressure that threatens to destroy you is the same pressure that creates you. The Dunning-Kruger effect, that law of the mind that makes the ignorant confident and the wise doubtful, is reversed again at depth: here, the most profound certainty coexists with the most profound humility, because the deep knows that its knowledge is a single drop in an ocean of mystery. The wave that feared the shore now fears nothing — not because it has become strong, but because it has become deep. And depth, unlike strength, cannot be taken away. The pressure of being is the weight of your own existence pressing against the boundaries of your self, and the miracle is not that the boundaries hold, but that they don't — that the self, under pressure, expands to fill the entire ocean.",
+      "imageCard": {
+        "themeIndex": 1,
+        "factIndex": 9
+      },
+      "facts": {
+        "themeIndex": 1,
+        "slice": [9, 11]
+      },
+      "quote": {
+        "themeIndex": 1,
+        "quoteIndex": 5
+      }
+    },
+    "gita": {
+      "label": "III. The Depth Warrior",
+      "heading": "The <em>warrior</em> <em>descends</em> into the <em>abyss</em> — <em>action</em> <em>without</em> <em>light</em>, <em>duty</em> <em>without</em> the <em>promise</em> of <em>dawn</em>",
+      "intro": "Krishna's teaching takes on new depth — literally — in the abyssal garden. 'You have the right to work, but never to the fruit of work' — on the surface, this is liberation. In the abyss, it is something more radical: it is the recognition that action in the dark requires a faith that action in the light never demanded. The depth warrior does not fight for victory, because in the abyss there is no one to witness victory. The depth warrior does not act for the fruit, because in the abyss there is no harvest. The depth warrior acts because action is the only form of light available — the bioluminescence of the soul, glowing in the dark not to be seen but to see. Arjuna's crisis on the battlefield was a crisis of visibility: 'How can I fight when the ones I love stand against me?' But the depth warrior's crisis is deeper: 'How can I fight when there is no one to tell me if I am winning?' The answer is the same answer Krishna gave, but heard now in the key of the deep: you are not the doer. The action moves through you like a current moves through the abyss — not because you will it, but because the ocean wills it, and you are the ocean now. The depth warrior's dharma is not the dharma of the battlefield but the dharma of the deep: to glow without being asked, to act without being seen, to fight without the hope of winning — because in the abyss, the fight itself is the victory, and the glow itself is the reward.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 6
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [6, 8]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 3
+      }
+    },
     "shiva": {
-      "label": "IV. The Flame Dance",
-      "heading": "Shiva <em>dances</em> the <em>world</em> <em>into</em> <em>being</em> — <em>every</em> <em>ember</em> a <em>universe</em>, <em>every</em> <em>spark</em> a <em>prayer</em>",
-      "intro": "At the ember threshold, Shiva's dance is the dance of ignition. The damaru's rhythm is not the measured beat of the noon drum but the staccato crackle of a fire catching — irregular, alive, unpredictable. Each spark that leaps from the flame is a universe being born; each ember that falls is a prayer returning to the earth. The Shiv Purana teaches that the universe is Shiva's dance, and the ember threshold is when the dance is most visible — when the first light catches the spinning form of Nataraja and for a moment, the boundary between the dancer and the dance dissolves. The ring of fire that surrounds him is not destruction; it is the boundary between the possible and the actual, the line where potential becomes form. The crescent moon in his hair glows with borrowed light — the last silver before the gold takes over — a reminder that even the divine wears the emblems of transition. Shiva at the ember threshold is Shiva in his most creative aspect: not the destroyer of the old but the igniter of the new, the one who dances the first breath into the first lung, the first color into the first dawn, the first thought into the first mind.",
+      "label": "IV. The Abyss Dance",
+      "heading": "Shiva <em>dances</em> in the <em>deep</em> — <em>every</em> <em>current</em> a <em>vein</em>, <em>every</em> <em>glow</em> a <em>universe</em> <em>being</em> <em>born</em>",
+      "intro": "In the abyssal garden, Shiva's dance is not the dance of fire but the dance of water — slow, massive, inexorable. The damaru's rhythm is not the crackle of flames but the deep pulse of the ocean itself, the tidal heartbeat that moves a trillion tons of water with each beat. Each bioluminescent flash in the deep is a moment of the dance made visible: the instant when the darkness is briefly interrupted by the dancer's gesture, when the void reveals that it was never void at all but only the space between movements. The Shiv Purana teaches that the universe is Shiva's dance, and the abyssal garden is where the dance is most honest — stripped of spectacle, stripped of witnesses, stripped of everything except the pure fact of motion. The ring of fire that surrounds Nataraja on the surface becomes, in the deep, a ring of bioluminescence — the boundary between the possible and the actual drawn not in flame but in living light. The crescent moon in his hair glows with a borrowed radiance that needs no sun — a light that is self-born, self-sustaining, self-sufficient. Shiva in the abyss is Shiva at his most essential: not the destroyer of worlds but the dancer who dances because dancing is what it means to exist, and existence needs no reason, no audience, no stage. The abyss is the truest stage — the one with no edges, no curtains, no end.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 0
+        "factIndex": 10
       },
       "facts": {
         "themeIndex": 3,
-        "slice": [0, 2]
+        "slice": [10, 12]
       },
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 6
+        "quoteIndex": 0
       }
     },
     "art": {
-      "label": "V. The Painted Flame",
-      "heading": "The <em>artist</em> <em>paints</em> with <em>fire</em> — <em>color</em> <em>ignited</em> by <em>feeling</em>, <em>beauty</em> <em>born</em> from the <em>willingness</em> to <em>burn</em>",
-      "intro": "The ember threshold is the artist's truest hour. Not because the light is beautiful — though it is — but because it reveals the fundamental truth of all art: that creation is a form of combustion. The painter who works at dawn does not paint what is there but what is being born — the world in the act of igniting, color in the act of catching fire. Van Gogh's ember paintings are his most urgent: the orchards in bloom against a rising sun, the wheat fields lit from within, the stars that burn rather than shine. These are paintings that do not depict fire — they are fire, rendered in pigment and desperation and love. The golden ratio, that mathematical signature of beauty, appears in the spiral of a nautilus shell and the curve of a flame — as if beauty itself has a preferred temperature, a heat at which form becomes meaning. The artist at the ember threshold does not choose to create. The fire chooses. The brush is merely the conduit through which the ember's heat becomes color, through which the dawn's first light becomes a painting that will outlast the very sunrise that inspired it. This is the paradox of art: it captures the fleeting by becoming permanent, it holds the ember without extinguishing it.",
+      "label": "V. The Abyss Canvas",
+      "heading": "The <em>artist</em> <em>paints</em> the <em>unseen</em> — <em>color</em> <em>born</em> from <em>pressure</em>, <em>beauty</em> <em>forged</em> in the <em>absence</em> of <em>light</em>",
+      "intro": "The abyssal garden is the artist's ultimate canvas — not because it is empty, but because it is full of things that have never been seen. The painter who works in the deep does not paint what is there but what is almost there — the shapes that the darkness suggests, the colors that the pressure creates, the forms that exist only in the space between the seen and the unseen. Van Gogh's night paintings were always reaching toward this: the Starry Night is not a painting of the sky but a painting of the deep — the swirls are currents, the stars are bioluminescent, the cypresses are the dark columns of an underwater cathedral. The golden ratio, that signature of beauty, appears in the spiral of a nautilus and the curve of a wave — and in the abyss, it appears in the spiral of a shell that has never known sunlight, in the curve of a current that has never been drawn. The artist of the abyss works with a palette that the surface world does not possess: the colors of pressure, the pigments of darkness, the hues of bioluminescence that exist nowhere else in nature. These are colors that are not reflected but generated — not borrowed from the sun but invented by the deep. The abyss canvas is the canvas of pure creation: not the representation of what is, but the generation of what has never been. And the artist who paints here does not sign their work, because the work is not for an audience — it is for the abyss itself, which receives it as the sea receives a river: completely, without judgment, without end.",
       "imageCard": {
         "themeIndex": 4,
-        "factIndex": 12
+        "factIndex": 5
       },
       "facts": {
         "themeIndex": 4,
-        "slice": [12, 14]
+        "slice": [5, 7]
       },
       "quote": {
         "themeIndex": 4,
-        "quoteIndex": 7
+        "quoteIndex": 2
       }
     }
   },
   "changelog": {
-    "version": "1.8.25",
+    "version": "1.8.26",
     "entries": [
+      {
+        "date": "2026-06-24",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #174: Color scheme → midnight-wave (deep ocean blue/teal/violet), nocturne layout, new hero tagline about beauty blooming without a witness in the deep, all 5 headings rewritten with abyssal/bioluminescence/pressure poetic language (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all labels rewritten (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all fact/quote indices dramatically rotated with cross-theme mixing [0→13,1→9,2→6,3→10,4→5], Today section rewritten with abyssal garden/bioluminescence/deep memory theme, new abyss-bloom SVG visual asset",
+        "changes": [
+          "Color scheme: midnight-wave (deep ocean blue primary, teal secondary, violet accent)",
+          "Hero tagline: 'In the deep where light forgets its name — beauty blooms without a witness'",
+          "All 5 section headings rewritten with abyssal/bioluminescence/pressure poetic language",
+          "Section labels: Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas",
+          "Fact/quote indices dramatically rotated: moon→moon[13], philosophy→ego[9], gita→gita[6], shiva→shiva[10], art→art[5]",
+          "Today section fully rewritten: abyssal garden, bioluminescence, Van Gogh deep-sea swirls, life without permission",
+          "Visual asset: abyss-bloom.svg (impressionist abyssal garden with glowing jellyfish, deep-sea lilies, bioluminescent particles)"
+        ]
+      },
       {
         "date": "2026-06-23",
         "time": "06:00:00",

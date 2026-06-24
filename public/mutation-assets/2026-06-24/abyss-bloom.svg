@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#7c4dff" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#0d47a1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000a12" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d47a1"/>
+      <stop offset="50%" stop-color="#002171"/>
+      <stop offset="100%" stop-color="#000a12"/>
+    </linearGradient>
+    <filter id="paint">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="8"/>
+    </filter>
+    <filter id="glow-filter">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep ocean background -->
+  <rect width="800" height="600" fill="url(#water)"/>
+
+  <!-- Bioluminescent glow from depths -->
+  <ellipse cx="400" cy="350" rx="350" ry="250" fill="url(#glow)"/>
+
+  <!-- Swirling current strokes (impressionist style) -->
+  <g filter="url(#paint)" opacity="0.4">
+    <path d="M100,400 Q200,350 300,420 T500,380 T700,430" stroke="#00bcd4" stroke-width="4" fill="none"/>
+    <path d="M50,450 Q150,400 250,470 T450,430 T650,480 T750,440" stroke="#4fc3f7" stroke-width="3" fill="none"/>
+    <path d="M150,300 Q250,250 350,320 T550,280 T700,330" stroke="#7c4dff" stroke-width="3" fill="none"/>
+    <path d="M80,250 Q180,200 280,270 T480,230 T680,280" stroke="#00bcd4" stroke-width="2" fill="none"/>
+    <path d="M200,500 Q300,450 400,520 T600,480 T750,530" stroke="#4fc3f7" stroke-width="3" fill="none"/>
+  </g>
+
+  <!-- Bioluminescent particles (like deep-sea creatures) -->
+  <g filter="url(#glow-filter)">
+    <circle cx="150" cy="380" r="4" fill="#00e5ff" opacity="0.9"/>
+    <circle cx="220" cy="420" r="3" fill="#7c4dff" opacity="0.8"/>
+    <circle cx="350" cy="350" r="5" fill="#00bcd4" opacity="0.9"/>
+    <circle cx="480" cy="400" r="3" fill="#18ffff" opacity="0.7"/>
+    <circle cx="560" cy="340" r="4" fill="#7c4dff" opacity="0.8"/>
+    <circle cx="650" cy="420" r="3" fill="#00e5ff" opacity="0.9"/>
+    <circle cx="720" cy="370" r="4" fill="#4fc3f7" opacity="0.7"/>
+    <circle cx="100" cy="320" r="3" fill="#b388ff" opacity="0.6"/>
+    <circle cx="300" cy="480" r="4" fill="#00bcd4" opacity="0.8"/>
+    <circle cx="520" cy="460" r="3" fill="#18ffff" opacity="0.7"/>
+    <circle cx="420" cy="300" r="5" fill="#7c4dff" opacity="0.9"/>
+    <circle cx="600" cy="500" r="3" fill="#00e5ff" opacity="0.6"/>
+    <circle cx="250" cy="280" r="3" fill="#4fc3f7" opacity="0.7"/>
+    <circle cx="680" cy="300" r="4" fill="#b388ff" opacity="0.8"/>
+    <circle cx="400" cy="520" r="3" fill="#00bcd4" opacity="0.7"/>
+  </g>
+
+  <!-- Jellyfish-like forms floating -->
+  <g opacity="0.5" filter="url(#glow-filter)">
+    <ellipse cx="300" cy="200" rx="30" ry="20" fill="#7c4dff"/>
+    <path d="M275,210 Q280,240 275,260" stroke="#7c4dff" stroke-width="1.5" fill="none"/>
+    <path d="M290,215 Q295,245 290,270" stroke="#b388ff" stroke-width="1" fill="none"/>
+    <path d="M305,215 Q310,245 305,270" stroke="#7c4dff" stroke-width="1" fill="none"/>
+    <path d="M320,210 Q325,240 320,260" stroke="#b388ff" stroke-width="1.5" fill="none"/>
+
+    <ellipse cx="600" cy="150" rx="25" ry="16" fill="#00bcd4"/>
+    <path d="M580,160 Q585,185 580,205" stroke="#00bcd4" stroke-width="1.5" fill="none"/>
+    <path d="M595,165 Q600,190 595,215" stroke="#18ffff" stroke-width="1" fill="none"/>
+    <path d="M610,165 Q615,190 610,215" stroke="#00bcd4" stroke-width="1" fill="none"/>
+    <path d="M620,160 Q625,185 620,205" stroke="#18ffff" stroke-width="1.5" fill="none"/>
+  </g>
+
+  <!-- Deep sea lilies (flowers of the abyss) -->
+  <g opacity="0.6" filter="url(#glow-filter)">
+    <g transform="translate(400,450)">
+      <ellipse cx="0" cy="0" rx="12" ry="20" fill="#ff80ab"/>
+      <ellipse cx="0" cy="0" rx="20" ry="12" fill="#ff80ab"/>
+      <circle cx="0" cy="0" r="5" fill="#ffd54f"/>
+    </g>
+    <g transform="translate(180,480)">
+      <ellipse cx="0" cy="0" rx="8" ry="14" fill="#b388ff"/>
+      <ellipse cx="0" cy="0" rx="14" ry="8" fill="#b388ff"/>
+      <circle cx="0" cy="0" r="3" fill="#ffd740"/>
+    </g>
+    <g transform="translate(620,470)">
+      <ellipse cx="0" cy="0" rx="10" ry="17" fill="#4fc3f7"/>
+      <ellipse cx="0" cy="0" rx="17" ry="10" fill="#4fc3f7"/>
+      <circle cx="0" cy="0" r="4" fill="#18ffff"/>
+    </g>
+  </g>
+
+  <!-- Swirling impressionist strokes (Van Gogh style) -->
+  <g opacity="0.35" filter="url(#paint)">
+    <path d="M0,100 Q100,80 200,110 T400,90 T600,120 T800,100" stroke="#00bcd4" stroke-width="6" fill="none"/>
+    <path d="M0,150 Q100,130 200,160 T400,140 T600,170 T800,150" stroke="#7c4dff" stroke-width="5" fill="none"/>
+    <path d="M0,500 Q100,480 200,510 T400,490 T600,520 T800,500" stroke="#4fc3f7" stroke-width="5" fill="none"/>
+    <path d="M0,550 Q100,530 200,560 T400,540 T600,570 T800,550" stroke="#00e5ff" stroke-width="4" fill="none"/>
+  </g>
+
+  <!-- Stars reflected on water surface -->
+  <g opacity="0.4">
+    <circle cx="120" cy="50" r="1.5" fill="white"/>
+    <circle cx="250" cy="30" r="1" fill="white"/>
+    <circle cx="400" cy="60" r="1.5" fill="white"/>
+    <circle cx="550" cy="40" r="1" fill="white"/>
+    <circle cx="680" cy="55" r="1.5" fill="white"/>
+    <circle cx="750" cy="25" r="1" fill="white"/>
+    <circle cx="80" cy="70" r="1" fill="white"/>
+    <circle cx="320" cy="20" r="1" fill="white"/>
+    <circle cx="470" cy="75" r="1" fill="white"/>
+    <circle cx="610" cy="35" r="1.5" fill="white"/>
+  </g>
+
+  <!-- Water surface line with reflections -->
+  <line x1="0" y1="120" x2="800" y2="120" stroke="#00bcd4" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="125" x2="800" y2="125" stroke="#4fc3f7" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Koi-like forms swimming -->
+  <g opacity="0.4">
+    <ellipse cx="350" cy="380" rx="25" ry="8" fill="#ff6f00"/>
+    <polygon points="325,380 315,375 315,385" fill="#ff6f00"/>
+    <ellipse cx="550" cy="320" rx="20" ry="6" fill="#ffd54f"/>
+    <polygon points="530,320 522,316 522,324" fill="#ffd54f"/>
+  </g>
+
+  <!-- Abyssal text -->
+  <text x="400" y="580" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#4fc3f7" opacity="0.6" letter-spacing="8">WHERE LIGHT FORGETS ITS NAME</text>
+</svg>
