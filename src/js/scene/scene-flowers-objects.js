@@ -5,41 +5,32 @@ import {
 } from "./scene-flowers.js";
 import { isMobile } from "./scene-config.js";
 
-// Helper: create a sprite with sway animation
-function addSwayAnimation(sprite, phase) {
-  const baseY = sprite.position.y;
-  const baseX = sprite.position.x;
-  const speed = 0.3 + Math.random() * 0.3;
-  sprite.userData.animate = function (o, t) {
-    o.position.x = baseX + Math.sin(t * speed + phase) * 0.05;
-    o.position.y = baseY + Math.sin(t * speed * 1.4 + phase) * 0.06;
-    o.material.rotation =
-      Math.sin(t * speed * 0.7 + phase) * 0.08 +
-      Math.sin(t * speed * 2 + phase * 2) * 0.03;
-  };
-}
-
 export function createTulips(scene, count) {
   const colors = [
-    "#e74c3c", "#d63031", "#d81b60", "#e91e63", "#f06292",
-    "#ec407a", "#ad1457", "#ff7043", "#ff5722", "#f4511e",
-    "#ee9836", "#ff8a65", "#8b0000", "#9b3676", "#7b1fa2",
-    "#9c27b0", "#5e27a1", "#dc143c", "#c71585", "#b33939",
-    "#cd5c5c", "#b97455", "#fa8072", "#e9967a", "#ff6347",
-    "#ff4500",
+    "#c0392b", "#e74c3c", "#d63031", "#b715b7", "#d81b60",
+    "#e91e63", "#f06292", "#ec407a", "#ad1457", "#ff7043",
+    "#ff5722", "#f4511e", "#ee9836", "#ff8a65", "#8b0000",
+    "#9b3676", "#7b1fa2", "#9c27b0", "#5e27a1", "#dc143c",
+    "#c71585", "#b33939", "#cd5c5c", "#b97455", "#fa8072",
+    "#e9967a", "#ff6347", "#ff4500", "#33cc8c",
   ];
+  let lastColorIdx = -1;
 
   for (let i = 0; i < count; i++) {
-    const color = colors[Math.floor(Math.random() * colors.length)];
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * colors.length);
+    } while (idx === lastColorIdx);
+    lastColorIdx = idx;
+    const color = colors[idx];
+
     const openness = 0.3 + Math.random() * 0.65;
-    const seed = Math.floor(Math.random() * 10000);
+    const texSeed = Math.floor(Math.random() * 10000);
+    const spreadX = isMobile ? 12 : 16;
+    const spreadZ = isMobile ? 8 : 10;
 
-    // Bigger scale: 1.0-2.0 on desktop, 1.2-1.8 on mobile
-    const s = isMobile ? 1.2 + Math.random() * 0.6 : 1.0 + Math.random() * 1.0;
-    const spreadX = isMobile ? 10 : 14;
-
-    // Bake color into canvas texture (256x256)
-    const tex = new THREE.CanvasTexture(makeTulipCanvas(256, color, openness, seed));
+    // Bake color directly into canvas texture
+    const tex = new THREE.CanvasTexture(makeTulipCanvas(256, color, openness, texSeed));
     tex.minFilter = THREE.LinearFilter;
 
     const sprite = new THREE.Sprite(
@@ -50,40 +41,48 @@ export function createTulips(scene, count) {
       })
     );
 
-    // Tulips are tall — width ~0.5x, height ~1.4x of scale
-    const scaleX = 0.5 * s;
-    const scaleY = 1.4 * s;
-    sprite.scale.set(scaleX, scaleY, 1);
+    const roll = Math.random();
+    let s;
+    if (roll < 0.25) {
+      s = isMobile ? 1.4 + Math.random() * 0.4 : 1.2 + Math.random() * 0.5;
+    } else {
+      s = isMobile ? 0.9 + Math.random() * 0.5 : 0.8 + Math.random() * 0.55;
+    }
 
-    // Position: spread across visible area
-    // Camera at z=10 looking at z=0, so flowers at z=2..8 are clearly visible
-    const spreadZMin = 2;
-    const spreadZMax = isMobile ? 7 : 8;
+    // Original scale: 1.5 wide, 2.0 tall — tall tulip shape
+    sprite.scale.set(1.5 * s, 2.0 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      -0.3 + s * 0.12,  // Y: slightly below center
-      spreadZMin + Math.random() * (spreadZMax - spreadZMin)
+      isMobile ? -0.05 + s * 0.2 : -0.15 + s * 0.18,
+      (Math.random() - 0.5) * spreadZ + 0.5,
     );
 
-    addSwayAnimation(sprite, Math.random() * Math.PI * 2);
+    const phase = Math.random() * Math.PI * 2;
+    const baseY = sprite.position.y;
+    const baseX = sprite.position.x;
+    sprite.userData.animate = function (o, t) {
+      o.position.x = baseX + Math.sin(t * 0.4 + phase) * 0.025;
+      o.position.y = baseY + Math.sin(t * 0.6 + phase) * 0.03;
+      o.material.rotation = Math.sin(t * 0.5 + phase) * 0.04;
+    };
+
     scene.add(sprite);
   }
 }
 
 export function createSunflowers(scene, count) {
   const colors = [
-    "#c8920a", "#e8a020", "#d4a030", "#f0b040", "#c08020",
-    "#b8860b", "#daa520", "#cd853f", "#d2691e", "#e6be44",
+    "#FFD700", "#FFC700", "#FFB700", "#FFAA00", "#FF9500",
+    "#c8920a", "#e8a020", "#d4a030", "#b8860b", "#daa520",
   ];
 
   for (let i = 0; i < count; i++) {
     const color = colors[Math.floor(Math.random() * colors.length)];
+    const s = isMobile ? 0.8 + Math.random() * 0.6 : 0.6 + Math.random() * 0.7;
+    const spreadX = isMobile ? 14 : 18;
+    const spreadZ = isMobile ? 10 : 12;
 
-    // Bigger scale: 1.2-2.2 on desktop, 1.0-1.6 on mobile
-    const s = isMobile ? 1.0 + Math.random() * 0.6 : 1.2 + Math.random() * 1.0;
-    const spreadX = isMobile ? 12 : 16;
-
-    // Build sunflower canvas inline with specific color
+    // Build sunflower canvas inline with specific color baked in
     const size = 256;
     const c = document.createElement("canvas");
     c.width = size;
@@ -93,7 +92,6 @@ export function createSunflowers(scene, count) {
     const headCy = size * 0.35;
     const r = size * 0.28;
 
-    // Transparent background
     ctx.clearRect(0, 0, size, size);
 
     // Stem
@@ -137,7 +135,7 @@ export function createSunflowers(scene, count) {
       ctx.rotate(aAngle);
       ctx.beginPath();
       ctx.ellipse(0, -(r * 0.75), r * 0.13, r * 0.45, 0, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.fill(); // FIXED: was missing in original makeSunflowerCanvas
       ctx.restore();
     }
 
@@ -157,7 +155,7 @@ export function createSunflowers(scene, count) {
       ctx.restore();
     }
 
-    // Center (dark brown)
+    // Center
     const grad = ctx.createRadialGradient(hcx, headCy, 0, hcx, headCy, r * 0.3);
     grad.addColorStop(0, "#3a1a00");
     grad.addColorStop(0.6, "#2a1200");
@@ -193,18 +191,22 @@ export function createSunflowers(scene, count) {
       })
     );
 
-    sprite.scale.set(1.2 * s, 1.2 * s, 1);
-
-    // Position in front of camera (camera at z=10, looking at z=0)
-    const spreadZMin = 2;
-    const spreadZMax = isMobile ? 7 : 8;
+    sprite.scale.set(1.2 * s, 1.5 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      -0.3 + s * 0.15,
-      spreadZMin + Math.random() * (spreadZMax - spreadZMin)
+      isMobile ? 0 + s * 0.25 : -0.2 + s * 0.2,
+      (Math.random() - 0.5) * spreadZ,
     );
 
-    addSwayAnimation(sprite, Math.random() * Math.PI * 2);
+    const phase = Math.random() * Math.PI * 2;
+    const baseY = sprite.position.y;
+    const baseX = sprite.position.x;
+    sprite.userData.animate = function (o, t) {
+      o.position.x = baseX + Math.sin(t * 0.3 + phase) * 0.02;
+      o.position.y = baseY + Math.sin(t * 0.5 + phase) * 0.025;
+      o.material.rotation = Math.sin(t * 0.4 + phase) * 0.03;
+    };
+
     scene.add(sprite);
   }
 }
@@ -219,7 +221,8 @@ export function createLilies(scene, count) {
     const color = colors[Math.floor(Math.random() * colors.length)];
     const variant = Math.floor(Math.random() * 3);
     const s = isMobile ? 0.7 + Math.random() * 0.5 : 0.5 + Math.random() * 0.5;
-    const spreadX = isMobile ? 8 : 12;
+    const spreadX = isMobile ? 10 : 14;
+    const spreadZ = isMobile ? 6 : 8;
 
     const tex = new THREE.CanvasTexture(makeLilyCanvas(160, color, variant));
     tex.minFilter = THREE.LinearFilter;
@@ -233,17 +236,22 @@ export function createLilies(scene, count) {
     );
 
     sprite.scale.set(1.0 * s, 1.6 * s, 1);
-
-    // Position in front of camera
-    const spreadZMin = 3;
-    const spreadZMax = isMobile ? 7 : 8;
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      -0.3 + s * 0.15,
-      spreadZMin + Math.random() * (spreadZMax - spreadZMin)
+      isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
+      (Math.random() - 0.5) * spreadZ + 1,
     );
 
-    addSwayAnimation(sprite, Math.random() * Math.PI * 2);
+    const phase = Math.random() * Math.PI * 2;
+    const baseY = sprite.position.y;
+    const baseX = sprite.position.x;
+    sprite.userData.animate = function (o, t) {
+      o.position.x = baseX + Math.sin(t * 0.5 + phase) * 0.04;
+      o.position.y = baseY + Math.sin(t * 0.75 + phase) * 0.06;
+      o.material.rotation =
+        Math.sin(t * 0.6 + phase) * 0.08 + Math.sin(t * 1.5 + phase * 2) * 0.03;
+    };
+
     scene.add(sprite);
   }
 }
