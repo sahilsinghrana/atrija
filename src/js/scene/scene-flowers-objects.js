@@ -6,13 +6,14 @@ import {
 import { isMobile } from "./scene-config.js";
 
 export function createTulips(scene, count) {
+  // Brighter, more visible colors — avoid dark reds that blend into background
   const colors = [
-    "#c0392b", "#e74c3c", "#d63031", "#b715b7", "#d81b60",
-    "#e91e63", "#f06292", "#ec407a", "#ad1457", "#ff7043",
-    "#ff5722", "#f4511e", "#ee9836", "#ff8a65", "#8b0000",
-    "#9b3676", "#7b1fa2", "#9c27b0", "#5e27a1", "#dc143c",
-    "#c71585", "#b33939", "#cd5c5c", "#b97455", "#fa8072",
-    "#e9967a", "#ff6347", "#ff4500", "#33cc8c",
+    "#FF6B6B", "#FF8E8E", "#FFB4B4", "#FFA07A", "#FF7F50",
+    "#FF6347", "#FF4500", "#FFA500", "#FFD700", "#FFE066",
+    "#F06292", "#EC407A", "#F48FB1", "#FF80AB", "#FF4081",
+    "#E91E63", "#C2185B", "#FF7043", "#FFAB91", "#FF8A65",
+    "#FF9800", "#FFC107", "#FFEB3B", "#FFF176", "#FFD54F",
+    "#FFFFFF", "#FFF8E1", "#FFE0B2", "#FFCCBC", "#F8BBD0",
   ];
   let lastColorIdx = -1;
 
@@ -26,8 +27,8 @@ export function createTulips(scene, count) {
 
     const openness = 0.3 + Math.random() * 0.65;
     const texSeed = Math.floor(Math.random() * 10000);
-    const spreadX = isMobile ? 12 : 16;
-    const spreadZ = isMobile ? 8 : 10;
+    const spreadX = isMobile ? 14 : 20;
+    const spreadZ = isMobile ? 10 : 14;
 
     // Bake color directly into canvas texture
     const tex = new THREE.CanvasTexture(makeTulipCanvas(256, color, openness, texSeed));
@@ -43,27 +44,32 @@ export function createTulips(scene, count) {
 
     const roll = Math.random();
     let s;
-    if (roll < 0.25) {
-      s = isMobile ? 1.4 + Math.random() * 0.4 : 1.2 + Math.random() * 0.5;
+    if (roll < 0.2) {
+      // 20% are large accent tulips
+      s = isMobile ? 2.0 + Math.random() * 0.8 : 1.8 + Math.random() * 1.0;
+    } else if (roll < 0.6) {
+      // 40% medium
+      s = isMobile ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8;
     } else {
-      s = isMobile ? 0.9 + Math.random() * 0.5 : 0.8 + Math.random() * 0.55;
+      // 40% small/far (depth layer)
+      s = isMobile ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6;
     }
 
-    // Original scale: 1.5 wide, 2.0 tall — tall tulip shape
-    sprite.scale.set(1.5 * s, 2.0 * s, 1);
+    // Tulip shape: 1.6 wide, 2.2 tall — slightly taller for elegance
+    sprite.scale.set(1.6 * s, 2.2 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      isMobile ? -0.05 + s * 0.2 : -0.15 + s * 0.18,
-      (Math.random() - 0.5) * spreadZ + 0.5,
+      isMobile ? -0.1 + s * 0.25 : -0.3 + s * 0.22,
+      (Math.random() - 0.5) * spreadZ + 1.5,
     );
 
     const phase = Math.random() * Math.PI * 2;
     const baseY = sprite.position.y;
     const baseX = sprite.position.x;
     sprite.userData.animate = function (o, t) {
-      o.position.x = baseX + Math.sin(t * 0.4 + phase) * 0.025;
-      o.position.y = baseY + Math.sin(t * 0.6 + phase) * 0.03;
-      o.material.rotation = Math.sin(t * 0.5 + phase) * 0.04;
+      o.position.x = baseX + Math.sin(t * 0.4 + phase) * 0.03;
+      o.position.y = baseY + Math.sin(t * 0.6 + phase) * 0.04;
+      o.material.rotation = Math.sin(t * 0.5 + phase) * 0.05;
     };
 
     scene.add(sprite);
