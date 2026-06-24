@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/copy-content.js && node scripts/bump-sw-cache.js && node node_modules/vite/bin/vite.js build --config vite-scene.config.js && node scripts/check-bundle-size.js && astro build && node scripts/inject-body.js && node scripts/css-cache-bust.js",
+    "build": "node scripts/build.js",
     "build:scene": "node node_modules/vite/bin/vite.js build --config vite-scene.config.js",
     "preview": "astro preview",
     "test": "vitest run",

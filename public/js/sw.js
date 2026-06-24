@@ -7,26 +7,11 @@
 
 const CACHE_NAME = 'atrija-shell-v71';
 
-/** @type {string[]} — Pre-cache these at install time */
+/** @type {string[]} — Auto-updated by post-build.js */
 const PRECACHE_URLS = [
   '/',
   '/css/loader.css',
   '/css/main.css',
-  '/js/scene-init.js',
-  '/js/moon-phase.js',
-  '/js/quote-carousel.js',
-  '/js/brushstroke-cursor.js',
-  '/js/theme-switcher.js',
-  '/js/accessibility.js',
-  '/js/scroll-lighting.js',
-  '/js/section-nav.js',
-  '/js/content-search.js',
-  '/js/keyboard-help.js',
-  '/js/reader-mode.js',
-  '/js/performance-scaler.js',
-  '/js/changelog-app.js',
-  '/js/loader-boot.js',
-  '/js/loader-progress.js',
 ];
 
 /** Paths that should always fetch from network first (JSON content) */

@@ -6,7 +6,7 @@
 - **Name**: Atrijā (अत्रिज) — impressionist philosophy website
 - **Stack**: Astro 4 + Three.js (npm `three@0.160`), GLSL post-processing
 - **Scene**: `src/js/scene/` (27+ ES modules) → bundled by Vite → `dist/_astro/scene-*.js`
-- **Build**: `npm run build` = copy-content → vite scene bundle → astro build → css cache-bust
+- **Build**: `npm run build` = copy-content → vite scene bundle → astro build → inject-body → post-build (SW bump + asset discovery)
 - **Deploy**: Nginx port 8080, root `/data/data/com.termux/files/usr/share/nginx/html`
 - **Design**: Dark theme (#08080f), impressionist aesthetic
 - **Domain**: rexx.sahilrana.in (Cloudflare proxied)
@@ -36,12 +36,11 @@ cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
 **Cache (nginx handles all headers — do NOT add manual busting):**
 - `index.html`: no-cache/no-store — NEVER cached
 - `_astro/*`: max-age=31536000, immutable (1yr, Vite content-hashed)
-- `*.css, *.js` (public): max-age=3600 (1hr) — cache-busted via build timestamp query string
+- `*.css, *.js` (public): max-age=3600 (1hr)
 - `*.svg, *.png`: max-age=2592000 (30d)
 - `*.woff2`: max-age=604800 (7d)
 - `*.json`: max-age=300 (5min)
-- SW auto-bump: `scripts/bump-sw-cache.js` runs every build → increments CACHE_NAME
-- CSS cache-bust: `scripts/css-cache-bust.js` runs at end of build → injects `?v=timestamp` into CSS links
+- SW auto-bump: `scripts/post-build.js` runs every build → increments CACHE_NAME + updates precache list
 - **Do NOT run `hash-assets.sh` or `BUILD_VERSION` sed** — breaks build
 
 ### 3. Git
@@ -85,7 +84,9 @@ python3 test-visual.py http://127.0.0.1:8080
 **6d2. Never Re-implement Painting Gallery** — Explicitly removed by user.
 
 **6e. Content Mutation Rules** — Only modify: `siteData.json`, `content.json`, `mutation-assets/YYYY-MM-DD/`.
-- Must rewrite hero tagline, rotate/reorder color schemes, rewrite all 5 section headings, rotate facts/quotes, rewrite Today section, generate 1 visual asset/day (<100KB, self-cleaning)
+- Must rewrite hero tagline (<30c), rotate/reorder color schemes, rewrite all 4 section headings (<20c), rotate facts/quotes, rewrite Today section, generate 1 visual asset/day (<100KB, self-cleaning)
+- **Text minimalism**: heading <20c, intro <60c, quote <80c, facts <40c each, total <150c per section
+- **4 content sections only**: Moon, Shiva, Art, Philosophy (no Gita)
 - **NEVER modify**: `scene-init.js`, `scene/` modules, `BaseLayout.astro`, `index.astro`, `main.css`, any JS/CSS
 
 **6f. Background Implementer** — Only kanban tasks. Never modify `scene-init.js` without approval.
@@ -101,7 +102,7 @@ python3 test-visual.py http://127.0.0.1:8080
 ## Content Architecture
 
 ### Two Files
-1. **`siteData.json`** — 5 themes (Moon/Ego/Gita/Shiv/Art), 5 color schemes, facts[], quotes[]
+1. **`siteData.json`** — 4 themes (Moon/Ego/Shiv/Art), 5 color schemes, facts[], quotes[]
 2. **`content.json`** — Section text (heading/intro/imageCard/facts/quote), changelog, meta
 
 Content access:
@@ -132,8 +133,10 @@ public/js/         changelog-app.js, moon-phase.js, quote-carousel.js, performan
                    keyboard-help.js, theme-switcher.js
 public/mutation-assets/YYYY-MM-DD/  — Daily visual assets
 .hermes/           kanban.json
-scripts/           daily-mutate.js, bump-sw-cache.js, inject-body.js, css-cache-bust.js,
-                   check-bundle-size.js, scene-health-check.cjs
+scripts/           build.js (pipeline), post-build.js (cache busting), check-syntax.py,
+                   daily-mutate.js, inject-body.js, check-bundle-size.js,
+                   daily-deploy.sh, deploy-rollback.sh, validate-content.sh,
+                   scene-health-check.cjs, weekly-fact-generator.js
 ```
 
 ---
@@ -152,7 +155,7 @@ scripts/           daily-mutate.js, bump-sw-cache.js, inject-body.js, css-cache-
 | van-gogh-weekly-review | Sunday 8AM | Weekly trends: bundle size, tests, cron success | **origin** |
 | battery-thermal-guard | Every 5m | Battery thermal protection | local |
 
-**IMPORTANT**: All cron jobs are pure agent prompts — do NOT spawn `hermes agent` subprocesses (causes libuv assertion crashes).
+**IMPORTANT**: All cron jobs MUST use CodeGraph for code discovery — it saves ~62% tool calls and ~25% tokens vs grep/read. Always run `codegraph context` before reading source files.
 
 **Deployment Safety:** `git-pull-build` uses a 3-stage gate: (1) build exit 0, (2) scene health check, (3) visual smoke test. All must pass before deploy. Git lock at `/tmp/van-gogh-git.lock` prevents pull collisions. Rollback: `scripts/deploy-rollback.sh restore`.
 
