@@ -123,6 +123,18 @@ export function bootScene() {
         scene.onResize();
       }, 200);
     });
+
+    // Listen for theme changes from theme-switcher.js
+    document.addEventListener("themechange", (e) => {
+      const scheme = e.detail;
+      if (scene.swirlSky && scene.swirlSky.material) {
+        scene.swirlSky.material.uniforms.uBaseColor.value.set(scheme.primary);
+        scene.swirlSky.material.uniforms.uHighlightColor.value.set(scheme.accent);
+      }
+      if (scene.scene && scene.scene.background) {
+        scene.scene.background.set(scheme.background);
+      }
+    });
   } catch (error) {
     console.error("Scene init error:", error);
     if (window.__sceneFailed)

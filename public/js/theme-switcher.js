@@ -87,6 +87,9 @@
       pill.classList.toggle('active', isActive);
       pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
+
+    // Dispatch event so 3D scene can update colors
+    document.dispatchEvent(new CustomEvent('themechange', { detail: scheme }));
   }
 
   // ── Get default scheme (daily rotation) ─────────────────────────────

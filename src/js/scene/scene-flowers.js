@@ -368,6 +368,7 @@ export function makeTulipCanvas(size, color, openness, seed) {
   size = size || 256;
   openness = openness || 0.6;
   seed = seed || 42;
+  var rand = _seededRand(seed);
   var c = document.createElement("canvas");
   c.width = size;
   c.height = size;
@@ -377,26 +378,163 @@ export function makeTulipCanvas(size, color, openness, seed) {
   // Clear to fully transparent
   ctx.clearRect(0, 0, size, size);
 
-  var cupH = size * 0.3;
-  var cupW = size * 0.28;
-  var stemTop = size * 0.52;
-  var cupCY = stemTop - cupH * 0.45;
-  var headCy = cupCY;
-  var headR = cupW * 0.5;
+  // Parse color for shading
+  var hex = color.replace("#", "");
+  var rr = parseInt(hex.substring(0, 2), 16);
+  var gg = parseInt(hex.substring(2, 4), 16);
+  var bb = parseInt(hex.substring(4, 6), 16);
 
-  makeTulipStem(ctx, cx, size, stemTop, headCy, headR);
-  makeTulipCup(
-    ctx,
-    cx,
-    size,
-    stemTop,
-    cupCY,
-    cupW,
-    cupH,
-    color,
-    openness,
-    seed,
+  // --- Stem (long, elegant) ---
+  var stemTop = size * 0.28;
+  var stemBottom = size * 0.92;
+  var stemW = size * 0.022;
+
+  ctx.strokeStyle = "#2d6a1e";
+  ctx.lineWidth = stemW;
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.moveTo(cx, stemBottom);
+  ctx.bezierCurveTo(
+    cx + size * 0.015, stemBottom - size * 0.15,
+    cx - size * 0.01, stemBottom - size * 0.35,
+    cx, stemTop,
   );
+  ctx.stroke();
+
+  // Highlight on stem
+  ctx.strokeStyle = "rgba(100,170,60,0.3)";
+  ctx.lineWidth = stemW * 0.4;
+  ctx.beginPath();
+  ctx.moveTo(cx - stemW * 0.3, stemBottom);
+  ctx.bezierCurveTo(
+    cx - stemW * 0.1, stemBottom - size * 0.15,
+    cx + size * 0.005, stemBottom - size * 0.35,
+    cx - stemW * 0.2, stemTop,
+  );
+  ctx.stroke();
+
+  // --- Leaf (one large leaf wrapping around stem) ---
+  ctx.fillStyle = "#3a7a28";
+  ctx.beginPath();
+  ctx.moveTo(cx, stemTop + size * 0.12);
+  ctx.bezierCurveTo(
+    cx + size * 0.12, stemTop + size * 0.05,
+    cx + size * 0.16, stemTop + size * 0.22,
+    cx + size * 0.06, stemTop + size * 0.32,
+  );
+  ctx.bezierCurveTo(
+    cx - size * 0.02, stemTop + size * 0.28,
+    cx - size * 0.03, stemTop + size * 0.15,
+    cx, stemTop + size * 0.12,
+  );
+  ctx.fill();
+
+  // --- Tulip cup (classic tulip silhouette) ---
+  // Tulip shape: tall cup that flares slightly at top, with 3 outer petals
+  var cupBaseY = stemTop;
+  var cupTopY = stemTop - size * 0.32;
+  var cupMidY = (cupBaseY + cupTopY) * 0.5;
+  var cupW = size * 0.13; // half-width at widest point
+
+  // Outer petal color (slightly darker)
+  var oR = Math.max(0, rr - 30);
+  var oG = Math.max(0, gg - 25);
+  var oB = Math.max(0, bb - 20);
+  var outerColor = "rgb(" + oR + "," + oG + "," + oB + ")";
+
+  // Draw 3 outer petals forming the tulip cup
+  for (var p = 0; p < 3; p++) {
+    var angle = (p / 3) * Math.PI * 2 - Math.PI / 2;
+    var spread = cupW * (0.9 + rand() * 0.2);
+    var petalTipX = cx + Math.cos(angle) * spread * 0.7;
+    var petalTipY = cupTopY - size * 0.02 + Math.sin(angle) * size * 0.02;
+
+    ctx.save();
+    ctx.fillStyle = outerColor;
+    ctx.beginPath();
+    // Left edge of petal
+    ctx.moveTo(cx - cupW * 0.3, cupBaseY);
+    // Curve up to petal tip
+    ctx.bezierCurveTo(
+      cx - cupW * 0.5, cupMidY,
+      petalTipX - cupW * 0.15, cupTopY - size * 0.05,
+      petalTipX, petalTipY,
+    );
+    // Right edge of petal back down
+    ctx.bezierCurveTo(
+      petalTipX + cupW * 0.15, cupTopY - size * 0.05,
+      cx + cupW * 0.5, cupMidY,
+      cx + cupW * 0.3, cupBaseY,
+    );
+    ctx.closePath();
+    ctx.fill();
+
+    // Petal highlight (lighter stripe)
+    var hR = Math.min(255, rr + 30);
+    var hG = Math.min(255, gg + 20);
+    var hB = Math.min(255, bb + 15);
+    ctx.fillStyle = "rgba(" + hR + "," + hG + "," + hB + ",0.35)";
+    ctx.beginPath();
+    ctx.moveTo(cx - cupW * 0.1, cupBaseY - size * 0.02);
+    ctx.bezierCurveTo(
+      cx - cupW * 0.15, cupMidY,
+      petalTipX - cupW * 0.05, cupTopY,
+      petalTipX, petalTipY - size * 0.01,
+    );
+    ctx.bezierCurveTo(
+      petalTipX + cupW * 0.05, cupTopY,
+      cx + cupW * 0.15, cupMidY,
+      cx + cupW * 0.1, cupBaseY - size * 0.02,
+    );
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // --- Inner petals (visible when open) ---
+  if (openness > 0.3) {
+    for (var ip = 0; ip < 3; ip++) {
+      var iAngle = (ip / 3) * Math.PI * 2 - Math.PI / 2 + Math.PI / 3;
+      var iSpread = cupW * (0.5 + openness * 0.3);
+      var iTipX = cx + Math.cos(iAngle) * iSpread * 0.6;
+      var iTipY = cupTopY - size * 0.08 + Math.sin(iAngle) * size * 0.03;
+
+      ctx.fillStyle = "rgba(" + rr + "," + gg + "," + bb + ",0.9)";
+      ctx.beginPath();
+      ctx.moveTo(cx - cupW * 0.15, cupBaseY - size * 0.05);
+      ctx.bezierCurveTo(
+        cx - cupW * 0.2, cupMidY - size * 0.02,
+        iTipX - cupW * 0.08, cupTopY - size * 0.04,
+        iTipX, iTipY,
+      );
+      ctx.bezierCurveTo(
+        iTipX + cupW * 0.08, cupTopY - size * 0.04,
+        cx + cupW * 0.2, cupMidY - size * 0.02,
+        cx + cupW * 0.15, cupBaseY - size * 0.05,
+      );
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+
+  // --- Petal edge highlights ---
+  ctx.strokeStyle = "rgba(255,255,255,0.15)";
+  ctx.lineWidth = size * 0.005;
+  for (var e = 0; e < 3; e++) {
+    var eAngle = (e / 3) * Math.PI * 2 - Math.PI / 2;
+    var eSpread = cupW * 0.8;
+    var eTipX = cx + Math.cos(eAngle) * eSpread * 0.65;
+    var eTipY = cupTopY;
+    ctx.beginPath();
+    ctx.moveTo(cx, cupBaseY - size * 0.02);
+    ctx.bezierCurveTo(
+      cx + Math.cos(eAngle) * cupW * 0.3, cupMidY,
+      eTipX - cupW * 0.08, cupTopY - size * 0.03,
+      eTipX, eTipY,
+    );
+    ctx.stroke();
+  }
+
   return c;
 }
 
