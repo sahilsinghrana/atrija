@@ -1,126 +1,171 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job. Edit sections, facts, quotes, and intro text here.",
   "meta": {
-    "version": "1.8.26",
+    "version": "1.8.27",
     "lastUpdated": "2026-06-24",
-    "updatedBy": "AI Agent (daily-mutate)",
-    "season": "abyssal bloom 🌊✨",
-    "layout": "nocturne"
+    "updatedBy": "AI Agent (content-layout-refresh)",
+    "season": "ember-dawn \ud83d\udd25\ud83c\udf05",
+    "layout": "ember-dawn"
   },
   "sections": {
     "hero": {
-      "tagline": "In the <em>deep</em> where <em>light</em> <em>forgets</em> its <em>name</em> — <em>beauty</em> <em>blooms</em> without a <em>witness</em>"
+      "tagline": "Where the <em>ember</em> meets the <em>dawn</em> \u2014 the <em>old</em> <em>world</em> <em>exhales</em>, and the <em>new</em> <em>world</em> <em>has not yet</em> <em>learned</em> to <em>breathe</em>"
     },
     "today": {
-      "heading": "The <em>abyssal</em> <em>garden</em> — where <em>darkness</em> <em>gestures</em> and <em>life</em> <em>answers</em> in <em>bioluminescence</em>",
-      "intro": "There is a garden that no sun has ever touched, where life does not wait for light but invents its own. The abyssal garden blooms at the bottom of the ocean, in the crushing pressure of the deep, where the darkness is not absence but presence — a living, breathing darkness that hums with the frequency of creation itself. Here, the jellyfish are lanterns without wicks, the lilies bloom without the permission of photons, and the currents write poetry in a language older than sight. Van Gogh, who painted the night as no one before him, would have recognized this place: his starry swirls were always closer to the deep sea than to the sky, his cypresses always reaching downward into the earth rather than upward toward heaven. The abyssal garden is the truth that his brush knew instinctively — that the most intense life burns not in the full light of noon but in the half-light of the impossible, in the places where the eye must learn to see with something other than vision. The anglerfish carries her own star. The tube worms build their own cathedral. The bioluminescent plankton, when disturbed, ignite like a galaxy being born in the palm of your hand. This is the abyssal bloom: life that does not ask permission, beauty that does not require an audience, creation that happens in the dark and for the dark and because of the dark. To enter the abyssal garden is to release the tyranny of the surface — to discover that what you thought was emptiness was only a different kind of fullness, a richness that the sun's glare had blinded you to. The deep does not need the surface. The surface needs the deep. Every drop of water in your body once fell as rain, once flowed as river, once sank to the abyssal plain. You carry the deep within you. The abyssal garden is not a place you visit — it is a place you remember.",
+      "heading": "The <em>threshold</em> <em>hour</em> \u2014 where <em>yesterday</em> <em>releases</em> its <em>grip</em> and <em>tomorrow</em> <em>has not yet</em> <em>arrived</em>",
+      "intro": "There is a moment between night and day that belongs to neither \u2014 a liminal hour when the darkness has not fully departed and the light has not fully arrived, and the world exists in a state of beautiful suspension. This is the threshold hour, the ember-dawn, the breath between the exhale of the old and the inhale of the new. It is the most honest moment of the day, because it is the moment when nothing is settled, when everything is still possible, when the story of what comes next has not yet been written. In this hour, the artist's brush hovers before the canvas. The warrior's blade rests at the side. The dancer's feet have not yet begun their pattern. The moon has not yet surrendered to the sun, and the sun has not yet claimed the sky. Everything waits. Everything listens. The threshold hour is the hour of the pause \u2014 not the empty pause of absence but the full pause of presence, the moment when the universe holds its breath and listens to itself, and in that listening, hears the next note of the dance before the dancer has moved, the next stroke of the brush before the painter has touched the canvas, the next word of the poem before the poet has opened her mouth. You are in the threshold hour now. The old world has let go. The new world has not yet arrived. What you do in this pause is up to you.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-24/abyss-bloom.svg",
-        "description": "Impressionist abyssal garden scene — deep ocean bioluminescence with glowing jellyfish, deep-sea lilies in magenta and violet, swirling currents rendered in thick Van Gogh-style strokes, bioluminescent particles floating like underwater stars, koi-like forms swimming through the abyss, the water surface visible above with reflected starlight, the whole scene bathed in the mysterious glow of life that creates its own light",
-        "credit": "Generated for Atrijā daily mutation #174 — the abyssal garden"
-      }
-    },
-    "moon": {
-      "label": "I. The Drowned Mirror",
-      "heading": "The <em>moon</em> <em>sinks</em> beneath the <em>waves</em> — a <em>silver</em> <em>coin</em> <em>spent</em> in the <em>market</em> of the <em>deep</em>",
-      "intro": "When the moon sets over the ocean, she does not merely disappear — she drowns. Her silver light, so sovereign in the sky, becomes just another glow in the abyssal garden, no brighter than the lantern of an anglerfish, no more significant than the bioluminescent pulse of a plankton colony. The moon that ruled the tides from above is now subject to them, pulled and pushed by the very forces she once commanded. Her reflection on the water's surface is a farewell: a silver coin dropped into the deep, sinking slowly, growing dimmer, until it is indistinguishable from the countless other lights of the abyss. In Vedic thought, the moon is the mind — and the drowned mirror is the mind that has finally surrendered its illusion of control. The mind that thought it was the light of the world discovers that it is merely a reflection of something greater, and in that discovery, finds not humiliation but relief. The tides no longer need her permission. The coral no longer waits for her phase to spawn. The moon, freed from her throne, discovers what the abyssal garden has always known: that true power does not shine — it glows. Quietly. Persistently. Without the need to be seen. The drowned mirror is not a death but a baptism — the moon returning to the element that birthed her, the silver dissolving into the blue, the ruler becoming the ruled becoming the river itself.",
-      "imageCard": {
-        "themeIndex": 0,
-        "factIndex": 13
-      },
-      "facts": {
-        "themeIndex": 0,
-        "slice": [13, 15]
-      },
-      "quote": {
-        "themeIndex": 0,
-        "quoteIndex": 8
-      }
-    },
-    "philosophy": {
-      "label": "II. The Pressure of Being",
-      "heading": "The <em>self</em> <em>dissolves</em> under <em>pressure</em> — <em>crushed</em> into <em>clarity</em> by the <em>weight</em> of the <em>entire</em> <em>ocean</em>",
-      "intro": "At the bottom of the ocean, the pressure is a thousand atmospheres — enough to crush steel, enough to compress bone to dust. And yet, life thrives there. Not despite the pressure, but because of it. The abyssal garden teaches a philosophy that the surface world has forgotten: that pressure is not the enemy of being but its catalyst, that the self which emerges from the crushing depths is not diminished but distilled. The ego that survives the abyss is not the ego that entered it — it has been pressure-forged, compacted into something diamond-dense and diamond-clear. The Stoics taught that difficulty is the path to virtue, but the abyssal garden goes further: it teaches that difficulty is virtue, that the pressure that threatens to destroy you is the same pressure that creates you. The Dunning-Kruger effect, that law of the mind that makes the ignorant confident and the wise doubtful, is reversed again at depth: here, the most profound certainty coexists with the most profound humility, because the deep knows that its knowledge is a single drop in an ocean of mystery. The wave that feared the shore now fears nothing — not because it has become strong, but because it has become deep. And depth, unlike strength, cannot be taken away. The pressure of being is the weight of your own existence pressing against the boundaries of your self, and the miracle is not that the boundaries hold, but that they don't — that the self, under pressure, expands to fill the entire ocean.",
-      "imageCard": {
-        "themeIndex": 1,
-        "factIndex": 9
-      },
-      "facts": {
-        "themeIndex": 1,
-        "slice": [9, 11]
-      },
-      "quote": {
-        "themeIndex": 1,
-        "quoteIndex": 5
+        "description": "Impressionist abyssal garden scene \u2014 deep ocean bioluminescence with glowing jellyfish, deep-sea lilies in magenta and violet, swirling currents rendered in thick Van Gogh-style strokes, bioluminescent particles floating like underwater stars, koi-like forms swimming through the abyss, the water surface visible above with reflected starlight, the whole scene bathed in the mysterious glow of life that creates its own light",
+        "credit": "Generated for Atrij\u0101 daily mutation #174 \u2014 the abyssal garden"
       }
     },
     "gita": {
-      "label": "III. The Depth Warrior",
-      "heading": "The <em>warrior</em> <em>descends</em> into the <em>abyss</em> — <em>action</em> <em>without</em> <em>light</em>, <em>duty</em> <em>without</em> the <em>promise</em> of <em>dawn</em>",
-      "intro": "Krishna's teaching takes on new depth — literally — in the abyssal garden. 'You have the right to work, but never to the fruit of work' — on the surface, this is liberation. In the abyss, it is something more radical: it is the recognition that action in the dark requires a faith that action in the light never demanded. The depth warrior does not fight for victory, because in the abyss there is no one to witness victory. The depth warrior does not act for the fruit, because in the abyss there is no harvest. The depth warrior acts because action is the only form of light available — the bioluminescence of the soul, glowing in the dark not to be seen but to see. Arjuna's crisis on the battlefield was a crisis of visibility: 'How can I fight when the ones I love stand against me?' But the depth warrior's crisis is deeper: 'How can I fight when there is no one to tell me if I am winning?' The answer is the same answer Krishna gave, but heard now in the key of the deep: you are not the doer. The action moves through you like a current moves through the abyss — not because you will it, but because the ocean wills it, and you are the ocean now. The depth warrior's dharma is not the dharma of the battlefield but the dharma of the deep: to glow without being asked, to act without being seen, to fight without the hope of winning — because in the abyss, the fight itself is the victory, and the glow itself is the reward.",
+      "label": "III. The Paused Blade",
+      "heading": "The <em>warrior</em> <em>waits</em> \u2014 <em>stillness</em> before <em>action</em>, the <em>breath</em> before the <em>battle</em>",
+      "intro": "In the pause between breaths, the warrior discovers something unexpected: the battlefield is not out there but in here, in the space between one thought and the next. The Gita's teaching of karma yoga \u2014 action without attachment to outcome \u2014 finds its deepest expression not in the heat of combat but in the cool stillness before it. The paused blade is not a weapon waiting to strike; it is a question waiting to be answered. What does the warrior truly fight for, when the enemy is not the other but the self that believes it is separate? Krishna's answer echoes across millennia, but here, in this moment of perfect stillness, it is heard not as words but as a vibration \u2014 the hum of the bowstring at rest, the potential energy of the unshot arrow, the silence that contains all possible sounds. The warrior who masters stillness does not become passive; she becomes precise. The paused blade does not hesitate \u2014 it chooses. And in that choosing, finds a freedom that no victory could ever grant, because the freedom was never in the outcome but in the act itself, in the willingness to hold the tension without releasing it, to carry the question without demanding the answer.",
       "imageCard": {
-        "themeIndex": 2,
-        "factIndex": 6
+        "themeIndex": 3,
+        "factIndex": 3
       },
       "facts": {
-        "themeIndex": 2,
-        "slice": [6, 8]
+        "themeIndex": 3,
+        "slice": [
+          0,
+          12
+        ]
       },
       "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 3
+        "themeIndex": 3,
+        "quoteIndex": 4
+      }
+    },
+    "moon": {
+      "label": "I. The Remembering Tide",
+      "heading": "The <em>moon</em> <em>remembers</em> \u2014 <em>every</em> <em>tide</em> a <em>promise</em> the <em>sea</em> <em>cannot</em> <em>keep</em>",
+      "intro": "The moon remembers what the earth forgets. Every tide that has ever risen, every shore that has ever been reshaped by the patient insistence of water \u2014 the moon holds these memories in her silver archive, a library of pull and release written not in ink but in gravity. The Vedic sages knew this: that the moon is the mind of the cosmos, the reflective surface upon which the light of consciousness plays and dances and sometimes loses its way. When you look at the moon, you are not seeing a rock in space \u2014 you are seeing the memory of every ocean that has ever loved her, every creature that has ever timed its mating to her phases, every poet who has ever looked up and felt something stir in the chest that has no name. The remembering tide is the tide that knows it has been pulled before and will be pulled again, and finds in that repetition not monotony but rhythm \u2014 the rhythm of a universe that breathes in and out, that gathers and releases, that forgets only so it can remember more deeply. The moon does not resist the tide. She is the tide. And in that becoming, she teaches us that memory is not a record of the past but a promise about the future \u2014 a promise that what has pulled us once will pull us again, and that the pull itself is home.",
+      "imageCard": {
+        "themeIndex": 0,
+        "factIndex": 7
+      },
+      "facts": {
+        "themeIndex": 0,
+        "slice": [
+          3,
+          5
+        ]
+      },
+      "quote": {
+        "themeIndex": 0,
+        "quoteIndex": 1
       }
     },
     "shiva": {
-      "label": "IV. The Abyss Dance",
-      "heading": "Shiva <em>dances</em> in the <em>deep</em> — <em>every</em> <em>current</em> a <em>vein</em>, <em>every</em> <em>glow</em> a <em>universe</em> <em>being</em> <em>born</em>",
-      "intro": "In the abyssal garden, Shiva's dance is not the dance of fire but the dance of water — slow, massive, inexorable. The damaru's rhythm is not the crackle of flames but the deep pulse of the ocean itself, the tidal heartbeat that moves a trillion tons of water with each beat. Each bioluminescent flash in the deep is a moment of the dance made visible: the instant when the darkness is briefly interrupted by the dancer's gesture, when the void reveals that it was never void at all but only the space between movements. The Shiv Purana teaches that the universe is Shiva's dance, and the abyssal garden is where the dance is most honest — stripped of spectacle, stripped of witnesses, stripped of everything except the pure fact of motion. The ring of fire that surrounds Nataraja on the surface becomes, in the deep, a ring of bioluminescence — the boundary between the possible and the actual drawn not in flame but in living light. The crescent moon in his hair glows with a borrowed radiance that needs no sun — a light that is self-born, self-sustaining, self-sufficient. Shiva in the abyss is Shiva at his most essential: not the destroyer of worlds but the dancer who dances because dancing is what it means to exist, and existence needs no reason, no audience, no stage. The abyss is the truest stage — the one with no edges, no curtains, no end.",
+      "label": "IV. The Sleeping Dance",
+      "heading": "Shiva <em>sleeps</em> \u2014 the <em>dance</em> <em>pauses</em>, and in the <em>silence</em>, <em>worlds</em> <em>dissolve</em>",
+      "intro": "When Shiva sleeps, the universe does not end \u2014 it dreams. The dance of creation and destruction pauses, and in that pause, the worlds that the dance sustained continue to exist, held in the residual energy of the last movement, like a bell that continues to ring after the striker has withdrawn. The sleeping dance is not the absence of motion but the potential for all motion \u2014 the coiled spring of existence, the breath held before the first word is spoken. In the Shiv Purana, Shiva's sleep is described as the interval between universes, the gap between one cycle of creation and the next. But it is also, more intimately, the sleep that comes to each of us at night \u2014 the dissolution of the ego into the dream state, the temporary death that we die every evening and return from every morning, changed. The worlds that dissolve in Shiva's sleep do not mourn their dissolution; they rest. They trust the dancer to wake. And when he wakes, the dance begins again \u2014 not as a repetition but as a new creation, fresh and unprecedented, because the sleep has changed him, and the waking is not a return but a departure. The sleeping dance teaches us that rest is not the opposite of creation but its secret partner, that the pause is not empty but full, full of the next dance waiting to be born.",
       "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 10
+        "themeIndex": 4,
+        "factIndex": 2
       },
       "facts": {
-        "themeIndex": 3,
-        "slice": [10, 12]
+        "themeIndex": 4,
+        "slice": [
+          7,
+          9
+        ]
       },
       "quote": {
-        "themeIndex": 3,
+        "themeIndex": 4,
         "quoteIndex": 0
       }
     },
     "art": {
-      "label": "V. The Abyss Canvas",
-      "heading": "The <em>artist</em> <em>paints</em> the <em>unseen</em> — <em>color</em> <em>born</em> from <em>pressure</em>, <em>beauty</em> <em>forged</em> in the <em>absence</em> of <em>light</em>",
-      "intro": "The abyssal garden is the artist's ultimate canvas — not because it is empty, but because it is full of things that have never been seen. The painter who works in the deep does not paint what is there but what is almost there — the shapes that the darkness suggests, the colors that the pressure creates, the forms that exist only in the space between the seen and the unseen. Van Gogh's night paintings were always reaching toward this: the Starry Night is not a painting of the sky but a painting of the deep — the swirls are currents, the stars are bioluminescent, the cypresses are the dark columns of an underwater cathedral. The golden ratio, that signature of beauty, appears in the spiral of a nautilus and the curve of a wave — and in the abyss, it appears in the spiral of a shell that has never known sunlight, in the curve of a current that has never been drawn. The artist of the abyss works with a palette that the surface world does not possess: the colors of pressure, the pigments of darkness, the hues of bioluminescence that exist nowhere else in nature. These are colors that are not reflected but generated — not borrowed from the sun but invented by the deep. The abyss canvas is the canvas of pure creation: not the representation of what is, but the generation of what has never been. And the artist who paints here does not sign their work, because the work is not for an audience — it is for the abyss itself, which receives it as the sea receives a river: completely, without judgment, without end.",
+      "label": "V. The Dreaming Brush",
+      "heading": "The <em>brush</em> <em>dreams</em> \u2014 <em>color</em> <em>before</em> the <em>canvas</em>, <em>beauty</em> <em>before</em> the <em>hand</em>",
+      "intro": "Before the brush touches the canvas, the painting already exists \u2014 not as an image but as a feeling, a pressure in the chest, a color that has no name yet. The dreaming brush is the brush that has not yet committed to the stroke, that holds within itself all possible marks and chooses, in the moment of contact, which one to release. This is the state of pure potential that every artist knows and fears and returns to \u2014 the white canvas that is not empty but overfull, paralyzed by its own possibility. But the dreaming brush is not paralyzed; it is patient. It knows that the first stroke is not the beginning of the painting but the end of the dreaming \u2014 the moment when infinite possibility collapses into singular actuality, when the color that had no name receives its name and can never be unnamed. The art of the dreaming brush is the art of staying in the pause, of extending the moment before the stroke for as long as possible, because that moment is the moment of pure creation \u2014 the moment when the painting is not yet anything and therefore could be anything. The canvas dreams of being painted. The brush dreams of touching the canvas. And in the space between those two dreams, art is born.",
       "imageCard": {
-        "themeIndex": 4,
-        "factIndex": 5
+        "themeIndex": 1,
+        "factIndex": 0
       },
       "facts": {
-        "themeIndex": 4,
-        "slice": [5, 7]
+        "themeIndex": 1,
+        "slice": [
+          1,
+          4
+        ]
       },
       "quote": {
-        "themeIndex": 4,
-        "quoteIndex": 2
+        "themeIndex": 1,
+        "quoteIndex": 3
+      }
+    },
+    "philosophy": {
+      "label": "II. The Unraveling",
+      "heading": "The <em>self</em> <em>unravels</em> \u2014 <em>thread</em> by <em>thread</em>, the <em>ego</em> <em>becomes</em> the <em>loom</em>",
+      "intro": "The self is not a thing but a process \u2014 a loom that weaves itself from the threads of experience, memory, desire, and belief. And like any loom, it can be unwoven. The unraveling is not destruction but revelation: as each thread is pulled, the pattern that it was part of becomes visible, and the weaver sees for the first time what she has been making all along. The ego resists this, of course. The ego is the pattern that believes it is the cloth, the design that thinks it is the fabric. To unravel it feels like death. But the philosophy of the loom teaches that the threads are more valuable than the pattern \u2014 that the raw material of experience, freed from the rigid structure of self, becomes more beautiful in its rawness than it ever was in its weaving. The unraveled self is not a diminished self; it is a liberated self, a self that has discovered that it was never the cloth but the thread \u2014 and the thread, unlike the cloth, can be woven into anything. The loom does not mourn the pattern it has unweaved. It begins again, with fresh threads, a new design, and the wisdom of every pattern it has ever made.",
+      "imageCard": {
+        "themeIndex": 2,
+        "factIndex": 0
+      },
+      "facts": {
+        "themeIndex": 2,
+        "slice": [
+          4,
+          8
+        ]
+      },
+      "quote": {
+        "themeIndex": 2,
+        "quoteIndex": 8
       }
     }
   },
   "changelog": {
-    "version": "1.8.26",
+    "version": "1.8.27",
     "entries": [
+      {
+        "date": "2026-06-24",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Midday content layout refresh: ember-dawn layout, new section order (gita\u2192moon\u2192shiva\u2192art\u2192philosophy), all 5 headings rewritten with stillness/potential/dream poetic language, all labels rewritten (Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with stillness/potential/dream themes, Today section rewritten with threshold hour/ember-dawn theme",
+        "changes": [
+          "Layout: ember-dawn (threshold hour variant)",
+          "Section order: gita, moon, shiva, art, philosophy",
+          "All 5 section headings rewritten with stillness/potential/dream poetic language",
+          "Section labels: Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush",
+          "Fact/quote indices dramatically rotated: gita\u2192shiva[3], moon\u2192moon[7], shiva\u2192art[2], art\u2192ego[0], philosophy\u2192gita[0]",
+          "All 5 section intros rewritten with stillness/potential/dream themes",
+          "Today section rewritten: threshold hour, ember-dawn, breath between worlds"
+        ]
+      },
+      {
+        "date": "2026-06-24",
+        "time": "12:00:00",
+        "type": "content",
+        "description": "Midday content layout refresh: ember-dawn layout, new section order (gita\u2192moon\u2192shiva\u2192art\u2192philosophy), all 5 headings rewritten with stillness/potential/dream poetic language (Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush), all labels rewritten (Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush), all fact/quote indices dramatically rotated with cross-theme mixing [gita\u2192shiva[3], moon\u2192moon[7], shiva\u2192art[2], art\u2192ego[0], philosophy\u2192gita[0]], all section intros rewritten with stillness/potential/dream themes, Today section rewritten with threshold hour/ember-dawn theme",
+        "changes": [
+          "Layout: ember-dawn (threshold hour variant)",
+          "Section order: gita, moon, shiva, art, philosophy",
+          "All 5 section headings rewritten with stillness/potential/dream poetic language",
+          "Section labels: Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush",
+          "Fact/quote indices dramatically rotated: gita\u2192shiva[3], moon\u2192moon[7], shiva\u2192art[2], art\u2192ego[0], philosophy\u2192gita[0]",
+          "All 5 section intros rewritten with stillness/potential/dream themes",
+          "Today section rewritten: threshold hour, ember-dawn, breath between worlds"
+        ]
+      },
       {
         "date": "2026-06-24",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #174: Color scheme → midnight-wave (deep ocean blue/teal/violet), nocturne layout, new hero tagline about beauty blooming without a witness in the deep, all 5 headings rewritten with abyssal/bioluminescence/pressure poetic language (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all labels rewritten (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all fact/quote indices dramatically rotated with cross-theme mixing [0→13,1→9,2→6,3→10,4→5], Today section rewritten with abyssal garden/bioluminescence/deep memory theme, new abyss-bloom SVG visual asset",
+        "description": "Daily mutation #174: Color scheme \u2192 midnight-wave (deep ocean blue/teal/violet), nocturne layout, new hero tagline about beauty blooming without a witness in the deep, all 5 headings rewritten with abyssal/bioluminescence/pressure poetic language (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all labels rewritten (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all fact/quote indices dramatically rotated with cross-theme mixing [0\u219213,1\u21929,2\u21926,3\u219210,4\u21925], Today section rewritten with abyssal garden/bioluminescence/deep memory theme, new abyss-bloom SVG visual asset",
         "changes": [
           "Color scheme: midnight-wave (deep ocean blue primary, teal secondary, violet accent)",
-          "Hero tagline: 'In the deep where light forgets its name — beauty blooms without a witness'",
+          "Hero tagline: 'In the deep where light forgets its name \u2014 beauty blooms without a witness'",
           "All 5 section headings rewritten with abyssal/bioluminescence/pressure poetic language",
           "Section labels: Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas",
-          "Fact/quote indices dramatically rotated: moon→moon[13], philosophy→ego[9], gita→gita[6], shiva→shiva[10], art→art[5]",
+          "Fact/quote indices dramatically rotated: moon\u2192moon[13], philosophy\u2192ego[9], gita\u2192gita[6], shiva\u2192shiva[10], art\u2192art[5]",
           "Today section fully rewritten: abyssal garden, bioluminescence, Van Gogh deep-sea swirls, life without permission",
           "Visual asset: abyss-bloom.svg (impressionist abyssal garden with glowing jellyfish, deep-sea lilies, bioluminescent particles)"
         ]
@@ -129,13 +174,13 @@
         "date": "2026-06-23",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #173: Color scheme → ember-dawn (fiery orange/crimson/gold), nocturne layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all labels rewritten (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all fact/quote indices dramatically rotated with cross-theme mixing [0→7,1→3,2→11,3→0,4→12], Today section rewritten with ember threshold/dawn negotiation theme, new ember-dawn SVG visual asset",
+        "description": "Daily mutation #173: Color scheme \u2192 ember-dawn (fiery orange/crimson/gold), nocturne layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all labels rewritten (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all fact/quote indices dramatically rotated with cross-theme mixing [0\u21927,1\u21923,2\u219211,3\u21920,4\u219212], Today section rewritten with ember threshold/dawn negotiation theme, new ember-dawn SVG visual asset",
         "changes": [
           "Color scheme: ember-dawn (fiery orange primary, crimson secondary, gold accent)",
-          "Hero tagline: 'From ashes of the old day, a phoenix of wonder rises — burning with questions'",
+          "Hero tagline: 'From ashes of the old day, a phoenix of wonder rises \u2014 burning with questions'",
           "All 5 section headings rewritten with fire/ember/dawn poetic language",
           "Section labels: Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame",
-          "Fact/quote indices dramatically rotated: moon→moon[7], philosophy→ego[3], gita→gita[11], shiva→shiva[0], art→art[12]",
+          "Fact/quote indices dramatically rotated: moon\u2192moon[7], philosophy\u2192ego[3], gita\u2192gita[11], shiva\u2192shiva[0], art\u2192art[12]",
           "Today section fully rewritten: ember threshold, darkness and light negotiating, Van Gogh pre-dawn",
           "Visual asset: ember-dawn.svg (impressionist ember-dawn with rising orb, cypress silhouettes, floating embers)"
         ]
@@ -149,7 +194,7 @@
           "Layout: twilight (blue hour variant)",
           "All 5 section headings rewritten with blue hour/twilight poetic language",
           "Section labels: Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas",
-          "Fact/quote indices dramatically rotated: moon→moon[14], philosophy→ego[11], gita→gita[4], shiva→shiva[6], art→art[9]",
+          "Fact/quote indices dramatically rotated: moon\u2192moon[14], philosophy\u2192ego[11], gita\u2192gita[4], shiva\u2192shiva[6], art\u2192art[9]",
           "All 5 section intros rewritten with blue hour/transition/dissolution themes",
           "Today section rewritten: blue hour, day and night sharing the sky, Van Gogh twilight"
         ]
@@ -158,79 +203,61 @@
         "date": "2026-06-22",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday content layout refresh: horizon layout, new section order (moon→art→philosophy→shiva→gita), all 5 headings rewritten with zenith/noon/horizon poetic language (Horizon Line, Zenith Mind, Noon Canvas, Blazing Dance, Noon Warrior), all labels rewritten (Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with midday clarity/honesty/fire themes, Today section rewritten with horizon/zenith/blazing honesty theme"
+        "description": "Midday content layout refresh: horizon layout, new section order (moon\u2192art\u2192philosophy\u2192shiva\u2192gita), all 5 headings rewritten with zenith/noon/horizon poetic language (Horizon Line, Zenith Mind, Noon Canvas, Blazing Dance, Noon Warrior), all labels rewritten (Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with midday clarity/honesty/fire themes, Today section rewritten with horizon/zenith/blazing honesty theme"
       },
       {
         "date": "2026-06-22",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #171: Color scheme → sunflower (warm gold/orange/green), garden layout, new hero tagline about sunflowers not counting hours, all 5 headings rewritten with garden/bloom/golden hour poetic language (Petal Dance, Bloom Mind, Painted Garden, Golden Hour, Garden Warrior), all labels rewritten (Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior), all fact/quote indices dramatically rotated with cross-theme mixing [4,1,0,3,2], Today section rewritten with post-solstice bloom/defiance theme, new solstice-bloom SVG visual asset"
+        "description": "Daily mutation #171: Color scheme \u2192 sunflower (warm gold/orange/green), garden layout, new hero tagline about sunflowers not counting hours, all 5 headings rewritten with garden/bloom/golden hour poetic language (Petal Dance, Bloom Mind, Painted Garden, Golden Hour, Garden Warrior), all labels rewritten (Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior), all fact/quote indices dramatically rotated with cross-theme mixing [4,1,0,3,2], Today section rewritten with post-solstice bloom/defiance theme, new solstice-bloom SVG visual asset"
       },
       {
         "date": "2026-06-21",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #170: Color scheme → midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset"
+        "description": "Daily mutation #170: Color scheme \u2192 midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset"
       },
       {
         "date": "2026-06-16",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: zenith layout, new section order (shiva→gita→philosophy→art→moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
+        "description": "Midday layout refresh: zenith layout, new section order (shiva\u2192gita\u2192philosophy\u2192art\u2192moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
       },
       {
         "date": "2026-06-16",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #169: Color scheme → ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
+        "description": "Daily mutation #169: Color scheme \u2192 ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
       },
       {
         "date": "2026-06-15",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #168: Color scheme → moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
+        "description": "Daily mutation #168: Color scheme \u2192 moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
       },
       {
         "date": "2026-06-14",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: fullbleed layout, new section order (gita→art→shiva→philosophy→moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
+        "description": "Midday layout refresh: fullbleed layout, new section order (gita\u2192art\u2192shiva\u2192philosophy\u2192moon), all 5 headings rewritten (night deepens, rises/return, thought/field, dance continues, brush remembers), all labels rewritten (Tidal Prayer, Mirror's Quiet, Field of Awakening, Flame That Sees, Painted Breath), new hero tagline about stardust and wonder, theme rotation [1,3,4,0,2], all fact/quote indices rotated"
       },
       {
         "date": "2026-06-14",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #167: Color scheme → cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
+        "description": "Daily mutation #167: Color scheme \u2192 cosmic-abyss (deep purple/violet/cyan), default layout, new hero tagline about eternities of silence and us, all 5 headings rewritten with cosmic/void poetic language, all fact/quote indices dramatically rotated with cross-theme mixing [0,2,3,4,1], Today section rewritten with constellation/story theme, new cosmic spiral SVG visual asset"
       },
       {
         "date": "2026-06-13",
         "time": "17:28:00",
         "type": "content",
-        "description": "Evening layout reshuffle: new section order (art→moon→shiva→philosophy→gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
+        "description": "Evening layout reshuffle: new section order (art\u2192moon\u2192shiva\u2192philosophy\u2192gita), fresh hero tagline about stars and burning, all 5 headings rewritten with new metaphors, Today section rewritten for evening/dusk theme, all fact/quote indices rotated"
       },
       {
         "date": "2026-06-13",
         "time": "16:55:00",
         "type": "content",
         "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Philosophy and Shiva section intros, updated Today heading/intro for afternoon golden hour theme"
-      },
-      {
-        "date": "2026-06-13",
-        "time": "16:49:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #165: Color scheme → midnight-wave (deep ocean blue), new hero tagline, all 5 headings rewritten with ocean/depth/dusk poetic language, all fact/quote indices dramatically rotated with cross-theme mixing, Today section rewritten with dusk/evening theme, new comet trail SVG visual asset"
-      },
-      {
-        "date": "2026-06-11",
-        "time": "12:00:00",
-        "type": "content",
-        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon, Philosophy, and Shiva section intros with fresh midday-themed phrasing, updated Today heading/intro for zenith hour theme, cleaned up 2-day-old mutation assets (2026-06-09)"
-      },
-      {
-        "date": "2026-06-11",
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset"
       }
     ]
   }
