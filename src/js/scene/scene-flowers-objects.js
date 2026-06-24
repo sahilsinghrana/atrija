@@ -1,38 +1,45 @@
 import * as THREE from "three";
-import {
-  makeTulipCanvas,
-  makeLilyCanvas,
-} from "./scene-flowers.js";
 import { isMobile } from "./scene-config.js";
 
-export function createTulips(scene, count) {
-  // Brighter, more visible colors — avoid dark reds that blend into background
-  const colors = [
-    "#FF6B6B", "#FF8E8E", "#FFB4B4", "#FFA07A", "#FF7F50",
-    "#FF6347", "#FF4500", "#FFA500", "#FFD700", "#FFE066",
-    "#F06292", "#EC407A", "#F48FB1", "#FF80AB", "#FF4081",
-    "#E91E63", "#C2185B", "#FF7043", "#FFAB91", "#FF8A65",
-    "#FF9800", "#FFC107", "#FFEB3B", "#FFF176", "#FFD54F",
-    "#FFFFFF", "#FFF8E1", "#FFE0B2", "#FFCCBC", "#F8BBD0",
-  ];
-  let lastColorIdx = -1;
+// SVG tulip textures — preloaded once, reused for all tulips
+const TULIP_SVG_URLS = [
+  "/mutation-assets/tulips/tulip-pink.svg",
+  "/mutation-assets/tulips/tulip-yellow.svg",
+  "/mutation-assets/tulips/tulip-purple.svg",
+  "/mutation-assets/tulips/tulip-orange.svg",
+  "/mutation-assets/tulips/tulip-white.svg",
+];
 
+export function preloadTulipTextures(scene) {
+  const loader = new THREE.TextureLoader();
+  const textures = [];
+  let loaded = 0;
+  return new Promise((resolve) => {
+    TULIP_SVG_URLS.forEach((url) => {
+      loader.load(
+        url,
+        (tex) => {
+          tex.minFilter = THREE.LinearFilter;
+          tex.magFilter = THREE.LinearFilter;
+          tex.colorSpace = THREE.SRGBColorSpace;
+          textures.push(tex);
+          loaded++;
+          if (loaded === TULIP_SVG_URLS.length) resolve(textures);
+        },
+        undefined,
+        () => {
+          // If SVG fails, push a placeholder
+          loaded++;
+          if (loaded === TULIP_SVG_URLS.length) resolve(textures);
+        }
+      );
+    });
+  });
+}
+
+export function createTulips(scene, count, textures) {
   for (let i = 0; i < count; i++) {
-    let idx;
-    do {
-      idx = Math.floor(Math.random() * colors.length);
-    } while (idx === lastColorIdx);
-    lastColorIdx = idx;
-    const color = colors[idx];
-
-    const openness = 0.3 + Math.random() * 0.65;
-    const texSeed = Math.floor(Math.random() * 10000);
-    const spreadX = isMobile ? 14 : 20;
-    const spreadZ = isMobile ? 10 : 14;
-
-    // Bake color directly into canvas texture
-    const tex = new THREE.CanvasTexture(makeTulipCanvas(256, color, openness, texSeed));
-    tex.minFilter = THREE.LinearFilter;
+    const tex = textures[i % textures.length];
 
     const sprite = new THREE.Sprite(
       new THREE.SpriteMaterial({
@@ -45,17 +52,16 @@ export function createTulips(scene, count) {
     const roll = Math.random();
     let s;
     if (roll < 0.2) {
-      // 20% are large accent tulips
       s = isMobile ? 2.0 + Math.random() * 0.8 : 1.8 + Math.random() * 1.0;
     } else if (roll < 0.6) {
-      // 40% medium
       s = isMobile ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8;
     } else {
-      // 40% small/far (depth layer)
       s = isMobile ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6;
     }
 
-    // Tulip shape: 1.6 wide, 2.2 tall — slightly taller for elegance
+    const spreadX = isMobile ? 14 : 20;
+    const spreadZ = isMobile ? 10 : 14;
+
     sprite.scale.set(1.6 * s, 2.2 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,

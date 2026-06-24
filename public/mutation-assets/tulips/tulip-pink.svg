@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B9D"/>
+      <stop offset="50%" stop-color="#E91E63"/>
+      <stop offset="100%" stop-color="#C2185B"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF80AB"/>
+      <stop offset="100%" stop-color="#F50057"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+  </defs>
+  <!-- Stem -->
+  <path d="M50,160 Q48,120 50,80" stroke="url(#stem)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Left leaf -->
+  <path d="M50,130 Q35,125 25,115 Q35,120 48,125 Z" fill="#388E3C"/>
+  <path d="M50,130 Q65,125 75,115 Q65,120 52,125 Z" fill="#43A047"/>
+  <!-- Outer petal (left) -->
+  <path d="M50,80 Q30,55 25,35 Q30,20 40,18 Q48,20 50,30 Z" fill="url(#g2)" opacity="0.9"/>
+  <!-- Outer petal (right) -->
+  <path d="M50,80 Q70,55 75,35 Q70,20 60,18 Q52,20 50,30 Z" fill="url(#g1)" opacity="0.9"/>
+  <!-- Center petal -->
+  <path d="M50,80 Q45,55 42,30 Q45,18 50,15 Q55,18 58,30 Q55,55 50,80 Z" fill="url(#g1)"/>
+  <!-- Petal veins -->
+  <path d="M50,78 Q48,50 46,25" stroke="#C2185B" stroke-width="0.5" fill="none" opacity="0.4"/>
+  <path d="M50,78 Q52,50 54,25" stroke="#C2185B" stroke-width="0.5" fill="none" opacity="0.4"/>
+  <!-- Petal highlight -->
+  <path d="M50,75 Q48,55 47,35" stroke="#FF80AB" stroke-width="1" fill="none" opacity="0.3"/>
+</svg>

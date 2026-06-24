@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160">
+  <defs>
+    <linearGradient id="o1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFAB91"/>
+      <stop offset="50%" stop-color="#FF5722"/>
+      <stop offset="100%" stop-color="#E64A19"/>
+    </linearGradient>
+    <linearGradient id="o2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFCCBC"/>
+      <stop offset="100%" stop-color="#F4511E"/>
+    </linearGradient>
+  </defs>
+  <path d="M50,160 Q48,120 50,80" stroke="#2E7D32" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M50,130 Q35,125 25,115 Q35,120 48,125 Z" fill="#388E3C"/>
+  <path d="M50,130 Q65,125 75,115 Q65,120 52,125 Z" fill="#4CAF50"/>
+  <path d="M50,80 Q30,55 25,35 Q30,20 40,18 Q48,20 50,30 Z" fill="url(#o2)" opacity="0.9"/>
+  <path d="M50,80 Q70,55 75,35 Q70,20 60,18 Q52,20 50,30 Z" fill="url(#o1)" opacity="0.9"/>
+  <path d="M50,80 Q45,55 42,30 Q45,18 50,15 Q55,18 58,30 Q55,55 50,80 Z" fill="url(#o1)"/>
+  <path d="M50,78 Q48,50 46,25" stroke="#BF360C" stroke-width="0.5" fill="none" opacity="0.3"/>
+</svg>
