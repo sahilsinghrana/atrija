@@ -5,13 +5,34 @@
  * @see idea-056
  */
 
-const CACHE_NAME = 'atrija-shell-v71';
+const CACHE_NAME = 'atrija-shell-v73';
 
 /** @type {string[]} — Auto-updated by post-build.js */
 const PRECACHE_URLS = [
+  
   '/',
   '/css/loader.css',
   '/css/main.css',
+  '/css/daily-theme.css',
+  '/js/changelog-app.js',
+  '/js/content-prefetch.js',
+  '/js/scene-context-recovery.js',
+  '/js/scene-error-boundary.js',
+  '/js/scene-bundle.js',
+  '/js/moon-phase.js',
+  '/js/quote-carousel.js',
+  '/js/brushstroke-cursor.js',
+  '/js/theme-switcher.js',
+  '/js/accessibility.js',
+  '/js/scroll-lighting.js',
+  '/js/section-nav.js',
+  '/js/content-search.js',
+  '/js/keyboard-help.js',
+  '/js/reader-mode.js',
+  '/js/performance-scaler.js',
+  '/js/sw-register.js',
+  '/js/comet.js'
+
 ];
 
 /** Paths that should always fetch from network first (JSON content) */
