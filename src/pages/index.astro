@@ -340,19 +340,19 @@ const sections = [
   <!-- Flute Click Handler -->
   <script>
     (function() {
-      var flute = document.getElementById('flute-container');
+      const flute = document.getElementById('flute-container');
       if (!flute) return;
-      var symbols = ['♪','♫','♩','♬','♭','♮','♯'];
-      var colors = ['#ffd54f','#ff8a65','#4fc3f7','#b388ff','#80cbc4','#fff8e1'];
+      const symbols = ['♪','♫','♩','♬','♭','♮','♯'];
+      const colors = ['#ffd54f','#ff8a65','#4fc3f7','#b388ff','#80cbc4','#fff8e1'];
       flute.addEventListener('click', function(e) {
         e.stopPropagation();
-        var rect = flute.getBoundingClientRect();
-        var cx = rect.left + rect.width / 2;
-        var cy = rect.top + rect.height / 2;
-        for (var i = 0; i < 12; i++) {
+        const rect = flute.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        for (let i = 0; i < 12; i++) {
           (function(idx) {
             setTimeout(function() {
-              var n = document.createElement('div');
+              const n = document.createElement('div');
               n.textContent = symbols[Math.floor(Math.random()*symbols.length)];
               n.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;font-family:serif;font-size:' + (1.0+Math.random()*0.8) + 'rem;color:' + colors[Math.floor(Math.random()*colors.length)] + ';left:' + (cx+(Math.random()-0.5)*160) + 'px;top:' + (cy+(Math.random()-0.5)*80-60) + 'px;animation:noteFloat 2.5s ease-out forwards;will-change:transform,opacity;';
               document.body.appendChild(n);
@@ -366,21 +366,17 @@ const sections = [
   <script is:inline>
     /* Scroll reveal — add .visible to .reveal elements when they enter viewport */
     (function() {
-      var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+      const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
       if (!els.length) return;
-
-      var revealed = 0;
-      var total = els.length;
 
       function showEl(el) {
         if (el.classList.contains('visible')) return;
         el.classList.add('visible');
-        revealed++;
       }
 
       // Primary: IntersectionObserver for scroll-triggered reveal
       if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function(entries) {
+        const io = new IntersectionObserver(function(entries) {
           entries.forEach(function(e) {
             if (e.isIntersecting) {
               showEl(e.target);
@@ -399,7 +395,7 @@ const sections = [
       // Fallback 2: show elements immediately if they're in initial viewport
       requestAnimationFrame(function() {
         els.forEach(function(el) {
-          var rect = el.getBoundingClientRect();
+          const rect = el.getBoundingClientRect();
           if (rect.top < window.innerHeight && rect.bottom > 0) {
             showEl(el);
           }
