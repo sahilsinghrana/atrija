@@ -28,8 +28,8 @@ echo "[daily-deploy] Deployed to $DEPLOY_DIR"
 # Step 3b: Restart nginx (Cybertron VFS page cache requires restart after file overwrite)
 echo "[daily-deploy] Step 3b: Restarting nginx..."
 fuser -k 8080/tcp 2>/dev/null
-sleep 1
-nginx 2>&1 | head -3
+sleep 2
+nginx -g 'daemon on;' 2>&1 | head -3
 sleep 1
 echo "[daily-deploy] Nginx restarted"
 
