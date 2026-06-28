@@ -2,7 +2,7 @@
 # deploy-rollback.sh — Backup current dist and restore on deploy failure
 # Usage: ./deploy-rollback.sh backup|restore|status
 
-DEPLOY_DIR="/data/data/com.termux/files/usr/share/nginx/html"
+DEPLOY_DIR="/var/www/html"
 BACKUP_DIR="/tmp/van-gogh-last-good-dist"
 
 case "$1" in

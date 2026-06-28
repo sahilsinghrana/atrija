@@ -5,7 +5,7 @@
 set -e
 
 PROJECT_DIR="/root/projects/van-gogh-site"
-DEPLOY_DIR="/data/data/com.termux/files/usr/share/nginx/html"
+DEPLOY_DIR="/var/www/html"
 
 echo "[daily-deploy] Starting daily mutation pipeline..."
 

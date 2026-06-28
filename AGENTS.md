@@ -7,7 +7,7 @@
 - **Stack**: Astro 4 + Three.js (npm `three@0.160`), GLSL post-processing
 - **Scene**: `src/js/scene/` (27+ ES modules) → bundled by Vite → `dist/_astro/scene-*.js`
 - **Build**: `npm run build` = copy-content → vite scene bundle → astro build → inject-body → post-build (SW bump + asset discovery)
-- **Deploy**: Nginx port 8080, root `/data/data/com.termux/files/usr/share/nginx/html`
+- **Deploy**: Nginx port 8080, root `/var/www/html`
 - **Design**: Dark theme (#08080f), impressionist aesthetic
 - **Domain**: rexx.sahilrana.in (Cloudflare proxied)
 
@@ -30,7 +30,7 @@ cd /root/projects/van-gogh-site && git fetch origin && git pull origin master
 ### 2. Build & Deploy
 ```bash
 npm run build
-cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
+cp -r dist/* /var/www/html/
 ```
 
 **Cache (nginx handles all headers — do NOT add manual busting):**

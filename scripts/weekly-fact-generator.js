@@ -10,7 +10,7 @@
 // 4. Write updated src/content/siteData.json
 // 5. Add changelog entry: type "content", description "Weekly facts: +10 new philosophy facts"
 // 6. Build: cd /root/projects/van-gogh-site && npm run build
-// 7. Deploy: BUILD_VERSION=$(date +%s) && sed -i "s/BUILD_VERSION/$BUILD_VERSION/g" dist/index.html && cp -r dist/* /data/data/com.termux/files/usr/share/nginx/html/
+// 7. Deploy: BUILD_VERSION=$(date +%s) && sed -i "s/BUILD_VERSION/$BUILD_VERSION/g" dist/index.html && cp -r dist/* /var/www/html/
 // 8. Git commit: feat: weekly philosophy facts — +10 new facts across 5 themes
 // 9. Git push origin master
 
