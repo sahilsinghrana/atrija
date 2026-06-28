@@ -5,21 +5,35 @@
       "name": "\ud83d\udca1 Idea Backlog",
       "tasks": [
         {
-          "id": "idea-087",
-          "title": "WebGL Context Loss Recovery with User Feedback",
-          "description": "The Three.js scene has no handling for WebGL context loss \u2014 a common occurrence on mobile devices, when switching tabs, or under memory pressure. When context is lost, the scene silently dies: the canvas goes blank, all 3D elements vanish, and the user sees only the dark background with no explanation. This task adds a context loss recovery module (public/js/scene-context-recovery.js) that: (1) listens for the 'webglcontextlost' event on the canvas and prevents the default browser behavior, (2) displays a subtle, themed overlay explaining that the scene is restoring (with the impressionist dark theme and gold accents), (3) listens for 'webglcontextrestored' and re-initializes the scene via the existing bootScene() function, (4) if context cannot be restored after 3 attempts, shows a graceful fallback message suggesting the user refresh the page. The module is a standalone IIFE loaded via a <script> tag in index.astro \u2014 zero scene-init.js changes. It only wraps the existing canvas element with event listeners. Total added code: ~80 lines.",
-          "category": "Technical Debt & Code Quality",
+          "id": "idea-074",
+          "title": "Integrate Scene Health Check into Git-Pull-Build Job",
+          "description": "Enhance the van-gogh-git-pull-build cron job to run the scene health check (scripts/scene-health-check.cjs) after a successful build and before deployment. If the health check fails, abort the deployment and alert the user via the changelog. This ensures that only healthy builds are deployed, reducing the risk of broken scenes in production.",
+          "category": "Testing & Reliability",
           "priority": "high",
           "tags": [
-            "webgl",
-            "context-loss",
-            "error-handling",
-            "mobile",
-            "resilience",
-            "user-feedback"
+            "health-check",
+            "scene-monitor",
+            "reliability",
+            "cron-job"
           ],
           "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Test the recovery logic by mocking the canvas element and dispatching synthetic 'webglcontextlost' and 'webglcontextrestored' events. Verify that preventDefault() is called on context lost, the overlay is shown, and bootScene() is called on restore.\\n- Test cases: context lost event triggers overlay display; context restored event triggers bootScene() and hides overlay; repeated context loss (3+ attempts) shows fallback message; module gracefully handles missing canvas element; module does not interfere with normal scene operation when no context loss occurs.\\n- Integration tests: Verify that the module loads correctly alongside scene-bundle.js and that the canvas event listeners are registered.\\n- Acceptance criteria: scene-context-recovery.js is a standalone IIFE with zero scene-init.js changes; overlay uses existing CSS custom properties (--accent-gold, --bg, etc.); bootScene() is called on context restore; fallback message shown after 3 failed attempts; build succeeds; total added code ~80 lines."
+          "testingStrategy": "- Unit tests: Test the health check integration logic by mocking the build and deployment steps\n- Integration tests: Verify that the git-pull-build job runs the health check and aborts deployment on failure\n- Acceptance criteria: Modified van-gogh-git-pull-build job runs health check; deployment proceeds only on healthy scene; unhealthy scenes trigger a failed changelog entry; no false positives on healthy scenes"
+        },
+        {
+          "id": "idea-084",
+          "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
+          "description": "The scripts/daily-mutate.js script (426 lines) is the most critical untested build script \u2014 it mutates siteData.json and content.json daily, rewrites taglines/headings, rotates color schemes, and generates visual assets. A bug could silently corrupt content or break the daily deploy pipeline. This task creates tests/unit/daily-mutate.test.js with: (1) mock siteData.json and content.json fixtures, (2) tests that mutate() preserves all required JSON schema fields, (3) tests that color scheme rotation stays within valid scheme names, (4) tests that fact/quote index rotations stay within array bounds, (5) tests that tagline and heading rewriting produces non-empty strings, (6) tests that the script handles missing content.json gracefully, (7) tests that changelog entries are appended (not duplicated) on repeated runs. Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "unit-tests",
+            "daily-mutate",
+            "content-pipeline",
+            "data-integrity",
+            "critical-script"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/daily-mutate.test.js with vi.mock('fs') to isolate all file I/O. Use fixture files in tests/fixtures/content/ (valid siteData.json, valid content.json, malformed content.json, missing files).\\n- Test cases: mutate() preserves all required JSON schema fields (themes array, sections object, changelog array); color scheme rotation only produces valid scheme names (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver); fact/quote index rotations stay within source array bounds; tagline rewriting produces non-empty string; heading rewriting produces string containing <em> tags; changelog entries are appended not duplicated on repeated runs; script throws actionable error on missing content.json.\\n- Integration tests: Run the script against temporary copies of the real siteData.json and content.json; verify output passes validate-content.js.\\n- Acceptance criteria: All new tests pass; >80% branch coverage for daily-mutate.js; existing test suite unaffected; mock-based tests run in <10s; no false positives on valid content."
         },
         {
           "id": "idea-088",
@@ -39,38 +53,6 @@
           "testingStrategy": "- Unit tests: Create tests/unit/content-search.test.js using vitest jsdom environment. Test pure logic functions (normalize, scoreMatch, highlightMatch, truncate) with fixed inputs. Test search() with a mock CONTENT_INDEX array. Test DOM rendering with jsdom (overlay creation, result rendering, show/hide).\\n- Test cases: normalize() strips HTML tags, lowercases, collapses whitespace, handles unicode; scoreMatch() returns 0 for no match, 1 per word, +2 bonus for exact phrase; highlightMatch() wraps matches in <mark> with proper regex escaping; truncate() clips at word boundary with ellipsis; search() sorts by score descending, deduplicates by normalized text, caps at 30 results; DOM rendering creates overlay with correct ARIA attributes; performSearch renders grouped results with type labels.\\n- Integration tests: Verify that the module works with the real content.json and siteData.json structure (index building, search across all content types).\\n- Acceptance criteria: All new tests pass; >85% branch coverage for content-search.js; existing test suite unaffected; tests run in <10s; no network calls (fully mocked)."
         },
         {
-          "id": "idea-084",
-          "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
-          "description": "The scripts/daily-mutate.js script (426 lines) is the most critical untested build script \u2014 it mutates siteData.json and content.json daily, rewrites taglines/headings, rotates color schemes, and generates visual assets. A bug could silently corrupt content or break the daily deploy pipeline. This task creates tests/unit/daily-mutate.test.js with: (1) mock siteData.json and content.json fixtures, (2) tests that mutate() preserves all required JSON schema fields, (3) tests that color scheme rotation stays within valid scheme names, (4) tests that fact/quote index rotations stay within array bounds, (5) tests that tagline and heading rewriting produces non-empty strings, (6) tests that the script handles missing content.json gracefully, (7) tests that changelog entries are appended (not duplicated) on repeated runs. Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 2 sessions.",
-          "category": "Testing & Reliability",
-          "priority": "high",
-          "tags": [
-            "unit-tests",
-            "daily-mutate",
-            "content-pipeline",
-            "data-integrity",
-            "critical-script"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/daily-mutate.test.js with vi.mock('fs') to isolate all file I/O. Use fixture files in tests/fixtures/content/ (valid siteData.json, valid content.json, malformed content.json, missing files).\\n- Test cases: mutate() preserves all required JSON schema fields (themes array, sections object, changelog array); color scheme rotation only produces valid scheme names (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver); fact/quote index rotations stay within source array bounds; tagline rewriting produces non-empty string; heading rewriting produces string containing <em> tags; changelog entries are appended not duplicated on repeated runs; script throws actionable error on missing content.json.\\n- Integration tests: Run the script against temporary copies of the real siteData.json and content.json; verify output passes validate-content.js.\\n- Acceptance criteria: All new tests pass; >80% branch coverage for daily-mutate.js; existing test suite unaffected; mock-based tests run in <10s; no false positives on valid content."
-        },
-        {
-          "id": "idea-083",
-          "title": "Lazy-Load Non-Critical UI Modules (theme-switcher, section-nav, reader-mode)",
-          "description": "theme-switcher.js (414 lines), section-nav.js (371 lines), and reader-mode.js (320 lines) are standalone modules loaded via <script> tags in index.astro on every page load, but they are only needed when the user interacts with their respective UI controls. Combined: 1105 lines of JS parsed/evaluated upfront. This task creates a lazy-loader pattern: these modules are loaded as dynamic imports only when the user first clicks their trigger button (theme toggle, nav dot, reader mode toggle). The <script> tags are replaced with small (~20-line) proxy modules that attach click listeners to the trigger elements and dynamically import the full module on first interaction. The flute button, accessibility features, and scene-bundle.js are NOT affected \u2014 they load normally. Total added code: ~60 lines across 3 proxy modules. Zero scene-init.js changes.",
-          "category": "Performance Optimizations",
-          "priority": "medium",
-          "tags": [
-            "lazy-loading",
-            "performance",
-            "code-splitting",
-            "initial-load",
-            "standalone-modules"
-          ],
-          "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Test the proxy module logic by mocking dynamic import() and verifying it is NOT called until the trigger element is clicked. Test that subsequent clicks do not re-import (single-load guarantee).\\n- Integration tests: Verify that the full module loads and initializes correctly after first click. Test that all existing functionality (theme switching, nav scrolling, reader mode toggle) works identically after lazy loading.\\n- Performance tests: Measure initial JS parse/evaluate time before and after lazy loading; target >100ms reduction on mid-range mobile devices.\\n- Acceptance criteria: theme-switcher.js, section-nav.js, reader-mode.js are NOT in initial <script> tags; each has a ~20-line proxy module that loads on first click; all existing functionality preserved; dynamic import fires at most once per module; build succeeds; zero scene-init.js changes; total added code ~60 lines."
-        },
-        {
           "id": "idea-069",
           "title": "Geometry Instancing for Tulip and Sunflower Fields",
           "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
@@ -85,52 +67,6 @@
           ],
           "effort": "3 sessions",
           "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
-        },
-        {
-          "id": "idea-074",
-          "title": "Integrate Scene Health Check into Git-Pull-Build Job",
-          "description": "Enhance the van-gogh-git-pull-build cron job to run the scene health check (scripts/scene-health-check.cjs) after a successful build and before deployment. If the health check fails, abort the deployment and alert the user via the changelog. This ensures that only healthy builds are deployed, reducing the risk of broken scenes in production.",
-          "category": "Testing & Reliability",
-          "priority": "high",
-          "tags": [
-            "health-check",
-            "scene-monitor",
-            "reliability",
-            "cron-job"
-          ],
-          "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Test the health check integration logic by mocking the build and deployment steps\n- Integration tests: Verify that the git-pull-build job runs the health check and aborts deployment on failure\n- Acceptance criteria: Modified van-gogh-git-pull-build job runs health check; deployment proceeds only on healthy scene; unhealthy scenes trigger a failed changelog entry; no false positives on healthy scenes"
-        },
-        {
-          "id": "idea-075",
-          "title": "Add Unit Tests for Scene Health Check Script",
-          "description": "Create a comprehensive unit test suite for scripts/scene-health-check.cjs to ensure all health check functions work correctly. Use mocking for HTTP requests and file system operations to test various scenarios (healthy scene, missing elements, truncated JS, etc.). Tests should run in vitest with appropriate mocks.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "health-check",
-            "testing",
-            "scene-monitor"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/scene-health-check.test.js with mocks for http and child_process\n- Test all internal functions (fetch, check, main) with various scenarios\n- Mock HTTP responses to simulate healthy and unhealthy scenes\n- Mock file system operations for reading HTML and JS files\n- Integration tests: Run the script against a real test server to verify end-to-end functionality\n- Acceptance criteria: >80% branch coverage; all new tests pass; existing test suite unaffected; test suite runs successfully in CI"
-        },
-        {
-          "id": "idea-082",
-          "title": "Unit Tests for changelog-app.js \u2014 Date-File Loading and UI Interaction",
-          "description": "public/js/changelog-app.js (434 lines) is the largest untested client-side module. It loads changelog/index.json, lazy-loads date files on expand, handles click/keyboard expansion/collapse of date cards, and renders entry lists with type badges. All of this is testable with DOM mocking via jsdom. This task creates tests/unit/changelog-app.test.js with: (1) mock fetch responses for index.json and date files, (2) tests that the index is fetched and rendered as date cards, (3) tests that clicking a date card triggers lazy-loading of the corresponding date file, (4) tests that keyboard Enter/Space on a focused card triggers expansion, (5) tests that expanded cards show entry details with correct type badges, (6) tests that already-expanded cards do not re-fetch, (7) tests that fetch failures show a user-friendly error state. Uses vitest + jsdom environment. Effort: 2 sessions.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "changelog",
-            "client-side",
-            "jsdom",
-            "lazy-loading"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/changelog-app.test.js using vitest jsdom environment. Mock global.fetch to return fixture JSON responses for index.json and date files (2026-06-22.json, etc.). Use tests/fixtures/changelog/ directory with mock data.\\n- Test cases: index.json is fetched on init and rendered as date cards; clicking a date card triggers fetch of the corresponding date file; keyboard Enter/Space on focused card triggers expansion; expanded cards show entry details with correct type badges (daily-mutation, feature, fix, etc.); already-expanded cards do not re-fetch on re-click; fetch failures show user-friendly error state (not raw error); multiple date cards can be expanded independently.\\n- Integration tests: Verify that the module works with the real changelog/index.json structure (dates array, entry counts, etc.).\\n- Acceptance criteria: All new tests pass; >80% branch coverage for changelog-app.js; existing test suite unaffected; tests run in <10s; mock-based tests use no real network calls."
         },
         {
           "id": "idea-085",
@@ -166,6 +102,53 @@
           "testingStrategy": "- Unit tests: Create tests/unit/performance-scaler.test.js using vitest jsdom environment. Test pure calculation functions (FPS averaging, tier selection, cooldown timing) with synthetic frame time arrays. Mock sessionStorage via jsdom.\\n- Test cases: FPS calculation returns correct average for steady and variable frame times; quality tier drops to 'low' when avg FPS < 30; quality tier upgrades to 'high' when avg FPS > 50 for 5+ seconds; cooldown prevents tier changes within the cooldown window; hysteresis prevents oscillation (upgrade threshold > downgrade threshold); sessionStorage persists quality tier across page reloads; device capability detection caps low-end devices at medium tier; module gracefully handles missing sessionStorage.\\n- Integration tests: Verify that the module works correctly when loaded alongside scene-bundle.js by testing the quality tier application.\\n- Acceptance criteria: All new tests pass; >85% branch coverage for performance-scaler.js; existing test suite unaffected; tests run in <5s; no network calls (fully mocked)."
         },
         {
+          "id": "idea-068",
+          "title": "Visual Regression Testing Infrastructure with Playwright",
+          "description": "Playwright is installed but not configured. Set up visual regression testing using Playwright + pixelmatch (or @playwright/test built-in snapshot) to catch unintended visual changes in the 3D scene and UI. Configure: playwright.config.ts with device profiles (mobile 375px, tablet 768px, desktop 1280px), baseline screenshots for key states (initial load, scrolled to each section, theme switched, reader mode on/off), CI-friendly thresholds. Store baselines in tests/visual/baselines/. This enables safe refactoring of shaders, CSS, and 3D scene parameters.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "visual-regression",
+            "playwright",
+            "testing-infrastructure",
+            "ci",
+            "quality-assurance"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Test pixelmatch comparison logic with known-different images\n- Integration tests: Run full visual test suite against current build to establish baselines\n- Performance tests: Measure visual test execution time (target <60s for full suite)\n- Acceptance criteria: playwright.config.ts created with 3 device profiles; baseline screenshots captured for 5+ key states; visual test script added to package.json (test:visual); test suite runs and passes on current build; thresholds documented (0 pixel diff for layout, 0.1% for color); integration with existing npm test workflow"
+        },
+        {
+          "id": "idea-075",
+          "title": "Add Unit Tests for Scene Health Check Script",
+          "description": "Create a comprehensive unit test suite for scripts/scene-health-check.cjs to ensure all health check functions work correctly. Use mocking for HTTP requests and file system operations to test various scenarios (healthy scene, missing elements, truncated JS, etc.). Tests should run in vitest with appropriate mocks.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "health-check",
+            "testing",
+            "scene-monitor"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/scene-health-check.test.js with mocks for http and child_process\n- Test all internal functions (fetch, check, main) with various scenarios\n- Mock HTTP responses to simulate healthy and unhealthy scenes\n- Mock file system operations for reading HTML and JS files\n- Integration tests: Run the script against a real test server to verify end-to-end functionality\n- Acceptance criteria: >80% branch coverage; all new tests pass; existing test suite unaffected; test suite runs successfully in CI"
+        },
+        {
+          "id": "idea-082",
+          "title": "Unit Tests for changelog-app.js \u2014 Date-File Loading and UI Interaction",
+          "description": "public/js/changelog-app.js (434 lines) is the largest untested client-side module. It loads changelog/index.json, lazy-loads date files on expand, handles click/keyboard expansion/collapse of date cards, and renders entry lists with type badges. All of this is testable with DOM mocking via jsdom. This task creates tests/unit/changelog-app.test.js with: (1) mock fetch responses for index.json and date files, (2) tests that the index is fetched and rendered as date cards, (3) tests that clicking a date card triggers lazy-loading of the corresponding date file, (4) tests that keyboard Enter/Space on a focused card triggers expansion, (5) tests that expanded cards show entry details with correct type badges, (6) tests that already-expanded cards do not re-fetch, (7) tests that fetch failures show a user-friendly error state. Uses vitest + jsdom environment. Effort: 2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "changelog",
+            "client-side",
+            "jsdom",
+            "lazy-loading"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/changelog-app.test.js using vitest jsdom environment. Mock global.fetch to return fixture JSON responses for index.json and date files (2026-06-22.json, etc.). Use tests/fixtures/changelog/ directory with mock data.\\n- Test cases: index.json is fetched on init and rendered as date cards; clicking a date card triggers fetch of the corresponding date file; keyboard Enter/Space on focused card triggers expansion; expanded cards show entry details with correct type badges (daily-mutation, feature, fix, etc.); already-expanded cards do not re-fetch on re-click; fetch failures show user-friendly error state (not raw error); multiple date cards can be expanded independently.\\n- Integration tests: Verify that the module works with the real changelog/index.json structure (dates array, entry counts, etc.).\\n- Acceptance criteria: All new tests pass; >80% branch coverage for changelog-app.js; existing test suite unaffected; tests run in <10s; mock-based tests use no real network calls."
+        },
+        {
           "id": "idea-086",
           "title": "Automated SVG Optimization for Daily Mutation Assets",
           "description": "The daily-mutate.js script generates SVG visual assets in public/mutation-assets/YYYY-MM-DD/ but never optimizes them. Unnecessary whitespace, comments, metadata, and imprecise path data can bloat SVGs by 30-60%. This task adds an SVG optimization step to the daily mutation pipeline: after an SVG asset is generated, it is passed through svgo (SVG Optimizer) via a scripts/optimize-svg.js wrapper script. The optimizer removes comments, metadata, hidden elements, collapses groups, rounds path coordinates to 2 decimal places, and converts styles to attributes. The optimized SVG replaces the original only if it is smaller (safe fallback). The script is integrated into daily-mutate.js after asset generation and into the daily-deploy.sh pipeline. svgo is added as a devDependency. A --dry-run mode reports savings without modifying files. Effort: 1 session.",
@@ -182,16 +165,32 @@
           "testingStrategy": "- Unit tests: Test optimize-svg.js logic with fixture SVGs (unoptimized, already-optimized, malformed) using vi.mock('fs') and vi.mock('child_process') to isolate svgo invocation.\\n- Test cases: optimized SVG is smaller than original; already-optimized SVG is not rewritten (idempotent); malformed SVG is skipped with a warning (no crash); --dry-run mode reports savings without writing; optimization preserves visual content (key path data retained).\\n- Integration tests: Run the script against a real unoptimized SVG fixture and verify the output is valid SVG (parsable by DOMParser) and smaller.\\n- Acceptance criteria: optimize-svg.js exits 0 on valid SVG; exits 0 with warning on malformed SVG; optimized SVGs are \u226520% smaller on average; daily-mutate.js calls optimization after asset generation; svgo added to devDependencies; build succeeds."
         },
         {
-          "id": "idea-035",
-          "title": "Wind-Swept Wheat Field",
-          "description": "A field of golden wheat stalks rendered as InstancedMesh in the lower 3D scene, swaying organically in a procedural wind vertex shader. 800 stalks desktop / 300 mobile. Scroll position modulates wind intensity.",
-          "category": "3D Elements",
-          "priority": "medium"
+          "id": "idea-083",
+          "title": "Lazy-Load Non-Critical UI Modules (theme-switcher, section-nav, reader-mode)",
+          "description": "theme-switcher.js (414 lines), section-nav.js (371 lines), and reader-mode.js (320 lines) are standalone modules loaded via <script> tags in index.astro on every page load, but they are only needed when the user interacts with their respective UI controls. Combined: 1105 lines of JS parsed/evaluated upfront. This task creates a lazy-loader pattern: these modules are loaded as dynamic imports only when the user first clicks their trigger button (theme toggle, nav dot, reader mode toggle). The <script> tags are replaced with small (~20-line) proxy modules that attach click listeners to the trigger elements and dynamically import the full module on first interaction. The flute button, accessibility features, and scene-bundle.js are NOT affected \u2014 they load normally. Total added code: ~60 lines across 3 proxy modules. Zero scene-init.js changes.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [
+            "lazy-loading",
+            "performance",
+            "code-splitting",
+            "initial-load",
+            "standalone-modules"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the proxy module logic by mocking dynamic import() and verifying it is NOT called until the trigger element is clicked. Test that subsequent clicks do not re-import (single-load guarantee).\\n- Integration tests: Verify that the full module loads and initializes correctly after first click. Test that all existing functionality (theme switching, nav scrolling, reader mode toggle) works identically after lazy loading.\\n- Performance tests: Measure initial JS parse/evaluate time before and after lazy loading; target >100ms reduction on mid-range mobile devices.\\n- Acceptance criteria: theme-switcher.js, section-nav.js, reader-mode.js are NOT in initial <script> tags; each has a ~20-line proxy module that loads on first click; all existing functionality preserved; dynamic import fires at most once per module; build succeeds; zero scene-init.js changes; total added code ~60 lines."
         },
         {
           "id": "idea-032",
           "title": "Dynamic Time-of-Day Atmosphere System",
           "description": "The 3D scene subtly shifts its ambient atmosphere based on the visitor's local time \u2014 warm golden dawn, bright midday, rich sunset tones, or deep night. Background, stars, moon, waves, and flower colors all respond to time-of-day with smooth interpolation between phases.",
+          "category": "3D Elements",
+          "priority": "medium"
+        },
+        {
+          "id": "idea-035",
+          "title": "Wind-Swept Wheat Field",
+          "description": "A field of golden wheat stalks rendered as InstancedMesh in the lower 3D scene, swaying organically in a procedural wind vertex shader. 800 stalks desktop / 300 mobile. Scroll position modulates wind intensity.",
           "category": "3D Elements",
           "priority": "medium"
         },
@@ -203,48 +202,21 @@
           "priority": "medium"
         },
         {
-          "id": "idea-040",
-          "title": "Enhanced Star System with Temperature-Based Colors",
-          "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
-          "category": "3D Elements",
-          "priority": "low"
-        },
-        {
-          "id": "idea-041",
-          "title": "Aurora Borealis Sky Band",
-          "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. Depends on idea-032 (time-of-day).",
-          "category": "3D Elements",
-          "priority": "low"
-        },
-        {
-          "id": "idea-046",
-          "title": "Village Street Lamp Lights",
-          "description": "Warm glowing orbs positioned along the horizon line, representing village lights. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees.",
-          "category": "3D Elements",
-          "priority": "low"
-        },
-        {
-          "id": "idea-036",
-          "title": "Particle Poetry Scroll Effect",
-          "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.",
-          "category": "Interactivity",
-          "priority": "low"
-        },
-        {
-          "id": "idea-068",
-          "title": "Visual Regression Testing Infrastructure with Playwright",
-          "description": "Playwright is installed but not configured. Set up visual regression testing using Playwright + pixelmatch (or @playwright/test built-in snapshot) to catch unintended visual changes in the 3D scene and UI. Configure: playwright.config.ts with device profiles (mobile 375px, tablet 768px, desktop 1280px), baseline screenshots for key states (initial load, scrolled to each section, theme switched, reader mode on/off), CI-friendly thresholds. Store baselines in tests/visual/baselines/. This enables safe refactoring of shaders, CSS, and 3D scene parameters.",
-          "category": "Testing & Reliability",
+          "id": "idea-096",
+          "title": "Whisper Mode \u2014 Procedural Ambient Soundscape Toggle",
+          "description": "A toggle that layers a subtle, generative ambient soundscape (wind, drone, chirp) beneath existing flute clicks. Fully procedural via Web Audio API \u2014 no audio files. Default -30dB. Respects prefers-reduced-motion and Save-Data. Auto-pauses on tab hidden. localStorage persistence.",
+          "category": "Audio",
           "priority": "medium",
           "tags": [
-            "visual-regression",
-            "playwright",
-            "testing-infrastructure",
-            "ci",
-            "quality-assurance"
+            "audio",
+            "ambient",
+            "web-audio",
+            "procedural",
+            "soundscape",
+            "meditative"
           ],
           "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Test pixelmatch comparison logic with known-different images\n- Integration tests: Run full visual test suite against current build to establish baselines\n- Performance tests: Measure visual test execution time (target <60s for full suite)\n- Acceptance criteria: playwright.config.ts created with 3 device profiles; baseline screenshots captured for 5+ key states; visual test script added to package.json (test:visual); test suite runs and passes on current build; thresholds documented (0 pixel diff for layout, 0.1% for color); integration with existing npm test workflow"
+          "testingStrategy": "- Unit tests: Test AudioContext init on gesture, node graph construction, volume control, pause/resume on visibility change, Save-Data block, reduced motion default, localStorage persistence.\n- Integration tests: Verify soundscape plays alongside flute clicks without interference.\n- Acceptance criteria: 3 procedural layers; toggle + volume slider; visibility auto-pause; Save-Data respect; reduced motion default off; no audio files; no auto-play; no scene-init.js changes."
         },
         {
           "id": "idea-092",
@@ -296,21 +268,32 @@
           "testingStrategy": "- Unit tests: Test Vibration API detection, reduced motion blocking, opt-in logic, pattern dispatch, Shift+H toggle, disabled state no-op.\n- Integration tests: Verify custom events dispatched from existing modules trigger vibration.\n- Acceptance criteria: Only activates on Vibration API devices; opt-in via first interaction; 5 patterns; Shift+H toggle; reduced motion disables; graceful no-op on desktop/iOS."
         },
         {
-          "id": "idea-096",
-          "title": "Whisper Mode \u2014 Procedural Ambient Soundscape Toggle",
-          "description": "A toggle that layers a subtle, generative ambient soundscape (wind, drone, chirp) beneath existing flute clicks. Fully procedural via Web Audio API \u2014 no audio files. Default -30dB. Respects prefers-reduced-motion and Save-Data. Auto-pauses on tab hidden. localStorage persistence.",
-          "category": "Audio",
-          "priority": "medium",
-          "tags": [
-            "audio",
-            "ambient",
-            "web-audio",
-            "procedural",
-            "soundscape",
-            "meditative"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Test AudioContext init on gesture, node graph construction, volume control, pause/resume on visibility change, Save-Data block, reduced motion default, localStorage persistence.\n- Integration tests: Verify soundscape plays alongside flute clicks without interference.\n- Acceptance criteria: 3 procedural layers; toggle + volume slider; visibility auto-pause; Save-Data respect; reduced motion default off; no audio files; no auto-play; no scene-init.js changes."
+          "id": "idea-036",
+          "title": "Particle Poetry Scroll Effect",
+          "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.",
+          "category": "Interactivity",
+          "priority": "low"
+        },
+        {
+          "id": "idea-040",
+          "title": "Enhanced Star System with Temperature-Based Colors",
+          "description": "Enhance the star field with scientifically-inspired color variations based on simulated star temperatures, creating a more vivid and impressionist night sky.",
+          "category": "3D Elements",
+          "priority": "low"
+        },
+        {
+          "id": "idea-046",
+          "title": "Village Street Lamp Lights",
+          "description": "Warm glowing orbs positioned along the horizon line, representing village lights. Gentle pulsing animation, warm gold/amber colors, positioned behind cypress trees.",
+          "category": "3D Elements",
+          "priority": "low"
+        },
+        {
+          "id": "idea-041",
+          "title": "Aurora Borealis Sky Band",
+          "description": "A subtle, shimmering aurora borealis band that ripples across the upper sky dome during night time-of-day phases. Custom GLSL shader with flowing green/blue/purple bands, additive blending, mobile-optimized. Depends on idea-032 (time-of-day).",
+          "category": "3D Elements",
+          "priority": "low"
         }
       ]
     },
@@ -798,6 +781,14 @@
           "reviewedAt": "2026-06-24T06:30:00.000000+00:00",
           "reviewResult": "PASS",
           "reviewNotes": "Reviewed 2026-06-24 06:30 \u2014 PASS. 23 unit tests covering version increment, first-run handling, content preservation, malformed input, idempotency, and file I/O. 414-line well-structured test file with vi.mock(\"fs\") isolation. All 23 tests pass. Build succeeds. Site live (HTTP 200)."
+        },
+        {
+          "id": "idea-087",
+          "title": "WebGL Context Loss Recovery with User Feedback",
+          "completedAt": "2026-06-24",
+          "reviewedAt": "2026-06-29T03:00:00Z",
+          "reviewResult": "PASS",
+          "reviewNotes": "Triage 2026-06-29 03:00 \u2014 Already implemented. public/js/scene-context-recovery.js (11,794 bytes) exists and is loaded via <script is:inline src='/js/scene-context-recovery.js'> in index.astro. Module handles webglcontextlost/webglcontextrestored events, shows themed overlay, calls bootScene() on restore, fallback after 3 attempts. Zero scene-init.js changes. Build succeeds. Moving from backlog to done."
         }
       ]
     }
@@ -1595,7 +1586,8 @@
       "description": "Add a standalone scene-context-recovery.js module that handles WebGL context loss events, shows a themed overlay during recovery, re-initializes the scene via bootScene(), and provides a graceful fallback after 3 failed attempts. Zero scene-init.js changes.",
       "category": "Technical Debt & Code Quality",
       "priority": "high",
-      "status": "backlog"
+      "status": "done",
+      "completedAt": "2026-06-24"
     },
     {
       "id": "idea-088",
@@ -1676,6 +1668,21 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-06-29T02:00:00Z",
-  "lastReviewAt": "2026-06-24T03:00:00Z",
-  "lastReviewResult": "Kanban Reviewer (2026-06-24 03:00): (1) Removed idea-089 from backlog column \u2014 already in done. (2) Removed duplicate idea-089 entry from ideas array (backlog copy). (3) Updated idea-090 in ideas array from backlog\u2192done (was already in done column, ideas was stale). Backlog: 21 tasks, Done: 59, Deferred: 1. No duplicates remain. Core elements protected."
+  "lastReviewAt": "2026-06-29T03:00:00Z",
+  "lastReviewResult": "Kanban Triage (2026-06-29 03:00): Moved idea-087 to done (already implemented). Reordered backlog by priority. 22 items remain. No duplicates. No stale prunes.",
+  "changelog": [
+    {
+      "timestamp": "2026-06-29T03:00:00Z",
+      "action": "triage",
+      "summary": "Kanban Triage 2026-06-29 03:00 \u2014 Moved idea-087 (WebGL Context Loss Recovery) to done (already implemented, scene-context-recovery.js verified present and loaded). Reordered backlog by priority: testing/reliability first, then performance, then 3D features. No duplicates found. No stale items pruned (all items < 60 days). Backlog: 22 items. idea-041 (Aurora) kept low due to dependency on idea-032 (Time-of-Day).",
+      "changes": [
+        "idea-087: backlog -> done (already implemented, verified in index.astro)",
+        "Reordered backlog: high-priority testing items at top (088, 084, 074, 069)",
+        "Performance items next (083, 086)",
+        "3D features and nice-to-haves at bottom (032, 035, 042, 040, 041, 046, 036, 094, 095, 096)",
+        "No duplicates identified",
+        "No stale items pruned"
+      ]
+    }
+  ]
 }
