@@ -30,8 +30,8 @@ cd /root/projects/van-gogh-site && git fetch origin && git pull origin master
 ### 2. Build & Deploy
 ```bash
 npm run build
-cp -r dist/* /var/www/html/
 ```
+**Note:** `build.js` auto-deploys to `/var/www/html/` and restarts nginx (required for Cybertron VFS page cache invalidation).
 
 **Cache (nginx handles all headers — do NOT add manual busting):**
 - `index.html`: no-cache/no-store — NEVER cached
@@ -165,7 +165,7 @@ scripts/           build.js (pipeline), post-build.js (cache busting), check-syn
 
 ## Nginx/Termux Notes
 - Config: `$PREFIX/etc/nginx/nginx.conf`, Port 8080
-- Reload: `kill -HUP <master_pid>` (never restart)
+- Restart required after deploy: `fuser -k 8080/tcp && nginx` (Cybertron kernel VFS page cache holds stale file descriptors across cp/overwrite — only full restart invalidates)
 - **nginx MUST run as `user root;`** (SELinux blocks `nobody`)
 - `sendfile off` required on Termux
 - Verify with `127.0.0.1:8080` NOT `localhost`

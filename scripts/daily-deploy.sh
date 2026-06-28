@@ -21,8 +21,17 @@ npm run build 2>&1 | tail -5
 
 # Step 3: Deploy to Nginx
 echo "[daily-deploy] Step 3: Deploying to Nginx..."
+rm -rf "$DEPLOY_DIR"/*
 cp -r dist/* "$DEPLOY_DIR/"
 echo "[daily-deploy] Deployed to $DEPLOY_DIR"
+
+# Step 3b: Restart nginx (Cybertron VFS page cache requires restart after file overwrite)
+echo "[daily-deploy] Step 3b: Restarting nginx..."
+fuser -k 8080/tcp 2>/dev/null
+sleep 1
+nginx 2>&1 | head -3
+sleep 1
+echo "[daily-deploy] Nginx restarted"
 
 # Step 4: Verify deployment
 HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8080/)

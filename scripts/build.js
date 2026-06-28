@@ -36,4 +36,11 @@ run('node scripts/inject-body.js', 'Inject body tags');
 // Step 5: Post-build cache busting (single script)
 run('node scripts/post-build.js', 'Post-build cache busting');
 
+// Step 6: Deploy to /var/www/html and restart nginx
+// (Cybertron kernel VFS page cache requires nginx restart after file overwrite)
+console.log('\n▶ Deploy + restart nginx');
+execSync('rm -rf /var/www/html/* && cp -r dist/* /var/www/html/', { cwd: rootDir, stdio: 'inherit' });
+execSync('fuser -k 8080/tcp 2>/dev/null; sleep 1; nginx 2>&1 | head -3', { cwd: rootDir, stdio: 'inherit' });
+console.log('✓ Deployed + nginx restarted');
+
 console.log('\n✅ Build complete!');

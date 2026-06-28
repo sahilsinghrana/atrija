@@ -20,6 +20,8 @@ case "$1" in
     fi
     rm -rf "${DEPLOY_DIR:?}"/*
     cp -r "$BACKUP_DIR"/* "$DEPLOY_DIR/"
+    # Restart nginx (Cybertron VFS page cache)
+    fuser -k 8080/tcp 2>/dev/null; sleep 1; nginx 2>&1 | head -3
     echo "RESTORE_OK: Rolled back to last known-good deploy"
     echo "VERIFY: curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/"
     ;;
