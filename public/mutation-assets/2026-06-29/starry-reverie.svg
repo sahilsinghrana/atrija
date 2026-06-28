@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <radialGradient id="skyGrad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="50%" stop-color="#0d1b3e"/>
+      <stop offset="100%" stop-color="#050a1a"/>
+    </radialGradient>
+    <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd54f" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#ffecb3" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffd54f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#eceff1" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#cfd8dc" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#90a4ae" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="blur2"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="800" height="500" fill="url(#skyGrad)"/>
+
+  <!-- Swirling brushstrokes (impressionist style) -->
+  <g opacity="0.15" filter="url(#blur2)">
+    <path d="M100,200 Q200,100 350,180 T600,150 T800,200" stroke="#4fc3f7" stroke-width="40" fill="none"/>
+    <path d="M50,300 Q200,250 400,320 T750,280" stroke="#ffd54f" stroke-width="30" fill="none"/>
+    <path d="M150,350 Q350,300 500,380 T800,350" stroke="#7c4dff" stroke-width="25" fill="none"/>
+  </g>
+
+  <!-- Nebula clouds -->
+  <g opacity="0.12" filter="url(#blur2)">
+    <ellipse cx="200" cy="150" rx="120" ry="60" fill="#4fc3f7"/>
+    <ellipse cx="600" cy="120" rx="100" ry="50" fill="#ffd54f"/>
+    <ellipse cx="450" cy="350" rx="140" ry="70" fill="#7c4dff"/>
+  </g>
+
+  <!-- Large background stars -->
+  <g opacity="0.4">
+    <circle cx="120" cy="80" r="2" fill="#b3e5fc"/>
+    <circle cx="300" cy="50" r="1.5" fill="#b3e5fc"/>
+    <circle cx="500" cy="90" r="2" fill="#b3e5fc"/>
+    <circle cx="680" cy="60" r="1.5" fill="#b3e5fc"/>
+    <circle cx="750" cy="150" r="2" fill="#b3e5fc"/>
+    <circle cx="50" cy="200" r="1.5" fill="#b3e5fc"/>
+    <circle cx="400" cy="40" r="1" fill="#b3e5fc"/>
+    <circle cx="620" cy="30" r="1" fill="#b3e5fc"/>
+  </g>
+
+  <!-- Medium stars with glow -->
+  <g>
+    <circle cx="180" cy="120" r="12" fill="url(#starGlow)"/>
+    <circle cx="180" cy="120" r="2.5" fill="#ffd54f"/>
+    <circle cx="420" cy="80" r="10" fill="url(#starGlow)"/>
+    <circle cx="420" cy="80" r="2" fill="#ffecb3"/>
+    <circle cx="650" cy="130" r="14" fill="url(#starGlow)"/>
+    <circle cx="650" cy="130" r="3" fill="#ffd54f"/>
+    <circle cx="320" cy="160" r="8" fill="url(#starGlow)"/>
+    <circle cx="320" cy="160" r="1.5" fill="#ffecb3"/>
+    <circle cx="550" cy="60" r="9" fill="url(#starGlow)"/>
+    <circle cx="550" cy="60" r="2" fill="#ffd54f"/>
+  </g>
+
+  <!-- Bright foreground stars with cross flares -->
+  <g>
+    <line x1="250" y1="100" x2="250" y2="130" stroke="#ffd54f" stroke-width="1" opacity="0.7"/>
+    <line x1="235" y1="115" x2="265" y2="115" stroke="#ffd54f" stroke-width="1" opacity="0.7"/>
+    <circle cx="250" cy="115" r="3" fill="#fff"/>
+    <circle cx="250" cy="115" r="15" fill="url(#starGlow)" opacity="0.5"/>
+
+    <line x1="580" y1="170" x2="580" y2="200" stroke="#4fc3f7" stroke-width="1" opacity="0.6"/>
+    <line x1="565" y1="185" x2="595" y2="185" stroke="#4fc3f7" stroke-width="1" opacity="0.6"/>
+    <circle cx="580" cy="185" r="2.5" fill="#b3e5fc"/>
+    <circle cx="580" cy="185" r="12" fill="url(#starGlow)" opacity="0.4"/>
+
+    <line x1="150" y1="250" x2="150" y2="270" stroke="#ffd54f" stroke-width="0.8" opacity="0.5"/>
+    <line x1="140" y1="260" x2="160" y2="260" stroke="#ffd54f" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="150" cy="260" r="2" fill="#ffecb3"/>
+  </g>
+
+  <!-- Crescent moon -->
+  <g transform="translate(620, 180)">
+    <circle r="50" fill="url(#moonGlow)" opacity="0.3"/>
+    <circle r="40" fill="#eceff1"/>
+    <circle r="35" cx="12" cy="-8" fill="#0d1b3e"/>
+    <!-- Moon surface details -->
+    <circle cx="-10" cy="-5" r="4" fill="#b0bec5" opacity="0.3"/>
+    <circle cx="5" cy="10" r="6" fill="#b0bec5" opacity="0.2"/>
+    <circle cx="-15" cy="12" r="3" fill="#b0bec5" opacity="0.25"/>
+  </g>
+
+  <!-- Swirling golden spiral (impressionist brushstroke) -->
+  <g opacity="0.3" filter="url(#blur1)">
+    <path d="M350,250 Q380,200 420,220 Q460,240 440,280 Q420,320 380,300 Q340,280 350,250" 
+          stroke="#ffd54f" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M370,250 Q390,220 410,235 Q430,250 420,270 Q410,290 390,280 Q370,270 370,250" 
+          stroke="#ffecb3" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Shooting star -->
+  <g opacity="0.6">
+    <line x1="100" y1="60" x2="180" y2="100" stroke="#ffd54f" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="100" cy="60" r="2" fill="#fff"/>
+  </g>
+
+  <!-- Horizon silhouette -->
+  <path d="M0,420 Q100,400 200,415 Q300,430 400,410 Q500,390 600,415 Q700,435 800,420 L800,500 L0,500 Z" fill="#050a1a" opacity="0.8"/>
+
+  <!-- Cypress silhouette (impressionist touch) -->
+  <g fill="#020610" opacity="0.9">
+    <path d="M80,420 L85,360 Q90,340 85,320 Q82,300 88,280 Q92,290 90,310 Q88,330 92,350 L95,420 Z"/>
+    <path d="M720,415 L725,370 Q728,350 724,330 Q722,315 727,300 Q730,315 728,335 Q726,355 730,375 L732,415 Z"/>
+  </g>
+</svg>

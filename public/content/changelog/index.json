@@ -1,8 +1,14 @@
 {
-  "version": "1.8.25",
-  "lastUpdated": "2026-06-23T06:00:00.000Z",
-  "totalEntries": 41,
+  "version": "1.8.28",
+  "lastUpdated": "2026-06-29T06:00:00.000Z",
+  "totalEntries": 42,
   "dates": [
+    {
+      "date": "2026-06-29",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation: starry-night colors (deep blue/gold/cyan), new tagline 'Stars dream tonight', all 4 headings rewritten (Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence), fact/quote indices rotated, Today rewritten with starry reverie theme, new starry-reverie.svg"
+    },
     {
       "date": "2026-06-23",
       "entries": 2,
@@ -61,7 +67,7 @@
       "date": "2026-06-06",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #157: starry-night colors (summer season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #157: starry-night colors (summer season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-06-05",
@@ -85,13 +91,13 @@
       "date": "2026-06-02",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana → Art & Beauty → Selene & The Moon → Ego & Arrogance → Bhagavad Gita"
+      "description": "Daily mutation #154: lily-garden colors (summer), Shiv Purana \u2192 Art & Beauty \u2192 Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita"
     },
     {
       "date": "2026-06-01",
       "entries": 1,
       "latestType": "daily-mutation",
-      "description": "Daily mutation #152: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Bhagavad Gita → Shiv Purana → Art & Beauty"
+      "description": "Daily mutation #152: sunflower colors (summer season), Selene & The Moon \u2192 Ego & Arrogance \u2192 Bhagavad Gita \u2192 Shiv Purana \u2192 Art & Beauty"
     },
     {
       "date": "2026-05-31",
@@ -103,7 +109,7 @@
       "date": "2026-05-24",
       "entries": 2,
       "latestType": "feature",
-      "description": "Letter Excerpts — daily rotating letter passages"
+      "description": "Letter Excerpts \u2014 daily rotating letter passages"
     },
     {
       "date": "2026-05-23",
@@ -121,7 +127,7 @@
       "date": "2026-05-21",
       "entries": 2,
       "latestType": "feature",
-      "description": "Biography Timeline — interactive scrollable timeline"
+      "description": "Biography Timeline \u2014 interactive scrollable timeline"
     },
     {
       "date": "2026-05-20",
@@ -139,7 +145,7 @@
       "date": "2026-05-18",
       "entries": 3,
       "latestType": "feature",
-      "description": "Shooting stars — random celestial streaks with fading trails"
+      "description": "Shooting stars \u2014 random celestial streaks with fading trails"
     },
     {
       "date": "2026-05-17",
@@ -151,7 +157,7 @@
       "date": "2026-05-16",
       "entries": 2,
       "latestType": "feature",
-      "description": "Sunflower field parallax — 3 depth layers"
+      "description": "Sunflower field parallax \u2014 3 depth layers"
     }
   ]
 }
