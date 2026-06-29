@@ -7,7 +7,10 @@
 (function () {
   if (!('serviceWorker' in navigator)) return;
 
-  navigator.serviceWorker.register('/sw.js?v=2', {
+  // Use no query string — nginx serves SW with max-age=3600 which is fine.
+  // The SW itself checks for updates on every navigation (skipWaiting + clients.claim).
+  // Internal CACHE_NAME changes every build, triggering re-install.
+  navigator.serviceWorker.register('/sw.js', {
     scope: '/',
     // Don't use 'type: module' — service workers are classic scripts
   }).catch(function () {
