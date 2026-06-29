@@ -384,60 +384,61 @@ export function makeTulipCanvas(size, color, openness, seed) {
   var gg = parseInt(hex.substring(2, 4), 16);
   var bb = parseInt(hex.substring(4, 6), 16);
 
-  // --- Stem ---
-  var stemTop = size * 0.22;
-  var stemBottom = size * 0.93;
+  // Layout: flower head in upper-middle, stem below, centered on canvas
+  // Total flower+stem spans from headTop to stemBottom, centered at size*0.5
+  var headHeight = size * 0.36;  // height of the tulip cup (flower head)
+  var stemHeight = size * 0.30;  // visible stem below the cup
+  var totalH = headHeight + stemHeight;
+  var headCY = size * 0.5 - totalH * 0.18; // flower head center (slightly above middle)
+  var cupTopY = headCY - headHeight * 0.5;
+  var cupBaseY = headCY + headHeight * 0.4;
+  var stemBottom = cupBaseY + stemHeight;
+
+  var cupW = size * 0.10;
+  var cupTopW = size * 0.11;
+  var cupNeckY = cupBaseY - size * 0.04;
   var stemW = size * 0.018;
 
+  // --- Stem ---
   ctx.strokeStyle = "#2d6a1e";
   ctx.lineWidth = stemW;
   ctx.lineCap = "round";
   ctx.beginPath();
-  ctx.moveTo(cx, stemBottom);
-  ctx.quadraticCurveTo(cx + size * 0.008, stemBottom * 0.55, cx, stemTop);
+  ctx.moveTo(cx, cupBaseY);
+  ctx.quadraticCurveTo(cx + size * 0.008, (cupBaseY + stemBottom) * 0.5, cx, stemBottom);
   ctx.stroke();
 
-  // --- Leaf (long, narrow, curves down) ---
+  // --- Leaf left ---
   ctx.fillStyle = "#3a7a28";
   ctx.beginPath();
-  ctx.moveTo(cx, stemTop + size * 0.08);
+  ctx.moveTo(cx, cupBaseY + size * 0.04);
   ctx.bezierCurveTo(
-    cx + size * 0.08, stemTop + size * 0.02,
-    cx + size * 0.14, stemTop + size * 0.18,
-    cx + size * 0.04, stemTop + size * 0.35,
+    cx + size * 0.08, cupBaseY - size * 0.02,
+    cx + size * 0.14, cupBaseY + size * 0.10,
+    cx + size * 0.04, cupBaseY + size * 0.22,
   );
-  ctx.quadraticCurveTo(cx - size * 0.02, stemTop + size * 0.25, cx, stemTop + size * 0.08);
+  ctx.quadraticCurveTo(cx - size * 0.02, cupBaseY + size * 0.14, cx, cupBaseY + size * 0.04);
   ctx.fill();
 
-  // Second leaf (other side)
+  // --- Leaf right ---
   ctx.fillStyle = "#2d6a1e";
   ctx.beginPath();
-  ctx.moveTo(cx, stemTop + size * 0.12);
+  ctx.moveTo(cx, cupBaseY + size * 0.08);
   ctx.bezierCurveTo(
-    cx - size * 0.07, stemTop + size * 0.06,
-    cx - size * 0.13, stemTop + size * 0.22,
-    cx - size * 0.04, stemTop + size * 0.38,
+    cx - size * 0.07, cupBaseY + size * 0.02,
+    cx - size * 0.13, cupBaseY + size * 0.14,
+    cx - size * 0.04, cupBaseY + size * 0.26,
   );
-  ctx.quadraticCurveTo(cx + size * 0.02, stemTop + size * 0.28, cx, stemTop + size * 0.12);
+  ctx.quadraticCurveTo(cx + size * 0.02, cupBaseY + size * 0.18, cx, cupBaseY + size * 0.08);
   ctx.fill();
 
-  // --- Tulip Flower (classic goblet shape) ---
-  // Key tulip features: tall goblet, 3 petal tips at top, slight flare
-  var cupBaseY = stemTop + size * 0.02;
-  var cupTopY = stemTop - size * 0.30;
-  var cupW = size * 0.10;       // half-width at widest (middle)
-  var cupTopW = size * 0.11;    // half-width at top (slightly flared)
-  var cupNeckY = cupBaseY - size * 0.06; // narrow point near base
-
-  // Draw 3 petals (the defining tulip feature)
-  // Each petal: curves from base up to a rounded tip at top
+  // --- Tulip Flower (goblet shape, 3 petal tips) ---
   var petalTips = [
-    { x: cx, y: cupTopY },                    // center petal (tallest)
-    { x: cx - cupTopW * 0.85, y: cupTopY + size * 0.03 }, // left petal
-    { x: cx + cupTopW * 0.85, y: cupTopY + size * 0.03 }, // right petal
+    { x: cx, y: cupTopY },
+    { x: cx - cupTopW * 0.85, y: cupTopY + size * 0.025 },
+    { x: cx + cupTopW * 0.85, y: cupTopY + size * 0.025 },
   ];
 
-  // Petal color (slightly darker for outer)
   var pR = Math.max(0, rr - 25);
   var pG = Math.max(0, gg - 20);
   var pB = Math.max(0, bb - 15);
@@ -448,17 +449,14 @@ export function makeTulipCanvas(size, color, openness, seed) {
     var side = p === 0 ? 0 : (p === 1 ? -1 : 1);
     var topW = p === 0 ? cupTopW * 0.35 : cupTopW * 0.7;
 
-    // Petal body
     ctx.fillStyle = "rgb(" + rr + "," + gg + "," + bb + ")";
     ctx.beginPath();
     ctx.moveTo(cx - cupW * 0.35, cupBaseY);
-    // Left edge of petal
     ctx.bezierCurveTo(
       cx - cupW * 0.5, cupNeckY,
       tip.x - topW * 0.6, tip.y + size * 0.04,
       tip.x, tip.y,
     );
-    // Right edge of petal
     ctx.bezierCurveTo(
       tip.x + topW * 0.6, tip.y + size * 0.04,
       cx + cupW * 0.5, cupNeckY,
@@ -467,14 +465,30 @@ export function makeTulipCanvas(size, color, openness, seed) {
     ctx.closePath();
     ctx.fill();
 
-    // Petal center line (vein)
-    ctx.strokeStyle = "rgba(" + pR + "," + pG + "," + pB + ",0.4)";
+    // Petal vein
+    ctx.strokeStyle = "rgba(" + pR + "," + pG + "," + pB + ",0.35)";
     ctx.lineWidth = size * 0.004;
     ctx.beginPath();
     ctx.moveTo(cx + side * cupW * 0.1, cupBaseY - size * 0.02);
     ctx.quadraticCurveTo(
       cx + side * cupW * 0.15, cupNeckY,
       tip.x, tip.y + size * 0.02,
+    );
+    ctx.stroke();
+  }
+
+  // Petal edge highlights
+  ctx.strokeStyle = "rgba(255,255,255,0.18)";
+  ctx.lineWidth = size * 0.003;
+  for (var e = 0; e < 3; e++) {
+    var tip2 = petalTips[e];
+    var s2 = e === 0 ? 0 : (e === 1 ? -1 : 1);
+    var tw2 = e === 0 ? cupTopW * 0.35 : cupTopW * 0.7;
+    ctx.beginPath();
+    ctx.moveTo(cx, headCY - headHeight * 0.1);
+    ctx.quadraticCurveTo(
+      cx - s2 * cupW * 0.4, cupNeckY,
+      tip2.x - s2 * tw2 * 0.3, tip2.y + size * 0.03,
     );
     ctx.stroke();
   }
