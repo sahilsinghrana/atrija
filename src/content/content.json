@@ -1,19 +1,19 @@
 {
   "_comment": "This file is updated daily by the AI agent cron job.",
   "meta": {
-    "version": "1.9.2",
+    "version": "1.8.30",
     "lastUpdated": "2026-06-29",
-    "updatedBy": "AI (daily mutation)",
+    "updatedBy": "AI (midday refresh)",
     "season": "sunflower 🔥🌻",
-    "layout": "sunflower"
+    "layout": "default"
   },
   "sections": {
     "hero": {
       "tagline": "Light <em>remembers</em> us"
     },
     "today": {
-      "heading": "<em>Gold</em> Hour",
-      "intro": "Sunflower fields remember every dawn.",
+      "heading": "<em>Amber</em> Hour",
+      "intro": "Sunflowers turn their faces west.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-06-29/golden-reverie.svg",
@@ -23,77 +23,91 @@
       "label": "Golden Reverie"
     },
     "moon": {
-      "label": "I. Still Tide",
-      "heading": "<em>Still</em> Tide",
-      "intro": "Unseen face keeps secrets.",
+      "label": "I. Silent Wheel",
+      "heading": "The <em>Moon</em>",
+      "intro": "Silent partner, hidden face.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 7
+        "factIndex": 9
       },
       "facts": [
-        "Tidal lock: one face.",
-        "We are lunar beings."
+        "Tidal lock: one side.",
+        "Moonlight: borrowed gold."
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 3
+        "quoteIndex": 4
       }
     },
     "shiva": {
-      "label": "II. Fire Dance",
-      "heading": "<em>Fire</em> Dance",
-      "intro": "Fire speaks in rhythms.",
+      "label": "II. Ring of Flame",
+      "heading": "<em>Nataraja</em>",
+      "intro": "Drumbeat births all tongues.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 5
+        "factIndex": 7
       },
       "facts": [
-        "Speech: silk threads.",
-        "Third eye: burns."
+        "Drum: first language.",
+        "Third eye: sees truth."
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 0
+        "quoteIndex": 2
       }
     },
     "art": {
-      "label": "III. Gold Brush",
-      "heading": "<em>Gold</em> Brush",
-      "intro": "Color remembers light.",
+      "label": "III. Golden Rule",
+      "heading": "The <em>Brush</em>",
+      "intro": "A single stroke holds weight.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 11
+        "factIndex": 13
       },
       "facts": [
-        "Ratio: 1.618.",
-        "Sunflower: faithful."
+        "Golden ratio: 1.618.",
+        "Lily: reveals sky."
       ],
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 1
+        "quoteIndex": 3
       }
     },
     "philosophy": {
-      "label": "IV. Empty I",
-      "heading": "<em>Empty</em> I",
-      "intro": "Self dissolves into all.",
+      "label": "IV. No Self",
+      "heading": "The <em>Self</em>",
+      "intro": "Drop the story, find light.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 4
+        "factIndex": 6
       },
       "facts": [
-        "Humility: quiet stem.",
-        "Lily: no competing."
+        "Wave: knows water.",
+        "Ego: a story."
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 0
+        "quoteIndex": 4
       }
     }
   },
   "changelog": {
-    "version": "1.8.29",
+    "version": "1.8.30",
     "entries": [
+      {
+        "date": "2026-06-29",
+        "time": "12:04:45",
+        "type": "content",
+        "description": "Midday layout refresh: default layout, all 4 headings rewritten (The Moon, Nataraja, The Brush, The Self), new labels (Silent Wheel, Ring of Flame, Golden Rule, No Self), fact/quote indices rotated (moon[9,4], shiva[7,2], art[13,3], phil[6,4]), Today section rewritten with amber hour theme",
+        "changes": [
+          "Layout: default",
+          "Section labels: Silent Wheel, Ring of Flame, Golden Rule, No Self",
+          "Fact indices: moon→9, shiva→7, art→13, philosophy→6",
+          "Quote indices: moon→4, shiva→2, art→3, philosophy→4",
+          "All 4 section intros rewritten",
+          "Today section: amber hour, sunflowers turn west"
+        ]
+      },
       {
         "date": "2026-06-29",
         "time": "08:42:00",
@@ -273,24 +287,6 @@
         "time": "06:00:00",
         "type": "daily-mutation",
         "description": "Daily mutation #170: Color scheme → midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset"
-      },
-      {
-        "date": "2026-06-16",
-        "time": "12:00:00",
-        "type": "content",
-        "description": "Midday layout refresh: zenith layout, new section order (shiva→gita→philosophy→art→moon), all 5 headings rewritten with zenith/noon/sun poetic language (hidden sun, zenith mind, noon warrior, solar dance, golden canvas), all labels rewritten (Solar Dance, Noon Warrior, Zenith Mind, Golden Canvas, Hidden Sun), new hero tagline about zenith and shadows forgetting names, theme rotation [4,1,0,3,2], all fact/quote indices rotated, Today section rewritten with zenith/total presence theme, new zenith-noon SVG visual asset"
-      },
-      {
-        "date": "2026-06-16",
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #169: Color scheme → ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset"
-      },
-      {
-        "date": "2026-06-15",
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #168: Color scheme → moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset"
       }
     ]
   }

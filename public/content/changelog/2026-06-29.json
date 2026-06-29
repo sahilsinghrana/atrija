@@ -1,79 +1,107 @@
-{
-  "date": "2026-06-29",
-  "time": "08:42:00",
-  "type": "daily-mutation",
-  "version": "1.9.3",
-  "description": "Daily mutation #178: Color scheme → sunflower (gold #f5c800 / orange #ff6f00 / green #2e7d32), sunflower layout, new hero tagline 'Light remembers us', all 4 headings rewritten (Still Tide, Fire Dance, Gold Brush, Empty I), fact/quote indices rotated, Today section rewritten with gold hour sunflower field, new golden-reverie SVG",
-  "changes": [
-    {
-      "type": "color-scheme",
-      "value": "sunflower",
-      "colors": {
-        "primary": "#f5c800",
-        "secondary": "#ff6f00",
-        "accent": "#2e7d32",
-        "background": "#1a1200",
-        "text": "#fff8e1"
+[
+  {
+    "date": "2026-06-29",
+    "time": "08:42:00",
+    "type": "daily-mutation",
+    "version": "1.9.3",
+    "description": "Daily mutation #178: Color scheme → sunflower (gold #f5c800 / orange #ff6f00 / green #2e7d32), sunflower layout, new hero tagline 'Light remembers us', all 4 headings rewritten (Still Tide, Fire Dance, Gold Brush, Empty I), fact/quote indices rotated, Today section rewritten with gold hour sunflower field, new golden-reverie SVG",
+    "changes": [
+      {
+        "type": "color-scheme",
+        "value": "sunflower",
+        "colors": {
+          "primary": "#f5c800",
+          "secondary": "#ff6f00",
+          "accent": "#2e7d32",
+          "background": "#1a1200",
+          "text": "#fff8e1"
+        }
+      },
+      {
+        "type": "hero-tagline",
+        "value": "Light <em>remembers</em> us"
+      },
+      {
+        "type": "section-heading",
+        "section": "moon",
+        "value": "<em>Still</em> Tide",
+        "label": "I. Still Tide"
+      },
+      {
+        "type": "section-heading",
+        "section": "shiva",
+        "value": "<em>Fire</em> Dance",
+        "label": "II. Fire Dance"
+      },
+      {
+        "type": "section-heading",
+        "section": "art",
+        "value": "<em>Gold</em> Brush",
+        "label": "III. Gold Brush"
+      },
+      {
+        "type": "section-heading",
+        "section": "philosophy",
+        "value": "<em>Empty</em> I",
+        "label": "IV. Empty I"
+      },
+      {
+        "type": "fact-rotation",
+        "moon": [
+          2,
+          9
+        ],
+        "shiva": [
+          8,
+          9
+        ],
+        "art": [
+          5,
+          13
+        ],
+        "philosophy": [
+          0,
+          6
+        ]
+      },
+      {
+        "type": "quote-rotation",
+        "moon": 3,
+        "shiva": 0,
+        "art": 1,
+        "philosophy": 0
+      },
+      {
+        "type": "visual-asset",
+        "file": "/mutation-assets/2026-06-29/golden-reverie.svg",
+        "description": "Impressionist sunflower field with golden dawn light, glowing pollen particles, Van Gogh-inspired brushstrokes"
+      },
+      {
+        "type": "layout",
+        "value": "sunflower"
       }
-    },
-    {
-      "type": "hero-tagline",
-      "value": "Light <em>remembers</em> us"
-    },
-    {
-      "type": "section-heading",
-      "section": "moon",
-      "value": "<em>Still</em> Tide",
-      "label": "I. Still Tide"
-    },
-    {
-      "type": "section-heading",
-      "section": "shiva",
-      "value": "<em>Fire</em> Dance",
-      "label": "II. Fire Dance"
-    },
-    {
-      "type": "section-heading",
-      "section": "art",
-      "value": "<em>Gold</em> Brush",
-      "label": "III. Gold Brush"
-    },
-    {
-      "type": "section-heading",
-      "section": "philosophy",
-      "value": "<em>Empty</em> I",
-      "label": "IV. Empty I"
-    },
-    {
-      "type": "fact-rotation",
-      "moon": [2, 9],
-      "shiva": [8, 9],
-      "art": [5, 13],
-      "philosophy": [0, 6]
-    },
-    {
-      "type": "quote-rotation",
-      "moon": 3,
-      "shiva": 0,
-      "art": 1,
-      "philosophy": 0
-    },
-    {
-      "type": "visual-asset",
-      "file": "/mutation-assets/2026-06-29/golden-reverie.svg",
-      "description": "Impressionist sunflower field with golden dawn light, glowing pollen particles, Van Gogh-inspired brushstrokes"
-    },
-    {
-      "type": "layout",
-      "value": "sunflower"
+    ],
+    "characterCounts": {
+      "hero-tagline": 27,
+      "moon": 143,
+      "shiva": 125,
+      "art": 126,
+      "philosophy": 143,
+      "today": 163
     }
-  ],
-  "characterCounts": {
-    "hero-tagline": 27,
-    "moon": 143,
-    "shiva": 125,
-    "art": 126,
-    "philosophy": 143,
-    "today": 163
+  },
+  {
+    "date": "2026-06-29",
+    "time": "12:05:04",
+    "type": "content",
+    "description": "Midday layout refresh: default layout, all 4 headings rewritten (The Moon, Nataraja, The Brush, The Self), new labels (Silent Wheel, Ring of Flame, Golden Rule, No Self), fact/quote indices rotated (moon[9,4], shiva[7,2], art[13,3], phil[6,4]), Today section rewritten with amber hour theme",
+    "changes": [
+      "Layout: default",
+      "Section labels: Silent Wheel, Ring of Flame, Golden Rule, No Self",
+      "Fact indices: moon→9, shiva→7, art→13, philosophy→6",
+      "Quote indices: moon→4, shiva→2, art→3, philosophy→4",
+      "All 4 section intros rewritten",
+      "Today section: amber hour, sunflowers turn west"
+    ]
   }
-}
+]
