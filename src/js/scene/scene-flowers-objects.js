@@ -1,49 +1,24 @@
 import * as THREE from "three";
 import { isMobile } from "./scene-config.js";
+import { makeTulipCanvas } from "./scene-flowers.js";
 
-// SVG tulip textures — preloaded once, reused for all tulips
-const TULIP_SVG_URLS = [
-  "/mutation-assets/tulips/tulip-pink.svg",
-  "/mutation-assets/tulips/tulip-yellow.svg",
-  "/mutation-assets/tulips/tulip-purple.svg",
-  "/mutation-assets/tulips/tulip-orange.svg",
-  "/mutation-assets/tulips/tulip-white.svg",
+// Tulip colors — canvas-drawn, no SVG needed
+const TULIP_COLORS = [
+  "#FF6B9D", "#E91E63", "#F50057", "#FFB700", "#FFD700",
+  "#FF8A65", "#C2185B", "#FF9500", "#F06292", "#BA68C8",
 ];
 
-export function preloadTulipTextures(scene) {
-  const loader = new THREE.TextureLoader();
-  const textures = [];
-  let loaded = 0;
-  return new Promise((resolve) => {
-    TULIP_SVG_URLS.forEach((url) => {
-      loader.load(
-        url,
-        (tex) => {
-          tex.minFilter = THREE.LinearFilter;
-          tex.magFilter = THREE.LinearFilter;
-          tex.colorSpace = THREE.SRGBColorSpace;
-          textures.push(tex);
-          loaded++;
-          if (loaded === TULIP_SVG_URLS.length) resolve(textures);
-        },
-        undefined,
-        () => {
-          // If SVG fails, push a placeholder
-          loaded++;
-          if (loaded === TULIP_SVG_URLS.length) resolve(textures);
-        }
-      );
-    });
-  });
-}
-
-export function createTulips(scene, count, textures) {
+export function createTulips(scene, count) {
   for (let i = 0; i < count; i++) {
-    const tex = textures[i % textures.length];
+    const color = TULIP_COLORS[i % TULIP_COLORS.length];
+    const openness = 0.4 + Math.random() * 0.4;
+    const seed = Math.floor(Math.random() * 10000);
+    const canvasTex = new THREE.CanvasTexture(makeTulipCanvas(160, color, openness, seed));
+    canvasTex.minFilter = THREE.LinearFilter;
 
     const sprite = new THREE.Sprite(
       new THREE.SpriteMaterial({
-        map: tex,
+        map: canvasTex,
         transparent: true,
         depthWrite: false,
       })

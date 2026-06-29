@@ -57,9 +57,7 @@ export function bootScene() {
     setTimeout(() => {
       createSunflowers(scene.scene, sunflowerCount);
       createLilies(scene.scene, lilyCount);
-      preloadTulipTextures(scene.scene).then((textures) => {
-        createTulips(scene.scene, tulipCount, textures);
-      });
+      createTulips(scene.scene, tulipCount);
       createFlute(scene.scene);
       createMusicNotes(scene.scene, noteCount);
       createFireflies(scene.scene, isLowEnd ? 15 : isMobile ? 20 : 40);
