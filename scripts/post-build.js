@@ -46,8 +46,9 @@ if (existsSync(swPath)) {
 // ─── Step 2: Update SW precache list to match current assets ─────────────────
 // Scan dist/index.html to discover actual JS/CSS files
 const indexPath = join(distDir, 'index.html');
+let html = '';
 if (existsSync(swPath) && existsSync(indexPath)) {
-  const html = readFileSync(indexPath, 'utf-8');
+  html = readFileSync(indexPath, 'utf-8');
   const scriptSrcs = [...html.matchAll(/src="(\/js\/[^"]+\.js)"/g)].map(m => m[1]);
   const linkHrefs = [...html.matchAll(/href="(\/css\/[^"]+\.css)"/g)].map(m => m[1]);
   
@@ -84,6 +85,37 @@ if (existsSync(swPath) && existsSync(indexPath)) {
     }
   }
   console.log(`✓ SW precache updated (${allAssets.length} assets)`);
+
+  // ─── Step 3: Cache-bust public JS/CSS with version query string ─────────────
+  // Cloudflare caches public/ assets for 1 hour (max-age=3600).
+  // Adding ?v=TIMESTAMP forces Cloudflare to treat new deploys as fresh resources.
+  const BUILD_VERSION = Date.now();
+  const scriptMatches = [...html.matchAll(/<script([^>]*)src="(\/js\/[^"]+\.js)"/g)];
+  const linkMatches = [...html.matchAll(/<link([^>]*)href="(\/css\/[^"]+\.css)"/g)];
+
+  for (const m of scriptMatches) {
+    const attrs = m[1];
+    const src = m[2];
+    if (!src.includes('?')) {
+      html = html.replace(
+        `<script${attrs}src="${src}"`,
+        `<script${attrs}src="${src}?v=${BUILD_VERSION}"`
+      );
+    }
+  }
+  for (const m of linkMatches) {
+    const attrs = m[1];
+    const href = m[2];
+    if (!href.includes('?')) {
+      html = html.replace(
+        `<link${attrs}href="${href}"`,
+        `<link${attrs}href="${href}?v=${BUILD_VERSION}"`
+      );
+    }
+  }
+
+  writeFileSync(indexPath, html, 'utf-8');
+  console.log(`✓ Cache-busted public JS/CSS with v=${BUILD_VERSION}`);
 }
 
 console.log('✓ Post-build cache busting complete');
