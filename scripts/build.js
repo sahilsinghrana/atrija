@@ -28,7 +28,7 @@ run('node scripts/copy-content.js', 'Copy content files');
 run('node node_modules/vite/bin/vite.js build --config vite-scene.config.js', 'Build scene modules');
 
 // Step 3: Build Astro
-run('astro build', 'Build Astro site');
+run('npx astro build', 'Build Astro site');
 
 // Step 4: Inject body tags (Astro 4.16.19 bug fix)
 run('node scripts/inject-body.js', 'Inject body tags');
