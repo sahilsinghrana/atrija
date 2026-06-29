@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 // scripts/post-build.js — Single post-build cache busting script
-// Handles: SW cache version increment + asset cache headers
-// Replaces: bump-sw-cache.js + css-cache-bust.js (consolidated)
+// Handles: SW cache version increment + asset precache list (both public/ and dist/)
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -13,16 +12,31 @@ const distDir = join(rootDir, 'dist');
 
 // ─── Step 1: Service Worker cache version bump ───────────────────────────────
 const swPath = join(rootDir, 'public', 'sw.js');
+const distSwPath = join(distDir, 'sw.js');
 if (existsSync(swPath)) {
   const swContent = readFileSync(swPath, 'utf-8');
   const match = swContent.match(/const CACHE_NAME\s*=\s*'atrija-shell-v(\d+)'/);
   if (match) {
     const newVersion = parseInt(match[1], 10) + 1;
+    const oldName = `atrija-shell-v${match[1]}`;
+    const newName = `atrija-shell-v${newVersion}`;
+    
+    // Update source
     const updated = swContent.replace(
-      `const CACHE_NAME = 'atrija-shell-v${match[1]}'`,
-      `const CACHE_NAME = 'atrija-shell-v${newVersion}'`
+      `const CACHE_NAME = '${oldName}'`,
+      `const CACHE_NAME = '${newName}'`
     );
     writeFileSync(swPath, updated, 'utf-8');
+    
+    // Also update dist/sw.js (already copied by Astro build)
+    if (existsSync(distSwPath)) {
+      let distSw = readFileSync(distSwPath, 'utf-8');
+      distSw = distSw.replace(
+        `const CACHE_NAME = '${oldName}'`,
+        `const CACHE_NAME = '${newName}'`
+      );
+      writeFileSync(distSwPath, distSw, 'utf-8');
+    }
     console.log(`✓ SW cache bumped to v${newVersion}`);
   } else {
     console.warn('⚠ SW cache version pattern not found');
@@ -30,42 +44,34 @@ if (existsSync(swPath)) {
 }
 
 // ─── Step 2: Update SW precache list to match current assets ─────────────────
-// Scan dist/_astro/ for actual JS/CSS files and update PRECACHE_URLS
-const { readdirSync } = await import('fs');
-const astroDir = join(distDir, '_astro');
-if (existsSync(astroDir)) {
-  const files = readdirSync(astroDir);
-  const jsFiles = files.filter(f => f.endsWith('.js')).map(f => `/js/${f}`);
-  const cssFiles = files.filter(f => f.endsWith('.css')).map(f => `/css/${f}`);
-
-  // Also check public/js/ for standalone modules
-  const publicJsDir = join(rootDir, 'public', 'js');
-  const publicJsFiles = existsSync(publicJsDir)
-    ? readdirSync(publicJsDir).filter(f => f.endsWith('.js')).map(f => `/js/${f}`)
-    : [];
-
-  // Merge and deduplicate
-  const allJs = [...new Set([...jsFiles, ...publicJsFiles])];
-  const allCss = [...new Set(cssFiles)];
-
-  // Read current sw.js and update PRECACHE_URLS
-  let sw = readFileSync(swPath, 'utf-8');
+// Scan dist/index.html to discover actual JS/CSS files
+const indexPath = join(distDir, 'index.html');
+if (existsSync(swPath) && existsSync(indexPath)) {
+  const html = readFileSync(indexPath, 'utf-8');
+  const scriptSrcs = [...html.matchAll(/src="(\/js\/[^"]+\.js)"/g)].map(m => m[1]);
+  const linkHrefs = [...html.matchAll(/href="(\/css\/[^"]+\.css)"/g)].map(m => m[1]);
   
-  // Find all href="/js/..." and href="/css/..." in dist/index.html to discover assets
-  const indexPath = join(distDir, 'index.html');
-  if (existsSync(indexPath)) {
-    const html = readFileSync(indexPath, 'utf-8');
-    const scriptSrcs = [...html.matchAll(/src="(\/js\/[^"]+\.js)"/g)].map(m => m[1]);
-    const linkHrefs = [...html.matchAll(/href="(\/css\/[^"]+\.css)"/g)].map(m => m[1]);
-    
-    const allAssets = [...new Set([
-      '/',
-      '/css/loader.css',
-      ...linkHrefs,
-      ...scriptSrcs,
-    ])];
+  // Also add _astro CSS (Vite-hashed)
+  const astroDir = join(distDir, '_astro');
+  const astroExists = existsSync(astroDir);
+  const astroCss = astroExists
+    ? readdirSync(astroDir).filter(f => f.endsWith('.css')).map(f => `/_astro/${f}`)
+    : [];
+  
+  const allAssets = [...new Set([
+    '/',
+    '/css/loader.css',
+    ...linkHrefs,
+    ...astroCss,
+    ...scriptSrcs,
+  ])];
 
-    // Replace PRECACHE_URLS array
+  // Update both public/sw.js and dist/sw.js
+  const swFiles = [swPath];
+  if (existsSync(distSwPath)) swFiles.push(distSwPath);
+  
+  for (const filePath of swFiles) {
+    let sw = readFileSync(filePath, 'utf-8');
     const precacheStart = sw.indexOf('const PRECACHE_URLS = [');
     const precacheEnd = sw.indexOf('];', precacheStart);
     if (precacheStart !== -1 && precacheEnd !== -1) {
@@ -74,10 +80,10 @@ if (existsSync(astroDir)) {
         .replace(/\[/g, '[\n  ')
         .replace(/\]/g, '\n]')};`;
       sw = sw.substring(0, precacheStart) + newPrecache + sw.substring(precacheEnd + 2);
-      writeFileSync(swPath, sw, 'utf-8');
-      console.log(`✓ SW precache updated (${allAssets.length} assets)`);
+      writeFileSync(filePath, sw, 'utf-8');
     }
   }
+  console.log(`✓ SW precache updated (${allAssets.length} assets)`);
 }
 
 console.log('✓ Post-build cache busting complete');

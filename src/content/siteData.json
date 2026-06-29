@@ -395,24 +395,6 @@
   ],
   "colorSchemes": [
     {
-      "name": "starry-night",
-      "primary": "#1a237e",
-      "secondary": "#ffd54f",
-      "accent": "#4fc3f7",
-      "background": "#0a0a1a",
-      "text": "#e8e8f0",
-      "mood": "contemplative",
-      "shaderParams": {
-        "strokeDensity": 6.2,
-        "swirlFrequency": 16.3,
-        "colorIntensity": 1.55
-      },
-      "seasons": [
-        "winter",
-        "summer"
-      ]
-    },
-    {
       "name": "sunflower",
       "primary": "#f5c800",
       "secondary": "#ff6f00",
@@ -427,6 +409,42 @@
       },
       "seasons": [
         "autumn",
+        "summer"
+      ]
+    },
+    {
+      "name": "midnight-wave",
+      "primary": "#0d47a1",
+      "secondary": "#00bcd4",
+      "accent": "#7c4dff",
+      "background": "#000a12",
+      "text": "#b3e5fc",
+      "mood": "mysterious",
+      "shaderParams": {
+        "strokeDensity": 5.9,
+        "swirlFrequency": 14.9,
+        "colorIntensity": 1.12
+      },
+      "seasons": [
+        "winter",
+        "autumn"
+      ]
+    },
+    {
+      "name": "starry-night",
+      "primary": "#1a237e",
+      "secondary": "#ffd54f",
+      "accent": "#4fc3f7",
+      "background": "#0a0a1a",
+      "text": "#e8e8f0",
+      "mood": "contemplative",
+      "shaderParams": {
+        "strokeDensity": 6.2,
+        "swirlFrequency": 16.3,
+        "colorIntensity": 1.55
+      },
+      "seasons": [
+        "winter",
         "summer"
       ]
     },
@@ -483,24 +501,6 @@
         "winter",
         "spring",
         "summer"
-      ]
-    },
-    {
-      "name": "midnight-wave",
-      "primary": "#0d47a1",
-      "secondary": "#00bcd4",
-      "accent": "#7c4dff",
-      "background": "#000a12",
-      "text": "#b3e5fc",
-      "mood": "mysterious",
-      "shaderParams": {
-        "strokeDensity": 5.9,
-        "swirlFrequency": 14.9,
-        "colorIntensity": 1.12
-      },
-      "seasons": [
-        "winter",
-        "autumn"
       ]
     }
   ],

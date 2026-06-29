@@ -1,11 +1,13 @@
 /**
  * Service Worker — Atrijā PWA Shell Cache
- * Caches HTML shell, CSS, JS modules, and static assets.
- * Network-first for JSON content (fresh data), cache-first for everything else.
+ * Strategy:
+ *   - Network-first: HTML, CSS, JS, _astro/*, JSON (always fresh from network)
+ *   - Cache-first: images, SVG, fonts (static assets)
+ *   - Offline fallback: cached '/' for navigation failures
  * @see idea-056
  */
 
-const CACHE_NAME = 'atrija-shell-v90';
+const CACHE_NAME = 'atrija-shell-v94';
 
 /** @type {string[]} — Auto-updated by post-build.js */
 const PRECACHE_URLS = [
@@ -14,6 +16,7 @@ const PRECACHE_URLS = [
   '/css/loader.css',
   '/css/main.css',
   '/css/daily-theme.css',
+  '/_astro/index.B6FNdtG8.css',
   '/js/changelog-app.js',
   '/js/content-prefetch.js',
   '/js/scene-context-recovery.js',
@@ -35,49 +38,59 @@ const PRECACHE_URLS = [
 
 ];
 
-/** Paths that should always fetch from network first (JSON content) */
+/** Paths that should ALWAYS fetch from network first (never serve stale) */
 const NETWORK_FIRST_PATTERNS = [
-  /\/content\//,
-  /\/changelog\//,
+  /\/\.css$/,              // all CSS files
+  /\.js$/,                 // all JS files
+  /\/_astro\//,            // Vite-hashed assets
+  /\/content\//,           // JSON content
+  /\/changelog\//,         // changelog data
   /siteData\.json$/,
   /content\.json$/,
   /koans\.json$/,
   /seasons\.json$/,
 ];
 
+/** Paths that are safe to serve cache-first (static, rarely change) */
+const CACHE_FIRST_PATTERNS = [
+  /\.(png|jpg|jpeg|webp|gif)$/i,  // images
+  /\.svg$/i,                       // SVGs
+  /\.(woff2?|ttf|otf|eot)$/i,     // fonts
+];
+
 /**
- * Check if a URL should use network-first strategy
- * @param {string} url
- * @returns {boolean}
+ * Determine fetch strategy for a URL
+ * @param {string} pathname
+ * @returns {'network' | 'cache'}
  */
-function isNetworkFirst(url) {
-  return NETWORK_FIRST_PATTERNS.some(pattern => pattern.test(url));
+function getStrategy(pathname) {
+  if (NETWORK_FIRST_PATTERNS.some(p => p.test(pathname))) return 'network';
+  if (CACHE_FIRST_PATTERNS.some(p => p.test(pathname))) return 'cache';
+  // Default: network-first for everything else (safe default)
+  return 'network';
 }
 
 /**
  * Install event — pre-cache the shell
- * @param {ExtendableEvent} event
  */
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
-        // Add all precache URLs; don't fail the install if one is unreachable
-        return Promise.allSettled(
+      .then((cache) =>
+        Promise.allSettled(
           PRECACHE_URLS.map((url) =>
             cache.add(url).catch((err) => {
               console.warn('[SW] Pre-cache failed for', url, err.message);
             })
           )
-        );
-      })
+        )
+      )
       .then(() => self.skipWaiting())
   );
 });
 
 /**
  * Activate event — clean up old caches
- * @param {ExtendableEvent} event
  */
 self.addEventListener('activate', (event) => {
   event.waitUntil(
@@ -92,21 +105,25 @@ self.addEventListener('activate', (event) => {
 });
 
 /**
- * Fetch event — route to cache-first or network-first
- * @param {FetchEvent} event
+ * Fetch event — route to appropriate strategy
  */
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Only handle same-origin and our own assets
+  // Only handle same-origin GET requests
   if (url.origin !== self.location.origin) return;
   if (request.method !== 'GET') return;
 
-  // HTML navigation requests — always go to network first (cache bust on every deploy)
+  // HTML navigation — always network-first
   if (request.mode === 'navigate') {
     event.respondWith(networkFirst(request));
-  } else if (isNetworkFirst(url.pathname)) {
+    return;
+  }
+
+  // Route based on strategy
+  const strategy = getStrategy(url.pathname);
+  if (strategy === 'network') {
     event.respondWith(networkFirst(request));
   } else {
     event.respondWith(cacheFirst(request));
@@ -114,9 +131,29 @@ self.addEventListener('fetch', (event) => {
 });
 
 /**
- * Cache-first strategy: check cache, fall back to network, then cache the response.
- * @param {Request} request
- * @returns {Promise<Response>}
+ * Network-first: try network, fall back to cache, update cache.
+ */
+async function networkFirst(request) {
+  try {
+    const response = await fetch(request);
+    if (response.ok && response.type !== 'opaque') {
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    if (request.mode === 'navigate') {
+      return caches.match('/') || new Response('Offline', { status: 503 });
+    }
+    return new Response('Offline', { status: 503 });
+  }
+}
+
+/**
+ * Cache-first: check cache, fall back to network, then cache.
+ * Only used for static assets (images, fonts, SVGs).
  */
 async function cacheFirst(request) {
   const cached = await caches.match(request);
@@ -130,32 +167,9 @@ async function cacheFirst(request) {
     }
     return response;
   } catch {
-    // Network failed and not in cache — return offline fallback for navigation
     if (request.mode === 'navigate') {
       return caches.match('/') || new Response('Offline', { status: 503 });
     }
-    return new Response('Offline', { status: 503 });
-  }
-}
-
-/**
- * Network-first strategy: try network, fall back to cache.
- * Used for JSON content that should be fresh.
- * @param {Request} request
- * @returns {Promise<Response>}
- */
-async function networkFirst(request) {
-  try {
-    const response = await fetch(request);
-    if (response.ok && response.type !== 'opaque') {
-      const cache = await caches.open(CACHE_NAME);
-      cache.put(request, response.clone());
-    }
-    return response;
-  } catch {
-    // Network failed — serve stale from cache
-    const cached = await caches.match(request);
-    if (cached) return cached;
     return new Response('Offline', { status: 503 });
   }
 }
