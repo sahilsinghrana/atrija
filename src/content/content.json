@@ -3,96 +3,113 @@
   "meta": {
     "version": "1.9.2",
     "lastUpdated": "2026-06-29",
-    "updatedBy": "AI (content layout refresh)",
-    "season": "starry-night ✨🌌",
-    "layout": "default"
+    "updatedBy": "AI (daily mutation)",
+    "season": "lily-garden 🔥🌺",
+    "layout": "lily-garden"
   },
   "sections": {
     "hero": {
-      "tagline": "Stars <em>dream</em> in <em>dark</em>"
+      "tagline": "Void <em>dreams</em> us"
     },
     "today": {
-      "heading": "Dawn <em>Light</em>",
-      "intro": "Gold spills on sleeping fields.",
+      "heading": "Red <em>Dawn</em>",
+      "intro": "Cracks bleed crimson light.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-29/starry-reverie.svg",
-        "description": "Impressionist starfield with swirling golden cosmos",
-        "credit": "Generated for Atrijā daily mutation — starry reverie"
-      }
+        "path": "/mutation-assets/2026-06-29/crimson-wake.svg",
+        "description": "Impressionist dawn with red-gold fracture lines through dark",
+        "credit": "Generated for Atrijā daily mutation — crimson wake"
+      },
+      "label": "Crimson Wake"
     },
     "moon": {
-      "label": "I. The Moon",
-      "heading": "The <em>Moon</em>",
-      "intro": "Mirror of our hidden side.",
+      "label": "I. Dark Tide",
+      "heading": "<em>Dark</em> Tide",
+      "intro": "Unseen half watches.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 3
+        "factIndex": 7
       },
       "facts": [
-        "Tulips close at night, open at dawn.",
-        "Drifts 3.8cm from Earth yearly."
+        "Chandra rules Manas.",
+        "Creatures of lunar tide."
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 5
+        "quoteIndex": 8
       }
     },
     "shiva": {
-      "label": "II. Nataraja",
-      "heading": "<em>Nataraja</em>",
-      "intro": "Creation blooms in silence.",
+      "label": "II. Sacred Drum",
+      "heading": "Sacred <em>Drum</em>",
+      "intro": "Sound births all form.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 12
+        "factIndex": 5
       },
       "facts": [
-        "Drum births all language, music.",
-        "Stillness: center of all motion."
+        "Nada: first vibration.",
+        "Third eye burns all."
       ],
       "quote": {
-        "themeIndex": 2,
-        "quoteIndex": 7
-      }
-    },
-    "art": {
-      "label": "III. The Brush",
-      "heading": "The <em>Brush</em>",
-      "intro": "Light speaks beyond words.",
-      "imageCard": {
-        "themeIndex": 3,
-        "factIndex": 9
-      },
-      "facts": [
-        "Light is the only subject.",
-        "Each stroke: a thousand choices."
-      ],
-      "quote": {
-        "themeIndex": 3,
+        "themeIndex": 1,
         "quoteIndex": 4
       }
     },
-    "philosophy": {
-      "label": "IV. The Self",
-      "heading": "The <em>Self</em>",
-      "intro": "Wisdom begins where ego fades.",
+    "art": {
+      "label": "III. Fire & Form",
+      "heading": "<em>Fire</em> & Form",
+      "intro": "Color burns to truth.",
       "imageCard": {
-        "themeIndex": 1,
-        "factIndex": 6
+        "themeIndex": 3,
+        "factIndex": 11
       },
       "facts": [
-        "Gifts flow through, not from us.",
-        "Self is a story mind tells."
+        "Pain forges beauty.",
+        "Cosmos has an aesthetic."
+      ],
+      "quote": {
+        "themeIndex": 3,
+        "quoteIndex": 5
+      }
+    },
+    "philosophy": {
+      "label": "IV. No I Left",
+      "heading": "No <em>I</em> Left",
+      "intro": "Ego melts into now.",
+      "imageCard": {
+        "themeIndex": 1,
+        "factIndex": 4
+      },
+      "facts": [
+        "Water-knowing wave is free.",
+        "Monster-fighter becomes one."
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 1
+        "quoteIndex": 4
       }
     }
   },
   "changelog": {
     "version": "1.8.29",
     "entries": [
+      {
+        "date": "2026-06-29",
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation: Color scheme → lily-garden (crimson/pink/green), lily-garden layout, new hero tagline, all 4 headings rewritten (Dark Tide, Sacred Drum, Fire & Form, No I Left), fact/quote indices rotated with cross-theme mixing, Today section rewritten with crimson wake theme, new SVG visual asset",
+        "changes": [
+          "Color scheme: lily-garden (crimson primary, pink secondary, green accent)",
+          "Hero tagline: 'Void <em>dreams</em> us'",
+          "All 4 section headings rewritten with void/fire/drum poetic language",
+          "Section labels: Dark Tide, Sacred Drum, Fire & Form, No I Left",
+          "Fact/quote indices rotated: moon[7,8], shiva[5,4x], art[11,5], phil[4,4]",
+          "Today section: crimson wake, red light through cracks",
+          "Visual asset: crimson-wake.svg (impressionist dawn with fracture lines)",
+          "Layout: lily-garden"
+        ]
+      },
       {
         "date": "2026-06-29",
         "time": "12:00:00",

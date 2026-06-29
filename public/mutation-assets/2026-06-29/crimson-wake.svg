@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="60%" r="60%">
+      <stop offset="0%" stop-color="#ff3d00" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#bf360c" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="blur2"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <!-- Dark base -->
+  <rect width="800" height="600" fill="#0a0608"/>
+  <!-- Radial glow -->
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <!-- Crimson fracture lines -->
+  <g stroke="#ff1744" stroke-width="2" opacity="0.7" filter="url(#blur1)">
+    <line x1="0" y1="280" x2="800" y2="320"/>
+    <line x1="100" y1="200" x2="700" y2="260"/>
+    <line x1="50" y1="350" x2="750" y2="380"/>
+    <line x1="200" y1="150" x2="600" y2="200"/>
+  </g>
+  <!-- Gold fracture lines -->
+  <g stroke="#ffd740" stroke-width="1.5" opacity="0.5" filter="url(#blur1)">
+    <line x1="0" y1="295" x2="800" y2="335"/>
+    <line x1="120" y1="215" x2="680" y2="275"/>
+    <line x1="300" y1="100" x2="500" y2="170"/>
+  </g>
+  <!-- Ember particles -->
+  <g filter="url(#blur2)">
+    <circle cx="200" cy="300" r="8" fill="#ff6e40" opacity="0.6"/>
+    <circle cx="400" cy="270" r="12" fill="#ff3d00" opacity="0.5"/>
+    <circle cx="600" cy="310" r="6" fill="#ffab00" opacity="0.4"/>
+    <circle cx="150" cy="250" r="5" fill="#ffd740" opacity="0.3"/>
+    <circle cx="550" cy="350" r="9" fill="#ff6e40" opacity="0.5"/>
+    <circle cx="350" cy="200" r="7" fill="#ff1744" opacity="0.4"/>
+    <circle cx="700" cy="280" r="10" fill="#bf360c" opacity="0.3"/>
+  </g>
+  <!-- Rising dawn form -->
+  <ellipse cx="400" cy="550" rx="300" ry="80" fill="#ff3d00" opacity="0.15" filter="url(#blur2)"/>
+  <!-- Signature -->
+  <text x="720" y="585" fill="#ff6e40" opacity="0.4" font-size="10" font-family="serif">atrijā</text>
+</svg>

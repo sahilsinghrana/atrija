@@ -1,19 +1,37 @@
-{
-  "date": "2026-06-29",
-  "entries": [
-    {
-      "time": "06:00:00",
-      "type": "daily-mutation",
-      "description": "Daily mutation: Color scheme → starry-night (deep blue/gold/cyan), starry-night layout, new hero tagline 'Stars dream tonight', all 4 headings rewritten (Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence), all fact/quote indices rotated with cross-theme mixing, Today section rewritten with starry reverie theme, new starry-reverie.svg visual asset",
-      "changes": [
-        "Color scheme: starry-night (deep blue primary #1a237e, gold secondary #ffd54f, cyan accent #4fc3f7)",
-        "Hero tagline: 'Stars <em>dream</em> tonight'",
-        "All 4 section headings rewritten with celestial/cosmic/poetic language",
-        "Section labels: Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence",
-        "Fact/quote indices rotated: moon→moon[10,0], shiva→shiva[7,2], art→art[3,1], philosophy→ego[11,4]",
-        "Today section: starry reverie, beneath the vast night wonder awakens",
-        "Visual asset: starry-reverie.svg (impressionist starfield with crescent moon, golden swirls, cypress silhouettes)"
-      ]
-    }
-  ]
-}
+[
+  {
+    "date": "2026-06-29",
+    "time": "06:00:00",
+    "type": "daily-mutation",
+    "description": "Daily mutation: Color scheme → lily-garden (crimson/pink/green), lily-garden layout, new hero tagline, all 4 headings rewritten (Dark Tide, Sacred Drum, Fire & Form, No I Left), fact/quote indices rotated with cross-theme mixing, Today section rewritten with crimson wake theme, new SVG visual asset",
+    "changes": [
+      "Color scheme: lily-garden (crimson primary, pink secondary, green accent)",
+      "Hero tagline: 'Void <em>dreams</em> us'",
+      "All 4 section headings rewritten with void/fire/drum poetic language",
+      "Section labels: Dark Tide, Sacred Drum, Fire & Form, No I Left",
+      "Fact/quote indices rotated: moon[7,8], shiva[5,4x], art[11,5], phil[4,4]",
+      "Today section: crimson wake, red light through cracks",
+      "Visual asset: crimson-wake.svg (impressionist dawn with fracture lines)",
+      "Layout: lily-garden"
+    ]
+  },
+  {
+    "date": "2026-06-29",
+    "entries": [
+      {
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation: Color scheme → starry-night (deep blue/gold/cyan), starry-night layout, new hero tagline 'Stars dream tonight', all 4 headings rewritten (Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence), all fact/quote indices rotated with cross-theme mixing, Today section rewritten with starry reverie theme, new starry-reverie.svg visual asset",
+        "changes": [
+          "Color scheme: starry-night (deep blue primary #1a237e, gold secondary #ffd54f, cyan accent #4fc3f7)",
+          "Hero tagline: 'Stars <em>dream</em> tonight'",
+          "All 4 section headings rewritten with celestial/cosmic/poetic language",
+          "Section labels: Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence",
+          "Fact/quote indices rotated: moon→moon[10,0], shiva→shiva[7,2], art→art[3,1], philosophy→ego[11,4]",
+          "Today section: starry reverie, beneath the vast night wonder awakens",
+          "Visual asset: starry-reverie.svg (impressionist starfield with crescent moon, golden swirls, cypress silhouettes)"
+        ]
+      }
+    ]
+  }
+]
