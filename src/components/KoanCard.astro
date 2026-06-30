@@ -1,237 +1,128 @@
 ---
-import koansData from '../content/koans.json';
-
-const now = new Date();
-const start = new Date(now.getFullYear(), 0, 0);
-const diff = now.getTime() - start.getTime();
-const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-const koan = koansData.koans[dayOfYear % koansData.koans.length];
+// Tulip visualization component - no text, just animated pulsing flower
 ---
 
 <section id="koan" class="section">
   <div class="section-inner">
-    <div class="section-label reveal-left">VI. Daily Contemplation</div>
-    <h2 class="reveal">A Moment of <em>Stillness</em></h2>
-
-    <div class="koan-card reveal">
-      <blockquote class="koan-text">
-        {koan.text}
-      </blockquote>
-      <div class="koan-source">— {koan.source}</div>
-
-      <button class="koan-reflect-btn" id="koanReflectBtn" aria-label="Hold to reveal interpretation">
-        <span class="koan-reflect-label">Reflect</span>
-        <svg class="koan-progress-ring" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-          <circle class="koan-progress-bg" cx="24" cy="24" r="20" fill="none" stroke="var(--text-tertiary)" stroke-width="2" opacity="0.3"/>
-          <circle class="koan-progress-fill" cx="24" cy="24" r="20" fill="none" stroke="var(--accent-gold)" stroke-width="2"
-            stroke-dasharray="125.66" stroke-dashoffset="125.66" transform="rotate(-90 24 24)"/>
-        </svg>
-      </button>
-
-      <div class="koan-interpretation" id="koanInterpretation" hidden>
-        <p>{koan.interpretation}</p>
-      </div>
+    <div class="tulip-container">
+      <canvas id="tulipCanvas" width="400" height="400"></canvas>
     </div>
   </div>
 </section>
 
 <style>
-  .koan-card {
-    max-width: 720px;
+  :root {
+    --tulip-stem: var(--accent-green, #2e7d32);
+    --tulip-leaf: var(--accent-green-dark, #4caf50);
+    --tulip-petal: var(--accent-gold, #ffd54f);
+    --tulip-bg: rgba(255,255,255,0.02);
+  }
+  .tulip-container {
+    width: 100%;
+    max-width: 400px;
     margin: 0 auto;
-    text-align: center;
-    padding: var(--space-2xl) var(--space-xl);
-    position: relative;
-  }
-
-  .koan-text {
-    font-family: var(--font-serif);
-    font-size: var(--text-xl);
-    line-height: 1.8;
-    color: var(--text-primary);
-    margin: 0 0 var(--space-md) 0;
-    padding: 0;
-    border: none;
-    text-shadow: 0 0 40px rgba(255, 215, 0, 0.08);
-  }
-
-  .koan-source {
-    font-family: var(--font-serif);
-    font-size: var(--text-sm);
-    color: var(--text-tertiary);
-    font-style: italic;
-    margin-bottom: var(--space-2xl);
-  }
-
-  .koan-reflect-btn {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: var(--space-sm);
-    position: relative;
-    padding: var(--space-sm) var(--space-xl);
-    background: transparent;
-    border: 1px solid var(--accent-gold);
-    border-radius: 999px;
-    color: var(--accent-gold);
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
+    min-height: 200px;
+    background: var(--tulip-bg);
+    border-radius: 16px;
+    overflow: hidden;
   }
-
-  .koan-reflect-btn:hover {
-    background: rgba(255, 215, 0, 0.08);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
-  }
-
-  .koan-reflect-btn:focus-visible {
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 4px;
-  }
-
-  .koan-progress-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100% + 8px);
-    height: calc(100% + 8px);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-
-  .koan-reflect-btn.holding .koan-progress-ring {
-    opacity: 1;
-  }
-
-  .koan-reflect-btn.holding .koan-reflect-label {
-    opacity: 0.7;
-  }
-
-  .koan-progress-fill {
-    transition: none;
-  }
-
-  .koan-interpretation {
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid rgba(255, 215, 0, 0.15);
-  }
-
-  .koan-interpretation p {
-    font-family: var(--font-serif);
-    font-size: var(--text-lg);
-    line-height: 1.8;
-    color: var(--text-secondary);
-    font-style: italic;
-    margin: 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .koan-interpretation[hidden] {
-    display: none;
-  }
-
-  @media (max-width: 767px) {
-    .koan-text {
-      font-size: var(--text-lg);
-    }
-
-    .koan-source {
-      font-size: var(--text-xs);
-    }
-
-    .koan-reflect-btn {
-      min-width: 160px;
-      min-height: 48px;
-      justify-content: center;
-    }
-
-    .koan-interpretation p {
-      font-size: var(--text-base);
-    }
-
-    .koan-card {
-      padding: var(--space-xl) var(--space-md);
-    }
+  #tulipCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 </style>
 
 <script>
   (function() {
-    const btn = document.getElementById('koanReflectBtn');
-    const interpretation = document.getElementById('koanInterpretation');
-    const progressFill = btn?.querySelector('.koan-progress-fill') as SVGElement | null;
-    if (!btn || !interpretation || !progressFill) return;
+    const canvas = document.getElementById('tulipCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width;
+    let height = canvas.height;
 
-    const HOLD_DURATION = 3000;
-    const CIRCUMFERENCE = 125.66;
-    let startTimestamp: number | null = null;
-    let revealed = false;
-    let rafId: number | null = null;
+    // Animation
+    let startTime = null;
+    const cycleDuration = 3000; // ms for pulse cycle
 
-    function updateProgress(elapsed: number) {
-      const pct = Math.min(elapsed / HOLD_DURATION, 1);
-      const offset = CIRCUMFERENCE * (1 - pct);
-      progressFill.style.strokeDashoffset = String(offset);
+    function draw(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = (elapsed % cycleDuration) / cycleDuration; // 0 to 1
+      // pulse scale: 0.8 to 1.2
+      const scale = 0.8 + 0.4 * Math.sin(progress * 2 * Math.PI);
+
+      // Clear canvas
+      ctx.clearRect(0, 0, width, height);
+      ctx.save();
+      // Center and scale
+      ctx.translate(width / 2, height * 0.8);
+
+      // Draw stem
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--tulip-stem').trim() || '#2e7d32';
+      const stemWidth = 8;
+      const stemHeight = height * 0.5;
+      ctx.fillRect(-stemWidth/2, -stemHeight, stemWidth, stemHeight);
+
+      // Draw leaves
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--tulip-leaf').trim() || '#4caf50';
+      const leafWidth = 20;
+      const leafHeight = 40;
+      // Left leaf
+      ctx.save();
+      ctx.translate(-stemWidth/2 - 5, -stemHeight * 0.3);
+      ctx.rotate(-0.3);
+      drawEllipse(0, 0, leafWidth/2, leafHeight/2);
+      ctx.restore();
+      // Right leaf
+      ctx.save();
+      ctx.translate(stemWidth/2 + 5, -stemHeight * 0.3);
+      ctx.rotate(0.3);
+      drawEllipse(0, 0, leafWidth/2, leafHeight/2);
+      ctx.restore();
+
+      // Draw flower (pulsing circle)
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--tulip-petal').trim() || '#ffd54f';
+      const baseRadius = 20;
+      const radius = baseRadius * scale;
+      ctx.beginPath();
+      ctx.arc(0, -stemHeight * 0.2, radius, 0, 2 * Math.PI);
+      ctx.fill();
+
+      // Optional: add a small center
+      ctx.fillStyle = '#ff6f00';
+      ctx.beginPath();
+      ctx.arc(0, -stemHeight * 0.2, radius * 0.3, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.restore();
+      requestAnimationFrame(draw);
     }
 
-    function onStart(e: Event) {
-      if (e.type === 'mousedown' && (e as MouseEvent).button !== 0) return;
-      if (revealed) return;
-      e.preventDefault();
-      btn.classList.add('holding');
-      startTimestamp = null;
-
-      function frame(ts: number) {
-        if (startTimestamp === null) startTimestamp = ts;
-        const elapsed = ts - startTimestamp;
-        updateProgress(elapsed);
-        if (elapsed >= HOLD_DURATION) {
-          reveal();
-        } else {
-          rafId = requestAnimationFrame(frame);
-        }
-      }
-      rafId = requestAnimationFrame(frame);
-
-      function onEnd(_e: Event) {
-        cleanup();
-      }
-
-      btn.addEventListener('mouseup', onEnd, { once: true });
-      btn.addEventListener('mouseleave', onEnd, { once: true });
-      btn.addEventListener('touchend', onEnd, { once: true });
-      btn.addEventListener('touchcancel', onEnd, { once: true });
+    function drawEllipse(x, y, radiusX, radiusY) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(1, radiusY/radiusX);
+      ctx.beginPath();
+      ctx.arc(0, 0, radiusX, 0, 2*Math.PI);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
     }
 
-    function reveal() {
-      revealed = true;
-      btn.classList.remove('holding');
-      interpretation.removeAttribute('hidden');
-      progressFill.style.strokeDashoffset = '0';
-      btn.classList.add('revealed');
-      btn.querySelector('.koan-reflect-label').textContent = 'Contemplate';
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = null;
+    // Handle resize
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const size = Math.min(rect.width, rect.height);
+      canvas.width = size;
+      canvas.height = size;
     }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-    function cleanup() {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = null;
-      btn.classList.remove('holding');
-      progressFill.style.strokeDashoffset = String(CIRCUMFERENCE);
-    }
-
-    btn.addEventListener('mousedown', onStart);
-    btn.addEventListener('touchstart', onStart, { passive: false });
+    requestAnimationFrame(draw);
   })();
 </script>
