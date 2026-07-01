@@ -173,10 +173,3 @@ scripts/           build.js (pipeline), post-build.js (cache busting), check-syn
 
 ---
 
-## Current Architecture (2026-06)
-- **Scene modules**: All Three.js code in `src/js/scene/` as ES modules with bare `three` imports (no CDN/esm.sh)
-- **Vite bundling**: Scene modules bundled by Vite into hashed chunks in `dist/_astro/`
-- **CSS**: main.css + daily-theme.css + loader.css — cache-busted via build timestamp
-- **Service Worker**: `public/sw.js` with versioned cache (auto-bumped every build)
-- **Testing**: vitest + jsdom, tests in `tests/unit/` and `tests/loading/`
-- **ESLint**: Flat config with @eslint/js + typescript-eslint + eslint-plugin-astro
