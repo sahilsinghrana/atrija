@@ -36,22 +36,6 @@
           "testingStrategy": "- Unit tests: Test the health check integration logic by mocking the build and deployment steps\n- Integration tests: Verify that the git-pull-build job runs the health check and aborts deployment on failure\n- Acceptance criteria: Modified van-gogh-git-pull-build job runs health check; deployment proceeds only on healthy scene; unhealthy scenes trigger a failed changelog entry; no false positives on healthy scenes"
         },
         {
-          "id": "idea-084",
-          "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
-          "description": "The scripts/daily-mutate.js script (426 lines) is the most critical untested build script \u2014 it mutates siteData.json and content.json daily, rewrites taglines/headings, rotates color schemes, and generates visual assets. A bug could silently corrupt content or break the daily deploy pipeline. This task creates tests/unit/daily-mutate.test.js with: (1) mock siteData.json and content.json fixtures, (2) tests that mutate() preserves all required JSON schema fields, (3) tests that color scheme rotation stays within valid scheme names, (4) tests that fact/quote index rotations stay within array bounds, (5) tests that tagline and heading rewriting produces non-empty strings, (6) tests that the script handles missing content.json gracefully, (7) tests that changelog entries are appended (not duplicated) on repeated runs. Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 2 sessions.",
-          "category": "Testing & Reliability",
-          "priority": "high",
-          "tags": [
-            "unit-tests",
-            "daily-mutate",
-            "content-pipeline",
-            "data-integrity",
-            "critical-script"
-          ],
-          "effort": "2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/daily-mutate.test.js with vi.mock('fs') to isolate all file I/O. Use fixture files in tests/fixtures/content/ (valid siteData.json, valid content.json, malformed content.json, missing files).\\n- Test cases: mutate() preserves all required JSON schema fields (themes array, sections object, changelog array); color scheme rotation only produces valid scheme names (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver); fact/quote index rotations stay within source array bounds; tagline rewriting produces non-empty string; heading rewriting produces string containing <em> tags; changelog entries are appended not duplicated on repeated runs; script throws actionable error on missing content.json.\\n- Integration tests: Run the script against temporary copies of the real siteData.json and content.json; verify output passes validate-content.js.\\n- Acceptance criteria: All new tests pass; >80% branch coverage for daily-mutate.js; existing test suite unaffected; mock-based tests run in <10s; no false positives on valid content."
-        },
-        {
           "id": "idea-088",
           "title": "Unit Tests for content-search.js \u2014 Fuzzy Search Logic and UI Rendering",
           "description": "public/js/content-search.js (529 lines) is the largest untested client-side module. It powers the keyboard-triggered search overlay (press '/') that indexes all facts, quotes, koans, and section intros. The core logic is pure and testable: normalize() strips HTML and lowercases, scoreMatch() counts query word matches with phrase bonuses, highlightMatch() wraps matches in <mark> tags, truncate() clips text cleanly, and search() orchestrates scoring, sorting, and deduplication. This task creates tests/unit/content-search.test.js with: (1) tests for normalize() with HTML tags, special characters, unicode, and edge cases, (2) tests for scoreMatch() with single words, multi-word phrases, partial matches, and no matches, (3) tests for highlightMatch() verifying correct <mark> wrapping and regex escaping, (4) tests for truncate() at boundary lengths, (5) tests for the full search() pipeline with a mock CONTENT_INDEX, verifying scoring, sorting, deduplication, and the 30-result cap, (6) tests for the DOM rendering functions (createOverlay, performSearch, showOverlay/hideOverlay) using jsdom. Uses vitest + jsdom environment. Effort: 2 sessions.",
@@ -825,6 +809,24 @@
           "reviewedAt": "2026-06-29T03:00:00Z",
           "reviewResult": "PASS",
           "reviewNotes": "Triage 2026-06-29 03:00 \u2014 Already implemented. public/js/scene-context-recovery.js (11,794 bytes) exists and is loaded via <script is:inline src='/js/scene-context-recovery.js'> in index.astro. Module handles webglcontextlost/webglcontextrestored events, shows themed overlay, calls bootScene() on restore, fallback after 3 attempts. Zero scene-init.js changes. Build succeeds. Moving from backlog to done."
+        },
+        {
+          "id": "idea-084",
+          "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
+          "description": "The scripts/daily-mutate.js script (426 lines) is the most critical untested build script \u2014 it mutates siteData.json and content.json daily, rewrites taglines/headings, rotates color schemes, and generates visual assets. A bug could silently corrupt content or break the daily deploy pipeline. This task creates tests/unit/daily-mutate.test.js with: (1) mock siteData.json and content.json fixtures, (2) tests that mutate() preserves all required JSON schema fields, (3) tests that color scheme rotation stays within valid scheme names, (4) tests that fact/quote index rotations stay within array bounds, (5) tests that tagline and heading rewriting produces non-empty strings, (6) tests that the script handles missing content.json gracefully, (7) tests that changelog entries are appended (not duplicated) on repeated runs. Uses vitest with vi.mock('fs') for file I/O isolation. Effort: 2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "high",
+          "tags": [
+            "unit-tests",
+            "daily-mutate",
+            "content-pipeline",
+            "data-integrity",
+            "critical-script"
+          ],
+          "effort": "2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/daily-mutate.test.js with vi.mock('fs') to isolate all file I/O. Use fixture files in tests/fixtures/content/ (valid siteData.json, valid content.json, malformed content.json, missing files).\\n- Test cases: mutate() preserves all required JSON schema fields (themes array, sections object, changelog array); color scheme rotation only produces valid scheme names (starry-night, sunflower, midnight-wave, tulip-garden, moonlit-silver); fact/quote index rotations stay within source array bounds; tagline rewriting produces non-empty string; heading rewriting produces string containing <em> tags; changelog entries are appended not duplicated on repeated runs; script throws actionable error on missing content.json.\\n- Integration tests: Run the script against temporary copies of the real siteData.json and content.json; verify output passes validate-content.js.\\n- Acceptance criteria: All new tests pass; >80% branch coverage for daily-mutate.js; existing test suite unaffected; mock-based tests run in <10s; no false positives on valid content.",
+          "status": "done",
+          "completedAt": "2026-07-01T06:21:10.434376Z"
         }
       ]
     }
