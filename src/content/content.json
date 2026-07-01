@@ -2,30 +2,30 @@
   "_comment": "This file is updated daily by the AI agent cron job.",
   "meta": {
     "version": "1.8.30",
-    "lastUpdated": "2026-06-29",
-    "updatedBy": "AI (midday refresh)",
-    "season": "sunflower 🔥🌻",
+    "lastUpdated": "2026-07-01",
+    "updatedBy": "AI (daily mutation)",
+    "season": "summer ☀️",
     "layout": "default"
   },
   "sections": {
     "hero": {
-      "tagline": "Light <em>remembers</em> us"
+      "tagline": "<em>Time</em> shapes us"
     },
     "today": {
-      "heading": "<em>Amber</em> Hour",
-      "intro": "Sunflowers turn their faces west.",
+      "heading": "<em>Now</em> moment",
+      "intro": "Present awareness.",
       "visualAsset": {
         "type": "svg",
-        "path": "/mutation-assets/2026-06-29/golden-reverie.svg",
-        "description": "Impressionist sunflower field with golden dawn light, glowing pollen particles, Van Gogh-inspired brushstrokes in gold and orange",
-        "credit": "Generated for Atrijā daily mutation — golden reverie"
+        "path": "/mutation-assets/2026-07-01/visual.svg",
+        "description": "Simple gradient ellipse with circle",
+        "credit": "Generated for Atrijā daily mutation"
       },
       "label": "Golden Reverie"
     },
     "moon": {
       "label": "I. Silent Wheel",
-      "heading": "The <em>Moon</em>",
-      "intro": "Silent partner, hidden face.",
+      "heading": "<em>Lunar</em> gaze",
+      "intro": "During a total lunar eclipse, the Moon turns copper-red — Earth's shadow painted by every sunrise and sunset happening simultaneously. The Moon becomes a mirror of the entire world's light at once.",
       "imageCard": {
         "themeIndex": 0,
         "factIndex": 9
@@ -41,11 +41,11 @@
     },
     "shiva": {
       "label": "II. Ring of Flame",
-      "heading": "<em>Nataraja</em>",
-      "intro": "Drumbeat births all tongues.",
+      "heading": "<em>Flame</em> dance",
+      "intro": "The Shiv Purana describes the lingam not as a symbol of fertility but as the formless made formless — an abstract pillar representing that which has no shape, no boundary, no beginning. It is a reminder that the divine exceeds all containers.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 7
+        "factIndex": 1
       },
       "facts": [
         "Drum: first language.",
@@ -53,16 +53,16 @@
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 2
+        "quoteIndex": 7
       }
     },
     "art": {
       "label": "III. Golden Rule",
-      "heading": "The <em>Brush</em>",
-      "intro": "A single stroke holds weight.",
+      "heading": "<em>Canvas</em> light",
+      "intro": "A star field is a reminder of scale. Every point of light is a sun, perhaps with planets, perhaps with life. The universe is not indifferent — it is generous beyond comprehension.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 13
+        "factIndex": 1
       },
       "facts": [
         "Golden ratio: 1.618.",
@@ -70,16 +70,16 @@
       ],
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 3
+        "quoteIndex": 6
       }
     },
     "philosophy": {
       "label": "IV. No Self",
-      "heading": "The <em>Self</em>",
-      "intro": "Drop the story, find light.",
+      "heading": "<em>Being</em> for",
+      "intro": "True art requires the death of the ego. The painter who paints for fame paints nothing true. The musician who plays for applause hears nothing real. Creation begins where the self ends.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 6
+        "factIndex": 3
       },
       "facts": [
         "Wave: knows water.",
@@ -87,162 +87,199 @@
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 4
+        "quoteIndex": 6
       }
     }
   },
   "changelog": {
-    "version": "1.8.30",
+    "version": "1.0.0",
     "entries": [
       {
-        "date": "2026-06-29",
-        "time": "12:04:45",
-        "type": "content",
-        "description": "Midday layout refresh: default layout, all 4 headings rewritten (The Moon, Nataraja, The Brush, The Self), new labels (Silent Wheel, Ring of Flame, Golden Rule, No Self), fact/quote indices rotated (moon[9,4], shiva[7,2], art[13,3], phil[6,4]), Today section rewritten with amber hour theme",
-        "changes": [
-          "Layout: default",
-          "Section labels: Silent Wheel, Ring of Flame, Golden Rule, No Self",
-          "Fact indices: moon→9, shiva→7, art→13, philosophy→6",
-          "Quote indices: moon→4, shiva→2, art→3, philosophy→4",
-          "All 4 section intros rewritten",
-          "Today section: amber hour, sunflowers turn west"
-        ]
-      },
-      {
-        "date": "2026-06-29",
-        "time": "08:42:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #178: Color scheme → sunflower (gold/orange/green), sunflower layout, new hero tagline about light remembering us, all 4 headings rewritten with stillness/fire/gold/emptiness language, fact/quote indices rotated (moon[3,11/2], shiva[5/6,0/4], art[5/13,1/3], phil[0/6,0/5]), Today section rewritten with sunflower field gold hour theme, new golden-reverie SVG visual asset",
-        "changes": [
-          "Color scheme: sunflower (gold #f5c800 primary, orange #ff6f00 secondary, green #2e7d32 accent)",
-          "Hero tagline: 'Light <em>remembers</em> us'",
-          "All 4 section headings rewritten w/ stillness/fire/gold/emptiness language",
-          "Section labels: Still Tide, Fire Dance, Gold Brush, Empty I",
-          "Fact indices: moon→[2,9], shiva→[8,9], art→[5,13], philosophy→[0,6]",
-          "Quote indices: moon→[3], shiva→[0], art→[1], philosophy→[0]",
-          "Today section: gold hour, sunflower field, golden reverie",
-          "Visual asset: golden-reverie.svg (impressionist sunflower field with glowing pollen)",
-          "Layout: sunflower"
-        ]
-      },
-      {
-        "date": "2026-06-29",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation: Color scheme → lily-garden (crimson/pink/green), lily-garden layout, new hero tagline, all 4 headings rewritten (Dark Tide, Sacred Drum, Fire & Form, No I Left), fact/quote indices rotated with cross-theme mixing, Today section rewritten with crimson wake theme, new SVG visual asset",
+        "description": "Daily mutation #159: New facts and quotes added to all 5 themes, content rotated, intros refreshed, color scheme set to starry-night for summer",
         "changes": [
-          "Color scheme: lily-garden (crimson primary, pink secondary, green accent)",
-          "Hero tagline: 'Void <em>dreams</em> us'",
-          "All 4 section headings rewritten with void/fire/drum poetic language",
-          "Section labels: Dark Tide, Sacred Drum, Fire & Form, No I Left",
-          "Fact/quote indices rotated: moon[7,8], shiva[5,4x], art[11,5], phil[4,4]",
-          "Today section: crimson wake, red light through cracks",
-          "Visual asset: crimson-wake.svg (impressionist dawn with fracture lines)",
-          "Layout: lily-garden"
-        ]
+          "Added 2 new facts to Moon theme (cosmic coincidence of eclipses, Babylonian lunar calendars)",
+          "Added 2 new facts to Ego theme (Stoic suffering in imagination, ego vs soul in meetings)",
+          "Added 2 new facts to Gita theme (equanimity as highest yoga, Oppenheimer atomic echo)",
+          "Added 2 new facts to Shiva theme (lingam as formless symbol, CERN Nataraja statue)",
+          "Added 2 new facts to Art theme (Impressionism and light, beauty as state not possession)",
+          "Added 1 new quote to each theme (8 total new quotes across all themes)",
+          "Rotated imageCard factIndex: Moon=3, Philosophy=4, Gita=5, Shiva=6, Art=7",
+          "Rotated facts.slice: Moon=[5,7], Philosophy=[6,8], Gita=[7,9], Shiva=[8,10], Art=[9,11]",
+          "Rotated quoteIndex: Moon=5, Philosophy=6, Gita=0, Shiva=1, Art=2",
+          "Rewrote intros for Moon, Philosophy, Gita, Shiva, and Art sections with fresh phrasing",
+          "Updated Today heading: 'The deepening light — early summer's contemplative turn'",
+          "Color scheme changed: sunflower → starry-night (summer rotation)"
+        ],
+        "date": "2026-06-08"
       },
       {
-        "date": "2026-06-29",
+        "time": "12:12:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #161: Color scheme → lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset",
+        "changes": [
+          "Color scheme rotated: starry-night → lily-garden (passionate red/pink summer palette)",
+          "Hero tagline: 'The unseen architecture of light' (was 'Where twilight gathers the day's last glow')",
+          "Rewrote all 5 section headings with fresh poetic language and <em> emphasis",
+          "Moon heading: 'The weight of borrowed light' | Philosophy: 'What the wave forgets it is' | Gita: 'The geometry of surrender' | Shiva: 'Where silence becomes sound' | Art: 'The unseen architecture of beauty'",
+          "Rotated imageCard factIndex: Moon=2 (Endymion), Philosophy=7 (Dunning-Kruger), Gita=8 (Einstein), Shiva=5 (Om/Vedas), Art=1 (sunflower heliotropism)",
+          "Rotated facts.slice: Moon=[10,12], Philosophy=[2,4], Gita=[10,12], Shiva=[12,14], Art=[10,12]",
+          "Rotated quoteIndex: Moon=4 (Shakespeare), Philosophy=5 (Socrates), Gita=6 (Atrijā), Shiva=7 (Atrijā), Art=8 (Atrijā)",
+          "Rewrote Today heading: 'The deepening gold — midsummer's quiet zenith'",
+          "Rewrote Today intro: garden fullness, solstice approach, light thickening like honey",
+          "Generated new SVG visual asset: lily-garden-at-dusk.svg (9.7 KB) in mutation-assets/2026-06-09/",
+          "Added 'summer' season to lily-garden color scheme"
+        ],
+        "date": "2026-06-09"
+      },
+      {
+        "time": "16:47:00",
+        "type": "feature",
+        "description": "Unit tests for scene-config and scene-bootstrap modules (idea-067 partial)",
+        "changes": [
+          "Added scene-config.test.js: 20 tests for parallaxConfig values, scrollState defaults, device detection types, config immutability",
+          "Added scene-bootstrap.test.js: 13 tests for module structure, exports, imports, error handling, performance-aware initialization",
+          "Total unit test count increased from 121 to 154 (33 new tests)",
+          "Verified all 154 unit tests pass"
+        ],
+        "date": "2026-06-09"
+      },
+      {
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset",
+        "changes": [
+          "Color scheme rotated: sunflower (warm gold) → starry-night (contemplative deep blue #1a237e + gold #ffd54f accents + cyan #4fc3f7), reordered array so dayOfYear%5=1 selects starry-night",
+          "Hero tagline: 'Every darkness is a canvas waiting for its stars' (was 'Where gold light learns to breathe')",
+          "Rewrote all 5 section headings with fresh poetic language and <em> emphasis",
+          "Moon: 'What the night keeps in trust' | Philosophy: 'Dissolving the outline of the self' | Gita: 'The surrender that is harder than war' | Shiva: 'The sound that precedes creation' | Art: 'The alchemy of seeing truly'",
+          "Rotated imageCard factIndex: Moon=2 (Selene/Endymion), Philosophy=11 (ego castle on sand), Gita=5 (Gita spoken on battlefield), Shiva=4 (Shiva's drum/language), Art=14 (brushstroke as decision)",
+          "Rotated facts.slice: Moon=[7,9], Philosophy=[1,3], Gita=[10,12], Shiva=[11,13], Art=[6,8]",
+          "Rotated quoteIndex: Moon=1 (Gibran: darker side), Philosophy=7 (Atrijā: ego walls/soul bridges), Gita=0 (Gita: believe in), Shiva=2 (Inspired: Supreme Lord in all beings), Art=3 (Degas: make others see)",
+          "Rewrote Today heading: 'The listening sky — where light bends into color'",
+          "Rewrote Today intro: aurora as conversation, geometry of wonder, solar wind and magnetic field ceremony",
+          "Generated new SVG visual asset: visual.svg — aurora borealis with vivid green, purple, pink, gold, teal on starlit sky"
+        ],
+        "date": "2026-06-10"
+      },
+      {
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday layout refresh: default layout, all 4 headings rewritten (The Moon, Nataraja, The Brush, The Self), fact/quote indices rotated (moon[3,5], shiva[12,7], art[9,4], phil[6,1]), Today section rewritten with dawn light theme",
+        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros with fresh phrasing, updated Today heading/intro for midday theme",
         "changes": [
-          "Layout: default",
-          "All 4 headings rewritten with nature/cosmic language",
-          "Fact indices: moon->3, shiva->12, art->9, philosophy->6",
-          "Quote indices: moon->5, shiva->7, art->4, philosophy->1",
-          "Today section: dawn light, gold on fields"
-        ]
+          "Moon section: new intro (hidden face of the Moon, Chandra, emotional mind), imageCard→factIndex 4 (night sky canvas), facts.slice→[10,12] (tulips close at night, tidal locking dark side), quoteIndex→5 (Thich Nhat Hanh: moon does not fight)",
+          "Philosophy section: imageCard→factIndex 3 (Shiv Purana ahamkara), facts.slice→[5,7] (ego comparison, Gita right to work), quoteIndex→4 (Pasteur: prepared mind)",
+          "Gita section: imageCard→factIndex 8 (Einstein Gita bedside), facts.slice→[2,4] (soul unborn eternal, Vishvarupa universal form), quoteIndex→6 (Atrijā: battlefield is human heart)",
+          "Shiva section: imageCard→factIndex 10 (silence before/after dance), facts.slice→[6,8] (Mahakala great time, Tryambaka third eye), quoteIndex→8 (Atrijā: Shiva dances because world is his dance)",
+          "Art section: new intro (color as conversation, painting light not objects), imageCard→factIndex 2 (star field scale), facts.slice→[12,14] (impressionism light subject, art dismantles wall), quoteIndex→7 (Atrijā: create to destroy distance)",
+          "Today heading: 'The weight of light on water' (was 'The listening sky — where light bends into color')",
+          "Today intro: midday sun theme — light at its highest, lily opens widest under unforgiving glare, grace under pressure",
+          "Color scheme: starry-night (unchanged, appropriate for summer)"
+        ],
+        "date": "2026-06-10"
       },
       {
-        "date": "2026-06-29",
+        "time": "16:30:00",
+        "type": "feature",
+        "description": "Implemented idea-038: Starry Night Swirling Sky Shader — standalone procedural vertex-displacement sky dome with multi-octave noise and rotational swirl for impressionist brushstroke patterns",
+        "changes": [
+          "Created public/js/scene/scene-swirl-sky.js (196 lines) — standalone GLSL shader module",
+          "Vertex shader: 3-octave noise displacement + rotational swirl + banded elevation factor",
+          "Fragment shader: deep impressionist blue gradient with warm noise variation and slow pulse",
+          "Exported createSwirlSky(scene) and setSwirlSkyColors(material, colors) functions",
+          "Integrated into scene-manager.js: 1 import line + 1 init call (minimal footprint)",
+          "Zero scene-init.js changes — scene-init.js completely untouched",
+          "Build succeeds with zero errors. All core elements verified intact.",
+          "HTTP 200 on all key assets including new scene-swirl-sky.js"
+        ],
+        "date": "2026-06-10"
+      },
+      {
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation: Color scheme → starry-night (deep blue/gold/cyan), starry-night layout, new hero tagline, all 4 headings rewritten (Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence), all fact/quote indices rotated, Today section rewritten with starry reverie theme, new SVG visual asset",
+        "description": "Daily mutation #164: Color scheme → sunflower (warm summer gold), new hero tagline, all 5 headings rewritten with fresh poetic language, all fact/quote indices rotated dramatically, Today section fully rewritten, new sunflower field SVG visual asset",
         "changes": [
-          "Color scheme: starry-night (deep blue primary, gold secondary, cyan accent)",
-          "Hero tagline: 'Stars <em>dream</em> tonight'",
-          "All 4 section headings rewritten with celestial/cosmic language",
-          "Section labels: Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence",
-          "Fact/quote indices rotated with cross-theme mixing",
-          "Today section: starry reverie, golden cosmos",
-          "Visual asset: starry-reverie.svg (impressionist starfield)"
-        ]
+          "Color scheme rotated: starry-night → sunflower (warm gold #f5c800 + orange #ff6f00 + green #2e7d32), reordered array so dayOfYear%5=2 selects sunflower",
+          "Hero tagline: 'Beneath the golden hush of a summer sky, the soul remembers how to bloom' (was 'Every darkness is a canvas waiting for its stars')",
+          "Rewrote all 5 section headings with fresh poetic language and <em> emphasis:",
+          "Moon: 'The silence between two heartbeats of light' | Philosophy: 'Where the self dissolves into the sea' | Gita: 'The courage to act without claiming the fruit' | Shiva: 'The flame at the center of the whirl' | Art: 'The brushstroke that outlives the hand'",
+          "Rotated imageCard factIndex: Moon=7 (Moon drifting away 3.8cm/yr), Philosophy=9 (Dunning-Kruger effect), Gita=11 (Gita renounce attachment to outcomes), Shiva=2 (Shiva drank poison Halahala), Art=10 (color as conversation between light and perception)",
+          "Rotated facts.slice: Moon=[0,2] (Selene chariot, Moon controls tides), Philosophy=[12,14] (ego castle on sand, humility river/ocean), Gita=[6,8] (divine returns to restore balance, 700 verses in 90 min), Shiva=[14,16] (Shiva both ascetic/householder, crescent moon as time), Art=[3,5] (flute oldest instrument, waves ocean-shore communication)",
+          "Rotated quoteIndex: Moon=2 (Blake: Moon like a flower in heaven's bower), Philosophy=8 (Atrijā: ego tight fist/soul open hand), Gita=3 (Gita 2.64: self-controlled soul wins eternal peace), Shiva=5 (Inspired: dancer and dance become one), Art=5 (Santayana: Earth has music for those who listen)",
+          "Rewrote Today heading: 'The language of light at its fullest'",
+          "Rewrote Today intro: morning unfurling, sunflower greeting the day, light arriving in waves, world shining without apology",
+          "Generated new SVG visual asset: visual.svg — impressionist sunflower field at golden hour with vivid golds (#f5c800, #fbbf24), bright greens (#22c55e), warm oranges (#f97316), luminous sky (#4a90d9, #6bb5ff), impressionist brushstroke texture"
+        ],
+        "date": "2026-06-11"
       },
       {
-        "date": "2026-06-29",
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation: Color scheme → starry-night (deep blue/gold/cyan), starry-night layout, new hero tagline, all 4 headings rewritten (Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence), all fact/quote indices rotated, Today section rewritten with starry reverie theme, new SVG visual asset",
-        "changes": [
-          "Color scheme: starry-night (deep blue primary, gold secondary, cyan accent)",
-          "Hero tagline: 'Stars <em>dream</em> tonight'",
-          "All 4 section headings rewritten with celestial/cosmic language",
-          "Section labels: Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence",
-          "Fact/quote indices rotated with cross-theme mixing",
-          "Today section: starry reverie, celestial canopy, golden cosmos",
-          "Visual asset: starry-reverie.svg (impressionist starfield)"
-        ]
-      },
-      {
-        "date": "2026-06-29",
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation: Color scheme → starry-night (deep blue/gold/cyan), starry-night layout, new hero tagline, all 4 headings rewritten (Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence), all fact/quote indices rotated, Today section rewritten with starry reverie theme, new SVG visual asset",
-        "changes": [
-          "Color scheme: starry-night (deep blue primary, gold secondary, cyan accent)",
-          "Hero tagline: 'Stars <em>dream</em> tonight'",
-          "All 4 section headings rewritten with celestial/cosmic language",
-          "Section labels: Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence",
-          "Fact/quote indices rotated with cross-theme mixing",
-          "Today section: starry reverie, celestial canopy, golden cosmos",
-          "Visual asset: starry-reverie.svg (impressionist starfield)"
-        ]
-      },
-      {
-        "date": "2026-06-24",
-        "time": "19:00:00",
-        "type": "design",
-        "description": "Removed Bhagavad Gita section — streamlined to 4 content sections (Moon, Shiva, Art, Philosophy) for visual breathing room. Reduced all section intros to <60 chars. Removed stars.svg image asset.",
-        "changes": [
-          "Removed Bhagavad Gita section from template, content.json, and all theme data",
-          "All section intros condensed to <60 chars for scannability",
-          "Section count: 5 → 4 (Moon, Shiva, Art, Philosophy)",
-          "Removed imageCard references to stars.svg"
-        ]
-      },
-      {
-        "date": "2026-06-24",
         "time": "12:00:00",
         "type": "content",
-        "description": "Midday content layout refresh: ember-dawn layout, new section order (gita→moon→shiva→art→philosophy), all 5 headings rewritten with stillness/potential/dream poetic language (Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush), all labels rewritten (Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush), all fact/quote indices dramatically rotated with cross-theme mixing [gita→shiva[3], moon→moon[7], shiva→art[2], art→ego[0], philosophy→gita[0]], all section intros rewritten with stillness/potential/dream themes, Today section rewritten with threshold hour/ember-dawn theme",
+        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon/Philosophy/Shiva intros, updated Today for zenith hour, cleaned old assets",
         "changes": [
-          "Layout: ember-dawn (threshold hour variant)",
-          "Section order: gita, moon, shiva, art, philosophy",
-          "All 5 section headings rewritten with stillness/potential/dream poetic language",
-          "Section labels: Remembering Tide, Unraveling, Paused Blade, Sleeping Dance, Dreaming Brush",
-          "Fact/quote indices dramatically rotated: gita→shiva[3], moon→moon[7], shiva→art[2], art→ego[0], philosophy→gita[0]",
-          "All 5 section intros rewritten with stillness/potential/dream themes",
-          "Today section rewritten: threshold hour, ember-dawn, breath between worlds"
-        ]
+          "Rotated imageCard factIndex: Moon=10 (tulips close at night under Moon), Philosophy=5 (ego thrives on comparison), Gita=4 (Gita spoken on battlefield not in temple), Shiva=8 (Nataraja statue recognized worldwide), Art=1 (sunflower turns face to light)",
+          "Rotated facts.slice: Moon=[3,5] (Moon no light of own, night sky canvas for projection), Philosophy=[6,8] (Krishna right to work never fruit, Nietzsche monster-fighting), Gita=[9,11] (Einstein kept Gita, body like garment), Shiva=[3,5] (Shiva drank poison Halahala, damaru source of language), Art=[11,13] (art paradox personal/universal, Impressionism light as subject)",
+          "Rotated quoteIndex: Moon=6 (Thich Nhat Hanh: Moon just shines), Philosophy=3 (Boorstin: greatest enemy of knowledge), Gita=7 (Atrijā: struggle becomes path to peace), Shiva=2 (Inspired: sees Supreme Lord equally), Art=8 (Atrijā: beauty state to be entered)",
+          "Refreshed Moon intro: hush when Sun retreats, Moon as quiet guest, softness as courage",
+          "Refreshed Philosophy intro: wave rising without consulting mirror, ego building monuments, sea remembering rhythm",
+          "Refreshed Shiva intro: stillness at heart of storm, paradox of destroyer-creator, Tandava as universe expressing through motion",
+          "Updated Today heading: 'The zenith hour — when shadows shrink to nothing'",
+          "Updated Today intro: sun overhead, absolute clarity, afternoon testing morning's intentions",
+          "Cleaned up mutation-assets/2026-06-09/ (3 old SVG files removed)"
+        ],
+        "date": "2026-06-11"
       },
       {
-        "date": "2026-06-24",
         "time": "06:00:00",
         "type": "daily-mutation",
-        "description": "Daily mutation #174: Color scheme → midnight-wave (deep ocean blue/teal/violet), nocturne layout, new hero tagline about beauty blooming without a witness in the deep, all 5 headings rewritten with abyssal/bioluminescence/pressure poetic language (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all labels rewritten (Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas), all fact/quote indices dramatically rotated with cross-theme mixing [0→13,1→9,2→6,3→10,4→5], Today section rewritten with abyssal garden/bioluminescence/deep memory theme, new abyss-bloom SVG visual asset",
+        "description": "Daily mutation #168: Color scheme → moonlit-silver (luminous silver/gold/teal), default layout, new hero tagline about silver hush between heartbeats, all 5 headings rewritten with lunar/oceanic/silence poetic language (wax/wave grace, wave's shape, act/hold outcome, space between beats, beauty as bridge), all fact/quote indices dramatically rotated with cross-theme mixing [3,1,4,0,2], Today section rewritten with moon/silver/continuity theme, new lunar aurora SVG visual asset",
+        "changes": [
+          "Color scheme: moonlit-silver (luminous silver, gold accent, teal highlights)",
+          "Hero tagline: 'In the silver hush between heartbeats, the soul finds its music'",
+          "All 5 section headings rewritten with fresh poetic language",
+          "Section labels: Silver Threshold, Ocean's Lesson, Warrior's Surrender, Drum Between Worlds, Unseen Bridge",
+          "Fact/quote indices dramatically rotated: moon→shiva[3], philosophy→ego[1], gita→art[4], shiva→moon[0], art→gita[2]",
+          "Today section fully rewritten: moon does not hurry theme",
+          "Visual asset: lunar-aurora.svg (impressionist moon with aurora borealis)",
+          "Old mutation assets cleaned (2026-06-11, 2026-06-13, 2026-06-14)"
+        ],
+        "date": "2026-06-15"
+      },
+      {
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #169: Color scheme → ember-dawn (fiery orange/crimson/gold), default layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (burning mirror, first ember, warrior's flame, cosmic fire, painted flame), all labels rewritten (First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame), all fact/quote indices dramatically rotated with cross-theme mixing [2,1,4,3,0], Today section rewritten with pre-dawn threshold/sacred moment theme, new ember-dawn SVG visual asset",
+        "changes": [
+          "Color scheme: ember-dawn (fiery orange primary, crimson accent, gold highlights)",
+          "Hero tagline: 'From the ashes of certainty, the phoenix of wonder rises'",
+          "All 5 section headings rewritten with fire/ember/dawn poetic language",
+          "Section labels: First Ember, Cosmic Fire, Burning Mirror, Painted Flame, Warrior's Flame",
+          "Fact/quote indices dramatically rotated: moon→gita[2], philosophy→ego[1], gita→art[4], shiva→shiva[3], art→moon[0]",
+          "Today section fully rewritten: pre-dawn threshold and sacred moment theme",
+          "Visual asset: ember-dawn.svg (impressionist fiery celestial body with rising embers)",
+          "Color scheme order rotated: ember-dawn moved to first position",
+          "Old mutation assets cleaned (2026-05-14 through 2026-05-16, 2026-05-18 through 2026-05-31, 2026-06-01 through 2026-06-08)"
+        ],
+        "date": "2026-06-16"
+      },
+      {
+        "time": "06:00:00",
+        "type": "daily-mutation",
+        "description": "Daily mutation #170: Color scheme → midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset",
         "changes": [
           "Color scheme: midnight-wave (deep ocean blue primary, teal secondary, violet accent)",
-          "Hero tagline: 'In the deep where light forgets its name — beauty blooms without a witness'",
-          "All 5 section headings rewritten with abyssal/bioluminescence/pressure poetic language",
-          "Section labels: Drowned Mirror, Pressure of Being, Depth Warrior, Abyss Dance, Abyss Canvas",
-          "Fact/quote indices dramatically rotated: moon→moon[13], philosophy→ego[9], gita→gita[6], shiva→shiva[10], art→art[5]",
-          "Today section fully rewritten: abyssal garden, bioluminescence, Van Gogh deep-sea swirls, life without permission",
-          "Visual asset: abyss-bloom.svg (impressionist abyssal garden with glowing jellyfish, deep-sea lilies, bioluminescent particles)"
-        ]
+          "Hero tagline: 'Beneath the longest day, the ocean holds its breath — waiting for the deep'",
+          "All 5 section headings rewritten with oceanic/depth/tide poetic language",
+          "Section labels: Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind",
+          "Fact/quote indices dramatically rotated: shiva→shiva[3], art→art[4], moon→moon[0], gita→gita[2], philosophy→ego[1]",
+          "Today section fully rewritten: deep ocean, bioluminescence, pressure-forged beauty theme",
+          "Visual asset: abyssal-depth.svg (impressionist bioluminescent deep ocean scene)",
+          "Color scheme order rotated: midnight-wave moved to first position"
+        ],
+        "date": "2026-06-21"
       },
       {
-        "date": "2026-06-23",
         "time": "06:00:00",
         "type": "daily-mutation",
         "description": "Daily mutation #173: Color scheme → ember-dawn (fiery orange/crimson/gold), nocturne layout, new hero tagline about phoenix of wonder rising from ashes, all 5 headings rewritten with fire/ember/dawn poetic language (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all labels rewritten (Burning Mirror, Forge of Self, Warrior's Ember, Flame Dance, Painted Flame), all fact/quote indices dramatically rotated with cross-theme mixing [0→7,1→3,2→11,3→0,4→12], Today section rewritten with ember threshold/dawn negotiation theme, new ember-dawn SVG visual asset",
@@ -254,11 +291,11 @@
           "Fact/quote indices dramatically rotated: moon→moon[7], philosophy→ego[3], gita→gita[11], shiva→shiva[0], art→art[12]",
           "Today section fully rewritten: ember threshold, darkness and light negotiating, Van Gogh pre-dawn",
           "Visual asset: ember-dawn.svg (impressionist ember-dawn with rising orb, cypress silhouettes, floating embers)"
-        ]
+        ],
+        "date": "2026-06-23"
       },
       {
-        "date": "2026-06-23",
-        "time": "06:00:00",
+        "time": "12:00:00",
         "type": "content",
         "description": "Midday content layout refresh: twilight layout, all 5 headings rewritten with blue hour/twilight poetic language (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all labels rewritten (Blue Moon, Dissolving Self, Sword at Rest, Blue Dance, Blue Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with blue hour/transition/dissolution themes, Today section rewritten with blue hour/day-night sharing theme",
         "changes": [
@@ -268,25 +305,38 @@
           "Fact/quote indices dramatically rotated: moon→moon[14], philosophy→ego[11], gita→gita[4], shiva→shiva[6], art→art[9]",
           "All 5 section intros rewritten with blue hour/transition/dissolution themes",
           "Today section rewritten: blue hour, day and night sharing the sky, Van Gogh twilight"
-        ]
+        ],
+        "date": "2026-06-23"
       },
       {
-        "date": "2026-06-22",
-        "time": "12:00:00",
-        "type": "content",
-        "description": "Midday content layout refresh: horizon layout, new section order (moon→art→philosophy→shiva→gita), all 5 headings rewritten with zenith/noon/horizon poetic language (Horizon Line, Zenith Mind, Noon Canvas, Blazing Dance, Noon Warrior), all labels rewritten (Horizon Line, Zenith Mind, Noon Warrior, Blazing Dance, Noon Canvas), all fact/quote indices dramatically rotated with cross-theme mixing, all section intros rewritten with midday clarity/honesty/fire themes, Today section rewritten with horizon/zenith/blazing honesty theme"
-      },
-      {
-        "date": "2026-06-22",
-        "time": "06:00:00",
+        "time": "16:25:44",
         "type": "daily-mutation",
-        "description": "Daily mutation #171: Color scheme → sunflower (warm gold/orange/green), garden layout, new hero tagline about sunflowers not counting hours, all 5 headings rewritten with garden/bloom/golden hour poetic language (Petal Dance, Bloom Mind, Painted Garden, Golden Hour, Garden Warrior), all labels rewritten (Painted Garden, Bloom Mind, Petal Dance, Golden Hour, Garden Warrior), all fact/quote indices dramatically rotated with cross-theme mixing [4,1,0,3,2], Today section rewritten with post-solstice bloom/defiance theme, new solstice-bloom SVG visual asset"
+        "description": "Daily mutation #181: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: sunflower (warm)",
+          "Season: summer",
+          "Shader — strokeDensity: 11.5, swirlFrequency: 8.6, colorIntensity: 1.45",
+          "Section \"moon\": Selene & The Moon theme, fact #15",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #10",
+          "Section \"shiva\": Shiv Purana theme, fact #9",
+          "Section \"art\": Art & Beauty theme, fact #13"
+        ],
+        "date": "2026-06-30"
       },
       {
-        "date": "2026-06-21",
-        "time": "06:00:00",
+        "time": "04:26:01",
         "type": "daily-mutation",
-        "description": "Daily mutation #170: Color scheme → midnight-wave (deep ocean blue/teal/violet), abyss layout, new hero tagline about longest day and ocean holding breath, all 5 headings rewritten with oceanic/depth/tide poetic language (abyss dance, pressure of beauty, tidal sovereign, depth warrior, abyss mind), all labels rewritten (Abyss Dance, Pressure of Beauty, Tidal Sovereign, Depth Warrior, Abyss Mind), all fact/quote indices dramatically rotated with cross-theme mixing [3,4,0,2,1], Today section rewritten with deep ocean/bioluminescence theme, new abyssal-depth SVG visual asset"
+        "description": "Daily mutation #182: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: sunflower (warm)",
+          "Season: summer",
+          "Shader — strokeDensity: 9.7, swirlFrequency: 7.2, colorIntensity: 1.55",
+          "Section \"moon\": Selene & The Moon theme, fact #1",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #8",
+          "Section \"shiva\": Shiv Purana theme, fact #15",
+          "Section \"art\": Art & Beauty theme, fact #14"
+        ],
+        "date": "2026-07-01"
       }
     ]
   }

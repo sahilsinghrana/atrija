@@ -7,7 +7,7 @@
  * @see idea-056
  */
 
-const CACHE_NAME = 'atrija-shell-v110';
+const CACHE_NAME = 'atrija-shell-v112';
 
 /** @type {string[]} — Auto-updated by post-build.js */
 const PRECACHE_URLS = [
@@ -16,7 +16,6 @@ const PRECACHE_URLS = [
   '/css/loader.css',
   '/css/main.css',
   '/css/daily-theme.css',
-  '/_astro/index.B6FNdtG8.css',
   '/js/changelog-app.js',
   '/js/content-prefetch.js',
   '/js/scene-context-recovery.js',

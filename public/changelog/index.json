@@ -1,8 +1,18 @@
 {
-  "version": "1.8.25",
-  "lastUpdated": "2026-06-23T06:00:00.000Z",
+  "version": "1.8.28",
+  "lastUpdated": "2026-07-01T04:34:11.102Z",
   "totalEntries": 41,
   "dates": [
+    {
+      "date": "2026-07-01",
+      "entries": 2
+    },
+    {
+      "date": "2026-06-29",
+      "entries": 1,
+      "latestType": "daily-mutation",
+      "description": "Daily mutation: starry-night colors (deep blue/gold/cyan), new tagline 'Stars dream tonight', all 4 headings rewritten (Celestial Mirror, Cosmic Dancer, Painted Cosmos, Inner Silence), fact/quote indices rotated, Today rewritten with starry reverie theme, new starry-reverie.svg"
+    },
     {
       "date": "2026-06-23",
       "entries": 2,

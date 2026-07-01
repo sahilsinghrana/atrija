@@ -403,9 +403,9 @@
       "text": "#fff8e1",
       "mood": "warm",
       "shaderParams": {
-        "strokeDensity": 10.6,
-        "swirlFrequency": 7.8,
-        "colorIntensity": 1.57
+        "strokeDensity": 9.7,
+        "swirlFrequency": 7.2,
+        "colorIntensity": 1.55
       },
       "seasons": [
         "autumn",
@@ -475,9 +475,9 @@
       "text": "#fce4ec",
       "mood": "passionate",
       "shaderParams": {
-        "strokeDensity": 9.5,
-        "swirlFrequency": 11.4,
-        "colorIntensity": 1.45
+        "strokeDensity": 10.1,
+        "swirlFrequency": 11.1,
+        "colorIntensity": 1.48
       },
       "seasons": [
         "spring",

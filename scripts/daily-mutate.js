@@ -189,7 +189,6 @@ export function updateAllSections(content, siteData, dayOfYear) {
   const headingThemes = [
     "moon",
     "philosophy",
-    "gita",
     "shiva",
     "art",
   ];
