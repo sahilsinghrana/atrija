@@ -119,11 +119,10 @@ export function updateAllSections(content, siteData, dayOfYear) {
   const sectionThemeMap = {
     moon: 0, // Selene & The Moon
     philosophy: 1, // Ego & Arrogance
-    gita: 2, // Bhagavad Gita
-    shiva: 3, // Shiv Purana
-    art: 4, // Art & Beauty
+    shiva: 2, // Shiv Purana
+    art: 3, // Art & Beauty
   };
-  const sectionKeys = ["moon", "philosophy", "gita", "shiva", "art"];
+  const sectionKeys = ["moon", "philosophy", "shiva", "art"];
   const updatedSections = [];
 
   sectionKeys.forEach((sectionKey, i) => {

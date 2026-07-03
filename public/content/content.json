@@ -12,7 +12,7 @@
       "tagline": "<em>Time</em> shapes us"
     },
     "today": {
-      "heading": "<em>Now</em> moment",
+      "heading": "What the <em>Selene</em> whispers today",
       "intro": "Present awareness.",
       "visualAsset": {
         "type": "svg",
@@ -25,10 +25,10 @@
     "moon": {
       "label": "I. Silent Wheel",
       "heading": "<em>Lunar</em> gaze",
-      "intro": "During a total lunar eclipse, the Moon turns copper-red — Earth's shadow painted by every sunrise and sunset happening simultaneously. The Moon becomes a mirror of the entire world's light at once.",
+      "intro": "The Moon is slowly drifting away from Earth at 3.8 cm per year. In a billion years, total solar eclipses will be impossible — the Moon will appear too small to cover the Sun. Even celestial relationships have expiration dates.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 9
+        "factIndex": 7
       },
       "facts": [
         "Tidal lock: one side.",
@@ -36,16 +36,16 @@
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 4
+        "quoteIndex": 6
       }
     },
     "shiva": {
       "label": "II. Ring of Flame",
       "heading": "<em>Flame</em> dance",
-      "intro": "The Shiv Purana describes the lingam not as a symbol of fertility but as the formless made formless — an abstract pillar representing that which has no shape, no boundary, no beginning. It is a reminder that the divine exceeds all containers.",
+      "intro": "Shiva is called Tryambaka — the three-eyed one. The third eye represents the eye of wisdom that sees beyond the duality of good and evil, self and other, creation and destruction. When it opens, the universe is consumed in flame — not as punishment, but as liberation.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 1
+        "factIndex": 11
       },
       "facts": [
         "Drum: first language.",
@@ -53,16 +53,16 @@
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 7
+        "quoteIndex": 1
       }
     },
     "art": {
       "label": "III. Golden Rule",
       "heading": "<em>Canvas</em> light",
-      "intro": "A star field is a reminder of scale. Every point of light is a sun, perhaps with planets, perhaps with life. The universe is not indifferent — it is generous beyond comprehension.",
+      "intro": "Art is not what you see, but what you make others see. The painter does not copy the world — they translate it, filtering reality through the lens of emotion, memory, and dream.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 1
+        "factIndex": 13
       },
       "facts": [
         "Golden ratio: 1.618.",
@@ -70,16 +70,16 @@
       ],
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 6
+        "quoteIndex": 8
       }
     },
     "philosophy": {
       "label": "IV. No Self",
       "heading": "<em>Being</em> for",
-      "intro": "True art requires the death of the ego. The painter who paints for fame paints nothing true. The musician who plays for applause hears nothing real. Creation begins where the self ends.",
+      "intro": "Humility is not the denial of one's abilities but the quiet recognition that all gifts flow through us, not from us. The river does not boast of the ocean it feeds.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 3
+        "factIndex": 10
       },
       "facts": [
         "Wave: knows water.",
@@ -87,52 +87,13 @@
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 6
+        "quoteIndex": 7
       }
     }
   },
   "changelog": {
     "version": "1.0.0",
     "entries": [
-      {
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #159: New facts and quotes added to all 5 themes, content rotated, intros refreshed, color scheme set to starry-night for summer",
-        "changes": [
-          "Added 2 new facts to Moon theme (cosmic coincidence of eclipses, Babylonian lunar calendars)",
-          "Added 2 new facts to Ego theme (Stoic suffering in imagination, ego vs soul in meetings)",
-          "Added 2 new facts to Gita theme (equanimity as highest yoga, Oppenheimer atomic echo)",
-          "Added 2 new facts to Shiva theme (lingam as formless symbol, CERN Nataraja statue)",
-          "Added 2 new facts to Art theme (Impressionism and light, beauty as state not possession)",
-          "Added 1 new quote to each theme (8 total new quotes across all themes)",
-          "Rotated imageCard factIndex: Moon=3, Philosophy=4, Gita=5, Shiva=6, Art=7",
-          "Rotated facts.slice: Moon=[5,7], Philosophy=[6,8], Gita=[7,9], Shiva=[8,10], Art=[9,11]",
-          "Rotated quoteIndex: Moon=5, Philosophy=6, Gita=0, Shiva=1, Art=2",
-          "Rewrote intros for Moon, Philosophy, Gita, Shiva, and Art sections with fresh phrasing",
-          "Updated Today heading: 'The deepening light — early summer's contemplative turn'",
-          "Color scheme changed: sunflower → starry-night (summer rotation)"
-        ],
-        "date": "2026-06-08"
-      },
-      {
-        "time": "12:12:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #161: Color scheme → lily-garden (passionate summer), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated, Today section rewritten, new SVG visual asset",
-        "changes": [
-          "Color scheme rotated: starry-night → lily-garden (passionate red/pink summer palette)",
-          "Hero tagline: 'The unseen architecture of light' (was 'Where twilight gathers the day's last glow')",
-          "Rewrote all 5 section headings with fresh poetic language and <em> emphasis",
-          "Moon heading: 'The weight of borrowed light' | Philosophy: 'What the wave forgets it is' | Gita: 'The geometry of surrender' | Shiva: 'Where silence becomes sound' | Art: 'The unseen architecture of beauty'",
-          "Rotated imageCard factIndex: Moon=2 (Endymion), Philosophy=7 (Dunning-Kruger), Gita=8 (Einstein), Shiva=5 (Om/Vedas), Art=1 (sunflower heliotropism)",
-          "Rotated facts.slice: Moon=[10,12], Philosophy=[2,4], Gita=[10,12], Shiva=[12,14], Art=[10,12]",
-          "Rotated quoteIndex: Moon=4 (Shakespeare), Philosophy=5 (Socrates), Gita=6 (Atrijā), Shiva=7 (Atrijā), Art=8 (Atrijā)",
-          "Rewrote Today heading: 'The deepening gold — midsummer's quiet zenith'",
-          "Rewrote Today intro: garden fullness, solstice approach, light thickening like honey",
-          "Generated new SVG visual asset: lily-garden-at-dusk.svg (9.7 KB) in mutation-assets/2026-06-09/",
-          "Added 'summer' season to lily-garden color scheme"
-        ],
-        "date": "2026-06-09"
-      },
       {
         "time": "16:47:00",
         "type": "feature",
@@ -337,6 +298,36 @@
           "Section \"art\": Art & Beauty theme, fact #14"
         ],
         "date": "2026-07-01"
+      },
+      {
+        "time": "16:33:07",
+        "type": "daily-mutation",
+        "description": "Daily mutation #183: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: sunflower (warm)",
+          "Season: summer",
+          "Shader — strokeDensity: 10.3, swirlFrequency: 7.8, colorIntensity: 1.49",
+          "Section \"moon\": Selene & The Moon theme, fact #4",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #6",
+          "Section \"shiva\": Shiv Purana theme, fact #13",
+          "Section \"art\": Art & Beauty theme, fact #8"
+        ],
+        "date": "2026-07-02"
+      },
+      {
+        "time": "00:52:48",
+        "type": "daily-mutation",
+        "description": "Daily mutation #184: lily-garden colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: lily-garden (passionate)",
+          "Season: summer",
+          "Shader — strokeDensity: 9.4, swirlFrequency: 10.6, colorIntensity: 1.46",
+          "Section \"moon\": Selene & The Moon theme, fact #12",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #0",
+          "Section \"shiva\": Shiv Purana theme, fact #9",
+          "Section \"art\": Art & Beauty theme, fact #12"
+        ],
+        "date": "2026-07-03"
       }
     ]
   }
