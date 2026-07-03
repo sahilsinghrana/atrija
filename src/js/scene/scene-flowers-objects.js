@@ -11,7 +11,7 @@ const TULIP_COLORS = [
 export function createTulips(scene, count) {
   for (let i = 0; i < count; i++) {
     const color = TULIP_COLORS[i % TULIP_COLORS.length];
-    const openness = 0.4 + Math.random() * 0.4;
+    const openness = 0.3 + Math.random() * 0.4;
     const seed = Math.floor(Math.random() * 10000);
     const canvasTex = new THREE.CanvasTexture(makeTulipCanvas(160, color, openness, seed));
     canvasTex.minFilter = THREE.LinearFilter;
@@ -37,10 +37,10 @@ export function createTulips(scene, count) {
     const spreadX = isMobile ? 14 : 20;
     const spreadZ = isMobile ? 10 : 14;
 
-    sprite.scale.set(1.6 * s, 2.2 * s, 1);
+    sprite.scale.set(1.4 * s, 2.0 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
-      isMobile ? -0.1 + s * 0.25 : -0.3 + s * 0.22,
+      isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
       (Math.random() - 0.5) * spreadZ + 1.5,
     );
 
@@ -57,6 +57,62 @@ export function createTulips(scene, count) {
   }
 }
 
+export function createTulipGarden(scene, count) {
+  const cols = Math.ceil(Math.sqrt(count));
+  const rows = Math.ceil(count / cols);
+  const spacingX = isMobile ? 14 : 20;
+  const spacingZ = isMobile ? 10 : 14;
+  const startX = -((cols - 1) * spacingX) / 2;
+  const startZ = -((rows - 1) * spacingZ) / 2;
+
+  let index = 0;
+  for (let row = 0; row < rows && index < count; row++) {
+    for (let col = 0; col < cols && index < count; col++) {
+      const color = TULIP_COLORS[index % TULIP_COLORS.length];
+      const openness = 0.3 + Math.random() * 0.4;
+      const seed = Math.floor(Math.random() * 10000);
+      const canvasTex = new THREE.CanvasTexture(makeTulipCanvas(160, color, openness, seed));
+      canvasTex.minFilter = THREE.LinearFilter;
+
+      const sprite = new THREE.Sprite(
+        new THREE.SpriteMaterial({
+          map: canvasTex,
+          transparent: true,
+          depthWrite: false,
+        })
+      );
+
+      const roll = Math.random();
+      let s;
+      if (roll < 0.2) {
+        s = isMobile ? 2.0 + Math.random() * 0.8 : 1.8 + Math.random() * 1.0;
+      } else if (roll < 0.6) {
+        s = isMobile ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8;
+      } else {
+        s = isMobile ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6;
+      }
+
+      sprite.scale.set(1.4 * s, 2.0 * s, 1);
+      sprite.position.set(
+        startX + col * spacingX,
+        isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
+        startZ + row * spacingZ
+      );
+
+      const phase = Math.random() * Math.PI * 2;
+      const baseY = sprite.position.y;
+      const baseX = sprite.position.x;
+      sprite.userData.animate = function (o, t) {
+        o.position.x = baseX + Math.sin(t * 0.4 + phase) * 0.03;
+        o.position.y = baseY + Math.sin(t * 0.6 + phase) * 0.04;
+        o.material.rotation = Math.sin(t * 0.5 + phase) * 0.05;
+      };
+
+      scene.add(sprite);
+      index++;
+    }
+  }
+}
 export function createSunflowers(scene, count) {
   const colors = [
     "#FFD700", "#FFC700", "#FFB700", "#FFAA00", "#FF9500",
