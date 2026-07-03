@@ -1675,9 +1675,9 @@
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-07-03T21:34:04.379760Z",
-  "lastReviewAt": "2026-07-03T21:34:04.379865Z",
-  "lastReviewResult": "Kanban review: Found 1 idea(s) in ideas array (status backlog) missing from backlog column: ['idea-084']; Added 1 missing idea(s) to backlog column; Found 2 task(s) in backlog column not in ideas array (or not status backlog): ['idea-097', 'idea-098']; Removed 2 extra task(s) from backlog column; Reordered backlog tasks by priority (high → medium → low); Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)",
+  "generatedAt": "2026-07-03T21:35:15.799706Z",
+  "lastReviewAt": "2026-07-03T21:35:15.799749Z",
+  "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)",
   "changelog": [
     {
       "timestamp": "2026-06-29T03:00:00Z",
