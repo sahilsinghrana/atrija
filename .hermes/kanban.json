@@ -302,6 +302,36 @@
           "title": "Interactive Firefly Jar",
           "priority": "medium",
           "status": "backlog"
+        },
+        {
+          "id": "idea-20260704061800",
+          "title": "Adaptive Texture Compression for Mobile Devices",
+          "description": "Use basis universal or similar to compress textures based on device capabilities, reducing memory usage and improving load times. The system detects GPU capabilities and loads appropriate texture formats (ASTC for mobile, BC7 for desktop) to optimize memory bandwidth and visual quality.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "See PRD for detailed test plan."
+        },
+        {
+          "id": "idea-20260704061801",
+          "title": "Integrate Accessibility Testing into CI Pipeline",
+          "description": "Add automated accessibility checks using axe-core to the CI/CD pipeline to catch accessibility regressions early. The system will run accessibility tests on every build and report violations.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "See PRD for detailed test plan."
+        },
+        {
+          "id": "idea-20260704061802",
+          "title": "User-Selected Flower Type Density Control",
+          "description": "Add a setting to control the density of flowers (sunflowers, tulips, lilies) in the 3D scene, allowing users to trade off visual richness for performance. Users can choose between Off, Low, Medium, and High density via a UI control.",
+          "category": "Interactivity",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "See PRD for detailed test plan."
         }
       ]
     },
@@ -1708,12 +1738,39 @@
       "title": "Interactive Firefly Jar",
       "priority": "medium",
       "status": "backlog"
+    },
+    {
+      "id": "idea-20260704061800",
+      "title": "Adaptive Texture Compression for Mobile Devices",
+      "description": "Use basis universal or similar to compress textures based on device capabilities, reducing memory usage and improving load times. The system detects GPU capabilities and loads appropriate texture formats (ASTC for mobile, BC7 for desktop) to optimize memory bandwidth and visual quality.",
+      "category": "Performance Optimizations",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-20260704061800.md"
+    },
+    {
+      "id": "idea-20260704061801",
+      "title": "Integrate Accessibility Testing into CI Pipeline",
+      "description": "Add automated accessibility checks using axe-core to the CI/CD pipeline to catch accessibility regressions early. The system will run accessibility tests on every build and report violations.",
+      "category": "Testing & Reliability",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-20260704061801.md"
+    },
+    {
+      "id": "idea-20260704061802",
+      "title": "User-Selected Flower Type Density Control",
+      "description": "Add a setting to control the density of flowers (sunflowers, tulips, lilies) in the 3D scene, allowing users to trade off visual richness for performance. Users can choose between Off, Low, Medium, and High density via a UI control.",
+      "category": "Interactivity",
+      "priority": "medium",
+      "status": "backlog",
+      "prd": "PRD-idea-20260704061802.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-07-04T00:28:31.835882Z",
+  "generatedAt": "2026-07-04T00:59:47.635525Z",
   "lastReviewAt": "2026-07-03T21:35:15.799749Z",
-  "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)\nGenerated 3 new ideas via automated idea generation: Bioluminescent Mushroom Glow, Adaptive Quality Scaling Based on Battery Level, Interactive Firefly Jar",
+  "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)\nGenerated 3 new ideas via automated idea generation: Bioluminescent Mushroom Glow, Adaptive Quality Scaling Based on Battery Level, Interactive Firefly Jar\\nGenerated 3 new ideas via automated idea generation: idea-20260704061800, idea-20260704061801, idea-20260704061802",
   "changelog": [
     {
       "timestamp": "2026-06-29T03:00:00Z",
