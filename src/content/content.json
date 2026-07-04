@@ -25,10 +25,10 @@
     "moon": {
       "label": "I. Silent Wheel",
       "heading": "<em>Lunar</em> gaze",
-      "intro": "Ancient Babylonian astronomers tracked the Moon's cycles with astonishing precision, creating lunar calendars that predicted eclipses centuries in advance. The Moon was humanity's first clock, the original measure of time's passage.",
+      "intro": "A lunar day lasts 29.5 Earth days — two weeks of blazing sunlight followed by two weeks of absolute cold. Life on the Moon would mean adapting to extremes, learning to bloom in light and conserve in darkness, like a tulip that knows precisely when to open and when to fold.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 13
+        "factIndex": 7
       },
       "facts": [
         "Tidal lock: one side.",
@@ -36,16 +36,16 @@
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 4
+        "quoteIndex": 2
       }
     },
     "shiva": {
       "label": "II. Ring of Flame",
       "heading": "<em>Flame</em> dance",
-      "intro": "Shiva sits in meditation on Mount Kailash, the axis mundi, the center of the world. His stillness is not inactivity — it is the stillness of a mind that has transcended all duality, all desire, all fear.",
+      "intro": "CERN's campus in Geneva houses a statue of Nataraja, gifted by India in 2004. The dance of Shiva and the dance of particles — two ways of describing the same ceaseless motion at the heart of existence.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 9
+        "factIndex": 15
       },
       "facts": [
         "Drum: first language.",
@@ -53,16 +53,16 @@
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 2
+        "quoteIndex": 4
       }
     },
     "art": {
       "label": "III. Golden Rule",
       "heading": "<em>Canvas</em> light",
-      "intro": "The flute is the oldest instrument — a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
+      "intro": "The most haunting melodies are often played on the simplest instruments. A flute carved from bamboo, a drum stretched with skin, a voice with no accompaniment — when the medium disappears, only the music remains. Mastery is not complexity; mastery is transparency.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 9
+        "factIndex": 11
       },
       "facts": [
         "Golden ratio: 1.618.",
@@ -76,10 +76,10 @@
     "philosophy": {
       "label": "IV. No Self",
       "heading": "<em>Being</em> for",
-      "intro": "True art requires the death of the ego. The painter who paints for fame paints nothing true. The musician who plays for applause hears nothing real. Creation begins where the self ends.",
+      "intro": "The Stoics taught that we suffer more in imagination than in reality. The ego amplifies every slight, every failure, turning molehills into mountains. Freedom begins when we stop narrating our wounds.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 9
+        "factIndex": 5
       },
       "facts": [
         "Wave: knows water.",
@@ -87,7 +87,7 @@
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 1
+        "quoteIndex": 7
       }
     }
   },
@@ -318,17 +318,17 @@
         "date": "2026-07-03"
       },
       {
-        "time": "00:33:38",
+        "time": "00:39:08",
         "type": "daily-mutation",
-        "description": "Daily mutation #185: moonlit-silver colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "description": "Daily mutation #185: starry-night colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
         "changes": [
-          "Color scheme: moonlit-silver (luminous)",
+          "Color scheme: starry-night (contemplative)",
           "Season: summer",
-          "Shader — strokeDensity: 5.4, swirlFrequency: 15, colorIntensity: 1.18",
-          "Section \"moon\": Selene & The Moon theme, fact #3",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #8",
-          "Section \"shiva\": Shiv Purana theme, fact #6",
-          "Section \"art\": Art & Beauty theme, fact #7"
+          "Shader — strokeDensity: 6.6, swirlFrequency: 17.8, colorIntensity: 1.59",
+          "Section \"moon\": Selene & The Moon theme, fact #5",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #1",
+          "Section \"shiva\": Shiv Purana theme, fact #0",
+          "Section \"art\": Art & Beauty theme, fact #4"
         ],
         "date": "2026-07-04"
       }
