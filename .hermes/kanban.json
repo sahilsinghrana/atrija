@@ -284,6 +284,24 @@
           ],
           "effort": "1 session",
           "testingStrategy": "- Unit tests: Test Vibration API detection, reduced motion blocking, opt-in logic, pattern dispatch, Shift+H toggle, disabled state no-op.\n- Integration tests: Verify custom events dispatched from existing modules trigger vibration.\n- Acceptance criteria: Only activates on Vibration API devices; opt-in via first interaction; 5 patterns; Shift+H toggle; reduced motion disables; graceful no-op on desktop/iOS."
+        },
+        {
+          "id": "idea-20260704055721",
+          "title": "Bioluminescent Mushroom Glow",
+          "priority": "medium",
+          "status": "backlog"
+        },
+        {
+          "id": "idea-20260704055721-2",
+          "title": "Adaptive Quality Scaling Based on Battery Level",
+          "priority": "medium",
+          "status": "backlog"
+        },
+        {
+          "id": "idea-20260704055721-3",
+          "title": "Interactive Firefly Jar",
+          "priority": "medium",
+          "status": "backlog"
         }
       ]
     },
@@ -1672,12 +1690,30 @@
       "priority": "medium",
       "status": "backlog",
       "prd": "PRD-idea-096-whisper-mode.md"
+    },
+    {
+      "id": "idea-20260704055721",
+      "title": "Bioluminescent Mushroom Glow",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-20260704055721-2",
+      "title": "Adaptive Quality Scaling Based on Battery Level",
+      "priority": "medium",
+      "status": "backlog"
+    },
+    {
+      "id": "idea-20260704055721-3",
+      "title": "Interactive Firefly Jar",
+      "priority": "medium",
+      "status": "backlog"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-07-03T21:35:15.799706Z",
+  "generatedAt": "2026-07-04T00:28:31.835882Z",
   "lastReviewAt": "2026-07-03T21:35:15.799749Z",
-  "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)",
+  "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)\nGenerated 3 new ideas via automated idea generation: Bioluminescent Mushroom Glow, Adaptive Quality Scaling Based on Battery Level, Interactive Firefly Jar",
   "changelog": [
     {
       "timestamp": "2026-06-29T03:00:00Z",
