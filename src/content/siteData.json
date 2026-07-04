@@ -493,9 +493,9 @@
       "text": "#eceff1",
       "mood": "luminous",
       "shaderParams": {
-        "strokeDensity": 5.7,
-        "swirlFrequency": 14.2,
-        "colorIntensity": 1.21
+        "strokeDensity": 5.4,
+        "swirlFrequency": 15,
+        "colorIntensity": 1.18
       },
       "seasons": [
         "winter",
