@@ -403,9 +403,9 @@
       "text": "#fff8e1",
       "mood": "warm",
       "shaderParams": {
-        "strokeDensity": 10.3,
-        "swirlFrequency": 7.4,
-        "colorIntensity": 1.4
+        "strokeDensity": 9.3,
+        "swirlFrequency": 7.9,
+        "colorIntensity": 1.5
       },
       "seasons": [
         "autumn",
@@ -439,9 +439,9 @@
       "text": "#e8e8f0",
       "mood": "contemplative",
       "shaderParams": {
-        "strokeDensity": 6.2,
-        "swirlFrequency": 16.3,
-        "colorIntensity": 1.55
+        "strokeDensity": 6.6,
+        "swirlFrequency": 17.8,
+        "colorIntensity": 1.59
       },
       "seasons": [
         "winter",
@@ -493,9 +493,9 @@
       "text": "#eceff1",
       "mood": "luminous",
       "shaderParams": {
-        "strokeDensity": 5.7,
-        "swirlFrequency": 14.2,
-        "colorIntensity": 1.21
+        "strokeDensity": 5.4,
+        "swirlFrequency": 15,
+        "colorIntensity": 1.18
       },
       "seasons": [
         "winter",

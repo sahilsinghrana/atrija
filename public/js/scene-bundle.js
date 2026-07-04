@@ -15988,29 +15988,30 @@ const La = [
   "#BA68C8"
 ];
 function kd(i, t) {
-  for (let e = 0; e < t; e++) {
-    const n = La[e % La.length], r = 0.4 + Math.random() * 0.4, s = new or(Vd(160, n, r));
-    s.minFilter = 1006;
-    const a = new ar(
-      new _i({
-        map: s,
-        transparent: !0,
-        depthWrite: !1
-      })
-    ), o = Math.random();
-    let l;
-    o < 0.2 ? l = Xt ? 2 + Math.random() * 0.8 : 1.8 + Math.random() * 1 : o < 0.6 ? l = Xt ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8 : l = Xt ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6;
-    const c = Xt ? 14 : 20, h = Xt ? 10 : 14;
-    a.scale.set(1.6 * l, 2.2 * l, 1), a.position.set(
-      (Math.random() - 0.5) * c,
-      Xt ? -0.1 + l * 0.25 : -0.3 + l * 0.22,
-      (Math.random() - 0.5) * h + 1.5
-    );
-    const f = Math.random() * Math.PI * 2, p = a.position.y, m = a.position.x;
-    a.userData.animate = function(g, _) {
-      g.position.x = m + Math.sin(_ * 0.4 + f) * 0.03, g.position.y = p + Math.sin(_ * 0.6 + f) * 0.04, g.material.rotation = Math.sin(_ * 0.5 + f) * 0.05;
-    }, i.add(a);
-  }
+  const e = Math.ceil(Math.sqrt(t)), n = Math.ceil(t / e), r = Xt ? 14 : 20, s = Xt ? 10 : 14, a = -((e - 1) * r) / 2, o = -((n - 1) * s) / 2;
+  let l = 0;
+  for (let c = 0; c < n && l < t; c++)
+    for (let h = 0; h < e && l < t; h++) {
+      const f = La[l % La.length], p = 0.3 + Math.random() * 0.4, m = new or(Vd(160, f, p));
+      m.minFilter = 1006;
+      const g = new ar(
+        new _i({
+          map: m,
+          transparent: !0,
+          depthWrite: !1
+        })
+      ), _ = Math.random();
+      let d;
+      _ < 0.2 ? d = Xt ? 2 + Math.random() * 0.8 : 1.8 + Math.random() * 1 : _ < 0.6 ? d = Xt ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8 : d = Xt ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6, g.scale.set(1.4 * d, 2 * d, 1), g.position.set(
+        a + h * r,
+        Xt ? -0.1 + d * 0.3 : -0.4 + d * 0.25,
+        o + c * s
+      );
+      const u = Math.random() * Math.PI * 2, S = g.position.y, v = g.position.x;
+      g.userData.animate = function(b, R) {
+        b.position.x = v + Math.sin(R * 0.4 + u) * 0.03, b.position.y = S + Math.sin(R * 0.6 + u) * 0.04, b.material.rotation = Math.sin(R * 0.5 + u) * 0.05;
+      }, i.add(g), l++;
+    }
 }
 function Wd(i, t) {
   const e = [
