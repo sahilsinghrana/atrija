@@ -35,8 +35,8 @@ export function bootScene() {
     const starCount = isLowEnd ? 750 : 2500;
     const noteCount = isLowEnd ? 15 : 18;
     const sunflowerCount = isLowEnd ? 5 : 10;
-    const lilyCount = isLowEnd ? 2 : 4;
-    const tulipCount = isLowEnd ? 18 : 30;
+    const lilyCount = isLowEnd ? 30 : 60;
+    const tulipCount = isLowEnd ? 40 : 80;
     const waveSegs = isLowEnd ? 18 : 32;
 
     if (window.__updateLoaderProgress) window.__updateLoaderProgress(30);

@@ -16002,7 +16002,7 @@ function kd(i, t) {
         })
       ), _ = Math.random();
       let d;
-      _ < 0.2 ? d = Xt ? 2 + Math.random() * 0.8 : 1.8 + Math.random() * 1 : _ < 0.6 ? d = Xt ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8 : d = Xt ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6, g.scale.set(1.4 * d, 2 * d, 1), g.position.set(
+      _ < 0.2 ? d = Xt ? 2.5 + Math.random() * 1 : 2.2 + Math.random() * 1.2 : _ < 0.6 ? d = Xt ? 1.8 + Math.random() * 0.8 : 1.6 + Math.random() * 1 : d = Xt ? 1.2 + Math.random() * 0.7 : 1 + Math.random() * 0.8, g.scale.set(2.8 * d, 4 * d, 1), g.position.set(
         a + h * r,
         Xt ? -0.1 + d * 0.3 : -0.4 + d * 0.25,
         o + c * s
@@ -16098,7 +16098,7 @@ function Xd(i, t) {
     "#c0a080"
   ];
   for (let n = 0; n < t; n++) {
-    const r = e[Math.floor(Math.random() * e.length)], s = Math.floor(Math.random() * 3), a = Xt ? 0.7 + Math.random() * 0.5 : 0.5 + Math.random() * 0.5, o = Xt ? 10 : 14, l = Xt ? 6 : 8, c = new or(makeLilyCanvas(160, r, s));
+    const r = e[Math.floor(Math.random() * e.length)], s = Math.floor(Math.random() * 3), a = Xt ? 0.7 + Math.random() * 1 : 0.5 + Math.random() * 1, o = Xt ? 10 : 14, l = Xt ? 6 : 8, c = new or(makeLilyCanvas(160, r, s));
     c.minFilter = 1006;
     const h = new ar(
       new _i({
@@ -16107,7 +16107,7 @@ function Xd(i, t) {
         depthWrite: !1
       })
     );
-    h.scale.set(1 * a, 1.6 * a, 1), h.position.set(
+    h.scale.set(2 * a, 3.2 * a, 1), h.position.set(
       (Math.random() - 0.5) * o,
       Xt ? -0.1 + a * 0.3 : -0.4 + a * 0.25,
       (Math.random() - 0.5) * l + 1
@@ -16759,7 +16759,7 @@ function Yr() {
     ss && ss.observe(i);
     const t = new sp(i);
     t.scene.userData._camera = t.camera, window.__sceneLoadingStarted && window.__sceneLoadingStarted();
-    const e = he ? 750 : 2500, n = he ? 15 : 18, r = he ? 5 : 10, s = he ? 2 : 4, a = he ? 18 : 30, o = he ? 18 : 32;
+    const e = he ? 750 : 2500, n = he ? 15 : 18, r = he ? 5 : 10, s = he ? 30 : 60, a = he ? 40 : 80, o = he ? 18 : 32;
     window.__updateLoaderProgress && window.__updateLoaderProgress(30), qd(t.scene, e), Id(t.scene), jd(t.scene, o), Qd(t.scene, he ? 2 : 5), ep(t.scene), window.__updateLoaderProgress && window.__updateLoaderProgress(60), requestAnimationFrame(() => {
       window.__updateLoaderProgress && window.__updateLoaderProgress(90);
       const c = document.getElementById("loader");

@@ -27,17 +27,17 @@ export function createTulips(scene, count) {
     const roll = Math.random();
     let s;
     if (roll < 0.2) {
-      s = isMobile ? 2.0 + Math.random() * 0.8 : 1.8 + Math.random() * 1.0;
+      s = isMobile ? 2.5 + Math.random() * 1.0 : 2.2 + Math.random() * 1.2;
     } else if (roll < 0.6) {
-      s = isMobile ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8;
+      s = isMobile ? 1.8 + Math.random() * 0.8 : 1.6 + Math.random() * 1.0;
     } else {
-      s = isMobile ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6;
+      s = isMobile ? 1.2 + Math.random() * 0.7 : 1.0 + Math.random() * 0.8;
     }
 
     const spreadX = isMobile ? 14 : 20;
     const spreadZ = isMobile ? 10 : 14;
 
-    sprite.scale.set(1.4 * s, 2.0 * s, 1);
+    sprite.scale.set(2.8 * s, 4.0 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
       isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
@@ -85,14 +85,14 @@ export function createTulipGarden(scene, count) {
       const roll = Math.random();
       let s;
       if (roll < 0.2) {
-        s = isMobile ? 2.0 + Math.random() * 0.8 : 1.8 + Math.random() * 1.0;
+        s = isMobile ? 2.5 + Math.random() * 1.0 : 2.2 + Math.random() * 1.2;
       } else if (roll < 0.6) {
-        s = isMobile ? 1.4 + Math.random() * 0.6 : 1.2 + Math.random() * 0.8;
+        s = isMobile ? 1.8 + Math.random() * 0.8 : 1.6 + Math.random() * 1.0;
       } else {
-        s = isMobile ? 0.9 + Math.random() * 0.5 : 0.7 + Math.random() * 0.6;
+        s = isMobile ? 1.2 + Math.random() * 0.7 : 1.0 + Math.random() * 0.8;
       }
 
-      sprite.scale.set(1.4 * s, 2.0 * s, 1);
+      sprite.scale.set(2.8 * s, 4.0 * s, 1);
       sprite.position.set(
         startX + col * spacingX,
         isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,
@@ -263,7 +263,7 @@ export function createLilies(scene, count) {
   for (let i = 0; i < count; i++) {
     const color = colors[Math.floor(Math.random() * colors.length)];
     const variant = Math.floor(Math.random() * 3);
-    const s = isMobile ? 0.7 + Math.random() * 0.5 : 0.5 + Math.random() * 0.5;
+    const s = isMobile ? 0.7 + Math.random() * 1.0 : 0.5 + Math.random() * 1.0;
     const spreadX = isMobile ? 10 : 14;
     const spreadZ = isMobile ? 6 : 8;
 
@@ -278,7 +278,7 @@ export function createLilies(scene, count) {
       })
     );
 
-    sprite.scale.set(1.0 * s, 1.6 * s, 1);
+    sprite.scale.set(2.0 * s, 3.2 * s, 1);
     sprite.position.set(
       (Math.random() - 0.5) * spreadX,
       isMobile ? -0.1 + s * 0.3 : -0.4 + s * 0.25,

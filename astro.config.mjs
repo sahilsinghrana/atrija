@@ -8,12 +8,9 @@ export default defineConfig({
   },
   vite: {
     build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          manualChunks: undefined
-        }
-      }
+      sourcemap: false,
+      minify: false,
+      target: 'esnext'
     },
     optimizeDeps: {
       include: ['three', 'three/examples/jsm/postprocessing/EffectComposer.js', 'three/examples/jsm/postprocessing/ShaderPass.js', 'three/examples/jsm/shaders/CopyShader.js', 'three/examples/jsm/shaders/VignetteShader.js']

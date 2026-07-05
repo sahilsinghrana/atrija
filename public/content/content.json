@@ -12,8 +12,8 @@
       "tagline": "<em>Time</em> shapes us"
     },
     "today": {
-      "heading": "What the <em>Ego</em> reveals today",
-      "intro": "Sun overhead, absolute clarity, afternoon testing morning's intentions.",
+      "heading": "What the <em>Shiv</em> conceals today",
+      "intro": "In many cultures, the new moon is considered a time for planting seeds — both literal and metaphorical. Darkness is not emptiness; it is the womb from which light is born.",
       "visualAsset": {
         "type": "svg",
         "path": "/mutation-assets/2026-07-01/visual.svg",
@@ -25,10 +25,10 @@
     "moon": {
       "label": "I. Silent Wheel",
       "heading": "<em>Lunar</em> gaze",
-      "intro": "The Moon's gravitational pull creates the tides, but it also subtly affects the water within our bodies. We are, in a very real sense, lunar beings — creatures of the tide.",
+      "intro": "Selene fell in love with the mortal Endymion, asking Zeus to grant him eternal sleep so he would never fade. The Moon's love is possessive — it wants to freeze beauty in time, yet beauty exists only because it passes.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 1
+        "factIndex": 0
       },
       "facts": [
         "Tidal lock: one side.",
@@ -36,16 +36,16 @@
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 0
+        "quoteIndex": 5
       }
     },
     "shiva": {
       "label": "II. Ring of Flame",
       "heading": "<em>Flame</em> dance",
-      "intro": "Shiva is called Mahakala — the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
+      "intro": "Shiva is called Tryambaka — the three-eyed one. The third eye represents the eye of wisdom that sees beyond the duality of good and evil, self and other, creation and destruction. When it opens, the universe is consumed in flame — not as punishment, but as liberation.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 4
+        "factIndex": 10
       },
       "facts": [
         "Drum: first language.",
@@ -53,16 +53,16 @@
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 2
+        "quoteIndex": 5
       }
     },
     "art": {
       "label": "III. Golden Rule",
       "heading": "<em>Canvas</em> light",
-      "intro": "Painted from an asylum window, yet it became the most recognized painting in history. The greatest art often emerges not from comfort but from the depths of human suffering — beauty forged in the furnace of pain.",
+      "intro": "Every great work of art contains a paradox: it is both deeply personal and universally resonant. A single lily painted with honesty can move a stranger to tears across centuries and cultures.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 4
+        "factIndex": 1
       },
       "facts": [
         "Golden ratio: 1.618.",
@@ -70,7 +70,7 @@
       ],
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 6
+        "quoteIndex": 8
       }
     },
     "philosophy": {
@@ -79,7 +79,7 @@
       "intro": "Humility is not the denial of one's abilities but the quiet recognition that all gifts flow through us, not from us. The river does not boast of the ocean it feeds.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 12
+        "factIndex": 1
       },
       "facts": [
         "Wave: knows water.",
@@ -94,24 +94,6 @@
   "changelog": {
     "version": "1.0.0",
     "entries": [
-      {
-        "time": "06:00:00",
-        "type": "daily-mutation",
-        "description": "Daily mutation #163: Color scheme → starry-night (deep contemplative blue), new hero tagline, all 5 headings rewritten, all fact/quote indices rotated dramatically, Today section rewritten, new aurora SVG visual asset",
-        "changes": [
-          "Color scheme rotated: sunflower (warm gold) → starry-night (contemplative deep blue #1a237e + gold #ffd54f accents + cyan #4fc3f7), reordered array so dayOfYear%5=1 selects starry-night",
-          "Hero tagline: 'Every darkness is a canvas waiting for its stars' (was 'Where gold light learns to breathe')",
-          "Rewrote all 5 section headings with fresh poetic language and <em> emphasis",
-          "Moon: 'What the night keeps in trust' | Philosophy: 'Dissolving the outline of the self' | Gita: 'The surrender that is harder than war' | Shiva: 'The sound that precedes creation' | Art: 'The alchemy of seeing truly'",
-          "Rotated imageCard factIndex: Moon=2 (Selene/Endymion), Philosophy=11 (ego castle on sand), Gita=5 (Gita spoken on battlefield), Shiva=4 (Shiva's drum/language), Art=14 (brushstroke as decision)",
-          "Rotated facts.slice: Moon=[7,9], Philosophy=[1,3], Gita=[10,12], Shiva=[11,13], Art=[6,8]",
-          "Rotated quoteIndex: Moon=1 (Gibran: darker side), Philosophy=7 (Atrijā: ego walls/soul bridges), Gita=0 (Gita: believe in), Shiva=2 (Inspired: Supreme Lord in all beings), Art=3 (Degas: make others see)",
-          "Rewrote Today heading: 'The listening sky — where light bends into color'",
-          "Rewrote Today intro: aurora as conversation, geometry of wonder, solar wind and magnetic field ceremony",
-          "Generated new SVG visual asset: visual.svg — aurora borealis with vivid green, purple, pink, gold, teal on starlit sky"
-        ],
-        "date": "2026-06-10"
-      },
       {
         "time": "12:00:00",
         "type": "content",
@@ -318,19 +300,36 @@
         "date": "2026-07-03"
       },
       {
-        "time": "06:34:27",
+        "time": "12:51:37",
         "type": "daily-mutation",
-        "description": "Daily mutation #185: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "description": "Daily mutation #185: starry-night colors (summer season), Selene & The Moon → Ego & Arrogance → Art & Beauty → Shiv Purana → Art & Beauty",
         "changes": [
-          "Color scheme: sunflower (warm)",
+          "Color scheme: starry-night (contemplative)",
           "Season: summer",
-          "Shader — strokeDensity: 9.3, swirlFrequency: 7.9, colorIntensity: 1.5",
-          "Section \"moon\": Selene & The Moon theme, fact #11",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #0",
-          "Section \"shiva\": Shiv Purana theme, fact #8",
-          "Section \"art\": Art & Beauty theme, fact #11"
+          "Shader — strokeDensity: 6.4, swirlFrequency: 18.4, colorIntensity: 1.55",
+          "Section \"moon\": Selene & The Moon theme, fact #3",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #10",
+          "Section \"today\": Art & Beauty theme, fact #9",
+          "Section \"shiva\": Shiv Purana theme, fact #6",
+          "Section \"art\": Art & Beauty theme, fact #6"
         ],
         "date": "2026-07-04"
+      },
+      {
+        "time": "06:36:46",
+        "type": "daily-mutation",
+        "description": "Daily mutation #186: starry-night colors (summer season), Selene & The Moon → Ego & Arrogance → Selene & The Moon → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: starry-night (contemplative)",
+          "Season: summer",
+          "Shader — strokeDensity: 6, swirlFrequency: 20.2, colorIntensity: 1.62",
+          "Section \"moon\": Selene & The Moon theme, fact #15",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #0",
+          "Section \"today\": Selene & The Moon theme, fact #10",
+          "Section \"shiva\": Shiv Purana theme, fact #9",
+          "Section \"art\": Art & Beauty theme, fact #0"
+        ],
+        "date": "2026-07-05"
       }
     ]
   }

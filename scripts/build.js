@@ -10,13 +10,17 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..');
 
-function run(cmd, label) {
+function run(cmd, label, timeoutMs = 0) {
   console.log(`\n▶ ${label}`);
   try {
-    execSync(cmd, { cwd: rootDir, stdio: 'inherit' });
-    console.log(`✓ ${label}`);
+    const options = { cwd: rootDir, stdio: 'inherit' };
+    if (timeoutMs > 0) {
+      options.timeout = timeoutMs;
+    }
+    execSync(cmd, options);
+    console.log(`\u2713 ${label}`);
   } catch (err) {
-    console.error(`✗ ${label}`);
+    console.error(`\u2717 ${label}`);
     process.exit(1);
   }
 }
@@ -24,11 +28,11 @@ function run(cmd, label) {
 // Step 1: Copy content files
 run('node scripts/copy-content.js', 'Copy content files');
 
-// Step 2: Build scene modules (Vite)
-run('node node_modules/vite/bin/vite.js build --config vite-scene.config.js', 'Build scene modules');
+// Step 2: Build scene modules (Vite) - increase timeout if needed
+run('node node_modules/vite/bin/vite.js build --config vite-scene.config.js', 'Build scene modules', 120000);
 
-// Step 3: Build Astro
-run('npx astro build', 'Build Astro site');
+// Step 3: Build Astro - increase timeout
+run('npx astro build', 'Build Astro site', 180000);
 
 // Step 4: Inject body tags (Astro 4.16.19 bug fix)
 run('node scripts/inject-body.js', 'Inject body tags');
@@ -41,6 +45,6 @@ run('node scripts/post-build.js', 'Post-build cache busting');
 console.log('\n▶ Deploy + restart nginx');
 execSync('rm -rf /var/www/html/* && cp -r dist/* /var/www/html/', { cwd: rootDir, stdio: 'inherit' });
 execSync('fuser -k 8080/tcp 2>/dev/null; sleep 2; nginx -g "daemon on;" 2>&1 | head -3', { cwd: rootDir, stdio: 'inherit' });
-console.log('✓ Deployed + nginx restarted');
+console.log('\u2713 Deployed + nginx restarted');
 
 console.log('\n✅ Build complete!');
