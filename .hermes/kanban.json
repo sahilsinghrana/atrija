@@ -53,12 +53,6 @@
           "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
         },
         {
-          "id": "idea-084",
-          "title": "Unit Tests for daily-mutate.js Content Pipeline Script",
-          "description": "Create unit tests for daily-mutate.js (426 lines) with vi.mock('fs'). Tests: JSON schema preservation, valid color scheme rotation, array bound safety, non-empty tagline/heading, changelog append semantics.",
-          "priority": "high"
-        },
-        {
           "id": "idea-068",
           "title": "Visual Regression Testing Infrastructure with Playwright",
           "description": "Playwright is installed but not configured. Set up visual regression testing using Playwright + pixelmatch (or @playwright/test built-in snapshot) to catch unintended visual changes in the 3D scene and UI. Configure: playwright.config.ts with device profiles (mobile 375px, tablet 768px, desktop 1280px), baseline screenshots for key states (initial load, scrolled to each section, theme switched, reader mode on/off), CI-friendly thresholds. Store baselines in tests/visual/baselines/. This enables safe refactoring of shaders, CSS, and 3D scene parameters.",
@@ -1638,8 +1632,9 @@
       "description": "Create unit tests for daily-mutate.js (426 lines) with vi.mock('fs'). Tests: JSON schema preservation, valid color scheme rotation, array bound safety, non-empty tagline/heading, changelog append semantics.",
       "category": "Testing & Reliability",
       "priority": "high",
-      "status": "backlog",
-      "prd": "PRD-idea-084-daily-mutate-tests.md"
+      "status": "done",
+      "prd": "PRD-idea-084-daily-mutate-tests.md",
+      "completedAt": "2026-07-01T06:21:10.434376Z"
     },
     {
       "id": "idea-081",
@@ -1826,8 +1821,8 @@
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
   "generatedAt": "2026-07-07T20:40:51.480578Z",
-  "lastReviewAt": "2026-07-03T21:35:15.799749Z",
-  "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)\nGenerated 3 new ideas via automated idea generation: Bioluminescent Mushroom Glow, Adaptive Quality Scaling Based on Battery Level, Interactive Firefly Jar\\nGenerated 3 new ideas via automated idea generation: idea-20260704061800, idea-20260704061801, idea-20260704061802\nGenerated 3 new ideas: <generator object <genexpr> at 0x76e4c92dc0> via kanban-generate cron job.",
+  "lastReviewAt": "2026-07-07T21:36:21Z",
+  "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)\nGenerated 3 new ideas via automated idea generation: Bioluminescent Mushroom Glow, Adaptive Quality Scaling Based on Battery Level, Interactive Firefly Jar\\nGenerated 3 new ideas via automated idea generation: idea-20260704061800, idea-20260704061801, idea-20260704061802\nGenerated 3 new ideas: <generator object <genexpr> at 0x76e4c92dc0> via kanban-generate cron job.\nKanban triage 2026-07-08: Removed idea-084 from backlog (already in done column); updated ideas[].status to match done column.",
   "changelog": [
     {
       "timestamp": "2026-06-29T03:00:00Z",
