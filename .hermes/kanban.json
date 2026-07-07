@@ -5,22 +5,6 @@
       "name": "💡 Idea Backlog",
       "tasks": [
         {
-          "id": "idea-069",
-          "title": "Geometry Instancing for Tulip and Sunflower Fields",
-          "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
-          "category": "Performance Optimizations",
-          "priority": "high",
-          "tags": [
-            "performance",
-            "instancing",
-            "3D",
-            "render-optimization",
-            "mobile"
-          ],
-          "effort": "3 sessions",
-          "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
-        },
-        {
           "id": "idea-074",
           "title": "Integrate Scene Health Check into Git-Pull-Build Job",
           "description": "Enhance the van-gogh-git-pull-build cron job to run the scene health check (scripts/scene-health-check.cjs) after a successful build and before deployment. If the health check fails, abort the deployment and alert the user via the changelog. This ensures that only healthy builds are deployed, reducing the risk of broken scenes in production.",
@@ -51,6 +35,22 @@
           ],
           "effort": "2 sessions",
           "testingStrategy": "- Unit tests: Create tests/unit/content-search.test.js using vitest jsdom environment. Test pure logic functions (normalize, scoreMatch, highlightMatch, truncate) with fixed inputs. Test search() with a mock CONTENT_INDEX array. Test DOM rendering with jsdom (overlay creation, result rendering, show/hide).\\n- Test cases: normalize() strips HTML tags, lowercases, collapses whitespace, handles unicode; scoreMatch() returns 0 for no match, 1 per word, +2 bonus for exact phrase; highlightMatch() wraps matches in <mark> with proper regex escaping; truncate() clips at word boundary with ellipsis; search() sorts by score descending, deduplicates by normalized text, caps at 30 results; DOM rendering creates overlay with correct ARIA attributes; performSearch renders grouped results with type labels.\\n- Integration tests: Verify that the module works with the real content.json and siteData.json structure (index building, search across all content types).\\n- Acceptance criteria: All new tests pass; >85% branch coverage for content-search.js; existing test suite unaffected; tests run in <10s; no network calls (fully mocked)."
+        },
+        {
+          "id": "idea-069",
+          "title": "Geometry Instancing for Tulip and Sunflower Fields",
+          "description": "Replace individual Mesh objects for tulips and sunflowers with InstancedMesh to reduce draw calls and improve rendering performance. This is particularly beneficial for mobile devices. Maintain individual positioning and animation capabilities through instance matrix updates. Must maintain visual fidelity while reducing GPU overhead.",
+          "category": "Performance Optimizations",
+          "priority": "high",
+          "tags": [
+            "performance",
+            "instancing",
+            "3D",
+            "render-optimization",
+            "mobile"
+          ],
+          "effort": "3 sessions",
+          "testingStrategy": "- Unit tests: Test instancing math and matrix updates in isolation\n- Integration tests: Verify that instanced flowers render correctly in the scene, maintain proper positioning, and animate as expected\n- Performance benchmark tests: Measure FPS improvement before and after implementation, targeting >10% FPS gain on mid-range mobile devices\n- Visual regression tests: Ensure instanced flowers appear visually identical to original implementation (same shapes, colors, animations)\n- Acceptance criteria: Draw call count reduced by 50%+ for flower elements; FPS improvement measurable on test devices; visual output matches original within acceptable tolerance; all existing flower-related functionality preserved"
         },
         {
           "id": "idea-084",
@@ -106,22 +106,6 @@
           "testingStrategy": "- Unit tests: Create tests/unit/changelog-app.test.js using vitest jsdom environment. Mock global.fetch to return fixture JSON responses for index.json and date files (2026-06-22.json, etc.). Use tests/fixtures/changelog/ directory with mock data.\\n- Test cases: index.json is fetched on init and rendered as date cards; clicking a date card triggers fetch of the corresponding date file; keyboard Enter/Space on focused card triggers expansion; expanded cards show entry details with correct type badges (daily-mutation, feature, fix, etc.); already-expanded cards do not re-fetch on re-click; fetch failures show user-friendly error state (not raw error); multiple date cards can be expanded independently.\\n- Integration tests: Verify that the module works with the real changelog/index.json structure (dates array, entry counts, etc.).\\n- Acceptance criteria: All new tests pass; >80% branch coverage for changelog-app.js; existing test suite unaffected; tests run in <10s; mock-based tests use no real network calls."
         },
         {
-          "id": "idea-083",
-          "title": "Lazy-Load Non-Critical UI Modules (theme-switcher, section-nav, reader-mode)",
-          "description": "theme-switcher.js (414 lines), section-nav.js (371 lines), and reader-mode.js (320 lines) are standalone modules loaded via <script> tags in index.astro on every page load, but they are only needed when the user interacts with their respective UI controls. Combined: 1105 lines of JS parsed/evaluated upfront. This task creates a lazy-loader pattern: these modules are loaded as dynamic imports only when the user first clicks their trigger button (theme toggle, nav dot, reader mode toggle). The <script> tags are replaced with small (~20-line) proxy modules that attach click listeners to the trigger elements and dynamically import the full module on first interaction. The flute button, accessibility features, and scene-bundle.js are NOT affected — they load normally. Total added code: ~60 lines across 3 proxy modules. Zero scene-init.js changes.",
-          "category": "Performance Optimizations",
-          "priority": "medium",
-          "tags": [
-            "lazy-loading",
-            "performance",
-            "code-splitting",
-            "initial-load",
-            "standalone-modules"
-          ],
-          "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Test the proxy module logic by mocking dynamic import() and verifying it is NOT called until the trigger element is clicked. Test that subsequent clicks do not re-import (single-load guarantee).\\n- Integration tests: Verify that the full module loads and initializes correctly after first click. Test that all existing functionality (theme switching, nav scrolling, reader mode toggle) works identically after lazy loading.\\n- Performance tests: Measure initial JS parse/evaluate time before and after lazy loading; target >100ms reduction on mid-range mobile devices.\\n- Acceptance criteria: theme-switcher.js, section-nav.js, reader-mode.js are NOT in initial <script> tags; each has a ~20-line proxy module that loads on first click; all existing functionality preserved; dynamic import fires at most once per module; build succeeds; zero scene-init.js changes; total added code ~60 lines."
-        },
-        {
           "id": "idea-085",
           "title": "Unit Tests for moon-phase.js — Phase Calculation and Display Logic",
           "description": "public/js/moon-phase.js is a standalone client-side module with zero test coverage. It calculates the current moon phase fraction, maps it to a phase name (New Moon, Waxing Crescent, etc.), and renders the phase display in the UI. The core logic is pure and testable: given a specific date, it should return the correct phase fraction (0–1), the correct phase name string, and the correct emoji. This task creates tests/unit/moon-phase.test.js with: (1) tests against known astronomical new moon dates (e.g., 2026-01-19, 2026-02-17) to validate phase fraction accuracy, (2) tests for all 8 phase name boundaries (exact fraction values like 0.0625, 0.1875, etc.), (3) tests that the emoji mapping returns the correct Unicode character for each phase, (4) tests that the display rendering function produces the expected DOM structure, (5) tests for edge cases (leap years, year boundaries, epoch dates). Uses vitest with jsdom environment. Effort: 1-2 sessions.",
@@ -136,6 +120,59 @@
           ],
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Create tests/unit/moon-phase.test.js using vitest jsdom environment. Test pure calculation functions with fixed Date objects (not 'new Date()').\\n- Test cases: phase fraction accuracy against known new moon dates (within 1 day tolerance); all 8 phase name boundaries with exact fraction values; emoji mapping returns correct Unicode for each phase; display rendering produces expected DOM structure with phase name and emoji; edge cases (leap years, year boundaries, dates near epoch).\\n- Integration tests: Verify that the module works correctly when loaded in a real browser context by testing the DOM manipulation side.\\n- Acceptance criteria: All new tests pass; >85% branch coverage for moon-phase.js; existing test suite unaffected; tests run in <5s; no network calls (fully mocked)."
+        },
+        {
+          "id": "idea-091",
+          "title": "Unit Tests for performance-scaler.js — FPS Sampling and Quality Tier Logic",
+          "description": "public/js/performance-scaler.js (302 lines) is a standalone module with zero test coverage. It monitors FPS over a rolling window of 60 frames, calculates average FPS, and switches between quality tiers (high/medium/low) with cooldown and hysteresis heuristics. The core logic is pure and testable: given a sequence of frame times, it should compute the correct average FPS, apply the correct quality tier transition, respect cooldown periods, and persist state via sessionStorage. This task creates tests/unit/performance-scaler.test.js with: (1) tests for the FPS calculation logic with synthetic frame time sequences (steady 60fps, steady 20fps, mixed), (2) tests for quality tier threshold detection (below 30fps triggers downgrade, above 50fps for 5s triggers upgrade), (3) tests for cooldown enforcement (no rapid tier flipping), (4) tests for hysteresis (upgrade threshold differs from downgrade threshold), (5) tests for sessionStorage persistence and restoration, (6) tests for the device capability detection (low-end mobile caps at medium quality). Uses vitest with jsdom environment. Effort: 1-2 sessions.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [
+            "unit-tests",
+            "performance-scaler",
+            "client-side",
+            "jsdom",
+            "fps",
+            "quality-tiers"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/performance-scaler.test.js using vitest jsdom environment. Test pure calculation functions (FPS averaging, tier selection, cooldown timing) with synthetic frame time arrays. Mock sessionStorage via jsdom.\\n- Test cases: FPS calculation returns correct average for steady and variable frame times; quality tier drops to 'low' when avg FPS < 30; quality tier upgrades to 'high' when avg FPS > 50 for 5+ seconds; cooldown prevents tier changes within the cooldown window; hysteresis prevents oscillation (upgrade threshold > downgrade threshold); sessionStorage persists quality tier across page reloads; device capability detection caps low-end devices at medium tier; module gracefully handles missing sessionStorage.\\n- Integration tests: Verify that the module works correctly when loaded alongside scene-bundle.js by testing the quality tier application.\\n- Acceptance criteria: All new tests pass; >85% branch coverage for performance-scaler.js; existing test suite unaffected; tests run in <5s; no network calls (fully mocked)."
+        },
+        {
+          "id": "idea-100",
+          "title": "Unit Tests for Keyboard Help Overlay",
+          "description": "Create unit tests for the keyboard-help.js overlay module (493 lines) to verify modal display, focus trap functionality, shortcut key detection, and proper event listener cleanup. Uses vitest + jsdom with mocked DOM structure.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Create tests/unit/keyboard-help.test.js using vitest jsdom environment. Mock DOM with focusable elements and help overlay structure.\\n- Test cases: overlay creates with correct ARIA attributes (role=dialog, aria-modal=true); show/hide on '?' key press; focus trap cycles between elements; Escape key closes overlay; scroll locked when visible; event listeners cleaned up on hide.\\n- Integration tests: Verify the module works with the real DOM structure generated by index.astro.\\n- Acceptance criteria: All 12 unit tests pass; tests use no real network calls; existing test suite unaffected; tests run in <5s."
+        },
+        {
+          "id": "idea-20260704061801",
+          "title": "Integrate Accessibility Testing into CI Pipeline",
+          "description": "Add automated accessibility checks using axe-core to the CI/CD pipeline to catch accessibility regressions early. The system will run accessibility tests on every build and report violations.",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "See PRD for detailed test plan."
+        },
+        {
+          "id": "idea-083",
+          "title": "Lazy-Load Non-Critical UI Modules (theme-switcher, section-nav, reader-mode)",
+          "description": "theme-switcher.js (414 lines), section-nav.js (371 lines), and reader-mode.js (320 lines) are standalone modules loaded via <script> tags in index.astro on every page load, but they are only needed when the user interacts with their respective UI controls. Combined: 1105 lines of JS parsed/evaluated upfront. This task creates a lazy-loader pattern: these modules are loaded as dynamic imports only when the user first clicks their trigger button (theme toggle, nav dot, reader mode toggle). The <script> tags are replaced with small (~20-line) proxy modules that attach click listeners to the trigger elements and dynamically import the full module on first interaction. The flute button, accessibility features, and scene-bundle.js are NOT affected — they load normally. Total added code: ~60 lines across 3 proxy modules. Zero scene-init.js changes.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [
+            "lazy-loading",
+            "performance",
+            "code-splitting",
+            "initial-load",
+            "standalone-modules"
+          ],
+          "effort": "1-2 sessions",
+          "testingStrategy": "- Unit tests: Test the proxy module logic by mocking dynamic import() and verifying it is NOT called until the trigger element is clicked. Test that subsequent clicks do not re-import (single-load guarantee).\\n- Integration tests: Verify that the full module loads and initializes correctly after first click. Test that all existing functionality (theme switching, nav scrolling, reader mode toggle) works identically after lazy loading.\\n- Performance tests: Measure initial JS parse/evaluate time before and after lazy loading; target >100ms reduction on mid-range mobile devices.\\n- Acceptance criteria: theme-switcher.js, section-nav.js, reader-mode.js are NOT in initial <script> tags; each has a ~20-line proxy module that loads on first click; all existing functionality preserved; dynamic import fires at most once per module; build succeeds; zero scene-init.js changes; total added code ~60 lines."
         },
         {
           "id": "idea-086",
@@ -154,21 +191,24 @@
           "testingStrategy": "- Unit tests: Test optimize-svg.js logic with fixture SVGs (unoptimized, already-optimized, malformed) using vi.mock('fs') and vi.mock('child_process') to isolate svgo invocation.\\n- Test cases: optimized SVG is smaller than original; already-optimized SVG is not rewritten (idempotent); malformed SVG is skipped with a warning (no crash); --dry-run mode reports savings without writing; optimization preserves visual content (key path data retained).\\n- Integration tests: Run the script against a real unoptimized SVG fixture and verify the output is valid SVG (parsable by DOMParser) and smaller.\\n- Acceptance criteria: optimize-svg.js exits 0 on valid SVG; exits 0 with warning on malformed SVG; optimized SVGs are ≥20% smaller on average; daily-mutate.js calls optimization after asset generation; svgo added to devDependencies; build succeeds."
         },
         {
-          "id": "idea-091",
-          "title": "Unit Tests for performance-scaler.js — FPS Sampling and Quality Tier Logic",
-          "description": "public/js/performance-scaler.js (302 lines) is a standalone module with zero test coverage. It monitors FPS over a rolling window of 60 frames, calculates average FPS, and switches between quality tiers (high/medium/low) with cooldown and hysteresis heuristics. The core logic is pure and testable: given a sequence of frame times, it should compute the correct average FPS, apply the correct quality tier transition, respect cooldown periods, and persist state via sessionStorage. This task creates tests/unit/performance-scaler.test.js with: (1) tests for the FPS calculation logic with synthetic frame time sequences (steady 60fps, steady 20fps, mixed), (2) tests for quality tier threshold detection (below 30fps triggers downgrade, above 50fps for 5s triggers upgrade), (3) tests for cooldown enforcement (no rapid tier flipping), (4) tests for hysteresis (upgrade threshold differs from downgrade threshold), (5) tests for sessionStorage persistence and restoration, (6) tests for the device capability detection (low-end mobile caps at medium quality). Uses vitest with jsdom environment. Effort: 1-2 sessions.",
-          "category": "Testing & Reliability",
+          "id": "idea-101",
+          "title": "Quick Navigation Keyboard Shortcuts",
+          "description": "Add single-key navigation shortcuts for sections: H/T/M/P/S/A to jump to Hero/Today/Moon/Philosophy/Shiva/Art respectively. Visual highlight flash on target section. Shift+H shows help, Shift+W toggles wind soundscape. Standalone module with zero scene-init.js changes.",
+          "category": "UX",
           "priority": "medium",
-          "tags": [
-            "unit-tests",
-            "performance-scaler",
-            "client-side",
-            "jsdom",
-            "fps",
-            "quality-tiers"
-          ],
+          "tags": [],
           "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/performance-scaler.test.js using vitest jsdom environment. Test pure calculation functions (FPS averaging, tier selection, cooldown timing) with synthetic frame time arrays. Mock sessionStorage via jsdom.\\n- Test cases: FPS calculation returns correct average for steady and variable frame times; quality tier drops to 'low' when avg FPS < 30; quality tier upgrades to 'high' when avg FPS > 50 for 5+ seconds; cooldown prevents tier changes within the cooldown window; hysteresis prevents oscillation (upgrade threshold > downgrade threshold); sessionStorage persists quality tier across page reloads; device capability detection caps low-end devices at medium tier; module gracefully handles missing sessionStorage.\\n- Integration tests: Verify that the module works correctly when loaded alongside scene-bundle.js by testing the quality tier application.\\n- Acceptance criteria: All new tests pass; >85% branch coverage for performance-scaler.js; existing test suite unaffected; tests run in <5s; no network calls (fully mocked)."
+          "testingStrategy": "- Unit tests: Create tests/unit/quick-nav.test.js using vitest jsdom. Mock section elements and verify scrollIntoView calls with correct IDs.\\n- Test cases: M key scrolls to moon-section; Shift+H does not trigger nav; shortcuts ignored in INPUT/TEXTAREA; visual highlight class added/removed; smooth scroll option used.\\n- Integration tests: Verify real section IDs match expected shortcuts; test with actual page layout.\\n- Acceptance criteria: All 6 unit tests pass; H/T/M/P/S/A navigate correctly; Shift modifier keys work independently; visual feedback on target; zero scene-init.js changes; no audio files needed."
+        },
+        {
+          "id": "idea-20260704061800",
+          "title": "Adaptive Texture Compression for Mobile Devices",
+          "description": "Use basis universal or similar to compress textures based on device capabilities, reducing memory usage and improving load times. The system detects GPU capabilities and loads appropriate texture formats (ASTC for mobile, BC7 for desktop) to optimize memory bandwidth and visual quality.",
+          "category": "Performance Optimizations",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "See PRD for detailed test plan."
         },
         {
           "id": "idea-032",
@@ -209,6 +249,34 @@
           "testingStrategy": "- Unit tests: Test AudioContext init on gesture, node graph construction, volume control, pause/resume on visibility change, Save-Data block, reduced motion default, localStorage persistence.\n- Integration tests: Verify soundscape plays alongside flute clicks without interference.\n- Acceptance criteria: 3 procedural layers; toggle + volume slider; visibility auto-pause; Save-Data respect; reduced motion default off; no audio files; no auto-play; no scene-init.js changes."
         },
         {
+          "id": "idea-20260704055721",
+          "title": "Bioluminescent Mushroom Glow",
+          "priority": "medium",
+          "status": "backlog"
+        },
+        {
+          "id": "idea-20260704055721-2",
+          "title": "Adaptive Quality Scaling Based on Battery Level",
+          "priority": "medium",
+          "status": "backlog"
+        },
+        {
+          "id": "idea-20260704055721-3",
+          "title": "Interactive Firefly Jar",
+          "priority": "medium",
+          "status": "backlog"
+        },
+        {
+          "id": "idea-20260704061802",
+          "title": "User-Selected Flower Type Density Control",
+          "description": "Add a setting to control the density of flowers (sunflowers, tulips, lilies) in the 3D scene, allowing users to trade off visual richness for performance. Users can choose between Off, Low, Medium, and High density via a UI control.",
+          "category": "Interactivity",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "See PRD for detailed test plan."
+        },
+        {
           "id": "idea-092",
           "title": "Unit Tests for quote-carousel.js — Auto-Rotation and Navigation Logic",
           "description": "public/js/quote-carousel.js (45 lines) is the smallest standalone client-side module but has zero test coverage. It manages auto-rotating quote cards with fade transitions, keyboard navigation (arrow keys), dot indicator clicks, and pause-on-hover behavior. The module is tiny enough to fully cover in one session. This task creates tests/unit/quote-carousel.test.js with: (1) tests for the rotation timer logic (auto-advance interval, pause/resume), (2) tests for keyboard navigation (ArrowLeft/ArrowRight advance/back, Home/End jump), (3) tests for dot indicator click handling, (4) tests for pause-on-hover and resume-on-leave, (5) tests for the fade transition class toggling, (6) tests for edge cases (single quote, empty carousel). Uses vitest + jsdom environment. Effort: 1 session.",
@@ -224,6 +292,13 @@
           ],
           "effort": "1 session",
           "testingStrategy": "- Unit tests: Create tests/unit/quote-carousel.test.js using vitest jsdom environment. Build a mock DOM structure with quote cards, dot indicators, and the carousel container. Test timer logic with vi.useFakeTimers().\\n- Test cases: auto-advance fires at the correct interval; ArrowLeft/ArrowRight navigate to previous/next quote; Home/End jump to first/last quote; dot click jumps to the corresponding quote; pause-on-hover stops auto-advance; resume-on-leave restarts it; fade transition classes are applied and removed correctly; single-quote carousel does not crash; empty carousel is handled gracefully.\\n- Integration tests: Verify that the module works with the real DOM structure generated by index.astro (quote carousel sections with data-carousel attribute).\\n- Acceptance criteria: All new tests pass; >90% branch coverage for quote-carousel.js; existing test suite unaffected; tests run in <5s; no network calls."
+        },
+        {
+          "id": "idea-036",
+          "title": "Particle Poetry Scroll Effect",
+          "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.",
+          "category": "Interactivity",
+          "priority": "low"
         },
         {
           "id": "idea-040",
@@ -263,13 +338,6 @@
           "testingStrategy": "- Unit tests: Test season calculation from date, interpolation math, easeInOutCubic timing, mobile amplitude reduction, sessionStorage skip logic.\n- Integration tests: Verify transform applied to star group or canvas fallback.\n- Acceptance criteria: Seasonal transform computed correctly; 30s one-time animation; zero per-frame cost after settle; mobile reduced amplitude; low-end devices skip animation; no scene-init.js changes."
         },
         {
-          "id": "idea-036",
-          "title": "Particle Poetry Scroll Effect",
-          "description": "As visitors scroll through content sections, key words from headings and intros emerge as 3D CanvasTexture sprites that float upward and fade. Each section has a themed word pool. 25 sprites desktop / 12 mobile.",
-          "category": "Interactivity",
-          "priority": "low"
-        },
-        {
           "id": "idea-095",
           "title": "Haptic Pulse — Subtle Device Vibration on Key Interactions",
           "description": "Key interactions (flute click, section enter, quote change, shooting star) trigger subtle haptic feedback on supported Android devices via Vibration API. Opt-in model (first interaction enables). Respects prefers-reduced-motion. Shift+H toggle. Zero scene-init.js changes.",
@@ -284,74 +352,6 @@
           ],
           "effort": "1 session",
           "testingStrategy": "- Unit tests: Test Vibration API detection, reduced motion blocking, opt-in logic, pattern dispatch, Shift+H toggle, disabled state no-op.\n- Integration tests: Verify custom events dispatched from existing modules trigger vibration.\n- Acceptance criteria: Only activates on Vibration API devices; opt-in via first interaction; 5 patterns; Shift+H toggle; reduced motion disables; graceful no-op on desktop/iOS."
-        },
-        {
-          "id": "idea-20260704055721",
-          "title": "Bioluminescent Mushroom Glow",
-          "priority": "medium",
-          "status": "backlog"
-        },
-        {
-          "id": "idea-20260704055721-2",
-          "title": "Adaptive Quality Scaling Based on Battery Level",
-          "priority": "medium",
-          "status": "backlog"
-        },
-        {
-          "id": "idea-20260704055721-3",
-          "title": "Interactive Firefly Jar",
-          "priority": "medium",
-          "status": "backlog"
-        },
-        {
-          "id": "idea-20260704061800",
-          "title": "Adaptive Texture Compression for Mobile Devices",
-          "description": "Use basis universal or similar to compress textures based on device capabilities, reducing memory usage and improving load times. The system detects GPU capabilities and loads appropriate texture formats (ASTC for mobile, BC7 for desktop) to optimize memory bandwidth and visual quality.",
-          "category": "Performance Optimizations",
-          "priority": "medium",
-          "tags": [],
-          "effort": "1-2 sessions",
-          "testingStrategy": "See PRD for detailed test plan."
-        },
-        {
-          "id": "idea-20260704061801",
-          "title": "Integrate Accessibility Testing into CI Pipeline",
-          "description": "Add automated accessibility checks using axe-core to the CI/CD pipeline to catch accessibility regressions early. The system will run accessibility tests on every build and report violations.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [],
-          "effort": "1-2 sessions",
-          "testingStrategy": "See PRD for detailed test plan."
-        },
-        {
-          "id": "idea-20260704061802",
-          "title": "User-Selected Flower Type Density Control",
-          "description": "Add a setting to control the density of flowers (sunflowers, tulips, lilies) in the 3D scene, allowing users to trade off visual richness for performance. Users can choose between Off, Low, Medium, and High density via a UI control.",
-          "category": "Interactivity",
-          "priority": "medium",
-          "tags": [],
-          "effort": "1-2 sessions",
-          "testingStrategy": "See PRD for detailed test plan."
-        },
-        {
-          "id": "idea-100",
-          "title": "Unit Tests for Keyboard Help Overlay",
-          "description": "Create unit tests for the keyboard-help.js overlay module (493 lines) to verify modal display, focus trap functionality, shortcut key detection, and proper event listener cleanup. Uses vitest + jsdom with mocked DOM structure.",
-          "category": "Testing & Reliability",
-          "priority": "medium",
-          "tags": [],
-          "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/keyboard-help.test.js using vitest jsdom environment. Mock DOM with focusable elements and help overlay structure.\\n- Test cases: overlay creates with correct ARIA attributes (role=dialog, aria-modal=true); show/hide on '?' key press; focus trap cycles between elements; Escape key closes overlay; scroll locked when visible; event listeners cleaned up on hide.\\n- Integration tests: Verify the module works with the real DOM structure generated by index.astro.\\n- Acceptance criteria: All 12 unit tests pass; tests use no real network calls; existing test suite unaffected; tests run in <5s."
-        },
-        {
-          "id": "idea-101",
-          "title": "Quick Navigation Keyboard Shortcuts",
-          "description": "Add single-key navigation shortcuts for sections: H/T/M/P/S/A to jump to Hero/Today/Moon/Philosophy/Shiva/Art respectively. Visual highlight flash on target section. Shift+H shows help, Shift+W toggles wind soundscape. Standalone module with zero scene-init.js changes.",
-          "category": "UX",
-          "priority": "medium",
-          "tags": [],
-          "effort": "1-2 sessions",
-          "testingStrategy": "- Unit tests: Create tests/unit/quick-nav.test.js using vitest jsdom. Mock section elements and verify scrollIntoView calls with correct IDs.\\n- Test cases: M key scrolls to moon-section; Shift+H does not trigger nav; shortcuts ignored in INPUT/TEXTAREA; visual highlight class added/removed; smooth scroll option used.\\n- Integration tests: Verify real section IDs match expected shortcuts; test with actual page layout.\\n- Acceptance criteria: All 6 unit tests pass; H/T/M/P/S/A navigate correctly; Shift modifier keys work independently; visual feedback on target; zero scene-init.js changes; no audio files needed."
         },
         {
           "id": "idea-102",
