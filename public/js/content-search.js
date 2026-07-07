@@ -44,7 +44,8 @@
   }
 
   function normalize(s) {
-    return s.toLowerCase().replace(/<[^>]+>/g, '').replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    // Replace HTML tags but preserve their content: <tag>content</tag> → content
+    return s.toLowerCase().replace(/<[^>]*>([^<]*)<\/[^>]*>/g, '$1').replace(/<[^>]*>/g, '').replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
   }
 
   // Simple fuzzy scoring: counts query words found in text
@@ -506,8 +507,35 @@
     }
   }
 
+  // ── Testing Hooks (exposed on window for test access) ────────
+  // Must be defined BEFORE init() so tests can access them
+  if (typeof window !== 'undefined') {
+    window.__csSetCache = function(index, built, themes, keyToId, keyToLabel) {
+      CONTENT_INDEX = index || [];
+      INDEX_BUILT = built || false;
+      THEME_LABELS = themes || [];
+      SECTION_KEY_TO_ID = keyToId || SECTION_KEY_TO_ID;
+      SECTION_KEY_TO_LABEL = keyToLabel || SECTION_KEY_TO_LABEL;
+    };
+    window.__csGetCache = function() {
+      return {
+        CONTENT_INDEX: CONTENT_INDEX,
+        THEME_LABELS: THEME_LABELS,
+        INDEX_BUILT: INDEX_BUILT,
+        SECTION_KEY_TO_ID: SECTION_KEY_TO_ID,
+        SECTION_KEY_TO_LABEL: SECTION_KEY_TO_LABEL
+      };
+    };
+    window.__csBuildIndex = buildIndex;
+    window.__csAssembleIndex = assembleIndex;
+  }
+
   // ── Init ────────────────────────────────────────────────────────
   function init() {
+    // Skip init during tests (detected via test environment)
+    if (typeof window !== 'undefined' && window.__isUnitTest) {
+      return;
+    }
     // Build index in background
     requestIdleCallback(function () {
       buildIndex();
