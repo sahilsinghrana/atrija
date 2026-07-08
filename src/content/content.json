@@ -12,7 +12,7 @@
       "tagline": "<em>Time</em> shapes us"
     },
     "today": {
-      "heading": "What the <em>Art</em> teaches today",
+      "heading": "What the <em>Ego</em> whispers today",
       "intro": "In many cultures, the new moon is considered a time for planting seeds — both literal and metaphorical. Darkness is not emptiness; it is the womb from which light is born.",
       "visualAsset": {
         "type": "svg",
@@ -25,10 +25,10 @@
     "moon": {
       "label": "I. Silent Wheel",
       "heading": "<em>Lunar</em> gaze",
-      "intro": "The Moon controls the tides of the ocean and the tides of the mind. In Vedic thought, Chandra governs the Manas — the emotional mind — and its phases mirror the cycles of human desire and detachment.",
+      "intro": "Tulips close their petals at night under the Moon's gaze, folding inward like a meditation. Yet at dawn they open again — a daily resurrection that mirrors the lunar cycle of death and rebirth.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 3
+        "factIndex": 6
       },
       "facts": [
         "Tidal lock: one side.",
@@ -36,16 +36,16 @@
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 4
+        "quoteIndex": 5
       }
     },
     "shiva": {
       "label": "II. Ring of Flame",
       "heading": "<em>Flame</em> dance",
-      "intro": "Shiva is both the ascetic and the householder — the renunciant on Kailash and the loving partner of Parvati. The Shiv Purana teaches that spiritual life is not the rejection of the world but the embrace of it all: joy and sorrow, creation and dissolution.",
+      "intro": "Shiva sits in meditation on Mount Kailash, the axis mundi, the center of the world. His stillness is not inactivity — it is the stillness of a mind that has transcended all duality, all desire, all fear.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 7
+        "factIndex": 11
       },
       "facts": [
         "Drum: first language.",
@@ -53,16 +53,16 @@
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 6
+        "quoteIndex": 7
       }
     },
     "art": {
       "label": "III. Golden Rule",
       "heading": "<em>Canvas</em> light",
-      "intro": "The golden ratio (1.618) appears in sunflower seed spirals, nautilus shells, and the proportions of the Parthenon. It is as if the universe has a preferred aesthetic — a mathematical beauty that underlies all form.",
+      "intro": "The sunflower turns its face to the light. In this simple act is a metaphor for the spiritual life — the constant orientation of the soul toward what illuminates, even when the source is hidden.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 11
+        "factIndex": 14
       },
       "facts": [
         "Golden ratio: 1.618.",
@@ -70,16 +70,16 @@
       ],
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 3
+        "quoteIndex": 5
       }
     },
     "philosophy": {
       "label": "IV. No Self",
       "heading": "<em>Being</em> for",
-      "intro": "Arrogance is the ego's armor. But armor is heavy — it slows the warrior. The Gita teaches that true strength comes not from the assertion of self but from the surrender to dharma.",
+      "intro": "A lily does not compete with the lily beside it. It simply blooms. Nature offers no hierarchy of flowers — each opens to the light in its own time, in its own way. The ego cannot comprehend this peace.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 0
+        "factIndex": 13
       },
       "facts": [
         "Wave: knows water.",
@@ -87,7 +87,7 @@
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 6
+        "quoteIndex": 2
       }
     }
   },
@@ -315,19 +315,19 @@
         "date": "2026-07-04"
       },
       {
-        "time": "00:50:49",
+        "time": "00:33:02",
         "type": "daily-mutation",
-        "description": "Daily mutation #187: starry-night colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "description": "Daily mutation #189: moonlit-silver colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
         "changes": [
-          "Color scheme: starry-night (contemplative)",
+          "Color scheme: moonlit-silver (luminous)",
           "Season: summer",
-          "Shader — strokeDensity: 6.3, swirlFrequency: 19.5, colorIntensity: 1.66",
-          "Section \"moon\": Selene & The Moon theme, fact #14",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #13",
-          "Section \"shiva\": Shiv Purana theme, fact #13",
-          "Section \"art\": Art & Beauty theme, fact #5"
+          "Shader — strokeDensity: 4.9, swirlFrequency: 15.9, colorIntensity: 1.14",
+          "Section \"moon\": Selene & The Moon theme, fact #7",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #6",
+          "Section \"shiva\": Shiv Purana theme, fact #6",
+          "Section \"art\": Art & Beauty theme, fact #13"
         ],
-        "date": "2026-07-06"
+        "date": "2026-07-08"
       }
     ]
   }
