@@ -386,6 +386,16 @@
           "tags": [],
           "effort": "1-2 sessions",
           "testingStrategy": "- Unit tests: Create tests/unit/wind-soundscape.test.js using vitest jsdom. Mock Web Audio API via vi.mock('AudioContext').\\n- Test cases: AudioContext created on first toggle; noise buffer loops correctly; prefers-reduced-motion disables module; Save-Data disables module; Shift+W toggles playback; visibilitychange pauses audio.\\n- Integration tests: Run with real Web Audio API in headless environment; verify sound plays at correct volume.\\n- Acceptance criteria: Wind soundscape plays at -30dB default; no audio files needed; reduced motion/Save-Data respected; auto-pause on tab hidden; standalone module; Shift+W toggle works."
+        },
+        {
+          "id": "idea-075",
+          "title": "Add Unit Tests for Scene Health Check Script",
+          "description": "Create a comprehensive unit test suite for scripts/scene-health-check.cjs with mocking for HTTP requests and file system operations. Test various scenarios (healthy scene, missing elements, truncated JS).",
+          "category": "Testing & Reliability",
+          "priority": "medium",
+          "tags": [],
+          "effort": "1-2 sessions",
+          "testingStrategy": "See PRD"
         }
       ]
     },
@@ -1881,7 +1891,9 @@
         "announcements"
       ],
       "effort": "1 session",
-      "testingStrategy": "- Unit tests: Create tests/unit/screen-reader-announcements.test.js using vitest jsdom. Mock ARIA live region elements and verify announcement text is set on interaction events.\n- Integration tests: Verify announcements work with real DOM structure and screen reader semantics.\n- Acceptance criteria: ARIA live regions added to index.astro; flute click triggers announcement; section navigation triggers announcement; search results trigger announcement; all announcements respect prefers-reduced-motion; build succeeds."
+      "testingStrategy": "- Unit tests: Create tests/unit/screen-reader-announcements.test.js using vitest jsdom. Mock ARIA live region elements and verify announcement text is set on interaction events.\n- Integration tests: Verify announcements work with real DOM structure and screen reader semantics.\n- Acceptance criteria: ARIA live regions added to index.astro; flute click triggers announcement; section navigation triggers announcement; search results trigger announcement; all announcements respect prefers-reduced-motion; build succeeds.",
+      "status": "backlog",
+      "prd": "PRD-idea-103-screen-reader-announcements-for-interactive-elements.md"
     },
     {
       "id": "idea-104",
@@ -1896,7 +1908,9 @@
         "text-minimalism"
       ],
       "effort": "1 session",
-      "testingStrategy": "- Unit tests: Test haiku syllable counting (5-7-5 pattern), seasonal theme selection, and integration with daily-mutate.js.\n- Integration tests: Verify haiku appears in site deployment and rotates correctly.\n- Acceptance criteria: Haiku section renders with heading/intro/haiku content; syllable pattern validated; seasonal themes applied; text-minimalism enforced; no scene-init.js changes."
+      "testingStrategy": "- Unit tests: Test haiku syllable counting (5-7-5 pattern), seasonal theme selection, and integration with daily-mutate.js.\n- Integration tests: Verify haiku appears in site deployment and rotates correctly.\n- Acceptance criteria: Haiku section renders with heading/intro/haiku content; syllable pattern validated; seasonal themes applied; text-minimalism enforced; no scene-init.js changes.",
+      "status": "backlog",
+      "prd": "PRD-idea-104-daily-haiku-content-section.md"
     },
     {
       "id": "idea-105",
@@ -1911,11 +1925,13 @@
         "keyboard-shortcut"
       ],
       "effort": "1 session",
-      "testingStrategy": "- Unit tests: Test breathing cycle timing (4s inhale, 4s hold, 4s exhale), animation keyframe generation, Shift+B toggle logic.\n- Integration tests: Verify animation overlays correctly and doesn't interfere with scene.\n- Acceptance criteria: Shift+B toggles breathing overlay; 4-second breathing cycle; no audio files; respects reduced motion; standalone module; zero scene-init.js changes."
+      "testingStrategy": "- Unit tests: Test breathing cycle timing (4s inhale, 4s hold, 4s exhale), animation keyframe generation, Shift+B toggle logic.\n- Integration tests: Verify animation overlays correctly and doesn't interfere with scene.\n- Acceptance criteria: Shift+B toggles breathing overlay; 4-second breathing cycle; no audio files; respects reduced motion; standalone module; zero scene-init.js changes.",
+      "status": "backlog",
+      "prd": "PRD-idea-105-breathing-guide-animation.md"
     }
   ],
   "prdTemplate": "PRD-TEMPLATE.md",
-  "generatedAt": "2026-07-09T20:39:55Z",
+  "generatedAt": "2026-07-09T20:42:46Z",
   "lastReviewAt": "2026-07-07T21:36:21Z",
   "lastReviewResult": "Kanban review: Backlog tasks are already priority-ordered; Deferred column looks correct (no deferred ideas in backlog column); INFO: All done items are recent or lack completedAt; INFO: Active columns are empty or contain only recent items (≤24h)\nGenerated 3 new ideas via automated idea generation: Bioluminescent Mushroom Glow, Adaptive Quality Scaling Based on Battery Level, Interactive Firefly Jar\\nGenerated 3 new ideas via automated idea generation: idea-20260704061800, idea-20260704061801, idea-20260704061802\nGenerated 3 new ideas: <generator object <genexpr> at 0x76e4c92dc0> via kanban-generate cron job.\nKanban triage 2026-07-08: Removed idea-084 from backlog (already in done column); updated ideas[].status to match done column.\n\nKanban generate 2026-07-10: Added 3 new ideas (103-105) to diversify categories beyond Testing & Reliability dominance. Category distribution now: Testing & Reliability, Performance, 3D Elements, Interactivity, UX, Content, Audio, Accessibility.",
   "changelog": [
