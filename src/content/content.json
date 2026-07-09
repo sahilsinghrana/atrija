@@ -25,10 +25,10 @@
     "moon": {
       "label": "I. Silent Wheel",
       "heading": "<em>Lunar</em> gaze",
-      "intro": "The Moon is slowly drifting away from Earth at 3.8 cm per year. In a billion years, total solar eclipses will be impossible — the Moon will appear too small to cover the Sun. Even celestial relationships have expiration dates.",
+      "intro": "Selene, the Greek Titaness of the Moon, drove her silver chariot across the night sky, illuminating the world with borrowed light — a reminder that even reflection can be a form of brilliance.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 11
+        "factIndex": 8
       },
       "facts": [
         "Tidal lock: one side.",
@@ -36,7 +36,7 @@
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 4
+        "quoteIndex": 5
       }
     },
     "shiva": {
@@ -45,7 +45,7 @@
       "intro": "Shiva is called Mahakala — the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 10
+        "factIndex": 13
       },
       "facts": [
         "Drum: first language.",
@@ -53,16 +53,16 @@
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 8
+        "quoteIndex": 3
       }
     },
     "art": {
       "label": "III. Golden Rule",
       "heading": "<em>Canvas</em> light",
-      "intro": "The flute is the oldest instrument — a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
+      "intro": "Beauty is not in the object but in the eye that perceives it. The same sunset can be mundane or miraculous depending on the state of the observer's mind.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 5
+        "factIndex": 12
       },
       "facts": [
         "Golden ratio: 1.618.",
@@ -70,16 +70,16 @@
       ],
       "quote": {
         "themeIndex": 3,
-        "quoteIndex": 5
+        "quoteIndex": 3
       }
     },
     "philosophy": {
       "label": "IV. No Self",
       "heading": "<em>Being</em> for",
-      "intro": "The Dunning-Kruger effect reveals that the least competent are often the most confident, while the truly skilled doubt themselves. Arrogance is not a sign of ability — it is a sign of ignorance about the depth of one's own ignorance.",
+      "intro": "A wave that insists 'I am this particular shape' suffers when the shape dissolves. The wave that knows 'I am water' dances through every form, unafraid of the shore. The difference is not in the ocean but in the knowing.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 10
+        "factIndex": 12
       },
       "facts": [
         "Wave: knows water.",
@@ -87,7 +87,7 @@
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 3
+        "quoteIndex": 1
       }
     }
   },
@@ -314,17 +314,17 @@
         "date": "2026-07-08"
       },
       {
-        "time": "00:33:36",
+        "time": "06:32:22",
         "type": "daily-mutation",
-        "description": "Daily mutation #190: lily-garden colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "description": "Daily mutation #190: sunflower colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
         "changes": [
-          "Color scheme: lily-garden (passionate)",
+          "Color scheme: sunflower (warm)",
           "Season: summer",
-          "Shader — strokeDensity: 8.8, swirlFrequency: 10.4, colorIntensity: 1.53",
-          "Section \"moon\": Selene & The Moon theme, fact #12",
-          "Section \"philosophy\": Ego & Arrogance theme, fact #5",
+          "Shader — strokeDensity: 10, swirlFrequency: 8.1, colorIntensity: 1.39",
+          "Section \"moon\": Selene & The Moon theme, fact #13",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #4",
           "Section \"shiva\": Shiv Purana theme, fact #8",
-          "Section \"art\": Art & Beauty theme, fact #7"
+          "Section \"art\": Art & Beauty theme, fact #9"
         ],
         "date": "2026-07-09"
       }
