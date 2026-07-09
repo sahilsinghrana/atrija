@@ -12,7 +12,7 @@
       "tagline": "<em>Time</em> shapes us"
     },
     "today": {
-      "heading": "What the <em>Ego</em> whispers today",
+      "heading": "What the <em>Shiv</em> reveals today",
       "intro": "In many cultures, the new moon is considered a time for planting seeds — both literal and metaphorical. Darkness is not emptiness; it is the womb from which light is born.",
       "visualAsset": {
         "type": "svg",
@@ -25,10 +25,10 @@
     "moon": {
       "label": "I. Silent Wheel",
       "heading": "<em>Lunar</em> gaze",
-      "intro": "Tulips close their petals at night under the Moon's gaze, folding inward like a meditation. Yet at dawn they open again — a daily resurrection that mirrors the lunar cycle of death and rebirth.",
+      "intro": "The Moon is slowly drifting away from Earth at 3.8 cm per year. In a billion years, total solar eclipses will be impossible — the Moon will appear too small to cover the Sun. Even celestial relationships have expiration dates.",
       "imageCard": {
         "themeIndex": 0,
-        "factIndex": 6
+        "factIndex": 11
       },
       "facts": [
         "Tidal lock: one side.",
@@ -36,16 +36,16 @@
       ],
       "quote": {
         "themeIndex": 0,
-        "quoteIndex": 5
+        "quoteIndex": 4
       }
     },
     "shiva": {
       "label": "II. Ring of Flame",
       "heading": "<em>Flame</em> dance",
-      "intro": "Shiva sits in meditation on Mount Kailash, the axis mundi, the center of the world. His stillness is not inactivity — it is the stillness of a mind that has transcended all duality, all desire, all fear.",
+      "intro": "Shiva is called Mahakala — the great time. He is not bound by time; he is time itself. Past, present, and future are all one in the dance of Mahakala.",
       "imageCard": {
         "themeIndex": 2,
-        "factIndex": 11
+        "factIndex": 10
       },
       "facts": [
         "Drum: first language.",
@@ -53,16 +53,16 @@
       ],
       "quote": {
         "themeIndex": 2,
-        "quoteIndex": 7
+        "quoteIndex": 8
       }
     },
     "art": {
       "label": "III. Golden Rule",
       "heading": "<em>Canvas</em> light",
-      "intro": "The sunflower turns its face to the light. In this simple act is a metaphor for the spiritual life — the constant orientation of the soul toward what illuminates, even when the source is hidden.",
+      "intro": "The flute is the oldest instrument — a hollow reed that sings when breath passes through it. It teaches that music is not made but revealed, not created but discovered in the space between silence and sound.",
       "imageCard": {
         "themeIndex": 3,
-        "factIndex": 14
+        "factIndex": 5
       },
       "facts": [
         "Golden ratio: 1.618.",
@@ -76,10 +76,10 @@
     "philosophy": {
       "label": "IV. No Self",
       "heading": "<em>Being</em> for",
-      "intro": "A lily does not compete with the lily beside it. It simply blooms. Nature offers no hierarchy of flowers — each opens to the light in its own time, in its own way. The ego cannot comprehend this peace.",
+      "intro": "The Dunning-Kruger effect reveals that the least competent are often the most confident, while the truly skilled doubt themselves. Arrogance is not a sign of ability — it is a sign of ignorance about the depth of one's own ignorance.",
       "imageCard": {
         "themeIndex": 1,
-        "factIndex": 13
+        "factIndex": 10
       },
       "facts": [
         "Wave: knows water.",
@@ -87,29 +87,13 @@
       ],
       "quote": {
         "themeIndex": 1,
-        "quoteIndex": 2
+        "quoteIndex": 3
       }
     }
   },
   "changelog": {
     "version": "1.0.0",
     "entries": [
-      {
-        "time": "12:00:00",
-        "type": "content",
-        "description": "Midday content layout refresh: rotated all fact/quote indices across 5 sections, refreshed Moon and Art section intros with fresh phrasing, updated Today heading/intro for midday theme",
-        "changes": [
-          "Moon section: new intro (hidden face of the Moon, Chandra, emotional mind), imageCard→factIndex 4 (night sky canvas), facts.slice→[10,12] (tulips close at night, tidal locking dark side), quoteIndex→5 (Thich Nhat Hanh: moon does not fight)",
-          "Philosophy section: imageCard→factIndex 3 (Shiv Purana ahamkara), facts.slice→[5,7] (ego comparison, Gita right to work), quoteIndex→4 (Pasteur: prepared mind)",
-          "Gita section: imageCard→factIndex 8 (Einstein Gita bedside), facts.slice→[2,4] (soul unborn eternal, Vishvarupa universal form), quoteIndex→6 (Atrijā: battlefield is human heart)",
-          "Shiva section: imageCard→factIndex 10 (silence before/after dance), facts.slice→[6,8] (Mahakala great time, Tryambaka third eye), quoteIndex→8 (Atrijā: Shiva dances because world is his dance)",
-          "Art section: new intro (color as conversation, painting light not objects), imageCard→factIndex 2 (star field scale), facts.slice→[12,14] (impressionism light subject, art dismantles wall), quoteIndex→7 (Atrijā: create to destroy distance)",
-          "Today heading: 'The weight of light on water' (was 'The listening sky — where light bends into color')",
-          "Today intro: midday sun theme — light at its highest, lily opens widest under unforgiving glare, grace under pressure",
-          "Color scheme: starry-night (unchanged, appropriate for summer)"
-        ],
-        "date": "2026-06-10"
-      },
       {
         "time": "16:30:00",
         "type": "feature",
@@ -328,6 +312,21 @@
           "Section \"art\": Art & Beauty theme, fact #13"
         ],
         "date": "2026-07-08"
+      },
+      {
+        "time": "00:33:36",
+        "type": "daily-mutation",
+        "description": "Daily mutation #190: lily-garden colors (summer season), Selene & The Moon → Ego & Arrogance → Shiv Purana → Art & Beauty",
+        "changes": [
+          "Color scheme: lily-garden (passionate)",
+          "Season: summer",
+          "Shader — strokeDensity: 8.8, swirlFrequency: 10.4, colorIntensity: 1.53",
+          "Section \"moon\": Selene & The Moon theme, fact #12",
+          "Section \"philosophy\": Ego & Arrogance theme, fact #5",
+          "Section \"shiva\": Shiv Purana theme, fact #8",
+          "Section \"art\": Art & Beauty theme, fact #7"
+        ],
+        "date": "2026-07-09"
       }
     ]
   }
