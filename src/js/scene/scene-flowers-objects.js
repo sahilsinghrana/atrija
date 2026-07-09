@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { isMobile } from "./scene-config.js";
-import { makeTulipCanvas } from "./scene-flowers.js";
+import { makeTulipCanvas, makeLilyCanvas } from "./scene-flowers.js";
 
 // Tulip colors — canvas-drawn, no SVG needed
 const TULIP_COLORS = [
